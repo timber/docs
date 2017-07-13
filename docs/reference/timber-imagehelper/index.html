@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="http://timber.github.io/css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
+</head>
+
+
+<body>
+
+<header class="header">
+    <a class="logo-link" href="/">
+        <div id="logo">
+            <img src="/images/timberlogo.svg" alt="Timber" style="width:105px;height:30px;border:0">
+        </div>
+    </a>
+    <nav class="nav nav--top" id="nav-top">
+        <ul>
+            <li>
+                <a class="nav__link" href="http://upstatement.com/timber/" target="_blank" rel="noreferrer noopener">Timber Homepage</a>
+            </li>
+            <li>
+                <a class="nav__link" href="http://twig.sensiolabs.org/doc/templates.html"
+                   target="_blank" rel="noreferrer noopener">Twig Documentation</a>
+            </li>
+            <li><a class="nav__link" href="http://code.tutsplus.com/series/kick-start-wordpress-development-with-twig--cms-974"
+                   target="_blank" rel="noreferrer noopener">Getting Started Tutorials</a>
+            </li>
+            <li>
+                <a class="nav__link" href="https://github.com/timber/timber" target="_blank" rel="noreferrer noopener">
+                    <img src="/images/Github.png" alt="Star on Github" style="width:29px;height:29px;border:0">
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<aside class="sidebar">
+    <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+
+    <ul class="search-results"></ul>
+
+    <nav id="nav nav--main">
+        <ul class="nav__items nav__items--level-0">
+        
+        
+            <li class="nav__item nav__item--level-0"><a class="nav__link nav__link--level-0" href="http://timber.github.io/getting-started/">Getting Started</a>
+            
+                <ul class="nav__items nav__items--level-1">
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/getting-started/setup/">Setup</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/getting-started/themeing/">Themeing</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/getting-started/twig-tools/">Twig Tools</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/getting-started/video-tutorials/">Video Tutorials</a></li>
+                
+                </ul>
+            
+            </li>
+        
+            <li class="nav__item nav__item--level-0"><a class="nav__link nav__link--level-0" href="http://timber.github.io/guides/">Guides</a>
+            
+                <ul class="nav__items nav__items--level-1">
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/acf-cookbook/">ACF Cookbook</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/cheatsheet/">Cheatsheet</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/custom-page-templates/">Custom Page Templates</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/debugging/">Debugging</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/escapers/">Escapers</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/extending-timber/">Extending Timber</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/filters/">Filters</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/functions/">Functions</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/cookbook-images/">Image Cookbook</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/internationalization/">Internationalization</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/pagination/">Pagination</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/performance/">Performance</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/routing/">Routing</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/sidebars/">Sidebars</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/template-locations/">Template Locations</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/testing/">Testing</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/cookbook-text/">Text Cookbook</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/cookbook-twig/">Twig Cookbook</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/woocommerce/">WooCommerce</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/wp-integration/">WordPress Integration</a></li>
+                
+                </ul>
+            
+            </li>
+        
+            <li class="nav__item nav__item--level-0 nav__item--current-ancestor"><a class="nav__link nav__link--level-0" href="http://timber.github.io/reference/">Reference</a>
+            
+                <ul class="nav__items nav__items--level-1">
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-archives/">Timber\Archives</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-comment/">Timber\Comment</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-helper/">Timber\Helper</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-image/">Timber\Image</a></li>
+                
+                    <li class="nav__item nav__item--level-1 nav__item--current"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-imagehelper/">Timber\ImageHelper</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-menu/">Timber\Menu</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-menuitem/">Timber\MenuItem</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-pagination/">Timber\Pagination</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-post/">Timber\Post</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-postpreview/">Timber\PostPreview</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-postquery/">Timber\PostQuery</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-site/">Timber\Site</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-term/">Timber\Term</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-texthelper/">Timber\TextHelper</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-theme/">Timber\Theme</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber/">Timber\Timber</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-urlhelper/">Timber\URLHelper</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-user/">Timber\User</a></li>
+                
+                </ul>
+            
+            </li>
+        
+            <li class="nav__item nav__item--level-0"><a class="nav__link nav__link--level-0" href="http://timber.github.io/upgrade-guides/">Upgrade Guides</a>
+            
+                <ul class="nav__items nav__items--level-1">
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/upgrade-guides/1.0/">Upgrade to 1.0</a></li>
+                
+                </ul>
+            
+            </li>
+        
+        </ul>
+    </nav>
+</aside>
+
+
+<main>
+    
+	<article>
+		<h1>Timber\ImageHelper</h1>
+
+		<aside class="toc">
+			<h2 class="heading-4 toc__title">Contents of this page</h2>
+			<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#methods-overview">Methods Overview</a></li>
+<li><a href="#delete-generated-if-image">_delete_generated_if_image</a></li>
+<li><a href="#add-filters">add_filters</a></li>
+<li><a href="#analyze-url">analyze_url</a></li>
+<li><a href="#delete-generated-files">delete_generated_files</a></li>
+<li><a href="#get-letterbox-file-path">get_letterbox_file_path</a></li>
+<li><a href="#get-letterbox-file-url">get_letterbox_file_url</a></li>
+<li><a href="#get-resize-file-path">get_resize_file_path</a></li>
+<li><a href="#get-resize-file-url">get_resize_file_url</a></li>
+<li><a href="#get-server-location">get_server_location</a></li>
+<li><a href="#get-sideloaded-file-loc">get_sideloaded_file_loc</a></li>
+<li><a href="#img-to-jpg">img_to_jpg</a></li>
+<li><a href="#init">init</a></li>
+<li><a href="#is-animated-gif">is_animated_gif</a></li>
+<li><a href="#letterbox">letterbox</a></li>
+<li><a href="#resize">resize</a></li>
+<li><a href="#retina-resize">retina_resize</a></li>
+<li><a href="#sideload-image">sideload_image</a></li>
+<li><a href="#theme-url-to-dir">theme_url_to_dir</a></li>
+<li><a href="#add-actions">add_actions</a></li>
+<li><a href="#is-in-theme-dir">is_in_theme_dir</a></li>
+<li><a href="#maybe-realpath">maybe_realpath</a></li>
+<li><a href="#process-delete-generated-files">process_delete_generated_files</a></li>
+</ul></li>
+</ul>
+</nav>
+		</aside>
+
+		<div class="content-container">
+			<div class="content">
+				<p>Implements the <a href="https://github.com/timber/timber/wiki/Image-cookbook#arbitrary-resizing-of-images">Twig image
+filters</a>
+<code>resize</code>, <code>retina</code>, <code>letterbox</code> and  <code>tojpg</code>.</p>
+
+<p>Implementation:</p>
+
+<ul>
+<li>public static functions provide the methods that are called by the filter</li>
+<li>most of the work is common to all filters (URL analysis, directory gymnastics, file caching, error management) and
+done by private static functions</li>
+<li>the specific part (actual image processing) is delegated to dedicated subclasses of TimberImageOperation</li>
+</ul>
+
+<p></p>
+
+<h2 id="methods-overview">Methods Overview</h2>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Returns/Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="#resize">resize</a></td>
+<td><code>string</code></td>
+<td>(ex: )</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="delete-generated-if-image">_delete_generated_if_image</h2>
+
+<p><code>_delete_generated_if_image( int $post_id )</code></p>
+
+<p><strong>returns:</strong> <code>void</code></p>
+
+<p>Checks if attachment is an image before deleting generated files</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$post_id</td>
+<td><code>int</code></td>
+<td>an attachment post id</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="add-filters">add_filters</h2>
+
+<p><code>add_filters( )</code></p>
+
+<p><strong>returns:</strong> <code>void</code></p>
+
+<p>adds a &lsquo;relative&rsquo; key to wp_upload_dir() result.
+It will contain the relative url to upload dir.</p>
+
+<hr />
+
+<h2 id="analyze-url">analyze_url</h2>
+
+<p><code>analyze_url( string $url )</code></p>
+
+<p><strong>returns:</strong> <code>array</code> an array (see keys in code below)</p>
+
+<p>Takes in an URL and breaks it into components,
+that will then be used in the different steps of image processing.
+The image is expected to be either part of a theme, plugin, or an upload.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$url</td>
+<td><code>string</code></td>
+<td>an URL (absolute or relative) pointing to an image</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="delete-generated-files">delete_generated_files</h2>
+
+<p><code>delete_generated_files( string $local_file )</code></p>
+
+<p><strong>returns:</strong> <code>void</code></p>
+
+<p>Deletes the auto-generated files for resize and letterboxing created by Timber</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$local_file</td>
+<td><code>string</code></td>
+<td>ex: /var/www/wp-content/uploads/2015/my-pic.jpg or: <a href="http://example.org/wp-content/uploads/2015/my-pic.jpg">http://example.org/wp-content/uploads/2015/my-pic.jpg</a></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="get-letterbox-file-path">get_letterbox_file_path</h2>
+
+<p><code>get_letterbox_file_path( mixed $url, mixed $w, mixed $h, mixed $color )</code></p>
+
+<p><strong>returns:</strong> <code>mixed</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$url</td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$w</td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$h</td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$color</td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="get-letterbox-file-url">get_letterbox_file_url</h2>
+
+<p><code>get_letterbox_file_url( mixed $url, mixed $w, mixed $h, mixed $color )</code></p>
+
+<p><strong>returns:</strong> <code>mixed</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$url</td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$w</td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$h</td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$color</td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="get-resize-file-path">get_resize_file_path</h2>
+
+<p><code>get_resize_file_path( mixed $url, mixed $w, mixed $h, mixed $crop )</code></p>
+
+<p><strong>returns:</strong> <code>mixed</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$url</td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$w</td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$h</td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$crop</td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="get-resize-file-url">get_resize_file_url</h2>
+
+<p><code>get_resize_file_url( mixed $url, mixed $w, mixed $h, mixed $crop )</code></p>
+
+<p><strong>returns:</strong> <code>mixed</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$url</td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$w</td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$h</td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$crop</td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="get-server-location">get_server_location</h2>
+
+<p><code>get_server_location( string $url )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<p>Determines the filepath corresponding to a given URL</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$url</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="get-sideloaded-file-loc">get_sideloaded_file_loc</h2>
+
+<p><code>get_sideloaded_file_loc( string $file )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<p>Determines the filepath where a given external file will be stored.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$file</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="img-to-jpg">img_to_jpg</h2>
+
+<p><code>img_to_jpg( string $src, string $bghex=&quot;#FFFFFF&quot;, bool $force=false )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<p>Generates a new image by converting the source GIF or PNG into JPG</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$src</td>
+<td><code>string</code></td>
+<td>a url or path to the image (<a href="http://example.org/wp-content/uploads/2014/image.jpg">http://example.org/wp-content/uploads/2014/image.jpg</a>) or (/wp-content/uploads/2014/image.jpg)</td>
+</tr>
+
+<tr>
+<td>$bghex</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$force</td>
+<td><code>bool</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="init">init</h2>
+
+<p><code>init( )</code></p>
+
+<p><strong>returns:</strong> <code>void</code></p>
+
+<hr />
+
+<h2 id="is-animated-gif">is_animated_gif</h2>
+
+<p><code>is_animated_gif( string $file )</code></p>
+
+<p><strong>returns:</strong> <code>boolean</code> true if it&rsquo;s an animated gif, false if not</p>
+
+<p>checks to see if the given file is an aimated gif</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$file</td>
+<td><code>string</code></td>
+<td>local filepath to a file, not a URL</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="letterbox">letterbox</h2>
+
+<p><code>letterbox( string $src, int $w, int $h, string $color=&quot;#000000&quot;, bool $force=false )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<p>Generate a new image with the specified dimensions.
+New dimensions are achieved by adding colored bands to maintain ratio.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$src</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$w</td>
+<td><code>int</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$h</td>
+<td><code>int</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$color</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$force</td>
+<td><code>bool</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="resize">resize</h2>
+
+<p><code>resize( string $src, mixed $w, int $h, string $crop=&quot;default&quot;, bool $force=false )</code></p>
+
+<p><strong>returns:</strong> <code>string</code> (ex: )</p>
+
+<p>Generates a new image with the specified dimensions.
+New dimensions are achieved by cropping to maintain ratio.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$src</td>
+<td><code>string</code></td>
+<td>an URL (absolute or relative) to the original image</td>
+</tr>
+
+<tr>
+<td>$w</td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$h</td>
+<td><code>int</code></td>
+<td>target height (ignored if $w is WP image size). If not set, will ignore and resize based on $w only.</td>
+</tr>
+
+<tr>
+<td>$crop</td>
+<td><code>string</code></td>
+<td>your choices are &lsquo;default&rsquo;, &lsquo;center&rsquo;, &lsquo;top&rsquo;, &lsquo;bottom&rsquo;, &lsquo;left&rsquo;, &lsquo;right&rsquo;</td>
+</tr>
+
+<tr>
+<td>$force</td>
+<td><code>bool</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">&lt;img src=&quot;{{ image.src | resize(300, 200, 'top') }}&quot; /&gt;
+</code></pre>
+
+<p><strong>HTML</strong></p>
+
+<pre><code class="language-html">&lt;img src=&quot;http://example.org/wp-content/uploads/pic-300x200-c-top.jpg&quot; /&gt;
+</code></pre>
+
+<hr />
+
+<h2 id="retina-resize">retina_resize</h2>
+
+<p><code>retina_resize( string $src, mixed/\Timber\float $multiplier=2, bool/boolean $force=false )</code></p>
+
+<p><strong>returns:</strong> <code>string</code> url to the new image</p>
+
+<p>Generates a new image with increased size, for display on Retina screens.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$src</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$multiplier</td>
+<td><code>mixed/\Timber\float</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$force</td>
+<td><code>bool/boolean</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="sideload-image">sideload_image</h2>
+
+<p><code>sideload_image( string $file )</code></p>
+
+<p><strong>returns:</strong> <code>string</code> the URL to the downloaded file</p>
+
+<p>downloads an external image to the server and stores it on the server</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$file</td>
+<td><code>string</code></td>
+<td>the URL to the original file</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="theme-url-to-dir">theme_url_to_dir</h2>
+
+<p><code>theme_url_to_dir( string $src )</code></p>
+
+<p><strong>returns:</strong> <code>string</code> full path to the file in question</p>
+
+<p>Converts a URL located in a theme directory into the raw file path</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$src</td>
+<td><code>string</code></td>
+<td>a URL (<a href="http://example.org/wp-content/themes/twentysixteen/images/home.jpg">http://example.org/wp-content/themes/twentysixteen/images/home.jpg</a>)</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="add-actions">add_actions</h2>
+
+<p><code>add_actions( )</code></p>
+
+<p><strong>returns:</strong> <code>void</code></p>
+
+<p>Deletes all resized versions of an image when the source is deleted
+or its meta data is regenerated</p>
+
+<hr />
+
+<h2 id="is-in-theme-dir">is_in_theme_dir</h2>
+
+<p><code>is_in_theme_dir( mixed $path )</code></p>
+
+<p><strong>returns:</strong> <code>bool</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$path</td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="maybe-realpath">maybe_realpath</h2>
+
+<p><code>maybe_realpath( string $path )</code></p>
+
+<p><strong>returns:</strong> <code>string</code> the resolved path</p>
+
+<p>Runs realpath to resolve symbolic links (../, etc). But only if it&rsquo;s a path and not a URL</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$path</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="process-delete-generated-files">process_delete_generated_files</h2>
+
+<p><code>process_delete_generated_files( string $filename, string $ext, string $dir, string $search_pattern, mixed/string $match_pattern=null )</code></p>
+
+<p><strong>returns:</strong> <code>void</code></p>
+
+<p>Deletes resized versions of the supplied file name.
+So if passed a value like my-pic.jpg, this function will delete my-pic-500x200-c-left.jpg, my-pic-400x400-c-default.jpg, etc.</p>
+
+<p>keeping these here so I know what the hell we&rsquo;re matching
+$match = preg_match(&ldquo;/\/srv\/www\/wordpress-develop\/src\/wp-content\/uploads\/2014\/05\/$filename-[0-9]<em>x[0-9]</em>-c-[a-z]*.jpg/&ldquo;, $found_file);
+$match = preg_match(&ldquo;/\/srv\/www\/wordpress-develop\/src\/wp-content\/uploads\/2014\/05\/arch-[0-9]<em>x[0-9]</em>-c-[a-z]*.jpg/&ldquo;, $filename);</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$filename</td>
+<td><code>string</code></td>
+<td>ex: my-pic</td>
+</tr>
+
+<tr>
+<td>$ext</td>
+<td><code>string</code></td>
+<td>ex: jpg</td>
+</tr>
+
+<tr>
+<td>$dir</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$search_pattern</td>
+<td><code>string</code></td>
+<td>pattern of files to pluck from</td>
+</tr>
+
+<tr>
+<td>$match_pattern</td>
+<td><code>mixed/string</code></td>
+<td>pattern of files to go forth and delete</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+			</div>
+		</div>
+	</article>
+
+</main>
+
+<footer class="footer">My footer</footer>
+
+
+<script src="http://timber.github.io/js/highlight.pack.js" defer></script>
+<script src="http://timber.github.io/js/scripts.js" defer></script>
+
+</body>
+</html>

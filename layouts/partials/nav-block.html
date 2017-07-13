@@ -1,0 +1,9 @@
+{{ $page := .currentPage }}
+{{ $nav := .nav }}
+
+<ul class="nav__items nav__items--level-1">
+	{{ range .menu }}
+		{{ $isCurrent := $page.IsMenuCurrent $nav . }}
+	    <li class="nav__item{{ if $isCurrent }} nav__item--current{{ end }}"><a class="nav__link" href="{{ .URL }}">{{ .Name }}</a></li>
+	{{ end }}
+</ul>

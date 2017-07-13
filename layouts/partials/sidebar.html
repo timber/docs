@@ -1,0 +1,24 @@
+<aside class="sidebar">
+    <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+
+    <ul class="search-results"></ul>
+
+    <nav id="nav nav--main">
+        <ul class="nav__items nav__items--level-0">
+        {{ $currentPage := . }}
+        {{ range .Site.Menus.main }}
+            <li class="nav__item nav__item--level-0{{ if $currentPage.IsMenuCurrent "main" . }} nav__item--current{{ end }}{{ if $currentPage.HasMenuCurrent "main" . }} nav__item--current-ancestor{{ end }}"><a class="nav__link nav__link--level-0" href="{{ .URL | absURL }}">{{ .Name }}</a>
+            {{ if .HasChildren }}
+                <ul class="nav__items nav__items--level-1">
+                {{ range .Children }}
+                    <li class="nav__item nav__item--level-1{{ if $currentPage.IsMenuCurrent "main" . }} nav__item--current{{ end }}"><a class="nav__link nav__link--level-1" href="{{ .URL | absURL }}">{{ .Name }}</a></li>
+                {{ end }}
+                </ul>
+            {{ end }}
+            </li>
+        {{ end }}
+        </ul>
+    </nav>
+</aside>

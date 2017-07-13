@@ -1,0 +1,29 @@
+baseURL: "http://timber.github.io/"
+languageCode: "en-us"
+title: "Timber Docs"
+publishDir: "docs"
+
+# Menu definitions
+#
+# We hijack the 'post' parameter to include a description for the menu.
+menu:
+  main:
+    - name: "Getting Started"
+      identifier: "getting-started"
+      url: "/getting-started/"
+      post: "Start here if you want to get to know Timber."
+
+    - name: "Guides"
+      identifier: "guides"
+      url: "/guides/"
+      post: "Guides provide you with more detailed information for working with Timber and Twig. We cover a lot of functionality that you already know from working with WordPress."
+
+    - name: "Reference"
+      identifier: "reference"
+      url: "/reference/"
+      post: "The reference is a bit techy. It’s more like an API documentation that provides you with details about the different classes and methods that are provided by Timber."
+
+    - name: "Upgrade Guides"
+      identifier: "upgrade-guides"
+      url: "/upgrade-guides/"
+      post: "When you upgrade to a newer version of Timber, a lot of things can change. We try to list and explain relevant changes here, so that you can transition to newer versions smoothly."

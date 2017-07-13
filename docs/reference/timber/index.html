@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="http://timber.github.io/css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
+</head>
+
+
+<body>
+
+<header class="header">
+    <a class="logo-link" href="/">
+        <div id="logo">
+            <img src="/images/timberlogo.svg" alt="Timber" style="width:105px;height:30px;border:0">
+        </div>
+    </a>
+    <nav class="nav nav--top" id="nav-top">
+        <ul>
+            <li>
+                <a class="nav__link" href="http://upstatement.com/timber/" target="_blank" rel="noreferrer noopener">Timber Homepage</a>
+            </li>
+            <li>
+                <a class="nav__link" href="http://twig.sensiolabs.org/doc/templates.html"
+                   target="_blank" rel="noreferrer noopener">Twig Documentation</a>
+            </li>
+            <li><a class="nav__link" href="http://code.tutsplus.com/series/kick-start-wordpress-development-with-twig--cms-974"
+                   target="_blank" rel="noreferrer noopener">Getting Started Tutorials</a>
+            </li>
+            <li>
+                <a class="nav__link" href="https://github.com/timber/timber" target="_blank" rel="noreferrer noopener">
+                    <img src="/images/Github.png" alt="Star on Github" style="width:29px;height:29px;border:0">
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<aside class="sidebar">
+    <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+
+    <ul class="search-results"></ul>
+
+    <nav id="nav nav--main">
+        <ul class="nav__items nav__items--level-0">
+        
+        
+            <li class="nav__item nav__item--level-0"><a class="nav__link nav__link--level-0" href="http://timber.github.io/getting-started/">Getting Started</a>
+            
+                <ul class="nav__items nav__items--level-1">
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/getting-started/setup/">Setup</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/getting-started/themeing/">Themeing</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/getting-started/twig-tools/">Twig Tools</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/getting-started/video-tutorials/">Video Tutorials</a></li>
+                
+                </ul>
+            
+            </li>
+        
+            <li class="nav__item nav__item--level-0"><a class="nav__link nav__link--level-0" href="http://timber.github.io/guides/">Guides</a>
+            
+                <ul class="nav__items nav__items--level-1">
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/acf-cookbook/">ACF Cookbook</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/cheatsheet/">Cheatsheet</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/custom-page-templates/">Custom Page Templates</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/debugging/">Debugging</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/escapers/">Escapers</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/extending-timber/">Extending Timber</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/filters/">Filters</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/functions/">Functions</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/cookbook-images/">Image Cookbook</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/internationalization/">Internationalization</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/pagination/">Pagination</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/performance/">Performance</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/routing/">Routing</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/sidebars/">Sidebars</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/template-locations/">Template Locations</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/testing/">Testing</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/cookbook-text/">Text Cookbook</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/cookbook-twig/">Twig Cookbook</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/woocommerce/">WooCommerce</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/wp-integration/">WordPress Integration</a></li>
+                
+                </ul>
+            
+            </li>
+        
+            <li class="nav__item nav__item--level-0 nav__item--current-ancestor"><a class="nav__link nav__link--level-0" href="http://timber.github.io/reference/">Reference</a>
+            
+                <ul class="nav__items nav__items--level-1">
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-archives/">Timber\Archives</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-comment/">Timber\Comment</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-helper/">Timber\Helper</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-image/">Timber\Image</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-imagehelper/">Timber\ImageHelper</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-menu/">Timber\Menu</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-menuitem/">Timber\MenuItem</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-pagination/">Timber\Pagination</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-post/">Timber\Post</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-postpreview/">Timber\PostPreview</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-postquery/">Timber\PostQuery</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-site/">Timber\Site</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-term/">Timber\Term</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-texthelper/">Timber\TextHelper</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-theme/">Timber\Theme</a></li>
+                
+                    <li class="nav__item nav__item--level-1 nav__item--current"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber/">Timber\Timber</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-urlhelper/">Timber\URLHelper</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-user/">Timber\User</a></li>
+                
+                </ul>
+            
+            </li>
+        
+            <li class="nav__item nav__item--level-0"><a class="nav__link nav__link--level-0" href="http://timber.github.io/upgrade-guides/">Upgrade Guides</a>
+            
+                <ul class="nav__items nav__items--level-1">
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/upgrade-guides/1.0/">Upgrade to 1.0</a></li>
+                
+                </ul>
+            
+            </li>
+        
+        </ul>
+    </nav>
+</aside>
+
+
+<main>
+    
+	<article>
+		<h1>Timber\Timber</h1>
+
+		<aside class="toc">
+			<h2 class="heading-4 toc__title">Contents of this page</h2>
+			<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#methods-overview">Methods Overview</a></li>
+<li><a href="#construct">__construct</a></li>
+<li><a href="#strike-add-route-strike"><strike>add_route</strike></a></li>
+<li><a href="#compile">compile</a></li>
+<li><a href="#compile-string">compile_string</a></li>
+<li><a href="#fetch">fetch</a></li>
+<li><a href="#get-context">get_context</a></li>
+<li><a href="#get-pagination">get_pagination</a></li>
+<li><a href="#get-post">get_post</a></li>
+<li><a href="#get-posts">get_posts</a></li>
+<li><a href="#get-sidebar">get_sidebar</a></li>
+<li><a href="#get-sidebar-from-php">get_sidebar_from_php</a></li>
+<li><a href="#get-sites">get_sites</a></li>
+<li><a href="#get-term">get_term</a></li>
+<li><a href="#get-terms">get_terms</a></li>
+<li><a href="#get-widgets">get_widgets</a></li>
+<li><a href="#init-constants">init_constants</a></li>
+<li><a href="#query-post">query_post</a></li>
+<li><a href="#query-posts">query_posts</a></li>
+<li><a href="#render">render</a></li>
+<li><a href="#render-string">render_string</a></li>
+<li><a href="#init">init</a></li>
+<li><a href="#test-compatibility">test_compatibility</a></li>
+</ul></li>
+</ul>
+</nav>
+		</aside>
+
+		<div class="content-container">
+			<div class="content">
+				<p>Timber Class.</p>
+
+<p>Main class called Timber for this plugin.</p>
+
+<p></p>
+
+<p><strong>PHP</strong></p>
+
+<pre><code class="language-php">&lt;?php
+ $posts = Timber::get_posts();
+ $posts = Timber::get_posts('post_type = article')
+ $posts = Timber::get_posts(array('post_type' =&gt; 'article', 'category_name' =&gt; 'sports')); // uses wp_query format.
+ $posts = Timber::get_posts(array(23,24,35,67), 'InkwellArticle');
+ $context = Timber::get_context(); // returns wp favorites!
+ $context['posts'] = $posts;
+ Timber::render('index.twig', $context);
+</code></pre>
+
+<h2 id="methods-overview">Methods Overview</h2>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Returns/Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="#compile">compile</a></td>
+<td><code>bool/string</code></td>
+<td>The returned output.</td>
+</tr>
+
+<tr>
+<td><a href="#compile_string">compile_string</a></td>
+<td><code>bool/string</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#fetch">fetch</a></td>
+<td><code>bool/string</code></td>
+<td>The returned output.</td>
+</tr>
+
+<tr>
+<td><a href="#get_context">get_context</a></td>
+<td><code>array</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#get_pagination">get_pagination</a></td>
+<td><code>array</code></td>
+<td>mixed</td>
+</tr>
+
+<tr>
+<td><a href="#get_post">get_post</a></td>
+<td><code>\Timber\Post/bool</code></td>
+<td>Timber\Post object if a post was found, false if no post was found.</td>
+</tr>
+
+<tr>
+<td><a href="#get_posts">get_posts</a></td>
+<td><code>array/bool/null</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#get_sidebar">get_sidebar</a></td>
+<td><code>bool/string</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#get_sidebar_from_php">get_sidebar_from_php</a></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#get_sites">get_sites</a></td>
+<td><code>array</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#get_term">get_term</a></td>
+<td><code>\Timber\Timber\Term/\Timber\WP_Error/null</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#get_terms">get_terms</a></td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#get_widgets">get_widgets</a></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#query_post">query_post</a></td>
+<td><code>array/bool/null</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#query_posts">query_posts</a></td>
+<td><code>\Timber\PostCollection</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#render">render</a></td>
+<td><code>bool/string</code></td>
+<td>The echoed output.</td>
+</tr>
+
+<tr>
+<td><a href="#render_string">render_string</a></td>
+<td><code>bool/string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="construct">__construct</h2>
+
+<p><code>__construct( )</code></p>
+
+<p><strong>returns:</strong> <code>void</code></p>
+
+<hr />
+
+<h2 id="strike-add-route-strike"><strike>add_route</strike></h2>
+
+<p><strong>DEPRECATED</strong> since 0.20.0 and will be removed in 1.1</p>
+
+<p><code>add_route( string $route, \Timber\callable $callback, array $args=array() )</code></p>
+
+<p><strong>returns:</strong> <code>void</code></p>
+
+<p>Add route.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$route</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$callback</td>
+<td><code>\Timber\callable</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$args</td>
+<td><code>array</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="compile">compile</h2>
+
+<p><code>compile( array/string $filenames, array $data=array(), bool/bool/int $expires=false, string $cache_mode=&quot;default&quot;, bool $via_render=false )</code></p>
+
+<p><strong>returns:</strong> <code>bool/string</code> The returned output.</p>
+
+<p>Compile a Twig file.</p>
+
+<p>Passes data to a Twig file and returns the output.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$filenames</td>
+<td><code>array/string</code></td>
+<td>Name of the Twig file to render. If this is an array of files, Timber will render the first file that exists.</td>
+</tr>
+
+<tr>
+<td>$data</td>
+<td><code>array</code></td>
+<td>Optional. An array of data to use in Twig template.</td>
+</tr>
+
+<tr>
+<td>$expires</td>
+<td><code>bool/bool/int</code></td>
+<td>Optional. In seconds. Use false to disable cache altogether. When passed an array, the first value is used for non-logged in visitors, the second for users. Default false.</td>
+</tr>
+
+<tr>
+<td>$cache_mode</td>
+<td><code>string</code></td>
+<td>Optional. Any of the cache mode constants defined in TimberLoader.</td>
+</tr>
+
+<tr>
+<td>$via_render</td>
+<td><code>bool</code></td>
+<td>Optional. Whether to apply optional render or compile filters. Default false.</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>PHP</strong></p>
+
+<pre><code class="language-php">&lt;?php
+$data = array(
+    'firstname' =&gt; 'Jane',
+    'lastname' =&gt; 'Doe',
+    'email' =&gt; 'jane.doe@example.org',
+);
+$team_member = Timber::compile( 'team-member.twig', $data );
+</code></pre>
+
+<hr />
+
+<h2 id="compile-string">compile_string</h2>
+
+<p><code>compile_string( string $string, array $data=array() )</code></p>
+
+<p><strong>returns:</strong> <code>bool/string</code></p>
+
+<p>Compile a string.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$string</td>
+<td><code>string</code></td>
+<td>A string with Twig variables.</td>
+</tr>
+
+<tr>
+<td>$data</td>
+<td><code>array</code></td>
+<td>Optional. An array of data to use in Twig template.</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>PHP</strong></p>
+
+<pre><code class="language-php">&lt;?php
+$data = array(
+    'username' =&gt; 'Jane Doe',
+);
+$welcome = Timber::compile_string( 'Hi {{ username }}, I’m a string with a custom Twig variable', $data );
+</code></pre>
+
+<hr />
+
+<h2 id="fetch">fetch</h2>
+
+<p><code>fetch( array/string $filenames, array $data=array(), bool/bool/int $expires=false, string $cache_mode=&quot;default&quot; )</code></p>
+
+<p><strong>returns:</strong> <code>bool/string</code> The returned output.</p>
+
+<p>Fetch function.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$filenames</td>
+<td><code>array/string</code></td>
+<td>Name of the Twig file to render. If this is an array of files, Timber will render the first file that exists.</td>
+</tr>
+
+<tr>
+<td>$data</td>
+<td><code>array</code></td>
+<td>Optional. An array of data to use in Twig template.</td>
+</tr>
+
+<tr>
+<td>$expires</td>
+<td><code>bool/bool/int</code></td>
+<td>Optional. In seconds. Use false to disable cache altogether. When passed an array, the first value is used for non-logged in visitors, the second for users. Default false.</td>
+</tr>
+
+<tr>
+<td>$cache_mode</td>
+<td><code>string</code></td>
+<td>Optional. Any of the cache mode constants defined in TimberLoader.</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="get-context">get_context</h2>
+
+<p><code>get_context( )</code></p>
+
+<p><strong>returns:</strong> <code>array</code></p>
+
+<p>Get context.</p>
+
+<hr />
+
+<h2 id="get-pagination">get_pagination</h2>
+
+<p><code>get_pagination( array $prefs=array() )</code></p>
+
+<p><strong>returns:</strong> <code>array</code> mixed</p>
+
+<p>Get pagination.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$prefs</td>
+<td><code>array</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="get-post">get_post</h2>
+
+<p><code>get_post( bool/mixed $query=false, string/string/array $PostClass=&quot;Timber\Post&quot; )</code></p>
+
+<p><strong>returns:</strong> <code>\Timber\Post/bool</code> Timber\Post object if a post was found, false if no post was found.</p>
+
+<p>Get a post by post ID or query (as a query string or an array of arguments).
+But it&rsquo;s also cool</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$query</td>
+<td><code>bool/mixed</code></td>
+<td>Optional. Post ID or query (as query string or an array of arguments for WP_Query). If a query is provided, only the first post of the result will be returned. Default false.</td>
+</tr>
+
+<tr>
+<td>$PostClass</td>
+<td><code>string/string/array</code></td>
+<td>Optional. Class to use to wrap the returned post object. Default &lsquo;Timber\Post&rsquo;.</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="get-posts">get_posts</h2>
+
+<p><code>get_posts( bool/mixed $query=false, string/string/array $PostClass=&quot;Timber\Post&quot;, bool $return_collection=false )</code></p>
+
+<p><strong>returns:</strong> <code>array/bool/null</code></p>
+
+<p>Get posts.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$query</td>
+<td><code>bool/mixed</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$PostClass</td>
+<td><code>string/string/array</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$return_collection</td>
+<td><code>bool</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>PHP</strong></p>
+
+<pre><code class="language-php">&lt;?php
+$posts = Timber::get_posts();
+ $posts = Timber::get_posts('post_type = article')
+ $posts = Timber::get_posts(array('post_type' =&gt; 'article', 'category_name' =&gt; 'sports')); // uses wp_query format.
+ $posts = Timber::get_posts('post_type=any', array('portfolio' =&gt; 'MyPortfolioClass', 'alert' =&gt; 'MyAlertClass')); //use a classmap for the $PostClass
+</code></pre>
+
+<hr />
+
+<h2 id="get-sidebar">get_sidebar</h2>
+
+<p><code>get_sidebar( string $sidebar=&quot;sidebar.php&quot;, array $data=array() )</code></p>
+
+<p><strong>returns:</strong> <code>bool/string</code></p>
+
+<p>Get sidebar.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$sidebar</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$data</td>
+<td><code>array</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="get-sidebar-from-php">get_sidebar_from_php</h2>
+
+<p><code>get_sidebar_from_php( string $sidebar=&quot;&quot;, array $data )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<p>Get sidebar from PHP</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$sidebar</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$data</td>
+<td><code>array</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="get-sites">get_sites</h2>
+
+<p><code>get_sites( bool/array/bool $blog_ids=false )</code></p>
+
+<p><strong>returns:</strong> <code>array</code></p>
+
+<p>Get sites.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$blog_ids</td>
+<td><code>bool/array/bool</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="get-term">get_term</h2>
+
+<p><code>get_term( int/\Timber\WP_Term/object $term, string $taxonomy=&quot;post_tag&quot;, string $TermClass=&quot;Timber\Term&quot; )</code></p>
+
+<p><strong>returns:</strong> <code>\Timber\Timber\Term/\Timber\WP_Error/null</code></p>
+
+<p>Get term.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$term</td>
+<td><code>int/\Timber\WP_Term/object</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$taxonomy</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$TermClass</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="get-terms">get_terms</h2>
+
+<p><code>get_terms( mixed/string/array $args=null, array $maybe_args=array(), string $TermClass=&quot;Timber\Term&quot; )</code></p>
+
+<p><strong>returns:</strong> <code>mixed</code></p>
+
+<p>Get terms.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$args</td>
+<td><code>mixed/string/array</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$maybe_args</td>
+<td><code>array</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$TermClass</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="get-widgets">get_widgets</h2>
+
+<p><code>get_widgets( int/string $widget_id )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<p>Get widgets.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$widget_id</td>
+<td><code>int/string</code></td>
+<td>Optional. Index, name or ID of dynamic sidebar. Default 1.</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="init-constants">init_constants</h2>
+
+<p><code>init_constants( )</code></p>
+
+<p><strong>returns:</strong> <code>void</code></p>
+
+<hr />
+
+<h2 id="query-post">query_post</h2>
+
+<p><code>query_post( bool/mixed $query=false, string $PostClass=&quot;Timber\Post&quot; )</code></p>
+
+<p><strong>returns:</strong> <code>array/bool/null</code></p>
+
+<p>Query post.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$query</td>
+<td><code>bool/mixed</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$PostClass</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="query-posts">query_posts</h2>
+
+<p><code>query_posts( bool/mixed $query=false, string $PostClass=&quot;Timber\Post&quot; )</code></p>
+
+<p><strong>returns:</strong> <code>\Timber\PostCollection</code></p>
+
+<p>Query posts.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$query</td>
+<td><code>bool/mixed</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$PostClass</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="render">render</h2>
+
+<p><code>render( array/string $filenames, array $data=array(), bool/bool/int $expires=false, string $cache_mode=&quot;default&quot; )</code></p>
+
+<p><strong>returns:</strong> <code>bool/string</code> The echoed output.</p>
+
+<p>Render function.</p>
+
+<p>Passes data to a Twig file and echoes the output.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$filenames</td>
+<td><code>array/string</code></td>
+<td>Name of the Twig file to render. If this is an array of files, Timber will render the first file that exists.</td>
+</tr>
+
+<tr>
+<td>$data</td>
+<td><code>array</code></td>
+<td>Optional. An array of data to use in Twig template.</td>
+</tr>
+
+<tr>
+<td>$expires</td>
+<td><code>bool/bool/int</code></td>
+<td>Optional. In seconds. Use false to disable cache altogether. When passed an array, the first value is used for non-logged in visitors, the second for users. Default false.</td>
+</tr>
+
+<tr>
+<td>$cache_mode</td>
+<td><code>string</code></td>
+<td>Optional. Any of the cache mode constants defined in TimberLoader.</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>PHP</strong></p>
+
+<pre><code class="language-php">&lt;?php
+$context = Timber::get_context();
+Timber::render( 'index.twig', $context );
+</code></pre>
+
+<hr />
+
+<h2 id="render-string">render_string</h2>
+
+<p><code>render_string( string $string, array $data=array() )</code></p>
+
+<p><strong>returns:</strong> <code>bool/string</code></p>
+
+<p>Render a string with Twig variables.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$string</td>
+<td><code>string</code></td>
+<td>A string with Twig variables.</td>
+</tr>
+
+<tr>
+<td>$data</td>
+<td><code>array</code></td>
+<td>An array of data to use in Twig template.</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>PHP</strong></p>
+
+<pre><code class="language-php">&lt;?php
+$data = array(
+    'username' =&gt; 'Jane Doe',
+);
+Timber::render_string( 'Hi {{ username }}, I’m a string with a custom Twig variable', $data );
+</code></pre>
+
+<hr />
+
+<h2 id="init">init</h2>
+
+<p><code>init( )</code></p>
+
+<p><strong>returns:</strong> <code>void</code></p>
+
+<hr />
+
+<h2 id="test-compatibility">test_compatibility</h2>
+
+<p><code>test_compatibility( )</code></p>
+
+<p><strong>returns:</strong> <code>void</code></p>
+
+<p>Tests whether we can use Timber</p>
+
+<hr />
+			</div>
+		</div>
+	</article>
+
+</main>
+
+<footer class="footer">My footer</footer>
+
+
+<script src="http://timber.github.io/js/highlight.pack.js" defer></script>
+<script src="http://timber.github.io/js/scripts.js" defer></script>
+
+</body>
+</html>

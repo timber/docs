@@ -1,0 +1,11 @@
+#!/usr/bin/env php
+<?php
+
+require_once(__DIR__ . '/../vendor/autoload.php');
+
+use PHPDocsMD\Console\CLI;
+
+$cli = new CLI();
+$code = $cli->run();
+exit($code);
+

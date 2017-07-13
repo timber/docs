@@ -1,0 +1,14 @@
+<ul class="list">
+{{ range .Pages }}
+	<li class="list__item">
+		<h2 class="list__item__title">
+			<a class="list__item__link" href="{{ .Permalink }}">{{ .Title }}</a>
+		</h2>
+		<div class="list__text">
+			{{ if (isset .Params "description") }}
+				{{ .Description }}
+			{{ end }}
+		</div>
+	</li>
+{{ end }}
+</ul>

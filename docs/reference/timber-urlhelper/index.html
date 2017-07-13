@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="http://timber.github.io/css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
+</head>
+
+
+<body>
+
+<header class="header">
+    <a class="logo-link" href="/">
+        <div id="logo">
+            <img src="/images/timberlogo.svg" alt="Timber" style="width:105px;height:30px;border:0">
+        </div>
+    </a>
+    <nav class="nav nav--top" id="nav-top">
+        <ul>
+            <li>
+                <a class="nav__link" href="http://upstatement.com/timber/" target="_blank" rel="noreferrer noopener">Timber Homepage</a>
+            </li>
+            <li>
+                <a class="nav__link" href="http://twig.sensiolabs.org/doc/templates.html"
+                   target="_blank" rel="noreferrer noopener">Twig Documentation</a>
+            </li>
+            <li><a class="nav__link" href="http://code.tutsplus.com/series/kick-start-wordpress-development-with-twig--cms-974"
+                   target="_blank" rel="noreferrer noopener">Getting Started Tutorials</a>
+            </li>
+            <li>
+                <a class="nav__link" href="https://github.com/timber/timber" target="_blank" rel="noreferrer noopener">
+                    <img src="/images/Github.png" alt="Star on Github" style="width:29px;height:29px;border:0">
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<aside class="sidebar">
+    <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+
+    <ul class="search-results"></ul>
+
+    <nav id="nav nav--main">
+        <ul class="nav__items nav__items--level-0">
+        
+        
+            <li class="nav__item nav__item--level-0"><a class="nav__link nav__link--level-0" href="http://timber.github.io/getting-started/">Getting Started</a>
+            
+                <ul class="nav__items nav__items--level-1">
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/getting-started/setup/">Setup</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/getting-started/themeing/">Themeing</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/getting-started/twig-tools/">Twig Tools</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/getting-started/video-tutorials/">Video Tutorials</a></li>
+                
+                </ul>
+            
+            </li>
+        
+            <li class="nav__item nav__item--level-0"><a class="nav__link nav__link--level-0" href="http://timber.github.io/guides/">Guides</a>
+            
+                <ul class="nav__items nav__items--level-1">
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/acf-cookbook/">ACF Cookbook</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/cheatsheet/">Cheatsheet</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/custom-page-templates/">Custom Page Templates</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/debugging/">Debugging</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/escapers/">Escapers</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/extending-timber/">Extending Timber</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/filters/">Filters</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/functions/">Functions</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/cookbook-images/">Image Cookbook</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/internationalization/">Internationalization</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/pagination/">Pagination</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/performance/">Performance</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/routing/">Routing</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/sidebars/">Sidebars</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/template-locations/">Template Locations</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/testing/">Testing</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/cookbook-text/">Text Cookbook</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/cookbook-twig/">Twig Cookbook</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/woocommerce/">WooCommerce</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/wp-integration/">WordPress Integration</a></li>
+                
+                </ul>
+            
+            </li>
+        
+            <li class="nav__item nav__item--level-0 nav__item--current-ancestor"><a class="nav__link nav__link--level-0" href="http://timber.github.io/reference/">Reference</a>
+            
+                <ul class="nav__items nav__items--level-1">
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-archives/">Timber\Archives</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-comment/">Timber\Comment</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-helper/">Timber\Helper</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-image/">Timber\Image</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-imagehelper/">Timber\ImageHelper</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-menu/">Timber\Menu</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-menuitem/">Timber\MenuItem</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-pagination/">Timber\Pagination</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-post/">Timber\Post</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-postpreview/">Timber\PostPreview</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-postquery/">Timber\PostQuery</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-site/">Timber\Site</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-term/">Timber\Term</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-texthelper/">Timber\TextHelper</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-theme/">Timber\Theme</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber/">Timber\Timber</a></li>
+                
+                    <li class="nav__item nav__item--level-1 nav__item--current"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-urlhelper/">Timber\URLHelper</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-user/">Timber\User</a></li>
+                
+                </ul>
+            
+            </li>
+        
+            <li class="nav__item nav__item--level-0"><a class="nav__link nav__link--level-0" href="http://timber.github.io/upgrade-guides/">Upgrade Guides</a>
+            
+                <ul class="nav__items nav__items--level-1">
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/upgrade-guides/1.0/">Upgrade to 1.0</a></li>
+                
+                </ul>
+            
+            </li>
+        
+        </ul>
+    </nav>
+</aside>
+
+
+<main>
+    
+	<article>
+		<h1>Timber\URLHelper</h1>
+
+		<aside class="toc">
+			<h2 class="heading-4 toc__title">Contents of this page</h2>
+			<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#methods-overview">Methods Overview</a></li>
+<li><a href="#file-system-to-url">file_system_to_url</a></li>
+<li><a href="#get-content-subdir">get_content_subdir</a></li>
+<li><a href="#get-current-url">get_current_url</a></li>
+<li><a href="#get-full-path">get_full_path</a></li>
+<li><a href="#get-host">get_host</a></li>
+<li><a href="#get-params">get_params</a></li>
+<li><a href="#get-path-base">get_path_base</a></li>
+<li><a href="#get-rel-path">get_rel_path</a></li>
+<li><a href="#get-rel-url">get_rel_url</a></li>
+<li><a href="#get-scheme">get_scheme</a></li>
+<li><a href="#is-absolute">is_absolute</a></li>
+<li><a href="#is-external">is_external</a></li>
+<li><a href="#is-external-content">is_external_content</a></li>
+<li><a href="#is-local">is_local</a></li>
+<li><a href="#is-url">is_url</a></li>
+<li><a href="#prepend-to-url">prepend_to_url</a></li>
+<li><a href="#preslashit">preslashit</a></li>
+<li><a href="#remove-double-slashes">remove_double_slashes</a></li>
+<li><a href="#remove-trailing-slash">remove_trailing_slash</a></li>
+<li><a href="#remove-url-component">remove_url_component</a></li>
+<li><a href="#starts-with">starts_with</a></li>
+<li><a href="#swap-protocol">swap_protocol</a></li>
+<li><a href="#unpreslashit">unpreslashit</a></li>
+<li><a href="#url-to-file-system">url_to_file_system</a></li>
+<li><a href="#user-trailingslashit">user_trailingslashit</a></li>
+</ul></li>
+</ul>
+</nav>
+		</aside>
+
+		<div class="content-container">
+			<div class="content">
+				<p></p>
+
+<h2 id="methods-overview">Methods Overview</h2>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Returns/Description</th>
+</tr>
+</thead>
+
+<tbody>
+</tbody>
+</table>
+
+<h2 id="file-system-to-url">file_system_to_url</h2>
+
+<p><code>file_system_to_url( string $fs )</code></p>
+
+<p><strong>returns:</strong> <code>void</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$fs</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="get-content-subdir">get_content_subdir</h2>
+
+<p><code>get_content_subdir( )</code></p>
+
+<p><strong>returns:</strong> <code>string</code> (ex: /wp-content or /content)</p>
+
+<p>Get the path to the content directory relative to the site.
+This replaces the WP_CONTENT_SUBDIR constant</p>
+
+<hr />
+
+<h2 id="get-current-url">get_current_url</h2>
+
+<p><code>get_current_url( )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<hr />
+
+<h2 id="get-full-path">get_full_path</h2>
+
+<p><code>get_full_path( string $src )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$src</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="get-host">get_host</h2>
+
+<p><code>get_host( )</code></p>
+
+<p><strong>returns:</strong> <code>string</code> the HTTP_HOST or SERVER_NAME</p>
+
+<p>Some setups like HTTP_HOST, some like SERVER_NAME, it&rsquo;s complicated</p>
+
+<hr />
+
+<h2 id="get-params">get_params</h2>
+
+<p><code>get_params( bool/int $i=false )</code></p>
+
+<p><strong>returns:</strong> <code>array/string</code></p>
+
+<p>Returns the url parameters, for example for url <a href="http://example.org/blog/post/news/2014/whatever">http://example.org/blog/post/news/2014/whatever</a>
+this will return array(&lsquo;blog&rsquo;, &lsquo;post&rsquo;, &lsquo;news&rsquo;, &lsquo;2014&rsquo;, &lsquo;whatever&rsquo;);
+OR if sent an integer like: TimberUrlHelper::get_params(2); this will return &lsquo;news&rsquo;;</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$i</td>
+<td><code>bool/int</code></td>
+<td>the position of the parameter to grab.</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="get-path-base">get_path_base</h2>
+
+<p><code>get_path_base( )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<hr />
+
+<h2 id="get-rel-path">get_rel_path</h2>
+
+<p><code>get_rel_path( string $src )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$src</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="get-rel-url">get_rel_url</h2>
+
+<p><code>get_rel_url( string $url, bool $force=false )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$url</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$force</td>
+<td><code>bool</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="get-scheme">get_scheme</h2>
+
+<p><code>get_scheme( )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<p>Get url scheme</p>
+
+<hr />
+
+<h2 id="is-absolute">is_absolute</h2>
+
+<p><code>is_absolute( string $path )</code></p>
+
+<p><strong>returns:</strong> <code>boolean</code> true if $path is an absolute url, false if relative.</p>
+
+<p>This will evaluate wheter a URL is at an aboslute location (like <a href="http://example.org/whatever">http://example.org/whatever</a>)</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$path</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="is-external">is_external</h2>
+
+<p><code>is_external( string $url )</code></p>
+
+<p><strong>returns:</strong> <code>bool</code> true if $path is an external url, false if relative or local. true if it&rsquo;s a subdomain (<a href="http://cdn.example.org">http://cdn.example.org</a> = true)</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$url</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="is-external-content">is_external_content</h2>
+
+<p><code>is_external_content( string $url )</code></p>
+
+<p><strong>returns:</strong> <code>boolean</code> if $url points to an external location returns true</p>
+
+<p>This function is slightly different from the one below in the case of:
+an image hosted on the same domain BUT on a different site than the
+Wordpress install will be reported as external content.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$url</td>
+<td><code>string</code></td>
+<td>a URL to evaluate against</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="is-local">is_local</h2>
+
+<p><code>is_local( string $url )</code></p>
+
+<p><strong>returns:</strong> <code>bool</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$url</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="is-url">is_url</h2>
+
+<p><code>is_url( string $url )</code></p>
+
+<p><strong>returns:</strong> <code>bool</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$url</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="prepend-to-url">prepend_to_url</h2>
+
+<p><code>prepend_to_url( string $url, string $path )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$url</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$path</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="preslashit">preslashit</h2>
+
+<p><code>preslashit( string $path )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$path</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="remove-double-slashes">remove_double_slashes</h2>
+
+<p><code>remove_double_slashes( string $url )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$url</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="remove-trailing-slash">remove_trailing_slash</h2>
+
+<p><code>remove_trailing_slash( string $link )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<p>Pass links through untrailingslashit unless they are a single /</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$link</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="remove-url-component">remove_url_component</h2>
+
+<p><code>remove_url_component( string $haystack, string $needle )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<p>Removes the subcomponent of a URL regardless of protocol</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$haystack</td>
+<td><code>string</code></td>
+<td>ex: <a href="http://example.org/wp-content/uploads/dog.jpg">http://example.org/wp-content/uploads/dog.jpg</a></td>
+</tr>
+
+<tr>
+<td>$needle</td>
+<td><code>string</code></td>
+<td>ex: <a href="http://example.org/wp-content">http://example.org/wp-content</a></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="starts-with">starts_with</h2>
+
+<p><code>starts_with( mixed $haystack, mixed $starts_with )</code></p>
+
+<p><strong>returns:</strong> <code>boolean</code></p>
+
+<p>Check to see if the URL begins with the string in question</p>
+
+<p>Because it&rsquo;s a URL we don&rsquo;t care about protocol (HTTP vs HTTPS)</p>
+
+<p>Or case (so it&rsquo;s cAsE iNsEnSeTiVe)</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$haystack</td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$starts_with</td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="swap-protocol">swap_protocol</h2>
+
+<p><code>swap_protocol( string $url )</code></p>
+
+<p><strong>returns:</strong> <code>string</code> ex: <a href="https://example.org/wp-content/uploads/dog.jpg">https://example.org/wp-content/uploads/dog.jpg</a></p>
+
+<p>Swaps whatever protocol of a URL is sent. http becomes https and vice versa</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$url</td>
+<td><code>string</code></td>
+<td>ex: <a href="http://example.org/wp-content/uploads/dog.jpg">http://example.org/wp-content/uploads/dog.jpg</a></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="unpreslashit">unpreslashit</h2>
+
+<p><code>unpreslashit( string $path )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$path</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="url-to-file-system">url_to_file_system</h2>
+
+<p><code>url_to_file_system( string $url )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<p>Takes a url and figures out its place based in the file system based on path
+NOTE: Not fool-proof, makes a lot of assumptions about the file path
+matching the URL path</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$url</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="user-trailingslashit">user_trailingslashit</h2>
+
+<p><code>user_trailingslashit( string $link )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<p>Pass links through user_trailingslashit handling query strings properly</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$link</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+			</div>
+		</div>
+	</article>
+
+</main>
+
+<footer class="footer">My footer</footer>
+
+
+<script src="http://timber.github.io/js/highlight.pack.js" defer></script>
+<script src="http://timber.github.io/js/scripts.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,1628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="http://timber.github.io/css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
+</head>
+
+
+<body>
+
+<header class="header">
+    <a class="logo-link" href="/">
+        <div id="logo">
+            <img src="/images/timberlogo.svg" alt="Timber" style="width:105px;height:30px;border:0">
+        </div>
+    </a>
+    <nav class="nav nav--top" id="nav-top">
+        <ul>
+            <li>
+                <a class="nav__link" href="http://upstatement.com/timber/" target="_blank" rel="noreferrer noopener">Timber Homepage</a>
+            </li>
+            <li>
+                <a class="nav__link" href="http://twig.sensiolabs.org/doc/templates.html"
+                   target="_blank" rel="noreferrer noopener">Twig Documentation</a>
+            </li>
+            <li><a class="nav__link" href="http://code.tutsplus.com/series/kick-start-wordpress-development-with-twig--cms-974"
+                   target="_blank" rel="noreferrer noopener">Getting Started Tutorials</a>
+            </li>
+            <li>
+                <a class="nav__link" href="https://github.com/timber/timber" target="_blank" rel="noreferrer noopener">
+                    <img src="/images/Github.png" alt="Star on Github" style="width:29px;height:29px;border:0">
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<aside class="sidebar">
+    <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+
+    <ul class="search-results"></ul>
+
+    <nav id="nav nav--main">
+        <ul class="nav__items nav__items--level-0">
+        
+        
+            <li class="nav__item nav__item--level-0"><a class="nav__link nav__link--level-0" href="http://timber.github.io/getting-started/">Getting Started</a>
+            
+                <ul class="nav__items nav__items--level-1">
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/getting-started/setup/">Setup</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/getting-started/themeing/">Themeing</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/getting-started/twig-tools/">Twig Tools</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/getting-started/video-tutorials/">Video Tutorials</a></li>
+                
+                </ul>
+            
+            </li>
+        
+            <li class="nav__item nav__item--level-0"><a class="nav__link nav__link--level-0" href="http://timber.github.io/guides/">Guides</a>
+            
+                <ul class="nav__items nav__items--level-1">
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/acf-cookbook/">ACF Cookbook</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/cheatsheet/">Cheatsheet</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/custom-page-templates/">Custom Page Templates</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/debugging/">Debugging</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/escapers/">Escapers</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/extending-timber/">Extending Timber</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/filters/">Filters</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/functions/">Functions</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/cookbook-images/">Image Cookbook</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/internationalization/">Internationalization</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/pagination/">Pagination</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/performance/">Performance</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/routing/">Routing</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/sidebars/">Sidebars</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/template-locations/">Template Locations</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/testing/">Testing</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/cookbook-text/">Text Cookbook</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/cookbook-twig/">Twig Cookbook</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/woocommerce/">WooCommerce</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/wp-integration/">WordPress Integration</a></li>
+                
+                </ul>
+            
+            </li>
+        
+            <li class="nav__item nav__item--level-0 nav__item--current-ancestor"><a class="nav__link nav__link--level-0" href="http://timber.github.io/reference/">Reference</a>
+            
+                <ul class="nav__items nav__items--level-1">
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-archives/">Timber\Archives</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-comment/">Timber\Comment</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-helper/">Timber\Helper</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-image/">Timber\Image</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-imagehelper/">Timber\ImageHelper</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-menu/">Timber\Menu</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-menuitem/">Timber\MenuItem</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-pagination/">Timber\Pagination</a></li>
+                
+                    <li class="nav__item nav__item--level-1 nav__item--current"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-post/">Timber\Post</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-postpreview/">Timber\PostPreview</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-postquery/">Timber\PostQuery</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-site/">Timber\Site</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-term/">Timber\Term</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-texthelper/">Timber\TextHelper</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-theme/">Timber\Theme</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber/">Timber\Timber</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-urlhelper/">Timber\URLHelper</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-user/">Timber\User</a></li>
+                
+                </ul>
+            
+            </li>
+        
+            <li class="nav__item nav__item--level-0"><a class="nav__link nav__link--level-0" href="http://timber.github.io/upgrade-guides/">Upgrade Guides</a>
+            
+                <ul class="nav__items nav__items--level-1">
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/upgrade-guides/1.0/">Upgrade to 1.0</a></li>
+                
+                </ul>
+            
+            </li>
+        
+        </ul>
+    </nav>
+</aside>
+
+
+<main>
+    
+	<article>
+		<h1>Timber\Post</h1>
+
+		<aside class="toc">
+			<h2 class="heading-4 toc__title">Contents of this page</h2>
+			<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#methods-overview">Methods Overview</a></li>
+<li><a href="#construct">__construct</a></li>
+<li><a href="#tostring">__toString</a></li>
+<li><a href="#author">author</a></li>
+<li><a href="#authors">authors</a></li>
+<li><a href="#categories">categories</a></li>
+<li><a href="#category">category</a></li>
+<li><a href="#children">children</a></li>
+<li><a href="#comment-form">comment_form</a></li>
+<li><a href="#comments">comments</a></li>
+<li><a href="#content">content</a></li>
+<li><a href="#convert">convert</a></li>
+<li><a href="#date">date</a></li>
+<li><a href="#edit-link">edit_link</a></li>
+<li><a href="#format">format</a></li>
+<li><a href="#get-comment-count">get_comment_count</a></li>
+<li><a href="#get-content">get_content</a></li>
+<li><a href="#get-field">get_field</a></li>
+<li><a href="#get-image">get_image</a></li>
+<li><a href="#get-method-values">get_method_values</a></li>
+<li><a href="#get-paged-content">get_paged_content</a></li>
+<li><a href="#strike-get-post-type-strike"><strike>get_post_type</strike></a></li>
+<li><a href="#strike-get-preview-strike"><strike>get_preview</strike></a></li>
+<li><a href="#has-field">has_field</a></li>
+<li><a href="#has-term">has_term</a></li>
+<li><a href="#import-field">import_field</a></li>
+<li><a href="#link">link</a></li>
+<li><a href="#meta">meta</a></li>
+<li><a href="#modified-author">modified_author</a></li>
+<li><a href="#modified-date">modified_date</a></li>
+<li><a href="#modified-time">modified_time</a></li>
+<li><a href="#name">name</a></li>
+<li><a href="#next">next</a></li>
+<li><a href="#paged-content">paged_content</a></li>
+<li><a href="#pagination">pagination</a></li>
+<li><a href="#parent">parent</a></li>
+<li><a href="#password-required">password_required</a></li>
+<li><a href="#path">path</a></li>
+<li><a href="#strike-permalink-strike"><strike>permalink</strike></a></li>
+<li><a href="#prev">prev</a></li>
+<li><a href="#preview">preview</a></li>
+<li><a href="#tags">tags</a></li>
+<li><a href="#terms">terms</a></li>
+<li><a href="#thumbnail">thumbnail</a></li>
+<li><a href="#time">time</a></li>
+<li><a href="#title">title</a></li>
+<li><a href="#type">type</a></li>
+<li><a href="#update">update</a></li>
+<li><a href="#get-post-preview-id">get_post_preview_id</a></li>
+<li><a href="#get-wp-link-page">get_wp_link_page</a></li>
+<li><a href="#maybe-show-password-form">maybe_show_password_form</a></li>
+</ul></li>
+</ul>
+</nav>
+		</aside>
+
+		<div class="content-container">
+			<div class="content">
+				<p>This is the object you use to access or extend WordPress posts. Think of it as Timber&rsquo;s (more accessible) version of WP_Post. This is used throughout Timber to represent posts retrieved from WordPress making them available to Twig templates. See the PHP and Twig examples for an example of what it&rsquo;s like to work with this object in your code.</p>
+
+<p></p>
+
+<p><strong>PHP</strong></p>
+
+<pre><code class="language-php">&lt;?php
+// single.php, see connected twig example
+$context = Timber::get_context();
+$context['post'] = new Timber\Post(); // It's a new Timber\Post object, but an existing post from WordPress.
+Timber::render('single.twig', $context);
+?&gt;
+</code></pre>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">{# single.twig #}
+&lt;article&gt;
+    &lt;h1 class=&quot;headline&quot;&gt;{{post.title}}&lt;/h1&gt;
+    &lt;div class=&quot;body&quot;&gt;
+        {{post.content}}
+    &lt;/div&gt;
+&lt;/article&gt;
+</code></pre>
+
+<p><strong>HTML</strong></p>
+
+<pre><code class="language-html">&lt;article&gt;
+    &lt;h1 class=&quot;headline&quot;&gt;The Empire Strikes Back&lt;/h1&gt;
+    &lt;div class=&quot;body&quot;&gt;
+        It is a dark time for the Rebellion. Although the Death Star has been destroyed, Imperial troops have driven the Rebel forces from their hidden base and pursued them across the galaxy.
+    &lt;/div&gt;
+&lt;/article&gt;
+</code></pre>
+
+<h2 id="methods-overview">Methods Overview</h2>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Returns/Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="#author">author</a></td>
+<td><code>\Timber\User/null</code></td>
+<td>A User object if found, false if not</td>
+</tr>
+
+<tr>
+<td><a href="#categories">categories</a></td>
+<td><code>array</code></td>
+<td>of TimberTerms</td>
+</tr>
+
+<tr>
+<td><a href="#category">category</a></td>
+<td><code>\Timber\TimberTerm/null</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#children">children</a></td>
+<td><code>array</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>class</td>
+<td><code>string</code></td>
+<td>$class stores the CSS classes for the post (ex: &ldquo;post post-type-book post-123&rdquo;)</td>
+</tr>
+
+<tr>
+<td><a href="#comments">comments</a></td>
+<td><code>bool/array</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#content">content</a></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#date">date</a></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#format">format</a></td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>id</td>
+<td><code>string</code></td>
+<td>$id the numeric WordPress id of a post</td>
+</tr>
+
+<tr>
+<td><a href="#link">link</a></td>
+<td><code>string</code></td>
+<td>ex: <a href="http://example.org/2015/07/my-awesome-post">http://example.org/2015/07/my-awesome-post</a></td>
+</tr>
+
+<tr>
+<td><a href="#next">next</a></td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#parent">parent</a></td>
+<td><code>bool/\Timber\Timber\Post</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#password_required">password_required</a></td>
+<td><code>boolean</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#path">path</a></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>post_status</td>
+<td><code>string</code></td>
+<td>$post_status    the status of a post (&ldquo;draft&rdquo;, &ldquo;publish&rdquo;, etc.)</td>
+</tr>
+
+<tr>
+<td>post_type</td>
+<td><code>string</code></td>
+<td>$post_type      the name of the post type, this is the machine name (so &ldquo;my_custom_post_type&rdquo; as opposed to &ldquo;My Custom Post Type&rdquo;)</td>
+</tr>
+
+<tr>
+<td><a href="#prev">prev</a></td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>slug</td>
+<td><code>string</code></td>
+<td>$slug       the URL-safe slug, this corresponds to the poorly-named &ldquo;post_name&rdquo; in the WP database, ex: &ldquo;hello-world&rdquo;</td>
+</tr>
+
+<tr>
+<td><a href="#tags">tags</a></td>
+<td><code>array</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#terms">terms</a></td>
+<td><code>array</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#thumbnail">thumbnail</a></td>
+<td><code>\Timber\TimberImage/null</code></td>
+<td>of your thumbnail</td>
+</tr>
+
+<tr>
+<td><a href="#time">time</a></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#title">title</a></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="construct">__construct</h2>
+
+<p><code>__construct( mixed $pid=null )</code></p>
+
+<p><strong>returns:</strong> <code>void</code></p>
+
+<p>If you send the constructor nothing it will try to figure out the current post id based on being inside The_Loop</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$pid</td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>PHP</strong></p>
+
+<pre><code class="language-php">&lt;?php
+$post = new Timber\Post();
+$other_post = new Timber\Post($random_post_id);
+</code></pre>
+
+<hr />
+
+<h2 id="tostring">__toString</h2>
+
+<p><code>__toString( )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<p>Outputs the title of the post if you do something like <code>&lt;h1&gt;{{post}}&lt;/h1&gt;</code></p>
+
+<hr />
+
+<h2 id="author">author</h2>
+
+<p><code>author( )</code></p>
+
+<p><strong>returns:</strong> <code>\Timber\User/null</code> A User object if found, false if not</p>
+
+<p>Return the author of a post</p>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">&lt;h1&gt;{{post.title}}&lt;/h1&gt;
+&lt;p class=&quot;byline&quot;&gt;
+    &lt;a href=&quot;{{post.author.link}}&quot;&gt;{{post.author.name}}&lt;/a&gt;
+&lt;/p&gt;
+</code></pre>
+
+<hr />
+
+<h2 id="authors">authors</h2>
+
+<p><code>authors( )</code></p>
+
+<p><strong>returns:</strong> <code>void</code></p>
+
+<hr />
+
+<h2 id="categories">categories</h2>
+
+<p><code>categories( )</code></p>
+
+<p><strong>returns:</strong> <code>array</code> of TimberTerms</p>
+
+<p>Get the categoires on a particular post</p>
+
+<hr />
+
+<h2 id="category">category</h2>
+
+<p><code>category( )</code></p>
+
+<p><strong>returns:</strong> <code>\Timber\TimberTerm/null</code></p>
+
+<p>Returns a category attached to a post</p>
+
+<hr />
+
+<h2 id="children">children</h2>
+
+<p><code>children( string/string/array $post_type=&quot;any&quot;, bool/string/bool $childPostClass=false )</code></p>
+
+<p><strong>returns:</strong> <code>array</code></p>
+
+<p>Returns an array of children on the post as Timber\Posts
+(or other claass as you define).</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$post_type</td>
+<td><code>string/string/array</code></td>
+<td><em>optional</em> use to find children of a particular post type (attachment vs. page for example). You might want to restrict to certain types of children in case other stuff gets all mucked in there. You can use &lsquo;parent&rsquo; to use the parent&rsquo;s post type or you can pass an array of post types.</td>
+</tr>
+
+<tr>
+<td>$childPostClass</td>
+<td><code>bool/string/bool</code></td>
+<td><em>optional</em> a custom post class (ex: &lsquo;MyTimber\Post&rsquo;) to return the objects as. By default (false) it will use Timber\Post::$post_class value.</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">{% if post.children %}
+    Here are the child pages:
+    {% for child in post.children %}
+        &lt;a href=&quot;{{ child.link }}&quot;&gt;{{ child.title }}&lt;/a&gt;
+    {% endfor %}
+{% endif %}
+</code></pre>
+
+<hr />
+
+<h2 id="comment-form">comment_form</h2>
+
+<p><code>comment_form( array $args=array() )</code></p>
+
+<p><strong>returns:</strong> <code>string</code> of HTML for the form</p>
+
+<p>Gets the comment form for use on a single article page</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$args</td>
+<td><code>array</code></td>
+<td>this $args thing is a fucking mess, <a href="http://codex.wordpress.org/Function_Reference/comment_form">fix at some point</a></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="comments">comments</h2>
+
+<p><code>comments( mixed/int $count=null, string $order=&quot;wp&quot;, string $type=&quot;comment&quot;, string $status=&quot;approve&quot;, string $CommentClass=&quot;Timber\Comment&quot; )</code></p>
+
+<p><strong>returns:</strong> <code>bool/array</code></p>
+
+<p>Gets the comments on a Timber\Post and returns them as an array of <a href="#TimberComment">TimberComments</a> (or whatever comment class you set).</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$count</td>
+<td><code>mixed/int</code></td>
+<td>Set the number of comments you want to get. <code>0</code> is analogous to &ldquo;all&rdquo;</td>
+</tr>
+
+<tr>
+<td>$order</td>
+<td><code>string</code></td>
+<td>use ordering set in WordPress admin, or a different scheme</td>
+</tr>
+
+<tr>
+<td>$type</td>
+<td><code>string</code></td>
+<td>For when other plugins use the comments table for their own special purposes, might be set to &lsquo;liveblog&rsquo; or other depending on what&rsquo;s stored in yr comments table</td>
+</tr>
+
+<tr>
+<td>$status</td>
+<td><code>string</code></td>
+<td>Could be &lsquo;pending&rsquo;, etc.</td>
+</tr>
+
+<tr>
+<td>$CommentClass</td>
+<td><code>string</code></td>
+<td>What class to use when returning Comment objects. As you become a Timber pro, you might find yourself extending TimberComment for your site or app (obviously, totally optional)</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">{# single.twig #}
+&lt;h4&gt;Comments:&lt;/h4&gt;
+{% for comment in post.comments %}
+	&lt;div class=&quot;comment-{{comment.ID}} comment-order-{{loop.index}}&quot;&gt;
+		&lt;p&gt;{{comment.author.name}} said:&lt;/p&gt;
+		&lt;p&gt;{{comment.content}}&lt;/p&gt;
+	&lt;/div&gt;
+{% endfor %}
+</code></pre>
+
+<hr />
+
+<h2 id="content">content</h2>
+
+<p><code>content( int $page, mixed $len=-1 )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<p>Gets the actual content of a WP Post, as opposed to post_content this will run the hooks/filters attached to the_content. \This guy will return your posts content with WordPress filters run on it (like for shortcodes and wpautop).</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$page</td>
+<td><code>int</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$len</td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">&lt;div class=&quot;article&quot;&gt;
+    &lt;h2&gt;{{post.title}}&lt;/h2&gt;
+    &lt;div class=&quot;content&quot;&gt;{{ post.content }}&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<hr />
+
+<h2 id="convert">convert</h2>
+
+<p><code>convert( array/\Timber\WP_Post $data, string $class )</code></p>
+
+<p><strong>returns:</strong> <code>void</code></p>
+
+<p>Finds any WP_Post objects and converts them to Timber\Posts</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$data</td>
+<td><code>array/\Timber\WP_Post</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$class</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="date">date</h2>
+
+<p><code>date( string $date_format=&quot;&quot; )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<p>Get the date to use in your template!</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$date_format</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">Published on {{ post.date }} // Uses WP's formatting set in Admin
+OR
+Published on {{ post.date | date('F jS') }} // Jan 12th
+</code></pre>
+
+<p><strong>HTML</strong></p>
+
+<pre><code class="language-html">Published on January 12, 2015
+OR
+Published on Jan 12th
+</code></pre>
+
+<hr />
+
+<h2 id="edit-link">edit_link</h2>
+
+<p><code>edit_link( )</code></p>
+
+<p><strong>returns:</strong> <code>bool/string</code> the edit URL of a post in the WordPress admin</p>
+
+<p>Returns the edit URL of a post if the user has access to it</p>
+
+<hr />
+
+<h2 id="format">format</h2>
+
+<p><code>format( )</code></p>
+
+<p><strong>returns:</strong> <code>mixed</code></p>
+
+<hr />
+
+<h2 id="get-comment-count">get_comment_count</h2>
+
+<p><code>get_comment_count( )</code></p>
+
+<p><strong>returns:</strong> <code>int</code> the number of comments on a post</p>
+
+<hr />
+
+<h2 id="get-content">get_content</h2>
+
+<p><code>get_content( mixed/int $len=-1, int $page )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<p>Displays the content of the post with filters, shortcodes and wpautop applied</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$len</td>
+<td><code>mixed/int</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$page</td>
+<td><code>int</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">&lt;div class=&quot;article-text&quot;&gt;{{post.get_content}}&lt;/div&gt;
+</code></pre>
+
+<p><strong>HTML</strong></p>
+
+<pre><code class="language-html">&lt;div class=&quot;article-text&quot;&gt;&lt;p&gt;Blah blah blah&lt;/p&gt;&lt;p&gt;More blah blah blah.&lt;/p&gt;&lt;/div&gt;
+</code></pre>
+
+<hr />
+
+<h2 id="get-field">get_field</h2>
+
+<p><code>get_field( string $field_name )</code></p>
+
+<p><strong>returns:</strong> <code>mixed</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$field_name</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="get-image">get_image</h2>
+
+<p><code>get_image( string $field )</code></p>
+
+<p><strong>returns:</strong> <code>\Timber\TimberImage</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$field</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="get-method-values">get_method_values</h2>
+
+<p><code>get_method_values( )</code></p>
+
+<p><strong>returns:</strong> <code>array</code></p>
+
+<hr />
+
+<h2 id="get-paged-content">get_paged_content</h2>
+
+<p><code>get_paged_content( )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<hr />
+
+<h2 id="strike-get-post-type-strike"><strike>get_post_type</strike></h2>
+
+<p><strong>DEPRECATED</strong> since 1.0.4</p>
+
+<p><code>get_post_type( )</code></p>
+
+<p><strong>returns:</strong> <code>\Timber\PostType</code></p>
+
+<p>Returns the post_type object with labels and other info</p>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">This post is from &lt;span&gt;{{ post.get_post_type.labels.plural }}&lt;/span&gt;
+</code></pre>
+
+<p><strong>HTML</strong></p>
+
+<pre><code class="language-html">This post is from &lt;span&gt;Recipes&lt;/span&gt;
+</code></pre>
+
+<hr />
+
+<h2 id="strike-get-preview-strike"><strike>get_preview</strike></h2>
+
+<p><strong>DEPRECATED</strong> since 1.3.1, use {{ post.preview }} instead</p>
+
+<p><code>get_preview( mixed/int $len=50, bool $force=false, string $readmore=&quot;Read More&quot;, bool/bool/string $strip=true, string $end=&quot;&amp;hellip;&quot; )</code></p>
+
+<p><strong>returns:</strong> <code>string</code> of the post preview</p>
+
+<p>get a preview of your post, if you have an excerpt it will use that,
+otherwise it will pull from the post_content.
+If there&rsquo;s a <!-- more --> tag it will use that to mark where to pull through.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$len</td>
+<td><code>mixed/int</code></td>
+<td>The number of words that WP should use to make the tease. (Isn&rsquo;t this better than <a href="http://wordpress.org/support/topic/changing-the-default-length-of-the_excerpt-1?replies=14">this mess</a>?). If you&rsquo;ve set a post_excerpt on a post, we&rsquo;ll use that for the preview text; otherwise the first X words of the post_content</td>
+</tr>
+
+<tr>
+<td>$force</td>
+<td><code>bool</code></td>
+<td>What happens if your custom post excerpt is longer then the length requested? By default (<code>$force = false</code>) it will use the full <code>post_excerpt</code>. However, you can set this to true to <em>force</em> your excerpt to be of the desired length</td>
+</tr>
+
+<tr>
+<td>$readmore</td>
+<td><code>string</code></td>
+<td>The text you want to use on the &lsquo;readmore&rsquo; link</td>
+</tr>
+
+<tr>
+<td>$strip</td>
+<td><code>bool/bool/string</code></td>
+<td>true for default, false for none, string for list of custom attributes</td>
+</tr>
+
+<tr>
+<td>$end</td>
+<td><code>string</code></td>
+<td>The text to end the preview with (defaults to &hellip;)</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">&lt;p&gt;{{post.get_preview(50)}}&lt;/p&gt;
+</code></pre>
+
+<hr />
+
+<h2 id="has-field">has_field</h2>
+
+<p><code>has_field( string $field_name )</code></p>
+
+<p><strong>returns:</strong> <code>boolean</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$field_name</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="has-term">has_term</h2>
+
+<p><code>has_term( string/int $term_name_or_id, string $taxonomy=&quot;all&quot; )</code></p>
+
+<p><strong>returns:</strong> <code>bool</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$term_name_or_id</td>
+<td><code>string/int</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$taxonomy</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="import-field">import_field</h2>
+
+<p><code>import_field( string $field_name )</code></p>
+
+<p><strong>returns:</strong> <code>void</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$field_name</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="link">link</h2>
+
+<p><code>link( )</code></p>
+
+<p><strong>returns:</strong> <code>string</code> ex: <a href="http://example.org/2015/07/my-awesome-post">http://example.org/2015/07/my-awesome-post</a></p>
+
+<p>get the permalink for a post object</p>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">&lt;a href=&quot;{{post.link}}&quot;&gt;Read my post&lt;/a&gt;
+</code></pre>
+
+<hr />
+
+<h2 id="meta">meta</h2>
+
+<p><code>meta( mixed/string $field_name=null )</code></p>
+
+<p><strong>returns:</strong> <code>mixed</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$field_name</td>
+<td><code>mixed/string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="modified-author">modified_author</h2>
+
+<p><code>modified_author( )</code></p>
+
+<p><strong>returns:</strong> <code>\Timber\User/null</code> A User object if found, false if not</p>
+
+<p>Get the author (WordPress user) who last modified the post</p>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">Last updated by {{ post.modified_author.name }}
+</code></pre>
+
+<p><strong>HTML</strong></p>
+
+<pre><code class="language-html">Last updated by Harper Lee
+</code></pre>
+
+<hr />
+
+<h2 id="modified-date">modified_date</h2>
+
+<p><code>modified_date( string $date_format=&quot;&quot; )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$date_format</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="modified-time">modified_time</h2>
+
+<p><code>modified_time( string $time_format=&quot;&quot; )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$time_format</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="name">name</h2>
+
+<p><code>name( )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<hr />
+
+<h2 id="next">next</h2>
+
+<p><code>next( bool $in_same_term=false )</code></p>
+
+<p><strong>returns:</strong> <code>mixed</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$in_same_term</td>
+<td><code>bool</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="paged-content">paged_content</h2>
+
+<p><code>paged_content( )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<hr />
+
+<h2 id="pagination">pagination</h2>
+
+<p><code>pagination( )</code></p>
+
+<p><strong>returns:</strong> <code>array</code></p>
+
+<p>Get a data array of pagination so you can navigate to the previous/next for a paginated post</p>
+
+<hr />
+
+<h2 id="parent">parent</h2>
+
+<p><code>parent( )</code></p>
+
+<p><strong>returns:</strong> <code>bool/\Timber\Timber\Post</code></p>
+
+<p>Gets the parent (if one exists) from a post as a Timber\Post object (or whatever is set in Timber\Post::$PostClass)</p>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">Parent page: &lt;a href=&quot;{{ post.parent.link }}&quot;&gt;{{ post.parent.title }}&lt;/a&gt;
+</code></pre>
+
+<hr />
+
+<h2 id="password-required">password_required</h2>
+
+<p><code>password_required( )</code></p>
+
+<p><strong>returns:</strong> <code>boolean</code></p>
+
+<p>whether post requires password and correct password has been provided</p>
+
+<hr />
+
+<h2 id="path">path</h2>
+
+<p><code>path( )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<p>Gets the relative path of a WP Post, so while link() will return <a href="http://example.org/2015/07/my-cool-post">http://example.org/2015/07/my-cool-post</a>
+this will return just /2015/07/my-cool-post</p>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">&lt;a href=&quot;{{post.path}}&quot;&gt;{{post.title}}&lt;/a&gt;
+</code></pre>
+
+<hr />
+
+<h2 id="strike-permalink-strike"><strike>permalink</strike></h2>
+
+<p><strong>DEPRECATED</strong> 0.20.0 use link() instead</p>
+
+<p><code>permalink( )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<hr />
+
+<h2 id="prev">prev</h2>
+
+<p><code>prev( bool $in_same_term=false )</code></p>
+
+<p><strong>returns:</strong> <code>mixed</code></p>
+
+<p>Get the previous post in a set</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$in_same_term</td>
+<td><code>bool</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">&lt;h4&gt;Prior Entry:&lt;/h4&gt;
+&lt;h3&gt;{{post.prev.title}}&lt;/h3&gt;
+&lt;p&gt;{{post.prev.get_preview(25)}}&lt;/p&gt;
+</code></pre>
+
+<hr />
+
+<h2 id="preview">preview</h2>
+
+<p><code>preview( )</code></p>
+
+<p><strong>returns:</strong> <code>\Timber\PostPreview</code></p>
+
+<hr />
+
+<h2 id="tags">tags</h2>
+
+<p><code>tags( )</code></p>
+
+<p><strong>returns:</strong> <code>array</code></p>
+
+<p>Gets the tags on a post, uses WP&rsquo;s post_tag taxonomy</p>
+
+<hr />
+
+<h2 id="terms">terms</h2>
+
+<p><code>terms( string/string/array $tax=&quot;&quot;, bool $merge=true, string $TermClass=&quot;&quot; )</code></p>
+
+<p><strong>returns:</strong> <code>array</code></p>
+
+<p>Get the terms associated with the post
+This goes across all taxonomies by default</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$tax</td>
+<td><code>string/string/array</code></td>
+<td>What taxonom(y</td>
+</tr>
+
+<tr>
+<td>$merge</td>
+<td><code>bool</code></td>
+<td>Should the resulting array be one big one (true)? Or should it be an array of sub-arrays for each taxonomy (false)?</td>
+</tr>
+
+<tr>
+<td>$TermClass</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">&lt;section id=&quot;job-feed&quot;&gt;
+{% for post in job %}
+&lt;div class=&quot;job&quot;&gt;
+  &lt;h2&gt;{{ post.title }}&lt;/h2&gt; 
+   &lt;p&gt;{{ post.terms('category') | join(', ') }}
+ &lt;/div&gt;
+{% endfor %}    
+&lt;/section&gt;
+</code></pre>
+
+<p><strong>HTML</strong></p>
+
+<pre><code class="language-html">&lt;section id=&quot;job-feed&quot;&gt;
+  &lt;div class=&quot;job&quot;&gt;
+	   &lt;h2&gt;Cheese Maker&lt;/h2&gt;
+    &lt;p&gt;Food, Cheese, Fromage&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;job&quot;&gt;
+	   &lt;h2&gt;Mime&lt;/h2&gt;
+    &lt;p&gt;Performance, Silence&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+
+<hr />
+
+<h2 id="thumbnail">thumbnail</h2>
+
+<p><code>thumbnail( )</code></p>
+
+<p><strong>returns:</strong> <code>\Timber\TimberImage/null</code> of your thumbnail</p>
+
+<p>get the featured image as a TimberImage</p>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">&lt;img src=&quot;{{post.thumbnail.src}}&quot; /&gt;
+</code></pre>
+
+<hr />
+
+<h2 id="time">time</h2>
+
+<p><code>time( string $time_format=&quot;&quot; )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<p>Get the time to use in your template</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$time_format</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">Published at {{ post.time }} // Uses WP's formatting set in Admin
+OR
+Published at {{ post.time | time('G:i') }} // 13:25
+</code></pre>
+
+<p><strong>HTML</strong></p>
+
+<pre><code class="language-html">Published at 1:25 pm
+OR
+Published at 13:25
+</code></pre>
+
+<hr />
+
+<h2 id="title">title</h2>
+
+<p><code>title( )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<p>Returns the processed title to be used in templates. This returns the title of the post after WP&rsquo;s filters have run. This is analogous to <code>the_title()</code> in standard WP template tags.</p>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">&lt;h1&gt;{{ post.title }}&lt;/h1&gt;
+</code></pre>
+
+<hr />
+
+<h2 id="type">type</h2>
+
+<p><code>type( )</code></p>
+
+<p><strong>returns:</strong> <code>\Timber\PostType</code></p>
+
+<p>Returns the post_type object with labels and other info</p>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">This post is from &lt;span&gt;{{ post.type.labels.name }}&lt;/span&gt;
+</code></pre>
+
+<p><strong>HTML</strong></p>
+
+<pre><code class="language-html">This post is from &lt;span&gt;Recipes&lt;/span&gt;
+</code></pre>
+
+<hr />
+
+<h2 id="update">update</h2>
+
+<p><code>update( string $field, mixed $value )</code></p>
+
+<p><strong>returns:</strong> <code>void</code></p>
+
+<p>updates the post_meta of the current object with the given value</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$field</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$value</td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="get-post-preview-id">get_post_preview_id</h2>
+
+<p><code>get_post_preview_id( mixed $query )</code></p>
+
+<p><strong>returns:</strong> <code>mixed</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$query</td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="get-wp-link-page">get_wp_link_page</h2>
+
+<p><code>get_wp_link_page( int $i )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$i</td>
+<td><code>int</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="maybe-show-password-form">maybe_show_password_form</h2>
+
+<p><code>maybe_show_password_form( )</code></p>
+
+<p><strong>returns:</strong> <code>string/void</code></p>
+
+<p>If the Password form is to be shown, show it!</p>
+
+<hr />
+
+<p><em>This class extends \Timber\Core</em></p>
+
+<p><em>This class implements \Timber\CoreInterface</em></p>
+			</div>
+		</div>
+	</article>
+
+</main>
+
+<footer class="footer">My footer</footer>
+
+
+<script src="http://timber.github.io/js/highlight.pack.js" defer></script>
+<script src="http://timber.github.io/js/scripts.js" defer></script>
+
+</body>
+</html>

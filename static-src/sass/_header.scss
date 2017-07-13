@@ -1,0 +1,70 @@
+.header {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    overflow: hidden;
+    background-color: $black;
+    width: 100%;
+    box-shadow: 0 3px 8px #aaacac;
+    height: $header-height;
+}
+
+.logo-link {
+    display: block;
+    float: left;
+    margin: auto 40px auto 15px;
+    width: 105px;
+}
+
+#logo {
+    height: $header-height;
+
+    img {
+        float: left;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+.nav--top {
+    top: 50%;
+    transform: translateY(25%);
+    height: auto;
+    margin: 10px;
+    overflow: hidden;
+
+    ul {
+        list-style: none;
+        float: right;
+        position: relative;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    li {
+        overflow: hidden;
+        float: left;
+        margin-right: 70px;
+        height: 35px;
+    }
+
+    li:last-child {
+        margin-right: 15px;
+    }
+
+    a {
+		display: block;
+        font-size: 14px;
+        text-decoration: none;
+        color: $white;
+        font-weight: $font-weight-bold;
+        text-transform: uppercase;
+        letter-spacing: .5px;
+        position: relative;
+        padding: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}

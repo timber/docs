@@ -1,0 +1,31 @@
+{
+  "name": "timber/docs",
+  "type": "library",
+  "description": "Generate reference documentation for PHP classes used in Timber",
+  "homepage": "http://timber.upstatement.com",
+  "license": "MIT",
+  "version" : "2.0.0",
+  "authors": [
+    {
+        "name": "Victor Jonsson",
+        "email": "kontakt@victorjonsson.se"
+    },
+    {
+      "name": "Jared Novack",
+      "email": "jared@upstatement.com",
+      "homepage": "http://upstatement.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.0.0"
+  },
+  "require-dev": {
+    "symfony/console": "2.6.*@dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "Timber\\": "generator/timber-current",
+      "PHPDocsMD\\": "generator/PHPDocsMD"
+    }
+  }
+}

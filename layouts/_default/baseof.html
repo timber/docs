@@ -1,0 +1,19 @@
+{{ partial "html-head.html" . }}
+
+<body>
+
+{{ partial "header.html" . }}
+{{ partial "sidebar.html" . }}
+
+<main>
+    {{ block "main" . }}
+    {{ end }}
+</main>
+
+{{ partial "footer.html" . }}
+
+<script src="{{ "/" | absURL }}js/highlight.pack.js" defer></script>
+<script src="{{ "/" | absURL }}js/scripts.js" defer></script>
+
+</body>
+</html>

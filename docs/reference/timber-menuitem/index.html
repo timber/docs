@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="http://timber.github.io/css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
+</head>
+
+
+<body>
+
+<header class="header">
+    <a class="logo-link" href="/">
+        <div id="logo">
+            <img src="/images/timberlogo.svg" alt="Timber" style="width:105px;height:30px;border:0">
+        </div>
+    </a>
+    <nav class="nav nav--top" id="nav-top">
+        <ul>
+            <li>
+                <a class="nav__link" href="http://upstatement.com/timber/" target="_blank" rel="noreferrer noopener">Timber Homepage</a>
+            </li>
+            <li>
+                <a class="nav__link" href="http://twig.sensiolabs.org/doc/templates.html"
+                   target="_blank" rel="noreferrer noopener">Twig Documentation</a>
+            </li>
+            <li><a class="nav__link" href="http://code.tutsplus.com/series/kick-start-wordpress-development-with-twig--cms-974"
+                   target="_blank" rel="noreferrer noopener">Getting Started Tutorials</a>
+            </li>
+            <li>
+                <a class="nav__link" href="https://github.com/timber/timber" target="_blank" rel="noreferrer noopener">
+                    <img src="/images/Github.png" alt="Star on Github" style="width:29px;height:29px;border:0">
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<aside class="sidebar">
+    <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+
+    <ul class="search-results"></ul>
+
+    <nav id="nav nav--main">
+        <ul class="nav__items nav__items--level-0">
+        
+        
+            <li class="nav__item nav__item--level-0"><a class="nav__link nav__link--level-0" href="http://timber.github.io/getting-started/">Getting Started</a>
+            
+                <ul class="nav__items nav__items--level-1">
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/getting-started/setup/">Setup</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/getting-started/themeing/">Themeing</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/getting-started/twig-tools/">Twig Tools</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/getting-started/video-tutorials/">Video Tutorials</a></li>
+                
+                </ul>
+            
+            </li>
+        
+            <li class="nav__item nav__item--level-0"><a class="nav__link nav__link--level-0" href="http://timber.github.io/guides/">Guides</a>
+            
+                <ul class="nav__items nav__items--level-1">
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/acf-cookbook/">ACF Cookbook</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/cheatsheet/">Cheatsheet</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/custom-page-templates/">Custom Page Templates</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/debugging/">Debugging</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/escapers/">Escapers</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/extending-timber/">Extending Timber</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/filters/">Filters</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/functions/">Functions</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/cookbook-images/">Image Cookbook</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/internationalization/">Internationalization</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/pagination/">Pagination</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/performance/">Performance</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/routing/">Routing</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/sidebars/">Sidebars</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/template-locations/">Template Locations</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/testing/">Testing</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/cookbook-text/">Text Cookbook</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/cookbook-twig/">Twig Cookbook</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/woocommerce/">WooCommerce</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/wp-integration/">WordPress Integration</a></li>
+                
+                </ul>
+            
+            </li>
+        
+            <li class="nav__item nav__item--level-0 nav__item--current-ancestor"><a class="nav__link nav__link--level-0" href="http://timber.github.io/reference/">Reference</a>
+            
+                <ul class="nav__items nav__items--level-1">
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-archives/">Timber\Archives</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-comment/">Timber\Comment</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-helper/">Timber\Helper</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-image/">Timber\Image</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-imagehelper/">Timber\ImageHelper</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-menu/">Timber\Menu</a></li>
+                
+                    <li class="nav__item nav__item--level-1 nav__item--current"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-menuitem/">Timber\MenuItem</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-pagination/">Timber\Pagination</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-post/">Timber\Post</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-postpreview/">Timber\PostPreview</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-postquery/">Timber\PostQuery</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-site/">Timber\Site</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-term/">Timber\Term</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-texthelper/">Timber\TextHelper</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-theme/">Timber\Theme</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber/">Timber\Timber</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-urlhelper/">Timber\URLHelper</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-user/">Timber\User</a></li>
+                
+                </ul>
+            
+            </li>
+        
+            <li class="nav__item nav__item--level-0"><a class="nav__link nav__link--level-0" href="http://timber.github.io/upgrade-guides/">Upgrade Guides</a>
+            
+                <ul class="nav__items nav__items--level-1">
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/upgrade-guides/1.0/">Upgrade to 1.0</a></li>
+                
+                </ul>
+            
+            </li>
+        
+        </ul>
+    </nav>
+</aside>
+
+
+<main>
+    
+	<article>
+		<h1>Timber\MenuItem</h1>
+
+		<aside class="toc">
+			<h2 class="heading-4 toc__title">Contents of this page</h2>
+			<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#methods-overview">Methods Overview</a></li>
+<li><a href="#construct">__construct</a></li>
+<li><a href="#tostring">__toString</a></li>
+<li><a href="#add-child">add_child</a></li>
+<li><a href="#add-class">add_class</a></li>
+<li><a href="#children">children</a></li>
+<li><a href="#external">external</a></li>
+<li><a href="#is-external">is_external</a></li>
+<li><a href="#link">link</a></li>
+<li><a href="#meta">meta</a></li>
+<li><a href="#name">name</a></li>
+<li><a href="#path">path</a></li>
+<li><a href="#slug">slug</a></li>
+<li><a href="#title">title</a></li>
+<li><a href="#type">type</a></li>
+</ul></li>
+</ul>
+</nav>
+		</aside>
+
+		<div class="content-container">
+			<div class="content">
+				<p></p>
+
+<h2 id="methods-overview">Methods Overview</h2>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Returns/Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="#children">children</a></td>
+<td><code>array/bool</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#is_external">is_external</a></td>
+<td><code>bool</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#link">link</a></td>
+<td><code>string</code></td>
+<td>a full URL like <a href="http://mysite.com/thing/">http://mysite.com/thing/</a></td>
+</tr>
+
+<tr>
+<td><a href="#name">name</a></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#slug">slug</a></td>
+<td><code>string</code></td>
+<td>the slug of the menu item kinda-like-this</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="construct">__construct</h2>
+
+<p><code>__construct( array/object $data )</code></p>
+
+<p><strong>returns:</strong> <code>void</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$data</td>
+<td><code>array/object</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="tostring">__toString</h2>
+
+<p><code>__toString( )</code></p>
+
+<p><strong>returns:</strong> <code>string</code> the label for the menu item</p>
+
+<hr />
+
+<h2 id="add-child">add_child</h2>
+
+<p><code>add_child( \Timber\TimberMenuItem $item )</code></p>
+
+<p><strong>returns:</strong> <code>void</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$item</td>
+<td><code>\Timber\TimberMenuItem</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="add-class">add_class</h2>
+
+<p><code>add_class( string $class_name )</code></p>
+
+<p><strong>returns:</strong> <code>void</code></p>
+
+<p>add a class the menu item should have</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$class_name</td>
+<td><code>string</code></td>
+<td>to be added</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="children">children</h2>
+
+<p><code>children( )</code></p>
+
+<p><strong>returns:</strong> <code>array/bool</code></p>
+
+<p>Get the child <a href="#TimberMenuItem">TimberMenuItems</a>s of a <a href="#TimberMenuItem">TimberMenuItem</a></p>
+
+<hr />
+
+<h2 id="external">external</h2>
+
+<p><code>external( )</code></p>
+
+<p><strong>returns:</strong> <code>bool</code></p>
+
+<p>Checks to see if a link is external, helpful when creating rules for the target of a link</p>
+
+<hr />
+
+<h2 id="is-external">is_external</h2>
+
+<p><code>is_external( )</code></p>
+
+<p><strong>returns:</strong> <code>bool</code></p>
+
+<p>Checks to see if the menu item is an external link so if my site is <code>example.org</code>, <code>google.com/whatever</code> is an external link. Helpful when creating rules for the target of a link</p>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">&lt;a href=&quot;{{ item.link }}&quot; target=&quot;{{ item.is_external ? '_blank' : '_self' }}&quot;&gt;
+</code></pre>
+
+<hr />
+
+<h2 id="link">link</h2>
+
+<p><code>link( )</code></p>
+
+<p><strong>returns:</strong> <code>string</code> a full URL like <a href="http://mysite.com/thing/">http://mysite.com/thing/</a></p>
+
+<p>Get the full link to a Menu Item</p>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">{% for item in menu.items %}
+    &lt;li&gt;&lt;a href=&quot;{{ item.link }}&quot;&gt;{{ item.title }}&lt;/a&gt;&lt;/li&gt;
+{% endfor %}
+</code></pre>
+
+<hr />
+
+<h2 id="meta">meta</h2>
+
+<p><code>meta( string $key )</code></p>
+
+<p><strong>returns:</strong> <code>mixed</code> whatever value is storied in the database</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$key</td>
+<td><code>string</code></td>
+<td>lookup key</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="name">name</h2>
+
+<p><code>name( )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<p>The label for the menu item</p>
+
+<hr />
+
+<h2 id="path">path</h2>
+
+<p><code>path( )</code></p>
+
+<p><strong>returns:</strong> <code>string</code> the path of a URL like /foo</p>
+
+<p>Return the relative path of a Menu Item&rsquo;s link</p>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">{% for item in menu.items %}
+    &lt;li&gt;&lt;a href=&quot;{{ item.path }}&quot;&gt;{{ item.title }}&lt;/a&gt;&lt;/li&gt;
+{% endfor %}
+</code></pre>
+
+<hr />
+
+<h2 id="slug">slug</h2>
+
+<p><code>slug( )</code></p>
+
+<p><strong>returns:</strong> <code>string</code> the slug of the menu item kinda-like-this</p>
+
+<p>The slug for the menu item</p>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">&lt;ul&gt;
+    {% for item in menu.items %}
+        &lt;li class=&quot;{{item.slug}}&quot;&gt;
+            &lt;a href=&quot;{{item.link}}&quot;&gt;{{item.name}}&lt;/a&gt;
+         &lt;/li&gt;
+    {% endfor %}
+&lt;/ul&gt;
+
+---
+
+## thumbnail
+`thumbnail( )`
+
+**returns:** `string` the public thumbnail url
+
+Gets the post thumbnail image object
+
+**Twig**
+```twig
+{% for item in menu.items %}
+    &lt;li&gt;&lt;a href=&quot;{{ item.link }}&quot;&gt;&lt;img src=&quot;{{ item.thumbnail }}&quot;/&gt;&lt;/a&gt;&lt;/li&gt;
+{% endfor %}
+</code></pre>
+
+<hr />
+
+<h2 id="title">title</h2>
+
+<p><code>title( )</code></p>
+
+<p><strong>returns:</strong> <code>string</code> the public label like Foo</p>
+
+<p>Gets the public label for the menu item</p>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">{% for item in menu.items %}
+    &lt;li&gt;&lt;a href=&quot;{{ item.link }}&quot;&gt;{{ item.title }}&lt;/a&gt;&lt;/li&gt;
+{% endfor %}
+</code></pre>
+
+<hr />
+
+<h2 id="type">type</h2>
+
+<p><code>type( )</code></p>
+
+<p><strong>returns:</strong> <code>string</code></p>
+
+<p>Return the type of the menu item</p>
+
+<hr />
+
+<p><em>This class extends \Timber\Core</em></p>
+
+<p><em>This class implements \Timber\CoreInterface</em></p>
+			</div>
+		</div>
+	</article>
+
+</main>
+
+<footer class="footer">My footer</footer>
+
+
+<script src="http://timber.github.io/js/highlight.pack.js" defer></script>
+<script src="http://timber.github.io/js/scripts.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+@charset "utf-8";
+@import "normalize";
+@import "variables";
+@import "mixins";
+
+/**
+ * Github Styles for highlight.js
+ */
+@import "vendor/github.css";
+
+@import "content";
+@import "header";
+@import "headings";
+@import "links";
+@import "lists";
+@import "nav";
+@import "search";
+@import "sidebar";
+@import "toc";
+
+////////////////////////////////////////////////////////////////////////////////
+// GENERAL STUFF
+////////////////////////////////////////////////////////////////////////////////
+
+html {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	box-sizing: border-box;
+}
+
+/**
+ * Let box-sizing be inherited from the html element
+ *
+ * @link https://github.com/AllThingsSmitty/css-protips#inherit-box-sizing
+ */
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+html,
+body {
+    color: $text-color;
+    padding: 0;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: $main-bg;
+    height: 100%;
+	line-height: 1.6;
+    -webkit-text-size-adjust: none; /* Never autoresize text */
+    @extend %default-font;
+}
+
+main {
+    float: right;
+    width: calc(100% - #{$sidebar-width});
+	padding-top: $header-height * 2;
+	padding-left: $gutter-width;
+	padding-right: $gutter-width;
+}
+
+article {
+	@include make-row;
+}
+
+.content-container {
+	max-width: $content-max-width;
+    width: percentage(8/12);
+    right: percentage(4/12);
+    @include make-column;
+}
+
+.toc {
+	@include make-column;
+	width: percentage(4/12);
+	left: percentage(8/12);
+}
+
+.header, .footer {
+    /* needed for the floated layout */
+    clear: both;
+}
+
+p {
+	padding: 0;
+	margin: 0 0 0.5em;
+
+	&:empty {
+		display: none;
+	}
+}

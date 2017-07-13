@@ -1,0 +1,16 @@
+{{ define "main" }}
+	<article>
+		<h1>{{ .Title }}</h1>
+
+		<aside class="toc">
+			<h2 class="heading-4 toc__title">Contents of this page</h2>
+			{{ .TableOfContents }}
+		</aside>
+
+		<div class="content-container">
+			<div class="content">
+				{{ .Content }}
+			</div>
+		</div>
+	</article>
+{{ end }}

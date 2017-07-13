@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="http://timber.github.io/css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
+</head>
+
+
+<body>
+
+<header class="header">
+    <a class="logo-link" href="/">
+        <div id="logo">
+            <img src="/images/timberlogo.svg" alt="Timber" style="width:105px;height:30px;border:0">
+        </div>
+    </a>
+    <nav class="nav nav--top" id="nav-top">
+        <ul>
+            <li>
+                <a class="nav__link" href="http://upstatement.com/timber/" target="_blank" rel="noreferrer noopener">Timber Homepage</a>
+            </li>
+            <li>
+                <a class="nav__link" href="http://twig.sensiolabs.org/doc/templates.html"
+                   target="_blank" rel="noreferrer noopener">Twig Documentation</a>
+            </li>
+            <li><a class="nav__link" href="http://code.tutsplus.com/series/kick-start-wordpress-development-with-twig--cms-974"
+                   target="_blank" rel="noreferrer noopener">Getting Started Tutorials</a>
+            </li>
+            <li>
+                <a class="nav__link" href="https://github.com/timber/timber" target="_blank" rel="noreferrer noopener">
+                    <img src="/images/Github.png" alt="Star on Github" style="width:29px;height:29px;border:0">
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<aside class="sidebar">
+    <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+
+    <ul class="search-results"></ul>
+
+    <nav id="nav nav--main">
+        <ul class="nav__items nav__items--level-0">
+        
+        
+            <li class="nav__item nav__item--level-0"><a class="nav__link nav__link--level-0" href="http://timber.github.io/getting-started/">Getting Started</a>
+            
+                <ul class="nav__items nav__items--level-1">
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/getting-started/setup/">Setup</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/getting-started/themeing/">Themeing</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/getting-started/twig-tools/">Twig Tools</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/getting-started/video-tutorials/">Video Tutorials</a></li>
+                
+                </ul>
+            
+            </li>
+        
+            <li class="nav__item nav__item--level-0"><a class="nav__link nav__link--level-0" href="http://timber.github.io/guides/">Guides</a>
+            
+                <ul class="nav__items nav__items--level-1">
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/acf-cookbook/">ACF Cookbook</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/cheatsheet/">Cheatsheet</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/custom-page-templates/">Custom Page Templates</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/debugging/">Debugging</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/escapers/">Escapers</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/extending-timber/">Extending Timber</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/filters/">Filters</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/functions/">Functions</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/cookbook-images/">Image Cookbook</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/internationalization/">Internationalization</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/pagination/">Pagination</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/performance/">Performance</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/routing/">Routing</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/sidebars/">Sidebars</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/template-locations/">Template Locations</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/testing/">Testing</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/cookbook-text/">Text Cookbook</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/cookbook-twig/">Twig Cookbook</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/woocommerce/">WooCommerce</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/guides/wp-integration/">WordPress Integration</a></li>
+                
+                </ul>
+            
+            </li>
+        
+            <li class="nav__item nav__item--level-0"><a class="nav__link nav__link--level-0" href="http://timber.github.io/reference/">Reference</a>
+            
+                <ul class="nav__items nav__items--level-1">
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-archives/">Timber\Archives</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-comment/">Timber\Comment</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-helper/">Timber\Helper</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-image/">Timber\Image</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-imagehelper/">Timber\ImageHelper</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-menu/">Timber\Menu</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-menuitem/">Timber\MenuItem</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-pagination/">Timber\Pagination</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-post/">Timber\Post</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-postpreview/">Timber\PostPreview</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-postquery/">Timber\PostQuery</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-site/">Timber\Site</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-term/">Timber\Term</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-texthelper/">Timber\TextHelper</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-theme/">Timber\Theme</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber/">Timber\Timber</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-urlhelper/">Timber\URLHelper</a></li>
+                
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="http://timber.github.io/reference/timber-user/">Timber\User</a></li>
+                
+                </ul>
+            
+            </li>
+        
+            <li class="nav__item nav__item--level-0 nav__item--current-ancestor"><a class="nav__link nav__link--level-0" href="http://timber.github.io/upgrade-guides/">Upgrade Guides</a>
+            
+                <ul class="nav__items nav__items--level-1">
+                
+                    <li class="nav__item nav__item--level-1 nav__item--current"><a class="nav__link nav__link--level-1" href="http://timber.github.io/upgrade-guides/1.0/">Upgrade to 1.0</a></li>
+                
+                </ul>
+            
+            </li>
+        
+        </ul>
+    </nav>
+</aside>
+
+
+<main>
+    
+	<article>
+		<h1>Upgrade to 1.0</h1>
+
+		<aside class="toc">
+			<h2 class="heading-4 toc__title">Contents of this page</h2>
+			<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#should-i-upgrade">Should I upgrade?</a>
+<ul>
+<li>
+<ul>
+<li><a href="#i-have-a-legacy-site">I have a legacy site</a></li>
+<li><a href="#i-have-a-site-under-continued-development">I have a site under continued development</a></li>
+<li><a href="#i-am-starting-a-new-site">I am starting a new site.</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#routes">Routes</a>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#1-add-to-composer-optional-but-recommended">1. Add to Composer (optional, but recommended)</a></li>
+<li><a href="#2-add-to-your-theme">2. Add to your theme:</a></li>
+<li><a href="#3-update-your-routes">3. Update your Routes:</a>
+<ul>
+<li><a href="#before">Before:</a></li>
+<li><a href="#after">After:</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><a href="#object-properties">Object Properties</a>
+<ul>
+<li>
+<ul>
+<li><a href="#post">Post</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#static-methods">Static methods</a></li>
+<li><a href="#deprecated">Deprecated</a></li>
+</ul></li>
+</ul>
+</nav>
+		</aside>
+
+		<div class="content-container">
+			<div class="content">
+				
+
+<p>A significant part of this 1.0 release is removing lots of deprecated functions and methods that go back to the earliest designs for Timber in early 2013.</p>
+
+<h2 id="should-i-upgrade">Should I upgrade?</h2>
+
+<p>Maybe. Read on:</p>
+
+<h4 id="i-have-a-legacy-site">I have a legacy site</h4>
+
+<p>If you wrote a theme in 2014, it&rsquo;s running fine and the development of the site has concluded: stop right there! Do not upgrade! While there are some slight performance benefits (and not having the warning light on the plugin dashboard) it&rsquo;s not worth it to you. Close this window and forget you ever heard about Timber 1.0</p>
+
+<h4 id="i-have-a-site-under-continued-development">I have a site under continued development</h4>
+
+<p>Maybe. There are going to be tradeoffs with whatever route you pick. I recommend testing your site thoroughly with a staging or local copy to find all the issues before applying Timber 1.0 to production. However, you&rsquo;re the best judge of how much potential refactoring you&rsquo;re looking at and whether it&rsquo;s worth the benefits.</p>
+
+<h4 id="i-am-starting-a-new-site">I am starting a new site.</h4>
+
+<p>Definitely. You&rsquo;ll get the benefits of being on the newest platform. We have some cool stuff ahead that you&rsquo;ll want to include in your development workflow, and of course you&rsquo;ll learn about the newest/best ways to make Timber themes.</p>
+
+<h2 id="routes">Routes</h2>
+
+<p>The Routes feature has now been totally deprecated. If you have custom routes you&rsquo;ll need to add the <a href="https://github.com/upstatement/routes">Upstatement/routes</a> repo to your theme? How to do this?</p>
+
+<h5 id="1-add-to-composer-optional-but-recommended">1. Add to Composer (optional, but recommended)</h5>
+
+<p>Simply add <code>Upstatement/routes</code> to your <code>composer.json</code> file like so:</p>
+
+<pre><code class="language-json">&quot;require&quot;: {
+    &quot;timber/timber&quot;:&quot;1.*&quot;,
+    &quot;advanced-custom-fields/advanced-custom-fields-pro&quot;: &quot;*&quot;,
+    &quot;Upstatement/routes&quot;: &quot;*&quot;
+},
+</code></pre>
+
+<p>Here&rsquo;s a full <a href="https://gist.github.com/jarednova/dc84cf14735a870dbe3d2763e94095a1">Gist</a> of what this looks like. Run a <code>composer install</code> to update your theme&rsquo;s dependencies.</p>
+
+<p><em>Note: because we&rsquo;re not monsters, the [Upstatement/routes] repo will continue to be included with Timber for the next several versions</em></p>
+
+<h5 id="2-add-to-your-theme">2. Add to your theme:</h5>
+
+<p>If you haven&rsquo;t already, you&rsquo;ll need to load Composer&rsquo;s autoload file into your theme via:</p>
+
+<pre><code class="language-php">&lt;?php
+/* functions.php */
+require_once('vendor/autoload.php');
+</code></pre>
+
+<h5 id="3-update-your-routes">3. Update your Routes:</h5>
+
+<p>Now just update the PHP for your old routes to the new ones. It&rsquo;ll be basically the same code, but with cleaner syntax <strong>and a different arguments order for the <code>::load</code> method</strong></p>
+
+<h6 id="before">Before:</h6>
+
+<pre><code class="language-php">&lt;?php
+Timber::add_route('myfoo/bar', 'my_callback_function');
+Timber::add_route('my-events/:event', function($params) {
+    $query = new WP_Query('post_type=event');
+    Timber::load_view('single.php', $query, 200, $params);
+});
+</code></pre>
+
+<h6 id="after">After:</h6>
+
+<pre><code class="language-php">&lt;?php
+Routes::map('myfoo/bar', 'my_callback_function');
+Routes::map('my-events/:event', function($params) {
+    $query = new WP_Query('post_type=event');
+    /* please note the different order of arguments vs. Timber::load_template */
+    Routes::load('single.php', $params, $query, 200);
+});
+</code></pre>
+
+<p>&hellip; and that&rsquo;s the hardest part, done!</p>
+
+<h2 id="object-properties">Object Properties</h2>
+
+<h4 id="post">Post</h4>
+
+<ul>
+<li>If you&rsquo;re using <code>{{ post.permalink }}</code> or <code>{{ post.get_permalink }}</code> you should replace with <code>{{ post.link }}</code></li>
+<li>If you&rsquo;re using <code>{{ post.url }}</code> or <code>{{ post.get_url }}</code> you should replace with <code>{{ post.link }}</code></li>
+<li>If you&rsquo;re using <code>{{ post.thumbnail.url }}</code> or <code>{{ post.get_thumbnail.url }}</code> you should replace with <code>{{ post.thumbnail.src }}</code></li>
+</ul>
+
+<h2 id="static-methods">Static methods</h2>
+
+<p>Way back in <code>0.18</code>, a new helper library was added for URLs. In my infinite wisdom I called it <code>TimberURLHelper</code>. Previously old static methods in <code>TimberHelper</code> still worked (like <code>TimberHelper::get_current_url</code>) — they don&rsquo;t any longer. The full list of methods you&rsquo;ll need to update is&hellip;</p>
+
+<ul>
+<li><code>TimberHelper::get_current_url</code> &mdash; becomes &mdash;&gt; <code>Timber\URLHelper::get_current_url()</code></li>
+<li><code>TimberHelper::is_url</code> &mdash; becomes &mdash;&gt; <code>Timber\URLHelper::is_url()</code></li>
+<li><code>TimberHelper::get_path_base</code> &mdash; becomes &mdash;&gt; <code>Timber\URLHelper::get_path_base()</code></li>
+<li><code>TimberHelper::get_rel_url</code> &mdash; becomes &mdash;&gt; <code>Timber\URLHelper::get_rel_url()</code></li>
+<li><code>TimberHelper::is_local</code> &mdash; becomes &mdash;&gt; <code>Timber\URLHelper::is_local()</code></li>
+<li><code>TimberHelper::get_full_path</code> &mdash; becomes &mdash;&gt; <code>Timber\URLHelper::get_full_path()</code></li>
+<li><code>TimberHelper::get_rel_path</code> &mdash; becomes &mdash;&gt; <code>Timber\URLHelper::get_rel_path()</code></li>
+<li><code>TimberHelper::remove_double_slashes</code> &mdash; becomes &mdash;&gt; <code>Timber\URLHelper::remove_double_slashes()</code></li>
+<li><code>TimberHelper::prepend_to_url</code> &mdash; becomes &mdash;&gt; <code>Timber\URLHelper::prepend_to_url()</code></li>
+<li><code>TimberHelper::preslashit</code> &mdash; becomes &mdash;&gt; <code>Timber\URLHelper::preslashit()</code></li>
+<li><code>TimberHelper::is_external</code> &mdash; becomes &mdash;&gt; <code>Timber\URLHelper::is_external()</code></li>
+<li><code>TimberHelper::download_url</code> &mdash; becomes &mdash;&gt; <code>Timber\URLHelper::download_url()</code></li>
+<li><code>TimberHelper::get_params</code> &mdash; becomes &mdash;&gt; <code>Timber\URLHelper::get_params()</code></li>
+</ul>
+
+<h2 id="deprecated">Deprecated</h2>
+
+<p>Many of the aliases with <code>get_*</code> are now deprecated. For awhile, we&rsquo;ve recommended using <code>post.title</code> instead of <code>post.get_title</code>, <code>post.thumbnail</code> instead of <code>post.get_thumbnail</code>, etc. In future versions this will be enforced.</p>
+
+			</div>
+		</div>
+	</article>
+
+</main>
+
+<footer class="footer">My footer</footer>
+
+
+<script src="http://timber.github.io/js/highlight.pack.js" defer></script>
+<script src="http://timber.github.io/js/scripts.js" defer></script>
+
+</body>
+</html>

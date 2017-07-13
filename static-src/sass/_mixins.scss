@@ -1,0 +1,36 @@
+// Clearfix
+//
+// For modern browsers
+// 1. The space content is one way to avoid an Opera bug when the
+//    contenteditable attribute is included anywhere else in the document.
+//    Otherwise it causes space to appear at the top and bottom of elements
+//    that are clearfixed.
+// 2. The use of `table` rather than `block` is only necessary if using
+//    `:before` to contain the top-margins of child elements.
+//
+// Source: http://nicolasgallagher.com/micro-clearfix-hack/
+
+@mixin clearfix {
+	&:before,
+	&:after {
+		content: " "; // 1
+		display: table; // 2
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+@mixin make-column {
+	position: relative;
+	float: left;
+	min-height: 1px;
+	padding-left: ($gutter-width/2);
+	padding-right: ($gutter-width/2);
+}
+
+@mixin make-row {
+	margin-left: ceil($gutter-width/-2);
+	margin-right: ceil($gutter-width/-2);
+	@include clearfix;
+}

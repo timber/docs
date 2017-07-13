@@ -1,0 +1,171 @@
+.content {
+    & > h1,
+    & > h2,
+	& > h3 {
+		margin-top: 0;
+		padding-top: 0;
+        clear: both;
+    }
+
+    h3 + pre {
+        margin-top: 1.5em;
+    }
+
+    table + div {
+        padding-top: .25em;
+    }
+
+	pre {
+		&, & + hr {
+			& + h3,
+			& + h4,
+			& + h5,
+			& + h6 {
+				padding-top: 2em;
+			}
+		}
+
+		& + p,
+		& + ul,
+		& + ol {
+			padding-top: 1em;
+		}
+
+		& + div {
+			padding-top: .25em;
+		}
+	}
+
+    // Lead
+    & > p:first-child {
+        font-size: 1.6em;
+        font-weight: $font-weight-normal;
+        line-height: 1.6em;
+
+        a {
+            color: $text-color;
+            font-weight: $font-weight-normal;
+            text-decoration: underline;
+
+            &:hover, &:focus {
+                color: $green;
+            }
+        }
+    }
+
+    hr {
+        margin: 2em 0;
+        border-style: none;
+        border-top: 2px solid $grey-light;
+    }
+
+    table {
+        margin: 2em 0;
+        overflow: auto;
+        width: 100%;
+        display: table;
+
+        th,
+        td {
+            text-align: left;
+            vertical-align: top;
+            line-height: 1.6em;
+        }
+
+        th {
+            padding: 5px 10px;
+            background-color: $grey;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+        }
+
+        td {
+            padding: 10px 10px 10px 10px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f7f7f2;
+        }
+    }
+
+    dt {
+        font-weight: $font-weight-bold;
+    }
+
+    dd {
+        margin-left: 15px;
+    }
+
+    li,
+    dt,
+    dd {
+        margin-top: 0;
+    }
+
+    img {
+        max-width: 100%;
+        padding: 15px 0;
+
+        a & {
+            text-decoration: none !important;
+            background-image: none !important;
+            text-shadow: none !important;
+        }
+    }
+
+    code {
+        color: $pink;
+        white-space: pre-wrap;
+        text-transform: none;
+        font-weight: $font-weight-normal;
+        @extend %code-font;
+        @extend %break-words;
+    }
+
+    table code {
+        word-break: normal;
+    }
+
+    pre > code {
+        background-color: transparent;
+        padding: 0;
+		color: $text-color;
+    }
+
+	pre {
+        background-color: $code-bg;
+		color: $text-color;
+        border-radius: 10px;
+
+        padding: 2em $gutter-width/2;
+        margin: 5px 0 20px $gutter-width/-2;
+        width: calc(100% + #{$gutter-width/2});
+
+        clear: right;
+
+        & > p {
+            margin: 0;
+        }
+
+		@extend %code-font;
+    }
+
+    blockquote {
+        margin: 1.5em 0;
+
+        & > p {
+            background-color: $white;
+            color: $green;
+            font-size: 1.4em;
+            font-weight: $font-weight-normal;
+			font-style: italic;
+        }
+    }
+
+	p:first-child,
+	blockquote {
+		pre, code {
+			font-size: inherit;
+		}
+	}
+}
