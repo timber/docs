@@ -39,5 +39,8 @@ cd ./generator
 
 cd ..
 
+# Clean site output folder
+rm -rf ./docs/*
+
 # Build documentation site with Hugo
 hugo
