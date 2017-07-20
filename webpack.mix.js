@@ -12,7 +12,7 @@ let mix = require('laravel-mix');
  */
 
 mix
-  .copy('static-src/js/highlight.pack.js', 'static/js/highlight.js')
+  .copy('static-src/js/highlight.pack.js', 'static/js/highlight.pack.js')
   .js('static-src/js/scripts.js', 'static/js/scripts.js')
   .sass('static-src/sass/styles.scss', 'static/css/')
   .copy('static-src/images/', 'static/images/');
