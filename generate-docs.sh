@@ -9,8 +9,9 @@ composer install
 #cp -a ../timber/docs/upgrade-guides/. ./content/upgrade-guides/
 cp -a ../timber/docs/. ./content/
 
-# Make a reference folder
-mkdir content/reference
+# Create necessary folders that might not exist yet
+mkdir -p content/reference
+mkdir -p generator/timber-current
 
 # Copy current timber library to this repository
 cp -a ../timber/lib/. ./generator/timber-current/
