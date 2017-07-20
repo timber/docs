@@ -404,7 +404,7 @@ class Reflector implements ReflectorInterface
                 continue;
             }
 
-            if (strpos($words[0], '@') === false) {
+            if (empty($words) || strpos($words[0], '@') === false) {
                 /**
                  * Append to tag
                  *
@@ -421,7 +421,7 @@ class Reflector implements ReflectorInterface
                 } elseif (isset($current_param_name) && $current_param_name) {
                     $tags['params'][$current_param_name]['description'] .= $joinWith . $line;
                 }
-            } elseif ($words[0] == '@param') {
+            } elseif ($words[0] === '@param') {
                 // Start new tag
                 $current_tag = substr($words[0], 1);
 
