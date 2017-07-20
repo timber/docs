@@ -4,3 +4,5 @@
 /content/**/*
 /generator/timber-current/*
 !*.gitkeep
+docs
+docs/reference

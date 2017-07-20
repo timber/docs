@@ -9,10 +9,16 @@ composer install
 #cp -a ../timber/docs/upgrade-guides/. ./content/upgrade-guides/
 cp -a ../timber/docs/. ./content/
 
+# Make a reference folder
+mkdir content/reference
+
 # Copy current timber library to this repository
 cp -a ../timber/lib/. ./generator/timber-current/
 
+
+
 cd ./generator
+
 
 # Build reference docs from PHP files
 ./phpdocs-md generate Timber\\Archives > ../content/reference/timber-archives.md
