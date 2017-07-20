@@ -4,9 +4,6 @@
 composer install
 
 # Copy current docs from timber repository to this repository
-#cp -a ../timber/docs/getting-started/. ./content/getting-started/
-#cp -a ../timber/docs/guides/. ./content/guides/
-#cp -a ../timber/docs/upgrade-guides/. ./content/upgrade-guides/
 cp -a ../timber/docs/. ./content/
 
 # Create necessary folders that might not exist yet
@@ -16,10 +13,7 @@ mkdir -p generator/timber-current
 # Copy current timber library to this repository
 cp -a ../timber/lib/. ./generator/timber-current/
 
-
-
 cd ./generator
-
 
 # Build reference docs from PHP files
 ./phpdocs-md generate Timber\\Archives > ../content/reference/timber-archives.md
