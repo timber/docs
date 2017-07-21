@@ -1,4 +1,8 @@
-baseURL: "http://timber.github.io/"
+# Configuration for static site
+# For a list of available options, see https://gohugo.io/getting-started/configuration/
+
+# baseURL including a trailing slash
+baseURL: "http://timber.github.io/docs/"
 languageCode: "en-us"
 title: "Timber Docs"
 publishDir: "docs"

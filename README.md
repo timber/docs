@@ -39,6 +39,18 @@ The development server doesn’t build the files yet. If you want to build all H
 hugo
 ```
 
+If you want to check the generated site, you need to have your own local webserver running, which points to the `docs/` folder inside the repo. When you run the `hugo` command, all links will be built based on the `baseURL` defined in `config.yaml`. Because of the structure of Github Pages, all links will be generated relative to the `docs/` folder. This will break the site on your local server. You can use a custom baseURL with your local URL, though:
+
+```
+hugo --baseURL "http://timber-docs.dev"
+```
+
+However, this will not work for the `bash generate-docs.sh` command. You can pass the baseURL there by setting an environment variable:
+
+```
+HUGO_BASEURL="http://timber-docs.dev" bash generate-docs.sh
+```
+
 ### Publish
 
 …
