@@ -1,19 +1,25 @@
 .header {
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-    overflow: hidden;
-    background-color: $black;
     width: 100%;
+    background-color: $black;
     box-shadow: 0 3px 8px #aaacac;
-    height: $header-height;
+	@include clearfix;
+
+    @media (min-width: $mobile-breakpoint) {
+        position: fixed;
+        top: 0;
+        z-index: 1000;
+        height: $header-height;
+    }
 }
 
 .logo-link {
     display: block;
-    float: left;
     margin: auto 40px auto 15px;
-    width: 105px;
+
+	@media (min-width: $mobile-breakpoint) {
+    	float: left;
+    	width: 105px;
+	}
 }
 
 #logo {
@@ -28,26 +34,35 @@
 }
 
 .nav--top {
-    top: 50%;
-    transform: translateY(25%);
-    height: auto;
-    margin: 10px;
-    overflow: hidden;
+    margin: 0 10px 10px 10px;
+
+	@media (min-width: $mobile-breakpoint) {
+		margin: 10px;
+    	height: auto;
+		top: 50%;
+		transform: translateY(25%);
+		overflow: hidden;
+	}
 
     ul {
         list-style: none;
-        float: right;
-        position: relative;
         margin: 0;
         padding: 0;
-        overflow: hidden;
+
+		@include clearfix;
+
+		@media (min-width: $mobile-breakpoint) {
+			position: relative;
+			float: right;
+		}
     }
 
     li {
-        overflow: hidden;
-        float: left;
-        margin-right: 70px;
-        height: 35px;
+		@media (min-width: $mobile-breakpoint) {
+			float: left;
+			margin-right: 70px;
+			height: 35px;
+		}
     }
 
     li:last-child {
@@ -62,9 +77,17 @@
         font-weight: $font-weight-bold;
         text-transform: uppercase;
         letter-spacing: .5px;
-        position: relative;
         padding: 8px;
-        top: 50%;
-        transform: translateY(-50%);
+
+		&:hover, &:focus {
+			color: $white;
+			text-decoration: underline;
+		}
+
+		@media (min-width: $mobile-breakpoint) {
+			position: relative;
+			top: 50%;
+			transform: translateY(-50%);
+		}
     }
 }

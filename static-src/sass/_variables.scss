@@ -18,7 +18,7 @@ $table-uneven-color: #f7f7f2;
 
 $gutter-width: 60px;
 
-$nav-padding: 20px; // padding to left and right of navbar
+$nav-padding: 20px; // Padding to left and right of navbar
 
 $header-height: 70px;
 $sidebar-width: 240px;
@@ -26,6 +26,8 @@ $content-max-width: 800px;
 
 $font-weight-normal: 400;
 $font-weight-bold: 700;
+
+$mobile-breakpoint: 980px;
 
 %default-font {
   font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "微软雅黑", STXihei, "华文细黑", sans-serif;
