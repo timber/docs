@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>References on Timber Docs</title>
-    <link>http://timber.github.io/reference/</link>
+    <link>https://timber.github.io/docs/reference/</link>
     <description>Recent content in References on Timber Docs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="http://timber.github.io/reference/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://timber.github.io/docs/reference/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Timber\Archives</title>
-      <link>http://timber.github.io/reference/timber-archives/</link>
+      <link>https://timber.github.io/docs/reference/timber-archives/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://timber.github.io/reference/timber-archives/</guid>
+      <guid>https://timber.github.io/docs/reference/timber-archives/</guid>
       <description>&lt;p&gt;The TimberArchives class is used to generate a menu based on the date archives of your posts. The &lt;a href=&#34;http://nieman.harvard.edu/news/&#34;&gt;Nieman Foundation News site&lt;/a&gt; has an example of how the output can be used in a real site (&lt;a href=&#34;https://cloud.githubusercontent.com/assets/1298086/9610076/3cdca596-50a5-11e5-82fd-acb74c09c482.png&#34;&gt;screenshot&lt;/a&gt;).&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -23,10 +23,10 @@
     
     <item>
       <title>Timber\Comment</title>
-      <link>http://timber.github.io/reference/timber-comment/</link>
+      <link>https://timber.github.io/docs/reference/timber-comment/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://timber.github.io/reference/timber-comment/</guid>
+      <guid>https://timber.github.io/docs/reference/timber-comment/</guid>
       <description>&lt;p&gt;The TimberComment class is used to view the output of comments. 99% of the time this will be in the context of the comments on a post. However you can also fetch a comment directly using its comment ID.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -34,10 +34,10 @@
     
     <item>
       <title>Timber\Helper</title>
-      <link>http://timber.github.io/reference/timber-helper/</link>
+      <link>https://timber.github.io/docs/reference/timber-helper/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://timber.github.io/reference/timber-helper/</guid>
+      <guid>https://timber.github.io/docs/reference/timber-helper/</guid>
       <description>&lt;p&gt;As the name suggests these are helpers for Timber (and you!) when developing. You can find additional (mainly internally-focused helpers) in TimberURLHelper&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -45,10 +45,10 @@
     
     <item>
       <title>Timber\Image</title>
-      <link>http://timber.github.io/reference/timber-image/</link>
+      <link>https://timber.github.io/docs/reference/timber-image/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://timber.github.io/reference/timber-image/</guid>
+      <guid>https://timber.github.io/docs/reference/timber-image/</guid>
       <description>&lt;p&gt;If TimberPost is the class you&amp;rsquo;re going to spend the most time, TimberImage is the class you&amp;rsquo;re going to have the most fun with.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -56,32 +56,31 @@
     
     <item>
       <title>Timber\ImageHelper</title>
-      <link>http://timber.github.io/reference/timber-imagehelper/</link>
+      <link>https://timber.github.io/docs/reference/timber-imagehelper/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://timber.github.io/reference/timber-imagehelper/</guid>
-      <description>&lt;p&gt;Implements the &lt;a href=&#34;https://github.com/timber/timber/wiki/Image-cookbook#arbitrary-resizing-of-images&#34;&gt;Twig image
-filters&lt;/a&gt;
-&lt;code&gt;resize&lt;/code&gt;, &lt;code&gt;retina&lt;/code&gt;, &lt;code&gt;letterbox&lt;/code&gt; and  &lt;code&gt;tojpg&lt;/code&gt;.&lt;/p&gt;
+      <guid>https://timber.github.io/docs/reference/timber-imagehelper/</guid>
+      <description>&lt;p&gt;Implements the Twig image filters:
+&lt;a href=&#34;https://github.com/timber/timber/wiki/Image-cookbook#arbitrary-resizing-of-images&#34;&gt;https://github.com/timber/timber/wiki/Image-cookbook#arbitrary-resizing-of-images&lt;/a&gt;
+- resize
+- retina
+- letterbox
+- tojpg&lt;/p&gt;
 
-&lt;p&gt;Implementation:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;public static functions provide the methods that are called by the filter&lt;/li&gt;
-&lt;li&gt;most of the work is common to all filters (URL analysis, directory gymnastics, file caching, error management) and
-done by private static functions&lt;/li&gt;
-&lt;li&gt;the specific part (actual image processing) is delegated to dedicated subclasses of TimberImageOperation&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Implementation:
+- public static functions provide the methods that are called by the filter
+- most of the work is common to all filters (URL analysis, directory gymnastics, file caching, error management) and done by private static functions
+- the specific part (actual image processing) is delegated to dedicated subclasses of TimberImageOperation&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Timber\Menu</title>
-      <link>http://timber.github.io/reference/timber-menu/</link>
+      <link>https://timber.github.io/docs/reference/timber-menu/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://timber.github.io/reference/timber-menu/</guid>
+      <guid>https://timber.github.io/docs/reference/timber-menu/</guid>
       <description>&lt;p&gt;In Timber, you can use TimberMenu() to make a standard Wordpress menu available to the Twig template as an object you can loop through. And once the menu becomes available to the context, you can get items from it in a way that is a little smoother and more versatile than Wordpress&amp;rsquo;s wp_nav_menu. (You need never again rely on a crazy &amp;ldquo;Walker Function!&amp;rdquo;). The first thing to do is to initialize the menu using TimberMenu(). This will make the menu available as an object to work with in the context. (TimberMenu can include a Wordpress menu slug or ID, or it can be sent with no parameter&amp;ndash;and guess the right menu.)&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -89,28 +88,28 @@ done by private static functions&lt;/li&gt;
     
     <item>
       <title>Timber\MenuItem</title>
-      <link>http://timber.github.io/reference/timber-menuitem/</link>
+      <link>https://timber.github.io/docs/reference/timber-menuitem/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://timber.github.io/reference/timber-menuitem/</guid>
+      <guid>https://timber.github.io/docs/reference/timber-menuitem/</guid>
       <description>&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Timber\Pagination</title>
-      <link>http://timber.github.io/reference/timber-pagination/</link>
+      <link>https://timber.github.io/docs/reference/timber-pagination/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://timber.github.io/reference/timber-pagination/</guid>
+      <guid>https://timber.github.io/docs/reference/timber-pagination/</guid>
       <description>&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Timber\Post</title>
-      <link>http://timber.github.io/reference/timber-post/</link>
+      <link>https://timber.github.io/docs/reference/timber-post/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://timber.github.io/reference/timber-post/</guid>
+      <guid>https://timber.github.io/docs/reference/timber-post/</guid>
       <description>&lt;p&gt;This is the object you use to access or extend WordPress posts. Think of it as Timber&amp;rsquo;s (more accessible) version of WP_Post. This is used throughout Timber to represent posts retrieved from WordPress making them available to Twig templates. See the PHP and Twig examples for an example of what it&amp;rsquo;s like to work with this object in your code.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -118,10 +117,10 @@ done by private static functions&lt;/li&gt;
     
     <item>
       <title>Timber\PostPreview</title>
-      <link>http://timber.github.io/reference/timber-postpreview/</link>
+      <link>https://timber.github.io/docs/reference/timber-postpreview/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://timber.github.io/reference/timber-postpreview/</guid>
+      <guid>https://timber.github.io/docs/reference/timber-postpreview/</guid>
       <description>&lt;p&gt;An object that lets a user easily modify the post preview to their
 liking&lt;/p&gt;
 
@@ -130,10 +129,10 @@ liking&lt;/p&gt;
     
     <item>
       <title>Timber\PostQuery</title>
-      <link>http://timber.github.io/reference/timber-postquery/</link>
+      <link>https://timber.github.io/docs/reference/timber-postquery/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://timber.github.io/reference/timber-postquery/</guid>
+      <guid>https://timber.github.io/docs/reference/timber-postquery/</guid>
       <description>&lt;p&gt;A PostQuery allows a user to query for a Collection of WordPress Posts.
 PostCollections are used directly in Twig templates to iterate through and retrieve
 meta information about the collection of posts&lt;/p&gt;
@@ -143,10 +142,10 @@ meta information about the collection of posts&lt;/p&gt;
     
     <item>
       <title>Timber\Site</title>
-      <link>http://timber.github.io/reference/timber-site/</link>
+      <link>https://timber.github.io/docs/reference/timber-site/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://timber.github.io/reference/timber-site/</guid>
+      <guid>https://timber.github.io/docs/reference/timber-site/</guid>
       <description>&lt;p&gt;TimberSite gives you access to information you need about your site. In Multisite setups, you can get info on other sites in your network.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -154,10 +153,10 @@ meta information about the collection of posts&lt;/p&gt;
     
     <item>
       <title>Timber\Term</title>
-      <link>http://timber.github.io/reference/timber-term/</link>
+      <link>https://timber.github.io/docs/reference/timber-term/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://timber.github.io/reference/timber-term/</guid>
+      <guid>https://timber.github.io/docs/reference/timber-term/</guid>
       <description>&lt;p&gt;Terms: WordPress has got &amp;lsquo;em, you want &amp;lsquo;em. Categories. Tags. Custom
 Taxonomies. You don&amp;rsquo;t care, you&amp;rsquo;re a fiend. Well let&amp;rsquo;s get this under control:&lt;/p&gt;
 
@@ -166,10 +165,10 @@ Taxonomies. You don&amp;rsquo;t care, you&amp;rsquo;re a fiend. Well let&amp;rsq
     
     <item>
       <title>Timber\TextHelper</title>
-      <link>http://timber.github.io/reference/timber-texthelper/</link>
+      <link>https://timber.github.io/docs/reference/timber-texthelper/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://timber.github.io/reference/timber-texthelper/</guid>
+      <guid>https://timber.github.io/docs/reference/timber-texthelper/</guid>
       <description>&lt;p&gt;Class provides different text-related functions
 commonly used in WordPress development&lt;/p&gt;
 
@@ -178,10 +177,10 @@ commonly used in WordPress development&lt;/p&gt;
     
     <item>
       <title>Timber\Theme</title>
-      <link>http://timber.github.io/reference/timber-theme/</link>
+      <link>https://timber.github.io/docs/reference/timber-theme/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://timber.github.io/reference/timber-theme/</guid>
+      <guid>https://timber.github.io/docs/reference/timber-theme/</guid>
       <description>&lt;p&gt;Need to display info about your theme? Well you&amp;rsquo;ve come to the right place. By default info on the current theme comes for free with what&amp;rsquo;s fetched by &lt;code&gt;Timber::get_context()&lt;/code&gt; in which case you can access it your theme like so:&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -189,10 +188,10 @@ commonly used in WordPress development&lt;/p&gt;
     
     <item>
       <title>Timber\Timber</title>
-      <link>http://timber.github.io/reference/timber/</link>
+      <link>https://timber.github.io/docs/reference/timber/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://timber.github.io/reference/timber/</guid>
+      <guid>https://timber.github.io/docs/reference/timber/</guid>
       <description>&lt;p&gt;Timber Class.&lt;/p&gt;
 
 &lt;p&gt;Main class called Timber for this plugin.&lt;/p&gt;
@@ -202,19 +201,19 @@ commonly used in WordPress development&lt;/p&gt;
     
     <item>
       <title>Timber\URLHelper</title>
-      <link>http://timber.github.io/reference/timber-urlhelper/</link>
+      <link>https://timber.github.io/docs/reference/timber-urlhelper/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://timber.github.io/reference/timber-urlhelper/</guid>
+      <guid>https://timber.github.io/docs/reference/timber-urlhelper/</guid>
       <description>&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Timber\User</title>
-      <link>http://timber.github.io/reference/timber-user/</link>
+      <link>https://timber.github.io/docs/reference/timber-user/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://timber.github.io/reference/timber-user/</guid>
+      <guid>https://timber.github.io/docs/reference/timber-user/</guid>
       <description>&lt;p&gt;This is used in Timber to represent users retrived from WordPress. You can call &lt;code&gt;$my_user = new Timber\User(123);&lt;/code&gt; directly, or access it through the &lt;code&gt;{{ post.author }}&lt;/code&gt; method.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>

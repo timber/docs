@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Getting-starteds on Timber Docs</title>
-    <link>http://timber.github.io/getting-started/</link>
+    <link>https://timber.github.io/docs/getting-started/</link>
     <description>Recent content in Getting-starteds on Timber Docs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="http://timber.github.io/getting-started/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://timber.github.io/docs/getting-started/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Setup</title>
-      <link>http://timber.github.io/getting-started/setup/</link>
+      <link>https://timber.github.io/docs/getting-started/setup/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://timber.github.io/getting-started/setup/</guid>
+      <guid>https://timber.github.io/docs/getting-started/setup/</guid>
       <description>Installation Via WordPress.org (easy) You can just grab the all-things-included plugin at WordPress.org either through the WP site or your Plugins-&amp;gt;Add New in wp-admin. Then skip ahead to using the starter theme.
 Via GitHub (for developers) The GitHub version of Timber requires Composer. If you&amp;rsquo;d prefer one-click installation, you should use the WordPress.org version.
 composer require timber/timber  If your theme is not setup to pull in Composer&amp;rsquo;s autoload file, you will need to:</description>
@@ -23,10 +23,10 @@ composer require timber/timber  If your theme is not setup to pull in Composer&a
     
     <item>
       <title>Themeing</title>
-      <link>http://timber.github.io/getting-started/themeing/</link>
+      <link>https://timber.github.io/docs/getting-started/themeing/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://timber.github.io/getting-started/themeing/</guid>
+      <guid>https://timber.github.io/docs/getting-started/themeing/</guid>
       <description>Your first Timber project Let&amp;rsquo;s start with your single post Find this file:
 wp-content/themes/{timber-starter-theme}/views/single.twig  Brilliant! Open it up.
 {% extends &amp;quot;base.twig&amp;quot; %} {% block content %} &amp;lt;div class=&amp;quot;content-wrapper&amp;quot;&amp;gt; &amp;lt;article class=&amp;quot;post-type-{{ post.post_type }}&amp;quot; id=&amp;quot;post-{{ post.ID }}&amp;quot;&amp;gt; &amp;lt;section class=&amp;quot;article-content&amp;quot;&amp;gt; &amp;lt;h1 class=&amp;quot;article-h1&amp;quot;&amp;gt;{{ post.title }}&amp;lt;/h1&amp;gt; &amp;lt;h2 class=&amp;quot;article-h2&amp;quot;&amp;gt;{{ post.subtitle }}&amp;lt;/h2&amp;gt; &amp;lt;p class=&amp;quot;blog-author&amp;quot;&amp;gt;&amp;lt;span&amp;gt;By&amp;lt;/span&amp;gt; {{ post.author.name }} &amp;lt;span&amp;gt;&amp;amp;bull;&amp;lt;/span&amp;gt; {{ post.post_date|date }}&amp;lt;/p&amp;gt; {{ post.content }} &amp;lt;/section&amp;gt; &amp;lt;/article&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;!-- /content-wrapper --&amp;gt; {% endblock %}  This is the fun part.</description>
@@ -34,20 +34,20 @@ wp-content/themes/{timber-starter-theme}/views/single.twig  Brilliant! Open it u
     
     <item>
       <title>Twig Tools</title>
-      <link>http://timber.github.io/getting-started/twig-tools/</link>
+      <link>https://timber.github.io/docs/getting-started/twig-tools/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://timber.github.io/getting-started/twig-tools/</guid>
+      <guid>https://timber.github.io/docs/getting-started/twig-tools/</guid>
       <description>The purpose of this page is to identify helpful tools for working with Twig.
 Text editor add-ons  Text Mate &amp;amp; Sublime text bundle - Anomareh&amp;rsquo;s PHP-Twig Emacs - Web Mode Geany - add Twig/Symfony2 detection and highlighting PHPStorm - Built in coloring and code hinting. The twig extension is recognized and has been for some time. Twig Details for PHPStorm  Other  Watson-Ruby (inline issue manager - put tags like [todo] in a Twig comment and find it easily later!</description>
     </item>
     
     <item>
       <title>Video Tutorials</title>
-      <link>http://timber.github.io/getting-started/video-tutorials/</link>
+      <link>https://timber.github.io/docs/getting-started/video-tutorials/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://timber.github.io/getting-started/video-tutorials/</guid>
+      <guid>https://timber.github.io/docs/getting-started/video-tutorials/</guid>
       <description>I&amp;rsquo;m in the midst of an install and walk-through on Timber, here are the screencasts thus far:
 1. Install Timber Option 1: Via GitHub (for developers) 1) Navigate to your WordPress plugins directory $ cd ~/Sites/mywordpress/wp-content/plugins  2) Use git to grab the repo $ git clone git@github.com:jarednova/timber.git  3) Use Composer to download the dependencies (Twig, etc.) $ cd timber $ composer install  Option 2: Via Composer (for developers) 1) Navigate to your WordPress plugins directory $ cd ~/Sites/mywordpress/wp-content/plugins  2) Use Composer to create project and download the dependencies (Twig, etc.</description>
     </item>

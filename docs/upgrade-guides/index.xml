@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Upgrade-guides on Timber Docs</title>
-    <link>http://timber.github.io/upgrade-guides/</link>
+    <link>https://timber.github.io/docs/upgrade-guides/</link>
     <description>Recent content in Upgrade-guides on Timber Docs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="http://timber.github.io/upgrade-guides/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://timber.github.io/docs/upgrade-guides/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Upgrade to 1.0</title>
-      <link>http://timber.github.io/upgrade-guides/1.0/</link>
+      <link>https://timber.github.io/docs/upgrade-guides/1.0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://timber.github.io/upgrade-guides/1.0/</guid>
+      <guid>https://timber.github.io/docs/upgrade-guides/1.0/</guid>
       <description>A significant part of this 1.0 release is removing lots of deprecated functions and methods that go back to the earliest designs for Timber in early 2013.
 Should I upgrade? Maybe. Read on:
 I have a legacy site If you wrote a theme in 2014, it&amp;rsquo;s running fine and the development of the site has concluded: stop right there! Do not upgrade! While there are some slight performance benefits (and not having the warning light on the plugin dashboard) it&amp;rsquo;s not worth it to you.</description>
