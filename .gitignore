@@ -3,5 +3,3 @@
 /vendor/
 /content/**/*
 /generator/timber-current/*
-docs
-docs/reference
