@@ -3,7 +3,7 @@
 
 # baseURL including a trailing slash
 baseURL: "https://timber.github.io/docs/"
-languageCode: "en-us"
+languageCode: "en"
 title: "Timber Docs"
 publishDir: "docs"
 
