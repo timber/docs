@@ -9,7 +9,7 @@
     overflow-y: auto;
     overflow-x: hidden;
 
-	padding: $header-height $nav-padding $nav-padding $nav-padding;
+	padding: ($header-height + 20px) $nav-padding $nav-padding $nav-padding;
 
     background-color: $grey-light;
 }
