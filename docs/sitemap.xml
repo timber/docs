@@ -3,209 +3,209 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://timber.github.io/guides/acf-cookbook/</loc>
+    <loc>https://timber.github.io/docs/guides/acf-cookbook/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/categories/</loc>
+    <loc>https://timber.github.io/docs/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://timber.github.io/guides/cheatsheet/</loc>
+    <loc>https://timber.github.io/docs/guides/cheatsheet/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/guides/custom-page-templates/</loc>
+    <loc>https://timber.github.io/docs/guides/custom-page-templates/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/guides/debugging/</loc>
+    <loc>https://timber.github.io/docs/guides/debugging/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/guides/escapers/</loc>
+    <loc>https://timber.github.io/docs/guides/escapers/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/guides/extending-timber/</loc>
+    <loc>https://timber.github.io/docs/guides/extending-timber/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/guides/filters/</loc>
+    <loc>https://timber.github.io/docs/guides/filters/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/guides/functions/</loc>
+    <loc>https://timber.github.io/docs/guides/functions/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/getting-started/</loc>
+    <loc>https://timber.github.io/docs/getting-started/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://timber.github.io/guides/</loc>
+    <loc>https://timber.github.io/docs/guides/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://timber.github.io/guides/cookbook-images/</loc>
+    <loc>https://timber.github.io/docs/guides/cookbook-images/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/guides/internationalization/</loc>
+    <loc>https://timber.github.io/docs/guides/internationalization/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/guides/pagination/</loc>
+    <loc>https://timber.github.io/docs/guides/pagination/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/guides/performance/</loc>
+    <loc>https://timber.github.io/docs/guides/performance/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/reference/</loc>
+    <loc>https://timber.github.io/docs/reference/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://timber.github.io/guides/routing/</loc>
+    <loc>https://timber.github.io/docs/guides/routing/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/getting-started/setup/</loc>
+    <loc>https://timber.github.io/docs/getting-started/setup/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/guides/sidebars/</loc>
+    <loc>https://timber.github.io/docs/guides/sidebars/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/tags/</loc>
+    <loc>https://timber.github.io/docs/tags/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://timber.github.io/guides/template-locations/</loc>
+    <loc>https://timber.github.io/docs/guides/template-locations/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/guides/testing/</loc>
+    <loc>https://timber.github.io/docs/guides/testing/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/guides/cookbook-text/</loc>
+    <loc>https://timber.github.io/docs/guides/cookbook-text/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/getting-started/themeing/</loc>
+    <loc>https://timber.github.io/docs/getting-started/themeing/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/</loc>
+    <loc>https://timber.github.io/docs/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/reference/timber-archives/</loc>
+    <loc>https://timber.github.io/docs/reference/timber-archives/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/reference/timber-comment/</loc>
+    <loc>https://timber.github.io/docs/reference/timber-comment/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/reference/timber-helper/</loc>
+    <loc>https://timber.github.io/docs/reference/timber-helper/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/reference/timber-image/</loc>
+    <loc>https://timber.github.io/docs/reference/timber-image/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/reference/timber-imagehelper/</loc>
+    <loc>https://timber.github.io/docs/reference/timber-imagehelper/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/reference/timber-menu/</loc>
+    <loc>https://timber.github.io/docs/reference/timber-menu/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/reference/timber-menuitem/</loc>
+    <loc>https://timber.github.io/docs/reference/timber-menuitem/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/reference/timber-pagination/</loc>
+    <loc>https://timber.github.io/docs/reference/timber-pagination/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/reference/timber-post/</loc>
+    <loc>https://timber.github.io/docs/reference/timber-post/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/reference/timber-postpreview/</loc>
+    <loc>https://timber.github.io/docs/reference/timber-postpreview/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/reference/timber-postquery/</loc>
+    <loc>https://timber.github.io/docs/reference/timber-postquery/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/reference/timber-site/</loc>
+    <loc>https://timber.github.io/docs/reference/timber-site/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/reference/timber-term/</loc>
+    <loc>https://timber.github.io/docs/reference/timber-term/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/reference/timber-texthelper/</loc>
+    <loc>https://timber.github.io/docs/reference/timber-texthelper/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/reference/timber-theme/</loc>
+    <loc>https://timber.github.io/docs/reference/timber-theme/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/reference/timber/</loc>
+    <loc>https://timber.github.io/docs/reference/timber/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/reference/timber-urlhelper/</loc>
+    <loc>https://timber.github.io/docs/reference/timber-urlhelper/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/reference/timber-user/</loc>
+    <loc>https://timber.github.io/docs/reference/timber-user/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/guides/cookbook-twig/</loc>
+    <loc>https://timber.github.io/docs/guides/cookbook-twig/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/getting-started/twig-tools/</loc>
+    <loc>https://timber.github.io/docs/getting-started/twig-tools/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/upgrade-guides/1.0/</loc>
+    <loc>https://timber.github.io/docs/upgrade-guides/1.0/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/upgrade-guides/</loc>
+    <loc>https://timber.github.io/docs/upgrade-guides/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://timber.github.io/getting-started/video-tutorials/</loc>
+    <loc>https://timber.github.io/docs/getting-started/video-tutorials/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/guides/woocommerce/</loc>
+    <loc>https://timber.github.io/docs/guides/woocommerce/</loc>
   </url>
   
   <url>
-    <loc>http://timber.github.io/guides/wp-integration/</loc>
+    <loc>https://timber.github.io/docs/guides/wp-integration/</loc>
   </url>
   
 </urlset>

@@ -1,7 +1,7 @@
 <header class="header">
-    <a class="logo-link" href="/">
+    <a class="logo-link" href="{{ .Site.BaseURL }}">
         <div id="logo">
-            <img src="/images/timberlogo.svg" alt="Timber" style="width:105px;height:30px;border:0">
+            <img src="{{ .Site.BaseURL }}images/timberlogo.svg" alt="Timber" style="width:105px;height:30px;border:0">
         </div>
     </a>
     <nav class="nav nav--top" id="nav-top">
@@ -18,7 +18,7 @@
             </li>
             <li>
                 <a class="nav__link" href="https://github.com/timber/timber" target="_blank" rel="noreferrer noopener">
-                    <img src="/images/Github.png" alt="Star on Github" style="width:29px;height:29px;border:0">
+                    <img src="{{ .Site.BaseURL }}images/Github.png" alt="Star on Github" style="width:29px;height:29px;border:0">
                 </a>
             </li>
         </ul>
