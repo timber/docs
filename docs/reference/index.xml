@@ -60,17 +60,18 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-imagehelper/</guid>
-      <description>&lt;p&gt;Implements the Twig image filters:
-&lt;a href=&#34;https://github.com/timber/timber/wiki/Image-cookbook#arbitrary-resizing-of-images&#34;&gt;https://github.com/timber/timber/wiki/Image-cookbook#arbitrary-resizing-of-images&lt;/a&gt;
-- resize
-- retina
-- letterbox
-- tojpg&lt;/p&gt;
+      <description>&lt;p&gt;Implements the &lt;a href=&#34;https://github.com/timber/timber/wiki/Image-cookbook#arbitrary-resizing-of-images&#34;&gt;Twig image
+filters&lt;/a&gt;
+&lt;code&gt;resize&lt;/code&gt;, &lt;code&gt;retina&lt;/code&gt;, &lt;code&gt;letterbox&lt;/code&gt; and  &lt;code&gt;tojpg&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;Implementation:
-- public static functions provide the methods that are called by the filter
-- most of the work is common to all filters (URL analysis, directory gymnastics, file caching, error management) and done by private static functions
-- the specific part (actual image processing) is delegated to dedicated subclasses of TimberImageOperation&lt;/p&gt;
+&lt;p&gt;Implementation:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;public static functions provide the methods that are called by the filter&lt;/li&gt;
+&lt;li&gt;most of the work is common to all filters (URL analysis, directory gymnastics, file caching, error management) and
+done by private static functions&lt;/li&gt;
+&lt;li&gt;the specific part (actual image processing) is delegated to dedicated subclasses of TimberImageOperation&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
