@@ -181,34 +181,23 @@
 <ul>
 <li>
 <ul>
-<li><a href="#your-first-timber-project">Your first Timber project</a>
-<ul>
-<li><a href="#let-s-start-with-your-single-post">Let&rsquo;s start with your single post</a>
-<ul>
-<li><a href="#this-is-the-fun-part">This is the fun part.</a></li>
-</ul></li>
+<li><a href="#your-first-timber-project">Your first Timber project</a></li>
 <li><a href="#blocks">Blocks</a>
-<ul>
-<li>
 <ul>
 <li><a href="#nesting-blocks-multiple-inheritance">Nesting Blocks, Multiple Inheritance</a></li>
 </ul></li>
+<li><a href="#the-index-page">The index page</a>
+<ul>
+<li><a href="#get-the-context">Get the context</a></li>
+<li><a href="#grab-your-posts">Grab your posts</a></li>
 </ul></li>
-<li><a href="#loop-index-page">Loop / Index page</a>
+<li><a href="#how-to-use-timber-get-posts">How to use Timber::get_posts()</a>
 <ul>
-<li><a href="#get-the-starter">Get the starter</a></li>
-<li><a href="#grab-your-posts">Grab your posts</a>
-<ul>
-<li><a href="#timber-get-posts-usage">Timber::get_posts() usage</a>
-<ul>
-<li><a href="#use-a-wp-query-http-codex-wordpress-org-class-reference-wp-query-array">Use a <a href="http://codex.wordpress.org/Class_Reference/WP_Query">WP_Query</a> array</a></li>
-</ul></li>
-<li><a href="#use-a-wp-query-http-codex-wordpress-org-class-reference-wp-query-string">Use a <a href="http://codex.wordpress.org/Class_Reference/WP_Query">WP_Query</a> string</a></li>
+<li><a href="#use-a-wp-query-array">Use a WP_Query array</a></li>
+<li><a href="#use-a-wp-query-string">Use a WP_Query string</a></li>
 <li><a href="#use-post-id-numbers">Use Post ID numbers</a></li>
 </ul></li>
 <li><a href="#render">Render</a></li>
-</ul></li>
-</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -220,9 +209,7 @@
 
 <h2 id="your-first-timber-project">Your first Timber project</h2>
 
-<h3 id="let-s-start-with-your-single-post">Let&rsquo;s start with your single post</h3>
-
-<p>Find this file:</p>
+<p>Let&rsquo;s start with your single post. Find this file:</p>
 
 <pre><code class="language-html">	wp-content/themes/{timber-starter-theme}/views/single.twig
 </code></pre>
@@ -244,7 +231,9 @@
 {% endblock %}
 </code></pre>
 
-<h4 id="this-is-the-fun-part">This is the fun part.</h4>
+<p><strong>What did we just do?</strong></p>
+
+<p>This is the fun part.</p>
 
 <pre><code class="language-twig">&lt;h1 class=&quot;article-h1&quot;&gt;{{ post.title }}&lt;/h1&gt;
 </code></pre>
@@ -273,7 +262,7 @@
 
 <p>What if you want modify <code>&lt;head&gt;</code>, etc? Read on to learn all about blocks.</p>
 
-<h3 id="blocks">Blocks</h3>
+<h2 id="blocks">Blocks</h2>
 
 <p>Blocks are the single most important and powerful concept in managing your templates. The <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">official Twig Documentation</a> has more details. Let&rsquo;s cover the basics.</p>
 
@@ -284,7 +273,7 @@
 
 <p>If you were to peek into <strong>base.twig</strong> you would see a matching set of <code>{% block content %} / {% endblock %}</code> tags. <strong>single.twig</strong> is replacing the content of base&rsquo;s <code>{% block content %}</code> with its own.</p>
 
-<h5 id="nesting-blocks-multiple-inheritance">Nesting Blocks, Multiple Inheritance</h5>
+<h3 id="nesting-blocks-multiple-inheritance">Nesting Blocks, Multiple Inheritance</h3>
 
 <p>This is when things get really cool. Whereas most people use PHP includes in a linear fashion, you can create infinite levels of nested blocks to particularly control your page templates. For example, let&rsquo;s say you occasionally want to replace the title/headline on your <code>single.twig</code> template with a custom image or typography.</p>
 
@@ -328,7 +317,7 @@
 
 <p>What if you want to <strong>add</strong> to the block as opposed to replace? No prob, just call <code>{{ parent() }}</code> where the parent&rsquo;s content should go.</p>
 
-<h3 id="loop-index-page">Loop / Index page</h3>
+<h2 id="the-index-page">The index page</h2>
 
 <p>Let&rsquo;s crack open <strong>index.php</strong> and see what&rsquo;s inside:</p>
 
@@ -340,7 +329,7 @@ Timber::render('index.twig', $context);
 
 <p>This is where we are going to handle the logic that powers our index file. Let&rsquo;s go step-by-step.</p>
 
-<h4 id="get-the-starter">Get the starter</h4>
+<h3 id="get-the-context">Get the context</h3>
 
 <pre><code class="language-php">&lt;?php
 $context = Timber::get_context();
@@ -348,7 +337,7 @@ $context = Timber::get_context();
 
 <p>This is going to return an object with a lot of the common things we need across the site. Things like the site name, the description or the navigation menu you&rsquo;ll want to start with each time (even if you over-write them later). You can do a <code>print_r( $context );</code> to see what’s inside or open-up <a href="https://github.com/timber/timber/blob/master/lib/Timber.php"><strong>Timber.php</strong></a> to inspect for yourself.</p>
 
-<h4 id="grab-your-posts">Grab your posts</h4>
+<h3 id="grab-your-posts">Grab your posts</h3>
 
 <pre><code class="language-php">&lt;?php
 $context['posts'] = Timber::get_posts();
@@ -356,9 +345,9 @@ $context['posts'] = Timber::get_posts();
 
 <p>We&rsquo;re now going to grab the posts that are inside the loop and stick them inside our data object under the <strong>posts</strong> key.</p>
 
-<h5 id="timber-get-posts-usage">Timber::get_posts() usage</h5>
+<h2 id="how-to-use-timber-get-posts">How to use Timber::get_posts()</h2>
 
-<h6 id="use-a-wp-query-http-codex-wordpress-org-class-reference-wp-query-array">Use a <a href="http://codex.wordpress.org/Class_Reference/WP_Query">WP_Query</a> array</h6>
+<h3 id="use-a-wp-query-array">Use a WP_Query array</h3>
 
 <pre><code class="language-php">	&lt;?php
 	$args = array(
@@ -381,21 +370,23 @@ $context['posts'] = Timber::get_posts();
 	$context['posts'] = Timber::get_posts($args);
 </code></pre>
 
-<h5 id="use-a-wp-query-http-codex-wordpress-org-class-reference-wp-query-string">Use a <a href="http://codex.wordpress.org/Class_Reference/WP_Query">WP_Query</a> string</h5>
+<p>You can find all available options in the documentation for <a href="http://codex.wordpress.org/Class_Reference/WP_Query">WP_Query</a>.</p>
+
+<h3 id="use-a-wp-query-string">Use a WP_Query string</h3>
 
 <pre><code class="language-php">	&lt;?php
 	$args = 'post_type=movies&amp;numberposts=8&amp;orderby=rand';
 	$context['posts'] = Timber::get_posts($args);
 </code></pre>
 
-<h5 id="use-post-id-numbers">Use Post ID numbers</h5>
+<h3 id="use-post-id-numbers">Use Post ID numbers</h3>
 
 <pre><code class="language-php">	&lt;?php
 	$ids = array(14, 123, 234, 421, 811, 6);
 	$context['posts'] = Timber::get_posts($ids);
 </code></pre>
 
-<h4 id="render">Render</h4>
+<h2 id="render">Render</h2>
 
 <pre><code class="language-php">&lt;?php
 Timber::render('index.twig', $context);

@@ -8,13 +8,10 @@ p {
 }
 
 .content {
-    & > h1,
-    & > h2,
-	& > h3 {
+	& > :first-child {
 		margin-top: 0;
 		padding-top: 0;
-        clear: both;
-    }
+	}
 
     h3 + pre {
         margin-top: 1.5em;
@@ -30,14 +27,15 @@ p {
 			& + h4,
 			& + h5,
 			& + h6 {
-				padding-top: 2em;
+				margin-top: 0;
+				padding-top: 1em;
 			}
 		}
 
 		& + p,
 		& + ul,
 		& + ol {
-			padding-top: 1em;
+			padding-top: 0;
 		}
 
 		& + div {
@@ -128,8 +126,13 @@ p {
         text-transform: none;
         font-weight: $font-weight-normal;
         @extend %code-font;
-        @extend %break-words;
     }
+
+	h1, h2, h3, h4, h5, h6, a {
+		code {
+			font-size: inherit;
+		}
+	}
 
     table code {
         word-break: normal;

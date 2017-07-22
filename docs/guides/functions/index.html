@@ -199,9 +199,8 @@
 			<div class="content">
 				
 
-<p>My theme/plugin has some functions I need! Do I really have to re-write all of them?</p>
-
-<p>No.</p>
+<p>My theme/plugin has some functions I need! Do I really have to re-write all of them?<br />
+No, you don’t.</p>
 
 <h2 id="function">function()</h2>
 
@@ -246,7 +245,7 @@
 
 <h2 id="make-functions-available-in-twig">Make functions available in Twig</h2>
 
-<p>If you have functions that you use a lot and want to improve readability of your code, you can make a function available in Twig by using <code>Twig_SimpleFunction</code> inside the <code>timber/twig</code> hook.</p>
+<p>If you have functions that you use a lot and want to improve readability of your code, you can make a function available in Twig by using <code>Timber\Twig_Function</code> inside the <code>timber/twig</code> hook.</p>
 
 <pre><code class="language-php">/**
  * My custom Twig functionality.
@@ -255,7 +254,7 @@
  * @return $twig
  */
 add_filter( 'timber/twig', function( \Twig_Environment $twig ) {
-	$twig-&gt;addFunction( new \Twig_SimpleFunction( 'edit_post_link', 'edit_post_link' ) );
+	$twig-&gt;addFunction( new Twig_Function( 'edit_post_link', 'edit_post_link' ) );
 } );
 </code></pre>
 

@@ -181,29 +181,15 @@
 <ul>
 <li>
 <ul>
-<li>
-<ul>
-<li>
-<ul>
 <li><a href="#some-examples">Some examples</a></li>
 <li><a href="#map">map</a>
 <ul>
-<li>
-<ul>
-<li><a href="#routes-map-pattern-callback"><code>Routes::map($pattern, $callback)</code></a></li>
-<li><a href="#usage">Usage:</a></li>
-<li><a href="#arguments">Arguments:</a></li>
-</ul></li>
+<li><a href="#usage">Usage</a></li>
+<li><a href="#arguments">Arguments</a></li>
 </ul></li>
 <li><a href="#load">load</a>
 <ul>
-<li>
-<ul>
-<li><a href="#routes-load-php-file-args-query-null-status-code-200"><code>Routes::load($php_file, $args, $query = null, $status_code = 200)</code></a></li>
-<li><a href="#arguments-1">Arguments:</a></li>
-</ul></li>
-</ul></li>
-</ul></li>
+<li><a href="#arguments-1">Arguments</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -216,7 +202,7 @@
 
 <p>Among its other special powers, Timber includes modern routing in the Express.js/Ruby on Rails mold, making it easy for you to implement custom pagination&ndash;and anything else you might imagine in your wildest dreams of URLs and parameters. OMG so easy!</p>
 
-<h4 id="some-examples">Some examples</h4>
+<h2 id="some-examples">Some examples</h2>
 
 <p>In your functions.php file, this can be called anywhere (don&rsquo;t hook it to init or another action or it might be called too late)</p>
 
@@ -233,11 +219,11 @@ Routes::map('blog/:name/page/:pg', function($params){
 });
 </code></pre>
 
-<h4 id="map">map</h4>
+<h2 id="map">map</h2>
 
-<h6 id="routes-map-pattern-callback"><code>Routes::map($pattern, $callback)</code></h6>
+<p><code>Routes::map($pattern, $callback)</code></p>
 
-<h6 id="usage">Usage:</h6>
+<h3 id="usage">Usage</h3>
 
 <p>A <code>functions.php</code> where I want to display custom paginated content:</p>
 
@@ -251,7 +237,7 @@ Routes::map('info/:name/page/:pg', function($params){
 });
 </code></pre>
 
-<h6 id="arguments">Arguments:</h6>
+<h3 id="arguments">Arguments</h3>
 
 <p><code>$pattern</code> (required)
 Set a pattern for Timber to match on, by default everything is handled as a string. Any segment that begins with a <code>:</code> is handled as a variable, for example:</p>
@@ -277,11 +263,11 @@ A function that should fire when the pattern matches the request. Callback takes
 
 <hr />
 
-<h4 id="load">load</h4>
+<h2 id="load">load</h2>
 
-<h6 id="routes-load-php-file-args-query-null-status-code-200"><code>Routes::load($php_file, $args, $query = null, $status_code = 200)</code></h6>
+<p><code>Routes::load($php_file, $args, $query = null, $status_code = 200)</code></p>
 
-<h6 id="arguments-1">Arguments:</h6>
+<h3 id="arguments-1">Arguments</h3>
 
 <p><code>$php_file</code> (required)
 A PHP file to load, in my experience this is usually your archive.php or a generic listing page (but don&rsquo;t worry it can be anything!)</p>

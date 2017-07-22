@@ -181,22 +181,16 @@
 <ul>
 <li>
 <ul>
-<li>
-<ul>
-<li>
-<ul>
 <li><a href="#basic-image-stuff">Basic Image stuff</a></li>
 <li><a href="#use-a-wp-image-size">Use a WP image size</a></li>
 <li><a href="#arbitrary-resizing-of-images">Arbitrary Resizing of Images</a></li>
 <li><a href="#letterboxing-images">Letterboxing Images</a></li>
 <li><a href="#converting-images">Converting images</a></li>
 <li><a href="#generating-retina-sizes">Generating Retina Sizes</a></li>
-<li><a href="#using-images-in-custom-fields">Using images in custom fields:</a>
+<li><a href="#using-images-in-custom-fields">Using images in custom fields</a>
 <ul>
 <li><a href="#the-quick-way-for-most-situations">The quick way (for most situations)</a></li>
 <li><a href="#the-long-way-for-some-special-situations">The long way (for some special situations)</a></li>
-</ul></li>
-</ul></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -207,21 +201,23 @@
 			<div class="content">
 				
 
-<p>Timber makes it damn easy to use an image in a tag. Automatically, Timber will interpret images attached to a post&rsquo;s thumbnail field (&ldquo;Featured Image&rdquo; in the admin) and treat them as <a href="TimberImage">TimberImages</a>. Then, in your Twig templates, you can access them via <code>{{post.thumbnail}}</code>. If you want to see what&rsquo;s inside the TimberImage object you can run a&hellip;</p>
+<p>Timber makes it damn easy to use an image in a tag.</p>
+
+<p>Automatically, Timber will interpret images attached to a post&rsquo;s thumbnail field (&ldquo;Featured Image&rdquo; in the admin) and treat them as <a href="TimberImage">TimberImages</a>. Then, in your Twig templates, you can access them via <code>{{post.thumbnail}}</code>. If you want to see what&rsquo;s inside the TimberImage object you can run a&hellip;</p>
 
 <pre><code class="language-twig">{{post.thumbnail|print_r}}
 </code></pre>
 
 <p>&hellip;inside one of your Twig templates.</p>
 
-<h4 id="basic-image-stuff">Basic Image stuff</h4>
+<h2 id="basic-image-stuff">Basic Image stuff</h2>
 
 <p>Again, pretty damn easy:</p>
 
 <pre><code class="language-twig">&lt;img src=&quot;{{post.thumbnail.src}}&quot; class=&quot;my-thumb-class&quot; alt=&quot;Image for {{post.title}}&quot; /&gt;
 </code></pre>
 
-<h4 id="use-a-wp-image-size">Use a WP image size</h4>
+<h2 id="use-a-wp-image-size">Use a WP image size</h2>
 
 <p>You can use WP&rsquo;s image sizes (including ones you register with your theme/plugin) by passing the name of the size to <code>src</code> like so:</p>
 
@@ -230,7 +226,7 @@
 
 <p>Note: If the WP size (e.g medium) has not been generated, it will return an empty string.</p>
 
-<h4 id="arbitrary-resizing-of-images">Arbitrary Resizing of Images</h4>
+<h2 id="arbitrary-resizing-of-images">Arbitrary Resizing of Images</h2>
 
 <p>Want to resize an image? Easy! Here we&rsquo;re going to use <a href="http://twig.sensiolabs.org/doc/filters/index.html">Twig Filters</a>.</p>
 
@@ -244,7 +240,7 @@
 
 <p>All of these filters are written specifically to interact with WordPress&rsquo;s image API. (So don&rsquo;t worry, no weird TimThumb stuff going on—this is all using WP&rsquo;s internal image sizing stuff).</p>
 
-<h4 id="letterboxing-images">Letterboxing Images</h4>
+<h2 id="letterboxing-images">Letterboxing Images</h2>
 
 <p>Let&rsquo;s say you have an image that you want to contain to a certain size without any cropping. If the proportions don&rsquo;t fit you&rsquo;ll letterbox the extra space. I find this is really useful when getting logos to all appear next to eachother. You can do this with:</p>
 
@@ -253,7 +249,7 @@
 
 <p>Here <code>width</code> and <code>height</code> are required. The third argument is the background color in hex format (default is #000000).</p>
 
-<h4 id="converting-images">Converting images</h4>
+<h2 id="converting-images">Converting images</h2>
 
 <p>Let&rsquo;s say your client or editor can be a bit lazy (no!), resorting to PNGs where only JPGs are required. I&rsquo;ve seen this a lot. People will just upload screenshots that are saved by default as PNGs. No problemo!</p>
 
@@ -267,7 +263,7 @@
 
 <p>Filters are executed from left to right. You&rsquo;ll probably want to convert to JPG before running the resizing, etc.</p>
 
-<h4 id="generating-retina-sizes">Generating Retina Sizes</h4>
+<h2 id="generating-retina-sizes">Generating Retina Sizes</h2>
 
 <p>You can use Timber to generate @2x image sizes for retina devices. For example, using <code>srcset</code>:</p>
 
@@ -287,18 +283,18 @@
 
 <hr />
 
-<h4 id="using-images-in-custom-fields">Using images in custom fields:</h4>
+<h2 id="using-images-in-custom-fields">Using images in custom fields</h2>
 
 <p>Let&rsquo;s say you&rsquo;re using a custom field plugin (like the amazing <a href="http://www.advancedcustomfields.com/">Advanced Custom Fields</a>). You can use the resulting images in your Twig templates very easily.</p>
 
 <p>When setting up your custom fields you&rsquo;ll want to save the <code>image_id</code> to the field. The image object, url, etc. <em>will</em> work but it&rsquo;s not as fool-proof.</p>
 
-<h5 id="the-quick-way-for-most-situations">The quick way (for most situations)</h5>
+<h3 id="the-quick-way-for-most-situations">The quick way (for most situations)</h3>
 
 <pre><code class="language-twig">&lt;img src=&quot;{{TimberImage(post.hero_image).src}}&quot; /&gt;
 </code></pre>
 
-<h5 id="the-long-way-for-some-special-situations">The long way (for some special situations)</h5>
+<h3 id="the-long-way-for-some-special-situations">The long way (for some special situations)</h3>
 
 <p>This is where we&rsquo;ll start in PHP.</p>
 

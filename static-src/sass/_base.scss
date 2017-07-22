@@ -51,7 +51,7 @@ article {
 	@media (min-width: $mobile-breakpoint) {
 		width: percentage(8/12);
 		right: percentage(4/12);
-		padding: 0;
+		padding: 0 0 $gutter-width 0;
 		@include make-column;
 	}
 }

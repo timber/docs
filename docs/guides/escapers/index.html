@@ -181,53 +181,11 @@
 <ul>
 <li>
 <ul>
-<li><a href="#general-escapers">General Escapers</a>
-<ul>
-<li><a href="#wp-kses-post">wp_kses_post</a>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#twig">Twig:</a></li>
-<li><a href="#output">Output:</a></li>
-</ul></li>
-</ul></li>
-</ul></li>
-<li><a href="#esc-url">esc_url</a>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#twig-1">Twig:</a></li>
-<li><a href="#output-1">Output</a></li>
-</ul></li>
-</ul></li>
-</ul></li>
-<li><a href="#esc-html">esc_html</a>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#twig-2">Twig:</a></li>
-<li><a href="#output-2">Output</a></li>
-</ul></li>
-</ul></li>
-</ul></li>
-<li><a href="#esc-js">esc_js</a>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#twig-3">Twig:</a></li>
-<li><a href="#output-3">Output</a></li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul></li>
+<li><a href="#general-escapers">General Escapers</a></li>
+<li><a href="#wp-kses-post">wp_kses_post</a></li>
+<li><a href="#esc-url">esc_url</a></li>
+<li><a href="#esc-html">esc_html</a></li>
+<li><a href="#esc-js">esc_js</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -255,13 +213,13 @@
 
 <p><a href="https://vip.wordpress.com/documentation/vip/best-practices/security/validating-sanitizing-escaping/">Relevant Documentation</a></p>
 
-<h3 id="wp-kses-post">wp_kses_post</h3>
+<h2 id="wp-kses-post">wp_kses_post</h2>
 
 <p>Background on KSES. KSES is a recursive acronym for <code>KSES Kills Evil Scripts</code>. It&rsquo;s goal is to ensure only  &ldquo;allowed&rdquo; HTML element names, attribute names and attribute values plus only sane HTML entities in the string. Allowed is based on a configuration.</p>
 
 <p>This uses ths internal WordPress method that sanitize content for allowed HTML tags for post content. The configuration used can be found by running <code>wp_kses_allowed_html( 'post' );</code> <a href="https://codex.wordpress.org/Function_Reference/wp_kses_post">WordPress Documentation</a></p>
 
-<h6 id="twig">Twig:</h6>
+<p><strong>Twig</strong></p>
 
 <p><code>&lt;p class=&quot;intro&quot;&gt;{{post.post_content|e('wp_kses_post')}}&lt;/p&gt;</code></p>
 
@@ -269,51 +227,51 @@
 
 <p><code>&lt;div foo=&quot;bar&quot; src=&quot;bum&quot;&gt;Foo&lt;/div&gt;&lt;script&gt;DoEvilThing();&lt;/script&gt;</code></p>
 
-<h6 id="output">Output:</h6>
+<p><strong>Output</strong></p>
 
 <p><code>&lt;div&gt;Foo&lt;/div&gt;DoEvilThing();</code></p>
 
 <hr />
 
-<h3 id="esc-url">esc_url</h3>
+<h2 id="esc-url">esc_url</h2>
 
 <p>Uses WordPress&rsquo; internal <code>esc_url</code> function on text. This should be used to sanitize URLs. <a href="https://codex.wordpress.org/Function_Reference/esc_url">WordPress Documentation</a></p>
 
-<h6 id="twig-1">Twig:</h6>
+<p><strong>Twig</strong></p>
 
 <p><code>&lt;a href=&quot;{{ post.get_field('custom_link')|e('esc_url'); }}&quot;&gt;&lt;/a&gt;</code></p>
 
-<h6 id="output-1">Output</h6>
+<p><strong>Output</strong></p>
 
 <p><code>&lt;a href=&quot;http://google.com&quot;&gt;&lt;/a&gt;</code></p>
 
 <hr />
 
-<h3 id="esc-html">esc_html</h3>
+<h2 id="esc-html">esc_html</h2>
 
 <p>Escaping for HTML blocks. It converts any potentially conflicting HTML entities to their encoded equivalent to prevent them from being rendered as markup by the browser, e.g. converts &ldquo;&lt;&rdquo; to &ldquo;&lt;&rdquo; and double quotes &ldquo; to &ldquo;$quot;&rdquo;</p>
 
 <p>This is for plain old text. If your content has HTML markup you should not use <code>esc_html</code> which will render the HTML as it looks in your code editor &ndash; to preserve the HTML you will want to use <code>wp_kses_post</code></p>
 
-<h6 id="twig-2">Twig:</h6>
+<p><strong>Twig</strong></p>
 
 <p><code>&lt;div class=&quot;equation&quot;&gt;{{ post.get_field('equation')|e('esc_html') }}&lt;/div&gt;</code></p>
 
-<h6 id="output-2">Output</h6>
+<p><strong>Output</strong></p>
 
 <p><code>&lt;div class=&quot;equation&quot;&gt;is x &amp;lt; y?&lt;/div&gt;</code></p>
 
 <hr />
 
-<h3 id="esc-js">esc_js</h3>
+<h2 id="esc-js">esc_js</h2>
 
 <p>Escapes text strings for echoing in JS. It is intended to be used for inline JS (in a tag attribute, for example onclick=”…”). Note that the strings have to be in single quotes. The filter ‘js_escape’ is also applied.</p>
 
-<h6 id="twig-3">Twig:</h6>
+<p><strong>Twig</strong></p>
 
 <p><code>&lt;script&gt;var bar = '{{ post.get_field('name') }}';&lt;/script&gt;</code></p>
 
-<h6 id="output-3">Output</h6>
+<p><strong>Output</strong></p>
 
 <p><code>&lt;script&gt;var bar = 'Gabrielle';&lt;/script&gt;</code></p>
 

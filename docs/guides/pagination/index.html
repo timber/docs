@@ -181,11 +181,9 @@
 <ul>
 <li>
 <ul>
-<li>
-<ul>
+<li><a href="#default-pagination">Default pagination</a></li>
 <li><a href="#what-if-i-m-not-using-the-default-query">What if I&rsquo;m not using the default query?</a></li>
-<li><a href="#the-pre-get-posts-way">The pre_get_posts Way</a></li>
-</ul></li>
+<li><a href="#pagination-with-pre-get-posts">Pagination with pre_get_posts</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -196,6 +194,8 @@
 				
 
 <p>Do you like pagination? Stupid question, of course you do. Well, here&rsquo;s how you do it.</p>
+
+<h2 id="default-pagination">Default pagination</h2>
 
 <p>This will only work in a php file with an active query (like <code>archive.php</code> or <code>home.php</code>):</p>
 
@@ -228,9 +228,7 @@
 &lt;/div&gt;
 </code></pre>
 
-<h3 id="what-if-i-m-not-using-the-default-query">What if I&rsquo;m not using the default query?</h3>
-
-<p>No problem!</p>
+<h2 id="what-if-i-m-not-using-the-default-query">What if I&rsquo;m not using the default query?</h2>
 
 <pre><code class="language-php">	&lt;?php
 	global $paged;
@@ -247,7 +245,7 @@
 	Timber::render('page-events.twig', $context);
 </code></pre>
 
-<h3 id="the-pre-get-posts-way">The pre_get_posts Way</h3>
+<h2 id="pagination-with-pre-get-posts">Pagination with pre_get_posts</h2>
 
 <p>Custom <code>query_posts</code> sometimes shows 404 on example.com/page/2. In that case you can also use <code>pre_get_posts</code> in your functions.php file:</p>
 

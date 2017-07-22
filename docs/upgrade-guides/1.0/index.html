@@ -183,36 +183,17 @@
 <ul>
 <li><a href="#should-i-upgrade">Should I upgrade?</a>
 <ul>
-<li>
-<ul>
 <li><a href="#i-have-a-legacy-site">I have a legacy site</a></li>
 <li><a href="#i-have-a-site-under-continued-development">I have a site under continued development</a></li>
 <li><a href="#i-am-starting-a-new-site">I am starting a new site.</a></li>
 </ul></li>
-</ul></li>
 <li><a href="#routes">Routes</a>
 <ul>
-<li>
-<ul>
-<li>
-<ul>
 <li><a href="#1-add-to-composer-optional-but-recommended">1. Add to Composer (optional, but recommended)</a></li>
-<li><a href="#2-add-to-your-theme">2. Add to your theme:</a></li>
-<li><a href="#3-update-your-routes">3. Update your Routes:</a>
-<ul>
-<li><a href="#before">Before:</a></li>
-<li><a href="#after">After:</a></li>
+<li><a href="#2-add-to-your-theme">2. Add to your theme</a></li>
+<li><a href="#3-update-your-routes">3. Update your Routes</a></li>
 </ul></li>
-</ul></li>
-</ul></li>
-</ul></li>
-<li><a href="#object-properties">Object Properties</a>
-<ul>
-<li>
-<ul>
-<li><a href="#post">Post</a></li>
-</ul></li>
-</ul></li>
+<li><a href="#post-object-properties">Post Object Properties</a></li>
 <li><a href="#static-methods">Static methods</a></li>
 <li><a href="#deprecated">Deprecated</a></li>
 </ul></li>
@@ -230,15 +211,15 @@
 
 <p>Maybe. Read on:</p>
 
-<h4 id="i-have-a-legacy-site">I have a legacy site</h4>
+<h3 id="i-have-a-legacy-site">I have a legacy site</h3>
 
 <p>If you wrote a theme in 2014, it&rsquo;s running fine and the development of the site has concluded: stop right there! Do not upgrade! While there are some slight performance benefits (and not having the warning light on the plugin dashboard) it&rsquo;s not worth it to you. Close this window and forget you ever heard about Timber 1.0</p>
 
-<h4 id="i-have-a-site-under-continued-development">I have a site under continued development</h4>
+<h3 id="i-have-a-site-under-continued-development">I have a site under continued development</h3>
 
 <p>Maybe. There are going to be tradeoffs with whatever route you pick. I recommend testing your site thoroughly with a staging or local copy to find all the issues before applying Timber 1.0 to production. However, you&rsquo;re the best judge of how much potential refactoring you&rsquo;re looking at and whether it&rsquo;s worth the benefits.</p>
 
-<h4 id="i-am-starting-a-new-site">I am starting a new site.</h4>
+<h3 id="i-am-starting-a-new-site">I am starting a new site.</h3>
 
 <p>Definitely. You&rsquo;ll get the benefits of being on the newest platform. We have some cool stuff ahead that you&rsquo;ll want to include in your development workflow, and of course you&rsquo;ll learn about the newest/best ways to make Timber themes.</p>
 
@@ -246,7 +227,7 @@
 
 <p>The Routes feature has now been totally deprecated. If you have custom routes you&rsquo;ll need to add the <a href="https://github.com/upstatement/routes">Upstatement/routes</a> repo to your theme? How to do this?</p>
 
-<h5 id="1-add-to-composer-optional-but-recommended">1. Add to Composer (optional, but recommended)</h5>
+<h3 id="1-add-to-composer-optional-but-recommended">1. Add to Composer (optional, but recommended)</h3>
 
 <p>Simply add <code>Upstatement/routes</code> to your <code>composer.json</code> file like so:</p>
 
@@ -261,7 +242,7 @@
 
 <p><em>Note: because we&rsquo;re not monsters, the [Upstatement/routes] repo will continue to be included with Timber for the next several versions</em></p>
 
-<h5 id="2-add-to-your-theme">2. Add to your theme:</h5>
+<h3 id="2-add-to-your-theme">2. Add to your theme</h3>
 
 <p>If you haven&rsquo;t already, you&rsquo;ll need to load Composer&rsquo;s autoload file into your theme via:</p>
 
@@ -270,11 +251,11 @@
 require_once('vendor/autoload.php');
 </code></pre>
 
-<h5 id="3-update-your-routes">3. Update your Routes:</h5>
+<h3 id="3-update-your-routes">3. Update your Routes</h3>
 
 <p>Now just update the PHP for your old routes to the new ones. It&rsquo;ll be basically the same code, but with cleaner syntax <strong>and a different arguments order for the <code>::load</code> method</strong></p>
 
-<h6 id="before">Before:</h6>
+<p><strong>Before</strong></p>
 
 <pre><code class="language-php">&lt;?php
 Timber::add_route('myfoo/bar', 'my_callback_function');
@@ -284,7 +265,7 @@ Timber::add_route('my-events/:event', function($params) {
 });
 </code></pre>
 
-<h6 id="after">After:</h6>
+<p><strong>After</strong></p>
 
 <pre><code class="language-php">&lt;?php
 Routes::map('myfoo/bar', 'my_callback_function');
@@ -297,9 +278,7 @@ Routes::map('my-events/:event', function($params) {
 
 <p>&hellip; and that&rsquo;s the hardest part, done!</p>
 
-<h2 id="object-properties">Object Properties</h2>
-
-<h4 id="post">Post</h4>
+<h2 id="post-object-properties">Post Object Properties</h2>
 
 <ul>
 <li>If you&rsquo;re using <code>{{ post.permalink }}</code> or <code>{{ post.get_permalink }}</code> you should replace with <code>{{ post.link }}</code></li>

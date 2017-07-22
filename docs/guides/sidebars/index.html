@@ -181,12 +181,9 @@
 <ul>
 <li>
 <ul>
-<li><a href="#so-you-want-a-sidebar">So you want a sidebar?</a>
-<ul>
 <li><a href="#method-1-php-file">Method 1: PHP file</a></li>
 <li><a href="#method-2-twig-file">Method 2: Twig file</a></li>
 <li><a href="#method-3-dynamic">Method 3: Dynamic</a></li>
-</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -196,9 +193,9 @@
 			<div class="content">
 				
 
-<h2 id="so-you-want-a-sidebar">So you want a sidebar?</h2>
+<p>So you want a sidebar?</p>
 
-<h3 id="method-1-php-file">Method 1: PHP file</h3>
+<h2 id="method-1-php-file">Method 1: PHP file</h2>
 
 <p>Let&rsquo;s say every page on the site has the same content going into its sidebar. If so, you would:
 Create a <code>sidebar.php</code> file in your theme directory (so <code>wp-content/themes/mytheme/sidebar.php</code>)</p>
@@ -234,7 +231,7 @@ Timber::render('single.twig', $context);
 
 <hr />
 
-<h3 id="method-2-twig-file">Method 2: Twig file</h3>
+<h2 id="method-2-twig-file">Method 2: Twig file</h2>
 
 <p>In this example, you would populate your sidebar from your main PHP file (home.php, single.php, archive.php, etc).</p>
 
@@ -279,7 +276,7 @@ Timber::render('single.twig', $context);
 
 <hr />
 
-<h3 id="method-3-dynamic">Method 3: Dynamic</h3>
+<h2 id="method-3-dynamic">Method 3: Dynamic</h2>
 
 <p>This is using WordPress&rsquo;s built-in dynamic_sidebar tools (which, confusingly, are referred to as &ldquo;Widgets&rdquo; in the interface). Since sidebar is already used; I used widgets in the code to describe these:</p>
 
@@ -289,10 +286,10 @@ $context['dynamic_sidebar'] = Timber::get_widgets('dynamic_sidebar');
 Timber::render('sidebar.twig', $context);
 </code></pre>
 
-<p>```twig
-<aside class="my-sidebar">
+<pre><code class="language-twig">&lt;aside class=&quot;my-sidebar&quot;&gt;
 {{dynamic_sidebar}}
-</aside></p>
+&lt;/aside&gt;
+</code></pre>
 
 			</div>
 		</div>

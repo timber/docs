@@ -181,24 +181,14 @@
 <ul>
 <li>
 <ul>
-<li><a href="#using-twig-vars-in-live-type">Using Twig vars in live type</a>
-<ul>
-<li>
-<ul>
-<li><a href="#in-your-php-file">In your PHP file</a></li>
-<li><a href="#in-your-html-file-let-s-say-footer-twig">In your HTML file (let&rsquo;s say <strong>footer.twig</strong>)</a></li>
-</ul></li>
-</ul></li>
+<li><a href="#using-twig-vars-in-live-type">Using Twig vars in live type</a></li>
 <li><a href="#includes">Includes</a>
 <ul>
 <li><a href="#simple-include">Simple include</a>
 <ul>
 <li><a href="#notes">Notes</a></li>
 </ul></li>
-<li><a href="#dynamic-includes">Dynamic includes</a>
-<ul>
-<li><a href="#huh">Huh?</a></li>
-</ul></li>
+<li><a href="#dynamic-includes">Dynamic includes</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -223,7 +213,7 @@
 
 <p>Ready? There are a bunch of ways, but my favorite is:</p>
 
-<h4 id="in-your-php-file">In your PHP file</h4>
+<p><strong>In your PHP file</strong></p>
 
 <pre><code class="language-php">&lt;?php
 $data['year'] = date('Y');
@@ -231,7 +221,7 @@ $data['copyright'] = get_option(&quot;footer_message&quot;); //&quot;Copyright {
 render_twig('footer.twig', $data);
 </code></pre>
 
-<h4 id="in-your-html-file-let-s-say-footer-twig">In your HTML file (let&rsquo;s say <strong>footer.twig</strong>)</h4>
+<p>**In your HTML file (let&rsquo;s say <strong>footer.twig</strong>)**</p>
 
 <pre><code class="language-twig">{% include template_from_string(copyright) %}
 </code></pre>
@@ -258,7 +248,7 @@ render_twig('footer.twig', $data);
 <pre><code class="language-twig">{% include ['blocks/block-'~block.slug~'.twig', 'blocks/blog.twig'] ignore missing %}
 </code></pre>
 
-<h4 id="huh">Huh?</h4>
+<p><strong>Huh?</strong></p>
 
 <ul>
 <li>You&rsquo;re telling Twig to include an array of files</li>

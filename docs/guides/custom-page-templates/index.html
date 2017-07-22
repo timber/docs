@@ -181,18 +181,9 @@
 <ul>
 <li>
 <ul>
-<li>
-<ul>
-<li><a href="#custom-twig-file">Custom Twig File</a>
-<ul>
-<li>
-<ul>
-<li><a href="#how-does-this-work">How does this work?</a></li>
-</ul></li>
-</ul></li>
+<li><a href="#custom-twig-file">Custom Twig File</a></li>
 <li><a href="#custom-php-file">Custom PHP File</a></li>
 <li><a href="#custom-page-template">Custom Page Template</a></li>
-</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -204,11 +195,11 @@
 
 <p>There are a few ways to manage custom pages in WordPress and Timber, in order from simple-to-complex:</p>
 
-<h3 id="custom-twig-file">Custom Twig File</h3>
+<h2 id="custom-twig-file">Custom Twig File</h2>
 
 <p>Say you&rsquo;ve created a page called &ldquo;About Us&rdquo; and WordPress has given it the slug <code>about-us</code>. If you&rsquo;re using the <a href="https://github.com/Upstatement/timber-starter-theme">Timber Starter Theme</a> you can simply create a file called <code>page-about-us.twig</code> inside your <code>views</code> and go crazy. I recommend copying-and-pasting the contents of <a href="https://github.com/Upstatement/timber-starter-theme/blob/master/views/page.twig"><code>page.twig</code></a> into here so you have something to work from.</p>
 
-<h5 id="how-does-this-work">How does this work?</h5>
+<p><strong>How does this work?</strong></p>
 
 <p>In the <code>page.php</code> file you&rsquo;ll see this code&hellip;</p>
 
@@ -220,13 +211,13 @@ Timber::render(array('page-' . $post-&gt;post_name . '.twig', 'page.twig'), $con
 
 <hr />
 
-<h3 id="custom-php-file">Custom PHP File</h3>
+<h2 id="custom-php-file">Custom PHP File</h2>
 
 <p>If you need to do something special for this page in PHP, you can use standard WordPress <a href="http://codex.wordpress.org/Template_Hierarchy">template hierarchy</a> to gather and manipulate data for this page. In the above example, you would create a file called <code>/wp-content/themes/my-theme/page-about-us.php</code> and populate it with the necessary PHP. Again, you can use the contents of the starter theme&rsquo;s <a href="https://github.com/Upstatement/timber-starter-theme/blob/master/page.php"><code>page.php</code></a> file as a guide.</p>
 
 <hr />
 
-<h3 id="custom-page-template">Custom Page Template</h3>
+<h2 id="custom-page-template">Custom Page Template</h2>
 
 <pre><code class="language-php">&lt;?php
 /*

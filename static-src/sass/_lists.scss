@@ -12,6 +12,8 @@
 }
 
 .list__item__title {
+	font-weight: $font-weight-normal;
+
 	&, .list__item__link {
 		margin-top: 0;
 		margin-bottom: 0.2em;

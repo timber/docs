@@ -181,25 +181,16 @@
 <ul>
 <li>
 <ul>
-<li>
-<ul>
 <li><a href="#tl-dr">tl;dr</a></li>
 <li><a href="#cache-everything">Cache Everything</a></li>
 <li><a href="#cache-the-entire-twig-file-and-data">Cache the Entire Twig File and Data</a></li>
 <li><a href="#cache-parts-of-the-twig-file-and-data">Cache <em>Parts</em> of the Twig File and Data</a>
 <ul>
-<li>
-<ul>
-<li>
-<ul>
 <li><a href="#extra-timberkeygeneratorinterface">Extra: TimberKeyGeneratorInterface</a></li>
-</ul></li>
-</ul></li>
 </ul></li>
 <li><a href="#cache-the-twig-file-but-not-the-data">Cache the Twig File (but not the data)</a></li>
 <li><a href="#cache-the-php-data">Cache the PHP data</a></li>
 <li><a href="#measuring-performance">Measuring Performance</a></li>
-</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -211,7 +202,7 @@
 
 <p>Timber, especially in conjunction with WordPress and Twig, offers a variety of caching strategies to optimize performance. Here&rsquo;s a quick rundown of some of the options, ranked in order of most-broad to most-focused.</p>
 
-<h3 id="tl-dr">tl;dr</h3>
+<h2 id="tl-dr">tl;dr</h2>
 
 <p>In my tests with Debug Bar, Timber has no measurable performance hit. Everything compiles to PHP. @fabpot has an <a href="http://fabien.potencier.org/article/34/templating-engines-in-php">overview of the performance costs on his blog</a> (scroll down to the table)</p>
 
@@ -228,13 +219,13 @@
 
 <hr />
 
-<h3 id="cache-everything">Cache Everything</h3>
+<h2 id="cache-everything">Cache Everything</h2>
 
 <p>You can still use plugins like <a href="https://wordpress.org/plugins/w3-total-cache/">W3 Total Cache</a> in conjunction with Timber. In most settings, this will <em>skip</em> the Twig/Timber layer of your files and serve static pages via whatever mechanism the plugin or settings dictate.</p>
 
 <hr />
 
-<h3 id="cache-the-entire-twig-file-and-data">Cache the Entire Twig File and Data</h3>
+<h2 id="cache-the-entire-twig-file-and-data">Cache the Entire Twig File and Data</h2>
 
 <p>When rendering, use the <code>$expires</code> argument in <code>Timber::render</code>. For example:</p>
 
@@ -270,7 +261,7 @@ TimberLoader::CACHE_USE_DEFAULT /** Use whatever caching mechanism is set as the
 
 <hr />
 
-<h3 id="cache-parts-of-the-twig-file-and-data">Cache <em>Parts</em> of the Twig File and Data</h3>
+<h2 id="cache-parts-of-the-twig-file-and-data">Cache <em>Parts</em> of the Twig File and Data</h2>
 
 <p>This method implements the Twig Cache Extension. It adds the cache tag, for use in templates. Best shown by example:</p>
 
@@ -301,7 +292,7 @@ $annotation . '__GCS__' . $key
 'index/content__GCS__' . md5( json_encode( $context['post'] ) )
 </code></pre>
 
-<h6 id="extra-timberkeygeneratorinterface">Extra: TimberKeyGeneratorInterface</h6>
+<h3 id="extra-timberkeygeneratorinterface">Extra: TimberKeyGeneratorInterface</h3>
 
 <p>Instead of hashing a whole object, you can specify the cache key in the object itself. If the object implements TimberKeyGeneratorInterface, it can pass a unique key through the method get_cache_key. That way a class can for example simply pass last_updated as the unique key.
 If arrays contain the key _cache_key, that one is used as cache key.</p>
@@ -310,7 +301,7 @@ If arrays contain the key _cache_key, that one is used as cache key.</p>
 
 <hr />
 
-<h3 id="cache-the-twig-file-but-not-the-data">Cache the Twig File (but not the data)</h3>
+<h2 id="cache-the-twig-file-but-not-the-data">Cache the Twig File (but not the data)</h2>
 
 <p>Every time you render a <code>.twig</code> file, Twig compiles all the html tags and variables into a big, nasty blob of function calls and echo statements that actually gets run by PHP. In general, this is pretty efficient. However, you can cache the resulting PHP blob by turning on Twig&rsquo;s cache via:</p>
 
@@ -327,7 +318,7 @@ if (class_exists('Timber')){
 
 <hr />
 
-<h3 id="cache-the-php-data">Cache the PHP data</h3>
+<h2 id="cache-the-php-data">Cache the PHP data</h2>
 
 <p>Sometimes the most expensive parts of the operations are generating the data needed to populate the twig template. You can of course use WordPress&rsquo;s default <a href="http://codex.wordpress.org/Transients_API">Transient API</a> to store this data.</p>
 
@@ -356,7 +347,7 @@ Timber::render('home.twig', $context);
 
 <hr />
 
-<h3 id="measuring-performance">Measuring Performance</h3>
+<h2 id="measuring-performance">Measuring Performance</h2>
 
 <p>Some tools like Debug Bar may not properly measure performance because its data (as in, the actual HTML it&rsquo;s generating to tell you the timing, number of queries, etc.) is swept-up by the page&rsquo;s cache.</p>
 

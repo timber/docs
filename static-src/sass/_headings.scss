@@ -1,5 +1,4 @@
 h1 {
-    @extend %header-font;
     font-size: 2.5em;
     margin-bottom: 1em;
     margin-top: 1em;
@@ -20,12 +19,11 @@ div:first-child + h1 {
 }
 
 h2 {
-    @extend %header-font;
-    font-size: 24px;
-    margin-bottom: .25em;
-    margin-top: 1em;
-    color: #474747;
-    font-weight: $font-weight-normal;
+    font-size: 2em;
+    margin-bottom: 0.5em;
+    margin-top: 0;
+    color: $headings-color;
+    font-weight: $font-weight-bold;
     padding-top: .5em;
 }
 
@@ -33,15 +31,15 @@ h3,
 h4,
 h5,
 h6 {
-    @extend %header-font;
     margin-top: 2em;
     margin-bottom: .75em;
     line-height: 1.2em;
 }
 
 h3 {
-    font-size: 1.125em;
+    font-size: 1.4em;
     font-weight: $font-weight-bold;
+	color: $headings-color;
     margin-top: 1.5em;
     margin-bottom: .5em;
 }
@@ -55,20 +53,6 @@ h6 {
     margin-bottom: .5em;
     text-transform: uppercase;
     letter-spacing: .3px;
-
-    a {
-        color: $green;
-        opacity: .5;
-        -o-transition: .5s;
-        -ms-transition: .5s;
-        -moz-transition: .5s;
-        -webkit-transition: .5s;
-    }
-
-    a:hover {
-        color: $green;
-        opacity: 1;
-    }
 }
 
 h5 {
@@ -77,12 +61,12 @@ h5 {
     color: $green;
     margin-top: .75em;
     margin-bottom: .5em;
+}
 
-    a {
-        color: inherit;
-    }
-
-    code {
-        color: $green;
-    }
+h1 + h2,
+ul + h2,
+ol + h2,
+hr + h2 {
+    margin-top: 0;
+	padding-top: 0;
 }

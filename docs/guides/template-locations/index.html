@@ -181,19 +181,10 @@
 <ul>
 <li>
 <ul>
-<li>
-<ul>
 <li><a href="#changing-the-default-folder-for-twig-files">Changing the default folder for .twig files</a>
 <ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#configure-with-a-string">Configure with a string:</a></li>
-<li><a href="#you-can-also-send-an-array-with-fallbacks">You can also send an array with fallbacks:</a></li>
-</ul></li>
-</ul></li>
-</ul></li>
+<li><a href="#configure-with-a-string">Configure with a string</a></li>
+<li><a href="#send-an-array-with-fallbacks">Send an array with fallbacks</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -225,18 +216,20 @@ Timber::$locations = array(	'/Users/jared/Sandbox/templates',
 
 <hr />
 
-<h3 id="changing-the-default-folder-for-twig-files">Changing the default folder for .twig files</h3>
+<h2 id="changing-the-default-folder-for-twig-files">Changing the default folder for .twig files</h2>
 
 <p>By default, Timber looks in your child and parent theme&rsquo;s <code>views</code> directory to pull <code>.twig</code> files. If you don&rsquo;t like the default <code>views</code> directory (which by default resides in your theme folder) you can change that to. Example: I want to use <code>/wp-content/themes/my-theme/twigs</code>:</p>
 
-<h6 id="configure-with-a-string">Configure with a string:</h6>
+<h3 id="configure-with-a-string">Configure with a string</h3>
 
 <pre><code class="language-php">&lt;?php
 /* functions.php */
 Timber::$dirname = 'twigs';
 </code></pre>
 
-<h6 id="you-can-also-send-an-array-with-fallbacks">You can also send an array with fallbacks:</h6>
+<h3 id="send-an-array-with-fallbacks">Send an array with fallbacks</h3>
+
+<p>This is an alternativ to configuring <code>$dirnames</code> with a string.</p>
 
 <pre><code class="language-php">&lt;?php
 /* functions.php */

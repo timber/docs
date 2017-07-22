@@ -181,40 +181,25 @@
 <ul>
 <li>
 <ul>
-<li>
-<ul>
-<li>
-<ul>
 <li><a href="#dates">Dates</a>
 <ul>
-<li><a href="#timber-does-bylines-like-a-boss">Timber does bylines like a boss:</a>
-<ul>
-<li><a href="#renders">Renders:</a></li>
-</ul></li>
-<li><a href="#nothing-is-worse-than-an-out-of-date-copyright-year-in-the-footer-nothing">Nothing is worse than an out-of-date copyright year in the footer. Nothing.</a>
-<ul>
-<li><a href="#renders-1">Renders:</a></li>
-</ul></li>
+<li><a href="#example-1-bylines">Example 1: Bylines</a></li>
+<li><a href="#example-2-copyright-year">Example 2: Copyright year</a></li>
 </ul></li>
 <li><a href="#standard-transforms">Standard transforms</a>
 <ul>
 <li><a href="#automatically-link-urls-email-addresses-twitter-s-and-s">Automatically link URLs, email addresses, twitter @s and #s</a></li>
 <li><a href="#run-wordpress-auto-paragraph-filter">Run WordPress&rsquo; auto-paragraph filter</a></li>
 <li><a href="#run-wordpress-shortcodes-over-a-block-of-text">Run WordPress shortcodes over a block of text</a></li>
-<li><a href="#code-samples-lord-knows-i-ve-got-em">Code samples? Lord knows I&rsquo;ve got &lsquo;em:</a></li>
-<li><a href="#functions-inside-of-your-templates-plugin-calls">Functions inside of your templates, plugin calls:</a></li>
+<li><a href="#code-samples">Code samples</a></li>
+<li><a href="#functions-inside-of-your-templates-plugin-calls">Functions inside of your templates, plugin calls</a></li>
 <li><a href="#functions-with-params-inside-of-your-templates-plugin-calls">Functions &ldquo;with params&rdquo; inside of your templates, plugin calls:</a></li>
-</ul></li>
 </ul></li>
 <li><a href="#debugging">Debugging</a>
 <ul>
-<li>
-<ul>
 <li><a href="#what-properties-are-inside-my-object">What properties are inside my object?</a></li>
-<li><a href="#what-properties-and-methods-are-inside-my-object">What properties and <em>methods</em> are inside my object?</a></li>
+<li><a href="#what-properties-and-methods-are-inside-my-object">What properties and methods are inside my object?</a></li>
 <li><a href="#what-type-of-object-am-i-working-with">What type of object am I working with?</a></li>
-</ul></li>
-</ul></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -227,9 +212,11 @@
 
 <p>There&rsquo;s tons of stuff you can do with Twig and Timber filters to make complex transformations easy (and fun!)</p>
 
-<h4 id="dates">Dates</h4>
+<h2 id="dates">Dates</h2>
 
-<h5 id="timber-does-bylines-like-a-boss">Timber does bylines like a boss:</h5>
+<h3 id="example-1-bylines">Example 1: Bylines</h3>
+
+<p>Timber does bylines like a boss:</p>
 
 <pre><code class="language-twig">&lt;p class=&quot;byline&quot;&gt;
 	&lt;span class=&quot;name&quot;&gt;By {{ post.author.name }}&lt;/span&gt;
@@ -237,48 +224,52 @@
 &lt;/p&gt;
 </code></pre>
 
-<h6 id="renders">Renders:</h6>
+<p><strong>Renders</strong></p>
 
 <pre><code class="language-html">&lt;p class=&quot;byline&quot;&gt;&lt;span class=&quot;name&quot;&gt;By Mr. WordPress&lt;/span&gt;&lt;span class=&quot;date&quot;&gt;September 28, 2013&lt;/span&gt;&lt;/p&gt;
 </code></pre>
 
-<h5 id="nothing-is-worse-than-an-out-of-date-copyright-year-in-the-footer-nothing">Nothing is worse than an out-of-date copyright year in the footer. Nothing.</h5>
+<h3 id="example-2-copyright-year">Example 2: Copyright year</h3>
+
+<p>Nothing is worse than an out-of-date copyright year in the footer. Nothing.</p>
 
 <pre><code class="language-twig">&lt;footer&gt;
 	&lt;p class=&quot;copyright&quot;&gt;&amp;copy; {{ now|date('Y') }} by {{ bloginfo('name') }}&lt;/p&gt;
 &lt;/footer&gt;
 </code></pre>
 
-<h6 id="renders-1">Renders:</h6>
+<p><strong>Renders</strong></p>
 
 <pre><code class="language-html">&lt;footer&gt;&lt;p class=&quot;copyright&quot;&gt;&amp;copy; 2015 by The Daily Orange&lt;/p&gt;&lt;/footer&gt;
 </code></pre>
 
 <hr />
 
-<h4 id="standard-transforms">Standard transforms</h4>
+<h2 id="standard-transforms">Standard transforms</h2>
 
-<h5 id="automatically-link-urls-email-addresses-twitter-s-and-s">Automatically link URLs, email addresses, twitter @s and #s</h5>
+<h3 id="automatically-link-urls-email-addresses-twitter-s-and-s">Automatically link URLs, email addresses, twitter @s and #s</h3>
 
 <pre><code class="language-twig">&lt;p class=&quot;tweet&quot;&gt;{{ post.content|twitterify }}&lt;/p&gt;
 </code></pre>
 
-<h5 id="run-wordpress-auto-paragraph-filter">Run WordPress&rsquo; auto-paragraph filter</h5>
+<h3 id="run-wordpress-auto-paragraph-filter">Run WordPress&rsquo; auto-paragraph filter</h3>
 
 <pre><code class="language-twig">&lt;p class=&quot;content&quot;&gt;{{ post.my_custom_text|wpautop }}&lt;/p&gt;
 </code></pre>
 
-<h5 id="run-wordpress-shortcodes-over-a-block-of-text">Run WordPress shortcodes over a block of text</h5>
+<h3 id="run-wordpress-shortcodes-over-a-block-of-text">Run WordPress shortcodes over a block of text</h3>
 
 <pre><code class="language-twig">&lt;p class=&quot;content&quot;&gt;{{ post.my_custom_text|shortcodes }}&lt;/p&gt;
 </code></pre>
 
-<h5 id="code-samples-lord-knows-i-ve-got-em">Code samples? Lord knows I&rsquo;ve got &lsquo;em:</h5>
+<h3 id="code-samples">Code samples</h3>
+
+<p>Code Samples? Lord knows I&rsquo;ve got &lsquo;em:</p>
 
 <pre><code class="language-twig">&lt;div class=&quot;code-sample&quot;&gt;{{ post.code_samples|pretags }}&lt;/div&gt;
 </code></pre>
 
-<h5 id="functions-inside-of-your-templates-plugin-calls">Functions inside of your templates, plugin calls:</h5>
+<h3 id="functions-inside-of-your-templates-plugin-calls">Functions inside of your templates, plugin calls</h3>
 
 <p>Old template:</p>
 
@@ -290,7 +281,7 @@
 <pre><code class="language-twig">&lt;p class=&quot;entry-meta&quot;&gt;{{ function('twentytwelve_entry_meta') }}&lt;/p&gt;
 </code></pre>
 
-<h5 id="functions-with-params-inside-of-your-templates-plugin-calls">Functions &ldquo;with params&rdquo; inside of your templates, plugin calls:</h5>
+<h3 id="functions-with-params-inside-of-your-templates-plugin-calls">Functions &ldquo;with params&rdquo; inside of your templates, plugin calls:</h3>
 
 <p>Old template:</p>
 
@@ -304,14 +295,14 @@
 
 <hr />
 
-<h3 id="debugging">Debugging</h3>
+<h2 id="debugging">Debugging</h2>
 
-<h5 id="what-properties-are-inside-my-object">What properties are inside my object?</h5>
+<h3 id="what-properties-are-inside-my-object">What properties are inside my object?</h3>
 
 <pre><code class="language-twig">{{ dump(post) }}
 </code></pre>
 
-<h5 id="what-properties-and-methods-are-inside-my-object">What properties and <em>methods</em> are inside my object?</h5>
+<h3 id="what-properties-and-methods-are-inside-my-object">What properties and methods are inside my object?</h3>
 
 <p>Warning: Experimental!</p>
 
@@ -320,7 +311,7 @@
 
 <p>This outputs both the database stuff (like <code>{{ post.post_content }}</code>) and the contents of methods (like <code>{{ post.thumbnail }}</code>)</p>
 
-<h5 id="what-type-of-object-am-i-working-with">What type of object am I working with?</h5>
+<h3 id="what-type-of-object-am-i-working-with">What type of object am I working with?</h3>
 
 <pre><code class="language-twig">{{ post|get_class }}
 </code></pre>
