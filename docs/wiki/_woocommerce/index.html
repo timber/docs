@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta name="generator" content="Hugo 0.25.1" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -173,33 +172,216 @@
 
 <main>
     
-	<h1>Timber Docs</h1>
+	<article>
+		<h1></h1>
 
-	
+		<aside class="toc">
+			<h2 class="heading-4 toc__title">Contents of this page</h2>
+			<nav id="TableOfContents">
+<ul>
+<li><a href="#woocommerce">WooCommerce</a>
+<ul>
+<li><a href="#point-of-entry-main-woocommerce-php-file">Point of entry - main WooCommerce PHP file</a></li>
+<li><a href="#archives">Archives</a></li>
+<li><a href="#single-product">Single Product</a></li>
+<li><a href="#tease-product">Tease Product</a></li>
+</ul></li>
+</ul>
+</nav>
+		</aside>
 
-	<ul class="list">
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/getting-started/">Getting Started</a></h2>
-			<div class="list__item__text">Start here if you want to get to know Timber.</div>
-		</li>
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/guides/">Guides</a></h2>
-			<div class="list__item__text">Guides provide you with more detailed information for working with Timber and Twig. We cover a lot of functionality that you already know from working with WordPress.</div>
-		</li>
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/reference/">Reference</a></h2>
-			<div class="list__item__text">The reference is a bit techy. It’s more like an API documentation that provides you with details about the different classes and methods that are provided by Timber.</div>
-		</li>
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/upgrade-guides/">Upgrade Guides</a></h2>
-			<div class="list__item__text">When you upgrade to a newer version of Timber, a lot of things can change. We try to list and explain relevant changes here, so that you can transition to newer versions smoothly.</div>
-		</li>
-	
-	</ul>
+		<div class="content-container">
+			<div class="content">
+				
+
+<h1 id="woocommerce">WooCommerce</h1>
+
+<h2 id="point-of-entry-main-woocommerce-php-file">Point of entry - main WooCommerce PHP file</h2>
+
+<p>The first step to get your WooCommerce project integrated with Timber is creating a file named <code>woocommerce.php</code> in the root of your theme. That will establish the context and data to be passed to your twig files:</p>
+
+<pre><code class="language-php">&lt;?php
+
+if (!class_exists('Timber')){
+    echo 'Timber not activated. Make sure you activate the plugin in &lt;a href=&quot;/wp-admin/plugins.php#timber&quot;&gt;/wp-admin/plugins.php&lt;/a&gt;';
+    return;
+}
+
+$context            = Timber::get_context();
+$context['sidebar'] = Timber::get_widgets('shop-sidebar');
+
+if (is_singular('product')) {
+
+    $context['post']    = Timber::get_post();
+    $product            = wc_get_product( $context['post']-&gt;ID );
+    $context['product'] = $product;
+
+    Timber::render('views/woo/single-product.twig', $context);
+
+} else {
+
+    $posts = Timber::get_posts();
+    $context['products'] = $posts;
+
+    if ( is_product_category() ) {
+        $queried_object = get_queried_object();
+        $term_id = $queried_object-&gt;term_id;
+        $context['category'] = get_term( $term_id, 'product_cat' );
+        $context['title'] = single_term_title('', false);
+    }
+
+    Timber::render('views/woo/archive.twig', $context);
+
+}
+</code></pre>
+
+<p>You will now need the two twig files loaded from <code>woocommerce.php</code>:</p>
+
+<h2 id="archives">Archives</h2>
+
+<p>Create a Twig file accordingly to the location asked by the above file, in this example that would be <code>views/woo/archive.twig</code>:</p>
+
+<pre><code class="language-twig">{% extends &quot;base.twig&quot; %}
+
+{% block content %}
+
+    {% do action('woocommerce_before_main_content') %}
+
+    &lt;div class=&quot;before-shop-loop&quot;&gt;
+        {% do action( 'woocommerce_before_shop_loop') %}
+    &lt;/div&gt;
+
+    &lt;div class=&quot;loop&quot;&gt;
+        {% for post in products %}
+
+            {% include [&quot;partials/tease-product.twig&quot;] %}
+
+        {% endfor %}
+    &lt;/div&gt;
+
+    {% do action('woocommerce_after_shop_loop') %}
+    {% do action('woocommerce_after_main_content') %}
+
+{% endblock  %}
+</code></pre>
+
+<p>You&rsquo;ll notice the inclusion of several woocommerce&rsquo;s default hooks, which you&rsquo;ll need to keep the integration seamless and allow any WooCommerce extension plugin to still work.</p>
+
+<p>Next, we&rsquo;ll take care of the single product view.</p>
+
+<h2 id="single-product">Single Product</h2>
+
+<p>Create a Twig file accordingly to the location asked by the above file, in this example that would be <code>views/woo/single-product.twig</code>:</p>
+
+<pre><code class="language-twig">{% extends &quot;base.twig&quot; %}
+
+{% block content %}
+
+    {% do action('woocommerce_before_single_product') %}
+
+    &lt;article itemscope itemtype=&quot;http://schema.org/Product&quot; class=&quot;single-product-details {{post.class}}&quot;&gt;
+
+        &lt;div class=&quot;entry-images&quot;&gt;
+            {% do action('woocommerce_before_single_product_summary') %}
+            &lt;img src=&quot;{{ post.thumbnail.src('shop_single') }}&quot; /&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;summary entry-summary&quot;&gt;
+            {% do action('woocommerce_single_product_summary') %}
+        &lt;/div&gt;
+
+        {% do action('woocommerce_after_single_product_summary') %}
+
+        &lt;meta itemprop=&quot;url&quot; content=&quot;{{ post.link }}&quot; /&gt;
+
+    &lt;/article&gt;
+
+    {% do action('woocommerce_after_single_product') %}
+
+{% endblock  %}
+</code></pre>
+
+<p>Again we are keep things simple by using WooCommerce&rsquo;s default hooks.
+If you need to override the output of any of those hooks, my advice would be to remove and add the relevant actions using PHP, keeping your upgrade path simple.</p>
+
+<p>Finally, we&rsquo;ll need to create a teaser file for product in the loops. Considering the code above that  would be <code>views/partials/tease-product.twig</code>:</p>
+
+<h2 id="tease-product">Tease Product</h2>
+
+<pre><code class="language-twig">
+&lt;article {{ fn('post_class', ['$classes', 'entry'] ) }}&gt;
+
+    {{ fn('timber_set_product', post)}}
+
+    &lt;div class=&quot;Media&quot;&gt;
+
+        {% if showthumb %}
+            &lt;div class=&quot;Media-figure {% if not post.thumbnail %}placeholder{% endif %}&quot;&gt;
+                &lt;a href=&quot;{{post.link}}&quot;&gt;
+                    {% if post.thumbnail %}
+                        &lt;img src=&quot;{{ post.thumbnail.src|resize(post_thumb_size[0], post_thumb_size[1]) }}&quot; /&gt;
+                    {% else %}
+                        &lt;span class=&quot;thumb-placeholder&quot;&gt;&lt;i class=&quot;icon-camera&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+                    {% endif %}
+                &lt;/a&gt;
+            &lt;/div&gt;
+        {% endif %}
+
+        &lt;div class=&quot;Media-content&quot;&gt;
+            {% do action('woocommerce_before_shop_loop_item_title') %}
+            {% if post.title %}
+                &lt;h3 class=&quot;entry-title&quot;&gt;&lt;a href=&quot;{{post.link}}&quot;&gt;{{ post.title }}&lt;/a&gt;&lt;/h3&gt;
+            {% else %}
+                &lt;h3 class=&quot;entry-title&quot;&gt;&lt;a href=&quot;{{post.link}}&quot;&gt;{{ fn('the_title') }}&lt;/a&gt;&lt;/h3&gt;
+            {% endif %}
+            {% do action( 'woocommerce_after_shop_loop_item_title' ) %}
+            {% do action( 'woocommerce_after_shop_loop_item' ) %}
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+
+&lt;/article&gt;
+
+</code></pre>
+
+<p>This should all sound familiar by now, except for one line:</p>
+
+<pre><code class="language-twig">{{ fn('timber_set_product', post)}}
+</code></pre>
+
+<p>For some reason products in the loop don&rsquo;t get the right context by default. This line will call the following function that you need to add somewhere in your <code>functions.php</code> file:</p>
+
+<pre><code class="language-php">&lt;?php
+function timber_set_product( $post ) {
+    global $product;
+    if ( is_woocommerce() ) {
+        $product = wc_get_product($post-&gt;ID);
+    }
+}
+</code></pre>
+
+<p>Without this, some elements of the listed products would show the same information as the first product in the loop.</p>
+
+<p><em>Note:</em> Some users reported issues with the loop context even when using the <code>timber_set_product</code> helper function. Turns out the default WooCommerce hooks interfere with the output of the aforementioned function.</p>
+
+<p>One way to get around this is by building your own image calls, that means removing WooCommerce&rsquo;s default hooks and declare on your template the html to show the image:</p>
+
+<pre><code class="language-twig">{% if post.thumbnail %}
+   &lt;img src=&quot;{{ post.thumbnail.src|resize(shop_thumbnail_image_size) }}&quot; /&gt;
+{% endif %}
+</code></pre>
+
+<p>To remove the default image, add the following to your <code>functions.php</code> file:</p>
+
+<pre><code class="language-php">&lt;?php
+remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail');
+</code></pre>
+
+<p>This comes with the added benefit that you&rsquo;ll have total control over where your image is created in the markup.</p>
+
+			</div>
+		</div>
+	</article>
 
 </main>
 

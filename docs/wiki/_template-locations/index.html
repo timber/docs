@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta name="generator" content="Hugo 0.25.1" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -173,33 +172,90 @@
 
 <main>
     
-	<h1>Timber Docs</h1>
+	<article>
+		<h1></h1>
 
-	
+		<aside class="toc">
+			<h2 class="heading-4 toc__title">Contents of this page</h2>
+			<nav id="TableOfContents">
+<ul>
+<li><a href="#template-locations">Template Locations</a>
+<ul>
+<li>
+<ul>
+<li><a href="#changing-the-default-folder-for-twig-files">Changing the default folder for .twig files</a>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#configure-with-a-string">Configure with a string:</a></li>
+<li><a href="#you-can-also-send-an-array-with-fallbacks">You can also send an array with fallbacks:</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+		</aside>
 
-	<ul class="list">
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/getting-started/">Getting Started</a></h2>
-			<div class="list__item__text">Start here if you want to get to know Timber.</div>
-		</li>
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/guides/">Guides</a></h2>
-			<div class="list__item__text">Guides provide you with more detailed information for working with Timber and Twig. We cover a lot of functionality that you already know from working with WordPress.</div>
-		</li>
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/reference/">Reference</a></h2>
-			<div class="list__item__text">The reference is a bit techy. It’s more like an API documentation that provides you with details about the different classes and methods that are provided by Timber.</div>
-		</li>
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/upgrade-guides/">Upgrade Guides</a></h2>
-			<div class="list__item__text">When you upgrade to a newer version of Timber, a lot of things can change. We try to list and explain relevant changes here, so that you can transition to newer versions smoothly.</div>
-		</li>
-	
-	</ul>
+		<div class="content-container">
+			<div class="content">
+				
+
+<h1 id="template-locations">Template Locations</h1>
+
+<p>You can set arbitrary locations for your twig files with&hellip;</p>
+
+<pre><code class="language-php">&lt;?php
+/* functions.php */
+Timber::$locations = '/Users/jared/Sandbox/templates';
+</code></pre>
+
+<p>Use the full file path to make sure Timber knows what you&rsquo;re trying to draw from. You can also send an array for multiple locations:</p>
+
+<pre><code class="language-php">&lt;?php
+/* functions.php */
+Timber::$locations = array(	'/Users/jared/Sandbox/templates',
+							'~/Sites/timber-templates/',
+							ABSPATH.'/wp-content/templates'
+						);
+</code></pre>
+
+<p>You only need to do this once in your project (like in <code>functions.php</code>) then when you call from a PHP file (say <code>single.php</code>) Timber will look for twig files in these locations before the child/parent theme.</p>
+
+<hr />
+
+<h3 id="changing-the-default-folder-for-twig-files">Changing the default folder for .twig files</h3>
+
+<p>By default, Timber looks in your child and parent theme&rsquo;s <code>views</code> directory to pull <code>.twig</code> files. If you don&rsquo;t like the default <code>views</code> directory (which by default resides in your theme folder) you can change that to. Example: I want to use <code>/wp-content/themes/my-theme/twigs</code>:</p>
+
+<h6 id="configure-with-a-string">Configure with a string:</h6>
+
+<pre><code class="language-php">&lt;?php
+/* functions.php */
+Timber::$dirname = 'twigs';
+</code></pre>
+
+<h6 id="you-can-also-send-an-array-with-fallbacks">You can also send an array with fallbacks:</h6>
+
+<pre><code class="language-php">&lt;?php
+/* functions.php */
+Timber::$dirname = array('templates', 'templates/shared/mods', 'twigs', 'views');
+</code></pre>
+
+<p>A quick note on <strong>subdirectories</strong>: you can always reference these relatively. For example:</p>
+
+<pre><code class="language-php">&lt;?php
+Timber::render('shared/headers/header-home.twig');
+</code></pre>
+
+<p>&hellip; might correspond to a file in <code>/wp-content/themes/my-theme/views/shared/headers/header-home.twig</code>.</p>
+
+			</div>
+		</div>
+	</article>
 
 </main>
 

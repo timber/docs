@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta name="generator" content="Hugo 0.25.1" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -173,33 +172,287 @@
 
 <main>
     
-	<h1>Timber Docs</h1>
+	<article>
+		<h1></h1>
 
-	
+		<aside class="toc">
+			<h2 class="heading-4 toc__title">Contents of this page</h2>
+			<nav id="TableOfContents">
+<ul>
+<li><a href="#acf-cookbook">ACF Cookbook</a>
+<ul>
+<li>
+<ul>
+<li><a href="#wysiwyg-field-and-other-requiring-text">WYSIWYG field (and other requiring text):</a></li>
+<li><a href="#image-field-type">Image field type:</a>
+<ul>
+<li>
+<ul>
+<li><a href="#the-quick-way-for-most-situations">The quick way (for most situations)</a></li>
+<li><a href="#the-long-way-for-some-special-situations">The long way (for some special situations)</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#gallery-field">Gallery Field:</a></li>
+<li><a href="#repeater-field">Repeater field</a>
+<ul>
+<li>
+<ul>
+<li><a href="#nested">Nested?</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a>
+<ul>
+<li><a href="#don-t-do-this-bad">DON&rsquo;T DO THIS: (Bad)</a></li>
+<li><a href="#do-this-good">Do THIS: (Good)</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><a href="#flexible-content-field">Flexible content field</a></li>
+<li><a href="#options-page">Options Page</a>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#get-all-info-from-your-options-page">Get all info from your options page</a></li>
+<li><a href="#use-options-info-site-wide">Use options info site wide</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><a href="#getting-acf-info">Getting ACF info:</a></li>
+<li><a href="#query-by-custom-field-value">Query by custom field value:</a>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#use-a-wp-query-http-codex-wordpress-org-class-reference-wp-query-array">Use a <a href="http://codex.wordpress.org/Class_Reference/WP_Query">WP_Query</a> array</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#basic-example">Basic Example</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+		</aside>
 
-	<ul class="list">
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/getting-started/">Getting Started</a></h2>
-			<div class="list__item__text">Start here if you want to get to know Timber.</div>
-		</li>
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/guides/">Guides</a></h2>
-			<div class="list__item__text">Guides provide you with more detailed information for working with Timber and Twig. We cover a lot of functionality that you already know from working with WordPress.</div>
-		</li>
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/reference/">Reference</a></h2>
-			<div class="list__item__text">The reference is a bit techy. It’s more like an API documentation that provides you with details about the different classes and methods that are provided by Timber.</div>
-		</li>
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/upgrade-guides/">Upgrade Guides</a></h2>
-			<div class="list__item__text">When you upgrade to a newer version of Timber, a lot of things can change. We try to list and explain relevant changes here, so that you can transition to newer versions smoothly.</div>
-		</li>
-	
-	</ul>
+		<div class="content-container">
+			<div class="content">
+				
+
+<h1 id="acf-cookbook">ACF Cookbook</h1>
+
+<p>Timber is designed to play nicely with (the amazing) <a href="http://www.advancedcustomfields.com/">Advanced Custom Fields</a>. It&rsquo;s not a requirement, of course.</p>
+
+<p>While data saved by ACF is available via <code>{{post.my_acf_field}}</code> you will often need to do some additional work to get back the <em>kind</em> of data you want. For example, images are stored as image ID#s which you might want to translate into a specific image object. Read on to learn more about those specific exceptions.</p>
+
+<h3 id="wysiwyg-field-and-other-requiring-text">WYSIWYG field (and other requiring text):</h3>
+
+<pre><code class="language-twig">&lt;h3&gt;{{post.title}}&lt;/h3&gt;
+&lt;div class=&quot;intro-text&quot;&gt;
+     {{post.get_field('my_wysiwyg_field')}}
+&lt;/div&gt;
+</code></pre>
+
+<p>This will apply your expected paragraph breaks and other pre-processing to the text.</p>
+
+<h3 id="image-field-type">Image field type:</h3>
+
+<p>You can retrieve an image from a custom field, then use it in a Twig template. The most reliable approach is this: When setting up your custom fields you&rsquo;ll want to save the <code>image_id</code> to the field. The image object, url, etc. <em>will</em> work but it&rsquo;s not as fool-proof.</p>
+
+<h5 id="the-quick-way-for-most-situations">The quick way (for most situations)</h5>
+
+<pre><code class="language-twig">&lt;img src=&quot;{{TimberImage(post.get_field('hero_image')).src}}&quot; /&gt;
+</code></pre>
+
+<h5 id="the-long-way-for-some-special-situations">The long way (for some special situations)</h5>
+
+<p>This is where we&rsquo;ll start in PHP.</p>
+
+<pre><code class="language-php">&lt;?php
+/* single.php */
+$post = new TimberPost();
+if (isset($post-&gt;hero_image) &amp;&amp; strlen($post-&gt;hero_image)){
+	$post-&gt;hero_image = new TimberImage($post-&gt;hero_image);
+}
+$data = Timber::get_context();
+$data['post'] = $post;
+Timber::render('single.twig', $data);
+</code></pre>
+
+<p><code>TimberImage</code> should be initialized using a WordPress image ID#. It can also take URLs and image objects, but that requires extra processing.</p>
+
+<p>You can now use all the above functions to transform your custom images in the same way, the format will be:</p>
+
+<pre><code class="language-twig">&lt;img src=&quot;{{post.hero_image.src|resize(500, 300)}}&quot; /&gt;
+</code></pre>
+
+<hr />
+
+<h3 id="gallery-field">Gallery Field:</h3>
+
+<pre><code class="language-twig">{% for image in post.get_field('gallery') %}
+    &lt;img src=&quot;{{ TimberImage(image) }}&quot; /&gt;
+{% endfor %}
+</code></pre>
+
+<hr />
+
+<h3 id="repeater-field">Repeater field</h3>
+
+<p>You can access repeater fields within twig files:</p>
+
+<pre><code class="language-twig">{# single.twig #}
+&lt;h2&gt;{{post.title}}&lt;/h2&gt;
+&lt;div class=&quot;my-list&quot;&gt;
+	{% for item in post.get_field('my_repeater') %}
+		&lt;div class=&quot;item&quot;&gt;
+			&lt;h4&gt;{{item.name}}&lt;/h4&gt;
+			&lt;h6&gt;{{item.info}}&lt;/h6&gt;
+			&lt;img src=&quot;{{TimberImage(item.picture).src}}&quot; /&gt;
+		&lt;/div&gt;
+	{% endfor %}
+&lt;/div&gt;
+</code></pre>
+
+<h5 id="nested">Nested?</h5>
+
+<p>When you run <code>get_field</code> on an outer ACF field, everything inside is ready to be traversed. You can refer to nested fields via item_outer.inner_repeater</p>
+
+<pre><code class="language-twig">{% for item_outer in post.get_field('outer') %}
+     {{item_outer.title}}
+
+     {% for item_inner in item_outer.inner_repeater %}
+          {{item_inner.title}}
+     {% endfor %}
+
+{% endfor %}
+</code></pre>
+
+<h5 id="troubleshooting">Troubleshooting</h5>
+
+<p>A common problem in working with repeaters is that you should only call the <code>get_field</code> method <strong>once</strong> on an item. In other words if you have a field inside a field (for example, a relationship inside a repeater or a repeater inside a repeater, <strong>do not</strong> call <code>get_field</code> on the inner field). More:</p>
+
+<h6 id="don-t-do-this-bad">DON&rsquo;T DO THIS: (Bad)</h6>
+
+<pre><code class="language-twig">{% for gear in post.get_field('gear_items') %}
+    &lt;h3&gt; {{ gear.brand_name }} &lt;/h3&gt;
+    {% for gear_feature in gear.get_field('features') %}
+        &lt;li&gt; {{gear_feature}} &lt;/li&gt;
+    {% endfor %}
+{% endfor %}
+</code></pre>
+
+<h6 id="do-this-good">Do THIS: (Good)</h6>
+
+<pre><code class="language-twig">{% for gear in post.get_field('gear_items') %}
+    &lt;h3&gt; {{ gear.brand_name }} &lt;/h3&gt;
+    {% for gear_feature in gear.features %}
+        &lt;li&gt; {{gear_feature}} &lt;/li&gt;
+    {% endfor %}
+{% endfor %}
+</code></pre>
+
+<hr />
+
+<h3 id="flexible-content-field">Flexible content field</h3>
+
+<p>Similar to repeaters, get the field by the name of the flexible content field:</p>
+
+<pre><code class="language-twig">{% for media_item in post.get_field('media_set') %}
+	{% if media_item.acf_fc_layout == 'image_set' %}
+		&lt;img src=&quot;{{TimberImage(media_item.image).src}}&quot; /&gt;
+		&lt;p class=&quot;caption&quot;&gt;{{TimberImage(media_item.image).caption}}&lt;/p&gt;
+		&lt;aside class=&quot;notes&quot;&gt;{{media_item.notes}}&lt;/aside&gt;
+	{% elseif media_item.acf_fc_layout == 'video_set' %}
+		&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;http://www.youtube.com/embed/{{media_item.youtube_id}}&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
+		&lt;p class=&quot;caption&quot;&gt;{{media_item.caption}}&lt;/p&gt;
+	{% endif %}
+{% endfor %}
+</code></pre>
+
+<hr />
+
+<h3 id="options-page">Options Page</h3>
+
+<pre><code class="language-php">	&lt;?php
+	$context['site_copyright_info'] = get_field('copyright_info', 'options');
+	Timber::render('index.twig', $context);
+</code></pre>
+
+<pre><code class="language-twig">	&lt;footer&gt;{{site_copyright_info}}&lt;/footer&gt;
+</code></pre>
+
+<h6 id="get-all-info-from-your-options-page">Get all info from your options page</h6>
+
+<pre><code class="language-php">	&lt;?php
+	$context['options'] = get_fields('options');
+	Timber::render('index.twig', $context);
+</code></pre>
+
+<p>ACF Pro has a built in options page, and changes the <code>get_fields('options')</code> to <code>get_fields('option')</code>.</p>
+
+<pre><code class="language-twig">	&lt;footer&gt;{{options.copyright_info}}&lt;/footer&gt;
+</code></pre>
+
+<h6 id="use-options-info-site-wide">Use options info site wide</h6>
+
+<p>To use any options fields site wide, add the <code>option</code> context to your functions.php file</p>
+
+<pre><code class="language-php">&lt;?php
+/* functions.php */
+add_filter( 'timber_context', 'mytheme_timber_context'  );
+
+function mytheme_timber_context( $context ) {
+    $context['options'] = get_fields('option');
+    return $context;
+}
+</code></pre>
+
+<p>Now, you can use any of the option fields across the site instead of per template.</p>
+
+<pre><code class="language-twig">/* footer.twig */
+&lt;footer&gt;{{options.copyright_info}}&lt;/footer&gt;
+</code></pre>
+
+<hr />
+
+<h3 id="getting-acf-info">Getting ACF info:</h3>
+
+<p>You can grab specific field label data like so:</p>
+
+<pre><code class="language-php">&lt;?php
+/* single.php */
+$context[&quot;acf&quot;] = get_field_objects($data[&quot;post&quot;]-&gt;ID);
+</code></pre>
+
+<pre><code class="language-twig">{{ acf.your_field_name_here.label }}
+</code></pre>
+
+<hr />
+
+<h3 id="query-by-custom-field-value">Query by custom field value:</h3>
+
+<h6 id="use-a-wp-query-http-codex-wordpress-org-class-reference-wp-query-array">Use a <a href="http://codex.wordpress.org/Class_Reference/WP_Query">WP_Query</a> array</h6>
+
+<h4 id="basic-example">Basic Example</h4>
+
+<p>This example shows the arguments to find all posts where a custom field called ‘color’ has a value of ‘red’.</p>
+
+<pre><code class="language-php">&lt;?php
+$args = array(
+    'numberposts' =&gt; -1,
+    'post_type' =&gt; 'post',
+    'meta_key' =&gt; 'color',
+    'meta_value' =&gt; 'red'
+);
+$context['posts'] = Timber::get_posts($args);
+</code></pre>
+
+<hr />
+
+			</div>
+		</div>
+	</article>
 
 </main>
 

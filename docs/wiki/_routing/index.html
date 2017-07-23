@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta name="generator" content="Hugo 0.25.1" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -173,33 +172,157 @@
 
 <main>
     
-	<h1>Timber Docs</h1>
+	<article>
+		<h1></h1>
 
-	
+		<aside class="toc">
+			<h2 class="heading-4 toc__title">Contents of this page</h2>
+			<nav id="TableOfContents">
+<ul>
+<li><a href="#routing">Routing</a>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#some-examples">Some examples</a></li>
+<li><a href="#map">map</a>
+<ul>
+<li>
+<ul>
+<li><a href="#routes-map-pattern-callback"><code>Routes::map($pattern, $callback)</code></a></li>
+<li><a href="#usage">Usage:</a></li>
+<li><a href="#arguments">Arguments:</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#load">load</a>
+<ul>
+<li>
+<ul>
+<li><a href="#routes-load-php-file-args-query-null-status-code-200"><code>Routes::load($php_file, $args, $query = null, $status_code = 200)</code></a></li>
+<li><a href="#arguments-1">Arguments:</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+		</aside>
 
-	<ul class="list">
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/getting-started/">Getting Started</a></h2>
-			<div class="list__item__text">Start here if you want to get to know Timber.</div>
-		</li>
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/guides/">Guides</a></h2>
-			<div class="list__item__text">Guides provide you with more detailed information for working with Timber and Twig. We cover a lot of functionality that you already know from working with WordPress.</div>
-		</li>
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/reference/">Reference</a></h2>
-			<div class="list__item__text">The reference is a bit techy. It’s more like an API documentation that provides you with details about the different classes and methods that are provided by Timber.</div>
-		</li>
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/upgrade-guides/">Upgrade Guides</a></h2>
-			<div class="list__item__text">When you upgrade to a newer version of Timber, a lot of things can change. We try to list and explain relevant changes here, so that you can transition to newer versions smoothly.</div>
-		</li>
-	
-	</ul>
+		<div class="content-container">
+			<div class="content">
+				
+
+<h1 id="routing">Routing</h1>
+
+<p>Among its other special powers, Timber includes modern routing in the Express.js/Ruby on Rails mold, making it easy for you to implement custom pagination&ndash;and anything else you might imagine in your wildest dreams of URLs and parameters. OMG so easy!</p>
+
+<h4 id="some-examples">Some examples</h4>
+
+<p>In your functions.php file, this can be called anywhere (don&rsquo;t hook it to init or another action or it might be called too late)</p>
+
+<pre><code class="language-php">&lt;?php
+Routes::map('blog/:name', function($params){
+    $query = 'posts_per_page=3&amp;post_type='.$params['name'];
+    Routes::load('archive.php', null, $query, 200);
+});
+
+Routes::map('blog/:name/page/:pg', function($params){
+    $query = 'posts_per_page=3&amp;post_type='.$params['name'].'&amp;paged='.$params['pg'];
+    $params = array('thing' =&gt; 'foo', 'bar' =&gt; 'I dont even know');
+    Routes::load('archive.php', $params, $query);
+});
+</code></pre>
+
+<h4 id="map">map</h4>
+
+<h6 id="routes-map-pattern-callback"><code>Routes::map($pattern, $callback)</code></h6>
+
+<h6 id="usage">Usage:</h6>
+
+<p>A <code>functions.php</code> where I want to display custom paginated content:</p>
+
+<pre><code class="language-php">&lt;?php
+Routes::map('info/:name/page/:pg', function($params){
+	//make a custom query based on incoming path and run it...
+	$query = 'posts_per_page=3&amp;post_type='.$params['name'].'&amp;paged='.intval($params['pg']);
+
+	//load up a template which will use that query
+	Routes::load('archive.php', null, $query);
+});
+</code></pre>
+
+<h6 id="arguments">Arguments:</h6>
+
+<p><code>$pattern</code> (required)
+Set a pattern for Timber to match on, by default everything is handled as a string. Any segment that begins with a <code>:</code> is handled as a variable, for example:</p>
+
+<p><strong>To paginate:</strong></p>
+
+<pre><code>page/:pagenum
+</code></pre>
+
+<p><strong>To edit a user:</strong></p>
+
+<pre><code>my-users/:userid/edit
+</code></pre>
+
+<p><code>$callback</code>
+A function that should fire when the pattern matches the request. Callback takes one argument which is an array of the parameters passed in the URL.</p>
+
+<p>So in this example: <code>'info/:name/page/:pg'</code>, $params would have data for:
+* <code>$data['name']</code>
+* <code>$data['pg']</code></p>
+
+<p>&hellip; which you can use in the callback function as a part of your query</p>
+
+<hr />
+
+<h4 id="load">load</h4>
+
+<h6 id="routes-load-php-file-args-query-null-status-code-200"><code>Routes::load($php_file, $args, $query = null, $status_code = 200)</code></h6>
+
+<h6 id="arguments-1">Arguments:</h6>
+
+<p><code>$php_file</code> (required)
+A PHP file to load, in my experience this is usually your archive.php or a generic listing page (but don&rsquo;t worry it can be anything!)</p>
+
+<p><code>$template_params</code>
+Any data you want to send to the resulting view. Example:</p>
+
+<pre><code class="language-php">&lt;?php
+/* functions.php */
+
+Routes::map('info/:name/page/:pg', function($params){
+    //make a custom query based on incoming path and run it...
+    $query = 'posts_per_page=3&amp;post_type='.$params['name'].'&amp;paged='.intval($params['pg']);
+
+    //load up a template which will use that query
+    $params = array();
+    $params['my_title'] = 'This is my custom title';
+    Routes::load('archive.php', $params, $query, 200);
+});
+</code></pre>
+
+<pre><code class="language-php">&lt;?php
+/* archive.php */
+
+global $params;
+$context['wp_title'] = $params['my_title']; // &quot;This is my custom title&quot;
+/* the rest as normal... */
+Timber::render('archive.twig', $context)
+</code></pre>
+
+<p><code>$query</code>
+The query you want to use, it can accept a string or array just like <code>Timber::get_posts</code> &ndash; use the standard WP_Query syntax (or a WP_Query object too)</p>
+
+<p><code>$status_code</code>
+Send an optional status code. Defaults to 200 for &lsquo;Success/OK&rsquo;</p>
+
+			</div>
+		</div>
+	</article>
 
 </main>
 

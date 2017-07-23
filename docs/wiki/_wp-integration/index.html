@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta name="generator" content="Hugo 0.25.1" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -173,33 +172,246 @@
 
 <main>
     
-	<h1>Timber Docs</h1>
+	<article>
+		<h1></h1>
 
-	
+		<aside class="toc">
+			<h2 class="heading-4 toc__title">Contents of this page</h2>
+			<nav id="TableOfContents">
+<ul>
+<li><a href="#wordpress-integration">WordPress Integration</a>
+<ul>
+<li><a href="#the-content">the_content</a></li>
+<li><a href="#hooks">Hooks</a></li>
+<li><a href="#actions">Actions</a></li>
+<li><a href="#filters">Filters</a></li>
+<li><a href="#widgets">Widgets</a>
+<ul>
+<li><a href="#using-timber-inside-your-own-widgets">Using Timber inside your own widgets</a></li>
+</ul></li>
+<li><a href="#shortcodes">Shortcodes</a>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#layouts-with-shortcodes">Layouts with Shortcodes</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+		</aside>
 
-	<ul class="list">
+		<div class="content-container">
+			<div class="content">
+				
+
+<h1 id="wordpress-integration">WordPress Integration</h1>
+
+<p>Timber plays nice with your existing WordPress setup. You can still use other plugins, etc. Here&rsquo;s a rundown of the key points:</p>
+
+<ul>
+<li><a href="#the_content">the_content</a></li>
+<li><a href="#hooks">WordPress Hooks</a></li>
+<li><a href="#functions">Functions</a></li>
+<li><a href="#actions">Actions</a></li>
+<li><a href="#filters">Filters</a></li>
+<li><a href="#widgets">Widgets</a></li>
+<li><a href="#shortcodes">Shortcodes</a></li>
+</ul>
+
+<hr />
+
+<h2 id="the-content">the_content</h2>
+
+<p>You&rsquo;re probably used to calling <code>the_content()</code> in your theme file. This is good. Before outputting, WordPress will run all the filters and actions that your plugins and themes are using. If you want to get this into your new Timber theme (and you probably do). Call it like this:</p>
+
+<pre><code class="language-twig">&lt;div class=&quot;my-article&quot;&gt;
+   {{ post.content }}
+&lt;/div&gt;
+</code></pre>
+
+<p>This differs from <code>{{ post.post_content }}</code>, which is the raw text stored in your database.</p>
+
+<hr />
+
+<h2 id="hooks">Hooks</h2>
+
+<p>Timber hooks to interact with WordPress use <code>this/style/of_hooks</code> instead of <code>this_style_of_hooks</code>. This matches the same methodology as <a href="http://www.advancedcustomfields.com/resources/#actions">Advanced Custom Fields</a>.</p>
+
+<p>Full documentation to come</p>
+
+<hr />
+
+<h2 id="actions">Actions</h2>
+
+<p>Call them in your Twig template&hellip;</p>
+
+<pre><code class="language-twig">{% do action('my_action') %}
+{% do action('my_action_with_args', 'foo', 'bar') %}
+</code></pre>
+
+<p>&hellip; in your <code>functions.php</code> file:</p>
+
+<pre><code class="language-php">&lt;?php
+add_action('my_action', 'my_function');
+
+function my_function( $context ) {
+	// $context stores the template context in case you need to reference it
+	echo $context['post']-&gt;post_title; //outputs title of yr post
+}
+</code></pre>
+
+<pre><code class="language-php">&lt;?php
+add_action( 'my_action_with_args', 'my_function_with_args', 10, 2 );
+
+function my_function_with_args( $foo, $bar ){
+	echo 'I say ' . $foo . ' and ' . $bar;
+}
+</code></pre>
+
+<p>You can still get the context object when passing args, it&rsquo;s always the <em>last</em> argument&hellip;</p>
+
+<pre><code class="language-php">&lt;?php
+add_action( 'my_action_with_args', 'my_function_with_args', 10, 3 );
+
+function my_function_with_args( $foo, $bar, $context ){
+	echo 'I say ' . $foo . ' and ' . $bar;
+	echo 'For the post with title ' . $context['post']-&gt;post_title;
+}
+</code></pre>
+
+<p>Please note the argument count that WordPress requires for <code>add_action</code>.</p>
+
+<hr />
+
+<h2 id="filters">Filters</h2>
+
+<p>Timber already comes with a <a href="http://timber.github.io/timber/#filters">set of useful filters</a>. If you have your own filters that you want to apply, you can use <code>apply_filters</code>.</p>
+
+<pre><code class="language-twig">{{ post.content|apply_filters('my_filter') }}
+{{ &quot;my custom string&quot;|apply_filters('my_filter', param1, param2, ...) }}
+</code></pre>
+
+<hr />
+
+<h2 id="widgets">Widgets</h2>
+
+<p>Everyone loves widgets!
+Of course they do&hellip;</p>
+
+<pre><code class="language-php">&lt;?php
+$data['footer_widgets'] = Timber::get_widgets('footer_widgets');
+</code></pre>
+
+<p>&hellip;where &lsquo;footer_widgets&rsquo; is the registered name of the widgets you want to get(in twentythirteen these are called <code>sidebar-1</code> and <code>sidebar-2</code> )</p>
+
+<p>Then use it in your template:</p>
+
+<pre><code class="language-twig">{# base.twig #}
+&lt;footer&gt;
+	{{ footer_widgets }}
+&lt;/footer&gt;
+</code></pre>
+
+<hr />
+
+<h3 id="using-timber-inside-your-own-widgets">Using Timber inside your own widgets</h3>
+
+<p>You can also use twig templates for your widgets!
+Let&rsquo;s imagine we want a widget that shows a random number each time it is rendered.</p>
+
+<p>Inside the widget class, the widget function is used to show the widget:</p>
+
+<pre><code class="language-php">&lt;?php
+public function widget($args, $instance) {
+	$number = rand();
+	Timber::render('random-widget.twig', array('args' =&gt; $args, 'instance' =&gt; $instance, 'number' =&gt; $number));
+}
+</code></pre>
+
+<p>The corresponding template file <code>random-widget.twig</code> looks like this:</p>
+
+<pre><code class="language-twig">{{ args.before_widget | raw }}
+{{ args.before_title | raw }}{{ instance.title | apply_filters('widget_title') }}{{ args.after_title | raw }}
+
+&lt;p&gt;Your magic number is: &lt;strong&gt;{{ number }}&lt;/strong&gt;&lt;/p&gt;
+
+{{ args.after_widget | raw }}
+</code></pre>
+
+<p>The raw filter is needed here to embed the widget properly.</p>
+
+<p>You may also want to check if the Timber plugin was loaded before using it:</p>
+
+<pre><code class="language-php">&lt;?php
+public function widget( $args, $instance ) {
+	if ( ! class_exists( 'Timber' ) ) {
+		// if you want to show some error message, this is the right place
+		return;
+	}
+	$number = rand();
+	Timber::render( 'random-widget.twig', array( 'args' =&gt; $args, 'instance' =&gt; $instance, 'number' =&gt; $number ) );
+}
+</code></pre>
+
+<hr />
+
+<h2 id="shortcodes">Shortcodes</h2>
+
+<p>Well, if it works for widgets, why shouldn&rsquo;t it work for shortcodes ?
+Of course it does !</p>
+
+<p>Let&rsquo;s implement a <code>[youtube]</code> shorttag which embeds a youtube video.
+For the desired usage of <code>[youtube id=xxxx]</code> we only need a few lines of code:</p>
+
+<pre><code class="language-php">&lt;?php
+// Should be called from within an init action hook
+add_shortcode( 'youtube', 'youtube_shorttag' );
+
+function youtube_shorttag( $atts ) {
+	if( isset( $atts['id'] ) ) {
+		$id = sanitize_text_field( $atts['id'] );
+	} else {
+		$id = false;
+	}
 	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/getting-started/">Getting Started</a></h2>
-			<div class="list__item__text">Start here if you want to get to know Timber.</div>
-		</li>
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/guides/">Guides</a></h2>
-			<div class="list__item__text">Guides provide you with more detailed information for working with Timber and Twig. We cover a lot of functionality that you already know from working with WordPress.</div>
-		</li>
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/reference/">Reference</a></h2>
-			<div class="list__item__text">The reference is a bit techy. It’s more like an API documentation that provides you with details about the different classes and methods that are provided by Timber.</div>
-		</li>
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/upgrade-guides/">Upgrade Guides</a></h2>
-			<div class="list__item__text">When you upgrade to a newer version of Timber, a lot of things can change. We try to list and explain relevant changes here, so that you can transition to newer versions smoothly.</div>
-		</li>
-	
-	</ul>
+	// This time we use Timber::compile since shorttags should return the code
+	return Timber::compile( 'youtube-short.twig', array( 'id' =&gt; $id ) );
+}
+</code></pre>
+
+<p>In <code>youtube-short.twig</code> we have the following template:</p>
+
+<pre><code class="language-twig">{% if id %}
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;//www.youtube.com/embed/{{ id }}&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
+{% endif %}
+</code></pre>
+
+<p>Now, when the YouTube embed code changes, we only need to edit the <code>youtube-short.twig</code> template. No need to search your PHP files for this one particular line.</p>
+
+<h5 id="layouts-with-shortcodes">Layouts with Shortcodes</h5>
+
+<p>Timber and Twig can process your shortcodes by using the <code>{% filter shortcodes %}</code> tag. Let&rsquo;s say you&rsquo;re using a <code>[tab]</code> shortcode, for example:</p>
+
+<pre><code class="language-twig">{% filter shortcodes %}
+	[tabs tab1=&quot;Tab 1 title&quot; tab2=&quot;Tab 2 title&quot; layout=&quot;horizontal&quot; backgroundcolor=&quot;&quot; inactivecolor=&quot;&quot;]
+		[tab id=1]
+			Something something something
+		[/tab]
+
+		[tab id=2]
+			Tab 2 content here
+		[/tab]
+	[/tabs]
+{% endfilter %}
+</code></pre>
+
+			</div>
+		</div>
+	</article>
 
 </main>
 

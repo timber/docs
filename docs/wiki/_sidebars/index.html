@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta name="generator" content="Hugo 0.25.1" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -173,33 +172,133 @@
 
 <main>
     
-	<h1>Timber Docs</h1>
+	<article>
+		<h1></h1>
 
-	
+		<aside class="toc">
+			<h2 class="heading-4 toc__title">Contents of this page</h2>
+			<nav id="TableOfContents">
+<ul>
+<li><a href="#sidebars">Sidebars</a>
+<ul>
+<li><a href="#so-you-want-a-sidebar">So you want a sidebar?</a>
+<ul>
+<li><a href="#method-1-php-file">Method 1: PHP file</a></li>
+<li><a href="#method-2-twig-file">Method 2: Twig file</a></li>
+<li><a href="#method-3-dynamic">Method 3: Dynamic</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+		</aside>
 
-	<ul class="list">
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/getting-started/">Getting Started</a></h2>
-			<div class="list__item__text">Start here if you want to get to know Timber.</div>
-		</li>
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/guides/">Guides</a></h2>
-			<div class="list__item__text">Guides provide you with more detailed information for working with Timber and Twig. We cover a lot of functionality that you already know from working with WordPress.</div>
-		</li>
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/reference/">Reference</a></h2>
-			<div class="list__item__text">The reference is a bit techy. It’s more like an API documentation that provides you with details about the different classes and methods that are provided by Timber.</div>
-		</li>
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/upgrade-guides/">Upgrade Guides</a></h2>
-			<div class="list__item__text">When you upgrade to a newer version of Timber, a lot of things can change. We try to list and explain relevant changes here, so that you can transition to newer versions smoothly.</div>
-		</li>
-	
-	</ul>
+		<div class="content-container">
+			<div class="content">
+				
+
+<h1 id="sidebars">Sidebars</h1>
+
+<h2 id="so-you-want-a-sidebar">So you want a sidebar?</h2>
+
+<h3 id="method-1-php-file">Method 1: PHP file</h3>
+
+<p>Let&rsquo;s say every page on the site has the same content going into its sidebar. If so, you would:
+Create a <code>sidebar.php</code> file in your theme directory (so <code>wp-content/themes/mytheme/sidebar.php</code>)</p>
+
+<pre><code class="language-php">&lt;?php
+/* sidebar.php */
+$context = array();
+$context['widget'] = my_function_to_get_widget();
+$context['ad'] = my_function_to_get_an_ad();
+Timber::render('sidebar.twig', $context);
+</code></pre>
+
+<ul>
+<li>Use that php file within your main php file (home.php, single.php, archive.php, etc):</li>
+</ul>
+
+<pre><code class="language-php">&lt;?php
+/* single.php */
+$context = Timber::get_context();
+$context['sidebar'] = Timber::get_sidebar('sidebar.php');
+Timber::render('single.twig', $context);
+</code></pre>
+
+<ul>
+<li>In the final twig file make sure you reserve a spot for your sidebar:</li>
+</ul>
+
+<pre><code class="language-twig">{# single.twig #}
+&lt;aside class=&quot;sidebar&quot;&gt;
+	{{sidebar}}
+&lt;/aside&gt;
+</code></pre>
+
+<hr />
+
+<h3 id="method-2-twig-file">Method 2: Twig file</h3>
+
+<p>In this example, you would populate your sidebar from your main PHP file (home.php, single.php, archive.php, etc).</p>
+
+<ul>
+<li>Make a Twig file for what your sidebar should be:</li>
+</ul>
+
+<pre><code class="language-twig">{# views/sidebar-related.twig #}
+&lt;h3&gt;Related Stories&lt;/h3&gt;
+{% for post in related %}
+	&lt;h4&gt;&lt;a href=&quot;{{post.get_path}}&quot;&gt;{{post.post_title}}&lt;/a&gt;&lt;/h4&gt;
+{% endfor %}
+</code></pre>
+
+<ul>
+<li>Send data to it via your main PHP file:</li>
+</ul>
+
+<pre><code class="language-php">&lt;?php
+/* single.php */
+$context = Timber::get_context();
+$post = new TimberPost();
+$post_cat = $post-&gt;get_terms('category');
+$post_cat = $post_cat[0]-&gt;ID;
+$context['post'] = $post;
+
+$sidebar_context = array();
+$sidebar_context['related'] = Timber::get_posts('cat='.$post_cat);
+$context['sidebar'] = Timber::get_sidebar('sidebar-related.twig', $sidebar_context);
+Timber::render('single.twig', $context);
+</code></pre>
+
+<ul>
+<li>In the final twig file, make sure you have spot for your sidebar:</li>
+</ul>
+
+<pre><code class="language-twig">{# single.twig #}
+&lt;aside class=&quot;sidebar&quot;&gt;
+	{{sidebar}}
+&lt;/aside&gt;
+</code></pre>
+
+<hr />
+
+<h3 id="method-3-dynamic">Method 3: Dynamic</h3>
+
+<p>This is using WordPress&rsquo;s built-in dynamic_sidebar tools (which, confusingly, are referred to as &ldquo;Widgets&rdquo; in the interface). Since sidebar is already used; I used widgets in the code to describe these:</p>
+
+<pre><code class="language-php">&lt;?php
+$context = array();
+$context['dynamic_sidebar'] = Timber::get_widgets('dynamic_sidebar');
+Timber::render('sidebar.twig', $context);
+</code></pre>
+
+<p>```twig
+<aside class="my-sidebar">
+{{dynamic_sidebar}}
+</aside></p>
+
+			</div>
+		</div>
+	</article>
 
 </main>
 

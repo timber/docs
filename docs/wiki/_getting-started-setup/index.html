@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta name="generator" content="Hugo 0.25.1" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -173,33 +172,109 @@
 
 <main>
     
-	<h1>Timber Docs</h1>
+	<article>
+		<h1></h1>
 
-	
+		<aside class="toc">
+			<h2 class="heading-4 toc__title">Contents of this page</h2>
+			<nav id="TableOfContents">
+<ul>
+<li><a href="#getting-started-setup">Getting Started: Setup</a>
+<ul>
+<li><a href="#installation">Installation</a>
+<ul>
+<li>
+<ul>
+<li><a href="#via-wordpress-org-easy">Via WordPress.org (easy)</a></li>
+<li><a href="#via-github-for-developers">Via GitHub (for developers)</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#use-the-starter-theme-https-github-com-upstatement-timber-starter-theme"><a href="https://github.com/Upstatement/timber-starter-theme">Use the starter theme</a></a>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#navigate-to-your-wordpress-themes-directory">Navigate to your WordPress themes directory</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#1-activate-timber">1. Activate Timber</a></li>
+<li><a href="#2-select-your-theme-in-wordpress">2. Select your theme in WordPress</a></li>
+<li><a href="#3-let-s-write-our-theme">3. Let&rsquo;s write our theme!</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+		</aside>
 
-	<ul class="list">
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/getting-started/">Getting Started</a></h2>
-			<div class="list__item__text">Start here if you want to get to know Timber.</div>
-		</li>
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/guides/">Guides</a></h2>
-			<div class="list__item__text">Guides provide you with more detailed information for working with Timber and Twig. We cover a lot of functionality that you already know from working with WordPress.</div>
-		</li>
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/reference/">Reference</a></h2>
-			<div class="list__item__text">The reference is a bit techy. It’s more like an API documentation that provides you with details about the different classes and methods that are provided by Timber.</div>
-		</li>
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/upgrade-guides/">Upgrade Guides</a></h2>
-			<div class="list__item__text">When you upgrade to a newer version of Timber, a lot of things can change. We try to list and explain relevant changes here, so that you can transition to newer versions smoothly.</div>
-		</li>
-	
-	</ul>
+		<div class="content-container">
+			<div class="content">
+				
+
+<h1 id="getting-started-setup">Getting Started: Setup</h1>
+
+<h2 id="installation">Installation</h2>
+
+<h4 id="via-wordpress-org-easy">Via WordPress.org (easy)</h4>
+
+<p>You can just grab the all-things-included plugin at <a href="http://wordpress.org/plugins/timber-library/">WordPress.org</a> either through the WP site or your Plugins-&gt;Add New in wp-admin. Then skip ahead to <a href="#use-the-starter-theme">using the starter theme</a>.</p>
+
+<h4 id="via-github-for-developers">Via GitHub (for developers)</h4>
+
+<p>The GitHub version of Timber requires <a href="https://getcomposer.org/download/">Composer</a>. If you&rsquo;d prefer one-click installation, you should use the <a href="https://wordpress.org/plugins/timber-library/">WordPress.org</a> version.</p>
+
+<pre><code class="language-shell">composer require timber/timber
+</code></pre>
+
+<p>If your theme is not setup to pull in Composer&rsquo;s autoload file, you will need to:</p>
+
+<pre><code class="language-php">&lt;?php
+require_once(__DIR__ . '/vendor/autoload.php');
+</code></pre>
+
+<p>at the top of your <code>functions.php</code> file.</p>
+
+<p>Initialize Timber with:</p>
+
+<pre><code class="language-php">&lt;?php
+$timber = new \Timber\Timber();
+</code></pre>
+
+<hr />
+
+<h2 id="use-the-starter-theme-https-github-com-upstatement-timber-starter-theme"><a href="https://github.com/Upstatement/timber-starter-theme">Use the starter theme</a></h2>
+
+<p>This is for starting a project from scratch. You can also use Timber in an existing theme.</p>
+
+<h5 id="navigate-to-your-wordpress-themes-directory">Navigate to your WordPress themes directory</h5>
+
+<p>Like where twentyeleven and twentytwelve live. The Timber Starter will live at the same level.</p>
+
+<pre><code>/wp-content/themes  /twentyeleven
+                    /twentytwelve
+                    /timber-starter-theme
+</code></pre>
+
+<p>You should now have:</p>
+
+<pre><code>/wp-content/themes/timber-starter-theme
+</code></pre>
+
+<p>You should probably <strong>rename</strong> this to something better.</p>
+
+<h3 id="1-activate-timber">1. Activate Timber</h3>
+
+<p>It will be in wp-admin/plugins.php</p>
+
+<h3 id="2-select-your-theme-in-wordpress">2. Select your theme in WordPress</h3>
+
+<p>Make sure you select the Timber-enabled theme <strong>after</strong> you activate the plugin. The theme will crash unless Timber is activated. Use the <strong>timber-starter-theme</strong> theme from the step above (or whatever you renamed it).</p>
+
+<h3 id="3-let-s-write-our-theme">3. Let&rsquo;s write our theme!</h3>
+
+			</div>
+		</div>
+	</article>
 
 </main>
 

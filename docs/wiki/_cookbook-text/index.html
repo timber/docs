@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta name="generator" content="Hugo 0.25.1" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -173,33 +172,166 @@
 
 <main>
     
-	<h1>Timber Docs</h1>
+	<article>
+		<h1></h1>
 
-	
+		<aside class="toc">
+			<h2 class="heading-4 toc__title">Contents of this page</h2>
+			<nav id="TableOfContents">
+<ul>
+<li><a href="#text-cookbook">Text Cookbook</a>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#dates">Dates</a>
+<ul>
+<li><a href="#timber-does-bylines-like-a-boss">Timber does bylines like a boss:</a>
+<ul>
+<li><a href="#renders">Renders:</a></li>
+</ul></li>
+<li><a href="#nothing-is-worse-than-an-out-of-date-copyright-year-in-the-footer-nothing">Nothing is worse than an out-of-date copyright year in the footer. Nothing.</a>
+<ul>
+<li><a href="#renders-1">Renders:</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#standard-transforms">Standard transforms</a>
+<ul>
+<li><a href="#automatically-link-urls-email-addresses-twitter-s-and-s">Automatically link URLs, email addresses, twitter @s and #s</a></li>
+<li><a href="#run-wordpress-auto-paragraph-filter">Run WordPress&rsquo; auto-paragraph filter</a></li>
+<li><a href="#run-wordpress-shortcodes-over-a-block-of-text">Run WordPress shortcodes over a block of text</a></li>
+<li><a href="#code-samples-lord-knows-i-ve-got-em">Code samples? Lord knows I&rsquo;ve got &lsquo;em:</a></li>
+<li><a href="#functions-inside-of-your-templates-plugin-calls">Functions inside of your templates, plugin calls:</a></li>
+<li><a href="#functions-with-params-inside-of-your-templates-plugin-calls">Functions &ldquo;with params&rdquo; inside of your templates, plugin calls:</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#debugging">Debugging</a>
+<ul>
+<li>
+<ul>
+<li><a href="#what-properties-are-inside-my-object">What properties are inside my object?</a></li>
+<li><a href="#what-properties-and-methods-are-inside-my-object">What properties and <em>methods</em> are inside my object?</a></li>
+<li><a href="#what-type-of-object-am-i-working-with">What type of object am I working with?</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+		</aside>
 
-	<ul class="list">
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/getting-started/">Getting Started</a></h2>
-			<div class="list__item__text">Start here if you want to get to know Timber.</div>
-		</li>
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/guides/">Guides</a></h2>
-			<div class="list__item__text">Guides provide you with more detailed information for working with Timber and Twig. We cover a lot of functionality that you already know from working with WordPress.</div>
-		</li>
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/reference/">Reference</a></h2>
-			<div class="list__item__text">The reference is a bit techy. It’s more like an API documentation that provides you with details about the different classes and methods that are provided by Timber.</div>
-		</li>
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/upgrade-guides/">Upgrade Guides</a></h2>
-			<div class="list__item__text">When you upgrade to a newer version of Timber, a lot of things can change. We try to list and explain relevant changes here, so that you can transition to newer versions smoothly.</div>
-		</li>
-	
-	</ul>
+		<div class="content-container">
+			<div class="content">
+				
+
+<h1 id="text-cookbook">Text Cookbook</h1>
+
+<p>There&rsquo;s tons of stuff you can do with Twig and Timber filters to make complex transformations easy (and fun!)</p>
+
+<h4 id="dates">Dates</h4>
+
+<h5 id="timber-does-bylines-like-a-boss">Timber does bylines like a boss:</h5>
+
+<pre><code class="language-twig">&lt;p class=&quot;byline&quot;&gt;
+	&lt;span class=&quot;name&quot;&gt;By {{ post.author.name }}&lt;/span&gt;
+	&lt;span class=&quot;date&quot;&gt;{{ post.post_date|date('F j, Y') }}&lt;/span&gt;
+&lt;/p&gt;
+</code></pre>
+
+<h6 id="renders">Renders:</h6>
+
+<pre><code class="language-html">&lt;p class=&quot;byline&quot;&gt;&lt;span class=&quot;name&quot;&gt;By Mr. WordPress&lt;/span&gt;&lt;span class=&quot;date&quot;&gt;September 28, 2013&lt;/span&gt;&lt;/p&gt;
+</code></pre>
+
+<h5 id="nothing-is-worse-than-an-out-of-date-copyright-year-in-the-footer-nothing">Nothing is worse than an out-of-date copyright year in the footer. Nothing.</h5>
+
+<pre><code class="language-twig">&lt;footer&gt;
+	&lt;p class=&quot;copyright&quot;&gt;&amp;copy; {{ now|date('Y') }} by {{ bloginfo('name') }}&lt;/p&gt;
+&lt;/footer&gt;
+</code></pre>
+
+<h6 id="renders-1">Renders:</h6>
+
+<pre><code class="language-html">&lt;footer&gt;&lt;p class=&quot;copyright&quot;&gt;&amp;copy; 2015 by The Daily Orange&lt;/p&gt;&lt;/footer&gt;
+</code></pre>
+
+<hr />
+
+<h4 id="standard-transforms">Standard transforms</h4>
+
+<h5 id="automatically-link-urls-email-addresses-twitter-s-and-s">Automatically link URLs, email addresses, twitter @s and #s</h5>
+
+<pre><code class="language-twig">&lt;p class=&quot;tweet&quot;&gt;{{ post.content|twitterify }}&lt;/p&gt;
+</code></pre>
+
+<h5 id="run-wordpress-auto-paragraph-filter">Run WordPress&rsquo; auto-paragraph filter</h5>
+
+<pre><code class="language-twig">&lt;p class=&quot;content&quot;&gt;{{ post.my_custom_text|wpautop }}&lt;/p&gt;
+</code></pre>
+
+<h5 id="run-wordpress-shortcodes-over-a-block-of-text">Run WordPress shortcodes over a block of text</h5>
+
+<pre><code class="language-twig">&lt;p class=&quot;content&quot;&gt;{{ post.my_custom_text|shortcodes }}&lt;/p&gt;
+</code></pre>
+
+<h5 id="code-samples-lord-knows-i-ve-got-em">Code samples? Lord knows I&rsquo;ve got &lsquo;em:</h5>
+
+<pre><code class="language-twig">&lt;div class=&quot;code-sample&quot;&gt;{{ post.code_samples|pretags }}&lt;/div&gt;
+</code></pre>
+
+<h5 id="functions-inside-of-your-templates-plugin-calls">Functions inside of your templates, plugin calls:</h5>
+
+<p>Old template:</p>
+
+<pre><code class="language-html">&lt;p class=&quot;entry-meta&quot;&gt;&lt;?php twentytwelve_entry_meta(); ?&gt;&lt;/p&gt;
+</code></pre>
+
+<p>Timber-fied template:</p>
+
+<pre><code class="language-twig">&lt;p class=&quot;entry-meta&quot;&gt;{{ function('twentytwelve_entry_meta') }}&lt;/p&gt;
+</code></pre>
+
+<h5 id="functions-with-params-inside-of-your-templates-plugin-calls">Functions &ldquo;with params&rdquo; inside of your templates, plugin calls:</h5>
+
+<p>Old template:</p>
+
+<pre><code class="language-html">&lt;p class=&quot;entry-meta&quot;&gt;&lt;?php get_the_title( $post-&gt;ID ); ?&gt;&lt;/p&gt;
+</code></pre>
+
+<p>Timber-fied template:</p>
+
+<pre><code class="language-twig">&lt;p class=&quot;entry-meta&quot;&gt;{{ function('get_the_title', post.ID) }}&lt;/p&gt;
+</code></pre>
+
+<hr />
+
+<h3 id="debugging">Debugging</h3>
+
+<h5 id="what-properties-are-inside-my-object">What properties are inside my object?</h5>
+
+<pre><code class="language-twig">{{ dump(post) }}
+</code></pre>
+
+<h5 id="what-properties-and-methods-are-inside-my-object">What properties and <em>methods</em> are inside my object?</h5>
+
+<p>Warning: Experimental!</p>
+
+<pre><code class="language-twig">{{ post|print_a }}
+</code></pre>
+
+<p>This outputs both the database stuff (like <code>{{ post.post_content }}</code>) and the contents of methods (like <code>{{ post.thumbnail }}</code>)</p>
+
+<h5 id="what-type-of-object-am-i-working-with">What type of object am I working with?</h5>
+
+<pre><code class="language-twig">{{ post|get_class }}
+</code></pre>
+
+<p>&hellip; will output something like <code>TimberPost</code> or your custom wrapper object</p>
+
+			</div>
+		</div>
+	</article>
 
 </main>
 

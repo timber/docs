@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta name="generator" content="Hugo 0.25.1" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -173,33 +172,129 @@
 
 <main>
     
-	<h1>Timber Docs</h1>
+	<article>
+		<h1></h1>
 
-	
+		<aside class="toc">
+			<h2 class="heading-4 toc__title">Contents of this page</h2>
+			<nav id="TableOfContents">
+<ul>
+<li><a href="#functions">Functions</a>
+<ul>
+<li><a href="#function">function()</a>
+<ul>
+<li><a href="#function-with-arguments">function() with arguments</a></li>
+</ul></li>
+<li><a href="#make-functions-available-in-twig">Make functions available in Twig</a>
+<ul>
+<li><a href="#function-wrapper">function_wrapper</a></li>
+<li><a href="#functions-that-echo-output">Functions that echo output</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+		</aside>
 
-	<ul class="list">
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/getting-started/">Getting Started</a></h2>
-			<div class="list__item__text">Start here if you want to get to know Timber.</div>
-		</li>
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/guides/">Guides</a></h2>
-			<div class="list__item__text">Guides provide you with more detailed information for working with Timber and Twig. We cover a lot of functionality that you already know from working with WordPress.</div>
-		</li>
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/reference/">Reference</a></h2>
-			<div class="list__item__text">The reference is a bit techy. It’s more like an API documentation that provides you with details about the different classes and methods that are provided by Timber.</div>
-		</li>
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/upgrade-guides/">Upgrade Guides</a></h2>
-			<div class="list__item__text">When you upgrade to a newer version of Timber, a lot of things can change. We try to list and explain relevant changes here, so that you can transition to newer versions smoothly.</div>
-		</li>
-	
-	</ul>
+		<div class="content-container">
+			<div class="content">
+				
+
+<h1 id="functions">Functions</h1>
+
+<p>My theme/plugin has some functions I need! Do I really have to re-write all of them?</p>
+
+<p>No.</p>
+
+<h2 id="function">function()</h2>
+
+<p>You can call all PHP functions through <code>function()</code> in Twig. For example, if you need to call <code>wp_head()</code> and <code>wp_footer()</code>, you’d do it like this:</p>
+
+<pre><code class="language-twig">{# single.twig #}
+&lt;html&gt;
+	&lt;head&gt;
+	&lt;!-- Add whatever you need in the head, and then...--&gt;
+	{{ function('wp_head') }}
+	&lt;/head&gt;
+
+	&lt;!-- etc... --&gt;
+
+	&lt;footer&gt;
+		Copyright &amp;copy; {{ &quot;now&quot;|date('Y') }}
+	&lt;/footer&gt;
+	{{ function('wp_footer') }}
+	&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>You can also use <code>fn('my_function')</code> as an alias for <code>function('my_function')</code>.</p>
+
+<h3 id="function-with-arguments">function() with arguments</h3>
+
+<p>What if you need to pass arguments to a function? Easy, add them as additional arguments (the first argument will always be the name of the function to call):</p>
+
+<pre><code class="language-twig">{# single.twig #}
+&lt;div class=&quot;admin-tools&quot;&gt;
+	{{ function('edit_post_link', 'Edit', '&lt;span class=&quot;edit-link&quot;&gt;', '&lt;/span&gt;') }}
+&lt;/div&gt;
+</code></pre>
+
+<p>Nice! Any gotchas? Unfortunately yes. While the above example will totally work in a single.twig file it will not in The Loop. Why? Single.twig/single.php retain the context of the current post. A function like <code>edit_post_link</code> will try to guess the ID of the post you want to edit from the current post in The Loop. the same function requires some modification in a file like <code>archive.twig</code> or <code>index.twig</code>. There, you will need to explicitly pass the post ID:</p>
+
+<pre><code class="language-twig">{# index.twig #}
+&lt;div class=&quot;admin-tools&quot;&gt;
+	{{ function('edit_post_link', 'Edit', '&lt;span class=&quot;edit-link&quot;&gt;', '&lt;/span&gt;', post.ID) }}
+&lt;/div&gt;
+</code></pre>
+
+<h2 id="make-functions-available-in-twig">Make functions available in Twig</h2>
+
+<p>If you have functions that you use a lot and want to improve readability of your code, you can make a function available in Twig by using <code>Timber\Twig_Function</code> inside the <code>timber/twig</code> hook.</p>
+
+<pre><code class="language-php">/**
+ * My custom Twig functionality.
+ *
+ * @param Twig_Environment $twig
+ * @return $twig
+ */
+add_filter( 'timber/twig', function( \Twig_Environment $twig ) {
+	$twig-&gt;addFunction( new Twig_Function( 'edit_post_link', 'edit_post_link' ) );
+} );
+</code></pre>
+
+<p>Now you can use it like a &ldquo;normal&rdquo; function:</p>
+
+<pre><code class="language-twig">{# single.twig #}
+&lt;div class=&quot;admin-tools&quot;&gt;
+    {{ edit_post_link }}
+&lt;/div&gt;
+{# Calls edit_post_link using default arguments #}
+
+{# single-my-post-type.twig #}
+&lt;div class=&quot;admin-tools&quot;&gt;
+    {{ edit_post_link(null, '&lt;span class=&quot;edit-my-post-type-link&quot;&gt;') }}
+&lt;/div&gt;
+{# Calls edit_post_link with all defaults, except for second argument #}
+</code></pre>
+
+<h3 id="function-wrapper">function_wrapper</h3>
+
+<p>In Timber versions lower than 1.3, you could use <code>function_wrapper</code> to make functions available in Twig. This method is now deprecated. Instead, use one of the methods above.</p>
+
+<h3 id="functions-that-echo-output">Functions that echo output</h3>
+
+<p>The concept of Timber (and templating engines like Twig in general) is to prepare all the data before you pass it to a template. Some functions in WordPress echo their output directly. We don’t want this, because the output of this function would be echoed before we call <code>Timber:render()</code> and appear before every else on your website. There are two ways to work around this:</p>
+
+<ul>
+<li>If you have a function where you want to bypass the output and instead save it as a string, so that you can add it to your context, use <a href="http://timber.github.io/timber/#ob_function"><code>Helper::ob_function</code></a>.</li>
+<li>If you have a function that needs to be called exactly where you use it in your template (e.g. because it depends on certain global values) you can use <code>FunctionWrapper</code>:</li>
+</ul>
+
+<pre><code class="language-php">$context['my_custom_function'] = new FunctionWrapper( 'my_custom_function', $array_of_arguments );
+</code></pre>
+
+			</div>
+		</div>
+	</article>
 
 </main>
 

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta name="generator" content="Hugo 0.25.1" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -173,33 +172,107 @@
 
 <main>
     
-	<h1>Timber Docs</h1>
+	<article>
+		<h1></h1>
 
-	
+		<aside class="toc">
+			<h2 class="heading-4 toc__title">Contents of this page</h2>
+			<nav id="TableOfContents">
+<ul>
+<li><a href="#pagination">Pagination</a>
+<ul>
+<li>
+<ul>
+<li><a href="#what-if-i-m-not-using-the-default-query">What if I&rsquo;m not using the default query?</a></li>
+<li><a href="#the-pre-get-posts-way">The pre_get_posts Way</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+		</aside>
 
-	<ul class="list">
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/getting-started/">Getting Started</a></h2>
-			<div class="list__item__text">Start here if you want to get to know Timber.</div>
-		</li>
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/guides/">Guides</a></h2>
-			<div class="list__item__text">Guides provide you with more detailed information for working with Timber and Twig. We cover a lot of functionality that you already know from working with WordPress.</div>
-		</li>
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/reference/">Reference</a></h2>
-			<div class="list__item__text">The reference is a bit techy. It’s more like an API documentation that provides you with details about the different classes and methods that are provided by Timber.</div>
-		</li>
-	
-		<li class="list__item">
-			<h2 class="list__item__title"><a class="list__item__link" href="https://timber.github.io/docs/upgrade-guides/">Upgrade Guides</a></h2>
-			<div class="list__item__text">When you upgrade to a newer version of Timber, a lot of things can change. We try to list and explain relevant changes here, so that you can transition to newer versions smoothly.</div>
-		</li>
-	
-	</ul>
+		<div class="content-container">
+			<div class="content">
+				
+
+<h1 id="pagination">Pagination</h1>
+
+<p>Do you like pagination? Stupid question, of course you do. Well, here&rsquo;s how you do it.</p>
+
+<p>This will only work in a php file with an active query (like <code>archive.php</code> or <code>home.php</code>):</p>
+
+<pre><code class="language-php">	&lt;?php
+	$context = Timber::get_context();
+	$context['posts'] = new PostQuery();
+	Timber::render('archive.twig', $context);
+</code></pre>
+
+<p>You can then markup the output like so  (of course, the exact markup is up to YOU):</p>
+
+<pre><code class="language-twig">&lt;div class=&quot;tool-pagination&quot;&gt;
+	{% if posts.pagination.prev %}
+		&lt;a href=&quot;{{posts.pagination.prev.link}}&quot; class=&quot;prev {{posts.pagination.prev.link|length ? '' : 'invisible'}}&quot;&gt;Prev&lt;/a&gt;
+	{% endif %}
+	&lt;ul class=&quot;pages&quot;&gt;
+		{% for page in posts.pagination.pages %}
+			&lt;li&gt;
+				{% if page.link %}
+					&lt;a href=&quot;{{page.link}}&quot; class=&quot;{{page.class}}&quot;&gt;{{page.title}}&lt;/a&gt;
+				{% else %}
+					&lt;span class=&quot;{{page.class}}&quot;&gt;{{page.title}}&lt;/span&gt;
+				{% endif %}
+			&lt;/li&gt;
+		{% endfor %}
+	&lt;/ul&gt;
+	{% if posts.pagination.next %}
+		&lt;a href=&quot;{{posts.pagination.next.link}}&quot; class=&quot;next {{posts.pagination.next.link|length ? '' : 'invisible'}}&quot;&gt;Next&lt;/a&gt;
+	{% endif %}
+&lt;/div&gt;
+</code></pre>
+
+<h3 id="what-if-i-m-not-using-the-default-query">What if I&rsquo;m not using the default query?</h3>
+
+<p>No problem!</p>
+
+<pre><code class="language-php">	&lt;?php
+	global $paged;
+	if (!isset($paged) || !$paged){
+		$paged = 1;
+	}
+	$context = Timber::get_context();
+	$args = array(
+		'post_type' =&gt; 'event',
+		'posts_per_page' =&gt; 5,
+		'paged' =&gt; $paged
+	);
+	$context['posts'] = new Timber\PostQuery($args);
+	Timber::render('page-events.twig', $context);
+</code></pre>
+
+<h3 id="the-pre-get-posts-way">The pre_get_posts Way</h3>
+
+<p>Custom <code>query_posts</code> sometimes shows 404 on example.com/page/2. In that case you can also use <code>pre_get_posts</code> in your functions.php file:</p>
+
+<pre><code class="language-php">	&lt;?php
+	function my_home_query( $query ) {
+	  if ( $query-&gt;is_main_query() &amp;&amp; !is_admin() ) {
+		$query-&gt;set( 'post_type', array( 'movie', 'post' ));
+	  }
+	}
+	add_action( 'pre_get_posts', 'my_home_query' );
+</code></pre>
+
+<p>In your archive.php or home.php template:</p>
+
+<pre><code class="language-php">	&lt;?php
+	$context = Timber::get_context();
+	$context['posts'] = new Timber\PostQuery();
+	Timber::render('archive.twig', $context);
+</code></pre>
+
+			</div>
+		</div>
+	</article>
 
 </main>
 
