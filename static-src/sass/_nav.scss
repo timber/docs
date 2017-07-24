@@ -37,12 +37,12 @@
 
 .nav__link {
 	display: block;
-	overflow-x: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	text-decoration: none;
 	color: $text-color;
 	font-weight: $font-weight-normal;
+	overflow: hidden;
 
 	&:hover, &:focus {
 		text-decoration: underline;
