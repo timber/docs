@@ -13,7 +13,7 @@
 {{ partial "footer.html" . }}
 
 <script src="{{ .Site.BaseURL }}js/highlight.pack.js" defer></script>
-<script src="{{ .Site.BaseURL }}js/scripts.js" defer></script>
+<script src="{{ .Site.BaseURL }}js/scripts.js?{{ readFile "docs/js/scripts.js" | md5 }}" defer></script>
 
 <!-- Algolia Docsearch -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
