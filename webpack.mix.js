@@ -15,7 +15,8 @@ mix
   .copy('static-src/js/highlight.pack.js', 'static/js/highlight.pack.js')
   .js('static-src/js/scripts.js', 'static/js/scripts.js')
   .sass('static-src/sass/styles.scss', 'static/css/')
-  .copy('static-src/images/', 'static/images/');
+  .copy('static-src/images/', 'static/images/')
+  .copy('static-src/favicon.ico', 'static/');
 
 // Full API
 // mix.js(src, output);

@@ -1,5 +1,6 @@
 {
     "/static/js/scripts.js": "/static/js/scripts.js",
     "/static/css/styles.css": "/static/css/styles.css",
-    "/static/js/highlight.pack.js": "/static/js/highlight.pack.js"
+    "/static/js/highlight.pack.js": "/static/js/highlight.pack.js",
+    "/static/favicon.ico": "/static/favicon.ico"
 }
