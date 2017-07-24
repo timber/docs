@@ -1,64 +1,50 @@
+.search-container {
+	padding-left: 20px;
+	margin-bottom: 20px;
+
+	@media (min-width: $header-breakpoint) {
+		position: relative;
+		float: left;
+		top: 50%;
+		transform: translateY(-50%);
+		margin-bottom: 0;
+	}
+
+	@media (min-width: 1190px) {
+		padding-left: 70px;
+	}
+}
+
 .search {
-	position: relative;
+	width: 170px;
+	padding: 6px 10px;
+	border: 2px solid $green;
+	outline: none;
+	background: $white;
+	color: $text-color;
+	border-radius: 0; /* ios has a default border radius */
+	-webkit-appearance: none;
+}
 
-	input {
-		background: transparent;
-		border-width: 0 0 2px 0;
-		border-color: $green;
-		padding: 6px 0 6px 20px;
-		box-sizing: border-box;
-		width: 100%;
-		outline: none;
-		color: $text-color;
-		border-radius: 0; /* ios has a default border radius */
-		-webkit-appearance: none;
-	}
+.search-label {
+	display: block;
+	margin: 6px 10px 0 0;
+	text-transform: uppercase;
+	color: $white;
+	font-size: 0.9em;
+	font-weight: $font-weight-bold;
 
-	&:before {
-		position: absolute;
-		top: 17px;
-		left: $nav-padding;
-		color: $green;
+	@media (min-width: $mobile-breakpoint) {
+		vertical-align: middle;
+		display: inline-block;
 	}
 }
 
-.search-results {
-	margin-top: 0;
-	box-sizing: border-box;
-	height: 0;
-	overflow-y: auto;
-	overflow-x: hidden;
-	transition-property: height, margin;
-	transition-duration: 180ms;
-	transition-timing-function: ease-in-out;
-
-	&.visible {
-		height: 30%;
-		margin-bottom: 1em;
-	}
-
-	//@include embossed-bg;
-
-	li {
-		margin: 1em $nav-padding;
-		line-height: 1;
-	}
-
-	a {
-		color: $text-color;
-		text-decoration: none;
-		font-weight: $font-weight-normal;
-
-		&:hover {
-			text-decoration: underline;
-		}
-	}
+.algolia-autocomplete .algolia-docsearch-suggestion--highlight {
+	color: $green;
+	background: rgba($green, 0.1);
 }
 
-.search-highlight {
-	padding: 2px;
-	margin: -2px;
-	border-radius: 4px;
-	border: 1px solid #54ffb9;
-	background: linear-gradient(to top left, #54ffb9 0%, #54ffb9 100%);
+.algolia-autocomplete .ds-dropdown-menu .ds-suggestion.ds-cursor .algolia-docsearch-suggestion:not(.suggestion-layout-simple) .algolia-docsearch-suggestion--content {
+  background-color: rgba($green, 0.05);
 }

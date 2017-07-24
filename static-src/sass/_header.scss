@@ -1,14 +1,15 @@
 .header {
+	position: relative;
+	z-index: 1000;
     width: 100%;
     background-color: $black;
     box-shadow: 0 3px 8px #aaacac;
 	@include clearfix;
 
-    @media (min-width: $mobile-breakpoint) {
+    @media (min-width: $header-breakpoint) {
         position: fixed;
         top: 0;
-        z-index: 1000;
-        height: $header-height;
+		height: $header-height;
     }
 }
 
@@ -16,7 +17,7 @@
     display: block;
     margin: auto 40px auto 15px;
 
-	@media (min-width: $mobile-breakpoint) {
+	@media (min-width: $header-breakpoint) {
     	float: left;
     	width: 105px;
 	}
@@ -24,6 +25,7 @@
 
 #logo {
     height: $header-height;
+	margin-bottom: 10px;
 
     img {
         float: left;
@@ -34,14 +36,15 @@
 }
 
 .nav--top {
-    margin: 0 10px 10px 10px;
+    margin: 0 10px 10px 20px;
+	@include clearfix;
 
-	@media (min-width: $mobile-breakpoint) {
-		margin: 10px;
-    	height: auto;
+	@media (min-width: $header-breakpoint) {
+		position: relative;
 		top: 50%;
-		transform: translateY(25%);
-		overflow: hidden;
+		transform: translateY(-50%);
+		float: right;
+		margin: 0 10px;
 	}
 
     ul {
@@ -50,18 +53,15 @@
         padding: 0;
 
 		@include clearfix;
-
-		@media (min-width: $mobile-breakpoint) {
-			position: relative;
-			float: right;
-		}
     }
 
     li {
-		@media (min-width: $mobile-breakpoint) {
-			float: left;
-			margin-right: 70px;
-			height: 35px;
+		display: inline-block;
+		margin-right: 20px;
+		vertical-align: middle;
+
+		@media (min-width: 1360px) {
+			margin-right: 64px;
 		}
     }
 
@@ -71,23 +71,21 @@
 
     a {
 		display: block;
-        font-size: 14px;
+        font-size: 0.9em;
         text-decoration: none;
         color: $white;
         font-weight: $font-weight-bold;
         text-transform: uppercase;
         letter-spacing: .5px;
-        padding: 8px;
+		padding: 4px;
 
 		&:hover, &:focus {
 			color: $white;
 			text-decoration: underline;
 		}
 
-		@media (min-width: $mobile-breakpoint) {
-			position: relative;
-			top: 50%;
-			transform: translateY(-50%);
+		img {
+			display: block;
 		}
     }
 }

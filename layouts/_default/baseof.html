@@ -15,5 +15,15 @@
 <script src="{{ .Site.BaseURL }}js/highlight.pack.js" defer></script>
 <script src="{{ .Site.BaseURL }}js/scripts.js" defer></script>
 
+<!-- Algolia Docsearch -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: '4907f57b267887b1da360de600656085',
+indexName: 'timber',
+inputSelector: '#search',
+debug: false // Set debug to true if you want to inspect the dropdown
+});
+</script>
+
 </body>
 </html>

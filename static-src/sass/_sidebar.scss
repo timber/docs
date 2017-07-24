@@ -2,16 +2,16 @@
 	padding: $nav-padding $gutter-width/2 $gutter-width/2 $gutter-width/2;
     background-color: $grey-light;
 
-    @media (min-width: $mobile-breakpoint) {
+    @media (min-width: $header-breakpoint) {
 		position: fixed;
 		top: 0;
 		left: 0;
 		bottom: 0;
-		z-index: 0;
+		z-index: 500;
 		width: $sidebar-width;
 
 		overflow-y: auto;
-		overflow-x: hidden;
+		overflow-x: visible;
 
 		padding: ($header-height + $nav-padding) $nav-padding $nav-padding $nav-padding;
 	}
