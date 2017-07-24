@@ -51,9 +51,20 @@ However, this will not work for the `bash generate-docs.sh` command. You can pas
 HUGO_BASEURL="http://timber-docs.dev/" bash generate-docs.sh
 ```
 
+If you want to check the documentation on different devices or on a virtual machine in the same network, you can tell `serve` which IP to use:
+
+```
+hugo serve --bind="192.168.188.70" --baseURL="http://192.168.188.70:1313/"
+```
+
+To find an IP to use, you could use a tool like [dev-ip](https://github.com/shakyshane/dev-ip).
+
 ### Publish
 
-…
+1. Make sure your Timber repository is checked out on the correct branch (usually `master`).
+2. If you’ve changed asset files, run `npm run production`.
+3. Run `bash generate-docs.sh`.
+4. Commit and push changes to the `master` branch.
 
 ### Files and folders
 
