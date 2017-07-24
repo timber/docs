@@ -1,6 +1,9 @@
 .search-container {
 	padding-left: 20px;
 	margin-bottom: 20px;
+	height: 2rem;
+
+	@include clearfix;
 
 	@media (min-width: $header-breakpoint) {
 		position: relative;
@@ -15,29 +18,39 @@
 	}
 }
 
-.search {
+.search/*input*/ {
+	overflow: hidden;
+	display: block;
+	float: left;
 	width: 170px;
-	padding: 6px 10px;
+	height: 2rem;
+	margin: 0;
+	padding: 0 10px;
 	border: 2px solid $green;
 	outline: none;
 	background: $white;
 	color: $text-color;
 	border-radius: 0; /* ios has a default border radius */
 	-webkit-appearance: none;
+	box-sizing: border-box !important;
 }
 
 .search-label {
-	display: block;
-	margin: 6px 10px 0 0;
+	margin: 0 10px 0 0;
+	padding: 0;
+	line-height: 2rem;
 	text-transform: uppercase;
 	color: $white;
 	font-size: 0.9em;
 	font-weight: $font-weight-bold;
+	vertical-align: middle;
+	display: block;
+	float: left;
+}
 
-	@media (min-width: $mobile-breakpoint) {
-		vertical-align: middle;
-		display: inline-block;
-	}
+.algolia-autocomplete {
+	display: block !important;
+	float: left;
 }
 
 .algolia-autocomplete .algolia-docsearch-suggestion--highlight {
