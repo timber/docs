@@ -3,106 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://timber.github.io/docs/wiki/_acf-cookbook/</loc>
-  </url>
-  
-  <url>
-    <loc>https://timber.github.io/docs/wiki/_cheatsheet/</loc>
-  </url>
-  
-  <url>
-    <loc>https://timber.github.io/docs/wiki/_cookbook-images/</loc>
-  </url>
-  
-  <url>
-    <loc>https://timber.github.io/docs/wiki/_cookbook-text/</loc>
-  </url>
-  
-  <url>
-    <loc>https://timber.github.io/docs/wiki/_cookbook-twig/</loc>
-  </url>
-  
-  <url>
-    <loc>https://timber.github.io/docs/wiki/_custom-page-templates/</loc>
-  </url>
-  
-  <url>
-    <loc>https://timber.github.io/docs/wiki/_debugging/</loc>
-  </url>
-  
-  <url>
-    <loc>https://timber.github.io/docs/wiki/_escapers/</loc>
-  </url>
-  
-  <url>
-    <loc>https://timber.github.io/docs/wiki/_extending-timber/</loc>
-  </url>
-  
-  <url>
-    <loc>https://timber.github.io/docs/wiki/_filters/</loc>
-  </url>
-  
-  <url>
-    <loc>https://timber.github.io/docs/wiki/_functions/</loc>
-  </url>
-  
-  <url>
-    <loc>https://timber.github.io/docs/wiki/_getting-started-setup/</loc>
-  </url>
-  
-  <url>
-    <loc>https://timber.github.io/docs/wiki/_getting-started-themeing/</loc>
-  </url>
-  
-  <url>
-    <loc>https://timber.github.io/docs/wiki/_internationalization/</loc>
-  </url>
-  
-  <url>
-    <loc>https://timber.github.io/docs/wiki/_pagination/</loc>
-  </url>
-  
-  <url>
-    <loc>https://timber.github.io/docs/wiki/_performance/</loc>
-  </url>
-  
-  <url>
-    <loc>https://timber.github.io/docs/wiki/_routing/</loc>
-  </url>
-  
-  <url>
-    <loc>https://timber.github.io/docs/wiki/_sidebars/</loc>
-  </url>
-  
-  <url>
-    <loc>https://timber.github.io/docs/wiki/_template-locations/</loc>
-  </url>
-  
-  <url>
-    <loc>https://timber.github.io/docs/wiki/_tests/</loc>
-  </url>
-  
-  <url>
-    <loc>https://timber.github.io/docs/wiki/_twig-tools/</loc>
-  </url>
-  
-  <url>
-    <loc>https://timber.github.io/docs/wiki/_upgrade-guide/</loc>
-  </url>
-  
-  <url>
-    <loc>https://timber.github.io/docs/wiki/_video-tutorials/</loc>
-  </url>
-  
-  <url>
-    <loc>https://timber.github.io/docs/wiki/_woocommerce/</loc>
-  </url>
-  
-  <url>
-    <loc>https://timber.github.io/docs/wiki/_wp-integration/</loc>
-  </url>
-  
-  <url>
     <loc>https://timber.github.io/docs/guides/acf-cookbook/</loc>
   </url>
   
@@ -205,7 +105,6 @@
   
   <url>
     <loc>https://timber.github.io/docs/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -299,11 +198,6 @@
   
   <url>
     <loc>https://timber.github.io/docs/getting-started/video-tutorials/</loc>
-  </url>
-  
-  <url>
-    <loc>https://timber.github.io/docs/wiki/</loc>
-    <priority>0</priority>
   </url>
   
   <url>

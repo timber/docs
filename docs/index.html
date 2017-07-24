@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta name="generator" content="Hugo 0.25.1" />
-	<title>Timber Docs</title>
+	<meta name="generator" content="Hugo 0.24.1" />
+	<title>Timber Documentation</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+	
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+
+	
     <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
 </head>
@@ -19,6 +24,12 @@
             <img src="https://timber.github.io/docs/images/timberlogo.svg" alt="Timber" style="width:105px;height:30px;border:0">
         </div>
     </a>
+
+	<div class="search-container">
+		<label for="search" class="search-label">Search</label>
+		<input type="search" name="search" class="search" id="search">
+	</div>
+
     <nav class="nav nav--top" id="nav-top">
         <ul>
             <li>
@@ -43,9 +54,7 @@
 </header>
 
 <aside class="sidebar">
-    
-
-    <nav id="nav nav--main">
+    <nav id="nav" class="nav nav--main">
         <ul class="nav__items nav__items--level-0">
         
         
@@ -174,9 +183,10 @@
 
 <main>
     
-	<h1>Timber Docs</h1>
+	<h1>Timber Documentation</h1>
 
-	
+	<p>This is the documentation for Timber, a WordPress plugin that helps you develop themes with object-oriented code and the Twig Template Engine.</p>
+
 
 	<ul class="list">
 	
@@ -208,6 +218,16 @@
 
 <script src="https://timber.github.io/docs/js/highlight.pack.js" defer></script>
 <script src="https://timber.github.io/docs/js/scripts.js" defer></script>
+
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: '4907f57b267887b1da360de600656085',
+indexName: 'timber',
+inputSelector: '#search',
+debug: false 
+});
+</script>
 
 </body>
 </html>
