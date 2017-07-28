@@ -7,13 +7,17 @@
   "version" : "2.0.0",
   "authors": [
     {
-        "name": "Victor Jonsson",
-        "email": "kontakt@victorjonsson.se"
-    },
-    {
       "name": "Jared Novack",
       "email": "jared@upstatement.com",
       "homepage": "http://upstatement.com"
+    },
+    {
+      "name": "Lukas Gächter",
+      "email": "hello@lukasgaechter.ch"
+    },
+    {
+      "name": "Victor Jonsson",
+      "email": "kontakt@victorjonsson.se"
     }
   ],
   "require": {
