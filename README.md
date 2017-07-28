@@ -1,6 +1,6 @@
 # Timber Docs
 
-This repository is used to build the documentation pages for [Timber](http://github.com/timber/timber). The documentation is generated using the static site generator [Hugo](http://gohugo.io/).
+This repository is used to build the documentation pages for [Timber](http://github.com/timber/timber). The documentation is generated using the static site generator [Hugo](http://gohugo.io/), [laravel-mix](https://github.com/JeffreyWay/laravel-mix/) for assets and a custom PHP class reference generator based on [PHP-Markdown-Documentation-Generator](https://github.com/victorjonsson/PHP-Markdown-Documentation-Generator).
 
 The documentation consists of:
 
