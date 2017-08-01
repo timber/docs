@@ -270,7 +270,12 @@ class Reflector implements ReflectorInterface
     {
         if (isset($tags['var']) && $tags['var']) {
             $words = explode(' ', trim($tags['var']));
-            return $words[0];
+            $words = reset($words);
+
+            // Escape characters to be used in Markdown table
+            $words = str_replace(array('|', '\\\\'), array('/', '\\'), $words);
+
+            return $words;
         }
 
         return false;
