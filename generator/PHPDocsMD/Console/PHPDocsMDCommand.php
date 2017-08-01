@@ -76,9 +76,34 @@ class PHPDocsMDCommand extends \Symfony\Component\Console\Command\Command
         $properties = array();
         $properties = $class->getProperties();
         $functions = $class->getFunctions();
-        $things = array_merge($properties, $functions);
 
-        usort($things, function ($a, $b) {
+        // Filter out properties that shouldn’t be displayed
+        $properties = array_filter($properties, function ($property) {
+            return $property->hasTag('api');
+        });
+
+        // Filter out functions that shouldn’t be displayed
+        $functions = array_filter($functions, function ($function) {
+            return $function->hasTag('api');
+        });
+
+        if (!empty($properties) || !empty($functions)) {
+            $docs .= '## Overview' . PHP_EOL . PHP_EOL;
+        }
+
+        if (is_array($properties) && count($properties)) {
+            $docs .= '### Properties' . PHP_EOL . PHP_EOL;
+            $docs .= '| Name | Type | Description |' . PHP_EOL;
+            $docs .= '| --- | --- | --- |' . PHP_EOL;
+
+            foreach ($properties as $property) {
+                $docs .= $property->getName() . ' | `' . $property->getType() . '` | '
+                    . $property->getDescription() . ' |' . PHP_EOL;
+            }
+        }
+
+        // Sort functions by name
+        usort($functions, function ($a, $b) {
             if ($a->getName() === $b->getName()) {
                 return 0;
             }
@@ -86,29 +111,24 @@ class PHPDocsMDCommand extends \Symfony\Component\Console\Command\Command
             return ($a->getName() < $b->getName()) ? -1 : 1;
         });
 
-        $docs .= '## Methods Overview' . PHP_EOL . PHP_EOL;
-
-        if (is_array($things) && count($things)) {
+        if (is_array($functions) && count($functions)) {
+            $docs .= '### Methods' . PHP_EOL . PHP_EOL;
             $docs .= '| Name | Type | Returns/Description |' . PHP_EOL;
             $docs .= '| --- | --- | --- |' . PHP_EOL;
-        }
 
-        foreach ($things as $ce) {
-            if ($ce->hasTag('api')) {
-                if (get_class($ce) == 'PHPDocsMD\FunctionEntity') {
-                    $docs .= '| [' . $ce->getName() . '](#' . $ce->getName() . ')' . ' | `'
-                        . $ce->getReturnType() . '` | ' . $ce->getReturnDesc() . ' |' . PHP_EOL;
-                } else {
-                    $docs .= $ce->getName() . ' | `' . $ce->getType() . '` | '
-                        . $ce->getDescription() . ' |' . PHP_EOL;
+            foreach ($functions as $function) {
+                if (get_class($function) == 'PHPDocsMD\FunctionEntity') {
+                    $name = $function->getName();
+
+                    if ($function->isDeprecated()) {
+                        $name = '<strike>' . $name . '</strike>';
+                    }
+
+                    $docs .= '| [' . $name . '](#' . $function->getName() . ')' . ' | `'
+                        . $function->getReturnType() . '` | ' . $function->getReturnDesc() . ' |' . PHP_EOL;
                 }
             }
         }
-
-        // Check if table contains any values, otherwise return empty.
-        /*if (empty($temp_docs)) {
-            return '';
-        }*/
 
         $docs .= PHP_EOL;
 
@@ -193,6 +213,9 @@ class PHPDocsMDCommand extends \Symfony\Component\Console\Command\Command
                     continue;
                 }
 
+                $docs .= '---' . PHP_EOL . PHP_EOL;
+                $docs .= '## Class Methods' . PHP_EOL . PHP_EOL;
+
                 $classLinks[$class->generateAnchor()] = $class->getName();
 
                 // generate function table
@@ -206,7 +229,7 @@ class PHPDocsMDCommand extends \Symfony\Component\Console\Command\Command
                             $name = '<strike>' . $func->getName() . '</strike>';
                         }
 
-                        $docs .= '## ' . $name . PHP_EOL;
+                        $docs .= '### ' . $name . PHP_EOL;
 
                         if ($func->isDeprecated()) {
                             $docs .= '**DEPRECATED** ' . $func->getDeprecationMessage() . PHP_EOL . PHP_EOL;
