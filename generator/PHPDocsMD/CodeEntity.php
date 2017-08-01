@@ -41,15 +41,15 @@ class CodeEntity
 
     /**
      * @param bool|null $toggle
-     * @return void|bool
+     * @return bool
      */
     public function isDeprecated($toggle = null)
     {
-        if ($toggle === null) {
-            return $this->isDeprecated;
-        } else {
-            $this->isDeprecated = (bool)$toggle;
+        if ($toggle !== null) {
+            $this->isDeprecated = (bool) $toggle;
         }
+
+        return $this->isDeprecated;
     }
 
     /**
