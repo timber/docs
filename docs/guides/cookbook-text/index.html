@@ -12,6 +12,30 @@
 	
     <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?bbb4a34691cef083c31eb7d1af61a243">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
+
+    
+    <link rel="icon" href="https://timber.github.io/docs/favicons/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://timber.github.io/docs/favicons/apple-touch-icon-57x57.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://timber.github.io/docs/favicons/apple-touch-icon-114x114.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://timber.github.io/docs/favicons/apple-touch-icon-72x72.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://timber.github.io/docs/favicons/apple-touch-icon-144x144.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://timber.github.io/docs/favicons/apple-touch-icon-60x60.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://timber.github.io/docs/favicons/apple-touch-icon-120x120.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://timber.github.io/docs/favicons/apple-touch-icon-76x76.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://timber.github.io/docs/favicons/apple-touch-icon-152x152.png" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-196x196.png" sizes="196x196" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-16x16.png" sizes="16x16" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-128.png" sizes="128x128" />
+	<meta name="application-name" content="Timber Docs"/>
+	<meta name="msapplication-TileColor" content="#FFFFFF" />
+	<meta name="msapplication-TileImage" content="https://timber.github.io/docs/favicons/mstile-144x144.png" />
+	<meta name="msapplication-square70x70logo" content="https://timber.github.io/docs/favicons/mstile-70x70.png" />
+	<meta name="msapplication-square150x150logo" content="https://timber.github.io/docs/favicons/mstile-150x150.png" />
+	<meta name="msapplication-wide310x150logo" content="https://timber.github.io/docs/favicons/mstile-310x150.png" />
+	<meta name="msapplication-square310x310logo" content="https://timber.github.io/docs/favicons/mstile-310x310.png" />
+
 </head>
 
 
@@ -99,7 +123,7 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/pagination/">Pagination</a></li>
                 
-                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/performance/">Performance</a></li>
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/performance/">Performance/Caching</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/routing/">Routing</a></li>
                 
@@ -198,18 +222,10 @@
 </ul></li>
 <li><a href="#standard-transforms">Standard transforms</a>
 <ul>
-<li><a href="#automatically-link-urls-email-addresses-twitter-s-and-s">Automatically link URLs, email addresses, twitter @s and #s</a></li>
-<li><a href="#run-wordpress-auto-paragraph-filter">Run WordPress&rsquo; auto-paragraph filter</a></li>
+<li><a href="#run-wordpress-auto-paragraph-filter">Run WordPress’ auto-paragraph filter</a></li>
 <li><a href="#run-wordpress-shortcodes-over-a-block-of-text">Run WordPress shortcodes over a block of text</a></li>
 <li><a href="#code-samples">Code samples</a></li>
-<li><a href="#functions-inside-of-your-templates-plugin-calls">Functions inside of your templates, plugin calls</a></li>
-<li><a href="#functions-with-params-inside-of-your-templates-plugin-calls">Functions &ldquo;with params&rdquo; inside of your templates, plugin calls:</a></li>
-</ul></li>
-<li><a href="#debugging">Debugging</a>
-<ul>
-<li><a href="#what-properties-are-inside-my-object">What properties are inside my object?</a></li>
-<li><a href="#what-properties-and-methods-are-inside-my-object">What properties and methods are inside my object?</a></li>
-<li><a href="#what-type-of-object-am-i-working-with">What type of object am I working with?</a></li>
+<li><a href="#calling-php-functions-inside-of-your-templates">Calling PHP functions inside of your templates</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -220,7 +236,7 @@
 			<div class="content">
 				
 
-<p>There&rsquo;s tons of stuff you can do with Twig and Timber filters to make complex transformations easy (and fun!)</p>
+<p>There’s tons of stuff you can do with Twig and Timber filters to make complex transformations easy (and fun).</p>
 
 <h2 id="dates">Dates</h2>
 
@@ -229,8 +245,8 @@
 <p>Timber does bylines like a boss:</p>
 
 <pre><code class="language-twig">&lt;p class=&quot;byline&quot;&gt;
-	&lt;span class=&quot;name&quot;&gt;By {{ post.author.name }}&lt;/span&gt;
-	&lt;span class=&quot;date&quot;&gt;{{ post.post_date|date('F j, Y') }}&lt;/span&gt;
+    &lt;span class=&quot;name&quot;&gt;By {{ post.author.name }}&lt;/span&gt;
+    &lt;span class=&quot;date&quot;&gt;{{ post.post_date|date('F j, Y') }}&lt;/span&gt;
 &lt;/p&gt;
 </code></pre>
 
@@ -253,16 +269,9 @@
 <pre><code class="language-html">&lt;footer&gt;&lt;p class=&quot;copyright&quot;&gt;&amp;copy; 2015 by The Daily Orange&lt;/p&gt;&lt;/footer&gt;
 </code></pre>
 
-<hr />
-
 <h2 id="standard-transforms">Standard transforms</h2>
 
-<h3 id="automatically-link-urls-email-addresses-twitter-s-and-s">Automatically link URLs, email addresses, twitter @s and #s</h3>
-
-<pre><code class="language-twig">&lt;p class=&quot;tweet&quot;&gt;{{ post.content|twitterify }}&lt;/p&gt;
-</code></pre>
-
-<h3 id="run-wordpress-auto-paragraph-filter">Run WordPress&rsquo; auto-paragraph filter</h3>
+<h3 id="run-wordpress-auto-paragraph-filter">Run WordPress’ auto-paragraph filter</h3>
 
 <pre><code class="language-twig">&lt;p class=&quot;content&quot;&gt;{{ post.my_custom_text|wpautop }}&lt;/p&gt;
 </code></pre>
@@ -274,59 +283,24 @@
 
 <h3 id="code-samples">Code samples</h3>
 
-<p>Code Samples? Lord knows I&rsquo;ve got &lsquo;em:</p>
+<p>Code Samples? Lord knows I’ve got ’em:</p>
 
 <pre><code class="language-twig">&lt;div class=&quot;code-sample&quot;&gt;{{ post.code_samples|pretags }}&lt;/div&gt;
 </code></pre>
 
-<h3 id="functions-inside-of-your-templates-plugin-calls">Functions inside of your templates, plugin calls</h3>
+<h3 id="calling-php-functions-inside-of-your-templates">Calling PHP functions inside of your templates</h3>
 
-<p>Old template:</p>
+<p>WordPress template:</p>
 
 <pre><code class="language-html">&lt;p class=&quot;entry-meta&quot;&gt;&lt;?php twentytwelve_entry_meta(); ?&gt;&lt;/p&gt;
 </code></pre>
 
-<p>Timber-fied template:</p>
+<p>Twig template:</p>
 
 <pre><code class="language-twig">&lt;p class=&quot;entry-meta&quot;&gt;{{ function('twentytwelve_entry_meta') }}&lt;/p&gt;
 </code></pre>
 
-<h3 id="functions-with-params-inside-of-your-templates-plugin-calls">Functions &ldquo;with params&rdquo; inside of your templates, plugin calls:</h3>
-
-<p>Old template:</p>
-
-<pre><code class="language-html">&lt;p class=&quot;entry-meta&quot;&gt;&lt;?php get_the_title( $post-&gt;ID ); ?&gt;&lt;/p&gt;
-</code></pre>
-
-<p>Timber-fied template:</p>
-
-<pre><code class="language-twig">&lt;p class=&quot;entry-meta&quot;&gt;{{ function('get_the_title', post.ID) }}&lt;/p&gt;
-</code></pre>
-
-<hr />
-
-<h2 id="debugging">Debugging</h2>
-
-<h3 id="what-properties-are-inside-my-object">What properties are inside my object?</h3>
-
-<pre><code class="language-twig">{{ dump(post) }}
-</code></pre>
-
-<h3 id="what-properties-and-methods-are-inside-my-object">What properties and methods are inside my object?</h3>
-
-<p>Warning: Experimental!</p>
-
-<pre><code class="language-twig">{{ post|print_a }}
-</code></pre>
-
-<p>This outputs both the database stuff (like <code>{{ post.post_content }}</code>) and the contents of methods (like <code>{{ post.thumbnail }}</code>)</p>
-
-<h3 id="what-type-of-object-am-i-working-with">What type of object am I working with?</h3>
-
-<pre><code class="language-twig">{{ post|get_class }}
-</code></pre>
-
-<p>&hellip; will output something like <code>TimberPost</code> or your custom wrapper object</p>
+<p>You can read more about using functions in the <a href="https://timber.github.io/docs/guides/functions/">Functions</a> guide.</p>
 
 			</div>
 		</div>

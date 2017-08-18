@@ -12,6 +12,30 @@
 	
     <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?bbb4a34691cef083c31eb7d1af61a243">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
+
+    
+    <link rel="icon" href="https://timber.github.io/docs/favicons/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://timber.github.io/docs/favicons/apple-touch-icon-57x57.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://timber.github.io/docs/favicons/apple-touch-icon-114x114.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://timber.github.io/docs/favicons/apple-touch-icon-72x72.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://timber.github.io/docs/favicons/apple-touch-icon-144x144.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://timber.github.io/docs/favicons/apple-touch-icon-60x60.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://timber.github.io/docs/favicons/apple-touch-icon-120x120.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://timber.github.io/docs/favicons/apple-touch-icon-76x76.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://timber.github.io/docs/favicons/apple-touch-icon-152x152.png" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-196x196.png" sizes="196x196" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-16x16.png" sizes="16x16" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-128.png" sizes="128x128" />
+	<meta name="application-name" content="Timber Docs"/>
+	<meta name="msapplication-TileColor" content="#FFFFFF" />
+	<meta name="msapplication-TileImage" content="https://timber.github.io/docs/favicons/mstile-144x144.png" />
+	<meta name="msapplication-square70x70logo" content="https://timber.github.io/docs/favicons/mstile-70x70.png" />
+	<meta name="msapplication-square150x150logo" content="https://timber.github.io/docs/favicons/mstile-150x150.png" />
+	<meta name="msapplication-wide310x150logo" content="https://timber.github.io/docs/favicons/mstile-310x150.png" />
+	<meta name="msapplication-square310x310logo" content="https://timber.github.io/docs/favicons/mstile-310x310.png" />
+
 </head>
 
 
@@ -99,7 +123,7 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/pagination/">Pagination</a></li>
                 
-                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/performance/">Performance</a></li>
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/performance/">Performance/Caching</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/routing/">Routing</a></li>
                 
@@ -191,7 +215,13 @@
 <ul>
 <li>
 <ul>
-<li><a href="#methods-overview">Methods Overview</a></li>
+<li><a href="#overview">Overview</a>
+<ul>
+<li><a href="#properties">Properties</a></li>
+<li><a href="#methods">Methods</a></li>
+</ul></li>
+<li><a href="#class-methods">Class Methods</a>
+<ul>
 <li><a href="#construct">__construct</a></li>
 <li><a href="#tostring">__toString</a></li>
 <li><a href="#alt">alt</a></li>
@@ -207,6 +237,7 @@
 <li><a href="#width">width</a></li>
 <li><a href="#wp-upload-dir">wp_upload_dir</a></li>
 <li><a href="#get-post-custom">get_post_custom</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -254,7 +285,65 @@ Timber::render('single.twig', $context);
 &lt;/article&gt;
 </code></pre>
 
-<h2 id="methods-overview">Methods Overview</h2>
+<h2 id="overview">Overview</h2>
+
+<h3 id="properties">Properties</h3>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>file_loc</td>
+<td><code>string</code></td>
+<td>$file_loc the location of the image file in the filesystem (ex: <code>/var/www/htdocs/wp-content/uploads/2015/08/my-pic.jpg</code>)</td>
+</tr>
+
+<tr>
+<td>id</td>
+<td><code>integer</code></td>
+<td>the ID of the image (which is a WP_Post)</td>
+</tr>
+
+<tr>
+<td>caption</td>
+<td><code>string</code></td>
+<td>$caption the string stored in the WordPress database</td>
+</tr>
+
+<tr>
+<td>class</td>
+<td><code>string</code></td>
+<td>$class stores the CSS classes for the post (ex: &ldquo;post post-type-book post-123&rdquo;)</td>
+</tr>
+
+<tr>
+<td>post_status</td>
+<td><code>string</code></td>
+<td>$post_status    the status of a post (&ldquo;draft&rdquo;, &ldquo;publish&rdquo;, etc.)</td>
+</tr>
+
+<tr>
+<td>post_type</td>
+<td><code>string</code></td>
+<td>$post_type      the name of the post type, this is the machine name (so &ldquo;my_custom_post_type&rdquo; as opposed to &ldquo;My Custom Post Type&rdquo;)</td>
+</tr>
+
+<tr>
+<td>slug</td>
+<td><code>string</code></td>
+<td>$slug       the URL-safe slug, this corresponds to the poorly-named &ldquo;post_name&rdquo; in the WP database, ex: &ldquo;hello-world&rdquo;</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="methods">Methods</h3>
 
 <table>
 <thead>
@@ -279,33 +368,9 @@ Timber::render('single.twig', $context);
 </tr>
 
 <tr>
-<td>caption</td>
-<td><code>string</code></td>
-<td>$caption the string stored in the WordPress database</td>
-</tr>
-
-<tr>
-<td>class</td>
-<td><code>string</code></td>
-<td>$class stores the CSS classes for the post (ex: &ldquo;post post-type-book post-123&rdquo;)</td>
-</tr>
-
-<tr>
-<td>file_loc</td>
-<td><code>string</code></td>
-<td>$file_loc the location of the image file in the filesystem (ex: <code>/var/www/htdocs/wp-content/uploads/2015/08/my-pic.jpg</code>)</td>
-</tr>
-
-<tr>
 <td><a href="#height">height</a></td>
 <td><code>int</code></td>
 <td></td>
-</tr>
-
-<tr>
-<td>id</td>
-<td><code>integer</code></td>
-<td>the ID of the image (which is a WP_Post)</td>
 </tr>
 
 <tr>
@@ -327,24 +392,6 @@ Timber::render('single.twig', $context);
 </tr>
 
 <tr>
-<td>post_status</td>
-<td><code>string</code></td>
-<td>$post_status    the status of a post (&ldquo;draft&rdquo;, &ldquo;publish&rdquo;, etc.)</td>
-</tr>
-
-<tr>
-<td>post_type</td>
-<td><code>string</code></td>
-<td>$post_type      the name of the post type, this is the machine name (so &ldquo;my_custom_post_type&rdquo; as opposed to &ldquo;My Custom Post Type&rdquo;)</td>
-</tr>
-
-<tr>
-<td>slug</td>
-<td><code>string</code></td>
-<td>$slug       the URL-safe slug, this corresponds to the poorly-named &ldquo;post_name&rdquo; in the WP database, ex: &ldquo;hello-world&rdquo;</td>
-</tr>
-
-<tr>
 <td><a href="#src">src</a></td>
 <td><code>bool/string</code></td>
 <td></td>
@@ -358,7 +405,11 @@ Timber::render('single.twig', $context);
 </tbody>
 </table>
 
-<h2 id="construct">__construct</h2>
+<hr />
+
+<h2 id="class-methods">Class Methods</h2>
+
+<h3 id="construct">__construct</h3>
 
 <p><code>__construct( int/string $iid )</code></p>
 
@@ -395,7 +446,7 @@ $myImage = new TimberImage('http://google.com/logo.jpg');
 
 <hr />
 
-<h2 id="tostring">__toString</h2>
+<h3 id="tostring">__toString</h3>
 
 <p><code>__toString( )</code></p>
 
@@ -403,7 +454,7 @@ $myImage = new TimberImage('http://google.com/logo.jpg');
 
 <hr />
 
-<h2 id="alt">alt</h2>
+<h3 id="alt">alt</h3>
 
 <p><code>alt( )</code></p>
 
@@ -421,7 +472,7 @@ $myImage = new TimberImage('http://google.com/logo.jpg');
 
 <hr />
 
-<h2 id="aspect">aspect</h2>
+<h3 id="aspect">aspect</h3>
 
 <p><code>aspect( )</code></p>
 
@@ -439,7 +490,7 @@ $myImage = new TimberImage('http://google.com/logo.jpg');
 
 <hr />
 
-<h2 id="get-pathinfo">get_pathinfo</h2>
+<h3 id="get-pathinfo">get_pathinfo</h3>
 
 <p><code>get_pathinfo( )</code></p>
 
@@ -449,7 +500,7 @@ $myImage = new TimberImage('http://google.com/logo.jpg');
 
 <hr />
 
-<h2 id="strike-get-url-strike"><strike>get_url</strike></h2>
+<h3 id="strike-get-url-strike"><strike>get_url</strike></h3>
 
 <p><strong>DEPRECATED</strong> since 0.21.9 use src() instead</p>
 
@@ -477,7 +528,7 @@ $myImage = new TimberImage('http://google.com/logo.jpg');
 
 <hr />
 
-<h2 id="height">height</h2>
+<h3 id="height">height</h3>
 
 <p><code>height( )</code></p>
 
@@ -495,7 +546,7 @@ $myImage = new TimberImage('http://google.com/logo.jpg');
 
 <hr />
 
-<h2 id="link">link</h2>
+<h3 id="link">link</h3>
 
 <p><code>link( )</code></p>
 
@@ -515,7 +566,7 @@ $myImage = new TimberImage('http://google.com/logo.jpg');
 
 <hr />
 
-<h2 id="parent">parent</h2>
+<h3 id="parent">parent</h3>
 
 <p><code>parent( )</code></p>
 
@@ -523,7 +574,7 @@ $myImage = new TimberImage('http://google.com/logo.jpg');
 
 <hr />
 
-<h2 id="path">path</h2>
+<h3 id="path">path</h3>
 
 <p><code>path( )</code></p>
 
@@ -541,7 +592,7 @@ $myImage = new TimberImage('http://google.com/logo.jpg');
 
 <hr />
 
-<h2 id="src">src</h2>
+<h3 id="src">src</h3>
 
 <p><code>src( string $size=&quot;full&quot; )</code></p>
 
@@ -578,7 +629,7 @@ $myImage = new TimberImage('http://google.com/logo.jpg');
 
 <hr />
 
-<h2 id="strike-url-strike"><strike>url</strike></h2>
+<h3 id="strike-url-strike"><strike>url</strike></h3>
 
 <p><strong>DEPRECATED</strong> since 0.21.9 use src() instead</p>
 
@@ -606,7 +657,7 @@ $myImage = new TimberImage('http://google.com/logo.jpg');
 
 <hr />
 
-<h2 id="width">width</h2>
+<h3 id="width">width</h3>
 
 <p><code>width( )</code></p>
 
@@ -624,7 +675,7 @@ $myImage = new TimberImage('http://google.com/logo.jpg');
 
 <hr />
 
-<h2 id="wp-upload-dir">wp_upload_dir</h2>
+<h3 id="wp-upload-dir">wp_upload_dir</h3>
 
 <p><code>wp_upload_dir( )</code></p>
 
@@ -632,7 +683,7 @@ $myImage = new TimberImage('http://google.com/logo.jpg');
 
 <hr />
 
-<h2 id="get-post-custom">get_post_custom</h2>
+<h3 id="get-post-custom">get_post_custom</h3>
 
 <p><code>get_post_custom( mixed $iid )</code></p>
 

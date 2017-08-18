@@ -12,6 +12,30 @@
 	
     <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?bbb4a34691cef083c31eb7d1af61a243">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
+
+    
+    <link rel="icon" href="https://timber.github.io/docs/favicons/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://timber.github.io/docs/favicons/apple-touch-icon-57x57.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://timber.github.io/docs/favicons/apple-touch-icon-114x114.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://timber.github.io/docs/favicons/apple-touch-icon-72x72.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://timber.github.io/docs/favicons/apple-touch-icon-144x144.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://timber.github.io/docs/favicons/apple-touch-icon-60x60.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://timber.github.io/docs/favicons/apple-touch-icon-120x120.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://timber.github.io/docs/favicons/apple-touch-icon-76x76.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://timber.github.io/docs/favicons/apple-touch-icon-152x152.png" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-196x196.png" sizes="196x196" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-16x16.png" sizes="16x16" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-128.png" sizes="128x128" />
+	<meta name="application-name" content="Timber Docs"/>
+	<meta name="msapplication-TileColor" content="#FFFFFF" />
+	<meta name="msapplication-TileImage" content="https://timber.github.io/docs/favicons/mstile-144x144.png" />
+	<meta name="msapplication-square70x70logo" content="https://timber.github.io/docs/favicons/mstile-70x70.png" />
+	<meta name="msapplication-square150x150logo" content="https://timber.github.io/docs/favicons/mstile-150x150.png" />
+	<meta name="msapplication-wide310x150logo" content="https://timber.github.io/docs/favicons/mstile-310x150.png" />
+	<meta name="msapplication-square310x310logo" content="https://timber.github.io/docs/favicons/mstile-310x310.png" />
+
 </head>
 
 
@@ -99,7 +123,7 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/pagination/">Pagination</a></li>
                 
-                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/performance/">Performance</a></li>
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/performance/">Performance/Caching</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/routing/">Routing</a></li>
                 
@@ -191,12 +215,14 @@
 <ul>
 <li>
 <ul>
-<li><a href="#methods-overview">Methods Overview</a></li>
+<li><a href="#class-methods">Class Methods</a>
+<ul>
 <li><a href="#close-tags">close_tags</a></li>
 <li><a href="#remove-tags">remove_tags</a></li>
 <li><a href="#starts-with">starts_with</a></li>
 <li><a href="#trim-characters">trim_characters</a></li>
 <li><a href="#trim-words">trim_words</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -209,22 +235,11 @@ commonly used in WordPress development</p>
 
 <p></p>
 
-<h2 id="methods-overview">Methods Overview</h2>
+<hr />
 
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Returns/Description</th>
-</tr>
-</thead>
+<h2 id="class-methods">Class Methods</h2>
 
-<tbody>
-</tbody>
-</table>
-
-<h2 id="close-tags">close_tags</h2>
+<h3 id="close-tags">close_tags</h3>
 
 <p><code>close_tags( string $html )</code></p>
 
@@ -250,7 +265,7 @@ commonly used in WordPress development</p>
 
 <hr />
 
-<h2 id="remove-tags">remove_tags</h2>
+<h3 id="remove-tags">remove_tags</h3>
 
 <p><code>remove_tags( mixed $string, array $tags=array() )</code></p>
 
@@ -282,7 +297,7 @@ commonly used in WordPress development</p>
 
 <hr />
 
-<h2 id="starts-with">starts_with</h2>
+<h3 id="starts-with">starts_with</h3>
 
 <p><code>starts_with( string $haystack, string $needle )</code></p>
 
@@ -314,7 +329,7 @@ commonly used in WordPress development</p>
 
 <hr />
 
-<h2 id="trim-characters">trim_characters</h2>
+<h3 id="trim-characters">trim_characters</h3>
 
 <p><code>trim_characters( string $text, mixed/int $num_chars=60, mixed/string/null $more=null )</code></p>
 
@@ -360,7 +375,7 @@ commonly used in WordPress development</p>
 
 <hr />
 
-<h2 id="trim-words">trim_words</h2>
+<h3 id="trim-words">trim_words</h3>
 
 <p><code>trim_words( string $text, mixed/int $num_words=55, mixed/string/null/false $more=null, string $allowed_tags=&quot;p a span b i br blockquote&quot; )</code></p>
 

@@ -12,6 +12,30 @@
 	
     <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?bbb4a34691cef083c31eb7d1af61a243">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
+
+    
+    <link rel="icon" href="https://timber.github.io/docs/favicons/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://timber.github.io/docs/favicons/apple-touch-icon-57x57.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://timber.github.io/docs/favicons/apple-touch-icon-114x114.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://timber.github.io/docs/favicons/apple-touch-icon-72x72.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://timber.github.io/docs/favicons/apple-touch-icon-144x144.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://timber.github.io/docs/favicons/apple-touch-icon-60x60.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://timber.github.io/docs/favicons/apple-touch-icon-120x120.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://timber.github.io/docs/favicons/apple-touch-icon-76x76.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://timber.github.io/docs/favicons/apple-touch-icon-152x152.png" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-196x196.png" sizes="196x196" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-16x16.png" sizes="16x16" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-128.png" sizes="128x128" />
+	<meta name="application-name" content="Timber Docs"/>
+	<meta name="msapplication-TileColor" content="#FFFFFF" />
+	<meta name="msapplication-TileImage" content="https://timber.github.io/docs/favicons/mstile-144x144.png" />
+	<meta name="msapplication-square70x70logo" content="https://timber.github.io/docs/favicons/mstile-70x70.png" />
+	<meta name="msapplication-square150x150logo" content="https://timber.github.io/docs/favicons/mstile-150x150.png" />
+	<meta name="msapplication-wide310x150logo" content="https://timber.github.io/docs/favicons/mstile-310x150.png" />
+	<meta name="msapplication-square310x310logo" content="https://timber.github.io/docs/favicons/mstile-310x310.png" />
+
 </head>
 
 
@@ -99,7 +123,7 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/pagination/">Pagination</a></li>
                 
-                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/performance/">Performance</a></li>
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/performance/">Performance/Caching</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/routing/">Routing</a></li>
                 
@@ -191,7 +215,13 @@
 <ul>
 <li>
 <ul>
-<li><a href="#methods-overview">Methods Overview</a></li>
+<li><a href="#overview">Overview</a>
+<ul>
+<li><a href="#properties">Properties</a></li>
+<li><a href="#methods">Methods</a></li>
+</ul></li>
+<li><a href="#class-methods">Class Methods</a>
+<ul>
 <li><a href="#construct">__construct</a></li>
 <li><a href="#tostring">__toString</a></li>
 <li><a href="#get-custom">get_custom</a></li>
@@ -201,6 +231,7 @@
 <li><a href="#name">name</a></li>
 <li><a href="#path">path</a></li>
 <li><a href="#slug">slug</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -232,7 +263,53 @@ Timber::render('single.twig', $context);
 &lt;p class=&quot;article-info&quot;&gt;This article is called &quot;Consider the Lobster&quot; and it's by David Foster Wallace
 </code></pre>
 
-<h2 id="methods-overview">Methods Overview</h2>
+<h2 id="overview">Overview</h2>
+
+<h3 id="properties">Properties</h3>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>description</td>
+<td><code>string</code></td>
+<td>The description from WordPress</td>
+</tr>
+
+<tr>
+<td>avatar</td>
+<td><code>string/Image</code></td>
+<td>The URL of the author&rsquo;s avatar</td>
+</tr>
+
+<tr>
+<td>first_name</td>
+<td><code>string</code></td>
+<td>The first name of the user</td>
+</tr>
+
+<tr>
+<td>last_name</td>
+<td><code>string</code></td>
+<td>The last name of the user</td>
+</tr>
+
+<tr>
+<td>id</td>
+<td><code>int</code></td>
+<td>The ID from WordPress</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="methods">Methods</h3>
 
 <table>
 <thead>
@@ -244,36 +321,6 @@ Timber::render('single.twig', $context);
 </thead>
 
 <tbody>
-<tr>
-<td>avatar</td>
-<td>`string</td>
-<td>Image`</td>
-</tr>
-
-<tr>
-<td>description</td>
-<td><code>string</code></td>
-<td>The description from WordPress</td>
-</tr>
-
-<tr>
-<td>first_name</td>
-<td><code>string</code></td>
-<td>The first name of the user</td>
-</tr>
-
-<tr>
-<td>id</td>
-<td><code>int</code></td>
-<td>The ID from WordPress</td>
-</tr>
-
-<tr>
-<td>last_name</td>
-<td><code>string</code></td>
-<td>The last name of the user</td>
-</tr>
-
 <tr>
 <td><a href="#link">link</a></td>
 <td><code>string</code></td>
@@ -300,7 +347,11 @@ Timber::render('single.twig', $context);
 </tbody>
 </table>
 
-<h2 id="construct">__construct</h2>
+<hr />
+
+<h2 id="class-methods">Class Methods</h2>
+
+<h3 id="construct">__construct</h3>
 
 <p><code>__construct( bool/object/int/bool $uid=false )</code></p>
 
@@ -326,7 +377,7 @@ Timber::render('single.twig', $context);
 
 <hr />
 
-<h2 id="tostring">__toString</h2>
+<h3 id="tostring">__toString</h3>
 
 <p><code>__toString( )</code></p>
 
@@ -344,7 +395,7 @@ Timber::render('single.twig', $context);
 
 <hr />
 
-<h2 id="get-custom">get_custom</h2>
+<h3 id="get-custom">get_custom</h3>
 
 <p><code>get_custom( )</code></p>
 
@@ -352,7 +403,7 @@ Timber::render('single.twig', $context);
 
 <hr />
 
-<h2 id="get-meta-field">get_meta_field</h2>
+<h3 id="get-meta-field">get_meta_field</h3>
 
 <p><code>get_meta_field( string $field_name )</code></p>
 
@@ -378,7 +429,7 @@ Timber::render('single.twig', $context);
 
 <hr />
 
-<h2 id="link">link</h2>
+<h3 id="link">link</h3>
 
 <p><code>link( )</code></p>
 
@@ -386,7 +437,7 @@ Timber::render('single.twig', $context);
 
 <hr />
 
-<h2 id="meta">meta</h2>
+<h3 id="meta">meta</h3>
 
 <p><code>meta( string $field_name )</code></p>
 
@@ -412,7 +463,7 @@ Timber::render('single.twig', $context);
 
 <hr />
 
-<h2 id="name">name</h2>
+<h3 id="name">name</h3>
 
 <p><code>name( )</code></p>
 
@@ -420,7 +471,7 @@ Timber::render('single.twig', $context);
 
 <hr />
 
-<h2 id="path">path</h2>
+<h3 id="path">path</h3>
 
 <p><code>path( )</code></p>
 
@@ -428,7 +479,7 @@ Timber::render('single.twig', $context);
 
 <hr />
 
-<h2 id="slug">slug</h2>
+<h3 id="slug">slug</h3>
 
 <p><code>slug( )</code></p>
 

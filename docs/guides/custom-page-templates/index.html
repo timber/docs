@@ -12,6 +12,30 @@
 	
     <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?bbb4a34691cef083c31eb7d1af61a243">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
+
+    
+    <link rel="icon" href="https://timber.github.io/docs/favicons/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://timber.github.io/docs/favicons/apple-touch-icon-57x57.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://timber.github.io/docs/favicons/apple-touch-icon-114x114.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://timber.github.io/docs/favicons/apple-touch-icon-72x72.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://timber.github.io/docs/favicons/apple-touch-icon-144x144.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://timber.github.io/docs/favicons/apple-touch-icon-60x60.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://timber.github.io/docs/favicons/apple-touch-icon-120x120.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://timber.github.io/docs/favicons/apple-touch-icon-76x76.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://timber.github.io/docs/favicons/apple-touch-icon-152x152.png" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-196x196.png" sizes="196x196" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-16x16.png" sizes="16x16" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-128.png" sizes="128x128" />
+	<meta name="application-name" content="Timber Docs"/>
+	<meta name="msapplication-TileColor" content="#FFFFFF" />
+	<meta name="msapplication-TileImage" content="https://timber.github.io/docs/favicons/mstile-144x144.png" />
+	<meta name="msapplication-square70x70logo" content="https://timber.github.io/docs/favicons/mstile-70x70.png" />
+	<meta name="msapplication-square150x150logo" content="https://timber.github.io/docs/favicons/mstile-150x150.png" />
+	<meta name="msapplication-wide310x150logo" content="https://timber.github.io/docs/favicons/mstile-310x150.png" />
+	<meta name="msapplication-square310x310logo" content="https://timber.github.io/docs/favicons/mstile-310x310.png" />
+
 </head>
 
 
@@ -99,7 +123,7 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/pagination/">Pagination</a></li>
                 
-                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/performance/">Performance</a></li>
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/performance/">Performance/Caching</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/routing/">Routing</a></li>
                 
@@ -203,34 +227,46 @@
 			<div class="content">
 				
 
-<p>There are a few ways to manage custom pages in WordPress and Timber, in order from simple-to-complex:</p>
+<p>Imagine that you’ve created a page called <strong>«About Us»</strong> and WordPress has given it the slug <code>about-us</code>. How would you create a custom template just for this page?</p>
+
+<p>There are a few ways to manage custom pages in WordPress and Timber, in order from simple to complex.</p>
 
 <h2 id="custom-twig-file">Custom Twig File</h2>
 
-<p>Say you&rsquo;ve created a page called &ldquo;About Us&rdquo; and WordPress has given it the slug <code>about-us</code>. If you&rsquo;re using the <a href="https://github.com/Upstatement/timber-starter-theme">Timber Starter Theme</a> you can simply create a file called <code>page-about-us.twig</code> inside your <code>views</code> and go crazy. I recommend copying-and-pasting the contents of <a href="https://github.com/Upstatement/timber-starter-theme/blob/master/views/page.twig"><code>page.twig</code></a> into here so you have something to work from.</p>
+<p>If you&rsquo;re using the <a href="https://github.com/timber/starter-theme">Timber Starter Theme</a> you can</p>
+
+<ul>
+<li>Create a file called <code>page-about-us.twig</code> inside your <code>views</code> and go crazy.</li>
+<li>Copy and paste the contents of <a href="https://github.com/timber/starter-theme/blob/master/templates/page.twig"><code>page.twig</code></a> so you have something to work from.</li>
+</ul>
 
 <p><strong>How does this work?</strong></p>
 
-<p>In the <code>page.php</code> file you&rsquo;ll see this code&hellip;</p>
+<p>In the <code>page.php</code> file you&rsquo;ll find this code:</p>
 
 <pre><code class="language-php">&lt;?php
-Timber::render(array('page-' . $post-&gt;post_name . '.twig', 'page.twig'), $context);
+Timber::render( array(
+    'page-' . $post-&gt;post_name . '.twig',
+    'page.twig'
+), $context );
 </code></pre>
 
-<p>Which is telling PHP to first look for a twig file named <code>page-{{slug}}.twig</code> and falling back to <a href="https://github.com/Upstatement/timber-starter-theme/blob/master/views/page.twig"><code>page.twig</code></a> if that doesn&rsquo;t exist.</p>
-
-<hr />
+<p>This is telling PHP to first look for a Twig file named <code>page-{{slug}}.twig</code> and then fall back to <code>page.twig</code> if that doesn&rsquo;t exist. With the array notation, you can add as many fallbacks as you need.</p>
 
 <h2 id="custom-php-file">Custom PHP File</h2>
 
-<p>If you need to do something special for this page in PHP, you can use standard WordPress <a href="http://codex.wordpress.org/Template_Hierarchy">template hierarchy</a> to gather and manipulate data for this page. In the above example, you would create a file called <code>/wp-content/themes/my-theme/page-about-us.php</code> and populate it with the necessary PHP. Again, you can use the contents of the starter theme&rsquo;s <a href="https://github.com/Upstatement/timber-starter-theme/blob/master/page.php"><code>page.php</code></a> file as a guide.</p>
+<p>If you need to do something special for a page in PHP, you can use the standard WordPress <a href="http://codex.wordpress.org/Template_Hierarchy">template hierarchy</a> to gather and manipulate data for this page. In the example above, you would create a file</p>
 
-<hr />
+<p><code>/wp-content/themes/my-theme/page-about-us.php</code></p>
+
+<p>and populate it with the necessary PHP. You can use the contents of the starter theme’s <a href="https://github.com/timber/starter-theme/blob/master/page.php"><code>page.php</code></a> file as a guide.</p>
 
 <h2 id="custom-page-template">Custom Page Template</h2>
 
+<p>Create a file with the following comment header:</p>
+
 <pre><code class="language-php">&lt;?php
-/*
+/**
  * Template Name: My Custom Page
  * Description: A Page Template with a darker design.
  */
@@ -238,11 +274,14 @@ Timber::render(array('page-' . $post-&gt;post_name . '.twig', 'page.twig'), $con
 // Code to display Page goes here...
 </code></pre>
 
-<p>In the WordPress admin, this will now display in your page&rsquo;s list of available templates like so:</p>
+<p>In the WordPress admin, a new entry will be added in your page’s list of available templates like so:</p>
 
-<p><img src="http://codex.wordpress.org/images/thumb/a/a3/page-templates-pulldown-screenshot.png/180px-page-templates-pulldown-screenshot.png" alt="wordpress custom page template chooser" /></p>
+<p><img src="http://codex.wordpress.org/images/thumb/a/a3/page-templates-pulldown-screenshot.png/180px-page-templates-pulldown-screenshot.png" alt="" /></p>
 
-<p>I recommend naming it something like <code>/wp-content/themes/my-theme/template-my-custom-page.php</code>. Do NOT name it something beginning with <code>page-</code> or WP will get very confused. Here&rsquo;s <a href="https://github.com/Upstatement/blades/blob/master/template-person.php">an example of what the PHP in this file</a> looks like.</p>
+<ul>
+<li>Name it something like <code>/wp-content/themes/my-theme/template-my-custom-page.php</code>.</li>
+<li>Do <strong>NOT</strong> name it something beginning with <code>page-</code> or <a href="http://jespervanengelen.com/page-templates-in-wordpress-template-hierarchy/">WordPress will get very confused</a>.</li>
+</ul>
 
 			</div>
 		</div>

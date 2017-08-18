@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Performance</title>
+	<title>Performance/Caching</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -12,6 +12,30 @@
 	
     <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?bbb4a34691cef083c31eb7d1af61a243">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
+
+    
+    <link rel="icon" href="https://timber.github.io/docs/favicons/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://timber.github.io/docs/favicons/apple-touch-icon-57x57.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://timber.github.io/docs/favicons/apple-touch-icon-114x114.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://timber.github.io/docs/favicons/apple-touch-icon-72x72.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://timber.github.io/docs/favicons/apple-touch-icon-144x144.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://timber.github.io/docs/favicons/apple-touch-icon-60x60.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://timber.github.io/docs/favicons/apple-touch-icon-120x120.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://timber.github.io/docs/favicons/apple-touch-icon-76x76.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://timber.github.io/docs/favicons/apple-touch-icon-152x152.png" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-196x196.png" sizes="196x196" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-16x16.png" sizes="16x16" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-128.png" sizes="128x128" />
+	<meta name="application-name" content="Timber Docs"/>
+	<meta name="msapplication-TileColor" content="#FFFFFF" />
+	<meta name="msapplication-TileImage" content="https://timber.github.io/docs/favicons/mstile-144x144.png" />
+	<meta name="msapplication-square70x70logo" content="https://timber.github.io/docs/favicons/mstile-70x70.png" />
+	<meta name="msapplication-square150x150logo" content="https://timber.github.io/docs/favicons/mstile-150x150.png" />
+	<meta name="msapplication-wide310x150logo" content="https://timber.github.io/docs/favicons/mstile-310x150.png" />
+	<meta name="msapplication-square310x310logo" content="https://timber.github.io/docs/favicons/mstile-310x310.png" />
+
 </head>
 
 
@@ -99,7 +123,7 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/pagination/">Pagination</a></li>
                 
-                    <li class="nav__item nav__item--level-1 nav__item--current"><a class="nav__link nav__link--level-1" href="/docs/guides/performance/">Performance</a></li>
+                    <li class="nav__item nav__item--level-1 nav__item--current"><a class="nav__link nav__link--level-1" href="/docs/guides/performance/">Performance/Caching</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/routing/">Routing</a></li>
                 
@@ -183,7 +207,7 @@
 <main>
     
 	<article>
-		<h1>Performance</h1>
+		<h1>Performance/Caching</h1>
 
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
@@ -193,7 +217,10 @@
 <ul>
 <li><a href="#tl-dr">tl;dr</a></li>
 <li><a href="#cache-everything">Cache Everything</a></li>
-<li><a href="#cache-the-entire-twig-file-and-data">Cache the Entire Twig File and Data</a></li>
+<li><a href="#cache-the-entire-twig-file-and-data">Cache the Entire Twig File and Data</a>
+<ul>
+<li><a href="#set-cache-mode">Set cache mode</a></li>
+</ul></li>
 <li><a href="#cache-parts-of-the-twig-file-and-data">Cache <em>Parts</em> of the Twig File and Data</a>
 <ul>
 <li><a href="#extra-timberkeygeneratorinterface">Extra: TimberKeyGeneratorInterface</a></li>
@@ -210,70 +237,78 @@
 			<div class="content">
 				
 
-<p>Timber, especially in conjunction with WordPress and Twig, offers a variety of caching strategies to optimize performance. Here&rsquo;s a quick rundown of some of the options, ranked in order of most-broad to most-focused.</p>
+<p>Timber, especially in conjunction with WordPress and Twig, offers a variety of caching strategies to optimize performance. Here’s a quick rundown of some of the options, ranked in order of most-broad to most-focused.</p>
 
 <h2 id="tl-dr">tl;dr</h2>
 
-<p>In my tests with Debug Bar, Timber has no measurable performance hit. Everything compiles to PHP. @fabpot has an <a href="http://fabien.potencier.org/article/34/templating-engines-in-php">overview of the performance costs on his blog</a> (scroll down to the table)</p>
-
-<p>You can&hellip;</p>
-
-<ul>
-<li><a href="#cache-everything">Cache Everything</a></li>
-<li><a href="#cache-the-entire-twig-file-and-data">Cache the Entire Twig File and Data</a></li>
-<li><a href="#cache-parts-of-the-twig-file-and-data">Cache Parts of the Twig File and Data</a></li>
-<li><a href="#cache-the-twig-file-but-not-the-data">Cache the Twig File</a></li>
-<li><a href="#cache-the-php-data">Cache the PHP data</a></li>
-<li><a href="#measuring-performance">Measure Performance</a></li>
-</ul>
-
-<hr />
+<p>In my tests with Debug Bar, Timber has no measurable performance hit. Everything compiles to PHP. @fabpot has an <a href="http://fabien.potencier.org/article/34/templating-engines-in-php">overview of the performance costs on his blog</a> (scroll down to the table).</p>
 
 <h2 id="cache-everything">Cache Everything</h2>
 
 <p>You can still use plugins like <a href="https://wordpress.org/plugins/w3-total-cache/">W3 Total Cache</a> in conjunction with Timber. In most settings, this will <em>skip</em> the Twig/Timber layer of your files and serve static pages via whatever mechanism the plugin or settings dictate.</p>
 
-<hr />
-
 <h2 id="cache-the-entire-twig-file-and-data">Cache the Entire Twig File and Data</h2>
 
-<p>When rendering, use the <code>$expires</code> argument in <code>Timber::render</code>. For example:</p>
+<p>When rendering, use the <code>$expires</code> argument in <a href="https://timber.github.io/docs/reference/timber/#render"><code>Timber::render</code></a>. For example:</p>
 
 <pre><code class="language-php">&lt;?php
-$data['posts'] = Timber::get_posts();
-Timber::render('index.twig', $data, 600);
+$context['posts'] = Timber::get_posts();
+Timber::render( 'index.twig', $context, 600 );
 </code></pre>
 
-<p>Timber will cache the template for 10 minutes (600 / 60 = 10). But here&rsquo;s the cool part. Timber hashes the fields in the view context. This means that as soon as the data changes, the cache is automatically invalidated (yay!).</p>
+<p>In this example, Timber will cache the template for 10 minutes (600 / 60 = 10). But here’s the cool part: Timber hashes the fields in the view context. This means that <strong>as soon as the data changes, the cache is automatically invalidated</strong>. Yay!</p>
 
-<p>Full Parameters:</p>
+<p>This method is very effective, but crude - the whole template is cached. So if you have any context dependent sub-views (eg. current user), this mode won’t do.</p>
+
+<h3 id="set-cache-mode">Set cache mode</h3>
+
+<p>As a fourth parameter for <a href="https://timber.github.io/docs/reference/timber/#render">Timber::render()</a>, you can set the <code>$cache_mode</code>.</p>
 
 <pre><code class="language-php">&lt;?php
-Timber::render(
-    $filenames,
-    $data,
-    $expires, /** Default: false. False disables cache altogether. When passed an array, the first value is used for non-logged in visitors, the second for users **/
-    $cache_mode /** Any of the cache mode constants defined in TimberLoader **/
-);
+Timber::render( $filenames, $data, $expires, $cache_mode );
 </code></pre>
 
-<p>The cache modes are:</p>
+<p>The following cache modes are available:</p>
 
-<pre><code class="language-php">&lt;?php
-TimberLoader::CACHE_NONE /** Disable caching **/
-TimberLoader::CACHE_OBJECT /** WP Object Cache **/
-TimberLoader::CACHE_TRANSIENT  /** Transients **/
-TimberLoader::CACHE_SITE_TRANSIENT /** Network wide transients **/
-TimberLoader::CACHE_USE_DEFAULT /** Use whatever caching mechanism is set as the default for TimberLoader, the default is transient **/
-</code></pre>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Description</th>
+</tr>
+</thead>
 
-<p>This method is very effective, but crude - the whole template is cached. So if you have any context dependent sub-views (eg. current user), this mode won&rsquo;t do.</p>
+<tbody>
+<tr>
+<td><code>Timber\Loader::CACHE_NONE</code></td>
+<td>Disable caching</td>
+</tr>
 
-<hr />
+<tr>
+<td><code>Timber\Loader::CACHE_OBJECT</code></td>
+<td>WP Object Cache</td>
+</tr>
+
+<tr>
+<td><code>Timber\Loader::CACHE_TRANSIENT</code></td>
+<td>Transients</td>
+</tr>
+
+<tr>
+<td><code>Timber\Loader::CACHE_SITE_TRANSIENT</code></td>
+<td>Network wide transients</td>
+</tr>
+
+<tr>
+<td><code>Timber\Loader::CACHE_USE_DEFAULT</code></td>
+<td>Use whatever caching mechanism is set as the default for <code>Timber\Loader</code>, the default is <code>CACHE_TRANSIENT</code>.</td>
+</tr>
+</tbody>
+</table>
 
 <h2 id="cache-parts-of-the-twig-file-and-data">Cache <em>Parts</em> of the Twig File and Data</h2>
 
-<p>This method implements the Twig Cache Extension. It adds the cache tag, for use in templates. Best shown by example:</p>
+<p>This method implements the <a href="https://github.com/asm89/twig-cache-extension">Twig Cache Extension</a>. It adds the cache tag, for use in templates. Best shown by example:</p>
 
 <pre><code class="language-twig">{% cache 'index/content' posts %}
     {% for post in posts %}
@@ -282,7 +317,7 @@ TimberLoader::CACHE_USE_DEFAULT /** Use whatever caching mechanism is set as the
 {% endcache %}
 </code></pre>
 
-<p><code>'index/content'</code> will be used as annotation (ie. label) for the cache, while <code>posts</code> will be encoded with all its public fields. You can use anything for the label (&ldquo;foo&rdquo;, &ldquo;elephant&rdquo;, &ldquo;single-posts&rdquo;, whatever).</p>
+<p><code>'index/content'</code> will be used as annotation (label) for the cache, while <code>posts</code> will be encoded with all its public fields. You can use anything for the label (&ldquo;foo&rdquo;, &ldquo;elephant&rdquo;, &ldquo;single-posts&rdquo;, whatever).</p>
 
 <p>The mechanism behind it is the same as with render - the cache key is determined based on a hash of the object/array passed in (in the above example posts).</p>
 
@@ -304,73 +339,81 @@ $annotation . '__GCS__' . $key
 
 <h3 id="extra-timberkeygeneratorinterface">Extra: TimberKeyGeneratorInterface</h3>
 
-<p>Instead of hashing a whole object, you can specify the cache key in the object itself. If the object implements TimberKeyGeneratorInterface, it can pass a unique key through the method get_cache_key. That way a class can for example simply pass last_updated as the unique key.
-If arrays contain the key _cache_key, that one is used as cache key.</p>
+<p>Instead of hashing a whole object, you can specify the cache key in the object itself. If the object implements <code>TimberKeyGeneratorInterface</code>, it can pass a unique key through the method <code>get_cache_key</code>. That way a class can for example simply pass <code>'last_updated'</code> as the unique key.
+If arrays contain the key <code>_cache_key</code>, that one is used as cache key.</p>
 
 <p>This may save yet another few processor cycles.</p>
 
-<hr />
-
 <h2 id="cache-the-twig-file-but-not-the-data">Cache the Twig File (but not the data)</h2>
 
-<p>Every time you render a <code>.twig</code> file, Twig compiles all the html tags and variables into a big, nasty blob of function calls and echo statements that actually gets run by PHP. In general, this is pretty efficient. However, you can cache the resulting PHP blob by turning on Twig&rsquo;s cache via:</p>
+<p>Every time you render a <code>.twig</code> file, Twig compiles all the HTML tags and variables into a big, nasty blob of function calls and echo statements that actually gets run by PHP. In general, this is pretty efficient. However, you can cache the resulting PHP blob by turning on Twig’s cache via:</p>
+
+<p><strong>functions.php</strong></p>
 
 <pre><code class="language-php">&lt;?php
-/* functions.php */
-if (class_exists('Timber')){
+if ( class_exists( 'Timber' ) ){
 	Timber::$cache = true;
 }
 </code></pre>
 
 <p>You can look in your your <code>/wp-content/plugins/timber/twig-cache</code> directory to see what these files look like.</p>
 
-<p>This does not cache the <em>contents</em> of the variables. This is recommended as a last-step in the production process. Once enabled, any change you make to a <code>.twig</code> file (just tweaking the html for example) will not go live until the cache is flushed.</p>
-
-<hr />
+<p>This does not cache the <em>contents</em> of the variables. This is recommended as a last-step in the production process. Once enabled, any change you make to a <code>.twig</code> file (just tweaking the HTML for example) will not go live until the cache is flushed.</p>
 
 <h2 id="cache-the-php-data">Cache the PHP data</h2>
 
-<p>Sometimes the most expensive parts of the operations are generating the data needed to populate the twig template. You can of course use WordPress&rsquo;s default <a href="http://codex.wordpress.org/Transients_API">Transient API</a> to store this data.</p>
+<p>Sometimes the most expensive parts of the operations are generating the data needed to populate the twig template. You can of course use WordPress’s default <a href="http://codex.wordpress.org/Transients_API">Transient API</a> to store this data.</p>
 
 <p>You can also use some <a href="http://en.wikipedia.org/wiki/Syntactic_sugar">syntactic sugar</a> to make the checking/saving/retrieving of transient data a bit easier:</p>
 
+<p><strong>home.php</strong></p>
+
 <pre><code class="language-php">&lt;?php
-/* home.php */
 
 $context = Timber::get_context();
-$context['main_stories'] = TimberHelper::transient('main_stories', function(){
-	$posts = Timber::get_posts();
-	//do something expensive with these posts
-	$extra_teases = get_field('my_extra_teases', 'options');
-	foreach($extra_teases as &amp;$tease){
-		$tease = new TimberPost($tease);
-	}
-	$main_stories = array();
-	$main_stories['posts'] = $posts;
-	$main_stories['extra_teases'] = $extra_teases;
-	return $main_stories;
-}, 600);
-Timber::render('home.twig', $context);
+
+$context['main_stories'] = TimberHelper::transient( 'main_stories', function(){
+    $posts = Timber::get_posts();
+
+    // As an example, do something expensive with these posts
+    $extra_teases = get_field( 'my_extra_teases', 'options' );
+
+    foreach( $extra_teases as &amp;$tease ){
+        $tease = new Timber\Post( $tease );
+    }
+
+    $main_stories = array();
+    $main_stories['posts'] = $posts;
+    $main_stories['extra_teases'] = $extra_teases;
+
+    return $main_stories;
+}, 600 );
+
+Timber::render( 'home.twig', $context );
 </code></pre>
 
 <p>Here <code>main_stories</code> is a totally made-up variable. It could be called <code>foo</code>, <code>bar</code>, <code>elephant</code>, etc.</p>
 
-<hr />
-
 <h2 id="measuring-performance">Measuring Performance</h2>
 
-<p>Some tools like Debug Bar may not properly measure performance because its data (as in, the actual HTML it&rsquo;s generating to tell you the timing, number of queries, etc.) is swept-up by the page&rsquo;s cache.</p>
+<p>Some tools like Debug Bar may not properly measure performance because its data (as in, the actual HTML it’s generating to tell you the timing, number of queries, etc.) is swept-up by the page’s cache.</p>
 
-<p>Timber provides some quick shortcuts to measure page timing. Here&rsquo;s an example of them in action:</p>
+<p>Timber provides some quick shortcuts to measure page timing. Here’s an example of them in action:</p>
+
+<p><strong>single.php</strong></p>
 
 <pre><code class="language-php">&lt;?php
-/* single.php */
-$start = TimberHelper::start_timer(); //this generates a starting time
+// This generates a starting time
+$start = TimberHelper::start_timer();
+
 $context = Timber::get_context();
-$context['post'] = new TimberPost();
+$context['post'] = Timber::get_post();
 $context['whatever'] = get_my_foo();
-Timber::render('single.twig', $context, 600);
-echo TimberHelper::stop_timer($start); //this reports the time diff by passing the $start time
+
+Timber::render( 'single.twig', $context, 600 );
+
+// This reports the time diff by passing the $start time
+echo TimberHelper::stop_timer( $start);
 </code></pre>
 
 			</div>

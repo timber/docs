@@ -12,6 +12,30 @@
 	
     <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?bbb4a34691cef083c31eb7d1af61a243">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
+
+    
+    <link rel="icon" href="https://timber.github.io/docs/favicons/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://timber.github.io/docs/favicons/apple-touch-icon-57x57.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://timber.github.io/docs/favicons/apple-touch-icon-114x114.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://timber.github.io/docs/favicons/apple-touch-icon-72x72.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://timber.github.io/docs/favicons/apple-touch-icon-144x144.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://timber.github.io/docs/favicons/apple-touch-icon-60x60.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://timber.github.io/docs/favicons/apple-touch-icon-120x120.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://timber.github.io/docs/favicons/apple-touch-icon-76x76.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://timber.github.io/docs/favicons/apple-touch-icon-152x152.png" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-196x196.png" sizes="196x196" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-16x16.png" sizes="16x16" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-128.png" sizes="128x128" />
+	<meta name="application-name" content="Timber Docs"/>
+	<meta name="msapplication-TileColor" content="#FFFFFF" />
+	<meta name="msapplication-TileImage" content="https://timber.github.io/docs/favicons/mstile-144x144.png" />
+	<meta name="msapplication-square70x70logo" content="https://timber.github.io/docs/favicons/mstile-70x70.png" />
+	<meta name="msapplication-square150x150logo" content="https://timber.github.io/docs/favicons/mstile-150x150.png" />
+	<meta name="msapplication-wide310x150logo" content="https://timber.github.io/docs/favicons/mstile-310x150.png" />
+	<meta name="msapplication-square310x310logo" content="https://timber.github.io/docs/favicons/mstile-310x310.png" />
+
 </head>
 
 
@@ -99,7 +123,7 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/pagination/">Pagination</a></li>
                 
-                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/performance/">Performance</a></li>
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/performance/">Performance/Caching</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/routing/">Routing</a></li>
                 
@@ -191,7 +215,13 @@
 <ul>
 <li>
 <ul>
-<li><a href="#methods-overview">Methods Overview</a></li>
+<li><a href="#overview">Overview</a>
+<ul>
+<li><a href="#properties">Properties</a></li>
+<li><a href="#methods">Methods</a></li>
+</ul></li>
+<li><a href="#class-methods">Class Methods</a>
+<ul>
 <li><a href="#construct">__construct</a></li>
 <li><a href="#tostring">__toString</a></li>
 <li><a href="#author">author</a></li>
@@ -243,6 +273,7 @@
 <li><a href="#get-wp-link-page">get_wp_link_page</a></li>
 <li><a href="#maybe-show-password-form">maybe_show_password_form</a></li>
 </ul></li>
+</ul></li>
 </ul>
 </nav>
 		</aside>
@@ -284,7 +315,53 @@ Timber::render('single.twig', $context);
 &lt;/article&gt;
 </code></pre>
 
-<h2 id="methods-overview">Methods Overview</h2>
+<h2 id="overview">Overview</h2>
+
+<h3 id="properties">Properties</h3>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>class</td>
+<td><code>string</code></td>
+<td>$class stores the CSS classes for the post (ex: &ldquo;post post-type-book post-123&rdquo;)</td>
+</tr>
+
+<tr>
+<td>id</td>
+<td><code>string</code></td>
+<td>$id the numeric WordPress id of a post</td>
+</tr>
+
+<tr>
+<td>post_status</td>
+<td><code>string</code></td>
+<td>$post_status    the status of a post (&ldquo;draft&rdquo;, &ldquo;publish&rdquo;, etc.)</td>
+</tr>
+
+<tr>
+<td>post_type</td>
+<td><code>string</code></td>
+<td>$post_type      the name of the post type, this is the machine name (so &ldquo;my_custom_post_type&rdquo; as opposed to &ldquo;My Custom Post Type&rdquo;)</td>
+</tr>
+
+<tr>
+<td>slug</td>
+<td><code>string</code></td>
+<td>$slug       the URL-safe slug, this corresponds to the poorly-named &ldquo;post_name&rdquo; in the WP database, ex: &ldquo;hello-world&rdquo;</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="methods">Methods</h3>
 
 <table>
 <thead>
@@ -321,12 +398,6 @@ Timber::render('single.twig', $context);
 </tr>
 
 <tr>
-<td>class</td>
-<td><code>string</code></td>
-<td>$class stores the CSS classes for the post (ex: &ldquo;post post-type-book post-123&rdquo;)</td>
-</tr>
-
-<tr>
 <td><a href="#comments">comments</a></td>
 <td><code>bool/array</code></td>
 <td></td>
@@ -348,12 +419,6 @@ Timber::render('single.twig', $context);
 <td><a href="#format">format</a></td>
 <td><code>mixed</code></td>
 <td></td>
-</tr>
-
-<tr>
-<td>id</td>
-<td><code>string</code></td>
-<td>$id the numeric WordPress id of a post</td>
 </tr>
 
 <tr>
@@ -387,27 +452,9 @@ Timber::render('single.twig', $context);
 </tr>
 
 <tr>
-<td>post_status</td>
-<td><code>string</code></td>
-<td>$post_status    the status of a post (&ldquo;draft&rdquo;, &ldquo;publish&rdquo;, etc.)</td>
-</tr>
-
-<tr>
-<td>post_type</td>
-<td><code>string</code></td>
-<td>$post_type      the name of the post type, this is the machine name (so &ldquo;my_custom_post_type&rdquo; as opposed to &ldquo;My Custom Post Type&rdquo;)</td>
-</tr>
-
-<tr>
 <td><a href="#prev">prev</a></td>
 <td><code>mixed</code></td>
 <td></td>
-</tr>
-
-<tr>
-<td>slug</td>
-<td><code>string</code></td>
-<td>$slug       the URL-safe slug, this corresponds to the poorly-named &ldquo;post_name&rdquo; in the WP database, ex: &ldquo;hello-world&rdquo;</td>
 </tr>
 
 <tr>
@@ -442,7 +489,11 @@ Timber::render('single.twig', $context);
 </tbody>
 </table>
 
-<h2 id="construct">__construct</h2>
+<hr />
+
+<h2 id="class-methods">Class Methods</h2>
+
+<h3 id="construct">__construct</h3>
 
 <p><code>__construct( mixed $pid=null )</code></p>
 
@@ -477,7 +528,7 @@ $other_post = new Timber\Post($random_post_id);
 
 <hr />
 
-<h2 id="tostring">__toString</h2>
+<h3 id="tostring">__toString</h3>
 
 <p><code>__toString( )</code></p>
 
@@ -487,7 +538,7 @@ $other_post = new Timber\Post($random_post_id);
 
 <hr />
 
-<h2 id="author">author</h2>
+<h3 id="author">author</h3>
 
 <p><code>author( )</code></p>
 
@@ -505,7 +556,7 @@ $other_post = new Timber\Post($random_post_id);
 
 <hr />
 
-<h2 id="authors">authors</h2>
+<h3 id="authors">authors</h3>
 
 <p><code>authors( )</code></p>
 
@@ -513,7 +564,7 @@ $other_post = new Timber\Post($random_post_id);
 
 <hr />
 
-<h2 id="categories">categories</h2>
+<h3 id="categories">categories</h3>
 
 <p><code>categories( )</code></p>
 
@@ -523,7 +574,7 @@ $other_post = new Timber\Post($random_post_id);
 
 <hr />
 
-<h2 id="category">category</h2>
+<h3 id="category">category</h3>
 
 <p><code>category( )</code></p>
 
@@ -533,7 +584,7 @@ $other_post = new Timber\Post($random_post_id);
 
 <hr />
 
-<h2 id="children">children</h2>
+<h3 id="children">children</h3>
 
 <p><code>children( string/string/array $post_type=&quot;any&quot;, bool/string/bool $childPostClass=false )</code></p>
 
@@ -578,7 +629,7 @@ $other_post = new Timber\Post($random_post_id);
 
 <hr />
 
-<h2 id="comment-form">comment_form</h2>
+<h3 id="comment-form">comment_form</h3>
 
 <p><code>comment_form( array $args=array() )</code></p>
 
@@ -606,7 +657,7 @@ $other_post = new Timber\Post($random_post_id);
 
 <hr />
 
-<h2 id="comments">comments</h2>
+<h3 id="comments">comments</h3>
 
 <p><code>comments( mixed/int $count=null, string $order=&quot;wp&quot;, string $type=&quot;comment&quot;, string $status=&quot;approve&quot;, string $CommentClass=&quot;Timber\Comment&quot; )</code></p>
 
@@ -670,7 +721,7 @@ $other_post = new Timber\Post($random_post_id);
 
 <hr />
 
-<h2 id="content">content</h2>
+<h3 id="content">content</h3>
 
 <p><code>content( int $page, mixed $len=-1 )</code></p>
 
@@ -712,7 +763,7 @@ $other_post = new Timber\Post($random_post_id);
 
 <hr />
 
-<h2 id="convert">convert</h2>
+<h3 id="convert">convert</h3>
 
 <p><code>convert( array/\Timber\WP_Post $data, string $class )</code></p>
 
@@ -746,7 +797,7 @@ $other_post = new Timber\Post($random_post_id);
 
 <hr />
 
-<h2 id="date">date</h2>
+<h3 id="date">date</h3>
 
 <p><code>date( string $date_format=&quot;&quot; )</code></p>
 
@@ -788,7 +839,7 @@ Published on Jan 12th
 
 <hr />
 
-<h2 id="edit-link">edit_link</h2>
+<h3 id="edit-link">edit_link</h3>
 
 <p><code>edit_link( )</code></p>
 
@@ -798,7 +849,7 @@ Published on Jan 12th
 
 <hr />
 
-<h2 id="format">format</h2>
+<h3 id="format">format</h3>
 
 <p><code>format( )</code></p>
 
@@ -806,7 +857,7 @@ Published on Jan 12th
 
 <hr />
 
-<h2 id="get-comment-count">get_comment_count</h2>
+<h3 id="get-comment-count">get_comment_count</h3>
 
 <p><code>get_comment_count( )</code></p>
 
@@ -814,7 +865,7 @@ Published on Jan 12th
 
 <hr />
 
-<h2 id="get-content">get_content</h2>
+<h3 id="get-content">get_content</h3>
 
 <p><code>get_content( mixed/int $len=-1, int $page )</code></p>
 
@@ -858,7 +909,7 @@ Published on Jan 12th
 
 <hr />
 
-<h2 id="get-field">get_field</h2>
+<h3 id="get-field">get_field</h3>
 
 <p><code>get_field( string $field_name )</code></p>
 
@@ -884,7 +935,7 @@ Published on Jan 12th
 
 <hr />
 
-<h2 id="get-image">get_image</h2>
+<h3 id="get-image">get_image</h3>
 
 <p><code>get_image( string $field )</code></p>
 
@@ -910,7 +961,7 @@ Published on Jan 12th
 
 <hr />
 
-<h2 id="get-method-values">get_method_values</h2>
+<h3 id="get-method-values">get_method_values</h3>
 
 <p><code>get_method_values( )</code></p>
 
@@ -918,7 +969,7 @@ Published on Jan 12th
 
 <hr />
 
-<h2 id="get-paged-content">get_paged_content</h2>
+<h3 id="get-paged-content">get_paged_content</h3>
 
 <p><code>get_paged_content( )</code></p>
 
@@ -926,7 +977,7 @@ Published on Jan 12th
 
 <hr />
 
-<h2 id="strike-get-post-type-strike"><strike>get_post_type</strike></h2>
+<h3 id="strike-get-post-type-strike"><strike>get_post_type</strike></h3>
 
 <p><strong>DEPRECATED</strong> since 1.0.4</p>
 
@@ -948,7 +999,7 @@ Published on Jan 12th
 
 <hr />
 
-<h2 id="strike-get-preview-strike"><strike>get_preview</strike></h2>
+<h3 id="strike-get-preview-strike"><strike>get_preview</strike></h3>
 
 <p><strong>DEPRECATED</strong> since 1.3.1, use {{ post.preview }} instead</p>
 
@@ -1009,7 +1060,7 @@ If there&rsquo;s a <!-- more --> tag it will use that to mark where to pull thro
 
 <hr />
 
-<h2 id="has-field">has_field</h2>
+<h3 id="has-field">has_field</h3>
 
 <p><code>has_field( string $field_name )</code></p>
 
@@ -1035,7 +1086,7 @@ If there&rsquo;s a <!-- more --> tag it will use that to mark where to pull thro
 
 <hr />
 
-<h2 id="has-term">has_term</h2>
+<h3 id="has-term">has_term</h3>
 
 <p><code>has_term( string/int $term_name_or_id, string $taxonomy=&quot;all&quot; )</code></p>
 
@@ -1067,7 +1118,7 @@ If there&rsquo;s a <!-- more --> tag it will use that to mark where to pull thro
 
 <hr />
 
-<h2 id="import-field">import_field</h2>
+<h3 id="import-field">import_field</h3>
 
 <p><code>import_field( string $field_name )</code></p>
 
@@ -1093,7 +1144,7 @@ If there&rsquo;s a <!-- more --> tag it will use that to mark where to pull thro
 
 <hr />
 
-<h2 id="link">link</h2>
+<h3 id="link">link</h3>
 
 <p><code>link( )</code></p>
 
@@ -1108,7 +1159,7 @@ If there&rsquo;s a <!-- more --> tag it will use that to mark where to pull thro
 
 <hr />
 
-<h2 id="meta">meta</h2>
+<h3 id="meta">meta</h3>
 
 <p><code>meta( mixed/string $field_name=null )</code></p>
 
@@ -1134,7 +1185,7 @@ If there&rsquo;s a <!-- more --> tag it will use that to mark where to pull thro
 
 <hr />
 
-<h2 id="modified-author">modified_author</h2>
+<h3 id="modified-author">modified_author</h3>
 
 <p><code>modified_author( )</code></p>
 
@@ -1154,7 +1205,7 @@ If there&rsquo;s a <!-- more --> tag it will use that to mark where to pull thro
 
 <hr />
 
-<h2 id="modified-date">modified_date</h2>
+<h3 id="modified-date">modified_date</h3>
 
 <p><code>modified_date( string $date_format=&quot;&quot; )</code></p>
 
@@ -1180,7 +1231,7 @@ If there&rsquo;s a <!-- more --> tag it will use that to mark where to pull thro
 
 <hr />
 
-<h2 id="modified-time">modified_time</h2>
+<h3 id="modified-time">modified_time</h3>
 
 <p><code>modified_time( string $time_format=&quot;&quot; )</code></p>
 
@@ -1206,7 +1257,7 @@ If there&rsquo;s a <!-- more --> tag it will use that to mark where to pull thro
 
 <hr />
 
-<h2 id="name">name</h2>
+<h3 id="name">name</h3>
 
 <p><code>name( )</code></p>
 
@@ -1214,7 +1265,7 @@ If there&rsquo;s a <!-- more --> tag it will use that to mark where to pull thro
 
 <hr />
 
-<h2 id="next">next</h2>
+<h3 id="next">next</h3>
 
 <p><code>next( bool $in_same_term=false )</code></p>
 
@@ -1240,7 +1291,7 @@ If there&rsquo;s a <!-- more --> tag it will use that to mark where to pull thro
 
 <hr />
 
-<h2 id="paged-content">paged_content</h2>
+<h3 id="paged-content">paged_content</h3>
 
 <p><code>paged_content( )</code></p>
 
@@ -1248,7 +1299,7 @@ If there&rsquo;s a <!-- more --> tag it will use that to mark where to pull thro
 
 <hr />
 
-<h2 id="pagination">pagination</h2>
+<h3 id="pagination">pagination</h3>
 
 <p><code>pagination( )</code></p>
 
@@ -1258,7 +1309,7 @@ If there&rsquo;s a <!-- more --> tag it will use that to mark where to pull thro
 
 <hr />
 
-<h2 id="parent">parent</h2>
+<h3 id="parent">parent</h3>
 
 <p><code>parent( )</code></p>
 
@@ -1273,7 +1324,7 @@ If there&rsquo;s a <!-- more --> tag it will use that to mark where to pull thro
 
 <hr />
 
-<h2 id="password-required">password_required</h2>
+<h3 id="password-required">password_required</h3>
 
 <p><code>password_required( )</code></p>
 
@@ -1283,7 +1334,7 @@ If there&rsquo;s a <!-- more --> tag it will use that to mark where to pull thro
 
 <hr />
 
-<h2 id="path">path</h2>
+<h3 id="path">path</h3>
 
 <p><code>path( )</code></p>
 
@@ -1299,7 +1350,7 @@ this will return just /2015/07/my-cool-post</p>
 
 <hr />
 
-<h2 id="strike-permalink-strike"><strike>permalink</strike></h2>
+<h3 id="strike-permalink-strike"><strike>permalink</strike></h3>
 
 <p><strong>DEPRECATED</strong> 0.20.0 use link() instead</p>
 
@@ -1309,7 +1360,7 @@ this will return just /2015/07/my-cool-post</p>
 
 <hr />
 
-<h2 id="prev">prev</h2>
+<h3 id="prev">prev</h3>
 
 <p><code>prev( bool $in_same_term=false )</code></p>
 
@@ -1344,7 +1395,7 @@ this will return just /2015/07/my-cool-post</p>
 
 <hr />
 
-<h2 id="preview">preview</h2>
+<h3 id="preview">preview</h3>
 
 <p><code>preview( )</code></p>
 
@@ -1352,7 +1403,7 @@ this will return just /2015/07/my-cool-post</p>
 
 <hr />
 
-<h2 id="tags">tags</h2>
+<h3 id="tags">tags</h3>
 
 <p><code>tags( )</code></p>
 
@@ -1362,7 +1413,7 @@ this will return just /2015/07/my-cool-post</p>
 
 <hr />
 
-<h2 id="terms">terms</h2>
+<h3 id="terms">terms</h3>
 
 <p><code>terms( string/string/array $tax=&quot;&quot;, bool $merge=true, string $TermClass=&quot;&quot; )</code></p>
 
@@ -1429,7 +1480,7 @@ This goes across all taxonomies by default</p>
 
 <hr />
 
-<h2 id="thumbnail">thumbnail</h2>
+<h3 id="thumbnail">thumbnail</h3>
 
 <p><code>thumbnail( )</code></p>
 
@@ -1444,7 +1495,7 @@ This goes across all taxonomies by default</p>
 
 <hr />
 
-<h2 id="time">time</h2>
+<h3 id="time">time</h3>
 
 <p><code>time( string $time_format=&quot;&quot; )</code></p>
 
@@ -1486,7 +1537,7 @@ Published at 13:25
 
 <hr />
 
-<h2 id="title">title</h2>
+<h3 id="title">title</h3>
 
 <p><code>title( )</code></p>
 
@@ -1501,7 +1552,7 @@ Published at 13:25
 
 <hr />
 
-<h2 id="type">type</h2>
+<h3 id="type">type</h3>
 
 <p><code>type( )</code></p>
 
@@ -1521,7 +1572,7 @@ Published at 13:25
 
 <hr />
 
-<h2 id="update">update</h2>
+<h3 id="update">update</h3>
 
 <p><code>update( string $field, mixed $value )</code></p>
 
@@ -1555,7 +1606,7 @@ Published at 13:25
 
 <hr />
 
-<h2 id="get-post-preview-id">get_post_preview_id</h2>
+<h3 id="get-post-preview-id">get_post_preview_id</h3>
 
 <p><code>get_post_preview_id( mixed $query )</code></p>
 
@@ -1581,7 +1632,7 @@ Published at 13:25
 
 <hr />
 
-<h2 id="get-wp-link-page">get_wp_link_page</h2>
+<h3 id="get-wp-link-page">get_wp_link_page</h3>
 
 <p><code>get_wp_link_page( int $i )</code></p>
 
@@ -1607,7 +1658,7 @@ Published at 13:25
 
 <hr />
 
-<h2 id="maybe-show-password-form">maybe_show_password_form</h2>
+<h3 id="maybe-show-password-form">maybe_show_password_form</h3>
 
 <p><code>maybe_show_password_form( )</code></p>
 
