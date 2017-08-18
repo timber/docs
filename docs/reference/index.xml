@@ -61,7 +61,7 @@
       
       <guid>https://timber.github.io/docs/reference/timber-imagehelper/</guid>
       <description>&lt;p&gt;Implements the Twig image filters:
-&lt;a href=&#34;https://github.com/timber/timber/wiki/Image-cookbook#arbitrary-resizing-of-images&#34;&gt;https://github.com/timber/timber/wiki/Image-cookbook#arbitrary-resizing-of-images&lt;/a&gt;
+&lt;a href=&#34;https://timber.github.io/docs/guides/cookbook-images/#arbitrary-resizing-of-images&#34;&gt;https://timber.github.io/docs/guides/cookbook-images/#arbitrary-resizing-of-images&lt;/a&gt;
 - resize
 - retina
 - letterbox

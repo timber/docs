@@ -12,6 +12,30 @@
 	
     <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?bbb4a34691cef083c31eb7d1af61a243">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
+
+    
+    <link rel="icon" href="https://timber.github.io/docs/favicons/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://timber.github.io/docs/favicons/apple-touch-icon-57x57.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://timber.github.io/docs/favicons/apple-touch-icon-114x114.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://timber.github.io/docs/favicons/apple-touch-icon-72x72.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://timber.github.io/docs/favicons/apple-touch-icon-144x144.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://timber.github.io/docs/favicons/apple-touch-icon-60x60.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://timber.github.io/docs/favicons/apple-touch-icon-120x120.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://timber.github.io/docs/favicons/apple-touch-icon-76x76.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://timber.github.io/docs/favicons/apple-touch-icon-152x152.png" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-196x196.png" sizes="196x196" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-16x16.png" sizes="16x16" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-128.png" sizes="128x128" />
+	<meta name="application-name" content="Timber Docs"/>
+	<meta name="msapplication-TileColor" content="#FFFFFF" />
+	<meta name="msapplication-TileImage" content="https://timber.github.io/docs/favicons/mstile-144x144.png" />
+	<meta name="msapplication-square70x70logo" content="https://timber.github.io/docs/favicons/mstile-70x70.png" />
+	<meta name="msapplication-square150x150logo" content="https://timber.github.io/docs/favicons/mstile-150x150.png" />
+	<meta name="msapplication-wide310x150logo" content="https://timber.github.io/docs/favicons/mstile-310x150.png" />
+	<meta name="msapplication-square310x310logo" content="https://timber.github.io/docs/favicons/mstile-310x310.png" />
+
 </head>
 
 
@@ -99,7 +123,7 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/pagination/">Pagination</a></li>
                 
-                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/performance/">Performance</a></li>
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/performance/">Performance/Caching</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/routing/">Routing</a></li>
                 
@@ -191,7 +215,13 @@
 <ul>
 <li>
 <ul>
-<li><a href="#methods-overview">Methods Overview</a></li>
+<li><a href="#overview">Overview</a>
+<ul>
+<li><a href="#properties">Properties</a></li>
+<li><a href="#methods">Methods</a></li>
+</ul></li>
+<li><a href="#class-methods">Class Methods</a>
+<ul>
 <li><a href="#construct">__construct</a></li>
 <li><a href="#tostring">__toString</a></li>
 <li><a href="#children">children</a></li>
@@ -204,6 +234,7 @@
 <li><a href="#posts">posts</a></li>
 <li><a href="#title">title</a></li>
 <li><a href="#update">update</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -250,7 +281,35 @@ Timber::render('index.twig', $context);
 &lt;/ul&gt;
 </code></pre>
 
-<h2 id="methods-overview">Methods Overview</h2>
+<h2 id="overview">Overview</h2>
+
+<h3 id="properties">Properties</h3>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>name</td>
+<td><code>string</code></td>
+<td>the human-friendly name of the term (ex: French Cuisine)</td>
+</tr>
+
+<tr>
+<td>taxonomy</td>
+<td><code>string</code></td>
+<td>the WordPress taxonomy slug (ex: <code>post_tag</code> or <code>actors</code>)</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="methods">Methods</h3>
 
 <table>
 <thead>
@@ -293,12 +352,6 @@ Timber::render('index.twig', $context);
 </tr>
 
 <tr>
-<td>name</td>
-<td><code>string</code></td>
-<td>the human-friendly name of the term (ex: French Cuisine)</td>
-</tr>
-
-<tr>
 <td><a href="#path">path</a></td>
 <td><code>string</code></td>
 <td></td>
@@ -311,12 +364,6 @@ Timber::render('index.twig', $context);
 </tr>
 
 <tr>
-<td>taxonomy</td>
-<td><code>string</code></td>
-<td>the WordPress taxonomy slug (ex: <code>post_tag</code> or <code>actors</code>)</td>
-</tr>
-
-<tr>
 <td><a href="#title">title</a></td>
 <td><code>string</code></td>
 <td></td>
@@ -324,7 +371,11 @@ Timber::render('index.twig', $context);
 </tbody>
 </table>
 
-<h2 id="construct">__construct</h2>
+<hr />
+
+<h2 id="class-methods">Class Methods</h2>
+
+<h3 id="construct">__construct</h3>
 
 <p><code>__construct( mixed/int $tid=null, string $tax=&quot;&quot; )</code></p>
 
@@ -356,7 +407,7 @@ Timber::render('index.twig', $context);
 
 <hr />
 
-<h2 id="tostring">__toString</h2>
+<h3 id="tostring">__toString</h3>
 
 <p><code>__toString( )</code></p>
 
@@ -364,7 +415,7 @@ Timber::render('index.twig', $context);
 
 <hr />
 
-<h2 id="children">children</h2>
+<h3 id="children">children</h3>
 
 <p><code>children( )</code></p>
 
@@ -372,7 +423,7 @@ Timber::render('index.twig', $context);
 
 <hr />
 
-<h2 id="description">description</h2>
+<h3 id="description">description</h3>
 
 <p><code>description( )</code></p>
 
@@ -380,7 +431,7 @@ Timber::render('index.twig', $context);
 
 <hr />
 
-<h2 id="edit-link">edit_link</h2>
+<h3 id="edit-link">edit_link</h3>
 
 <p><code>edit_link( )</code></p>
 
@@ -388,7 +439,7 @@ Timber::render('index.twig', $context);
 
 <hr />
 
-<h2 id="from">from</h2>
+<h3 id="from">from</h3>
 
 <p><code>from( mixed $tid, mixed $taxonomy )</code></p>
 
@@ -420,7 +471,7 @@ Timber::render('index.twig', $context);
 
 <hr />
 
-<h2 id="link">link</h2>
+<h3 id="link">link</h3>
 
 <p><code>link( )</code></p>
 
@@ -436,7 +487,7 @@ Timber::render('index.twig', $context);
 
 <hr />
 
-<h2 id="meta">meta</h2>
+<h3 id="meta">meta</h3>
 
 <p><code>meta( string $field_name )</code></p>
 
@@ -476,7 +527,7 @@ required.</p>
 
 <hr />
 
-<h2 id="path">path</h2>
+<h3 id="path">path</h3>
 
 <p><code>path( )</code></p>
 
@@ -492,7 +543,7 @@ required.</p>
 
 <hr />
 
-<h2 id="posts">posts</h2>
+<h3 id="posts">posts</h3>
 
 <p><code>posts( mixed/int $numberposts_or_args=10, string $post_type_or_class=&quot;any&quot;, string $post_class=&quot;&quot; )</code></p>
 
@@ -540,7 +591,7 @@ required.</p>
 
 <hr />
 
-<h2 id="title">title</h2>
+<h3 id="title">title</h3>
 
 <p><code>title( )</code></p>
 
@@ -548,7 +599,7 @@ required.</p>
 
 <hr />
 
-<h2 id="update">update</h2>
+<h3 id="update">update</h3>
 
 <p><code>update( string $key, mixed $value )</code></p>
 

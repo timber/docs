@@ -12,6 +12,30 @@
 	
     <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?bbb4a34691cef083c31eb7d1af61a243">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
+
+    
+    <link rel="icon" href="https://timber.github.io/docs/favicons/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://timber.github.io/docs/favicons/apple-touch-icon-57x57.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://timber.github.io/docs/favicons/apple-touch-icon-114x114.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://timber.github.io/docs/favicons/apple-touch-icon-72x72.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://timber.github.io/docs/favicons/apple-touch-icon-144x144.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://timber.github.io/docs/favicons/apple-touch-icon-60x60.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://timber.github.io/docs/favicons/apple-touch-icon-120x120.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://timber.github.io/docs/favicons/apple-touch-icon-76x76.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://timber.github.io/docs/favicons/apple-touch-icon-152x152.png" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-196x196.png" sizes="196x196" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-16x16.png" sizes="16x16" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-128.png" sizes="128x128" />
+	<meta name="application-name" content="Timber Docs"/>
+	<meta name="msapplication-TileColor" content="#FFFFFF" />
+	<meta name="msapplication-TileImage" content="https://timber.github.io/docs/favicons/mstile-144x144.png" />
+	<meta name="msapplication-square70x70logo" content="https://timber.github.io/docs/favicons/mstile-70x70.png" />
+	<meta name="msapplication-square150x150logo" content="https://timber.github.io/docs/favicons/mstile-150x150.png" />
+	<meta name="msapplication-wide310x150logo" content="https://timber.github.io/docs/favicons/mstile-310x150.png" />
+	<meta name="msapplication-square310x310logo" content="https://timber.github.io/docs/favicons/mstile-310x310.png" />
+
 </head>
 
 
@@ -99,7 +123,7 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/pagination/">Pagination</a></li>
                 
-                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/performance/">Performance</a></li>
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/performance/">Performance/Caching</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/routing/">Routing</a></li>
                 
@@ -191,12 +215,19 @@
 <ul>
 <li>
 <ul>
-<li><a href="#methods-overview">Methods Overview</a></li>
+<li><a href="#overview">Overview</a>
+<ul>
+<li><a href="#properties">Properties</a></li>
+<li><a href="#methods">Methods</a></li>
+</ul></li>
+<li><a href="#class-methods">Class Methods</a>
+<ul>
 <li><a href="#construct">__construct</a></li>
 <li><a href="#link">link</a></li>
 <li><a href="#path">path</a></li>
 <li><a href="#theme-mod">theme_mod</a></li>
 <li><a href="#theme-mods">theme_mods</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -227,7 +258,47 @@ Timber::render('index.twig', $context);
 <pre><code class="language-html">&lt;script src=&quot;http://example.org/wp-content/themes/my-theme/static/js/all.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 
-<h2 id="methods-overview">Methods Overview</h2>
+<h2 id="overview">Overview</h2>
+
+<h3 id="properties">Properties</h3>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>name</td>
+<td><code>string</code></td>
+<td>the human-friendly name of the theme (ex: <code>My Timber Starter Theme</code>)</td>
+</tr>
+
+<tr>
+<td>parent</td>
+<td><code>TimberTheme/bool</code></td>
+<td>the TimberTheme object for the parent theme (if it exists), false otherwise</td>
+</tr>
+
+<tr>
+<td>parent_slug</td>
+<td><code>string</code></td>
+<td>the slug of the parent theme (ex: <code>_s</code>)</td>
+</tr>
+
+<tr>
+<td>slug</td>
+<td><code>string</code></td>
+<td>the slug of the theme (ex: <code>my-super-theme</code>)</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="methods">Methods</h3>
 
 <table>
 <thead>
@@ -246,38 +317,18 @@ Timber::render('index.twig', $context);
 </tr>
 
 <tr>
-<td>name</td>
-<td><code>string</code></td>
-<td>the human-friendly name of the theme (ex: <code>My Timber Starter Theme</code>)</td>
-</tr>
-
-<tr>
-<td>parent</td>
-<td>`TimberTheme</td>
-<td>bool`</td>
-</tr>
-
-<tr>
-<td>parent_slug</td>
-<td><code>string</code></td>
-<td>the slug of the parent theme (ex: <code>_s</code>)</td>
-</tr>
-
-<tr>
 <td><a href="#path">path</a></td>
 <td><code>string</code></td>
 <td>the relative path to the theme (ex: <code>/wp-content/themes/my-timber-theme</code>)</td>
 </tr>
-
-<tr>
-<td>slug</td>
-<td><code>string</code></td>
-<td>the slug of the theme (ex: <code>my-super-theme</code>)</td>
-</tr>
 </tbody>
 </table>
 
-<h2 id="construct">__construct</h2>
+<hr />
+
+<h2 id="class-methods">Class Methods</h2>
+
+<h3 id="construct">__construct</h3>
 
 <p><code>__construct( mixed/string $slug=null )</code></p>
 
@@ -325,7 +376,7 @@ Timber::render('index.twig', $context);
 
 <hr />
 
-<h2 id="link">link</h2>
+<h3 id="link">link</h3>
 
 <p><code>link( )</code></p>
 
@@ -333,7 +384,7 @@ Timber::render('index.twig', $context);
 
 <hr />
 
-<h2 id="path">path</h2>
+<h3 id="path">path</h3>
 
 <p><code>path( )</code></p>
 
@@ -341,7 +392,7 @@ Timber::render('index.twig', $context);
 
 <hr />
 
-<h2 id="theme-mod">theme_mod</h2>
+<h3 id="theme-mod">theme_mod</h3>
 
 <p><code>theme_mod( string $name, bool $default=false )</code></p>
 
@@ -373,7 +424,7 @@ Timber::render('index.twig', $context);
 
 <hr />
 
-<h2 id="theme-mods">theme_mods</h2>
+<h3 id="theme-mods">theme_mods</h3>
 
 <p><code>theme_mods( )</code></p>
 

@@ -12,6 +12,30 @@
 	
     <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?bbb4a34691cef083c31eb7d1af61a243">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
+
+    
+    <link rel="icon" href="https://timber.github.io/docs/favicons/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://timber.github.io/docs/favicons/apple-touch-icon-57x57.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://timber.github.io/docs/favicons/apple-touch-icon-114x114.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://timber.github.io/docs/favicons/apple-touch-icon-72x72.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://timber.github.io/docs/favicons/apple-touch-icon-144x144.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://timber.github.io/docs/favicons/apple-touch-icon-60x60.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://timber.github.io/docs/favicons/apple-touch-icon-120x120.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://timber.github.io/docs/favicons/apple-touch-icon-76x76.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://timber.github.io/docs/favicons/apple-touch-icon-152x152.png" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-196x196.png" sizes="196x196" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-16x16.png" sizes="16x16" />
+	<link rel="icon" type="image/png" href="https://timber.github.io/docs/favicons/favicon-128.png" sizes="128x128" />
+	<meta name="application-name" content="Timber Docs"/>
+	<meta name="msapplication-TileColor" content="#FFFFFF" />
+	<meta name="msapplication-TileImage" content="https://timber.github.io/docs/favicons/mstile-144x144.png" />
+	<meta name="msapplication-square70x70logo" content="https://timber.github.io/docs/favicons/mstile-70x70.png" />
+	<meta name="msapplication-square150x150logo" content="https://timber.github.io/docs/favicons/mstile-150x150.png" />
+	<meta name="msapplication-wide310x150logo" content="https://timber.github.io/docs/favicons/mstile-310x150.png" />
+	<meta name="msapplication-square310x310logo" content="https://timber.github.io/docs/favicons/mstile-310x310.png" />
+
 </head>
 
 
@@ -99,7 +123,7 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/pagination/">Pagination</a></li>
                 
-                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/performance/">Performance</a></li>
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/performance/">Performance/Caching</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/routing/">Routing</a></li>
                 
@@ -191,9 +215,14 @@
 <ul>
 <li>
 <ul>
+<li><a href="#enable-debugging">Enable debugging</a></li>
 <li><a href="#using-twig-s-native-functions">Using Twig’s native functions</a></li>
 <li><a href="#using-timber-debug-bar-plugin">Using Timber Debug Bar plugin</a></li>
-<li><a href="#using-legacy-timber-filters">Using (Legacy) Timber Filters</a></li>
+<li><a href="#using-legacy-timber-filters">Using (Legacy) Timber Filters</a>
+<ul>
+<li><a href="#print-r">print_r</a></li>
+<li><a href="#get-class">get_class</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -203,47 +232,62 @@
 			<div class="content">
 				
 
-<h2 id="using-twig-s-native-functions">Using Twig’s native functions</h2>
+<h2 id="enable-debugging">Enable debugging</h2>
 
-<p>Twig includes a <code>dump</code> function that can output the properties of an object. To use <code>WP_DEBUG</code> must be set to true.</p>
+<p>To use debugging, the constant <code>WP_DEBUG</code> needs to be set to <code>true</code>.</p>
 
 <p><strong>wp-config.php</strong></p>
 
 <pre><code class="language-php">&lt;?php
-define('WP_DEBUG', true);
+define( 'WP_DEBUG', true );
 </code></pre>
 
-<p><strong>single.twig</strong></p>
+<h2 id="using-twig-s-native-functions">Using Twig’s native functions</h2>
 
-<pre><code class="language-twig">{{dump(post)}}
+<p>Twig includes a <code>dump</code> function that can output the properties of an object.</p>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">{{ dump(post) }}
 </code></pre>
 
 <p>Which will give you:</p>
 
-<p><a href="http://imgur.com/5Xu53Fk"><img src="http://i.imgur.com/5Xu53Fk.png" title="Hosted by imgur.com"/></a></p>
+<p><img src="http://i.imgur.com/5Xu53Fk.png" alt="" /></p>
 
-<p>You can also dump <em>everything</em> sent to your template via:</p>
+<p>You can also dump <em>everything</em> sent to your template (contents of <code>$context</code> passed to the Twig file) via:</p>
 
-<pre><code class="language-twig">{{dump()}}
+<pre><code class="language-twig">{{ dump() }}
 </code></pre>
 
 <p>This will give you something like:</p>
 
-<pre><code class="language-html">&lt;a href=&quot;http://imgur.com/5ZD8VDd&quot;&gt;&lt;img src=&quot;http://i.imgur.com/5ZD8VDd.png&quot; title=&quot;Hosted by imgur.com&quot;/&gt;&lt;/a&gt;
-</code></pre>
-
-<hr />
+<p><img src="http://i.imgur.com/5ZD8VDd.png" alt="" /></p>
 
 <h2 id="using-timber-debug-bar-plugin">Using Timber Debug Bar plugin</h2>
 
-<p>There&rsquo;s a <a href="http://wordpress.org/plugins/debug-bar-timber/">Timber add-on</a> for the <a href="https://wordpress.org/plugins/debug-bar/">WordPress debug bar</a>. Warning: this currently requries PHP 5.4. I&rsquo;m working on fixing whatever&rsquo;s going on for PHP 5.3</p>
+<p>There’s a <a href="http://wordpress.org/plugins/debug-bar-timber/">Timber add-on</a> for the <a href="https://wordpress.org/plugins/debug-bar/">WordPress debug bar</a>.<br />
+<strong>Warning:</strong> this currently requires PHP 5.4.</p>
 
 <h2 id="using-legacy-timber-filters">Using (Legacy) Timber Filters</h2>
 
-<p>You can also use some quick filters on an object. These are legacy and will be removed in favor of using Twig&rsquo;s built-in functionality. However, these do not require that WP_DEBUG be turned on.</p>
+<p>You can also use some quick filters on an object. These are legacy and will be removed in favor of using Twig&rsquo;s built-in functionality. However, these do not require that <code>WP_DEBUG</code> be turned on.</p>
 
-<pre><code class="language-twig">{{post|print_r}}
+<h3 id="print-r">print_r</h3>
+
+<p>Passes the variable to PHP’s <code>print_r</code> function.</p>
+
+<pre><code class="language-twig">{{ post|print_r }}
 </code></pre>
+
+<h3 id="get-class">get_class</h3>
+
+<p>This filter answers the question: What type of object am I working with? It passes a variable to PHP’s <code>get_class</code> function.</p>
+
+<pre><code class="language-twig">{{ post|get_class }}
+</code></pre>
+
+<p>It will output something like <code>TimberPost</code> or your custom wrapper object.</p>
 
 			</div>
 		</div>
