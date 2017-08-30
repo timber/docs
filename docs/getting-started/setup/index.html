@@ -87,7 +87,7 @@
                 
                     <li class="nav__item nav__item--level-1 nav__item--current"><a class="nav__link nav__link--level-1" href="/docs/getting-started/setup/">Setup</a></li>
                 
-                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/getting-started/themeing/">Themeing</a></li>
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/getting-started/theming/">Theming</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/getting-started/twig-tools/">Twig Tools</a></li>
                 
@@ -225,7 +225,7 @@
 <li><a href="#navigate-to-your-wordpress-themes-directory">Navigate to your WordPress themes directory</a></li>
 <li><a href="#1-activate-timber">1. Activate Timber</a></li>
 <li><a href="#2-select-your-theme-in-wordpress">2. Select your theme in WordPress</a></li>
-<li><a href="#3-let-s-write-our-theme">3. Let&rsquo;s write our theme!</a></li>
+<li><a href="#3-let-s-write-our-theme">3. Let’s write our theme!</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -240,7 +240,7 @@
 
 <h3 id="via-wordpress-org-easy">Via WordPress.org (easy)</h3>
 
-<p>You can just grab the all-things-included plugin at <a href="http://wordpress.org/plugins/timber-library/">WordPress.org</a> either through the WP site or your Plugins-&gt;Add New in wp-admin. Then skip ahead to <a href="#use-the-starter-theme">using the starter theme</a>.</p>
+<p>You can grab the all-things-included plugin at <a href="http://wordpress.org/plugins/timber-library/">WordPress.org</a> either through the WordPress site or through the Plugins menu in the backend. Then skip ahead to <a href="#use-the-starter-theme">using the starter theme</a>.</p>
 
 <h3 id="via-github-for-developers">Via GitHub (for developers)</h3>
 
@@ -249,25 +249,29 @@
 <pre><code class="language-shell">composer require timber/timber
 </code></pre>
 
-<p>If your theme is not setup to pull in Composer&rsquo;s autoload file, you will need to:</p>
+<p>If your theme is not setup to pull in Composer’s autoload file, you will need to add the following at the top of your <code>functions.php</code> file:</p>
+
+<p><strong>functions.php</strong></p>
 
 <pre><code class="language-php">&lt;?php
-require_once(__DIR__ . '/vendor/autoload.php');
+require_once( __DIR__ . '/vendor/autoload.php' );
 </code></pre>
 
-<p>at the top of your <code>functions.php</code> file. Initialize Timber with:</p>
+<p>Initialize Timber with:</p>
+
+<p><strong>functions.php</strong></p>
 
 <pre><code class="language-php">&lt;?php
-$timber = new \Timber\Timber();
+$timber = new Timber\Timber();
 </code></pre>
 
 <h2 id="use-the-starter-theme">Use the starter theme</h2>
 
-<p>The <a href="https://github.com/Upstatement/timber-starter-theme">starter theme</a> is for starting a project from scratch. You can also use Timber in an existing theme.</p>
+<p>The <a href="https://github.com/timber/starter-theme">starter theme</a> is for starting a project from scratch. You can also use Timber in an existing theme.</p>
 
 <h3 id="navigate-to-your-wordpress-themes-directory">Navigate to your WordPress themes directory</h3>
 
-<p>Like where twentyeleven and twentytwelve live. The Timber Starter will live at the same level.</p>
+<p>Like where twentyeleven and twentytwelve live. The Timber Starter Theme will live at the same level.</p>
 
 <pre><code>/wp-content/themes  /twentyeleven
                     /twentytwelve
@@ -283,13 +287,15 @@ $timber = new \Timber\Timber();
 
 <h3 id="1-activate-timber">1. Activate Timber</h3>
 
-<p>It will be in wp-admin/plugins.php</p>
+<p>It will be in <code>wp-admin/plugins.php</code>.</p>
 
 <h3 id="2-select-your-theme-in-wordpress">2. Select your theme in WordPress</h3>
 
-<p>Make sure you select the Timber-enabled theme <strong>after</strong> you activate the plugin. The theme will crash unless Timber is activated. Use the <strong>timber-starter-theme</strong> theme from the step above (or whatever you renamed it).</p>
+<p>Make sure you select the Timber-enabled theme <strong>after</strong> you activate the plugin. The theme will crash unless Timber is activated. Use the <strong>timber-starter-theme</strong> theme from the step above (or whatever you renamed it to).</p>
 
-<h3 id="3-let-s-write-our-theme">3. Let&rsquo;s write our theme!</h3>
+<h3 id="3-let-s-write-our-theme">3. Let’s write our theme!</h3>
+
+<p>Continue ahead in <a href="https://timber.github.io/docs/getting-started/theming/">part 2 about Theming</a>.</p>
 
 			</div>
 		</div>

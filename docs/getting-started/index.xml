@@ -16,20 +16,20 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/getting-started/setup/</guid>
-      <description>Installation Via WordPress.org (easy) You can just grab the all-things-included plugin at WordPress.org either through the WP site or your Plugins-&amp;gt;Add New in wp-admin. Then skip ahead to using the starter theme.
+      <description>Installation Via WordPress.org (easy) You can grab the all-things-included plugin at WordPress.org either through the WordPress site or through the Plugins menu in the backend. Then skip ahead to using the starter theme.
 Via GitHub (for developers) The GitHub version of Timber requires Composer. If you&amp;rsquo;d prefer one-click installation, you should use the WordPress.org version.
-composer require timber/timber  If your theme is not setup to pull in Composer&amp;rsquo;s autoload file, you will need to:</description>
+composer require timber/timber  If your theme is not setup to pull in Composer’s autoload file, you will need to add the following at the top of your functions.</description>
     </item>
     
     <item>
-      <title>Themeing</title>
-      <link>https://timber.github.io/docs/getting-started/themeing/</link>
+      <title>Theming</title>
+      <link>https://timber.github.io/docs/getting-started/theming/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://timber.github.io/docs/getting-started/themeing/</guid>
-      <description>Your first Timber project Let&amp;rsquo;s start with your single post. Find this file:
-wp-content/themes/{timber-starter-theme}/views/single.twig  Brilliant! Open it up.
-{% extends &amp;quot;base.twig&amp;quot; %} {% block content %} &amp;lt;div class=&amp;quot;content-wrapper&amp;quot;&amp;gt; &amp;lt;article class=&amp;quot;post-type-{{ post.post_type }}&amp;quot; id=&amp;quot;post-{{ post.ID }}&amp;quot;&amp;gt; &amp;lt;section class=&amp;quot;article-content&amp;quot;&amp;gt; &amp;lt;h1 class=&amp;quot;article-h1&amp;quot;&amp;gt;{{ post.title }}&amp;lt;/h1&amp;gt; &amp;lt;h2 class=&amp;quot;article-h2&amp;quot;&amp;gt;{{ post.subtitle }}&amp;lt;/h2&amp;gt; &amp;lt;p class=&amp;quot;blog-author&amp;quot;&amp;gt;&amp;lt;span&amp;gt;By&amp;lt;/span&amp;gt; {{ post.author.name }} &amp;lt;span&amp;gt;&amp;amp;bull;&amp;lt;/span&amp;gt; {{ post.post_date|date }}&amp;lt;/p&amp;gt; {{ post.content }} &amp;lt;/section&amp;gt; &amp;lt;/article&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;!-- /content-wrapper --&amp;gt; {% endblock %}  What did we just do?</description>
+      <guid>https://timber.github.io/docs/getting-started/theming/</guid>
+      <description>Your first Timber project Let’s start with your single post. Find this file:
+wp-content/themes/{timber-starter-theme}/templates/single.twig  Brilliant! Open it up.
+{% extends &amp;quot;base.twig&amp;quot; %} {% block content %} &amp;lt;div class=&amp;quot;content-wrapper&amp;quot;&amp;gt; &amp;lt;article class=&amp;quot;post-type-{{ post.post_type }}&amp;quot; id=&amp;quot;post-{{ post.ID }}&amp;quot;&amp;gt; &amp;lt;section class=&amp;quot;article-content&amp;quot;&amp;gt; &amp;lt;h1 class=&amp;quot;article-h1&amp;quot;&amp;gt;{{ post.title }}&amp;lt;/h1&amp;gt; &amp;lt;h2 class=&amp;quot;article-h2&amp;quot;&amp;gt;{{ post.subtitle }}&amp;lt;/h2&amp;gt; &amp;lt;p class=&amp;quot;blog-author&amp;quot;&amp;gt; &amp;lt;span&amp;gt;By&amp;lt;/span&amp;gt; {{ post.author.name }} &amp;lt;span&amp;gt;&amp;amp;bull;&amp;lt;/span&amp;gt; {{ post.post_date|date }} &amp;lt;/p&amp;gt; {{ post.content }} &amp;lt;/section&amp;gt; &amp;lt;/article&amp;gt; &amp;lt;/div&amp;gt; {% endblock %}  What did we just do?</description>
     </item>
     
     <item>
@@ -39,7 +39,7 @@ wp-content/themes/{timber-starter-theme}/views/single.twig  Brilliant! Open it u
       
       <guid>https://timber.github.io/docs/getting-started/twig-tools/</guid>
       <description>The purpose of this page is to identify helpful tools for working with Twig.
-Text editor add-ons  Text Mate &amp;amp; Sublime text bundle - Anomareh&amp;rsquo;s PHP-Twig Emacs - Web Mode Geany - add Twig/Symfony2 detection and highlighting PHPStorm - Built in coloring and code hinting. The twig extension is recognized and has been for some time. Twig Details for PHPStorm  Other  Watson-Ruby (inline issue manager - put tags like [todo] in a Twig comment and find it easily later!</description>
+Text editor add-ons  Text Mate &amp;amp; Sublime text bundle – Anomareh&amp;rsquo;s PHP-Twig Emacs – Web Mode Geany – Add Twig/Symfony2 detection and highlighting PHPStorm – Built in coloring and code hinting. The Twig extension is recognized and has been for some time. Twig Details for PHPStorm. Atom – Syntax highlighting with the Atom Component.  Other  Watson-Ruby – An inline issue manager.</description>
     </item>
     
     <item>
@@ -48,8 +48,8 @@ Text editor add-ons  Text Mate &amp;amp; Sublime text bundle - Anomareh&amp;rsqu
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/getting-started/video-tutorials/</guid>
-      <description>I&amp;rsquo;m in the midst of an install and walk-through on Timber, here are the screencasts thus far:
-1. Install Timber Option 1: Via GitHub (for developers) 1) Navigate to your WordPress plugins directory $ cd ~/Sites/mywordpress/wp-content/plugins  2) Use git to grab the repo $ git clone git@github.com:jarednova/timber.git  3) Use Composer to download the dependencies (Twig, etc.) $ cd timber $ composer install  You can find a guide on how to get started with Composer in the official documentation.</description>
+      <description>1. Install Timber Option 1: Via GitHub (for developers) 1) Navigate to your WordPress plugins directory $ cd ~/Sites/mywordpress/wp-content/plugins  2) Use git to grab the repo $ git clone git@github.com:timber/timber.git  3) Use Composer to download the dependencies (Twig, etc.) $ cd timber $ composer install  You can find a guide on how to get started with Composer in the official documentation.
+Option 2: Via Composer (for developers) 1) Navigate to your WordPress plugins directory $ cd ~/Sites/mywordpress/wp-content/plugins  2) Use Composer to create project and download the dependencies (Twig, etc.</description>
     </item>
     
   </channel>

@@ -87,7 +87,7 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/getting-started/setup/">Setup</a></li>
                 
-                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/getting-started/themeing/">Themeing</a></li>
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/getting-started/theming/">Theming</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/getting-started/twig-tools/">Twig Tools</a></li>
                 
@@ -222,7 +222,9 @@
 </ul></li>
 <li><a href="#class-methods">Class Methods</a>
 <ul>
+<li><a href="#call">__call</a></li>
 <li><a href="#construct">__construct</a></li>
+<li><a href="#get">__get</a></li>
 <li><a href="#tostring">__toString</a></li>
 <li><a href="#author">author</a></li>
 <li><a href="#authors">authors</a></li>
@@ -329,12 +331,6 @@ Timber::render('single.twig', $context);
 </thead>
 
 <tbody>
-<tr>
-<td>class</td>
-<td><code>string</code></td>
-<td>$class stores the CSS classes for the post (ex: &ldquo;post post-type-book post-123&rdquo;)</td>
-</tr>
-
 <tr>
 <td>id</td>
 <td><code>string</code></td>
@@ -493,6 +489,41 @@ Timber::render('single.twig', $context);
 
 <h2 id="class-methods">Class Methods</h2>
 
+<h3 id="call">__call</h3>
+
+<p><code>__call( mixed $field, mixed $args )</code></p>
+
+<p><strong>returns:</strong> <code>mixed</code></p>
+
+<p>This is helpful for twig to return properties and methods see: <a href="https://github.com/fabpot/Twig/issues/2">https://github.com/fabpot/Twig/issues/2</a>
+This is also here to ensure that {{ post.class }} remains usable</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$field</td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$args</td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
 <h3 id="construct">__construct</h3>
 
 <p><code>__construct( mixed $pid=null )</code></p>
@@ -525,6 +556,35 @@ Timber::render('single.twig', $context);
 $post = new Timber\Post();
 $other_post = new Timber\Post($random_post_id);
 </code></pre>
+
+<hr />
+
+<h3 id="get">__get</h3>
+
+<p><code>__get( mixed $field )</code></p>
+
+<p><strong>returns:</strong> <code>mixed</code></p>
+
+<p>This is helpful for twig to return properties and methods see: <a href="https://github.com/fabpot/Twig/issues/2">https://github.com/fabpot/Twig/issues/2</a>
+This is also here to ensure that {{ post.class }} remains usable</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$field</td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
 <hr />
 
@@ -1456,11 +1516,11 @@ This goes across all taxonomies by default</p>
 
 <pre><code class="language-twig">&lt;section id=&quot;job-feed&quot;&gt;
 {% for post in job %}
-&lt;div class=&quot;job&quot;&gt;
-  &lt;h2&gt;{{ post.title }}&lt;/h2&gt; 
-   &lt;p&gt;{{ post.terms('category') | join(', ') }}
- &lt;/div&gt;
-{% endfor %}    
+  &lt;div class=&quot;job&quot;&gt;
+    &lt;h2&gt;{{ post.title }}&lt;/h2&gt;
+    &lt;p&gt;{{ post.terms('category') | join(', ') }}
+  &lt;/div&gt;
+{% endfor %}
 &lt;/section&gt;
 </code></pre>
 
