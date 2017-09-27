@@ -63,7 +63,8 @@ You can also dump everything sent to your template (contents of $context passed 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/guides/escapers/</guid>
-      <description>General Escapers Twig offers a variety of escapers out of the box. These are intended to escape a string for safe insertion into the final output and there are multiple functions to conform to the strategy dependant on the context. In addition, Timber has added some valuable custom escapers for your WP theme. To use the escaper (see documentation link above) you use pipe your content through a function e if you want to use a custom escaper you would supply an argument to the function, e.</description>
+      <description>Universal Escaping By default, Timber does not escape the output of standard tags (i.e. {{ post.field }}). If you want to enable autoescape behavior simply add these lines to functions.php:
+if ( class_exists(&#39;Timber&#39;) ) { Timber::$autoescape = true; }  General Escapers Twig offers a variety of escapers out of the box. These are intended to escape a string for safe insertion into the final output and there are multiple functions to conform to the strategy dependant on the context.</description>
     </item>
     
     <item>

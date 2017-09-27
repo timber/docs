@@ -87,6 +87,8 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/getting-started/setup/">Setup</a></li>
                 
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/getting-started/themeing/">Themeing</a></li>
+                
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/getting-started/theming/">Theming</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/getting-started/twig-tools/">Twig Tools</a></li>
@@ -215,6 +217,7 @@
 <ul>
 <li>
 <ul>
+<li><a href="#universal-escaping">Universal Escaping</a></li>
 <li><a href="#general-escapers">General Escapers</a></li>
 <li><a href="#wp-kses-post">wp_kses_post</a></li>
 <li><a href="#esc-url">esc_url</a></li>
@@ -228,6 +231,15 @@
 		<div class="content-container">
 			<div class="content">
 				
+
+<h2 id="universal-escaping">Universal Escaping</h2>
+
+<p>By default, Timber does <em>not</em> escape the output of standard tags (i.e. <code>{{ post.field }}</code>). If you want to enable <code>autoescape</code> behavior simply add these lines to <code>functions.php</code>:</p>
+
+<pre><code class="language-php">if ( class_exists('Timber') ) {
+	Timber::$autoescape = true; 
+}
+</code></pre>
 
 <h2 id="general-escapers">General Escapers</h2>
 

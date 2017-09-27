@@ -87,6 +87,8 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/getting-started/setup/">Setup</a></li>
                 
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/getting-started/themeing/">Themeing</a></li>
+                
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/getting-started/theming/">Theming</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/getting-started/twig-tools/">Twig Tools</a></li>
@@ -222,9 +224,11 @@
 <li><a href="#class-methods">Class Methods</a>
 <ul>
 <li><a href="#delete-generated-if-image">_delete_generated_if_image</a></li>
-<li><a href="#add-filters">add_filters</a></li>
+<li><a href="#add-relative-upload-dir-key">add_relative_upload_dir_key</a></li>
 <li><a href="#analyze-url">analyze_url</a></li>
+<li><a href="#delete-attachment">delete_attachment</a></li>
 <li><a href="#delete-generated-files">delete_generated_files</a></li>
+<li><a href="#generate-attachment-metadata">generate_attachment_metadata</a></li>
 <li><a href="#get-letterbox-file-path">get_letterbox_file_path</a></li>
 <li><a href="#get-letterbox-file-url">get_letterbox_file_url</a></li>
 <li><a href="#get-resize-file-path">get_resize_file_path</a></li>
@@ -239,7 +243,6 @@
 <li><a href="#retina-resize">retina_resize</a></li>
 <li><a href="#sideload-image">sideload_image</a></li>
 <li><a href="#theme-url-to-dir">theme_url_to_dir</a></li>
-<li><a href="#add-actions">add_actions</a></li>
 <li><a href="#is-in-theme-dir">is_in_theme_dir</a></li>
 <li><a href="#maybe-realpath">maybe_realpath</a></li>
 <li><a href="#process-delete-generated-files">process_delete_generated_files</a></li>
@@ -319,14 +322,32 @@
 
 <hr />
 
-<h3 id="add-filters">add_filters</h3>
+<h3 id="add-relative-upload-dir-key">add_relative_upload_dir_key</h3>
 
-<p><code>add_filters( )</code></p>
+<p><code>add_relative_upload_dir_key( array $arr )</code></p>
 
-<p><strong>returns:</strong> <code>void</code></p>
+<p><strong>returns:</strong> <code>array</code></p>
 
-<p>adds a &lsquo;relative&rsquo; key to wp_upload_dir() result.
+<p>Adds a &lsquo;relative&rsquo; key to wp_upload_dir() result.
 It will contain the relative url to upload dir.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$arr</td>
+<td><code>array</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
 <hr />
 
@@ -360,6 +381,34 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 
 <hr />
 
+<h3 id="delete-attachment">delete_attachment</h3>
+
+<p><code>delete_attachment( int $post_id )</code></p>
+
+<p><strong>returns:</strong> <code>void</code></p>
+
+<p>Deletes all resized versions of an image when the source is deleted.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$post_id</td>
+<td><code>int</code></td>
+<td>an attachment post id</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
 <h3 id="delete-generated-files">delete_generated_files</h3>
 
 <p><code>delete_generated_files( string $local_file )</code></p>
@@ -382,6 +431,40 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 <td>$local_file</td>
 <td><code>string</code></td>
 <td>ex: /var/www/wp-content/uploads/2015/my-pic.jpg or: <a href="http://example.org/wp-content/uploads/2015/my-pic.jpg">http://example.org/wp-content/uploads/2015/my-pic.jpg</a></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h3 id="generate-attachment-metadata">generate_attachment_metadata</h3>
+
+<p><code>generate_attachment_metadata( array $metadata, int $post_id )</code></p>
+
+<p><strong>returns:</strong> <code>array</code></p>
+
+<p>Delete all resized version of an image when its meta data is regenerated.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$metadata</td>
+<td><code>array</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$post_id</td>
+<td><code>int</code></td>
+<td>an attachment post id</td>
 </tr>
 </tbody>
 </table>
@@ -698,7 +781,7 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 
 <h3 id="letterbox">letterbox</h3>
 
-<p><code>letterbox( string $src, int $w, int $h, string $color=&quot;#000000&quot;, bool $force=false )</code></p>
+<p><code>letterbox( string $src, int $w, int $h, bool/string $color=false, bool $force=false )</code></p>
 
 <p><strong>returns:</strong> <code>string</code></p>
 
@@ -735,7 +818,7 @@ New dimensions are achieved by adding colored bands to maintain ratio.</p>
 
 <tr>
 <td>$color</td>
-<td><code>string</code></td>
+<td><code>bool/string</code></td>
 <td></td>
 </tr>
 
@@ -905,17 +988,6 @@ New dimensions are achieved by cropping to maintain ratio.</p>
 </tr>
 </tbody>
 </table>
-
-<hr />
-
-<h3 id="add-actions">add_actions</h3>
-
-<p><code>add_actions( )</code></p>
-
-<p><strong>returns:</strong> <code>void</code></p>
-
-<p>Deletes all resized versions of an image when the source is deleted
-or its meta data is regenerated</p>
 
 <hr />
 

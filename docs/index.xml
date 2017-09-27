@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Timber Documentation on Timber Docs</title>
+    <title>Timber Docs</title>
     <link>https://timber.github.io/docs/</link>
-    <description>Recent content in Timber Documentation on Timber Docs</description>
+    <description>Recent content on Timber Docs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     
@@ -63,7 +63,8 @@ You can also dump everything sent to your template (contents of $context passed 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/guides/escapers/</guid>
-      <description>General Escapers Twig offers a variety of escapers out of the box. These are intended to escape a string for safe insertion into the final output and there are multiple functions to conform to the strategy dependant on the context. In addition, Timber has added some valuable custom escapers for your WP theme. To use the escaper (see documentation link above) you use pipe your content through a function e if you want to use a custom escaper you would supply an argument to the function, e.</description>
+      <description>Universal Escaping By default, Timber does not escape the output of standard tags (i.e. {{ post.field }}). If you want to enable autoescape behavior simply add these lines to functions.php:
+if ( class_exists(&#39;Timber&#39;) ) { Timber::$autoescape = true; }  General Escapers Twig offers a variety of escapers out of the box. These are intended to escape a string for safe insertion into the final output and there are multiple functions to conform to the strategy dependant on the context.</description>
     </item>
     
     <item>
@@ -213,6 +214,17 @@ cd ~/Sites git clone git@github.com:Varying-Vagrant-Vagrants/VVV.git cd VVV/www 
 Dates Example 1: Bylines Timber does bylines like a boss:
 &amp;lt;p class=&amp;quot;byline&amp;quot;&amp;gt; &amp;lt;span class=&amp;quot;name&amp;quot;&amp;gt;By {{ post.author.name }}&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;date&amp;quot;&amp;gt;{{ post.post_date|date(&#39;F j, Y&#39;) }}&amp;lt;/span&amp;gt; &amp;lt;/p&amp;gt;  Renders
 &amp;lt;p class=&amp;quot;byline&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;name&amp;quot;&amp;gt;By Mr. WordPress&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;date&amp;quot;&amp;gt;September 28, 2013&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;  Example 2: Copyright year Nothing is worse than an out-of-date copyright year in the footer. Nothing.</description>
+    </item>
+    
+    <item>
+      <title>Themeing</title>
+      <link>https://timber.github.io/docs/getting-started/themeing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://timber.github.io/docs/getting-started/themeing/</guid>
+      <description>Your first Timber project Let&amp;rsquo;s start with your single post. Find this file:
+wp-content/themes/{timber-starter-theme}/views/single.twig  Brilliant! Open it up.
+{% extends &amp;quot;base.twig&amp;quot; %} {% block content %} &amp;lt;div class=&amp;quot;content-wrapper&amp;quot;&amp;gt; &amp;lt;article class=&amp;quot;post-type-{{ post.post_type }}&amp;quot; id=&amp;quot;post-{{ post.ID }}&amp;quot;&amp;gt; &amp;lt;section class=&amp;quot;article-content&amp;quot;&amp;gt; &amp;lt;h1 class=&amp;quot;article-h1&amp;quot;&amp;gt;{{ post.title }}&amp;lt;/h1&amp;gt; &amp;lt;h2 class=&amp;quot;article-h2&amp;quot;&amp;gt;{{ post.subtitle }}&amp;lt;/h2&amp;gt; &amp;lt;p class=&amp;quot;blog-author&amp;quot;&amp;gt;&amp;lt;span&amp;gt;By&amp;lt;/span&amp;gt; {{ post.author.name }} &amp;lt;span&amp;gt;&amp;amp;bull;&amp;lt;/span&amp;gt; {{ post.post_date|date }}&amp;lt;/p&amp;gt; {{ post.content }} &amp;lt;/section&amp;gt; &amp;lt;/article&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;!-- /content-wrapper --&amp;gt; {% endblock %}  What did we just do?</description>
     </item>
     
     <item>
@@ -455,7 +467,7 @@ In your PHP file
       
       <guid>https://timber.github.io/docs/getting-started/twig-tools/</guid>
       <description>The purpose of this page is to identify helpful tools for working with Twig.
-Text editor add-ons  Text Mate &amp;amp; Sublime text bundle – Anomareh&amp;rsquo;s PHP-Twig Emacs – Web Mode Geany – Add Twig/Symfony2 detection and highlighting PHPStorm – Built in coloring and code hinting. The Twig extension is recognized and has been for some time. Twig Details for PHPStorm. Atom – Syntax highlighting with the Atom Component.  Other  Watson-Ruby – An inline issue manager.</description>
+Text editor add-ons  Text Mate &amp;amp; Sublime text bundle – Anomareh&amp;rsquo;s PHP-Twig Emacs – Web Mode Geany – Add Twig/Symfony2 detection and highlighting PHPStorm – Built in coloring and code hinting. The Twig extension is recognized and has been for some time. Twig Details for PHPStorm. Atom – Syntax highlighting with the Atom Component.  WordPress tools  Lisa Templates – allows you to write Twig-templates in the WordPress admin that renders through a shortcode or widget.</description>
     </item>
     
     <item>

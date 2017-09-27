@@ -100,11 +100,16 @@
   </url>
   
   <url>
+    <loc>https://timber.github.io/docs/getting-started/themeing/</loc>
+  </url>
+  
+  <url>
     <loc>https://timber.github.io/docs/getting-started/theming/</loc>
   </url>
   
   <url>
     <loc>https://timber.github.io/docs/</loc>
+    <priority>0</priority>
   </url>
   
   <url>
