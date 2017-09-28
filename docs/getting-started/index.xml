@@ -22,17 +22,6 @@ composer require timber/timber  If your theme is not setup to pull in Composerâ€
     </item>
     
     <item>
-      <title>Themeing</title>
-      <link>https://timber.github.io/docs/getting-started/themeing/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://timber.github.io/docs/getting-started/themeing/</guid>
-      <description>Your first Timber project Let&amp;rsquo;s start with your single post. Find this file:
-wp-content/themes/{timber-starter-theme}/views/single.twig  Brilliant! Open it up.
-{% extends &amp;quot;base.twig&amp;quot; %} {% block content %} &amp;lt;div class=&amp;quot;content-wrapper&amp;quot;&amp;gt; &amp;lt;article class=&amp;quot;post-type-{{ post.post_type }}&amp;quot; id=&amp;quot;post-{{ post.ID }}&amp;quot;&amp;gt; &amp;lt;section class=&amp;quot;article-content&amp;quot;&amp;gt; &amp;lt;h1 class=&amp;quot;article-h1&amp;quot;&amp;gt;{{ post.title }}&amp;lt;/h1&amp;gt; &amp;lt;h2 class=&amp;quot;article-h2&amp;quot;&amp;gt;{{ post.subtitle }}&amp;lt;/h2&amp;gt; &amp;lt;p class=&amp;quot;blog-author&amp;quot;&amp;gt;&amp;lt;span&amp;gt;By&amp;lt;/span&amp;gt; {{ post.author.name }} &amp;lt;span&amp;gt;&amp;amp;bull;&amp;lt;/span&amp;gt; {{ post.post_date|date }}&amp;lt;/p&amp;gt; {{ post.content }} &amp;lt;/section&amp;gt; &amp;lt;/article&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;!-- /content-wrapper --&amp;gt; {% endblock %}  What did we just do?</description>
-    </item>
-    
-    <item>
       <title>Theming</title>
       <link>https://timber.github.io/docs/getting-started/theming/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
