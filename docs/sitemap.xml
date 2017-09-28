@@ -41,12 +41,10 @@
   
   <url>
     <loc>https://timber.github.io/docs/getting-started/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://timber.github.io/docs/guides/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -189,12 +187,11 @@
   </url>
   
   <url>
-    <loc>https://timber.github.io/docs/upgrade-guides/1.0/</loc>
+    <loc>https://timber.github.io/docs/upgrade-guides/</loc>
   </url>
   
   <url>
-    <loc>https://timber.github.io/docs/upgrade-guides/</loc>
-    <priority>0</priority>
+    <loc>https://timber.github.io/docs/upgrade-guides/1.0/</loc>
   </url>
   
   <url>
