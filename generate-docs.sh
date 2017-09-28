@@ -3,6 +3,9 @@
 # Install dependencies
 composer install
 
+# Clean out folder to remove deprecated files
+rm -rf ./content/*
+
 # Copy current docs from timber repository to this repository
 cp -a ../timber/docs/. ./content/
 
