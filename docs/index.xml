@@ -199,9 +199,9 @@ Method 1: PHP file Let&amp;rsquo;s say every page on the site has the same conte
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/guides/testing/</guid>
-      <description>PHPUnit To setup tests
- Git clone VVV: git clone git@github.com:Varying-Vagrant-Vagrants/VVV.git Navigate into the www folder and git clone timber git clone git@github.com:timber/timber.git Login to Vagrant SSH: vagrant ssh Navigate to your Timber folder cd /srv/www/timber Install dependencies composer install Run PHPUnit! phpunit  Full code
-cd ~/Sites git clone git@github.com:Varying-Vagrant-Vagrants/VVV.git cd VVV/www git clone git@github.com:timber/timber.git vagrant ssh cd /srv/www/timber composer install phpunit  Gotchas!  You may need to setup authorization between VVV and GitHub.</description>
+      <description>Setup a testing environment with PHPUnit Follow the setup steps for Varying Vagrant Vagrants. If you’re having trouble I recommend starting 100% fresh (uninstall and delete everything including VirtualBox). For this walk-through we’re going to start from scratch:
+1. Install VVV Follow the setup instructions — don&amp;rsquo;t forget to install VirtualBox and Vagrant first! For this tutorial I&amp;rsquo;m going to assume you&amp;rsquo;ve installed into ~/vagrant-local/
+2. Set up Timber for tests Navigate into the www directory and clone Timber&amp;hellip;</description>
     </item>
     
     <item>

@@ -215,7 +215,13 @@
 <ul>
 <li>
 <ul>
-<li><a href="#phpunit">PHPUnit</a></li>
+<li><a href="#setup-a-testing-environment-with-phpunit">Setup a testing environment with PHPUnit</a>
+<ul>
+<li><a href="#1-install-vvv">1. Install VVV</a></li>
+<li><a href="#2-set-up-timber-for-tests">2. Set up Timber for tests</a></li>
+<li><a href="#3-run-the-tests">3. Run the tests!</a></li>
+</ul></li>
+<li><a href="#writing-tests">Writing tests</a></li>
 <li><a href="#gotchas">Gotchas!</a></li>
 </ul></li>
 </ul>
@@ -226,37 +232,54 @@
 			<div class="content">
 				
 
-<h2 id="phpunit">PHPUnit</h2>
+<h2 id="setup-a-testing-environment-with-phpunit">Setup a testing environment with PHPUnit</h2>
 
-<p>To setup tests</p>
+<p>Follow the setup steps for <a href="https://github.com/Varying-Vagrant-Vagrants/VVV">Varying Vagrant Vagrants</a>. If you’re having trouble I recommend starting 100% fresh (uninstall and delete everything including VirtualBox). For this walk-through we’re going to start from scratch:</p>
 
-<ul>
-<li>Git clone VVV: <code>git clone git@github.com:Varying-Vagrant-Vagrants/VVV.git</code></li>
-<li>Navigate into the <code>www</code> folder and git clone timber <code>git clone git@github.com:timber/timber.git</code></li>
-<li>Login to Vagrant SSH: <code>vagrant ssh</code></li>
-<li>Navigate to your Timber folder <code>cd /srv/www/timber</code></li>
-<li>Install dependencies <code>composer install</code></li>
-<li>Run PHPUnit! <code>phpunit</code></li>
-</ul>
+<h3 id="1-install-vvv">1. Install VVV</h3>
 
-<p><strong>Full code</strong></p>
+<p>Follow the <a href="https://varyingvagrantvagrants.org/docs/en-US/installation/">setup instructions</a> — don&rsquo;t forget to install VirtualBox and Vagrant first! For this tutorial I&rsquo;m going to assume you&rsquo;ve installed into <code>~/vagrant-local/</code></p>
 
-<pre><code>cd ~/Sites
-git clone git@github.com:Varying-Vagrant-Vagrants/VVV.git
-cd VVV/www
-git clone git@github.com:timber/timber.git
-vagrant ssh
-cd /srv/www/timber
-composer install
-phpunit
+<h3 id="2-set-up-timber-for-tests">2. Set up Timber for tests</h3>
+
+<p>Navigate into the <code>www</code> directory and clone Timber&hellip;</p>
+
+<pre><code>$ cd ~/vagrant-local/www/
+$ git clone git@github.com:timber/timber.git
 </code></pre>
+
+<p>Now install the necessary Composer files&hellip;</p>
+
+<pre><code>$ cd timber
+$ composer install
+</code></pre>
+
+<p>Ok, you should be ready to run tests. This is where things get interesting. You&rsquo;re going to login to your Vagrant virtual box to run the tests&hellip;</p>
+
+<h3 id="3-run-the-tests">3. Run the tests!</h3>
+
+<p>Connect to your Vagrant instance trough SSH:</p>
+
+<pre><code>$ vagrant ssh
+</code></pre>
+
+<p>Now wait for it to bring you into the virtual box from the virtual environment&hellip;</p>
+
+<pre><code>$ cd /srv/www/timber
+$ phpunit
+</code></pre>
+
+<p>You should see a bunch of gobbledygook across your screen (the whole process will take about 3 mins.), but we should see that WordPress is testing successfully. Hurrah! For more info, check out the <a href="http://make.wordpress.org/core/handbook/automated-testing/">Handbook on Automated Testing</a>.</p>
+
+<h2 id="writing-tests">Writing tests</h2>
+
+<p>Now we get to the good stuff. You can add tests to the <code>timber/tests</code> directory. Any new features should be covered by tests. You can be a hero and help write tests for existing methods and functionality.</p>
 
 <h2 id="gotchas">Gotchas!</h2>
 
 <ul>
-<li><p>You may need to setup authorization between VVV and GitHub. Just follow the prompts to create a token if that interrupts the <code>composer install</code></p></li>
-
-<li><p>You may have <a href="https://getcomposer.org/doc/articles/troubleshooting.md#proc-open-fork-failed-errors">memory problems with Composer</a> just run this if that happens, here&rsquo;s the script I run:</p></li>
+<li>You may need to setup authorization between VVV and GitHub. Just follow the prompts to create a token if that interrupts the <code>composer install</code>.</li>
+<li>You may have <a href="https://getcomposer.org/doc/articles/troubleshooting.md#proc-open-fork-failed-errors">memory problems with Composer</a>. In case that happens, here’s the script I run:</li>
 </ul>
 
 <pre><code>sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024

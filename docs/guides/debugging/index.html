@@ -217,6 +217,7 @@
 <ul>
 <li><a href="#enable-debugging">Enable debugging</a></li>
 <li><a href="#using-twig-s-native-functions">Using Twig’s native functions</a></li>
+<li><a href="#formatted-output">Formatted output</a></li>
 <li><a href="#using-timber-debug-bar-plugin">Using Timber Debug Bar plugin</a></li>
 <li><a href="#using-legacy-timber-filters">Using (Legacy) Timber Filters</a>
 <ul>
@@ -263,6 +264,19 @@ define( 'WP_DEBUG', true );
 <p>This will give you something like:</p>
 
 <p><img src="http://i.imgur.com/5ZD8VDd.png" alt="" /></p>
+
+<h2 id="formatted-output">Formatted output</h2>
+
+<p>For a highlighted output like you see it above, you need to have <a href="https://xdebug.org/">xDebug</a> enabled in your local development environment. With some environments like MAMP, enabling it is as easy as ticking a checkbox and restarting the server. Other times, it might be more complex.</p>
+
+<p>An easier solution is to use the <a href="https://github.com/nlemoine/timber-dump-extension">Timber Dump Extension</a>, which will make use of the Symfony VarDumper component to generate output like this when using <code>{{ dump() }}</code> in Twig:</p>
+
+<p><img src="https://user-images.githubusercontent.com/2084481/31230351-116569a8-a9e4-11e7-8310-48b7f679892b.png" alt="" /></p>
+
+<p>It also works in PHP. Instead of using <code>var_dump</code> or <code>print_r</code>, you will use <code>dump()</code> as well:</p>
+
+<pre><code class="language-php">dump( $post );
+</code></pre>
 
 <h2 id="using-timber-debug-bar-plugin">Using Timber Debug Bar plugin</h2>
 
