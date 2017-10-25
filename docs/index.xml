@@ -127,6 +127,17 @@ Translation functions Timber supports all the translation functions used in Word
     </item>
     
     <item>
+      <title>Menus</title>
+      <link>https://timber.github.io/docs/guides/menus/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://timber.github.io/docs/guides/menus/</guid>
+      <description>In Timber, you can use Timber\Menu to make a standard WordPress menu available to the Twig template as an object you can loop through.
+Once the menu becomes available to the context, you can get items from it in a way that is a little smoother and more versatile than WordPress’s wp_nav_menu() function. (And you never again need to rely on a crazy Walker Function).
+Initializing a menu Timber\Menu can be initialized with different values:</description>
+    </item>
+    
+    <item>
       <title>Pagination</title>
       <link>https://timber.github.io/docs/guides/pagination/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -298,9 +309,7 @@ wp-content/themes/{timber-starter-theme}/templates/single.twig  Brilliant! Open 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-menu/</guid>
-      <description>&lt;p&gt;In Timber, you can use TimberMenu() to make a standard Wordpress menu available to the Twig template as an object you can loop through. And once the menu becomes available to the context, you can get items from it in a way that is a little smoother and more versatile than Wordpress&amp;rsquo;s wp_nav_menu. (You need never again rely on a crazy &amp;ldquo;Walker Function!&amp;rdquo;). The first thing to do is to initialize the menu using TimberMenu(). This will make the menu available as an object to work with in the context. (TimberMenu can include a Wordpress menu slug or ID, or it can be sent with no parameter&amp;ndash;and guess the right menu.)&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

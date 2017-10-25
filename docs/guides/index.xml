@@ -127,6 +127,17 @@ Translation functions Timber supports all the translation functions used in Word
     </item>
     
     <item>
+      <title>Menus</title>
+      <link>https://timber.github.io/docs/guides/menus/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://timber.github.io/docs/guides/menus/</guid>
+      <description>In Timber, you can use Timber\Menu to make a standard WordPress menu available to the Twig template as an object you can loop through.
+Once the menu becomes available to the context, you can get items from it in a way that is a little smoother and more versatile than WordPress’s wp_nav_menu() function. (And you never again need to rely on a crazy Walker Function).
+Initializing a menu Timber\Menu can be initialized with different values:</description>
+    </item>
+    
+    <item>
       <title>Pagination</title>
       <link>https://timber.github.io/docs/guides/pagination/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

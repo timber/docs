@@ -121,6 +121,8 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/internationalization/">Internationalization</a></li>
                 
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/menus/">Menus</a></li>
+                
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/pagination/">Pagination</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/performance/">Performance/Caching</a></li>
@@ -217,22 +219,22 @@
 <ul>
 <li><a href="#overview">Overview</a>
 <ul>
+<li><a href="#properties">Properties</a></li>
 <li><a href="#methods">Methods</a></li>
 </ul></li>
 <li><a href="#class-methods">Class Methods</a>
 <ul>
-<li><a href="#construct">__construct</a></li>
 <li><a href="#tostring">__toString</a></li>
 <li><a href="#add-child">add_child</a></li>
 <li><a href="#add-class">add_class</a></li>
 <li><a href="#children">children</a></li>
-<li><a href="#external">external</a></li>
 <li><a href="#is-external">is_external</a></li>
 <li><a href="#link">link</a></li>
 <li><a href="#meta">meta</a></li>
 <li><a href="#name">name</a></li>
 <li><a href="#path">path</a></li>
 <li><a href="#slug">slug</a></li>
+<li><a href="#thumbnail">thumbnail</a></li>
 <li><a href="#title">title</a></li>
 <li><a href="#type">type</a></li>
 </ul></li>
@@ -247,6 +249,56 @@
 
 <h2 id="overview">Overview</h2>
 
+<h3 id="properties">Properties</h3>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>children</td>
+<td><code>array</code></td>
+<td>Array of children of a menu item. Empty if there are no child menu items.</td>
+</tr>
+
+<tr>
+<td>has_child_class</td>
+<td><code>bool</code></td>
+<td>Whether the menu item has a <code>menu-item-has-children</code> CSS class.</td>
+</tr>
+
+<tr>
+<td>classes</td>
+<td><code>array</code></td>
+<td>Array of class names.</td>
+</tr>
+
+<tr>
+<td>current</td>
+<td><code>bool</code></td>
+<td>Whether the menu item links to the currently displayed page.</td>
+</tr>
+
+<tr>
+<td>current_item_parent</td>
+<td><code>bool</code></td>
+<td>Whether the menu item refers to the parent item of the currently displayed page.</td>
+</tr>
+
+<tr>
+<td>current_item_ancestor</td>
+<td><code>bool</code></td>
+<td>Whether the menu item refers to an ancestor (including direct parent) of the currently displayed page.</td>
+</tr>
+</tbody>
+</table>
+
 <h3 id="methods">Methods</h3>
 
 <table>
@@ -260,33 +312,69 @@
 
 <tbody>
 <tr>
+<td><a href="#__toString">__toString</a></td>
+<td><code>string</code></td>
+<td>The label for the menu item.</td>
+</tr>
+
+<tr>
 <td><a href="#children">children</a></td>
 <td><code>array/bool</code></td>
-<td></td>
+<td>Array of children of a menu item. Empty if there are no child menu items.</td>
 </tr>
 
 <tr>
 <td><a href="#is_external">is_external</a></td>
 <td><code>bool</code></td>
-<td></td>
+<td>Whether the link is external or not.</td>
 </tr>
 
 <tr>
 <td><a href="#link">link</a></td>
 <td><code>string</code></td>
-<td>a full URL like <a href="http://mysite.com/thing/">http://mysite.com/thing/</a></td>
+<td>A full URL, like <code>http://mysite.com/thing/</code>.</td>
+</tr>
+
+<tr>
+<td><a href="#meta">meta</a></td>
+<td><code>mixed</code></td>
+<td>Whatever value is stored in the database.</td>
 </tr>
 
 <tr>
 <td><a href="#name">name</a></td>
 <td><code>string</code></td>
-<td></td>
+<td>The label for the menu item.</td>
+</tr>
+
+<tr>
+<td><a href="#path">path</a></td>
+<td><code>string</code></td>
+<td>The path of a URL, like <code>/foo</code>.</td>
 </tr>
 
 <tr>
 <td><a href="#slug">slug</a></td>
 <td><code>string</code></td>
-<td>the slug of the menu item kinda-like-this</td>
+<td>The URL-safe slug of the menu item.</td>
+</tr>
+
+<tr>
+<td><a href="#thumbnail">thumbnail</a></td>
+<td><code>\Timber\Image/null</code></td>
+<td>The featured image object.</td>
+</tr>
+
+<tr>
+<td><a href="#title">title</a></td>
+<td><code>string</code></td>
+<td>The public label, like &ldquo;Foo&rdquo;.</td>
+</tr>
+
+<tr>
+<td><a href="#type">type</a></td>
+<td><code>string</code></td>
+<td>The type of the menu item.</td>
 </tr>
 </tbody>
 </table>
@@ -295,45 +383,28 @@
 
 <h2 id="class-methods">Class Methods</h2>
 
-<h3 id="construct">__construct</h3>
-
-<p><code>__construct( array/object $data )</code></p>
-
-<p><strong>returns:</strong> <code>void</code></p>
-
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>$data</td>
-<td><code>array/object</code></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-<hr />
-
 <h3 id="tostring">__toString</h3>
 
 <p><code>__toString( )</code></p>
 
-<p><strong>returns:</strong> <code>string</code> the label for the menu item</p>
+<p><strong>returns:</strong> <code>string</code> The label for the menu item.</p>
+
+<p>Magic method to get the label for the menu item.</p>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">&lt;a href=&quot;{{ item.link }}&quot;&gt;{{ item }}&lt;/a&gt;
+</code></pre>
 
 <hr />
 
 <h3 id="add-child">add_child</h3>
 
-<p><code>add_child( \Timber\TimberMenuItem $item )</code></p>
+<p><code>add_child( \Timber\MenuItem $item )</code></p>
 
 <p><strong>returns:</strong> <code>void</code></p>
+
+<p>Add a new <code>Timber\MenuItem</code> object as a child of this menu item.</p>
 
 <table>
 <thead>
@@ -347,8 +418,8 @@
 <tbody>
 <tr>
 <td>$item</td>
-<td><code>\Timber\TimberMenuItem</code></td>
-<td></td>
+<td><code>\Timber\MenuItem</code></td>
+<td>The menu item to add.</td>
 </tr>
 </tbody>
 </table>
@@ -361,7 +432,7 @@
 
 <p><strong>returns:</strong> <code>void</code></p>
 
-<p>add a class the menu item should have</p>
+<p>Add a CSS class the menu item should have.</p>
 
 <table>
 <thead>
@@ -376,7 +447,7 @@
 <tr>
 <td>$class_name</td>
 <td><code>string</code></td>
-<td>to be added</td>
+<td>CSS class name to be added.</td>
 </tr>
 </tbody>
 </table>
@@ -387,19 +458,18 @@
 
 <p><code>children( )</code></p>
 
-<p><strong>returns:</strong> <code>array/bool</code></p>
+<p><strong>returns:</strong> <code>array/bool</code> Array of children of a menu item. Empty if there are no child menu items.</p>
 
-<p>Get the child <a href="#TimberMenuItem">TimberMenuItems</a>s of a <a href="#TimberMenuItem">TimberMenuItem</a></p>
+<p>Get the child menu items of a <code>Timber\MenuItem</code>.</p>
 
-<hr />
+<p><strong>Twig</strong></p>
 
-<h3 id="external">external</h3>
-
-<p><code>external( )</code></p>
-
-<p><strong>returns:</strong> <code>bool</code></p>
-
-<p>Checks to see if a link is external, helpful when creating rules for the target of a link</p>
+<pre><code class="language-twig">{% for child in item.children %}
+    &lt;li class=&quot;nav-drop-item&quot;&gt;
+        &lt;a href=&quot;{{ child.link }}&quot;&gt;{{ child.title }}&lt;/a&gt;
+    &lt;/li&gt;
+{% endfor %}
+</code></pre>
 
 <hr />
 
@@ -407,9 +477,12 @@
 
 <p><code>is_external( )</code></p>
 
-<p><strong>returns:</strong> <code>bool</code></p>
+<p><strong>returns:</strong> <code>bool</code> Whether the link is external or not.</p>
 
-<p>Checks to see if the menu item is an external link so if my site is <code>example.org</code>, <code>google.com/whatever</code> is an external link. Helpful when creating rules for the target of a link</p>
+<p>Checks to see if the menu item is an external link.</p>
+
+<p>If your site is <code>example.org</code>, then <code>google.com/whatever</code> is an external link. This is
+helpful when you want to create rules for the target of a link.</p>
 
 <p><strong>Twig</strong></p>
 
@@ -422,9 +495,9 @@
 
 <p><code>link( )</code></p>
 
-<p><strong>returns:</strong> <code>string</code> a full URL like <a href="http://mysite.com/thing/">http://mysite.com/thing/</a></p>
+<p><strong>returns:</strong> <code>string</code> A full URL, like <code>http://mysite.com/thing/</code>.</p>
 
-<p>Get the full link to a Menu Item</p>
+<p>Get the full link to a menu item.</p>
 
 <p><strong>Twig</strong></p>
 
@@ -439,7 +512,12 @@
 
 <p><code>meta( string $key )</code></p>
 
-<p><strong>returns:</strong> <code>mixed</code> whatever value is storied in the database</p>
+<p><strong>returns:</strong> <code>mixed</code> Whatever value is stored in the database.</p>
+
+<p>Get a meta value of the menu item.</p>
+
+<p>Plugins like Advanced Custom Fields allow you to set custom fields for menu items. With this
+method you can retrieve the value of these.</p>
 
 <table>
 <thead>
@@ -454,10 +532,15 @@
 <tr>
 <td>$key</td>
 <td><code>string</code></td>
-<td>lookup key</td>
+<td>The meta key to get the value for.</td>
 </tr>
 </tbody>
 </table>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">&lt;a class=&quot;icon-{{ item.meta('icon') }}&quot; href=&quot;{{ item.link }}&quot;&gt;{{ item.title }}&lt;/a&gt;
+</code></pre>
 
 <hr />
 
@@ -465,9 +548,9 @@
 
 <p><code>name( )</code></p>
 
-<p><strong>returns:</strong> <code>string</code></p>
+<p><strong>returns:</strong> <code>string</code> The label for the menu item.</p>
 
-<p>The label for the menu item</p>
+<p>Get the label for the menu item.</p>
 
 <hr />
 
@@ -475,9 +558,9 @@
 
 <p><code>path( )</code></p>
 
-<p><strong>returns:</strong> <code>string</code> the path of a URL like /foo</p>
+<p><strong>returns:</strong> <code>string</code> The path of a URL, like <code>/foo</code>.</p>
 
-<p>Return the relative path of a Menu Item&rsquo;s link</p>
+<p>Get the relative path of the menu item’s link.</p>
 
 <p><strong>Twig</strong></p>
 
@@ -492,32 +575,34 @@
 
 <p><code>slug( )</code></p>
 
-<p><strong>returns:</strong> <code>string</code> the slug of the menu item kinda-like-this</p>
+<p><strong>returns:</strong> <code>string</code> The URL-safe slug of the menu item.</p>
 
-<p>The slug for the menu item</p>
+<p>Get the slug for the menu item.</p>
 
 <p><strong>Twig</strong></p>
 
 <pre><code class="language-twig">&lt;ul&gt;
     {% for item in menu.items %}
-        &lt;li class=&quot;{{item.slug}}&quot;&gt;
-            &lt;a href=&quot;{{item.link}}&quot;&gt;{{item.name}}&lt;/a&gt;
+        &lt;li class=&quot;{{ item.slug }}&quot;&gt;
+            &lt;a href=&quot;{{ item.link }}&quot;&gt;{{ item.name }}&lt;/a&gt;
          &lt;/li&gt;
     {% endfor %}
 &lt;/ul&gt;
+</code></pre>
 
----
+<hr />
 
-### thumbnail
-`thumbnail( )`
+<h3 id="thumbnail">thumbnail</h3>
 
-**returns:** `string` the public thumbnail url
+<p><code>thumbnail( )</code></p>
 
-Gets the post thumbnail image object
+<p><strong>returns:</strong> <code>\Timber\Image/null</code> The featured image object.</p>
 
-**Twig**
-```twig
-{% for item in menu.items %}
+<p>Get the featured image of the post associated with the menu item.</p>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">{% for item in menu.items %}
     &lt;li&gt;&lt;a href=&quot;{{ item.link }}&quot;&gt;&lt;img src=&quot;{{ item.thumbnail }}&quot;/&gt;&lt;/a&gt;&lt;/li&gt;
 {% endfor %}
 </code></pre>
@@ -528,9 +613,9 @@ Gets the post thumbnail image object
 
 <p><code>title( )</code></p>
 
-<p><strong>returns:</strong> <code>string</code> the public label like Foo</p>
+<p><strong>returns:</strong> <code>string</code> The public label, like &ldquo;Foo&rdquo;.</p>
 
-<p>Gets the public label for the menu item</p>
+<p>Get the public label for the menu item.</p>
 
 <p><strong>Twig</strong></p>
 
@@ -545,9 +630,13 @@ Gets the post thumbnail image object
 
 <p><code>type( )</code></p>
 
-<p><strong>returns:</strong> <code>string</code></p>
+<p><strong>returns:</strong> <code>string</code> The type of the menu item.</p>
 
-<p>Return the type of the menu item</p>
+<p>Get the type of the menu item.</p>
+
+<p>Depending on what is the menu item links to. Can be <code>post_type</code> for posts, pages and custom
+posts, <code>post_type_archive</code> for post type archive pages, <code>taxonomy</code> for terms or <code>custom</code> for
+custom links.</p>
 
 <hr />
 

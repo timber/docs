@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Timber\User</title>
+	<title>Menus</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -97,7 +97,7 @@
             
             </li>
         
-            <li class="nav__item nav__item--level-0"><a class="nav__link nav__link--level-0" href="/docs/guides/">Guides</a>
+            <li class="nav__item nav__item--level-0 nav__item--current-ancestor"><a class="nav__link nav__link--level-0" href="/docs/guides/">Guides</a>
             
                 <ul class="nav__items nav__items--level-1">
                 
@@ -121,7 +121,7 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/internationalization/">Internationalization</a></li>
                 
-                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/menus/">Menus</a></li>
+                    <li class="nav__item nav__item--level-1 nav__item--current"><a class="nav__link nav__link--level-1" href="/docs/guides/menus/">Menus</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/pagination/">Pagination</a></li>
                 
@@ -147,7 +147,7 @@
             
             </li>
         
-            <li class="nav__item nav__item--level-0 nav__item--current-ancestor"><a class="nav__link nav__link--level-0" href="/docs/reference/">Reference</a>
+            <li class="nav__item nav__item--level-0"><a class="nav__link nav__link--level-0" href="/docs/reference/">Reference</a>
             
                 <ul class="nav__items nav__items--level-1">
                 
@@ -185,7 +185,7 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/reference/timber-urlhelper/">Timber\URLHelper</a></li>
                 
-                    <li class="nav__item nav__item--level-1 nav__item--current"><a class="nav__link nav__link--level-1" href="/docs/reference/timber-user/">Timber\User</a></li>
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/reference/timber-user/">Timber\User</a></li>
                 
                 </ul>
             
@@ -209,7 +209,7 @@
 <main>
     
 	<article>
-		<h1>Timber\User</h1>
+		<h1>Menus</h1>
 
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
@@ -217,23 +217,11 @@
 <ul>
 <li>
 <ul>
-<li><a href="#overview">Overview</a>
-<ul>
-<li><a href="#properties">Properties</a></li>
-<li><a href="#methods">Methods</a></li>
-</ul></li>
-<li><a href="#class-methods">Class Methods</a>
-<ul>
-<li><a href="#construct">__construct</a></li>
-<li><a href="#tostring">__toString</a></li>
-<li><a href="#get-custom">get_custom</a></li>
-<li><a href="#get-meta-field">get_meta_field</a></li>
-<li><a href="#link">link</a></li>
-<li><a href="#meta">meta</a></li>
-<li><a href="#name">name</a></li>
-<li><a href="#path">path</a></li>
-<li><a href="#slug">slug</a></li>
-</ul></li>
+<li><a href="#initializing-a-menu">Initializing a menu</a></li>
+<li><a href="#setting-up-a-menu-globally">Setting up a menu globally</a></li>
+<li><a href="#displaying-the-menu-items">Displaying the menu items</a></li>
+<li><a href="#the-current-menu-item">The current menu item</a></li>
+<li><a href="#tips">Tips</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -241,257 +229,125 @@
 
 		<div class="content-container">
 			<div class="content">
-				<p>This is used in Timber to represent users retrived from WordPress. You can call <code>$my_user = new Timber\User(123);</code> directly, or access it through the <code>{{ post.author }}</code> method.</p>
+				
 
-<p></p>
+<p>In Timber, you can use <code>Timber\Menu</code> to make a standard WordPress menu available to the Twig template as an object you can loop through.</p>
 
-<p><strong>PHP</strong></p>
+<p>Once the menu becomes available to the context, you can get items from it in a way that is a little smoother and more versatile than WordPress’s <code>wp_nav_menu()</code> function. (And you never again need to rely on a crazy <a href="https://codex.wordpress.org/Class_Reference/Walker">Walker Function</a>).</p>
+
+<h2 id="initializing-a-menu">Initializing a menu</h2>
+
+<p><code>Timber\Menu</code> can be initialized with different values:</p>
+
+<p>You can pass the slug of the menu you want to use:</p>
+
+<pre><code class="language-php">$menu = new Timber\Menu( 'site-tools' );
+</code></pre>
+
+<p>Or the ID number of the menu:</p>
+
+<pre><code class="language-php">$menu = new Timber\Menu( 3 );
+</code></pre>
+
+<p>Or the proper name from the admin:</p>
+
+<pre><code class="language-php">$menu = new Timber\Menu( 'Primary Navigation' );
+</code></pre>
+
+<p>Or the slug of the registered location:</p>
+
+<pre><code class="language-php">$menu = new Timber\Menu( 'primary' );
+</code></pre>
+
+<p>Or pass nothing. This is good if you have only one menu. In that case Timber will just grab what you got.</p>
+
+<pre><code class="language-php">$menu = new TimberMenu();
+</code></pre>
+
+<h2 id="setting-up-a-menu-globally">Setting up a menu globally</h2>
+
+<p>The first thing to do is to initialize your menu using <code>Timber\Menu</code>. This will make the menu available as an object to work with in the context. Because we need the menu on every page, we can add it to the global context through the <code>timber/context</code> filter:</p>
+
+<p><strong>functions.php</strong></p>
 
 <pre><code class="language-php">&lt;?php
-$context['current_user'] = new Timber\User();
-$context['post'] = new Timber\Post();
-Timber::render('single.twig', $context);
+
+add_filter( 'timber/context', 'add_to_context' );
+
+function add_to_context( $context ) {
+    // So here you are adding data to Timber's context object, i.e...
+    $context['foo'] = 'I am some other typical value set in your functions.php file, unrelated to the menu';
+
+    // Now, in similar fashion, you add a Timber Menu and send it along to the context.
+    $context['menu'] = new \Timber\Menu( 'primary-menu' );
+
+    return $context;
+}
 </code></pre>
+
+<p>Now, when you call <code>Timber::get_context()</code>, your menu will already be set in the context. You don’t need to initialize the menu in all your template files.</p>
+
+<p><strong>index.php</strong></p>
+
+<pre><code class="language-php">&lt;?php
+
+$context = Timber::get_context();
+
+Timber::render( 'index.twig', $context );
+</code></pre>
+
+<h2 id="displaying-the-menu-items">Displaying the menu items</h2>
+
+<p>In your Twig file, you can loop over the menu items like normal arrays. You’re in complete control of the markup.</p>
+
+<p><strong>index.twig</strong></p>
+
+<pre><code class="language-twig">&lt;nav&gt;
+    &lt;ul class=&quot;nav-main&quot;&gt;
+        {% for item in menu.items %}
+            &lt;li class=&quot;nav-main-item {{ item.classes|join(' ') }}&quot;&gt;
+                &lt;a class=&quot;nav-main-link&quot; href=&quot;{{ item.link }}&quot;&gt;{{ item.title }}&lt;/a&gt;
+                {% if item.children %}
+                    &lt;ul class=&quot;nav-drop&quot;&gt;
+                        {% for child in item.children %}
+                            &lt;li class=&quot;nav-drop-item&quot;&gt;
+                                &lt;a href=&quot;{{ child.link }}&quot;&gt;{{ child.title }}&lt;/a&gt;
+                            &lt;/li&gt;
+                        {% endfor %}
+                    &lt;/ul&gt;
+                {% endif %}
+            &lt;/li&gt;
+        {% endfor %}
+    &lt;/ul&gt;
+&lt;/nav&gt;
+</code></pre>
+
+<h2 id="the-current-menu-item">The current menu item</h2>
+
+<p>When you need to check whether a menu item is the current menu item, you can use the <code>current</code> property.
+Here’s an example to display child menu items only if it’s the menu item is the currently visited page:</p>
 
 <p><strong>Twig</strong></p>
 
-<pre><code class="language-twig">&lt;p class=&quot;current-user-info&quot;&gt;Your name is {{ current_user.name }}&lt;/p&gt;
-&lt;p class=&quot;article-info&quot;&gt;This article is called &quot;{{ post.title }}&quot; and it's by {{ post.author.name }}
+<pre><code class="language-twig">{% if item.current and item.children %}
+    &lt;ul class=&quot;nav-child&quot;&gt;
+        {% for child in item.children %}
+            &lt;li class=&quot;nav-child-item&quot;&gt;
+                &lt;a class=&quot;nav-child-link&quot; href=&quot;{{ child.link }}&quot;&gt;{{ child.title }}&lt;/a&gt;
+            &lt;/li&gt;
+        {% endfor %}
+    &lt;/ul&gt;
+{% endif %}
 </code></pre>
 
-<p><strong>HTML</strong></p>
+<p>Other properties that are available are <code>current_item_parent</code> for direct parents of a menu item and <code>current_item_ancestor</code> for when you have deeper nesting.</p>
 
-<pre><code class="language-html">&lt;p class=&quot;current-user-info&quot;&gt;Your name is Jesse Eisenberg&lt;/p&gt;
-&lt;p class=&quot;article-info&quot;&gt;This article is called &quot;Consider the Lobster&quot; and it's by David Foster Wallace
-</code></pre>
+<h2 id="tips">Tips</h2>
 
-<h2 id="overview">Overview</h2>
+<ul>
+<li><a href="https://github.com/jarednova/timber/issues/200">Add items dynamically</a></li>
+</ul>
 
-<h3 id="properties">Properties</h3>
-
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>description</td>
-<td><code>string</code></td>
-<td>The description from WordPress</td>
-</tr>
-
-<tr>
-<td>avatar</td>
-<td><code>string/Image</code></td>
-<td>The URL of the author&rsquo;s avatar</td>
-</tr>
-
-<tr>
-<td>first_name</td>
-<td><code>string</code></td>
-<td>The first name of the user</td>
-</tr>
-
-<tr>
-<td>last_name</td>
-<td><code>string</code></td>
-<td>The last name of the user</td>
-</tr>
-
-<tr>
-<td>id</td>
-<td><code>int</code></td>
-<td>The ID from WordPress</td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="methods">Methods</h3>
-
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Returns/Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><a href="#link">link</a></td>
-<td><code>string</code></td>
-<td><a href="http://example.org/author/lincoln">http://example.org/author/lincoln</a></td>
-</tr>
-
-<tr>
-<td><a href="#name">name</a></td>
-<td><code>string</code></td>
-<td>the human-friendly name of the user (ex: &ldquo;Buster Bluth&rdquo;)</td>
-</tr>
-
-<tr>
-<td><a href="#path">path</a></td>
-<td><code>string</code></td>
-<td>ex: /author/lincoln</td>
-</tr>
-
-<tr>
-<td><a href="#slug">slug</a></td>
-<td><code>string</code></td>
-<td>ex baberaham-lincoln</td>
-</tr>
-</tbody>
-</table>
-
-<hr />
-
-<h2 id="class-methods">Class Methods</h2>
-
-<h3 id="construct">__construct</h3>
-
-<p><code>__construct( bool/object/int/bool $uid=false )</code></p>
-
-<p><strong>returns:</strong> <code>void</code></p>
-
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>$uid</td>
-<td><code>bool/object/int/bool</code></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-<hr />
-
-<h3 id="tostring">__toString</h3>
-
-<p><code>__toString( )</code></p>
-
-<p><strong>returns:</strong> <code>string</code> a fallback for TimberUser::name()</p>
-
-<p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">This post is by {{ post.author }}
-</code></pre>
-
-<p><strong>HTML</strong></p>
-
-<pre><code class="language-html">This post is by Jared Novack
-</code></pre>
-
-<hr />
-
-<h3 id="get-custom">get_custom</h3>
-
-<p><code>get_custom( )</code></p>
-
-<p><strong>returns:</strong> <code>array/null</code></p>
-
-<hr />
-
-<h3 id="get-meta-field">get_meta_field</h3>
-
-<p><code>get_meta_field( string $field_name )</code></p>
-
-<p><strong>returns:</strong> <code>mixed</code></p>
-
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>$field_name</td>
-<td><code>string</code></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-<hr />
-
-<h3 id="link">link</h3>
-
-<p><code>link( )</code></p>
-
-<p><strong>returns:</strong> <code>string</code> <a href="http://example.org/author/lincoln">http://example.org/author/lincoln</a></p>
-
-<hr />
-
-<h3 id="meta">meta</h3>
-
-<p><code>meta( string $field_name )</code></p>
-
-<p><strong>returns:</strong> <code>mixed</code></p>
-
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>$field_name</td>
-<td><code>string</code></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-<hr />
-
-<h3 id="name">name</h3>
-
-<p><code>name( )</code></p>
-
-<p><strong>returns:</strong> <code>string</code> the human-friendly name of the user (ex: &ldquo;Buster Bluth&rdquo;)</p>
-
-<hr />
-
-<h3 id="path">path</h3>
-
-<p><code>path( )</code></p>
-
-<p><strong>returns:</strong> <code>string</code> ex: /author/lincoln</p>
-
-<hr />
-
-<h3 id="slug">slug</h3>
-
-<p><code>slug( )</code></p>
-
-<p><strong>returns:</strong> <code>string</code> ex baberaham-lincoln</p>
-
-<hr />
-
-<p><em>This class extends \Timber\Core</em></p>
-
-<p><em>This class implements \Timber\CoreInterface</em></p>
 			</div>
 		</div>
 	</article>

@@ -121,6 +121,8 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/internationalization/">Internationalization</a></li>
                 
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/menus/">Menus</a></li>
+                
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/pagination/">Pagination</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/performance/">Performance/Caching</a></li>
@@ -887,7 +889,7 @@ This is also here to ensure that {{ post.class }} remains usable</p>
 
 <pre><code class="language-twig">Published on {{ post.date }} // Uses WP's formatting set in Admin
 OR
-Published on {{ post.date | date('F jS') }} // Jan 12th
+Published on {{ post.date('F jS') }} // Jan 12th
 </code></pre>
 
 <p><strong>HTML</strong></p>

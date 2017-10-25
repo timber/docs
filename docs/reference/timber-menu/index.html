@@ -121,6 +121,8 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/internationalization/">Internationalization</a></li>
                 
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/menus/">Menus</a></li>
+                
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/pagination/">Pagination</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/performance/">Performance/Caching</a></li>
@@ -218,6 +220,7 @@
 <li><a href="#overview">Overview</a>
 <ul>
 <li><a href="#properties">Properties</a></li>
+<li><a href="#methods">Methods</a></li>
 </ul></li>
 <li><a href="#class-methods">Class Methods</a>
 <ul>
@@ -232,48 +235,7 @@
 
 		<div class="content-container">
 			<div class="content">
-				<p>In Timber, you can use TimberMenu() to make a standard Wordpress menu available to the Twig template as an object you can loop through. And once the menu becomes available to the context, you can get items from it in a way that is a little smoother and more versatile than Wordpress&rsquo;s wp_nav_menu. (You need never again rely on a crazy &ldquo;Walker Function!&rdquo;). The first thing to do is to initialize the menu using TimberMenu(). This will make the menu available as an object to work with in the context. (TimberMenu can include a Wordpress menu slug or ID, or it can be sent with no parameter&ndash;and guess the right menu.)</p>
-
-<p></p>
-
-<p><strong>PHP</strong></p>
-
-<pre><code class="language-php">&lt;?php
-# functions.php
-add_filter('timber/context', 'add_to_context');
-function add_to_context($data){
-	// So here you are adding data to Timber's context object, i.e...
- 	$data['foo'] = 'I am some other typical value set in your functions.php file, unrelated to the menu';
-  	// Now, in similar fashion, you add a Timber menu and send it along to the context.
-	  	$data['menu'] = new TimberMenu(); // This is where you can also send a WordPress menu slug or ID
-    return $data;
-}
-# index.php (or any PHP file)
-// Since you want a menu object available on every page, I added it to the universal Timber context via the functions.php file. You could also this in each PHP file if you find that too confusing.
-$context = Timber::get_context();
-$context['posts'] = Timber::get_posts();
-Timber::render('index.twig', $context);
-?&gt;
-</code></pre>
-
-<p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;nav&gt;
-	&lt;ul class=&quot;main-nav&quot;&gt;
-	{% for item in menu.get_items %}
-     	&lt;li class=&quot;nav-main-item {{item.classes | join(' ')}}&quot;&gt;&lt;a class=&quot;nav-main-link&quot; href=&quot;{{item.link}}&quot;&gt;{{item.title}}&lt;/a&gt;
-        	{% if item.get_children %}
-          	&lt;ul class=&quot;nav-drop&quot;&gt;
-              {% for child in item.get_children %}
-              	&lt;li class=&quot;nav-drop-item&quot;&gt;&lt;a href=&quot;{{child.link}}&quot;&gt;{{child.title}}&lt;/a&gt;&lt;/li&gt;
-              {% endfor %}
-             &lt;/ul&gt;
-          {% endif %}
-          &lt;/li&gt;
-   {% endfor %}
-   &lt;/ul&gt;
-&lt;/nav&gt;
-</code></pre>
+				<p></p>
 
 <h2 id="overview">Overview</h2>
 
@@ -291,26 +253,64 @@ Timber::render('index.twig', $context);
 <tbody>
 <tr>
 <td>items</td>
-<td><code>TimberMenuItem[]/null</code></td>
-<td>$items you need to iterate through</td>
+<td><code>array/null</code></td>
+<td>Array of <code>Timber\Menu</code> objects you can to iterate through.</td>
 </tr>
 
 <tr>
 <td>id</td>
 <td><code>integer</code></td>
-<td>$id the ID# of the menu, corresponding to the wp_terms table</td>
+<td>The ID of the menu, corresponding to the wp_terms table.</td>
+</tr>
+
+<tr>
+<td>ID</td>
+<td><code>integer</code></td>
+<td>The ID of the menu, corresponding to the wp_terms table.</td>
+</tr>
+
+<tr>
+<td>term_id</td>
+<td><code>integer</code></td>
+<td>The ID of the menu, corresponding to the wp_terms table.</td>
 </tr>
 
 <tr>
 <td>name</td>
 <td><code>string</code></td>
-<td>$name of the menu (ex: <code>Main Navigation</code>)</td>
+<td>The name of the menu (ex: <code>Main Navigation</code>).</td>
 </tr>
 
 <tr>
 <td>title</td>
 <td><code>string</code></td>
-<td>$name of the menu (ex: <code>Main Navigation</code>)</td>
+<td>The name of the menu (ex: <code>Main Navigation</code>).</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="methods">Methods</h3>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Returns/Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="#find_parent_item_in_menu">find_parent_item_in_menu</a></td>
+<td><code>\Timber\MenuItem/bool</code></td>
+<td>A menu item. False if no parent was found.</td>
+</tr>
+
+<tr>
+<td><a href="#get_items">get_items</a></td>
+<td><code>array</code></td>
+<td>Array of <code>Timber\MenuItem</code> objects. Empty array if no items could be found.</td>
 </tr>
 </tbody>
 </table>
@@ -321,9 +321,11 @@ Timber::render('index.twig', $context);
 
 <h3 id="construct">__construct</h3>
 
-<p><code>__construct( \Timber\integer/string $slug )</code></p>
+<p><code>__construct( int/string $slug )</code></p>
 
 <p><strong>returns:</strong> <code>void</code></p>
+
+<p>Initialize a menu.</p>
 
 <table>
 <thead>
@@ -337,8 +339,8 @@ Timber::render('index.twig', $context);
 <tbody>
 <tr>
 <td>$slug</td>
-<td><code>\Timber\integer/string</code></td>
-<td></td>
+<td><code>int/string</code></td>
+<td>A menu slug, the term ID of the menu, the full name from the admin menu, the slug of theregistered location or nothing. Passing nothing is good if you only have one menu. Timber will grab what it finds.</td>
 </tr>
 </tbody>
 </table>
@@ -349,7 +351,9 @@ Timber::render('index.twig', $context);
 
 <p><code>find_parent_item_in_menu( array $menu_items, int $parent_id )</code></p>
 
-<p><strong>returns:</strong> <code>\Timber\TimberMenuItem/null</code></p>
+<p><strong>returns:</strong> <code>\Timber\MenuItem/bool</code> A menu item. False if no parent was found.</p>
+
+<p>Find a parent menu item in a set of menu items.</p>
 
 <table>
 <thead>
@@ -364,13 +368,13 @@ Timber::render('index.twig', $context);
 <tr>
 <td>$menu_items</td>
 <td><code>array</code></td>
-<td></td>
+<td>An array of menu items.</td>
 </tr>
 
 <tr>
 <td>$parent_id</td>
 <td><code>int</code></td>
-<td></td>
+<td>The parent ID to look for.</td>
 </tr>
 </tbody>
 </table>
@@ -381,7 +385,19 @@ Timber::render('index.twig', $context);
 
 <p><code>get_items( )</code></p>
 
-<p><strong>returns:</strong> <code>array</code></p>
+<p><strong>returns:</strong> <code>array</code> Array of <code>Timber\MenuItem</code> objects. Empty array if no items could be found.</p>
+
+<p>Get menu items.</p>
+
+<p>Instead of using this function, you can use the <code>$items</code> property directly to get the items
+for a menu.</p>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">{% for item in menu.get_items %}
+    &lt;a href=&quot;{{ item.link }}&quot;&gt;{{ item.title }}&lt;/a&gt;
+{% endfor %}
+</code></pre>
 
 <hr />
 
