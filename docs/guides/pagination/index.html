@@ -237,7 +237,7 @@
 
 <pre><code class="language-php">	&lt;?php
 	$context = Timber::get_context();
-	$context['posts'] = new PostQuery();
+	$context['posts'] = new Timber\PostQuery();
 	Timber::render('archive.twig', $context);
 </code></pre>
 

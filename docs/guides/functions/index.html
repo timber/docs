@@ -318,7 +318,7 @@ add_filter( 'timber/twig', function( \Twig_Environment $twig ) {
 <p>The concept of Timber (and templating engines like Twig in general) is to prepare all the data before you pass it to a template. Some functions in WordPress echo their output directly. We don’t want this, because the output of this function would be echoed before we call <code>Timber:render()</code> and appear before every else on your website. There are two ways to work around this:</p>
 
 <ul>
-<li>If you have a function where you want to bypass the output and instead save it as a string, so that you can add it to your context, use <a href="https://timber.github.io/docs/reference/timber-helper/#ob-function"><code>Helper::ob_function</code></a>.</li>
+<li>If you have a function where you want to bypass the output and instead save it as a string, so that you can add it to your context, use <a href="/reference/timber-helper/#ob-function"><code>Helper::ob_function</code></a>.</li>
 <li>If you have a function that needs to be called exactly where you use it in your template (e.g. because it depends on certain global values) you can use <code>FunctionWrapper</code>:</li>
 </ul>
 

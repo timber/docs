@@ -227,6 +227,7 @@
 <li><a href="#array-truncate">array_truncate</a></li>
 <li><a href="#strike-close-tags-strike"><strike>close_tags</strike></a></li>
 <li><a href="#error-log">error_log</a></li>
+<li><a href="#filter-array">filter_array</a></li>
 <li><a href="#strike-function-wrapper-strike"><strike>function_wrapper</strike></a></li>
 <li><a href="#strike-get-comment-form-strike"><strike>get_comment_form</strike></a></li>
 <li><a href="#get-current-url">get_current_url</a></li>
@@ -409,6 +410,46 @@
 
 <hr />
 
+<h3 id="filter-array">filter_array</h3>
+
+<p><code>filter_array( array $list, mixed $args, string $operator=&quot;AND&quot; )</code></p>
+
+<p><strong>returns:</strong> <code>array</code></p>
+
+<p>Filters a list of objects, based on a set of key =&gt; value arguments.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$list</td>
+<td><code>array</code></td>
+<td>to filter.</td>
+</tr>
+
+<tr>
+<td>$args</td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$operator</td>
+<td><code>string</code></td>
+<td>to use (AND, NOT, OR).</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
 <h3 id="strike-function-wrapper-strike"><strike>function_wrapper</strike></h3>
 
 <p><strong>DEPRECATED</strong> since 1.3.0</p>
@@ -478,7 +519,7 @@
 <tr>
 <td>$args</td>
 <td><code>array</code></td>
-<td>this $args thing is a fucking mess, <a href="http://codex.wordpress.org/Function_Reference/comment_form">fix at some point</a></td>
+<td></td>
 </tr>
 </tbody>
 </table>

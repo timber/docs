@@ -228,6 +228,7 @@
 <li><a href="#construct">__construct</a></li>
 <li><a href="#get">__get</a></li>
 <li><a href="#tostring">__toString</a></li>
+<li><a href="#audio">audio</a></li>
 <li><a href="#author">author</a></li>
 <li><a href="#authors">authors</a></li>
 <li><a href="#categories">categories</a></li>
@@ -239,7 +240,9 @@
 <li><a href="#convert">convert</a></li>
 <li><a href="#date">date</a></li>
 <li><a href="#edit-link">edit_link</a></li>
+<li><a href="#field-object">field_object</a></li>
 <li><a href="#format">format</a></li>
+<li><a href="#gallery">gallery</a></li>
 <li><a href="#get-comment-count">get_comment_count</a></li>
 <li><a href="#get-content">get_content</a></li>
 <li><a href="#get-field">get_field</a></li>
@@ -273,6 +276,7 @@
 <li><a href="#title">title</a></li>
 <li><a href="#type">type</a></li>
 <li><a href="#update">update</a></li>
+<li><a href="#video">video</a></li>
 <li><a href="#get-post-preview-id">get_post_preview_id</a></li>
 <li><a href="#get-wp-link-page">get_wp_link_page</a></li>
 <li><a href="#maybe-show-password-form">maybe_show_password_form</a></li>
@@ -372,6 +376,12 @@ Timber::render('single.twig', $context);
 
 <tbody>
 <tr>
+<td><a href="#audio">audio</a></td>
+<td><code>\Timber\html</code></td>
+<td></td>
+</tr>
+
+<tr>
 <td><a href="#author">author</a></td>
 <td><code>\Timber\User/null</code></td>
 <td>A User object if found, false if not</td>
@@ -416,6 +426,12 @@ Timber::render('single.twig', $context);
 <tr>
 <td><a href="#format">format</a></td>
 <td><code>mixed</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#gallery">gallery</a></td>
+<td><code>\Timber\html</code></td>
 <td></td>
 </tr>
 
@@ -469,7 +485,7 @@ Timber::render('single.twig', $context);
 
 <tr>
 <td><a href="#thumbnail">thumbnail</a></td>
-<td><code>\Timber\TimberImage/null</code></td>
+<td><code>\Timber\Timber/Image/null</code></td>
 <td>of your thumbnail</td>
 </tr>
 
@@ -482,6 +498,12 @@ Timber::render('single.twig', $context);
 <tr>
 <td><a href="#title">title</a></td>
 <td><code>string</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#video">video</a></td>
+<td><code>\Timber\html</code></td>
 <td></td>
 </tr>
 </tbody>
@@ -600,6 +622,21 @@ This is also here to ensure that {{ post.class }} remains usable</p>
 
 <hr />
 
+<h3 id="audio">audio</h3>
+
+<p><code>audio( )</code></p>
+
+<p><strong>returns:</strong> <code>\Timber\html</code></p>
+
+<p>Returns the audio</p>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">{{ post.audio }}
+</code></pre>
+
+<hr />
+
 <h3 id="author">author</h3>
 
 <p><code>author( )</code></p>
@@ -712,7 +749,7 @@ This is also here to ensure that {{ post.class }} remains usable</p>
 <tr>
 <td>$args</td>
 <td><code>array</code></td>
-<td>this $args thing is a fucking mess, <a href="http://codex.wordpress.org/Function_Reference/comment_form">fix at some point</a></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -911,11 +948,73 @@ Published on Jan 12th
 
 <hr />
 
+<h3 id="field-object">field_object</h3>
+
+<p><code>field_object( string $field_name )</code></p>
+
+<p><strong>returns:</strong> <code>mixed</code></p>
+
+<p>Gets the field object data from Advanced Custom Fields.
+This includes metadata on the field like whether it&rsquo;s conditional or not.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$field_name</td>
+<td><code>string</code></td>
+<td>of the field you want to lookup.</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
 <h3 id="format">format</h3>
 
 <p><code>format( )</code></p>
 
 <p><strong>returns:</strong> <code>mixed</code></p>
+
+<hr />
+
+<h3 id="gallery">gallery</h3>
+
+<p><code>gallery( bool $html=true )</code></p>
+
+<p><strong>returns:</strong> <code>\Timber\html</code></p>
+
+<p>Returns the gallery</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$html</td>
+<td><code>bool</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">{{ post.gallery }}
+</code></pre>
 
 <hr />
 
@@ -1546,13 +1645,13 @@ This goes across all taxonomies by default</p>
 
 <p><code>thumbnail( )</code></p>
 
-<p><strong>returns:</strong> <code>\Timber\TimberImage/null</code> of your thumbnail</p>
+<p><strong>returns:</strong> <code>\Timber\Timber/Image/null</code> of your thumbnail</p>
 
-<p>get the featured image as a TimberImage</p>
+<p>get the featured image as a Timber/Image</p>
 
 <p><strong>Twig</strong></p>
 
-<pre><code class="language-twig">&lt;img src=&quot;{{post.thumbnail.src}}&quot; /&gt;
+<pre><code class="language-twig">&lt;img src=&quot;{{ post.thumbnail.src }}&quot; /&gt;
 </code></pre>
 
 <hr />
@@ -1665,6 +1764,21 @@ Published at 13:25
 </tr>
 </tbody>
 </table>
+
+<hr />
+
+<h3 id="video">video</h3>
+
+<p><code>video( )</code></p>
+
+<p><strong>returns:</strong> <code>\Timber\html</code></p>
+
+<p>Returns the video</p>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">{{ post.video }}
+</code></pre>
 
 <hr />
 

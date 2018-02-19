@@ -145,7 +145,7 @@ Initializing a menu Timber\Menu can be initialized with different values:</descr
       <guid>https://timber.github.io/docs/guides/pagination/</guid>
       <description>Do you like pagination? Stupid question, of course you do. Well, here&amp;rsquo;s how you do it.
 Default pagination This will only work in a php file with an active query (like archive.php or home.php):
-&amp;lt;?php $context = Timber::get_context(); $context[&#39;posts&#39;] = new PostQuery(); Timber::render(&#39;archive.twig&#39;, $context);  You can then markup the output like so (of course, the exact markup is up to YOU):
+&amp;lt;?php $context = Timber::get_context(); $context[&#39;posts&#39;] = new Timber\PostQuery(); Timber::render(&#39;archive.twig&#39;, $context);  You can then markup the output like so (of course, the exact markup is up to YOU):
 &amp;lt;div class=&amp;quot;tool-pagination&amp;quot;&amp;gt; {% if posts.pagination.prev %} &amp;lt;a href=&amp;quot;{{posts.</description>
     </item>
     
