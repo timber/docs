@@ -252,6 +252,12 @@
 
 <tbody>
 <tr>
+<td>depth</td>
+<td><code>integer</code></td>
+<td>The depth of the menu we are rendering</td>
+</tr>
+
+<tr>
 <td>items</td>
 <td><code>array/null</code></td>
 <td>Array of <code>Timber\Menu</code> objects you can to iterate through.</td>
@@ -279,6 +285,12 @@
 <td>name</td>
 <td><code>string</code></td>
 <td>The name of the menu (ex: <code>Main Navigation</code>).</td>
+</tr>
+
+<tr>
+<td>raw_options</td>
+<td><code>array</code></td>
+<td>The unfiltered options sent forward via the user in the __construct</td>
 </tr>
 
 <tr>
@@ -321,7 +333,7 @@
 
 <h3 id="construct">__construct</h3>
 
-<p><code>__construct( int/string $slug )</code></p>
+<p><code>__construct( int/string $slug, array $options=array() )</code></p>
 
 <p><strong>returns:</strong> <code>void</code></p>
 
@@ -341,6 +353,12 @@
 <td>$slug</td>
 <td><code>int/string</code></td>
 <td>A menu slug, the term ID of the menu, the full name from the admin menu, the slug of theregistered location or nothing. Passing nothing is good if you only have one menu. Timber will grab what it finds.</td>
+</tr>
+
+<tr>
+<td>$options</td>
+<td><code>array</code></td>
+<td>An array of options, right now only <code>depth</code> is supported</td>
 </tr>
 </tbody>
 </table>

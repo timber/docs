@@ -218,6 +218,7 @@
 <li>
 <ul>
 <li><a href="#initializing-a-menu">Initializing a menu</a></li>
+<li><a href="#options">Options</a></li>
 <li><a href="#setting-up-a-menu-globally">Setting up a menu globally</a></li>
 <li><a href="#displaying-the-menu-items">Displaying the menu items</a></li>
 <li><a href="#the-current-menu-item">The current menu item</a></li>
@@ -261,7 +262,17 @@
 
 <p>Or pass nothing. This is good if you have only one menu. In that case Timber will just grab what you got.</p>
 
-<pre><code class="language-php">$menu = new TimberMenu();
+<pre><code class="language-php">$menu = new Timber\Menu();
+</code></pre>
+
+<h2 id="options">Options</h2>
+
+<p>Optionally, you can send additional options to <code>Timber\Menu</code>. Current only <code>depth</code> is supported (see <a href="https://developer.wordpress.org/reference/functions/wp_nav_menu/">https://developer.wordpress.org/reference/functions/wp_nav_menu/</a> for reference)</p>
+
+<pre><code class="language-php">$args = array(
+	'depth' =&gt; 2,
+);
+$menu = new Timber\Menu( 'primary', $args );
 </code></pre>
 
 <h2 id="setting-up-a-menu-globally">Setting up a menu globally</h2>

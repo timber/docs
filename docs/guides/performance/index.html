@@ -251,7 +251,7 @@
 
 <h2 id="cache-the-entire-twig-file-and-data">Cache the Entire Twig File and Data</h2>
 
-<p>When rendering, use the <code>$expires</code> argument in <a href="/reference/timber/#render"><code>Timber::render</code></a>. For example:</p>
+<p>When rendering, use the <code>$expires</code> argument in <a href="https://timber.github.io/docs/reference/timber/#render"><code>Timber::render</code></a>. For example:</p>
 
 <pre><code class="language-php">&lt;?php
 $context['posts'] = Timber::get_posts();
@@ -264,7 +264,7 @@ Timber::render( 'index.twig', $context, 600 );
 
 <h3 id="set-cache-mode">Set cache mode</h3>
 
-<p>As a fourth parameter for <a href="/reference/timber/#render">Timber::render()</a>, you can set the <code>$cache_mode</code>.</p>
+<p>As a fourth parameter for <a href="https://timber.github.io/docs/reference/timber/#render">Timber::render()</a>, you can set the <code>$cache_mode</code>.</p>
 
 <pre><code class="language-php">&lt;?php
 Timber::render( $filenames, $data, $expires, $cache_mode );
