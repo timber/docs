@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Filters</title>
+	<title>Tags</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -97,7 +97,7 @@
             
             </li>
         
-            <li class="nav__item nav__item--level-0 nav__item--current-ancestor"><a class="nav__link nav__link--level-0" href="/docs/guides/">Guides</a>
+            <li class="nav__item nav__item--level-0"><a class="nav__link nav__link--level-0" href="/docs/guides/">Guides</a>
             
                 <ul class="nav__items nav__items--level-1">
                 
@@ -113,7 +113,7 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/extending-timber/">Extending Timber</a></li>
                 
-                    <li class="nav__item nav__item--level-1 nav__item--current"><a class="nav__link nav__link--level-1" href="/docs/guides/filters/">Filters</a></li>
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/filters/">Filters</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/functions/">Functions</a></li>
                 
@@ -208,216 +208,14 @@
 
 <main>
     
-	<article>
-		<h1>Filters</h1>
 
-		<aside class="toc">
-			<h2 class="heading-4 toc__title">Contents of this page</h2>
-			<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#general-filters">General Filters</a></li>
-<li><a href="#excerpt">excerpt</a></li>
-<li><a href="#function">function</a></li>
-<li><a href="#del-function-deprecated-del"><del>function (deprecated)<del></a></li>
-<li><a href="#relative">relative</a></li>
-<li><a href="#pretags">pretags</a></li>
-<li><a href="#sanitize">sanitize</a></li>
-<li><a href="#shortcodes">shortcodes</a></li>
-<li><a href="#time-ago">time_ago</a></li>
-<li><a href="#truncate">truncate</a></li>
-<li><a href="#wpautop">wpautop</a></li>
-<li><a href="#list">list</a></li>
-</ul></li>
+<h1>Tags</h1>
+
+<ul class="list">
+
 </ul>
-</nav>
-		</aside>
 
-		<div class="content-container">
-			<div class="content">
-				
 
-<h2 id="general-filters">General Filters</h2>
-
-<p>Twig offers a variety of <a href="http://twig.sensiolabs.org/doc/filters/index.html">filters</a> to transform text and other information into the desired output. In addition, Timber has added some valuable custom filters for your WP theme:</p>
-
-<h2 id="excerpt">excerpt</h2>
-
-<p>When you need to trim text to a desired length (in words)</p>
-
-<p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;p class=&quot;intro&quot;&gt;{{post.post_content|excerpt(30)}}...&lt;/p&gt;
-</code></pre>
-
-<p><strong>Output</strong></p>
-
-<pre><code class="language-html">&lt;p class=&quot;intro&quot;&gt;Steve-O was born in London, England. His mother, Donna Gay (née Wauthier), was Canadian, and his father, Richard Glover, was American. His paternal grandfather was English and his maternal step-grandfather ...&lt;/p&gt;
-</code></pre>
-
-<hr />
-
-<h2 id="function">function</h2>
-
-<p>Runs a function where you need. Really valuable for integrating plugins or existing themes</p>
-
-<p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;div class=&quot;entry-meta&quot;&gt;{{function('twenty_ten_entry_meta')}}&lt;/div&gt;
-</code></pre>
-
-<p><strong>Output</strong></p>
-
-<pre><code class="language-html">&lt;div class=&quot;entry-meta&quot;&gt;Posted on September 6, 2013&lt;/div&gt;
-</code></pre>
-
-<h2 id="del-function-deprecated-del"><del>function (deprecated)<del></h2>
-
-<p>Runs a function where you need. Really valuable for integrating plugins or existing themes</p>
-
-<p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;div class=&quot;entry-meta&quot;&gt;{{'twenty_ten_entry_meta'|function}}&lt;/div&gt;
-</code></pre>
-
-<p><strong>Output</strong></p>
-
-<pre><code class="language-html">&lt;div class=&quot;entry-meta&quot;&gt;Posted on September 6, 2013&lt;/div&gt;
-</code></pre>
-
-<hr />
-
-<h2 id="relative">relative</h2>
-
-<p>Converts an absolute URL into a relative one, for example:</p>
-
-<pre><code class="language-twig">My custom link is &lt;a href=&quot;{{ 'http://example.org/2015/08/my-blog-post' | relative }}&quot;&gt;here!&lt;/a&gt;
-</code></pre>
-
-<pre><code class="language-html">My custom link is &lt;a href=&quot;/2015/08/my-blog-post&quot;&gt;here!&lt;/a&gt;
-</code></pre>
-
-<hr />
-
-<h2 id="pretags">pretags</h2>
-
-<p>Converts tags like <code>&lt;span&gt;</code> into <code>&amp;lt;span&amp;gt;</code>, but only inside of <code>&lt;pre&gt;</code> tags. Great for code samples when you need to preserve other formatting in the non-code sample content.</p>
-
-<hr />
-
-<h2 id="sanitize">sanitize</h2>
-
-<p>Converts Titles like this into <code>titles-like-this</code></p>
-
-<p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">{{post.title|sanitize}}
-</code></pre>
-
-<p><strong>Output</strong></p>
-
-<pre><code class="language-html">my-awesome-post
-</code></pre>
-
-<hr />
-
-<h2 id="shortcodes">shortcodes</h2>
-
-<p>Runs text through WordPress&rsquo;s shortcodes filter. In this example imagine that you&rsquo;ve added a shortcode to a custom field like <code>[gallery id=&quot;123&quot; size=&quot;medium&quot;]</code></p>
-
-<p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;section class=&quot;gallery&quot;&gt;
-{{post.custom_shortcode_field|shortcodes}}
-&lt;/section&gt;
-</code></pre>
-
-<p><strong>Output</strong></p>
-
-<pre><code class="language-html">&lt;section class=&quot;gallery&quot;&gt;
-Here is my gallery &lt;div class=&quot;gallery&quot; id=&quot;gallery-123&quot;&gt;&lt;img src=&quot;....&quot; /&gt;...&lt;/div&gt;
-&lt;/section&gt;
-</code></pre>
-
-<hr />
-
-<h2 id="time-ago">time_ago</h2>
-
-<p>Displays a date in timeago format:</p>
-
-<p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;p class=&quot;entry-meta&quot;&gt;Posted: &lt;time&gt;{{post.post_date_gmt|time_ago}}&lt;/time&gt;&lt;/p&gt;
-</code></pre>
-
-<p><strong>Output</strong></p>
-
-<pre><code class="language-html">&lt;p class=&quot;entry-meta&quot;&gt;Posted: &lt;time&gt;3 days ago&lt;/time&gt;&lt;/p&gt;
-</code></pre>
-
-<hr />
-
-<h2 id="truncate">truncate</h2>
-
-<p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;p class=&quot;entry-meta&quot;&gt;{{ post.character.origin_story | truncate(8) }} ...&lt;/p&gt;
-</code></pre>
-
-<p><strong>Output</strong></p>
-
-<pre><code class="language-html">&lt;p class=&quot;entry-meta&quot;&gt;Bruce Wayne's parents were shot outside the opera ...&lt;/p&gt;
-</code></pre>
-
-<hr />
-
-<h2 id="wpautop">wpautop</h2>
-
-<p>Adds paragraph breaks to new lines</p>
-
-<p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;div class=&quot;body&quot;&gt;
-	{{post.custom_text_area|wpautop}}
-&lt;/div&gt;
-</code></pre>
-
-<p><strong>Output</strong></p>
-
-<pre><code class="language-html">&lt;div class=&quot;body&quot;&gt;
-	&lt;p&gt;Sinatra said, &quot;What do you do?&quot;&lt;/p&gt;
-	&lt;p&gt;&quot;I'm a plumber,&quot; Ellison said.&lt;/p&gt;
-	&lt;p&gt;&quot;No, no, he's not,&quot; another young man quickly yelled from across the table. &quot;He wrote The Oscar.&quot;&lt;/p&gt;
-	&lt;p&gt;&quot;Oh, yeah,&quot; Sinatra said, &quot;well I've seen it, and it's a piece of crap.&quot;&lt;/p&gt;
-&lt;/div&gt;
-</code></pre>
-
-<hr />
-
-<h2 id="list">list</h2>
-
-<p>Converts an array of strings into a comma-separated list.</p>
-
-<p><strong>PHP</strong></p>
-
-<pre><code class="language-php">&lt;?php
-$context['contributors'] = array('Blake Allen','Rachel White','Maddy May');
-</code></pre>
-
-<p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">Contributions made by {{contributors|list(',','&amp;')}}
-</code></pre>
-
-<p><strong>Output</strong></p>
-
-<pre><code class="language-html">Contributions made by Blake Allen, Rachel White &amp; Maddy May
-</code></pre>
-
-			</div>
-		</div>
-	</article>
 
 </main>
 
