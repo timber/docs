@@ -42,13 +42,13 @@ hugo
 If you want to check the generated site, you need to have your own local webserver running, pointing to the root folder of the repo. When you run the `hugo` command, all links will be built based on the `baseURL` defined in `config.yaml`. Because of the structure of Github Pages, all links will be generated relative to the `docs/` folder. This will break the site on your local server. You can use a custom baseURL with your local URL, though:
 
 ```
-hugo --baseURL "http://timber-docs.dev/"
+hugo --baseURL "http://timber-docs.test/"
 ```
 
 However, this will not work for the `bash generate-docs.sh` command. You can pass the baseURL there by setting an environment variable:
 
 ```
-HUGO_BASEURL="http://timber-docs.dev/" bash generate-docs.sh
+HUGO_BASEURL="http://timber-docs.test/" bash generate-docs.sh
 ```
 
 If you want to check the documentation on different devices or on a virtual machine in the same network, you can tell `serve` which IP to use:
