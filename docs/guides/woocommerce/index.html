@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126807198-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-126807198-1');
+	</script>
+
 	<title>WooCommerce</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -250,6 +260,14 @@ if ( is_singular( 'product' ) ) {
     $product            = wc_get_product( $context['post']-&gt;ID );
     $context['product'] = $product;
 
+    // Get related products
+    $related_limit               = wc_get_loop_prop( 'columns' );
+    $related_ids                 = wc_get_related_products( $context['post']-&gt;id, $related_limit );
+    $context['related_products'] =  Timber::get_posts( $related_ids );
+
+    // Restore the context and loop back to the main query loop.
+    wp_reset_postdata();
+
     Timber::render( 'views/woo/single-product.twig', $context );
 } else {
     $posts = Timber::get_posts();
@@ -326,12 +344,17 @@ if ( is_singular( 'product' ) ) {
 
     &lt;/article&gt;
 
+    {% include [&quot;partials/tease-product.twig&quot;] with { products: related_products } %}
+
     {% do action('woocommerce_after_single_product') %}
 
 {% endblock  %}
 </code></pre>
 
 <p>Again we are keeping things simple by using WooCommerce’s default hooks. If you need to override the output of any of those hooks, my advice would be to remove and add the relevant actions using PHP, keeping your upgrade path simple.</p>
+
+<p>If you wanna use the same <code>tease-product.twig</code> output as your related products, you have to remove the default related-products from theme, add the following to your <code>functions.php</code> file:
+<code>remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );</code></p>
 
 <p>Finally, we’ll need to create a teaser file for products in loops. Considering the code above that would be <code>views/partials/tease-product.twig</code>:</p>
 
@@ -392,7 +415,7 @@ function timber_set_product( $post ) {
 }
 </code></pre>
 
-<p>Without this, some elements of the listed products would show the same information as the first product in the loop.</p>
+<p>Without this, some elements of the listed products would show the same information as the first product in the loop. If you see an error like <code>Warning: call_user_func_array() expects parameter 1 to be a valid callback, no array or string given</code>, this is your problem.</p>
 
 <p><em>Note:</em> Some users reported issues with the loop context even when using the <code>timber_set_product()</code> helper function. Turns out the default WooCommerce hooks interfere with the output of the aforementioned function.</p>
 

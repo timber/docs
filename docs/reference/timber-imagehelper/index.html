@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126807198-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-126807198-1');
+	</script>
+
 	<title>Timber\ImageHelper</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -224,6 +234,7 @@
 <li><a href="#class-methods">Class Methods</a>
 <ul>
 <li><a href="#delete-generated-if-image">_delete_generated_if_image</a></li>
+<li><a href="#mime-content-type">_mime_content_type</a></li>
 <li><a href="#add-relative-upload-dir-key">add_relative_upload_dir_key</a></li>
 <li><a href="#analyze-url">analyze_url</a></li>
 <li><a href="#delete-attachment">delete_attachment</a></li>
@@ -236,8 +247,10 @@
 <li><a href="#get-server-location">get_server_location</a></li>
 <li><a href="#get-sideloaded-file-loc">get_sideloaded_file_loc</a></li>
 <li><a href="#img-to-jpg">img_to_jpg</a></li>
+<li><a href="#img-to-webp">img_to_webp</a></li>
 <li><a href="#init">init</a></li>
 <li><a href="#is-animated-gif">is_animated_gif</a></li>
+<li><a href="#is-svg">is_svg</a></li>
 <li><a href="#letterbox">letterbox</a></li>
 <li><a href="#resize">resize</a></li>
 <li><a href="#retina-resize">retina_resize</a></li>
@@ -316,6 +329,35 @@
 <td>$post_id</td>
 <td><code>int</code></td>
 <td>an attachment post id</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h3 id="mime-content-type">_mime_content_type</h3>
+
+<p><code>_mime_content_type( string $filename )</code></p>
+
+<p><strong>returns:</strong> <code>string/boolean</code> mime type if found (eg. <code>image/svg</code> or <code>text/plain</code>) false if not</p>
+
+<p>Reads a file&rsquo;s mime type. This is a hack b/c some installs of PHP don&rsquo;t enable this function
+by default. See #1798 for more info</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$filename</td>
+<td><code>string</code></td>
+<td>to test.</td>
 </tr>
 </tbody>
 </table>
@@ -743,6 +785,46 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 
 <hr />
 
+<h3 id="img-to-webp">img_to_webp</h3>
+
+<p><code>img_to_webp( string $src, mixed/int $quality=80, bool $force=false )</code></p>
+
+<p><strong>returns:</strong> <code>void</code></p>
+
+<p>Generates a new image by converting the source into WEBP</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$src</td>
+<td><code>string</code></td>
+<td>a url or path to the image (<a href="http://example.org/wp-content/uploads/2014/image.jpg">http://example.org/wp-content/uploads/2014/image.jpg</a>) or (/wp-content/uploads/2014/image.jpg)</td>
+</tr>
+
+<tr>
+<td>$quality</td>
+<td><code>mixed/int</code></td>
+<td>ranges from (worst quality, smaller file) to 100 (best quality, biggest file)</td>
+</tr>
+
+<tr>
+<td>$force</td>
+<td><code>bool</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
 <h3 id="init">init</h3>
 
 <p><code>init( )</code></p>
@@ -773,6 +855,34 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 <td>$file</td>
 <td><code>string</code></td>
 <td>local filepath to a file, not a URL</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h3 id="is-svg">is_svg</h3>
+
+<p><code>is_svg( string $file_path )</code></p>
+
+<p><strong>returns:</strong> <code>boolean</code> true if svg, false if not svg or file doesn&rsquo;t exist.</p>
+
+<p>Checks if file is an SVG</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$file_path</td>
+<td><code>string</code></td>
+<td>file path.</td>
 </tr>
 </tbody>
 </table>

@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126807198-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-126807198-1');
+	</script>
+
 	<title>Image Cookbook</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -223,6 +233,7 @@
 <li><a href="#letterboxing-images">Letterboxing images</a></li>
 <li><a href="#converting-images">Converting images</a></li>
 <li><a href="#generating-retina-sizes">Generating retina sizes</a></li>
+<li><a href="#using-webp-images">Using WebP images</a></li>
 <li><a href="#using-images-in-custom-fields">Using images in custom fields</a>
 <ul>
 <li><a href="#the-quick-way-for-most-situations">The quick way (for most situations)</a></li>
@@ -310,6 +321,15 @@
     {{ post.thumbnail.src|resize(400, 300)|retina(2) }}  2x,
     {{ post.thumbnail.src|resize(400, 300)|retina(3) }}  3x,
     {{ post.thumbnail.src|resize(400, 300)|retina(4) }}  4x&quot;&gt;
+</code></pre>
+
+<h2 id="using-webp-images">Using WebP images</h2>
+
+<pre><code class="language-twig">&lt;picture&gt;
+   &lt;source srcset=&quot;{{ post.thumbnail.src|towebp }}&quot; type=&quot;image/webp&quot;&gt;
+   &lt;source srcset=&quot;{{ post.thumbnail.src|tojpg }}&quot; type=&quot;image/jpeg&quot;&gt;
+   &lt;img src=&quot;{{ post.thumbnail.src|tojpg }}&quot; alt=&quot;{{ post.title }}&quot;&gt;
+&lt;/picture&gt;
 </code></pre>
 
 <h2 id="using-images-in-custom-fields">Using images in custom fields</h2>

@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126807198-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-126807198-1');
+	</script>
+
 	<title>Timber\PostPreview</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -429,7 +439,7 @@ liking</p>
 <tr>
 <td>$strip</td>
 <td><code>bool/boolean/string</code></td>
-<td>strip the tags or what? You can also provide a list of allowed tags</td>
+<td>strip the tags or what? You can also provide a list of allowed tags (e.g. &lsquo;<p><a>&rsquo;)</td>
 </tr>
 </tbody>
 </table>

@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126807198-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-126807198-1');
+	</script>
+
 	<title>Timber\Post</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -339,7 +349,7 @@ Timber::render('single.twig', $context);
 <tbody>
 <tr>
 <td>id</td>
-<td><code>string</code></td>
+<td><code>int</code></td>
 <td>$id the numeric WordPress id of a post</td>
 </tr>
 
@@ -485,7 +495,7 @@ Timber::render('single.twig', $context);
 
 <tr>
 <td><a href="#thumbnail">thumbnail</a></td>
-<td><code>\Timber\Timber/Image/null</code></td>
+<td><code>\Timber\Timber\Image/null</code></td>
 <td>of your thumbnail</td>
 </tr>
 
@@ -1645,7 +1655,7 @@ This goes across all taxonomies by default</p>
 
 <p><code>thumbnail( )</code></p>
 
-<p><strong>returns:</strong> <code>\Timber\Timber/Image/null</code> of your thumbnail</p>
+<p><strong>returns:</strong> <code>\Timber\Timber\Image/null</code> of your thumbnail</p>
 
 <p>get the featured image as a Timber/Image</p>
 
