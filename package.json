@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "description": "Static site documentation for Timber",
   "devDependencies": {
-    "laravel-mix": "^1.2.0"
+    "laravel-mix": "^2.1.14"
   },
   "scripts": {
     "dev": "NODE_ENV=development webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
