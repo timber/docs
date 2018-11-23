@@ -241,10 +241,12 @@
 <li><a href="#get-pathinfo">get_pathinfo</a></li>
 <li><a href="#strike-get-url-strike"><strike>get_url</strike></a></li>
 <li><a href="#height">height</a></li>
+<li><a href="#img-sizes">img_sizes</a></li>
 <li><a href="#link">link</a></li>
 <li><a href="#parent">parent</a></li>
 <li><a href="#path">path</a></li>
 <li><a href="#src">src</a></li>
+<li><a href="#srcset">srcset</a></li>
 <li><a href="#strike-url-strike"><strike>url</strike></a></li>
 <li><a href="#width">width</a></li>
 <li><a href="#wp-upload-dir">wp_upload_dir</a></li>
@@ -380,6 +382,12 @@ Timber::render('single.twig', $context);
 </tr>
 
 <tr>
+<td><a href="#img_sizes">img_sizes</a></td>
+<td><code>bool/string</code></td>
+<td></td>
+</tr>
+
+<tr>
 <td><a href="#link">link</a></td>
 <td><code>void</code></td>
 <td></td>
@@ -399,6 +407,12 @@ Timber::render('single.twig', $context);
 
 <tr>
 <td><a href="#src">src</a></td>
+<td><code>bool/string</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#srcset">srcset</a></td>
 <td><code>bool/string</code></td>
 <td></td>
 </tr>
@@ -552,6 +566,43 @@ $myImage = new TimberImage('http://google.com/logo.jpg');
 
 <hr />
 
+<h3 id="img-sizes">img_sizes</h3>
+
+<p><code>img_sizes( string $size=&quot;full&quot; )</code></p>
+
+<p><strong>returns:</strong> <code>bool/string</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$size</td>
+<td><code>string</code></td>
+<td>a size known to WordPress (like &ldquo;medium&rdquo;)</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">&lt;h1&gt;{{ post.title }}&lt;/h1&gt;
+&lt;img src=&quot;{{ post.thumbnail.src }}&quot; srcset=&quot;{{ post.thumnbail.srcset }}&quot; sizes=&quot;{{ post.thumbnail.sizes }}&quot; /&gt;
+</code></pre>
+
+<p><strong>HTML</strong></p>
+
+<pre><code class="language-html">&lt;img src=&quot;http://example.org/wp-content/uploads/2018/10/pic.jpg&quot; srcset=&quot;http://example.org/wp-content/uploads/2018/10/pic.jpg 1024w, http://example.org/wp-content/uploads/2018/10/pic-600x338.jpg 600w, http://example.org/wp-content/uploads/2018/10/pic-300x169.jpg 300w sizes=&quot;(max-width: 1024px) 100vw, 102&quot; /&gt;
+</code></pre>
+
+<hr />
+
 <h3 id="link">link</h3>
 
 <p><code>link( )</code></p>
@@ -631,6 +682,43 @@ $myImage = new TimberImage('http://google.com/logo.jpg');
 <p><strong>HTML</strong></p>
 
 <pre><code class="language-html">&lt;img src=&quot;http://example.org/wp-content/uploads/2015/08/pic.jpg&quot; /&gt;
+</code></pre>
+
+<hr />
+
+<h3 id="srcset">srcset</h3>
+
+<p><code>srcset( string $size=&quot;full&quot; )</code></p>
+
+<p><strong>returns:</strong> <code>bool/string</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$size</td>
+<td><code>string</code></td>
+<td>a size known to WordPress (like &ldquo;medium&rdquo;)</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">&lt;h1&gt;{{ post.title }}&lt;/h1&gt;
+&lt;img src=&quot;{{ post.thumbnail.src }}&quot; srcset=&quot;{{ post.thumnbail.srcset }}&quot; /&gt;
+</code></pre>
+
+<p><strong>HTML</strong></p>
+
+<pre><code class="language-html">&lt;img src=&quot;http://example.org/wp-content/uploads/2018/10/pic.jpg&quot; srcset=&quot;http://example.org/wp-content/uploads/2018/10/pic.jpg 1024w, http://example.org/wp-content/uploads/2018/10/pic-600x338.jpg 600w, http://example.org/wp-content/uploads/2018/10/pic-300x169.jpg 300w&quot; /&gt;
 </code></pre>
 
 <hr />

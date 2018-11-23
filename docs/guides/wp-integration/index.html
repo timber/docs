@@ -239,6 +239,13 @@
 <ul>
 <li><a href="#layouts-with-shortcodes">Layouts with Shortcodes</a></li>
 </ul></li>
+<li><a href="#password-protected-posts">Password protected posts</a>
+<ul>
+<li>
+<ul>
+<li><a href="#using-a-filter">Using a Filter</a></li>
+</ul></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -433,6 +440,72 @@ function youtube_shortcode( $atts ) {
     [/tabs]
 {% endfilter %}
 </code></pre>
+
+<h2 id="password-protected-posts">Password protected posts</h2>
+
+<p>It’s recommended to use the <a href="https://developer.wordpress.org/reference/functions/post_password_required/"><code>post_password_required()</code></a> function to check if a post requires a password. You can add this check in all your single PHP template files</p>
+
+<p><strong>single.php</strong></p>
+
+<pre><code class="language-php">$context = Timber::get_context();
+$post = Timber::query_post();
+$context['post'] = $post;
+if ( post_password_required( $post-&gt;ID ) ) {
+    Timber::render( 'single-password.twig', $context );
+} else {
+    Timber::render( array( 'single-' . $post-&gt;ID . '.twig', 'single-' . $post-&gt;post_type . '.twig', 'single.twig' ), $context );
+}
+</code></pre>
+
+<p><strong>single-password.twig</strong></p>
+
+<pre><code class="language-twig">{% extends &quot;base.twig&quot; %}
+
+{% block content %}
+    {{ function('get_the_password_form') }}
+{% endblock %}
+</code></pre>
+
+<h4 id="using-a-filter">Using a Filter</h4>
+
+<p>With a WordPress filter, you can use a specific PHP template for all your password protected posts. Note: this is accomplished using only standard WordPress functions. This is nothing special to Timber</p>
+
+<p><strong>functions.php</strong></p>
+
+<pre><code class="language-php">/**
+ * Use specific template for password protected posts.
+ *
+ * By default, this will use the `password-protected.php` template file. If you want password
+ * templates specific to a post type, use `password-protected-$posttype.php`.
+ */
+add_filter( 'template_include', 'get_password_protected_template', 99 );
+
+function get_password_protected_template( $template ) {
+    global $post;
+
+    if ( ! empty( $post ) &amp;&amp; post_password_required( $post-&gt;ID ) ) {
+        $template = locate_template( [
+            'password-protected.php',
+            &quot;password-protected-{$post-&gt;post_type}.php&quot;,
+        ] ) ?: $template;
+    }
+
+    return $template;
+}, 99 );
+</code></pre>
+
+<p>With this filter, you can use a <strong>password-protected.php</strong> template file with the following contents:</p>
+
+<pre><code class="language-php">&lt;?php
+
+$context                  = Timber::get_context();
+$context['post']          = new Timber\Post();
+$context['password_form'] = get_the_password_form();
+
+Timber::render( 'password-protected.twig', $context );
+</code></pre>
+
+<p>To display the password on the page, you could then use <code>{{ password_form }}</code> in your Twig file.</p>
 
 			</div>
 		</div>

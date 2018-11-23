@@ -17,7 +17,7 @@
       
       <guid>https://timber.github.io/docs/guides/acf-cookbook/</guid>
       <description>Timber is designed to play nicely with (the amazing) Advanced Custom Fields. It&amp;rsquo;s not a requirement, of course.
-While data saved by ACF is available via {{post.my_acf_field}} you will often need to do some additional work to get back the kind of data you want. For example, images are stored as image ID#s which you might want to translate into a specific image object. Read on to learn more about those specific exceptions.</description>
+While data saved by ACF is available via {{ post.my_acf_field }} you will often need to do some additional work to get back the kind of data you want. For example, images are stored as image ID#s which you might want to translate into a specific image object. Read on to learn more about those specific exceptions.</description>
     </item>
     
     <item>
@@ -64,7 +64,7 @@ You can also dump everything sent to your template (contents of $context passed 
       
       <guid>https://timber.github.io/docs/guides/escapers/</guid>
       <description>Universal Escaping By default, Timber does not escape the output of standard tags (i.e. {{ post.field }}). If you want to enable autoescape behavior simply add these lines to functions.php:
-if ( class_exists(&#39;Timber&#39;) ) { Timber::$autoescape = true; }  General Escapers Twig offers a variety of escapers out of the box. These are intended to escape a string for safe insertion into the final output and there are multiple functions to conform to the strategy dependant on the context.</description>
+if ( class_exists(&#39;Timber&#39;) ) { Timber::$autoescape = &#39;html&#39;; }  General Escapers Twig offers a variety of escapers out of the box. These are intended to escape a string for safe insertion into the final output and there are multiple functions to conform to the strategy dependant on the context.</description>
     </item>
     
     <item>

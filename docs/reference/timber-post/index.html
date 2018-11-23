@@ -288,6 +288,8 @@
 <li><a href="#update">update</a></li>
 <li><a href="#video">video</a></li>
 <li><a href="#get-post-preview-id">get_post_preview_id</a></li>
+<li><a href="#get-post-preview-object">get_post_preview_object</a></li>
+<li><a href="#get-revised-data-from-method">get_revised_data_from_method</a></li>
 <li><a href="#get-wp-link-page">get_wp_link_page</a></li>
 <li><a href="#maybe-show-password-form">maybe_show_password_form</a></li>
 </ul></li>
@@ -490,7 +492,7 @@ Timber::render('single.twig', $context);
 <tr>
 <td><a href="#terms">terms</a></td>
 <td><code>array</code></td>
-<td></td>
+<td>An array of taxonomies.</td>
 </tr>
 
 <tr>
@@ -1586,12 +1588,11 @@ this will return just /2015/07/my-cool-post</p>
 
 <h3 id="terms">terms</h3>
 
-<p><code>terms( string/string/array $tax=&quot;&quot;, bool $merge=true, string $TermClass=&quot;&quot; )</code></p>
+<p><code>terms( array/string/array $args=array(), bool $merge=true, string $term_class=&quot;&quot; )</code></p>
 
-<p><strong>returns:</strong> <code>array</code></p>
+<p><strong>returns:</strong> <code>array</code> An array of taxonomies.</p>
 
-<p>Get the terms associated with the post
-This goes across all taxonomies by default</p>
+<p>Gets the terms associated with the post.</p>
 
 <table>
 <thead>
@@ -1604,21 +1605,21 @@ This goes across all taxonomies by default</p>
 
 <tbody>
 <tr>
-<td>$tax</td>
-<td><code>string/string/array</code></td>
-<td>What taxonom(y</td>
+<td>$args</td>
+<td><code>array/string/array</code></td>
+<td>Optional. Name of the taxonomy or array of arguments.</td>
 </tr>
 
 <tr>
 <td>$merge</td>
 <td><code>bool</code></td>
-<td>Should the resulting array be one big one (true)? Or should it be an array of sub-arrays for each taxonomy (false)?</td>
+<td>Deprecated. Optional. See <code>$merge</code> argument in <code>$args</code> parameter.</td>
 </tr>
 
 <tr>
-<td>$TermClass</td>
+<td>$term_class</td>
 <td><code>string</code></td>
-<td></td>
+<td>Deprecated. Optional. See <code>$term_class</code> argument in <code>$args</code> parameter.</td>
 </tr>
 </tbody>
 </table>
@@ -1627,10 +1628,10 @@ This goes across all taxonomies by default</p>
 
 <pre><code class="language-twig">&lt;section id=&quot;job-feed&quot;&gt;
 {% for post in job %}
-  &lt;div class=&quot;job&quot;&gt;
-    &lt;h2&gt;{{ post.title }}&lt;/h2&gt;
-    &lt;p&gt;{{ post.terms('category') | join(', ') }}
-  &lt;/div&gt;
+    &lt;div class=&quot;job&quot;&gt;
+        &lt;h2&gt;{{ post.title }}&lt;/h2&gt;
+        &lt;p&gt;{{ post.terms('category')|join(', ') }}&lt;/p&gt;
+    &lt;/div&gt;
 {% endfor %}
 &lt;/section&gt;
 </code></pre>
@@ -1638,15 +1639,33 @@ This goes across all taxonomies by default</p>
 <p><strong>HTML</strong></p>
 
 <pre><code class="language-html">&lt;section id=&quot;job-feed&quot;&gt;
-  &lt;div class=&quot;job&quot;&gt;
-	   &lt;h2&gt;Cheese Maker&lt;/h2&gt;
-    &lt;p&gt;Food, Cheese, Fromage&lt;/p&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;job&quot;&gt;
-	   &lt;h2&gt;Mime&lt;/h2&gt;
-    &lt;p&gt;Performance, Silence&lt;/p&gt;
-  &lt;/div&gt;
+    &lt;div class=&quot;job&quot;&gt;
+        &lt;h2&gt;Cheese Maker&lt;/h2&gt;
+        &lt;p&gt;Food, Cheese, Fromage&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;job&quot;&gt;
+        &lt;h2&gt;Mime&lt;/h2&gt;
+        &lt;p&gt;Performance, Silence&lt;/p&gt;
+    &lt;/div&gt;
 &lt;/section&gt;
+</code></pre>
+
+<p><strong>PHP</strong></p>
+
+<pre><code class="language-php">&lt;?php
+// Get all terms of a taxonomy.
+$terms = $post-&gt;terms( 'category' );
+// Get terms of multiple taxonomies.
+$terms = $post-&gt;terms( array( 'books', 'movies' ) );
+// Use custom arguments for taxonomy query and options.
+$terms = $post-&gt;terms( array(
+    'query' =&gt; [
+        'taxonomy' =&gt; 'custom_tax',
+        'orderby'  =&gt; 'count',
+    ],
+    'merge'      =&gt; false,
+    'term_class' =&gt; 'My_Term_Class'
+) );
 </code></pre>
 
 <hr />
@@ -1811,6 +1830,46 @@ Published at 13:25
 <tr>
 <td>$query</td>
 <td><code>mixed</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h3 id="get-post-preview-object">get_post_preview_object</h3>
+
+<p><code>get_post_preview_object( )</code></p>
+
+<p><strong>returns:</strong> <code>mixed</code></p>
+
+<hr />
+
+<h3 id="get-revised-data-from-method">get_revised_data_from_method</h3>
+
+<p><code>get_revised_data_from_method( mixed $method, bool $args=false )</code></p>
+
+<p><strong>returns:</strong> <code>mixed</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$method</td>
+<td><code>mixed</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$args</td>
+<td><code>bool</code></td>
 <td></td>
 </tr>
 </tbody>

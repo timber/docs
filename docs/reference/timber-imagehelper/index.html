@@ -234,7 +234,6 @@
 <li><a href="#class-methods">Class Methods</a>
 <ul>
 <li><a href="#delete-generated-if-image">_delete_generated_if_image</a></li>
-<li><a href="#mime-content-type">_mime_content_type</a></li>
 <li><a href="#add-relative-upload-dir-key">add_relative_upload_dir_key</a></li>
 <li><a href="#analyze-url">analyze_url</a></li>
 <li><a href="#delete-attachment">delete_attachment</a></li>
@@ -329,35 +328,6 @@
 <td>$post_id</td>
 <td><code>int</code></td>
 <td>an attachment post id</td>
-</tr>
-</tbody>
-</table>
-
-<hr />
-
-<h3 id="mime-content-type">_mime_content_type</h3>
-
-<p><code>_mime_content_type( string $filename )</code></p>
-
-<p><strong>returns:</strong> <code>string/boolean</code> mime type if found (eg. <code>image/svg</code> or <code>text/plain</code>) false if not</p>
-
-<p>Reads a file&rsquo;s mime type. This is a hack b/c some installs of PHP don&rsquo;t enable this function
-by default. See #1798 for more info</p>
-
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>$filename</td>
-<td><code>string</code></td>
-<td>to test.</td>
 </tr>
 </tbody>
 </table>
@@ -865,9 +835,9 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 
 <p><code>is_svg( string $file_path )</code></p>
 
-<p><strong>returns:</strong> <code>boolean</code> true if svg, false if not svg or file doesn&rsquo;t exist.</p>
+<p><strong>returns:</strong> <code>bool</code> True if SVG, false if not SVG or file doesn&rsquo;t exist.</p>
 
-<p>Checks if file is an SVG</p>
+<p>Checks if file is an SVG.</p>
 
 <table>
 <thead>
@@ -882,7 +852,7 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 <tr>
 <td>$file_path</td>
 <td><code>string</code></td>
-<td>file path.</td>
+<td>File path to check.</td>
 </tr>
 </tbody>
 </table>

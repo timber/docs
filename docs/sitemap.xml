@@ -7,11 +7,6 @@
   </url>
   
   <url>
-    <loc>https://timber.github.io/docs/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://timber.github.io/docs/guides/cheatsheet/</loc>
   </url>
   
@@ -82,11 +77,6 @@
   
   <url>
     <loc>https://timber.github.io/docs/guides/sidebars/</loc>
-  </url>
-  
-  <url>
-    <loc>https://timber.github.io/docs/tags/</loc>
-    <priority>0</priority>
   </url>
   
   <url>

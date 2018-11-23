@@ -234,6 +234,7 @@
 <li><a href="#the-long-way-for-some-special-situations">The long way (for some special situations)</a></li>
 </ul></li>
 <li><a href="#gallery-field">Gallery field</a></li>
+<li><a href="#group-field">Group field</a></li>
 <li><a href="#repeater-field">Repeater field</a>
 <ul>
 <li><a href="#nested-repeater-fields">Nested Repeater fields</a></li>
@@ -258,17 +259,17 @@
 
 <p>Timber is designed to play nicely with (the amazing) <a href="http://www.advancedcustomfields.com/">Advanced Custom Fields</a>. It&rsquo;s not a requirement, of course.</p>
 
-<p>While data saved by ACF is available via <code>{{post.my_acf_field}}</code> you will often need to do some additional work to get back the <em>kind</em> of data you want. For example, images are stored as image ID#s which you might want to translate into a specific image object. Read on to learn more about those specific exceptions.</p>
+<p>While data saved by ACF is available via <code>{{ post.my_acf_field }}</code> you will often need to do some additional work to get back the <em>kind</em> of data you want. For example, images are stored as image ID#s which you might want to translate into a specific image object. Read on to learn more about those specific exceptions.</p>
 
 <h2 id="wysiwyg-field-and-other-requiring-text">WYSIWYG field (and other requiring text)</h2>
 
-<pre><code class="language-twig">&lt;h3&gt;{{post.title}}&lt;/h3&gt;
+<pre><code class="language-twig">&lt;h3&gt;{{ post.title }}&lt;/h3&gt;
 &lt;div class=&quot;intro-text&quot;&gt;
-     {{post.get_field('my_wysiwyg_field')}}
+     {{ post.meta('my_wysiwyg_field') }}
 &lt;/div&gt;
 </code></pre>
 
-<p>This will apply your expected paragraph breaks and other pre-processing to the text.</p>
+<p>This will apply your expected paragraph breaks and other pre-processing to the text. In the past we used <code>{{ post.get_field('my_wysiwyg_field') }}</code>, but this is now deprecated. Use <code>{{ post.meta('my_wysiwyg_field') }}</code>.</p>
 
 <h2 id="image-field">Image field</h2>
 
@@ -276,7 +277,7 @@
 
 <h3 id="the-quick-way-for-most-situations">The quick way (for most situations)</h3>
 
-<pre><code class="language-twig">&lt;img src=&quot;{{TimberImage(post.get_field('hero_image')).src}}&quot; /&gt;
+<pre><code class="language-twig">&lt;img src=&quot;{{ Image(post.meta('hero_image')).src }}&quot; /&gt;
 </code></pre>
 
 <h3 id="the-long-way-for-some-special-situations">The long way (for some special situations)</h3>
@@ -285,29 +286,44 @@
 
 <pre><code class="language-php">&lt;?php
 /* single.php */
-$post = new TimberPost();
+$post = new Timber\Post();
 if (isset($post-&gt;hero_image) &amp;&amp; strlen($post-&gt;hero_image)){
-	$post-&gt;hero_image = new TimberImage($post-&gt;hero_image);
+	$post-&gt;hero_image = new Timber\Image($post-&gt;hero_image);
 }
 $data = Timber::get_context();
 $data['post'] = $post;
 Timber::render('single.twig', $data);
 </code></pre>
 
-<p><code>TimberImage</code> should be initialized using a WordPress image ID#. It can also take URLs and image objects, but that requires extra processing.</p>
+<p><code>Timber\Image</code> should be initialized using a WordPress image ID#. It can also take URLs and image objects, but that requires extra processing.</p>
 
 <p>You can now use all the above functions to transform your custom images in the same way, the format will be:</p>
 
-<pre><code class="language-twig">&lt;img src=&quot;{{post.hero_image.src|resize(500, 300)}}&quot; /&gt;
+<pre><code class="language-twig">&lt;img src=&quot;{{ post.hero_image.src | resize(500, 300) }}&quot; /&gt;
 </code></pre>
 
 <hr />
 
 <h2 id="gallery-field">Gallery field</h2>
 
-<pre><code class="language-twig">{% for image in post.get_field('gallery') %}
-    &lt;img src=&quot;{{ TimberImage(image) }}&quot; /&gt;
+<pre><code class="language-twig">{% for image in post.meta('gallery') %}
+    &lt;img src=&quot;{{ Image(image) }}&quot; /&gt;
 {% endfor %}
+</code></pre>
+
+<hr />
+
+<h2 id="group-field">Group field</h2>
+
+<pre><code class="language-twig">{{ post.meta('group').first_field }}
+{{ post.meta('group').second_field }}
+</code></pre>
+
+<p>or</p>
+
+<pre><code class="language-twig">{% set group = post.meta('group') %}
+{{ group.first_field }}
+{{ group.second_field }}
 </code></pre>
 
 <hr />
@@ -317,13 +333,13 @@ Timber::render('single.twig', $data);
 <p>You can access repeater fields within twig files:</p>
 
 <pre><code class="language-twig">{# single.twig #}
-&lt;h2&gt;{{post.title}}&lt;/h2&gt;
+&lt;h2&gt;{{ post.title }}&lt;/h2&gt;
 &lt;div class=&quot;my-list&quot;&gt;
-	{% for item in post.get_field('my_repeater') %}
+	{% for item in post.meta('my_repeater') %}
 		&lt;div class=&quot;item&quot;&gt;
-			&lt;h4&gt;{{item.name}}&lt;/h4&gt;
-			&lt;h6&gt;{{item.info}}&lt;/h6&gt;
-			&lt;img src=&quot;{{TimberImage(item.picture).src}}&quot; /&gt;
+			&lt;h4&gt;{{ item.name }}&lt;/h4&gt;
+			&lt;h6&gt;{{ item.info }}&lt;/h6&gt;
+			&lt;img src=&quot;{{ Image(item.picture).src }}&quot; /&gt;
 		&lt;/div&gt;
 	{% endfor %}
 &lt;/div&gt;
@@ -333,11 +349,11 @@ Timber::render('single.twig', $data);
 
 <p>When you run <code>get_field</code> on an outer ACF field, everything inside is ready to be traversed. You can refer to nested fields via item_outer.inner_repeater</p>
 
-<pre><code class="language-twig">{% for item_outer in post.get_field('outer') %}
+<pre><code class="language-twig">{% for item_outer in post.meta('outer') %}
      {{item_outer.title}}
 
      {% for item_inner in item_outer.inner_repeater %}
-          {{item_inner.title}}
+          {{ item_inner.title }}
      {% endfor %}
 
 {% endfor %}
@@ -345,24 +361,24 @@ Timber::render('single.twig', $data);
 
 <h3 id="troubleshooting-repeaters">Troubleshooting Repeaters</h3>
 
-<p>A common problem in working with repeaters is that you should only call the <code>get_field</code> method <strong>once</strong> on an item. In other words if you have a field inside a field (for example, a relationship inside a repeater or a repeater inside a repeater, <strong>do not</strong> call <code>get_field</code> on the inner field). More:</p>
+<p>A common problem in working with repeaters is that you should only call the <code>meta</code> method <strong>once</strong> on an item. In other words if you have a field inside a field (for example, a relationship inside a repeater or a repeater inside a repeater, <strong>do not</strong> call <code>meta</code> on the inner field). More:</p>
 
 <p><strong>DON&rsquo;T DO THIS: (Bad)</strong></p>
 
-<pre><code class="language-twig">{% for gear in post.get_field('gear_items') %}
+<pre><code class="language-twig">{% for gear in post.meta('gear_items') %}
     &lt;h3&gt; {{ gear.brand_name }} &lt;/h3&gt;
-    {% for gear_feature in gear.get_field('features') %}
-        &lt;li&gt; {{gear_feature}} &lt;/li&gt;
+    {% for gear_feature in gear.meta('features') %}
+        &lt;li&gt; {{ gear_feature }} &lt;/li&gt;
     {% endfor %}
 {% endfor %}
 </code></pre>
 
 <p><strong>DO THIS: (Good)</strong></p>
 
-<pre><code class="language-twig">{% for gear in post.get_field('gear_items') %}
+<pre><code class="language-twig">{% for gear in post.meta('gear_items') %}
     &lt;h3&gt; {{ gear.brand_name }} &lt;/h3&gt;
     {% for gear_feature in gear.features %}
-        &lt;li&gt; {{gear_feature}} &lt;/li&gt;
+        &lt;li&gt; {{ gear_feature }} &lt;/li&gt;
     {% endfor %}
 {% endfor %}
 </code></pre>
@@ -373,14 +389,14 @@ Timber::render('single.twig', $data);
 
 <p>Similar to repeaters, get the field by the name of the flexible content field:</p>
 
-<pre><code class="language-twig">{% for media_item in post.get_field('media_set') %}
+<pre><code class="language-twig">{% for media_item in post.meta('media_set') %}
 	{% if media_item.acf_fc_layout == 'image_set' %}
-		&lt;img src=&quot;{{TimberImage(media_item.image).src}}&quot; /&gt;
-		&lt;p class=&quot;caption&quot;&gt;{{TimberImage(media_item.image).caption}}&lt;/p&gt;
-		&lt;aside class=&quot;notes&quot;&gt;{{media_item.notes}}&lt;/aside&gt;
+		&lt;img src=&quot;{{ Image(media_item.image).src }}&quot; /&gt;
+		&lt;p class=&quot;caption&quot;&gt;{{ Image(media_item.image).caption }}&lt;/p&gt;
+		&lt;aside class=&quot;notes&quot;&gt;{{ media_item.notes }}&lt;/aside&gt;
 	{% elseif media_item.acf_fc_layout == 'video_set' %}
-		&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;http://www.youtube.com/embed/{{media_item.youtube_id}}&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
-		&lt;p class=&quot;caption&quot;&gt;{{media_item.caption}}&lt;/p&gt;
+		&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;http://www.youtube.com/embed/{{ media_item.youtube_id }}&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
+		&lt;p class=&quot;caption&quot;&gt;{{ media_item.caption }}&lt;/p&gt;
 	{% endif %}
 {% endfor %}
 </code></pre>
@@ -406,7 +422,7 @@ Timber::render('single.twig', $data);
 
 <p>ACF Pro has a built in options page, and changes the <code>get_fields('options')</code> to <code>get_fields('option')</code>.</p>
 
-<pre><code class="language-twig">	&lt;footer&gt;{{options.copyright_info}}&lt;/footer&gt;
+<pre><code class="language-twig">	&lt;footer&gt;{{ options.copyright_info }}&lt;/footer&gt;
 </code></pre>
 
 <h3 id="use-options-info-site-wide">Use options info site wide</h3>
@@ -426,7 +442,7 @@ function mytheme_timber_context( $context ) {
 <p>Now, you can use any of the option fields across the site instead of per template.</p>
 
 <pre><code class="language-twig">/* footer.twig */
-&lt;footer&gt;{{options.copyright_info}}&lt;/footer&gt;
+&lt;footer&gt;{{ options.copyright_info }}&lt;/footer&gt;
 </code></pre>
 
 <hr />

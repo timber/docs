@@ -247,7 +247,7 @@
 <p>By default, Timber does <em>not</em> escape the output of standard tags (i.e. <code>{{ post.field }}</code>). If you want to enable <code>autoescape</code> behavior simply add these lines to <code>functions.php</code>:</p>
 
 <pre><code class="language-php">if ( class_exists('Timber') ) {
-	Timber::$autoescape = true;
+	Timber::$autoescape = 'html';
 }
 </code></pre>
 
