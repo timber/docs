@@ -6,6 +6,9 @@ baseURL: "https://timber.github.io/docs/"
 languageCode: "en"
 title: "Timber Docs"
 publishDir: "docs"
+disableKinds:
+  - "taxonomy"
+  - "taxonomyTerm"
 
 # Menu definitions
 #
