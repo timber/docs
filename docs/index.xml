@@ -50,10 +50,10 @@ Custom Twig File If you&amp;rsquo;re using the Timber Starter Theme you can
       <guid>https://timber.github.io/docs/guides/debugging/</guid>
       <description>Enable debugging To use debugging, the constant WP_DEBUG needs to be set to true.
 wp-config.php
-&amp;lt;?php define( &#39;WP_DEBUG&#39;, true );  Using Twig’s native functions Twig includes a dump function that can output the properties of an object.
+define( &#39;WP_DEBUG&#39;, true );  Using Twig’s native functions Twig includes a dump function that can output the properties of an object.
 Twig
 {{ dump(post) }}  Which will give you:
-You can also dump everything sent to your template (contents of $context passed to the Twig file) via:
+You can also dump everything sent to your template (all the contents of $context that were passed to the Twig file) via:
 {{ dump() }}  This will give you something like:</description>
     </item>
     
@@ -101,6 +101,17 @@ Twig
 No, you don’t.
 function() You can call all PHP functions through function() in Twig. For example, if you need to call wp_head() and wp_footer(), you’d do it like this:
 {# single.twig #} &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;!-- Add whatever you need in the head, and then...--&amp;gt; {{ function(&#39;wp_head&#39;) }} &amp;lt;/head&amp;gt; &amp;lt;!-- etc... --&amp;gt; &amp;lt;footer&amp;gt; Copyright &amp;amp;copy; {{ &amp;quot;now&amp;quot;|date(&#39;Y&#39;) }} &amp;lt;/footer&amp;gt; {{ function(&#39;wp_footer&#39;) }} &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  You can also use fn(&#39;my_function&#39;) as an alias for function(&#39;my_function&#39;).</description>
+    </item>
+    
+    <item>
+      <title>Gutenberg</title>
+      <link>https://timber.github.io/docs/guides/gutenberg/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://timber.github.io/docs/guides/gutenberg/</guid>
+      <description>Using Gutenberg with Timber Timber works with Gutenberg out of the box. If you use {{ post.content }}, Timber will render all the Gutenberg blocks.
+ACF Blocks What are ACF Blocks? ACF Blocks are an alternative way to create content blocks without advanced JavaScript knowledge. If you want to learn more about them, read the article on advancedcustomfields.com.
+How to use ACF Blocks with Timber Before you can start using ACF Blocks, you must install the Advanced Custom Fields 5.</description>
     </item>
     
     <item>

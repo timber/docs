@@ -11,7 +11,7 @@
 	  gtag('config', 'UA-126807198-1');
 	</script>
 
-	<title>Cheatsheet</title>
+	<title>Gutenberg</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -113,7 +113,7 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/acf-cookbook/">ACF Cookbook</a></li>
                 
-                    <li class="nav__item nav__item--level-1 nav__item--current"><a class="nav__link nav__link--level-1" href="/docs/guides/cheatsheet/">Cheatsheet</a></li>
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/cheatsheet/">Cheatsheet</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/custom-page-templates/">Custom Page Templates</a></li>
                 
@@ -127,7 +127,7 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/functions/">Functions</a></li>
                 
-                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/gutenberg/">Gutenberg</a></li>
+                    <li class="nav__item nav__item--level-1 nav__item--current"><a class="nav__link nav__link--level-1" href="/docs/guides/gutenberg/">Gutenberg</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/cookbook-images/">Image Cookbook</a></li>
                 
@@ -221,7 +221,7 @@
 <main>
     
 	<article>
-		<h1>Cheatsheet</h1>
+		<h1>Gutenberg</h1>
 
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
@@ -229,10 +229,14 @@
 <ul>
 <li>
 <ul>
-<li><a href="#blog-info">Blog Info</a></li>
-<li><a href="#body-class">Body Class</a></li>
-<li><a href="#post">Post</a></li>
-<li><a href="#theme">Theme</a></li>
+<li><a href="#using-gutenberg-with-timber">Using Gutenberg with Timber</a></li>
+<li><a href="#acf-blocks">ACF Blocks</a>
+<ul>
+<li><a href="#what-are-acf-blocks">What are ACF Blocks?</a></li>
+<li><a href="#how-to-use-acf-blocks-with-timber">How to use ACF Blocks with Timber</a></li>
+<li><a href="#using-repeaters">Using repeaters</a></li>
+<li><a href="#using-groups">Using groups</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -242,48 +246,111 @@
 			<div class="content">
 				
 
-<p>Here are some helpful conversions for functions you’re probably well familiar with in WordPress and their Timber equivalents. These assume a PHP file with the <code>Timber::get_context();</code> function at the top. For example:</p>
+<h2 id="using-gutenberg-with-timber">Using Gutenberg with Timber</h2>
 
-<pre><code class="language-php">$context = Timber::get_context();
-$context['post'] = new TimberPost();
-Timber::render( 'single.twig', $context );
+<p>Timber works with Gutenberg out of the box. If you use <code>{{ post.content }}</code>, Timber will render all the Gutenberg blocks.</p>
+
+<h2 id="acf-blocks">ACF Blocks</h2>
+
+<h3 id="what-are-acf-blocks">What are ACF Blocks?</h3>
+
+<p>ACF Blocks are an alternative way to create content blocks without advanced JavaScript knowledge. If you want to learn more about them, read the article on <a href="https://www.advancedcustomfields.com/blog/acf-5-8-introducing-acf-blocks-for-gutenberg/">advancedcustomfields.com</a>.</p>
+
+<h3 id="how-to-use-acf-blocks-with-timber">How to use ACF Blocks with Timber</h3>
+
+<p>Before you can start using ACF Blocks, you must install the Advanced Custom Fields 5.8.0-beta version or later.</p>
+
+<p>To create a content block, you first have to register it in <strong>functions.php</strong> or in a separate plugin:</p>
+
+<pre><code class="language-php">add_action( 'acf/init', 'my_acf_init' );
+function my_acf_init() {
+    // Check function exists.
+    if( function_exists('acf_register_block') ) {
+        
+        // Register a new block.
+        acf_register_block(array(
+            'name'				=&gt; 'example_block',
+            'title'				=&gt; __( 'Example Block', 'your-text-domain' ),
+            'description'		=&gt; __( 'A custom example block.', 'your-text-domain' ),
+            'render_callback'	=&gt; 'my_acf_block_render_callback',
+            'category'			=&gt; 'formatting',
+            'icon'				=&gt; 'admin-comments',
+            'keywords'		    =&gt; array( 'example' ),
+        ) );
+    }
+}
 </code></pre>
 
-<h2 id="blog-info">Blog Info</h2>
+<p>Next, you you have to create your <code>render_callback()</code> function:</p>
 
-<ul>
-<li><code>blog_info('charset')</code> =&gt; <code>{{ site.charset }}</code></li>
-<li><code>blog_info('description')</code> =&gt; <code>{{ site.description }}</code></li>
-<li><code>blog_info('sitename')</code> =&gt; <code>{{ site.name }}</code></li>
-<li><code>blog_info('url')</code> =&gt; <code>{{ site.url }}</code></li>
-</ul>
+<pre><code class="language-php">function my_acf_block_render_callback( $block ) {
+    $context = Timber::get_context();
+    
+    // Store block values.
+    $context['block'] = $block;
 
-<h2 id="body-class">Body Class</h2>
+    // Store field values.
+    $context['fields'] = get_fields(); 
 
-<ul>
-<li><code>implode(' ', get_body_class())</code> =&gt; <code>&lt;body class=&quot;{{ body_class }}&quot;&gt;</code></li>
-</ul>
+    // Render the block.
+    Timber::render( 'block/example-block.twig', $context );
+}
 
-<h2 id="post">Post</h2>
+</code></pre>
 
-<ul>
-<li><code>the_content()</code> =&gt; <code>{{ post.content }}</code></li>
-<li><code>the_permalink()</code> =&gt; <code>{{ post.link }}</code></li>
-<li><code>the_title()</code> =&gt; <code>{{ post.title }}</code></li>
-<li><code>get_the_tags()</code> =&gt; <code>{{ post.tags }}</code></li>
-</ul>
+<p>You create an extra array called <code>$context</code> with two values:
+- <strong>block</strong> - with all data like block title, alignment etc
+- <strong>fields</strong> - all custom fields - also all the fields created in <strong>ACF</strong></p>
 
-<h2 id="theme">Theme</h2>
+<p>Finally, you can create the template <strong>block/example-block.twig</strong>:</p>
 
-<ul>
-<li><code>get_template_directory_uri()</code> =&gt; <code>{{ theme.link }}</code> (Parent Themes)</li>
-<li><code>get_template_directory_uri()</code> =&gt; <code>{{ theme.parent.link }}</code> (Child Themes)</li>
-<li><code>get_stylesheet_directory_uri()</code> =&gt; <code>{{ theme.link }}</code></li>
-<li><code>get_template_directory()</code> =&gt; <code>{{ theme.parent.path }}</code></li>
-<li><code>get_stylesheet_directory()</code> =&gt; <code>{{ theme.path }}</code></li>
-</ul>
+<pre><code class="language-twig">{#
+/**
+ * Block Name: Example block
+ *
+ * This is the template that displays the example block.
+ */
+#}
+&lt;div id=&quot;example-{{ block.id }}&quot; class=&quot;wrapper&quot;&gt;
+    &lt;h1&gt;{{ fields.title }}&lt;/h1&gt;
+    &lt;p&gt;{{ fields.description }}&lt;/p&gt;
+&lt;/div&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+    #testimonial-{{ block.id }} {
+        background: {{ fields.background_color }};
+        color: {{ fields.text_color }};
+    }
+&lt;/style&gt;
+</code></pre>
 
-<p>In WordPress parlance, stylesheet_directory = child theme, template directory = parent theme. Both WP and Timber functions safely return the current theme info if there&rsquo;s no parent/child going on.</p>
+<p>If you would like to use an external stylesheet both inside of the block editor and the frontend you should add:</p>
+
+<pre><code class="language-php">function my_acf_block_editor_style() {
+    wp_enqueue_style(
+        'logo_grid_css',
+        get_template_directory_uri() .'/assets/example-block.css'
+    );
+}
+
+add_action( 'enqueue_block_assets', 'my_acf_block_editor_style' );
+
+</code></pre>
+
+<p>For more details about enqueueing assets read the <a href="https://wordpress.org/gutenberg/handbook/blocks/applying-styles-with-stylesheets/#enqueueing-editor-only-block-assets">Gutenberg Handbook</a>.</p>
+
+<h3 id="using-repeaters">Using repeaters</h3>
+
+<pre><code>{% for field in fields.repeater %}
+    Title: {{ field.title }} &lt;br/&gt;
+    Url: {{ field.url }}
+{% endfor %}
+</code></pre>
+
+<h3 id="using-groups">Using groups</h3>
+
+<pre><code>Title: {{ fields.group.title }} &lt;br/&gt;
+Url: {{ fields.group.url }}
+</code></pre>
 
 			</div>
 		</div>

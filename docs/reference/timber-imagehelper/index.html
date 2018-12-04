@@ -127,6 +127,8 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/functions/">Functions</a></li>
                 
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/gutenberg/">Gutenberg</a></li>
+                
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/cookbook-images/">Image Cookbook</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/internationalization/">Internationalization</a></li>
@@ -761,7 +763,7 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 
 <p><strong>returns:</strong> <code>void</code></p>
 
-<p>Generates a new image by converting the source into WEBP</p>
+<p>Generates a new image by converting the source into WEBP if supported by the server</p>
 
 <table>
 <thead>
@@ -776,7 +778,7 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 <tr>
 <td>$src</td>
 <td><code>string</code></td>
-<td>a url or path to the image (<a href="http://example.org/wp-content/uploads/2014/image.jpg">http://example.org/wp-content/uploads/2014/image.jpg</a>) or (/wp-content/uploads/2014/image.jpg)</td>
+<td>a url or path to the image (<a href="http://example.org/wp-content/uploads/2014/image.webp">http://example.org/wp-content/uploads/2014/image.webp</a>) or (/wp-content/uploads/2014/image.jpg) If webp is not supported, a jpeg image will be generated</td>
 </tr>
 
 <tr>
