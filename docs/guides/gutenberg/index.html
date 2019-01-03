@@ -283,7 +283,14 @@ function my_acf_init() {
 
 <p>Next, you you have to create your <code>render_callback()</code> function:</p>
 
-<pre><code class="language-php">function my_acf_block_render_callback( $block ) {
+<pre><code class="language-php">/**
+*  This is the callback that displays the block.
+*
+* @param   array $block The block settings and attributes.
+* @param   string $content The block content (emtpy string).
+* @param   bool $is_preview True during AJAX preview.
+*/
+function my_acf_block_render_callback( $block, $content = '', $is_preview = false ) {
     $context = Timber::get_context();
     
     // Store block values.
@@ -292,15 +299,19 @@ function my_acf_init() {
     // Store field values.
     $context['fields'] = get_fields(); 
 
+    // Store $is_preview value.
+    $context['is_preview'] = $is_preview; 
+
     // Render the block.
     Timber::render( 'block/example-block.twig', $context );
 }
 
 </code></pre>
 
-<p>You create an extra array called <code>$context</code> with two values:
+<p>You create an extra array called <code>$context</code> with three values:
 - <strong>block</strong> - with all data like block title, alignment etc
-- <strong>fields</strong> - all custom fields - also all the fields created in <strong>ACF</strong></p>
+- <strong>fields</strong> - all custom fields - also all the fields created in <strong>ACF</strong>
+- <strong>is_preview</strong> - returns true during AJAX preview</p>
 
 <p>Finally, you can create the template <strong>block/example-block.twig</strong>:</p>
 
@@ -311,6 +322,11 @@ function my_acf_init() {
  * This is the template that displays the example block.
  */
 #}
+
+{% if is_preview %}
+    &lt;p&gt;I will only appear in the editor.&lt;/p&gt;
+{% endif %}
+
 &lt;div id=&quot;example-{{ block.id }}&quot; class=&quot;wrapper&quot;&gt;
     &lt;h1&gt;{{ fields.title }}&lt;/h1&gt;
     &lt;p&gt;{{ fields.description }}&lt;/p&gt;
@@ -327,7 +343,7 @@ function my_acf_init() {
 
 <pre><code class="language-php">function my_acf_block_editor_style() {
     wp_enqueue_style(
-        'logo_grid_css',
+        'example_block_css',
         get_template_directory_uri() .'/assets/example-block.css'
     );
 }

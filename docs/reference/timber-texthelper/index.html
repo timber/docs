@@ -232,6 +232,7 @@
 <li><a href="#class-methods">Class Methods</a>
 <ul>
 <li><a href="#close-tags">close_tags</a></li>
+<li><a href="#ends-with">ends_with</a></li>
 <li><a href="#remove-tags">remove_tags</a></li>
 <li><a href="#starts-with">starts_with</a></li>
 <li><a href="#trim-characters">trim_characters</a></li>
@@ -246,8 +247,6 @@
 			<div class="content">
 				<p>Class provides different text-related functions
 commonly used in WordPress development</p>
-
-<p></p>
 
 <hr />
 
@@ -271,6 +270,42 @@ commonly used in WordPress development</p>
 <tbody>
 <tr>
 <td>$html</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h3 id="ends-with">ends_with</h3>
+
+<p><code>ends_with( string $haystack, string $needle )</code></p>
+
+<p><strong>returns:</strong> <code>boolean</code></p>
+
+<p>Does the string in question (haystack)</p>
+
+<p>end with the substring in question (needle)?</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$haystack</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>$needle</td>
 <td><code>string</code></td>
 <td></td>
 </tr>
@@ -345,7 +380,7 @@ commonly used in WordPress development</p>
 
 <h3 id="trim-characters">trim_characters</h3>
 
-<p><code>trim_characters( string $text, mixed/int $num_chars=60, mixed/string/null $more=null )</code></p>
+<p><code>trim_characters( string $text, mixed/int $num_chars=60, string $more=&quot;&amp;hellip;&quot; )</code></p>
 
 <p><strong>returns:</strong> <code>string</code> trimmed text.</p>
 
@@ -381,8 +416,8 @@ commonly used in WordPress development</p>
 
 <tr>
 <td>$more</td>
-<td><code>mixed/string/null</code></td>
-<td>Optional. What to append if $text needs to be trimmed. Default &lsquo;&hellip;&rsquo;.</td>
+<td><code>string</code></td>
+<td>What to append if $text needs to be trimmed. Defaults to &lsquo;&hellip;&rsquo;.</td>
 </tr>
 </tbody>
 </table>

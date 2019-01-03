@@ -16,9 +16,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-archives/</guid>
-      <description>&lt;p&gt;The TimberArchives class is used to generate a menu based on the date archives of your posts. The &lt;a href=&#34;http://nieman.harvard.edu/news/&#34;&gt;Nieman Foundation News site&lt;/a&gt; has an example of how the output can be used in a real site (&lt;a href=&#34;https://cloud.githubusercontent.com/assets/1298086/9610076/3cdca596-50a5-11e5-82fd-acb74c09c482.png&#34;&gt;screenshot&lt;/a&gt;).&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;The TimberArchives class is used to generate a menu based on the date archives of your posts. The &lt;a href=&#34;http://nieman.harvard.edu/news/&#34;&gt;Nieman Foundation News site&lt;/a&gt; has an example of how the output can be used in a real site (&lt;a href=&#34;https://cloud.githubusercontent.com/assets/1298086/9610076/3cdca596-50a5-11e5-82fd-acb74c09c482.png&#34;&gt;screenshot&lt;/a&gt;).&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -27,9 +25,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-comment/</guid>
-      <description>&lt;p&gt;The TimberComment class is used to view the output of comments. 99% of the time this will be in the context of the comments on a post. However you can also fetch a comment directly using its comment ID.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;The TimberComment class is used to view the output of comments. 99% of the time this will be in the context of the comments on a post. However you can also fetch a comment directly using its comment ID.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -38,9 +34,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-helper/</guid>
-      <description>&lt;p&gt;As the name suggests these are helpers for Timber (and you!) when developing. You can find additional (mainly internally-focused helpers) in TimberURLHelper&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;As the name suggests these are helpers for Timber (and you!) when developing. You can find additional (mainly internally-focused helpers) in TimberURLHelper&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -49,9 +43,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-image/</guid>
-      <description>&lt;p&gt;If TimberPost is the class you&amp;rsquo;re going to spend the most time, TimberImage is the class you&amp;rsquo;re going to have the most fun with.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;If TimberPost is the class you&amp;rsquo;re going to spend the most time, TimberImage is the class you&amp;rsquo;re going to have the most fun with.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -70,9 +62,7 @@
 &lt;p&gt;Implementation:
 - public static functions provide the methods that are called by the filter
 - most of the work is common to all filters (URL analysis, directory gymnastics, file caching, error management) and done by private static functions
-- the specific part (actual image processing) is delegated to dedicated subclasses of TimberImageOperation&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+- the specific part (actual image processing) is delegated to dedicated subclasses of TimberImageOperation&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -81,7 +71,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-menu/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>Overview Properties    Name Type Description     depth integer The depth of the menu we are rendering   items array/null Array of Timber\Menu objects you can to iterate through.   id integer The ID of the menu, corresponding to the wp_terms table.   ID integer The ID of the menu, corresponding to the wp_terms table.   term_id integer The ID of the menu, corresponding to the wp_terms table.</description>
     </item>
     
     <item>
@@ -90,7 +80,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-menuitem/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>Overview Properties    Name Type Description     children array Array of children of a menu item. Empty if there are no child menu items.   has_child_class bool Whether the menu item has a menu-item-has-children CSS class.   classes array Array of class names.   current bool Whether the menu item links to the currently displayed page.   current_item_parent bool Whether the menu item refers to the parent item of the currently displayed page.</description>
     </item>
     
     <item>
@@ -99,7 +89,12 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-pagination/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>Overview Methods    Name Type Returns/Description     get_pagination array mixed    Class Methods __construct __construct( array $prefs=array(), mixed $wp_query=null )
+returns: void
+   Name Type Description     $prefs array    $wp_query mixed     get_pagination get_pagination( array $prefs=array() )
+returns: array mixed
+Get pagination.
+   Name Type Description     $prefs array     paginate_links paginate_links( array $args=array() )</description>
     </item>
     
     <item>
@@ -108,9 +103,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-post/</guid>
-      <description>&lt;p&gt;This is the object you use to access or extend WordPress posts. Think of it as Timber&amp;rsquo;s (more accessible) version of WP_Post. This is used throughout Timber to represent posts retrieved from WordPress making them available to Twig templates. See the PHP and Twig examples for an example of what it&amp;rsquo;s like to work with this object in your code.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;This is the object you use to access or extend WordPress posts. Think of it as Timber&amp;rsquo;s (more accessible) version of WP_Post. This is used throughout Timber to represent posts retrieved from WordPress making them available to Twig templates. See the PHP and Twig examples for an example of what it&amp;rsquo;s like to work with this object in your code.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -120,9 +113,7 @@
       
       <guid>https://timber.github.io/docs/reference/timber-postpreview/</guid>
       <description>&lt;p&gt;An object that lets a user easily modify the post preview to their
-liking&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+liking&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -133,9 +124,7 @@ liking&lt;/p&gt;
       <guid>https://timber.github.io/docs/reference/timber-postquery/</guid>
       <description>&lt;p&gt;A PostQuery allows a user to query for a Collection of WordPress Posts.
 PostCollections are used directly in Twig templates to iterate through and retrieve
-meta information about the collection of posts&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+meta information about the collection of posts&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -144,9 +133,7 @@ meta information about the collection of posts&lt;/p&gt;
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-site/</guid>
-      <description>&lt;p&gt;TimberSite gives you access to information you need about your site. In Multisite setups, you can get info on other sites in your network.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;TimberSite gives you access to information you need about your site. In Multisite setups, you can get info on other sites in your network.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -156,9 +143,7 @@ meta information about the collection of posts&lt;/p&gt;
       
       <guid>https://timber.github.io/docs/reference/timber-term/</guid>
       <description>&lt;p&gt;Terms: WordPress has got &amp;lsquo;em, you want &amp;lsquo;em. Categories. Tags. Custom
-Taxonomies. You don&amp;rsquo;t care, you&amp;rsquo;re a fiend. Well let&amp;rsquo;s get this under control:&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+Taxonomies. You don&amp;rsquo;t care, you&amp;rsquo;re a fiend. Well let&amp;rsquo;s get this under control:&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -168,9 +153,7 @@ Taxonomies. You don&amp;rsquo;t care, you&amp;rsquo;re a fiend. Well let&amp;rsq
       
       <guid>https://timber.github.io/docs/reference/timber-texthelper/</guid>
       <description>&lt;p&gt;Class provides different text-related functions
-commonly used in WordPress development&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+commonly used in WordPress development&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -179,9 +162,7 @@ commonly used in WordPress development&lt;/p&gt;
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-theme/</guid>
-      <description>&lt;p&gt;Need to display info about your theme? Well you&amp;rsquo;ve come to the right place. By default info on the current theme comes for free with what&amp;rsquo;s fetched by &lt;code&gt;Timber::get_context()&lt;/code&gt; in which case you can access it your theme like so:&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;Need to display info about your theme? Well you&amp;rsquo;ve come to the right place. By default info on the current theme comes for free with what&amp;rsquo;s fetched by &lt;code&gt;Timber::get_context()&lt;/code&gt; in which case you can access it your theme like so:&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -192,9 +173,7 @@ commonly used in WordPress development&lt;/p&gt;
       <guid>https://timber.github.io/docs/reference/timber/</guid>
       <description>&lt;p&gt;Timber Class.&lt;/p&gt;
 
-&lt;p&gt;Main class called Timber for this plugin.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;Main class called Timber for this plugin.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -203,7 +182,16 @@ commonly used in WordPress development&lt;/p&gt;
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-urlhelper/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>Class Methods file_system_to_url file_system_to_url( string $fs )
+returns: void
+   Name Type Description     $fs string     get_content_subdir get_content_subdir( )
+returns: string (ex: /wp-content or /content)
+Get the path to the content directory relative to the site. This replaces the WP_CONTENT_SUBDIR constant
+get_current_url get_current_url( )
+returns: string
+get_full_path get_full_path( string $src )
+returns: string
+   Name Type Description     $src string     get_host get_host( )</description>
     </item>
     
     <item>
@@ -212,9 +200,7 @@ commonly used in WordPress development&lt;/p&gt;
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-user/</guid>
-      <description>&lt;p&gt;This is used in Timber to represent users retrived from WordPress. You can call &lt;code&gt;$my_user = new Timber\User(123);&lt;/code&gt; directly, or access it through the &lt;code&gt;{{ post.author }}&lt;/code&gt; method.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;This is used in Timber to represent users retrived from WordPress. You can call &lt;code&gt;$my_user = new Timber\User(123);&lt;/code&gt; directly, or access it through the &lt;code&gt;{{ post.author }}&lt;/code&gt; method.&lt;/p&gt;</description>
     </item>
     
   </channel>

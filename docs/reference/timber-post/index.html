@@ -304,8 +304,6 @@
 			<div class="content">
 				<p>This is the object you use to access or extend WordPress posts. Think of it as Timber&rsquo;s (more accessible) version of WP_Post. This is used throughout Timber to represent posts retrieved from WordPress making them available to Twig templates. See the PHP and Twig examples for an example of what it&rsquo;s like to work with this object in your code.</p>
 
-<p></p>
-
 <p><strong>PHP</strong></p>
 
 <pre><code class="language-php">&lt;?php
@@ -878,7 +876,7 @@ This is also here to ensure that {{ post.class }} remains usable</p>
 
 <h3 id="convert">convert</h3>
 
-<p><code>convert( array/\Timber\WP_Post $data, string $class=&quot;\Timber\Post&quot; )</code></p>
+<p><code>convert( array/\Timber\WP_Post $data )</code></p>
 
 <p><strong>returns:</strong> <code>void</code></p>
 
@@ -897,12 +895,6 @@ This is also here to ensure that {{ post.class }} remains usable</p>
 <tr>
 <td>$data</td>
 <td><code>array/\Timber\WP_Post</code></td>
-<td></td>
-</tr>
-
-<tr>
-<td>$class</td>
-<td><code>string</code></td>
 <td></td>
 </tr>
 </tbody>

@@ -238,6 +238,7 @@
 <li><a href="#array-to-object">array_to_object</a></li>
 <li><a href="#array-truncate">array_truncate</a></li>
 <li><a href="#strike-close-tags-strike"><strike>close_tags</strike></a></li>
+<li><a href="#convert-wp-object">convert_wp_object</a></li>
 <li><a href="#error-log">error_log</a></li>
 <li><a href="#filter-array">filter_array</a></li>
 <li><a href="#strike-function-wrapper-strike"><strike>function_wrapper</strike></a></li>
@@ -269,8 +270,6 @@
 		<div class="content-container">
 			<div class="content">
 				<p>As the name suggests these are helpers for Timber (and you!) when developing. You can find additional (mainly internally-focused helpers) in TimberURLHelper</p>
-
-<p></p>
 
 <h2 id="overview">Overview</h2>
 
@@ -390,6 +389,37 @@
 <td>$html</td>
 <td><code>string</code></td>
 <td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h3 id="convert-wp-object">convert_wp_object</h3>
+
+<p><code>convert_wp_object( \Timber\mix $obj )</code></p>
+
+<p><strong>returns:</strong> <code>\Timber\mix</code> Instance of equivalent Timber object, or the argument if no match is found</p>
+
+<p>Converts a WP object (WP_Post, WP_Term) into his
+equivalent Timber class (Timber\Post, Timber\Term).</p>
+
+<p>If no match is found the function will return the inital argument.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$obj</td>
+<td><code>\Timber\mix</code></td>
+<td>WP Object</td>
 </tr>
 </tbody>
 </table>
