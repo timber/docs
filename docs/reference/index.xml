@@ -112,8 +112,20 @@ Get pagination.
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-postpreview/</guid>
-      <description>&lt;p&gt;An object that lets a user easily modify the post preview to their
-liking&lt;/p&gt;</description>
+      <description>&lt;p&gt;The PostPreview class lets a user modify a post preview/excerpt to their liking.&lt;/p&gt;
+
+&lt;p&gt;It’s designed to be used through the &lt;code&gt;Timber\Post::preview()&lt;/code&gt; method. The public methods of this
+class all return the object itself, which means that this is a &lt;strong&gt;chainable object&lt;/strong&gt;. You can
+change the output of the preview by &lt;strong&gt;adding more methods&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;By default, the preview will&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;have a length of 50 words, which will be forced, even if a longer excerpt is set on the post.&lt;/li&gt;
+&lt;li&gt;be stripped of all HTML tags.&lt;/li&gt;
+&lt;li&gt;have an ellipsis (…) as the end of the text.&lt;/li&gt;
+&lt;li&gt;have a &amp;ldquo;Read More&amp;rdquo; link appended.&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
     
     <item>

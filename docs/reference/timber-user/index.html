@@ -238,12 +238,14 @@
 <ul>
 <li><a href="#construct">__construct</a></li>
 <li><a href="#tostring">__toString</a></li>
+<li><a href="#can">can</a></li>
 <li><a href="#get-custom">get_custom</a></li>
 <li><a href="#get-meta-field">get_meta_field</a></li>
 <li><a href="#link">link</a></li>
 <li><a href="#meta">meta</a></li>
 <li><a href="#name">name</a></li>
 <li><a href="#path">path</a></li>
+<li><a href="#roles">roles</a></li>
 <li><a href="#slug">slug</a></li>
 </ul></li>
 </ul></li>
@@ -318,6 +320,12 @@ Timber::render('single.twig', $context);
 <td><code>int</code></td>
 <td>The ID from WordPress</td>
 </tr>
+
+<tr>
+<td>roles</td>
+<td><code>array</code></td>
+<td></td>
+</tr>
 </tbody>
 </table>
 
@@ -334,6 +342,12 @@ Timber::render('single.twig', $context);
 
 <tbody>
 <tr>
+<td><a href="#can">can</a></td>
+<td><code>bool</code></td>
+<td>Whether the user has the capability.</td>
+</tr>
+
+<tr>
 <td><a href="#link">link</a></td>
 <td><code>string</code></td>
 <td><a href="http://example.org/author/lincoln">http://example.org/author/lincoln</a></td>
@@ -349,6 +363,12 @@ Timber::render('single.twig', $context);
 <td><a href="#path">path</a></td>
 <td><code>string</code></td>
 <td>ex: /author/lincoln</td>
+</tr>
+
+<tr>
+<td><a href="#roles">roles</a></td>
+<td><code>array/null</code></td>
+<td></td>
 </tr>
 
 <tr>
@@ -403,6 +423,48 @@ Timber::render('single.twig', $context);
 <p><strong>HTML</strong></p>
 
 <pre><code class="language-html">This post is by Jared Novack
+</code></pre>
+
+<hr />
+
+<h3 id="can">can</h3>
+
+<p><code>can( string $capability )</code></p>
+
+<p><strong>returns:</strong> <code>bool</code> Whether the user has the capability.</p>
+
+<p>Checks whether a user has a capability.</p>
+
+<p>Don’t use role slugs for capability checks. While checking against a role in place of a
+capability is supported in part, this practice is discouraged as it may produce unreliable
+results. This includes cases where you want to check whether a user is registered. If you
+want to check whether a user is a Subscriber, use <code>{{ user.can('read') }}</code>. If you only want
+to check whether a user is logged in, you can use <code>{% if user %}</code>.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$capability</td>
+<td><code>string</code></td>
+<td>The capability to check.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Give moderation users another CSS class to style them differently.
+<strong>Twig</strong></p>
+
+<pre><code class="language-twig">&lt;span class=&quot;comment-author {{ comment.author.can('moderate_comments') ? 'comment-author--is-moderator }}&quot;&gt;
+    {{ comment.author.name }}
+&lt;/span&gt;
 </code></pre>
 
 <hr />
@@ -488,6 +550,43 @@ Timber::render('single.twig', $context);
 <p><code>path( )</code></p>
 
 <p><strong>returns:</strong> <code>string</code> ex: /author/lincoln</p>
+
+<hr />
+
+<h3 id="roles">roles</h3>
+
+<p><code>roles( )</code></p>
+
+<p><strong>returns:</strong> <code>array/null</code></p>
+
+<p>Gets the user roles.
+Roles shouldn’t be used to check whether a user has a capability. Use roles only for
+displaying purposes. For example, if you want to display the name of the subscription a user
+has on the site behind a paywall.</p>
+
+<p>If you want to check for capabilities, use <code>{{ user.can('capability') }}</code>. If you only want
+to check whether a user is logged in, you can use <code>{% if user %}</code>.</p>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">&lt;h2&gt;Role name&lt;/h2&gt;
+{% for role in post.author.roles %}
+    {{ role }}
+{% endfor %}
+</code></pre>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">&lt;h2&gt;Role name&lt;/h2&gt;
+{{ post.author.roles|join(', ') }}
+</code></pre>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">{% for slug, name in post.author.roles %}
+    {{ slug }}
+{% endfor %}
+</code></pre>
 
 <hr />
 

@@ -229,6 +229,10 @@
 <ul>
 <li>
 <ul>
+<li><a href="#overview">Overview</a>
+<ul>
+<li><a href="#methods">Methods</a></li>
+</ul></li>
 <li><a href="#class-methods">Class Methods</a>
 <ul>
 <li><a href="#construct">__construct</a></li>
@@ -249,8 +253,94 @@
 
 		<div class="content-container">
 			<div class="content">
-				<p>An object that lets a user easily modify the post preview to their
-liking</p>
+				<p>The PostPreview class lets a user modify a post preview/excerpt to their liking.</p>
+
+<p>It’s designed to be used through the <code>Timber\Post::preview()</code> method. The public methods of this
+class all return the object itself, which means that this is a <strong>chainable object</strong>. You can
+change the output of the preview by <strong>adding more methods</strong>.</p>
+
+<p>By default, the preview will</p>
+
+<ul>
+<li>have a length of 50 words, which will be forced, even if a longer excerpt is set on the post.</li>
+<li>be stripped of all HTML tags.</li>
+<li>have an ellipsis (…) as the end of the text.</li>
+<li>have a &ldquo;Read More&rdquo; link appended.</li>
+</ul>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">{# Use default preview #}
+&lt;p&gt;{{ post.preview }}&lt;/p&gt;
+{# Change the post preview text #}
+&lt;p&gt;{{ post.preview.read_more('Continue Reading') }}&lt;/p&gt;
+{# Additionally restrict the length to 50 words #}
+&lt;p&gt;{{ post.preview.length(50).read_more('Continue Reading') }}&lt;/p&gt;
+</code></pre>
+
+<h2 id="overview">Overview</h2>
+
+<h3 id="methods">Methods</h3>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Returns/Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="#__construct">__construct</a></td>
+<td><code>void</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#__toString">__toString</a></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#chars">chars</a></td>
+<td><code>\Timber\PostPreview</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#end">end</a></td>
+<td><code>\Timber\PostPreview</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#force">force</a></td>
+<td><code>\Timber\PostPreview</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#length">length</a></td>
+<td><code>\Timber\PostPreview</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#read_more">read_more</a></td>
+<td><code>\Timber\PostPreview</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#strip">strip</a></td>
+<td><code>\Timber\PostPreview</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
 <hr />
 
@@ -261,6 +351,8 @@ liking</p>
 <p><code>__construct( \Timber\Post $post )</code></p>
 
 <p><strong>returns:</strong> <code>void</code></p>
+
+<p>PostPreview constructor.</p>
 
 <table>
 <thead>
@@ -275,7 +367,7 @@ liking</p>
 <tr>
 <td>$post</td>
 <td><code>\Timber\Post</code></td>
-<td></td>
+<td>The post to pull the preview from.</td>
 </tr>
 </tbody>
 </table>
@@ -286,15 +378,19 @@ liking</p>
 
 <p><code>__toString( )</code></p>
 
-<p><strong>returns:</strong> <code>void</code></p>
+<p><strong>returns:</strong> <code>string</code></p>
+
+<p>Returns the resulting preview.</p>
 
 <hr />
 
 <h3 id="chars">chars</h3>
 
-<p><code>chars( bool/\Timber\integer $char_length=false )</code></p>
+<p><code>chars( bool/int/bool $char_length=false )</code></p>
 
-<p><strong>returns:</strong> <code>void</code></p>
+<p><strong>returns:</strong> <code>\Timber\PostPreview</code></p>
+
+<p>Restricts the length of the preview to a certain amount of characters.</p>
 
 <table>
 <thead>
@@ -308,11 +404,16 @@ liking</p>
 <tbody>
 <tr>
 <td>$char_length</td>
-<td><code>bool/\Timber\integer</code></td>
-<td>(in characters) of the target preview</td>
+<td><code>bool/int/bool</code></td>
+<td>The maximum amount of characters for the preview. Default <code>false</code>.</td>
 </tr>
 </tbody>
 </table>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">&lt;p&gt;{{ post.preview.chars(180) }}&lt;/p&gt;
+</code></pre>
 
 <hr />
 
@@ -320,7 +421,9 @@ liking</p>
 
 <p><code>end( string $end=&quot;&amp;hellip;&quot; )</code></p>
 
-<p><strong>returns:</strong> <code>void</code></p>
+<p><strong>returns:</strong> <code>\Timber\PostPreview</code></p>
+
+<p>Defines the text to end the preview with.</p>
 
 <table>
 <thead>
@@ -335,18 +438,29 @@ liking</p>
 <tr>
 <td>$end</td>
 <td><code>string</code></td>
-<td>how should the text in the preview end</td>
+<td>The text for the end of the preview. Default <code>…</code>.</td>
 </tr>
 </tbody>
 </table>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">&lt;p&gt;{{ post.preview.end('… and much more!') }}&lt;/p&gt;
+</code></pre>
 
 <hr />
 
 <h3 id="force">force</h3>
 
-<p><code>force( bool/boolean $force=true )</code></p>
+<p><code>force( bool $force=true )</code></p>
 
-<p><strong>returns:</strong> <code>void</code></p>
+<p><strong>returns:</strong> <code>\Timber\PostPreview</code></p>
+
+<p>Forces preview lengths.</p>
+
+<p>What happens if your custom post excerpt is longer than the length requested? By default, it
+will use the full <code>post_excerpt</code>. However, you can set this to <code>true</code> to <em>force</em> your excerpt
+to be of the desired length.</p>
 
 <table>
 <thead>
@@ -360,19 +474,26 @@ liking</p>
 <tbody>
 <tr>
 <td>$force</td>
-<td><code>bool/boolean</code></td>
-<td>If the editor wrote a manual excerpt longer than the set length, should it be &ldquo;forced&rdquo; to the size specified?</td>
+<td><code>bool</code></td>
+<td>Whether the length of the preview should be forced to the requested length, even if an editor wrote a manual excerpt that is longer than the set length. Default <code>true</code>.</td>
 </tr>
 </tbody>
 </table>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">&lt;p&gt;{{ post.preview.length(20).force }}&lt;/p&gt;
+</code></pre>
 
 <hr />
 
 <h3 id="length">length</h3>
 
-<p><code>length( mixed/\Timber\integer $length=50 )</code></p>
+<p><code>length( mixed/int $length=50 )</code></p>
 
-<p><strong>returns:</strong> <code>void</code></p>
+<p><strong>returns:</strong> <code>\Timber\PostPreview</code></p>
+
+<p>Restricts the length of the preview to a certain amount of words.</p>
 
 <table>
 <thead>
@@ -386,11 +507,16 @@ liking</p>
 <tbody>
 <tr>
 <td>$length</td>
-<td><code>mixed/\Timber\integer</code></td>
-<td>(in words) of the target preview</td>
+<td><code>mixed/int</code></td>
+<td>The maximum amount of words (not letters) for the preview. Default <code>50</code>.</td>
 </tr>
 </tbody>
 </table>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">&lt;p&gt;{{ post.preview.length(50) }}&lt;/p&gt;
+</code></pre>
 
 <hr />
 
@@ -398,7 +524,11 @@ liking</p>
 
 <p><code>read_more( string $readmore=&quot;Read More&quot; )</code></p>
 
-<p><strong>returns:</strong> <code>void</code></p>
+<p><strong>returns:</strong> <code>\Timber\PostPreview</code></p>
+
+<p>Defines the text to be used for the &ldquo;Read More&rdquo; link.</p>
+
+<p>Set this to <code>false</code> to not add a &ldquo;Read More&rdquo; link.</p>
 
 <table>
 <thead>
@@ -413,7 +543,7 @@ liking</p>
 <tr>
 <td>$readmore</td>
 <td><code>string</code></td>
-<td>What the text displays as to the reader inside of the <a> tag</td>
+<td>Text for the link. Default &lsquo;Read More&rsquo;.</td>
 </tr>
 </tbody>
 </table>
@@ -422,9 +552,11 @@ liking</p>
 
 <h3 id="strip">strip</h3>
 
-<p><code>strip( bool/boolean/string $strip=true )</code></p>
+<p><code>strip( bool/bool/string $strip=true )</code></p>
 
-<p><strong>returns:</strong> <code>void</code></p>
+<p><strong>returns:</strong> <code>\Timber\PostPreview</code></p>
+
+<p>Defines how HTML tags should be stripped from the preview.</p>
 
 <table>
 <thead>
@@ -438,8 +570,8 @@ liking</p>
 <tbody>
 <tr>
 <td>$strip</td>
-<td><code>bool/boolean/string</code></td>
-<td>strip the tags or what? You can also provide a list of allowed tags (e.g. &lsquo;<p><a>&rsquo;)</td>
+<td><code>bool/bool/string</code></td>
+<td>Whether or how HTML tags in the preview should be stripped. Use <code>true</code> to strip all tags, <code>false</code> for no stripping, or a string for a list of allowed tags (e.g. &lsquo;<p><a>&rsquo;). Default <code>true</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -448,7 +580,7 @@ liking</p>
 
 <h3 id="assemble">assemble</h3>
 
-<p><code>assemble( string $text, array/\Timber\booelan $readmore_matches, boolean $trimmed )</code></p>
+<p><code>assemble( string $text, array/bool $readmore_matches, boolean $trimmed )</code></p>
 
 <p><strong>returns:</strong> <code>void</code></p>
 
@@ -470,7 +602,7 @@ liking</p>
 
 <tr>
 <td>$readmore_matches</td>
-<td><code>array/\Timber\booelan</code></td>
+<td><code>array/bool</code></td>
 <td></td>
 </tr>
 
