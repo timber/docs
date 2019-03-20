@@ -3,3 +3,4 @@
 /vendor/
 /content/**/*
 /generator/timber-current/*
+studio.json
