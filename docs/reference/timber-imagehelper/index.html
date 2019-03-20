@@ -1073,9 +1073,11 @@ New dimensions are achieved by cropping to maintain ratio.</p>
 
 <h3 id="is-in-theme-dir">is_in_theme_dir</h3>
 
-<p><code>is_in_theme_dir( mixed $path )</code></p>
+<p><code>is_in_theme_dir( string $path )</code></p>
 
-<p><strong>returns:</strong> <code>bool</code></p>
+<p><strong>returns:</strong> <code>bool</code> If the image is located in the theme directory it returns true. If not or $path doesn&rsquo;t exits it returns false.</p>
+
+<p>Checks if uploaded image is located in theme.</p>
 
 <table>
 <thead>
@@ -1089,8 +1091,8 @@ New dimensions are achieved by cropping to maintain ratio.</p>
 <tbody>
 <tr>
 <td>$path</td>
-<td><code>mixed</code></td>
-<td></td>
+<td><code>string</code></td>
+<td>image path.</td>
 </tr>
 </tbody>
 </table>

@@ -238,6 +238,7 @@
 <ul>
 <li><a href="#construct">__construct</a></li>
 <li><a href="#tostring">__toString</a></li>
+<li><a href="#avatar">avatar</a></li>
 <li><a href="#can">can</a></li>
 <li><a href="#get-custom">get_custom</a></li>
 <li><a href="#get-meta-field">get_meta_field</a></li>
@@ -292,15 +293,15 @@ Timber::render('single.twig', $context);
 
 <tbody>
 <tr>
-<td>description</td>
+<td>avatar_override</td>
 <td><code>string</code></td>
-<td>The description from WordPress</td>
+<td>A URL to an avatar that overrides anything from Gravatar, etc.</td>
 </tr>
 
 <tr>
-<td>avatar</td>
-<td><code>string/Image</code></td>
-<td>The URL of the author&rsquo;s avatar</td>
+<td>description</td>
+<td><code>string</code></td>
+<td>The description from WordPress</td>
 </tr>
 
 <tr>
@@ -341,6 +342,12 @@ Timber::render('single.twig', $context);
 </thead>
 
 <tbody>
+<tr>
+<td><a href="#avatar">avatar</a></td>
+<td><code>string/\Timber\Image</code></td>
+<td>The avatar URL.</td>
+</tr>
+
 <tr>
 <td><a href="#can">can</a></td>
 <td><code>bool</code></td>
@@ -423,6 +430,40 @@ Timber::render('single.twig', $context);
 <p><strong>HTML</strong></p>
 
 <pre><code class="language-html">This post is by Jared Novack
+</code></pre>
+
+<hr />
+
+<h3 id="avatar">avatar</h3>
+
+<p><code>avatar( mixed/null/array $args=null )</code></p>
+
+<p><strong>returns:</strong> <code>string/\Timber\Image</code> The avatar URL.</p>
+
+<p>Gets a user’s avatar URL.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$args</td>
+<td><code>mixed/null/array</code></td>
+<td>Parameters for <a href="https://developer.wordpress.org/reference/functions/get_avatar_url/"><code>get_avatar_url()</code></a>.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Get a user avatar with a width and height of 150px:
+<strong>Twig</strong></p>
+
+<pre><code class="language-twig">&lt;img src=&quot;{{ post.author.avatar({ size: 150 }) }}&quot;&gt;
 </code></pre>
 
 <hr />

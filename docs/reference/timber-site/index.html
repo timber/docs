@@ -252,14 +252,14 @@
 
 		<div class="content-container">
 			<div class="content">
-				<p>TimberSite gives you access to information you need about your site. In Multisite setups, you can get info on other sites in your network.</p>
+				<p>Timber\Site gives you access to information you need about your site. In Multisite setups, you can get info on other sites in your network.</p>
 
 <p><strong>PHP</strong></p>
 
 <pre><code class="language-php">&lt;?php
 $context = Timber::get_context();
 $other_site_id = 2;
-$context['other_site'] = new TimberSite($other_site_id);
+$context['other_site'] = new Timber\Site($other_site_id);
 Timber::render('index.twig', $context);
 </code></pre>
 
@@ -385,7 +385,7 @@ Timber::render('index.twig', $context);
 
 <p><strong>returns:</strong> <code>void</code></p>
 
-<p>Constructs a TimberSite object</p>
+<p>Constructs a Timber\Site object</p>
 
 <table>
 <thead>
@@ -409,10 +409,10 @@ Timber::render('index.twig', $context);
 
 <pre><code class="language-php">&lt;?php
 //multisite setup
-$site = new TimberSite(1);
-$site_two = new TimberSite(&quot;My Cool Site&quot;);
+$site = new Timber\Site(1);
+$site_two = new Timber\Site(&quot;My Cool Site&quot;);
 //non-multisite
-$site = new TimberSite();
+$site = new Timber\Site();
 </code></pre>
 
 <hr />

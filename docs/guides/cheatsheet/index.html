@@ -245,7 +245,7 @@
 <p>Here are some helpful conversions for functions you’re probably well familiar with in WordPress and their Timber equivalents. These assume a PHP file with the <code>Timber::get_context();</code> function at the top. For example:</p>
 
 <pre><code class="language-php">$context = Timber::get_context();
-$context['post'] = new TimberPost();
+$context['post'] = new Timber\Post();
 Timber::render( 'single.twig', $context );
 </code></pre>
 

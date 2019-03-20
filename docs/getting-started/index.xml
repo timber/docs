@@ -39,7 +39,7 @@ wp-content/themes/{timber-starter-theme}/templates/single.twig  Brilliant! Open 
       
       <guid>https://timber.github.io/docs/getting-started/twig-tools/</guid>
       <description>The purpose of this page is to identify helpful tools for working with Twig.
-Text editor add-ons  Text Mate &amp;amp; Sublime text bundle – Anomareh&amp;rsquo;s PHP-Twig Emacs – Web Mode Geany – Add Twig/Symfony2 detection and highlighting PhpStorm – Built in coloring and code hinting. The Twig extension is recognized and has been for some time. Twig Details for PhpStorm. Atom – Syntax highlighting with the Atom Component.  WordPress tools  Lisa Templates – allows you to write Twig-templates in the WordPress admin that renders through a shortcode or widget.</description>
+Text editor add-ons  Text Mate &amp;amp; Sublime text bundle – Anomareh&amp;rsquo;s PHP-Twig Emacs – Web Mode Geany – Add Twig/Symfony2 detection and highlighting PhpStorm – Built in coloring and code hinting. The Twig extension is recognized and has been for some time. Twig Details for PhpStorm. Atom – Syntax highlighting with the Atom Component.  WordPress tools  Lisa Templates – allows you to write Twig-templates in the WordPress admin that renders through a shortcode, widget or on the_content hook.</description>
     </item>
     
     <item>

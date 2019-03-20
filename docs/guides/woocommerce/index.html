@@ -244,11 +244,22 @@
 
 <h2 id="point-of-entry-main-woocommerce-php-file">Point of entry - main WooCommerce PHP file</h2>
 
-<p>The first step to get your WooCommerce project integrated with Timber is creating a file named <code>woocommerce.php</code> in the root of your theme. That will establish the context and data to be passed to your Twig files:</p>
+<p>The first step to get your WooCommerce project integrated with Timber is declaring WooCommerce support in your theme’s <strong>functions.php</strong> file like so:</p>
+
+<pre><code class="language-php">function theme_add_woocommerce_support() {
+    add_theme_support( 'woocommerce' );
+}
+
+add_action( 'after_setup_theme', 'theme_add_woocommerce_support' );
+</code></pre>
+
+<p>For more information about how you can enable or disable features and change settings through theme support, refer to the <a href="https://docs.woocommerce.com/document/woocommerce-theme-developer-handbook">WooCommerce Theme Developer Handbook</a>.</p>
+
+<p>Once that’s done you can start integrating WooCommerce into your theme by creating a file named <strong>woocommerce.php</strong> in the root of your theme. That will establish the context and data to be passed to your Twig files:</p>
 
 <pre><code class="language-php">&lt;?php
 
-if ( ! class_exists( 'Timber' ) ){
+if ( ! class_exists( 'Timber' ) ) {
     echo 'Timber not activated. Make sure you activate the plugin in &lt;a href=&quot;/wp-admin/plugins.php#timber&quot;&gt;/wp-admin/plugins.php&lt;/a&gt;';
 
     return;

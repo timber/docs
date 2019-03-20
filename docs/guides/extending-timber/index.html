@@ -246,16 +246,16 @@
 
 <h2 id="an-example-that-extends-timberpost">An example that extends TimberPost</h2>
 
-<p>Timber&rsquo;s objects like <code>TimberPost</code>, <code>TimberTerm</code>, etc. are a great starting point to build your own subclass from. For example, on this project each post was a part of an &ldquo;issue&rdquo; of a magazine. I wanted an easy way to reference the issue in the twig file:</p>
+<p>Timber&rsquo;s objects like <code>Timber\Post</code>, <code>Timber\Term</code>, etc. are a great starting point to build your own subclass from. For example, on this project each post was a part of an &ldquo;issue&rdquo; of a magazine. I wanted an easy way to reference the issue in the twig file:</p>
 
 <pre><code class="language-twig">&lt;h1&gt;{{ post.title }}&lt;/h1&gt;
 &lt;h3&gt;From the {{ post.issue.title }} issue&lt;/h3&gt;
 </code></pre>
 
-<p>Of course, <code>TimberPost</code> has no built-in concept of an issue (which I&rsquo;ve built as a custom taxonomy called &ldquo;issues&rdquo;). So we&rsquo;re going to extend TimberPost to give it one:</p>
+<p>Of course, <code>Timber\Post</code> has no built-in concept of an issue (which I&rsquo;ve built as a custom taxonomy called &ldquo;issues&rdquo;). So we&rsquo;re going to extend TimberPost to give it one:</p>
 
 <pre><code class="language-php">&lt;?php
-class MySitePost extends TimberPost {
+class MySitePost extends Timber\Post {
 
 	var $_issue;
 
@@ -272,7 +272,7 @@ class MySitePost extends TimberPost {
 issue data:</p>
 
 <pre><code class="language-php">&lt;?php
-class MySitePost extends TimberPost {
+class MySitePost extends Timber\Post {
 
 	var $_issue;
 
@@ -288,12 +288,12 @@ class MySitePost extends TimberPost {
 }
 </code></pre>
 
-<p>Right now I&rsquo;m in the midst of building a complex site for a hybrid foundation and publication. The posts on the site have some very specific requirements that requires a fair amount of logic. I can take the simple <code>TimberPost</code> object and extend it to make it work perfectly for this theme.</p>
+<p>Right now I&rsquo;m in the midst of building a complex site for a hybrid foundation and publication. The posts on the site have some very specific requirements that requires a fair amount of logic. I can take the simple <code>Timber\Post</code> object and extend it to make it work perfectly for this theme.</p>
 
 <p>For example, I have a plugin that let&rsquo;s people insert manually related posts, but if they don&rsquo;t, WordPress will pull some automatically based on how the post is tagged.</p>
 
 <pre><code class="language-php">	&lt;?php
-	class MySitePost extends TimberPost {
+	class MySitePost extends Timber\Post {
 
 		function get_related_auto() {
 			$tags = $this-&gt;tags();

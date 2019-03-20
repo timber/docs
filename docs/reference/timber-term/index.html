@@ -263,13 +263,13 @@ Taxonomies. You don&rsquo;t care, you&rsquo;re a fiend. Well let&rsquo;s get thi
 
 <pre><code class="language-php">&lt;?php
 //Get a term by its ID
-$context['term'] = new TimberTerm(6);
+$context['term'] = new Timber\Term(6);
 //Get a term when on a term archive page
-$context['term_page'] = new TimberTerm();
+$context['term_page'] = new Timber\Term();
 //Get a term with a slug
-$context['team'] = new TimberTerm('patriots');
+$context['team'] = new Timber\Term('patriots');
 //Get a team with a slug from a specific taxonomy
-$context['st_louis'] = new TimberTerm('cardinals', 'baseball');
+$context['st_louis'] = new Timber\Term('cardinals', 'baseball');
 Timber::render('index.twig', $context);
 </code></pre>
 
@@ -289,7 +289,7 @@ Timber::render('index.twig', $context);
 &lt;h3&gt;Teams&lt;/h3&gt;
 &lt;ul&gt;
     &lt;li&gt;St. Louis Cardinals - Winner of 11 World Series&lt;/li&gt;
-    &lt;li&gt;New England Patriots - Winner of 4 Super Bowls&lt;/li&gt;
+    &lt;li&gt;New England Patriots - Winner of 6 Super Bowls&lt;/li&gt;
 &lt;/ul&gt;
 </code></pre>
 

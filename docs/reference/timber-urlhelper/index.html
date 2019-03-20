@@ -489,6 +489,9 @@ OR if sent an integer like: TimberUrlHelper::get_params(2); this will return &ls
 
 <p><strong>returns:</strong> <code>bool</code> true if $path is an external url, false if relative or local. true if it&rsquo;s a subdomain (<a href="http://cdn.example.org">http://cdn.example.org</a> = true)</p>
 
+<p>Checks if URL is external or internal.
+Works with domains, subdomains and protocol relative domains.</p>
+
 <table>
 <thead>
 <tr>
@@ -743,11 +746,9 @@ Wordpress install will be reported as external content.</p>
 
 <p><strong>returns:</strong> <code>boolean</code></p>
 
-<p>Check to see if the URL begins with the string in question</p>
-
-<p>Because it&rsquo;s a URL we don&rsquo;t care about protocol (HTTP vs HTTPS)</p>
-
-<p>Or case (so it&rsquo;s cAsE iNsEnSeTiVe)</p>
+<p>Check to see if the URL begins with the string in question
+Because it&rsquo;s a URL we don&rsquo;t care about protocol (HTTP vs HTTPS)
+Or case (so it&rsquo;s cAsE iNsEnSeTiVe)</p>
 
 <table>
 <thead>

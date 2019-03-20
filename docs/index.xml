@@ -27,7 +27,7 @@ While data saved by ACF is available via {{ post.my_acf_field }} you will often 
       
       <guid>https://timber.github.io/docs/guides/cheatsheet/</guid>
       <description>Here are some helpful conversions for functions you’re probably well familiar with in WordPress and their Timber equivalents. These assume a PHP file with the Timber::get_context(); function at the top. For example:
-$context = Timber::get_context(); $context[&#39;post&#39;] = new TimberPost(); Timber::render( &#39;single.twig&#39;, $context );  Blog Info  blog_info(&#39;charset&#39;) =&amp;gt; {{ site.charset }} blog_info(&#39;description&#39;) =&amp;gt; {{ site.description }} blog_info(&#39;sitename&#39;) =&amp;gt; {{ site.name }} blog_info(&#39;url&#39;) =&amp;gt; {{ site.url }}  Body Class  implode(&#39; &#39;, get_body_class()) =&amp;gt; &amp;lt;body class=&amp;quot;{{ body_class }}&amp;quot;&amp;gt;  Post  the_content() =&amp;gt; {{ post.</description>
+$context = Timber::get_context(); $context[&#39;post&#39;] = new Timber\Post(); Timber::render( &#39;single.twig&#39;, $context );  Blog Info  blog_info(&#39;charset&#39;) =&amp;gt; {{ site.charset }} blog_info(&#39;description&#39;) =&amp;gt; {{ site.description }} blog_info(&#39;sitename&#39;) =&amp;gt; {{ site.name }} blog_info(&#39;url&#39;) =&amp;gt; {{ site.url }}  Body Class  implode(&#39; &#39;, get_body_class()) =&amp;gt; &amp;lt;body class=&amp;quot;{{ body_class }}&amp;quot;&amp;gt;  Post  the_content() =&amp;gt; {{ post.</description>
     </item>
     
     <item>
@@ -75,7 +75,7 @@ if ( class_exists(&#39;Timber&#39;) ) { Timber::$autoescape = &#39;html&#39;; } 
       <guid>https://timber.github.io/docs/guides/extending-timber/</guid>
       <description>Myth: Timber is for making simple themes. Fact: It&amp;rsquo;s for making incredibly complex themes look easy. But yes, you can also make simple sites from it.
 The beauty of Timber is that the object-oriented nature lets you extend it to match the exact requirements of your theme.
-An example that extends TimberPost Timber&amp;rsquo;s objects like TimberPost, TimberTerm, etc. are a great starting point to build your own subclass from. For example, on this project each post was a part of an &amp;ldquo;issue&amp;rdquo; of a magazine.</description>
+An example that extends TimberPost Timber&amp;rsquo;s objects like Timber\Post, Timber\Term, etc. are a great starting point to build your own subclass from. For example, on this project each post was a part of an &amp;ldquo;issue&amp;rdquo; of a magazine.</description>
     </item>
     
     <item>
@@ -264,7 +264,7 @@ wp-content/themes/{timber-starter-theme}/templates/single.twig  Brilliant! Open 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-comment/</guid>
-      <description>&lt;p&gt;The TimberComment class is used to view the output of comments. 99% of the time this will be in the context of the comments on a post. However you can also fetch a comment directly using its comment ID.&lt;/p&gt;</description>
+      <description>&lt;p&gt;The Timber\Comment class is used to view the output of comments. 99% of the time this will be in the context of the comments on a post. However you can also fetch a comment directly using its comment ID.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -282,7 +282,7 @@ wp-content/themes/{timber-starter-theme}/templates/single.twig  Brilliant! Open 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-image/</guid>
-      <description>&lt;p&gt;If TimberPost is the class you&amp;rsquo;re going to spend the most time, TimberImage is the class you&amp;rsquo;re going to have the most fun with.&lt;/p&gt;</description>
+      <description>&lt;p&gt;If TimberPost is the class you&amp;rsquo;re going to spend the most time, Timber\Image is the class you&amp;rsquo;re going to have the most fun with.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -384,7 +384,7 @@ meta information about the collection of posts&lt;/p&gt;</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-site/</guid>
-      <description>&lt;p&gt;TimberSite gives you access to information you need about your site. In Multisite setups, you can get info on other sites in your network.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Timber\Site gives you access to information you need about your site. In Multisite setups, you can get info on other sites in your network.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -474,7 +474,7 @@ In your PHP file
       
       <guid>https://timber.github.io/docs/getting-started/twig-tools/</guid>
       <description>The purpose of this page is to identify helpful tools for working with Twig.
-Text editor add-ons  Text Mate &amp;amp; Sublime text bundle – Anomareh&amp;rsquo;s PHP-Twig Emacs – Web Mode Geany – Add Twig/Symfony2 detection and highlighting PhpStorm – Built in coloring and code hinting. The Twig extension is recognized and has been for some time. Twig Details for PhpStorm. Atom – Syntax highlighting with the Atom Component.  WordPress tools  Lisa Templates – allows you to write Twig-templates in the WordPress admin that renders through a shortcode or widget.</description>
+Text editor add-ons  Text Mate &amp;amp; Sublime text bundle – Anomareh&amp;rsquo;s PHP-Twig Emacs – Web Mode Geany – Add Twig/Symfony2 detection and highlighting PhpStorm – Built in coloring and code hinting. The Twig extension is recognized and has been for some time. Twig Details for PhpStorm. Atom – Syntax highlighting with the Atom Component.  WordPress tools  Lisa Templates – allows you to write Twig-templates in the WordPress admin that renders through a shortcode, widget or on the_content hook.</description>
     </item>
     
     <item>
@@ -504,8 +504,9 @@ Option 2: Via Composer (for developers) 1) Navigate to your WordPress plugins di
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/guides/woocommerce/</guid>
-      <description>Point of entry - main WooCommerce PHP file The first step to get your WooCommerce project integrated with Timber is creating a file named woocommerce.php in the root of your theme. That will establish the context and data to be passed to your Twig files:
-&amp;lt;?php if ( ! class_exists( &#39;Timber&#39; ) ){ echo &#39;Timber not activated. Make sure you activate the plugin in &amp;lt;a href=&amp;quot;/wp-admin/plugins.php#timber&amp;quot;&amp;gt;/wp-admin/plugins.php&amp;lt;/a&amp;gt;&#39;; return; } $context = Timber::get_context(); $context[&#39;sidebar&#39;] = Timber::get_widgets( &#39;shop-sidebar&#39; ); if ( is_singular( &#39;product&#39; ) ) { $context[&#39;post&#39;] = Timber::get_post(); $product = wc_get_product( $context[&#39;post&#39;]-&amp;gt;ID ); $context[&#39;product&#39;] = $product; // Get related products $related_limit = wc_get_loop_prop( &#39;columns&#39; ); $related_ids = wc_get_related_products( $context[&#39;post&#39;]-&amp;gt;id, $related_limit ); $context[&#39;related_products&#39;] = Timber::get_posts( $related_ids ); // Restore the context and loop back to the main query loop.</description>
+      <description>Point of entry - main WooCommerce PHP file The first step to get your WooCommerce project integrated with Timber is declaring WooCommerce support in your theme’s functions.php file like so:
+function theme_add_woocommerce_support() { add_theme_support( &#39;woocommerce&#39; ); } add_action( &#39;after_setup_theme&#39;, &#39;theme_add_woocommerce_support&#39; );  For more information about how you can enable or disable features and change settings through theme support, refer to the WooCommerce Theme Developer Handbook.
+Once that’s done you can start integrating WooCommerce into your theme by creating a file named woocommerce.</description>
     </item>
     
     <item>

@@ -827,7 +827,7 @@ function the_form() {
     echo '&lt;form action=&quot;form.php&quot;&gt;&lt;input type=&quot;text&quot; /&gt;&lt;input type=&quot;submit /&gt;&lt;/form&gt;';
 }
 $context = Timber::get_context();
-$context['post'] = new TimberPost();
+$context['post'] = new Timber\Post();
 $context['my_form'] = TimberHelper::ob_function('the_form');
 Timber::render('single-form.twig', $context);
 </code></pre>

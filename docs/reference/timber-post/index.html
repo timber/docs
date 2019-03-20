@@ -402,12 +402,12 @@ Timber::render('single.twig', $context);
 <tr>
 <td><a href="#categories">categories</a></td>
 <td><code>array</code></td>
-<td>of TimberTerms</td>
+<td>of Timber\Terms</td>
 </tr>
 
 <tr>
 <td><a href="#category">category</a></td>
-<td><code>\Timber\TimberTerm/null</code></td>
+<td><code>\Timber\Timber\Term/null</code></td>
 <td></td>
 </tr>
 
@@ -679,7 +679,7 @@ This is also here to ensure that {{ post.class }} remains usable</p>
 
 <p><code>categories( )</code></p>
 
-<p><strong>returns:</strong> <code>array</code> of TimberTerms</p>
+<p><strong>returns:</strong> <code>array</code> of Timber\Terms</p>
 
 <p>Get the categoires on a particular post</p>
 
@@ -689,7 +689,7 @@ This is also here to ensure that {{ post.class }} remains usable</p>
 
 <p><code>category( )</code></p>
 
-<p><strong>returns:</strong> <code>\Timber\TimberTerm/null</code></p>
+<p><strong>returns:</strong> <code>\Timber\Timber\Term/null</code></p>
 
 <p>Returns a category attached to a post</p>
 
@@ -774,7 +774,7 @@ This is also here to ensure that {{ post.class }} remains usable</p>
 
 <p><strong>returns:</strong> <code>bool/array</code></p>
 
-<p>Gets the comments on a Timber\Post and returns them as an array of <a href="#TimberComment">TimberComments</a> (or whatever comment class you set).</p>
+<p>Gets the comments on a Timber\Post and returns them as an array of <a href="#TimberComment">Timber\Comment</a> (or whatever comment class you set).</p>
 
 <table>
 <thead>
@@ -813,7 +813,7 @@ This is also here to ensure that {{ post.class }} remains usable</p>
 <tr>
 <td>$CommentClass</td>
 <td><code>string</code></td>
-<td>What class to use when returning Comment objects. As you become a Timber pro, you might find yourself extending TimberComment for your site or app (obviously, totally optional)</td>
+<td>What class to use when returning Comment objects. As you become a Timber pro, you might find yourself extending Timber\Comment for your site or app (obviously, totally optional)</td>
 </tr>
 </tbody>
 </table>
@@ -1106,7 +1106,7 @@ This includes metadata on the field like whether it&rsquo;s conditional or not.<
 
 <p><code>get_image( string $field )</code></p>
 
-<p><strong>returns:</strong> <code>\Timber\TimberImage</code></p>
+<p><strong>returns:</strong> <code>\Timber\Timber\Image</code></p>
 
 <table>
 <thead>

@@ -239,6 +239,7 @@
 <li><a href="#strike-add-route-strike"><strike>add_route</strike></a></li>
 <li><a href="#compile">compile</a></li>
 <li><a href="#compile-string">compile_string</a></li>
+<li><a href="#context">context</a></li>
 <li><a href="#fetch">fetch</a></li>
 <li><a href="#get-context">get_context</a></li>
 <li><a href="#get-pagination">get_pagination</a></li>
@@ -304,6 +305,12 @@
 <tr>
 <td><a href="#compile_string">compile_string</a></td>
 <td><code>bool/string</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#context">context</a></td>
+<td><code>array</code></td>
 <td></td>
 </tr>
 
@@ -558,6 +565,20 @@ $data = array(
 );
 $welcome = Timber::compile_string( 'Hi {{ username }}, I’m a string with a custom Twig variable', $data );
 </code></pre>
+
+<hr />
+
+<h3 id="context">context</h3>
+
+<p><code>context( )</code></p>
+
+<p><strong>returns:</strong> <code>array</code></p>
+
+<p>Alias for Timber::get_context() which is deprecated in 2.0.</p>
+
+<p>This will allow us to update the starter theme to use the ::context() method and better
+prepare users for the upgrade (even if the details of what the method returns differs
+slightly).</p>
 
 <hr />
 

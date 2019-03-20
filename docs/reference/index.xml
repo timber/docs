@@ -25,7 +25,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-comment/</guid>
-      <description>&lt;p&gt;The TimberComment class is used to view the output of comments. 99% of the time this will be in the context of the comments on a post. However you can also fetch a comment directly using its comment ID.&lt;/p&gt;</description>
+      <description>&lt;p&gt;The Timber\Comment class is used to view the output of comments. 99% of the time this will be in the context of the comments on a post. However you can also fetch a comment directly using its comment ID.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -43,7 +43,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-image/</guid>
-      <description>&lt;p&gt;If TimberPost is the class you&amp;rsquo;re going to spend the most time, TimberImage is the class you&amp;rsquo;re going to have the most fun with.&lt;/p&gt;</description>
+      <description>&lt;p&gt;If TimberPost is the class you&amp;rsquo;re going to spend the most time, Timber\Image is the class you&amp;rsquo;re going to have the most fun with.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -145,7 +145,7 @@ meta information about the collection of posts&lt;/p&gt;</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-site/</guid>
-      <description>&lt;p&gt;TimberSite gives you access to information you need about your site. In Multisite setups, you can get info on other sites in your network.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Timber\Site gives you access to information you need about your site. In Multisite setups, you can get info on other sites in your network.&lt;/p&gt;</description>
     </item>
     
     <item>

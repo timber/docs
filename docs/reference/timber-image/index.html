@@ -261,17 +261,17 @@
 
 		<div class="content-container">
 			<div class="content">
-				<p>If TimberPost is the class you&rsquo;re going to spend the most time, TimberImage is the class you&rsquo;re going to have the most fun with.</p>
+				<p>If TimberPost is the class you&rsquo;re going to spend the most time, Timber\Image is the class you&rsquo;re going to have the most fun with.</p>
 
 <p><strong>PHP</strong></p>
 
 <pre><code class="language-php">&lt;?php
 $context = Timber::get_context();
-$post = new TimberPost();
+$post = new Timber\Post();
 $context['post'] = $post;
 // lets say you have an alternate large 'cover image' for your post stored in a custom field which returns an image ID
 $cover_image_id = $post-&gt;cover_image;
-$context['cover_image'] = new TimberImage($cover_image_id);
+$context['cover_image'] = new Timber\Image($cover_image_id);
 Timber::render('single.twig', $context);
 </code></pre>
 
@@ -431,11 +431,11 @@ Timber::render('single.twig', $context);
 
 <h3 id="construct">__construct</h3>
 
-<p><code>__construct( int/string $iid )</code></p>
+<p><code>__construct( bool/int/string $iid )</code></p>
 
 <p><strong>returns:</strong> <code>void</code></p>
 
-<p>Creates a new TimberImage object</p>
+<p>Creates a new Timber\Image object</p>
 
 <table>
 <thead>
@@ -449,7 +449,7 @@ Timber::render('single.twig', $context);
 <tbody>
 <tr>
 <td>$iid</td>
-<td><code>int/string</code></td>
+<td><code>bool/int/string</code></td>
 <td></td>
 </tr>
 </tbody>
@@ -459,9 +459,9 @@ Timber::render('single.twig', $context);
 
 <pre><code class="language-php">&lt;?php
 // You can pass it an ID number
-$myImage = new TimberImage(552);
+$myImage = new Timber\Image(552);
 //Or send it a URL to an image
-$myImage = new TimberImage('http://google.com/logo.jpg');
+$myImage = new Timber\Image('http://google.com/logo.jpg');
 </code></pre>
 
 <hr />
@@ -593,7 +593,7 @@ $myImage = new TimberImage('http://google.com/logo.jpg');
 <p><strong>Twig</strong></p>
 
 <pre><code class="language-twig">&lt;h1&gt;{{ post.title }}&lt;/h1&gt;
-&lt;img src=&quot;{{ post.thumbnail.src }}&quot; srcset=&quot;{{ post.thumnbail.srcset }}&quot; sizes=&quot;{{ post.thumbnail.sizes }}&quot; /&gt;
+&lt;img src=&quot;{{ post.thumbnail.src }}&quot; srcset=&quot;{{ post.thumnbail.srcset }}&quot; sizes=&quot;{{ post.thumbnail.img_sizes }}&quot; /&gt;
 </code></pre>
 
 <p><strong>HTML</strong></p>
