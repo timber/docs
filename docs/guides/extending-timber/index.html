@@ -115,6 +115,8 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/cheatsheet/">Cheatsheet</a></li>
                 
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/comments/">Comments</a></li>
+                
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/custom-page-templates/">Custom Page Templates</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/debugging/">Debugging</a></li>
@@ -230,7 +232,7 @@
 <li>
 <ul>
 <li><a href="#an-example-that-extends-timberpost">An example that extends TimberPost</a></li>
-<li><a href="#adding-to-twig">Adding to Twig</a></li>
+<li><a href="#adding-functionality-to-twig">Adding functionality to Twig</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -332,36 +334,50 @@ class MySitePost extends Timber\Post {
 
 <p>These can get pretty complex. And that&rsquo;s the beauty. The complexity lives inside the context of the object, but very simple when it comes to your templates.</p>
 
-<h2 id="adding-to-twig">Adding to Twig</h2>
+<h2 id="adding-functionality-to-twig">Adding functionality to Twig</h2>
 
-<p>This is the correct formation for when you need to add custom functions, filters to twig:</p>
+<p>You can extend Twig by adding custom functionality like functions or filters. Timber provides its own classes (<code>Timber\Twig_Function</code> and <code>Timber\Twig_Filter</code>) to provide better compatibility with different versions of Twig.</p>
+
+<p><strong>functions.php</strong></p>
 
 <pre><code class="language-php">&lt;?php
-/* functions.php */
 
-add_filter('timber/twig', 'add_to_twig');
+add_filter( 'timber/twig', 'add_to_twig' );
 
-function add_to_twig($twig) {
-	/* this is where you can add your own functions to twig */
-	$twig-&gt;addExtension(new Twig_Extension_StringLoader());
-	$twig-&gt;addFilter(new Twig_SimpleFilter('whatever', 'my_whatever'));
-	return $twig;
+/**
+ * Adds functionality to Twig.
+ * 
+ * @param \Twig\Environment $twig The Twig environment.
+ * @return \Twig\Environment
+ */
+function add_to_twig( $twig ) {
+    // Adding a function.
+    $twig-&gt;addFunction( new Timber\Twig_Function( 'edit_post_link', 'edit_post_link' ) );
+    
+    // Adding functions as filters.
+    $twig-&gt;addFilter( new Timber\Twig_Filter( 'whateverify', 'whateverify' ) );
+    $twig-&gt;addFilter( new Timber\Twig_Filter( 'slugify', function( $title ) {
+        return sanitize_title( $title );
+    } ) );
+    
+    return $twig;
 }
 
-function my_whatever($text) {
-	$text .= ' or whatever';
-	return $text;
+function whateverify( $text ) {
+    $text .= ' or whatever';
+    
+    return $text;
 }
 </code></pre>
 
 <p>This can now be called in your twig files with:</p>
 
-<pre><code class="language-twig">&lt;h2&gt;{{ post.title|whatever }}&lt;/h2&gt;
+<pre><code class="language-twig">&lt;h2 id=&quot;{{ post.title|slugify }}&quot;&gt;{{ post.title|whateverify }}&lt;/h2&gt;
 </code></pre>
 
 <p>Which will output:</p>
 
-<pre><code class="language-twig">&lt;h2&gt;Hello World! or whatever&lt;/h2&gt;
+<pre><code class="language-twig">&lt;h2 id=&quot;hello-world&quot;&gt;Hello World! or whatever&lt;/h2&gt;
 </code></pre>
 
 			</div>

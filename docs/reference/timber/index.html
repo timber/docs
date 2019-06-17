@@ -115,6 +115,8 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/cheatsheet/">Cheatsheet</a></li>
                 
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/comments/">Comments</a></li>
+                
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/custom-page-templates/">Custom Page Templates</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/debugging/">Debugging</a></li>
@@ -270,6 +272,8 @@
 
 <p>Main class called Timber for this plugin.</p>
 
+<p></p>
+
 <p><strong>PHP</strong></p>
 
 <pre><code class="language-php">&lt;?php
@@ -277,7 +281,7 @@
  $posts = Timber::get_posts('post_type = article')
  $posts = Timber::get_posts(array('post_type' =&gt; 'article', 'category_name' =&gt; 'sports')); // uses wp_query format.
  $posts = Timber::get_posts(array(23,24,35,67), 'InkwellArticle');
- $context = Timber::get_context(); // returns wp favorites!
+ $context = Timber::context(); // returns wp favorites!
  $context['posts'] = $posts;
  Timber::render('index.twig', $context);
 </code></pre>
@@ -1079,7 +1083,7 @@ $posts = Timber::get_posts();
 <p><strong>PHP</strong></p>
 
 <pre><code class="language-php">&lt;?php
-$context = Timber::get_context();
+$context = Timber::context();
 Timber::render( 'index.twig', $context );
 </code></pre>
 

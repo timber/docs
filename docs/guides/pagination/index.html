@@ -115,6 +115,8 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/cheatsheet/">Cheatsheet</a></li>
                 
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/comments/">Comments</a></li>
+                
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/custom-page-templates/">Custom Page Templates</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/debugging/">Debugging</a></li>
@@ -248,7 +250,7 @@
 <p>This will only work in a php file with an active query (like <code>archive.php</code> or <code>home.php</code>):</p>
 
 <pre><code class="language-php">	&lt;?php
-	$context = Timber::get_context();
+	$context = Timber::context();
 	$context['posts'] = new Timber\PostQuery();
 	Timber::render('archive.twig', $context);
 </code></pre>
@@ -283,7 +285,7 @@
 	if (!isset($paged) || !$paged){
 		$paged = 1;
 	}
-	$context = Timber::get_context();
+	$context = Timber::context();
 	$args = array(
 		'post_type' =&gt; 'event',
 		'posts_per_page' =&gt; 5,
@@ -309,7 +311,7 @@
 <p>In your archive.php or home.php template:</p>
 
 <pre><code class="language-php">	&lt;?php
-	$context = Timber::get_context();
+	$context = Timber::context();
 	$context['posts'] = new Timber\PostQuery();
 	Timber::render('archive.twig', $context);
 </code></pre>

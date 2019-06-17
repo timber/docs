@@ -115,6 +115,8 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/cheatsheet/">Cheatsheet</a></li>
                 
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/comments/">Comments</a></li>
+                
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/custom-page-templates/">Custom Page Templates</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/debugging/">Debugging</a></li>
@@ -304,11 +306,13 @@
 			<div class="content">
 				<p>This is the object you use to access or extend WordPress posts. Think of it as Timber&rsquo;s (more accessible) version of WP_Post. This is used throughout Timber to represent posts retrieved from WordPress making them available to Twig templates. See the PHP and Twig examples for an example of what it&rsquo;s like to work with this object in your code.</p>
 
+<p></p>
+
 <p><strong>PHP</strong></p>
 
 <pre><code class="language-php">&lt;?php
 // single.php, see connected twig example
-$context = Timber::get_context();
+$context = Timber::context();
 $context['post'] = new Timber\Post(); // It's a new Timber\Post object, but an existing post from WordPress.
 Timber::render('single.twig', $context);
 ?&gt;
@@ -419,7 +423,7 @@ Timber::render('single.twig', $context);
 
 <tr>
 <td><a href="#comments">comments</a></td>
-<td><code>bool/array</code></td>
+<td><code>bool/\Timber\CommentThread</code></td>
 <td></td>
 </tr>
 
@@ -772,9 +776,11 @@ This is also here to ensure that {{ post.class }} remains usable</p>
 
 <p><code>comments( mixed/int $count=null, string $order=&quot;wp&quot;, string $type=&quot;comment&quot;, string $status=&quot;approve&quot;, string $CommentClass=&quot;Timber\Comment&quot; )</code></p>
 
-<p><strong>returns:</strong> <code>bool/array</code></p>
+<p><strong>returns:</strong> <code>bool/\Timber\CommentThread</code></p>
 
-<p>Gets the comments on a Timber\Post and returns them as an array of <a href="#TimberComment">Timber\Comment</a> (or whatever comment class you set).</p>
+<p>Gets the comments on a <code>Timber\Post</code> and returns them as a <code>Timber\CommentThread</code>: a PHP
+ArrayObject of <a href="https://timber.github.io/docs/reference/timber-comment/"><code>Timber\Comment</code></a>
+(or whatever comment class you set).</p>
 
 <table>
 <thead>
@@ -789,19 +795,19 @@ This is also here to ensure that {{ post.class }} remains usable</p>
 <tr>
 <td>$count</td>
 <td><code>mixed/int</code></td>
-<td>Set the number of comments you want to get. <code>0</code> is analogous to &ldquo;all&rdquo;</td>
+<td>Set the number of comments you want to get. <code>0</code> is analogous to &ldquo;all&rdquo;.</td>
 </tr>
 
 <tr>
 <td>$order</td>
 <td><code>string</code></td>
-<td>use ordering set in WordPress admin, or a different scheme</td>
+<td>Use ordering set in WordPress admin, or a different scheme.</td>
 </tr>
 
 <tr>
 <td>$type</td>
 <td><code>string</code></td>
-<td>For when other plugins use the comments table for their own special purposes, might be set to &lsquo;liveblog&rsquo; or other depending on what&rsquo;s stored in yr comments table</td>
+<td>For when other plugins use the comments table for their own special purposes. Might be set to &lsquo;liveblog&rsquo; or other, depending on what’s stored in your comments table.</td>
 </tr>
 
 <tr>
@@ -813,21 +819,35 @@ This is also here to ensure that {{ post.class }} remains usable</p>
 <tr>
 <td>$CommentClass</td>
 <td><code>string</code></td>
-<td>What class to use when returning Comment objects. As you become a Timber pro, you might find yourself extending Timber\Comment for your site or app (obviously, totally optional)</td>
+<td>What class to use when returning Comment objects. As you become a Timber Pro, you might find yourself extending <code>Timber\Comment</code> for your site or app (obviously, totally optional).</td>
 </tr>
 </tbody>
 </table>
 
-<p><strong>Twig</strong></p>
+<p><strong>single.twig</strong>
+<strong>Twig</strong></p>
 
-<pre><code class="language-twig">{# single.twig #}
-&lt;h4&gt;Comments:&lt;/h4&gt;
-{% for comment in post.comments %}
-	&lt;div class=&quot;comment-{{comment.ID}} comment-order-{{loop.index}}&quot;&gt;
-		&lt;p&gt;{{comment.author.name}} said:&lt;/p&gt;
-		&lt;p&gt;{{comment.content}}&lt;/p&gt;
-	&lt;/div&gt;
-{% endfor %}
+<pre><code class="language-twig">&lt;div id=&quot;post-comments&quot;&gt;
+  &lt;h4&gt;Comments on {{ post.title }}&lt;/h4&gt;
+  &lt;ul&gt;
+    {% for comment in post.comments() %}
+      {% include 'comment.twig' %}
+    {% endfor %}
+  &lt;/ul&gt;
+  &lt;div class=&quot;comment-form&quot;&gt;
+    {{ function('comment_form') }}
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p><strong>comment.twig</strong>
+<strong>Twig</strong></p>
+
+<pre><code class="language-twig">{# comment.twig #}
+&lt;li&gt;
+  &lt;p class=&quot;comment-author&quot;&gt;{{ comment.author.name }} says:&lt;/p&gt;
+  &lt;div&gt;{{ comment.content }}&lt;/div&gt;
+&lt;/li&gt;
 </code></pre>
 
 <hr />

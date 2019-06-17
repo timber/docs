@@ -115,6 +115,8 @@
                 
                     <li class="nav__item nav__item--level-1 nav__item--current"><a class="nav__link nav__link--level-1" href="/docs/guides/cheatsheet/">Cheatsheet</a></li>
                 
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/comments/">Comments</a></li>
+                
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/custom-page-templates/">Custom Page Templates</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/debugging/">Debugging</a></li>
@@ -242,9 +244,9 @@
 			<div class="content">
 				
 
-<p>Here are some helpful conversions for functions you’re probably well familiar with in WordPress and their Timber equivalents. These assume a PHP file with the <code>Timber::get_context();</code> function at the top. For example:</p>
+<p>Here are some helpful conversions for functions you’re probably well familiar with in WordPress and their Timber equivalents. These assume a PHP file with the <code>Timber::context();</code> function at the top. For example:</p>
 
-<pre><code class="language-php">$context = Timber::get_context();
+<pre><code class="language-php">$context = Timber::context();
 $context['post'] = new Timber\Post();
 Timber::render( 'single.twig', $context );
 </code></pre>

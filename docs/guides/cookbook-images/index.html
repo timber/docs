@@ -115,6 +115,8 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/cheatsheet/">Cheatsheet</a></li>
                 
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/comments/">Comments</a></li>
+                
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/custom-page-templates/">Custom Page Templates</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/debugging/">Debugging</a></li>
@@ -363,7 +365,7 @@ if ( isset( $post-&gt;hero_image ) &amp;&amp; strlen( $post-&gt;hero_image ) ) {
     $post-&gt;hero_image = new Timber\Image( $post-&gt;hero_image );
 }
 
-$data = Timber::get_context();
+$data = Timber::context();
 $data['post'] = $post;
 Timber::render( 'single.twig', $data );
 </code></pre>

@@ -115,6 +115,8 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/cheatsheet/">Cheatsheet</a></li>
                 
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/comments/">Comments</a></li>
+                
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/custom-page-templates/">Custom Page Templates</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/debugging/">Debugging</a></li>
@@ -247,7 +249,9 @@
 
 		<div class="content-container">
 			<div class="content">
-				<h2 id="overview">Overview</h2>
+				<p></p>
+
+<h2 id="overview">Overview</h2>
 
 <h3 id="properties">Properties</h3>
 
@@ -298,15 +302,27 @@
 </tr>
 
 <tr>
+<td>title</td>
+<td><code>string</code></td>
+<td>The name of the menu (ex: <code>Main Navigation</code>).</td>
+</tr>
+
+<tr>
+<td>options</td>
+<td><code>array</code></td>
+<td>An array of menu options.</td>
+</tr>
+
+<tr>
 <td>raw_options</td>
 <td><code>array</code></td>
 <td>The unfiltered options sent forward via the user in the __construct</td>
 </tr>
 
 <tr>
-<td>title</td>
+<td>theme_location</td>
 <td><code>string</code></td>
-<td>The name of the menu (ex: <code>Main Navigation</code>).</td>
+<td>The theme location of the menu, if available.</td>
 </tr>
 </tbody>
 </table>
@@ -362,13 +378,13 @@
 <tr>
 <td>$slug</td>
 <td><code>int/string</code></td>
-<td>A menu slug, the term ID of the menu, the full name from the admin menu, the slug of theregistered location or nothing. Passing nothing is good if you only have one menu. Timber will grab what it finds.</td>
+<td>A menu slug, the term ID of the menu, the full name from the admin menu, the slug of the registered location or nothing. Passing nothing is good if you only have one menu. Timber will grab what it finds.</td>
 </tr>
 
 <tr>
 <td>$options</td>
 <td><code>array</code></td>
-<td>An array of options, right now only <code>depth</code> is supported</td>
+<td>Optional. An array of options. Right now, only the <code>depth</code> is supported which says how many levels of hierarchy should be included in the menu. Default <code>0</code>, which is all levels.</td>
 </tr>
 </tbody>
 </table>

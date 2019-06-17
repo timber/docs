@@ -115,6 +115,8 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/cheatsheet/">Cheatsheet</a></li>
                 
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/comments/">Comments</a></li>
+                
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/custom-page-templates/">Custom Page Templates</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/debugging/">Debugging</a></li>
@@ -273,7 +275,7 @@
                 &lt;h1 class=&quot;article-h1&quot;&gt;{{ post.title }}&lt;/h1&gt;
                 &lt;h2 class=&quot;article-h2&quot;&gt;{{ post.subtitle }}&lt;/h2&gt;
                 &lt;p class=&quot;blog-author&quot;&gt;
-                	&lt;span&gt;By&lt;/span&gt; {{ post.author.name }} &lt;span&gt;&amp;bull;&lt;/span&gt; {{ post.post_date|date }}
+                    &lt;span&gt;By&lt;/span&gt; {{ post.author.name }} &lt;span&gt;&amp;bull;&lt;/span&gt; {{ post.post_date|date }}
                 &lt;/p&gt;
                 {{ post.content }}
             &lt;/section&gt;
@@ -362,7 +364,7 @@
 <pre><code class="language-twig">{% extends &quot;single.twig&quot; %}
 
 {% block headline %}
-	&lt;h1&gt;&lt;img src=&quot;/wp-content/uploads/2014/05/jareds-face.jpg&quot; alt=&quot;Jared’s Mug&quot;/&gt;&lt;/h1&gt;
+    &lt;h1&gt;&lt;img src=&quot;/wp-content/uploads/2014/05/jareds-face.jpg&quot; alt=&quot;Jared’s Mug&quot;/&gt;&lt;/h1&gt;
 {% endblock %}
 </code></pre>
 
@@ -380,7 +382,7 @@
 <p>Let’s crack open <strong>index.php</strong> and see what’s inside:</p>
 
 <pre><code class="language-php">&lt;?php
-$context = Timber::get_context();
+$context = Timber::context();
 $context['posts'] = Timber::get_posts();
 
 Timber::render( 'index.twig', $context );
@@ -391,7 +393,7 @@ Timber::render( 'index.twig', $context );
 <h3 id="get-the-context">Get the context</h3>
 
 <pre><code class="language-php">&lt;?php
-$context = Timber::get_context();
+$context = Timber::context();
 </code></pre>
 
 <p>This is going to return an object with a lot of the common things we need across the site. Things like the site name, the description or the navigation menu you’ll want to start with each time (even if you over-write them later). You can do a <code>print_r( $context );</code> to see what’s inside or open-up <a href="https://github.com/timber/timber/blob/master/lib/Timber.php"><strong>Timber.php</strong></a> to inspect for yourself.</p>

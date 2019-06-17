@@ -26,8 +26,19 @@ While data saved by ACF is available via {{ post.my_acf_field }} you will often 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/guides/cheatsheet/</guid>
-      <description>Here are some helpful conversions for functions you’re probably well familiar with in WordPress and their Timber equivalents. These assume a PHP file with the Timber::get_context(); function at the top. For example:
-$context = Timber::get_context(); $context[&#39;post&#39;] = new Timber\Post(); Timber::render( &#39;single.twig&#39;, $context );  Blog Info  blog_info(&#39;charset&#39;) =&amp;gt; {{ site.charset }} blog_info(&#39;description&#39;) =&amp;gt; {{ site.description }} blog_info(&#39;sitename&#39;) =&amp;gt; {{ site.name }} blog_info(&#39;url&#39;) =&amp;gt; {{ site.url }}  Body Class  implode(&#39; &#39;, get_body_class()) =&amp;gt; &amp;lt;body class=&amp;quot;{{ body_class }}&amp;quot;&amp;gt;  Post  the_content() =&amp;gt; {{ post.</description>
+      <description>Here are some helpful conversions for functions you’re probably well familiar with in WordPress and their Timber equivalents. These assume a PHP file with the Timber::context(); function at the top. For example:
+$context = Timber::context(); $context[&#39;post&#39;] = new Timber\Post(); Timber::render( &#39;single.twig&#39;, $context );  Blog Info  blog_info(&#39;charset&#39;) =&amp;gt; {{ site.charset }} blog_info(&#39;description&#39;) =&amp;gt; {{ site.description }} blog_info(&#39;sitename&#39;) =&amp;gt; {{ site.name }} blog_info(&#39;url&#39;) =&amp;gt; {{ site.url }}  Body Class  implode(&#39; &#39;, get_body_class()) =&amp;gt; &amp;lt;body class=&amp;quot;{{ body_class }}&amp;quot;&amp;gt;  Post  the_content() =&amp;gt; {{ post.</description>
+    </item>
+    
+    <item>
+      <title>Comments</title>
+      <link>https://timber.github.io/docs/guides/comments/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://timber.github.io/docs/guides/comments/</guid>
+      <description>Simple Comment Implementation Looking to do non-threaded comments? This pattern can be expanded upon. If you&amp;rsquo;re looking to customize the HTML of the comment form, you can get the necessary HTML from the starter theme&amp;rsquo;s comment-form.twig file.
+single.twig
+&amp;lt;section class=&amp;quot;post-{{ post.id }}&amp;quot;&amp;gt; &amp;lt;h1&amp;gt;{{ post.title }}&amp;lt;/h1&amp;gt; &amp;lt;div class=&amp;quot;content&amp;quot;&amp;gt; {{ post.content }} &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;comments&amp;quot;&amp;gt; {% for comment in post.comments %} &amp;lt;article class=&amp;quot;comment&amp;quot; id=&amp;quot;comment-{{ comment.id }}&amp;quot;&amp;gt; &amp;lt;h5 class=&amp;quot;comment-author&amp;quot;&amp;gt;{{ comment.author.name }} says&amp;lt;/h5&amp;gt; {{ comment.</description>
     </item>
     
     <item>
@@ -156,7 +167,7 @@ Initializing a menu Timber\Menu can be initialized with different values:</descr
       <guid>https://timber.github.io/docs/guides/pagination/</guid>
       <description>Do you like pagination? Stupid question, of course you do. Well, here&amp;rsquo;s how you do it.
 Default pagination This will only work in a php file with an active query (like archive.php or home.php):
-&amp;lt;?php $context = Timber::get_context(); $context[&#39;posts&#39;] = new Timber\PostQuery(); Timber::render(&#39;archive.twig&#39;, $context);  You can then markup the output like so (of course, the exact markup is up to YOU):
+&amp;lt;?php $context = Timber::context(); $context[&#39;posts&#39;] = new Timber\PostQuery(); Timber::render(&#39;archive.twig&#39;, $context);  You can then markup the output like so (of course, the exact markup is up to YOU):
 &amp;lt;div class=&amp;quot;tool-pagination&amp;quot;&amp;gt; {% if posts.pagination.prev %} &amp;lt;a href=&amp;quot;{{posts.</description>
     </item>
     
@@ -255,7 +266,9 @@ wp-content/themes/{timber-starter-theme}/templates/single.twig  Brilliant! Open 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-archives/</guid>
-      <description>&lt;p&gt;The TimberArchives class is used to generate a menu based on the date archives of your posts. The &lt;a href=&#34;http://nieman.harvard.edu/news/&#34;&gt;Nieman Foundation News site&lt;/a&gt; has an example of how the output can be used in a real site (&lt;a href=&#34;https://cloud.githubusercontent.com/assets/1298086/9610076/3cdca596-50a5-11e5-82fd-acb74c09c482.png&#34;&gt;screenshot&lt;/a&gt;).&lt;/p&gt;</description>
+      <description>&lt;p&gt;The TimberArchives class is used to generate a menu based on the date archives of your posts. The &lt;a href=&#34;http://nieman.harvard.edu/news/&#34;&gt;Nieman Foundation News site&lt;/a&gt; has an example of how the output can be used in a real site (&lt;a href=&#34;https://cloud.githubusercontent.com/assets/1298086/9610076/3cdca596-50a5-11e5-82fd-acb74c09c482.png&#34;&gt;screenshot&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -264,7 +277,9 @@ wp-content/themes/{timber-starter-theme}/templates/single.twig  Brilliant! Open 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-comment/</guid>
-      <description>&lt;p&gt;The Timber\Comment class is used to view the output of comments. 99% of the time this will be in the context of the comments on a post. However you can also fetch a comment directly using its comment ID.&lt;/p&gt;</description>
+      <description>&lt;p&gt;The Timber\Comment class is used to view the output of comments. 99% of the time this will be in the context of the comments on a post. However you can also fetch a comment directly using its comment ID.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -273,7 +288,9 @@ wp-content/themes/{timber-starter-theme}/templates/single.twig  Brilliant! Open 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-helper/</guid>
-      <description>&lt;p&gt;As the name suggests these are helpers for Timber (and you!) when developing. You can find additional (mainly internally-focused helpers) in TimberURLHelper&lt;/p&gt;</description>
+      <description>&lt;p&gt;As the name suggests these are helpers for Timber (and you!) when developing. You can find additional (mainly internally-focused helpers) in TimberURLHelper&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -282,7 +299,9 @@ wp-content/themes/{timber-starter-theme}/templates/single.twig  Brilliant! Open 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-image/</guid>
-      <description>&lt;p&gt;If TimberPost is the class you&amp;rsquo;re going to spend the most time, Timber\Image is the class you&amp;rsquo;re going to have the most fun with.&lt;/p&gt;</description>
+      <description>&lt;p&gt;If TimberPost is the class you&amp;rsquo;re going to spend the most time, Timber\Image is the class you&amp;rsquo;re going to have the most fun with.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -301,7 +320,9 @@ wp-content/themes/{timber-starter-theme}/templates/single.twig  Brilliant! Open 
 &lt;p&gt;Implementation:
 - public static functions provide the methods that are called by the filter
 - most of the work is common to all filters (URL analysis, directory gymnastics, file caching, error management) and done by private static functions
-- the specific part (actual image processing) is delegated to dedicated subclasses of TimberImageOperation&lt;/p&gt;</description>
+- the specific part (actual image processing) is delegated to dedicated subclasses of TimberImageOperation&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -310,7 +331,7 @@ wp-content/themes/{timber-starter-theme}/templates/single.twig  Brilliant! Open 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-menu/</guid>
-      <description>Overview Properties    Name Type Description     depth integer The depth of the menu we are rendering   items array/null Array of Timber\Menu objects you can to iterate through.   id integer The ID of the menu, corresponding to the wp_terms table.   ID integer The ID of the menu, corresponding to the wp_terms table.   term_id integer The ID of the menu, corresponding to the wp_terms table.</description>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -319,7 +340,7 @@ wp-content/themes/{timber-starter-theme}/templates/single.twig  Brilliant! Open 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-menuitem/</guid>
-      <description>Overview Properties    Name Type Description     children array Array of children of a menu item. Empty if there are no child menu items.   has_child_class bool Whether the menu item has a menu-item-has-children CSS class.   classes array Array of class names.   current bool Whether the menu item links to the currently displayed page.   current_item_parent bool Whether the menu item refers to the parent item of the currently displayed page.</description>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -328,12 +349,7 @@ wp-content/themes/{timber-starter-theme}/templates/single.twig  Brilliant! Open 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-pagination/</guid>
-      <description>Overview Methods    Name Type Returns/Description     get_pagination array mixed    Class Methods __construct __construct( array $prefs=array(), mixed $wp_query=null )
-returns: void
-   Name Type Description     $prefs array    $wp_query mixed     get_pagination get_pagination( array $prefs=array() )
-returns: array mixed
-Get pagination.
-   Name Type Description     $prefs array     paginate_links paginate_links( array $args=array() )</description>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -342,7 +358,9 @@ Get pagination.
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-post/</guid>
-      <description>&lt;p&gt;This is the object you use to access or extend WordPress posts. Think of it as Timber&amp;rsquo;s (more accessible) version of WP_Post. This is used throughout Timber to represent posts retrieved from WordPress making them available to Twig templates. See the PHP and Twig examples for an example of what it&amp;rsquo;s like to work with this object in your code.&lt;/p&gt;</description>
+      <description>&lt;p&gt;This is the object you use to access or extend WordPress posts. Think of it as Timber&amp;rsquo;s (more accessible) version of WP_Post. This is used throughout Timber to represent posts retrieved from WordPress making them available to Twig templates. See the PHP and Twig examples for an example of what it&amp;rsquo;s like to work with this object in your code.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -364,7 +382,9 @@ change the output of the preview by &lt;strong&gt;adding more methods&lt;/strong
 &lt;li&gt;be stripped of all HTML tags.&lt;/li&gt;
 &lt;li&gt;have an ellipsis (…) as the end of the text.&lt;/li&gt;
 &lt;li&gt;have a &amp;ldquo;Read More&amp;rdquo; link appended.&lt;/li&gt;
-&lt;/ul&gt;</description>
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -375,7 +395,9 @@ change the output of the preview by &lt;strong&gt;adding more methods&lt;/strong
       <guid>https://timber.github.io/docs/reference/timber-postquery/</guid>
       <description>&lt;p&gt;A PostQuery allows a user to query for a Collection of WordPress Posts.
 PostCollections are used directly in Twig templates to iterate through and retrieve
-meta information about the collection of posts&lt;/p&gt;</description>
+meta information about the collection of posts&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -384,7 +406,9 @@ meta information about the collection of posts&lt;/p&gt;</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-site/</guid>
-      <description>&lt;p&gt;Timber\Site gives you access to information you need about your site. In Multisite setups, you can get info on other sites in your network.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Timber\Site gives you access to information you need about your site. In Multisite setups, you can get info on other sites in your network.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -394,7 +418,9 @@ meta information about the collection of posts&lt;/p&gt;</description>
       
       <guid>https://timber.github.io/docs/reference/timber-term/</guid>
       <description>&lt;p&gt;Terms: WordPress has got &amp;lsquo;em, you want &amp;lsquo;em. Categories. Tags. Custom
-Taxonomies. You don&amp;rsquo;t care, you&amp;rsquo;re a fiend. Well let&amp;rsquo;s get this under control:&lt;/p&gt;</description>
+Taxonomies. You don&amp;rsquo;t care, you&amp;rsquo;re a fiend. Well let&amp;rsquo;s get this under control:&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -404,7 +430,9 @@ Taxonomies. You don&amp;rsquo;t care, you&amp;rsquo;re a fiend. Well let&amp;rsq
       
       <guid>https://timber.github.io/docs/reference/timber-texthelper/</guid>
       <description>&lt;p&gt;Class provides different text-related functions
-commonly used in WordPress development&lt;/p&gt;</description>
+commonly used in WordPress development&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -413,7 +441,9 @@ commonly used in WordPress development&lt;/p&gt;</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-theme/</guid>
-      <description>&lt;p&gt;Need to display info about your theme? Well you&amp;rsquo;ve come to the right place. By default info on the current theme comes for free with what&amp;rsquo;s fetched by &lt;code&gt;Timber::get_context()&lt;/code&gt; in which case you can access it your theme like so:&lt;/p&gt;</description>
+      <description>&lt;p&gt;Need to display info about your theme? Well you&amp;rsquo;ve come to the right place. By default info on the current theme comes for free with what&amp;rsquo;s fetched by &lt;code&gt;Timber::context()&lt;/code&gt; in which case you can access it your theme like so:&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -424,7 +454,9 @@ commonly used in WordPress development&lt;/p&gt;</description>
       <guid>https://timber.github.io/docs/reference/timber/</guid>
       <description>&lt;p&gt;Timber Class.&lt;/p&gt;
 
-&lt;p&gt;Main class called Timber for this plugin.&lt;/p&gt;</description>
+&lt;p&gt;Main class called Timber for this plugin.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -433,16 +465,7 @@ commonly used in WordPress development&lt;/p&gt;</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-urlhelper/</guid>
-      <description>Class Methods file_system_to_url file_system_to_url( string $fs )
-returns: void
-   Name Type Description     $fs string     get_content_subdir get_content_subdir( )
-returns: string (ex: /wp-content or /content)
-Get the path to the content directory relative to the site. This replaces the WP_CONTENT_SUBDIR constant
-get_current_url get_current_url( )
-returns: string
-get_full_path get_full_path( string $src )
-returns: string
-   Name Type Description     $src string     get_host get_host( )</description>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -451,7 +474,9 @@ returns: string
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-user/</guid>
-      <description>&lt;p&gt;This is used in Timber to represent users retrived from WordPress. You can call &lt;code&gt;$my_user = new Timber\User(123);&lt;/code&gt; directly, or access it through the &lt;code&gt;{{ post.author }}&lt;/code&gt; method.&lt;/p&gt;</description>
+      <description>&lt;p&gt;This is used in Timber to represent users retrived from WordPress. You can call &lt;code&gt;$my_user = new Timber\User(123);&lt;/code&gt; directly, or access it through the &lt;code&gt;{{ post.author }}&lt;/code&gt; method.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

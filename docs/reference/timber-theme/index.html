@@ -115,6 +115,8 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/cheatsheet/">Cheatsheet</a></li>
                 
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/comments/">Comments</a></li>
+                
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/custom-page-templates/">Custom Page Templates</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/debugging/">Debugging</a></li>
@@ -249,13 +251,15 @@
 
 		<div class="content-container">
 			<div class="content">
-				<p>Need to display info about your theme? Well you&rsquo;ve come to the right place. By default info on the current theme comes for free with what&rsquo;s fetched by <code>Timber::get_context()</code> in which case you can access it your theme like so:</p>
+				<p>Need to display info about your theme? Well you&rsquo;ve come to the right place. By default info on the current theme comes for free with what&rsquo;s fetched by <code>Timber::context()</code> in which case you can access it your theme like so:</p>
+
+<p></p>
 
 <p><strong>PHP</strong></p>
 
 <pre><code class="language-php">&lt;?php
 &lt;?php
-$context = Timber::get_context();
+$context = Timber::context();
 Timber::render('index.twig', $context);
 ?&gt;
 </code></pre>
@@ -352,7 +356,7 @@ Timber::render('index.twig', $context);
 
 <p><strong>returns:</strong> <code>void</code></p>
 
-<p>Constructs a new TimberTheme object. NOTE the TimberTheme object of the current theme comes in the default <code>Timber::get_context()</code> call. You can access this in your twig template via `{{site.theme}}.</p>
+<p>Constructs a new TimberTheme object. NOTE the TimberTheme object of the current theme comes in the default <code>Timber::context()</code> call. You can access this in your twig template via `{{site.theme}}.</p>
 
 <table>
 <thead>

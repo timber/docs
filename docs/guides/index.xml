@@ -26,8 +26,19 @@ While data saved by ACF is available via {{ post.my_acf_field }} you will often 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/guides/cheatsheet/</guid>
-      <description>Here are some helpful conversions for functions you’re probably well familiar with in WordPress and their Timber equivalents. These assume a PHP file with the Timber::get_context(); function at the top. For example:
-$context = Timber::get_context(); $context[&#39;post&#39;] = new Timber\Post(); Timber::render( &#39;single.twig&#39;, $context );  Blog Info  blog_info(&#39;charset&#39;) =&amp;gt; {{ site.charset }} blog_info(&#39;description&#39;) =&amp;gt; {{ site.description }} blog_info(&#39;sitename&#39;) =&amp;gt; {{ site.name }} blog_info(&#39;url&#39;) =&amp;gt; {{ site.url }}  Body Class  implode(&#39; &#39;, get_body_class()) =&amp;gt; &amp;lt;body class=&amp;quot;{{ body_class }}&amp;quot;&amp;gt;  Post  the_content() =&amp;gt; {{ post.</description>
+      <description>Here are some helpful conversions for functions you’re probably well familiar with in WordPress and their Timber equivalents. These assume a PHP file with the Timber::context(); function at the top. For example:
+$context = Timber::context(); $context[&#39;post&#39;] = new Timber\Post(); Timber::render( &#39;single.twig&#39;, $context );  Blog Info  blog_info(&#39;charset&#39;) =&amp;gt; {{ site.charset }} blog_info(&#39;description&#39;) =&amp;gt; {{ site.description }} blog_info(&#39;sitename&#39;) =&amp;gt; {{ site.name }} blog_info(&#39;url&#39;) =&amp;gt; {{ site.url }}  Body Class  implode(&#39; &#39;, get_body_class()) =&amp;gt; &amp;lt;body class=&amp;quot;{{ body_class }}&amp;quot;&amp;gt;  Post  the_content() =&amp;gt; {{ post.</description>
+    </item>
+    
+    <item>
+      <title>Comments</title>
+      <link>https://timber.github.io/docs/guides/comments/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://timber.github.io/docs/guides/comments/</guid>
+      <description>Simple Comment Implementation Looking to do non-threaded comments? This pattern can be expanded upon. If you&amp;rsquo;re looking to customize the HTML of the comment form, you can get the necessary HTML from the starter theme&amp;rsquo;s comment-form.twig file.
+single.twig
+&amp;lt;section class=&amp;quot;post-{{ post.id }}&amp;quot;&amp;gt; &amp;lt;h1&amp;gt;{{ post.title }}&amp;lt;/h1&amp;gt; &amp;lt;div class=&amp;quot;content&amp;quot;&amp;gt; {{ post.content }} &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;comments&amp;quot;&amp;gt; {% for comment in post.comments %} &amp;lt;article class=&amp;quot;comment&amp;quot; id=&amp;quot;comment-{{ comment.id }}&amp;quot;&amp;gt; &amp;lt;h5 class=&amp;quot;comment-author&amp;quot;&amp;gt;{{ comment.author.name }} says&amp;lt;/h5&amp;gt; {{ comment.</description>
     </item>
     
     <item>
@@ -156,7 +167,7 @@ Initializing a menu Timber\Menu can be initialized with different values:</descr
       <guid>https://timber.github.io/docs/guides/pagination/</guid>
       <description>Do you like pagination? Stupid question, of course you do. Well, here&amp;rsquo;s how you do it.
 Default pagination This will only work in a php file with an active query (like archive.php or home.php):
-&amp;lt;?php $context = Timber::get_context(); $context[&#39;posts&#39;] = new Timber\PostQuery(); Timber::render(&#39;archive.twig&#39;, $context);  You can then markup the output like so (of course, the exact markup is up to YOU):
+&amp;lt;?php $context = Timber::context(); $context[&#39;posts&#39;] = new Timber\PostQuery(); Timber::render(&#39;archive.twig&#39;, $context);  You can then markup the output like so (of course, the exact markup is up to YOU):
 &amp;lt;div class=&amp;quot;tool-pagination&amp;quot;&amp;gt; {% if posts.pagination.prev %} &amp;lt;a href=&amp;quot;{{posts.</description>
     </item>
     

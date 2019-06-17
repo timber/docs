@@ -115,6 +115,8 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/cheatsheet/">Cheatsheet</a></li>
                 
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/comments/">Comments</a></li>
+                
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/custom-page-templates/">Custom Page Templates</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/debugging/">Debugging</a></li>
@@ -270,6 +272,8 @@
 		<div class="content-container">
 			<div class="content">
 				<p>As the name suggests these are helpers for Timber (and you!) when developing. You can find additional (mainly internally-focused helpers) in TimberURLHelper</p>
+
+<p></p>
 
 <h2 id="overview">Overview</h2>
 
@@ -826,7 +830,7 @@ equivalent Timber class (Timber\Post, Timber\Term).</p>
 function the_form() {
     echo '&lt;form action=&quot;form.php&quot;&gt;&lt;input type=&quot;text&quot; /&gt;&lt;input type=&quot;submit /&gt;&lt;/form&gt;';
 }
-$context = Timber::get_context();
+$context = Timber::context();
 $context['post'] = new Timber\Post();
 $context['my_form'] = TimberHelper::ob_function('the_form');
 Timber::render('single-form.twig', $context);
@@ -1039,7 +1043,7 @@ echo TimberHelper::stop_timer( $start );
 <p><strong>PHP</strong></p>
 
 <pre><code class="language-php">&lt;?php
-$context = Timber::get_context();
+$context = Timber::context();
 $context['favorites'] = Timber\Helper::transient('user-' .$uid. '-favorites', function() use ($uid) {
  	//some expensive query here that's doing something you want to store to a transient
  	return $favorites;

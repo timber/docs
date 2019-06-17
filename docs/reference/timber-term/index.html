@@ -115,6 +115,8 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/cheatsheet/">Cheatsheet</a></li>
                 
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/comments/">Comments</a></li>
+                
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/custom-page-templates/">Custom Page Templates</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/debugging/">Debugging</a></li>
@@ -258,6 +260,8 @@
 			<div class="content">
 				<p>Terms: WordPress has got &lsquo;em, you want &lsquo;em. Categories. Tags. Custom
 Taxonomies. You don&rsquo;t care, you&rsquo;re a fiend. Well let&rsquo;s get this under control:</p>
+
+<p></p>
 
 <p><strong>PHP</strong></p>
 
@@ -557,9 +561,11 @@ required.</p>
 
 <h3 id="posts">posts</h3>
 
-<p><code>posts( mixed/int $numberposts_or_args=10, string $post_type_or_class=&quot;any&quot;, string $post_class=&quot;&quot; )</code></p>
+<p><code>posts( mixed/int/array $numberposts_or_args=10, string $post_type_or_class=&quot;any&quot;, string $post_class=&quot;&quot; )</code></p>
 
 <p><strong>returns:</strong> <code>array/bool/null</code></p>
+
+<p>Gets posts that have the current term assigned.</p>
 
 <table>
 <thead>
@@ -573,20 +579,20 @@ required.</p>
 <tbody>
 <tr>
 <td>$numberposts_or_args</td>
-<td><code>mixed/int</code></td>
-<td></td>
+<td><code>mixed/int/array</code></td>
+<td>Optional. Either the number of posts or an array of arguments for the post query that this method is going. to perform. Default <code>10</code>.</td>
 </tr>
 
 <tr>
 <td>$post_type_or_class</td>
 <td><code>string</code></td>
-<td></td>
+<td>Optional. Either the post type to get or the name of post class to use for the returned posts. Default <code>any</code>.</td>
 </tr>
 
 <tr>
 <td>$post_class</td>
 <td><code>string</code></td>
-<td></td>
+<td>Optional. The name of the post class to use for the returned posts. Default <code>Timber\Post</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -596,7 +602,26 @@ required.</p>
 <pre><code class="language-twig">&lt;h4&gt;Recent posts in {{ term.name }}&lt;/h4&gt;
 &lt;ul&gt;
 {% for post in term.posts(3, 'post') %}
-    &lt;li&gt;&lt;a href=&quot;{{post.link}}&quot;&gt;{{post.title}}&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;{{ post.link }}&quot;&gt;{{ post.title }}&lt;/a&gt;
+    &lt;/li&gt;
+{% endfor %}
+&lt;/ul&gt;
+</code></pre>
+
+<p>If you need more control over the query that is going to be performed, you can pass your
+custom query arguments in the first parameter.
+<strong>Twig</strong></p>
+
+<pre><code class="language-twig">&lt;h4&gt;Our branches in {{ region.name }}&lt;/h4&gt;
+&lt;ul&gt;
+{% for branch in region.posts({
+    posts_per_page: -1,
+    orderby: 'menu_order'
+}, 'branch', 'Branch') %}
+    &lt;li&gt;
+        &lt;a href=&quot;{{ branch.link }}&quot;&gt;{{ branch.title }}&lt;/a&gt;
+    &lt;/li&gt;
 {% endfor %}
 &lt;/ul&gt;
 </code></pre>

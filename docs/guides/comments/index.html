@@ -11,7 +11,7 @@
 	  gtag('config', 'UA-126807198-1');
 	</script>
 
-	<title>Upgrade Guides</title>
+	<title>Comments</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -107,7 +107,7 @@
             
             </li>
         
-            <li class="nav__item nav__item--level-0"><a class="nav__link nav__link--level-0" href="/docs/guides/">Guides</a>
+            <li class="nav__item nav__item--level-0 nav__item--current-ancestor"><a class="nav__link nav__link--level-0" href="/docs/guides/">Guides</a>
             
                 <ul class="nav__items nav__items--level-1">
                 
@@ -115,7 +115,7 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/cheatsheet/">Cheatsheet</a></li>
                 
-                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/comments/">Comments</a></li>
+                    <li class="nav__item nav__item--level-1 nav__item--current"><a class="nav__link nav__link--level-1" href="/docs/guides/comments/">Comments</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/custom-page-templates/">Custom Page Templates</a></li>
                 
@@ -205,7 +205,7 @@
             
             </li>
         
-            <li class="nav__item nav__item--level-0 nav__item--current"><a class="nav__link nav__link--level-0" href="/docs/upgrade-guides/">Upgrade Guides</a>
+            <li class="nav__item nav__item--level-0"><a class="nav__link nav__link--level-0" href="/docs/upgrade-guides/">Upgrade Guides</a>
             
                 <ul class="nav__items nav__items--level-1">
                 
@@ -222,23 +222,114 @@
 
 <main>
     
+	<article>
+		<h1>Comments</h1>
 
-<h1>Upgrade Guides</h1>
-
-<ul class="list">
-
-	<li class="list__item">
-		<h2 class="list__item__title">
-			<a class="list__item__link" href="https://timber.github.io/docs/upgrade-guides/1.0/">Upgrade to 1.0</a>
-		</h2>
-		<div class="list__text">
-			
-		</div>
-	</li>
-
+		<aside class="toc">
+			<h2 class="heading-4 toc__title">Contents of this page</h2>
+			<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#simple-comment-implementation">Simple Comment Implementation</a></li>
+<li><a href="#threaded-comments-method-1">Threaded Comments (Method 1)</a></li>
+<li><a href="#threaded-comments-method-2">Threaded Comments (Method 2)</a></li>
+</ul></li>
 </ul>
+</nav>
+		</aside>
 
+		<div class="content-container">
+			<div class="content">
+				
 
+<h2 id="simple-comment-implementation">Simple Comment Implementation</h2>
+
+<p>Looking to do non-threaded comments? This pattern can be expanded upon. If you&rsquo;re looking to customize the HTML of the comment form, you can get the necessary HTML from the starter theme&rsquo;s <a href="https://github.com/timber/starter-theme/blob/master/templates/comment-form.twig">comment-form.twig</a> file.</p>
+
+<p><strong>single.twig</strong></p>
+
+<pre><code class="language-twig">&lt;section class=&quot;post-{{ post.id }}&quot;&gt;
+  &lt;h1&gt;{{ post.title }}&lt;/h1&gt;
+  &lt;div class=&quot;content&quot;&gt;
+    {{ post.content }}
+  &lt;/div&gt;
+  &lt;div class=&quot;comments&quot;&gt;
+    {% for comment in post.comments %}
+      &lt;article class=&quot;comment&quot; id=&quot;comment-{{ comment.id }}&quot;&gt;
+      	&lt;h5 class=&quot;comment-author&quot;&gt;{{ comment.author.name }} says&lt;/h5&gt;
+        {{ comment.content }}
+      &lt;/article&gt;
+    {% endfor %}
+    {{ function('comment_form') }}
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+
+<h2 id="threaded-comments-method-1">Threaded Comments (Method 1)</h2>
+
+<p>You can implement threaded comments this way (if you don&rsquo;t mind using WordPres&rsquo;s comment markup).</p>
+
+<p><strong>single.twig</strong></p>
+
+<pre><code class="language-twig">&lt;section class=&quot;post-{{ post.id }}&quot;&gt;
+  &lt;h1&gt;{{ post.title }}&lt;/h1&gt;
+  &lt;div class=&quot;content&quot;&gt;
+    {{ post.content }}
+  &lt;/div&gt;
+  &lt;div class=&quot;comments&quot;&gt;
+    {{ function('comments_template') }}
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+
+<p><strong>functions.php</strong></p>
+
+<pre><code class="language-php">//Include the comment reply Javascript
+add_action('wp_print_scripts', function(){
+  if ( (!is_admin()) &amp;&amp; is_singular() &amp;&amp; comments_open() &amp;&amp; get_option('thread_comments') ) wp_enqueue_script( 'comment-reply' );
+});
+</code></pre>
+
+<h2 id="threaded-comments-method-2">Threaded Comments (Method 2)</h2>
+
+<p>Timber contains the <code>CommentThread</code> class to help manage comment threads. If you need to build something custom, you can implement it like so:</p>
+
+<p><strong>single.twig</strong></p>
+
+<pre><code class="language-twig">{# single.twig #}
+&lt;div id=&quot;post-comments&quot;&gt;
+  &lt;h4&gt;Comments on {{ post.title }}&lt;/h4&gt;
+  &lt;ul&gt;
+    {% for comment in post.comments %}
+      {% include 'comment.twig' %}
+    {% endfor %}
+  &lt;/ul&gt;
+  &lt;div class=&quot;comment-form&quot;&gt;
+    {{ function('comment_form') }}
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<pre><code class="language-twig">{# comment.twig #}
+&lt;li&gt;
+  &lt;div&gt;{{ comment.content }}&lt;/div&gt;
+  &lt;p class=&quot;comment-author&quot;&gt;{{ comment.author.name }}&lt;/p&gt;
+  {{ function('comment_form') }}
+  &lt;!-- nested comments here --&gt;
+  {% if comment.children %}
+    &lt;div class=&quot;replies&quot;&gt; 
+      {% for child_comment in comment.children %}
+        {% include 'comment.twig' with { comment:child_comment } %}
+      {% endfor %}
+    &lt;/div&gt; 
+  {% endif %}    
+&lt;/li&gt;
+</code></pre>
+
+			</div>
+		</div>
+	</article>
 
 </main>
 

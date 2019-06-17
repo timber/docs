@@ -115,6 +115,8 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/cheatsheet/">Cheatsheet</a></li>
                 
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/comments/">Comments</a></li>
+                
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/custom-page-templates/">Custom Page Templates</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/debugging/">Debugging</a></li>
@@ -254,10 +256,12 @@
 			<div class="content">
 				<p>Timber\Site gives you access to information you need about your site. In Multisite setups, you can get info on other sites in your network.</p>
 
+<p></p>
+
 <p><strong>PHP</strong></p>
 
 <pre><code class="language-php">&lt;?php
-$context = Timber::get_context();
+$context = Timber::context();
 $other_site_id = 2;
 $context['other_site'] = new Timber\Site($other_site_id);
 Timber::render('index.twig', $context);

@@ -115,6 +115,8 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/cheatsheet/">Cheatsheet</a></li>
                 
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/comments/">Comments</a></li>
+                
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/custom-page-templates/">Custom Page Templates</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/debugging/">Debugging</a></li>
@@ -293,17 +295,21 @@ No, you don’t.</p>
 
 <h2 id="make-functions-available-in-twig">Make functions available in Twig</h2>
 
-<p>If you have functions that you use a lot and want to improve readability of your code, you can make a function available in Twig by using <code>Timber\Twig_Function</code> inside the <code>timber/twig</code> hook.</p>
+<p>If you have functions that you use a lot and want to improve readability of your code, you can make a function available in Twig by using <code>Timber\Twig_Function</code> inside the <code>timber/twig</code> filter.</p>
 
-<pre><code class="language-php">/**
+<pre><code class="language-php">add_filter( 'timber/twig', 'add_to_twig' );
+
+/**
  * My custom Twig functionality.
  *
- * @param Twig_Environment $twig
- * @return $twig
+ * @param \Twig\Environment $twig
+ * @return \Twig\Environment
  */
-add_filter( 'timber/twig', function( \Twig_Environment $twig ) {
-	$twig-&gt;addFunction( new Timber\Twig_Function( 'edit_post_link', 'edit_post_link' ) );
-	return $twig;
+function add_to_twig( $twig ) {
+    // Adding a function.
+    $twig-&gt;addFunction( new Timber\Twig_Function( 'edit_post_link', 'edit_post_link' ) );
+    
+    return $twig;
 } );
 </code></pre>
 
@@ -311,7 +317,7 @@ add_filter( 'timber/twig', function( \Twig_Environment $twig ) {
 
 <pre><code class="language-twig">{# single.twig #}
 &lt;div class=&quot;admin-tools&quot;&gt;
-    {{ edit_post_link }}
+    {{ edit_post_link() }}
 &lt;/div&gt;
 {# Calls edit_post_link using default arguments #}
 

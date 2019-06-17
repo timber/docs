@@ -115,6 +115,8 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/cheatsheet/">Cheatsheet</a></li>
                 
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/comments/">Comments</a></li>
+                
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/custom-page-templates/">Custom Page Templates</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/debugging/">Debugging</a></li>
@@ -263,10 +265,12 @@
 			<div class="content">
 				<p>If TimberPost is the class you&rsquo;re going to spend the most time, Timber\Image is the class you&rsquo;re going to have the most fun with.</p>
 
+<p></p>
+
 <p><strong>PHP</strong></p>
 
 <pre><code class="language-php">&lt;?php
-$context = Timber::get_context();
+$context = Timber::context();
 $post = new Timber\Post();
 $context['post'] = $post;
 // lets say you have an alternate large 'cover image' for your post stored in a custom field which returns an image ID
@@ -593,7 +597,7 @@ $myImage = new Timber\Image('http://google.com/logo.jpg');
 <p><strong>Twig</strong></p>
 
 <pre><code class="language-twig">&lt;h1&gt;{{ post.title }}&lt;/h1&gt;
-&lt;img src=&quot;{{ post.thumbnail.src }}&quot; srcset=&quot;{{ post.thumnbail.srcset }}&quot; sizes=&quot;{{ post.thumbnail.img_sizes }}&quot; /&gt;
+&lt;img src=&quot;{{ post.thumbnail.src }}&quot; srcset=&quot;{{ post.thumbnail.srcset }}&quot; sizes=&quot;{{ post.thumbnail.img_sizes }}&quot; /&gt;
 </code></pre>
 
 <p><strong>HTML</strong></p>
@@ -713,7 +717,7 @@ $myImage = new Timber\Image('http://google.com/logo.jpg');
 <p><strong>Twig</strong></p>
 
 <pre><code class="language-twig">&lt;h1&gt;{{ post.title }}&lt;/h1&gt;
-&lt;img src=&quot;{{ post.thumbnail.src }}&quot; srcset=&quot;{{ post.thumnbail.srcset }}&quot; /&gt;
+&lt;img src=&quot;{{ post.thumbnail.src }}&quot; srcset=&quot;{{ post.thumbnail.srcset }}&quot; /&gt;
 </code></pre>
 
 <p><strong>HTML</strong></p>

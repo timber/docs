@@ -115,6 +115,8 @@
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/cheatsheet/">Cheatsheet</a></li>
                 
+                    <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/comments/">Comments</a></li>
+                
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/custom-page-templates/">Custom Page Templates</a></li>
                 
                     <li class="nav__item nav__item--level-1"><a class="nav__link nav__link--level-1" href="/docs/guides/debugging/">Debugging</a></li>
@@ -308,13 +310,13 @@ function add_to_context( $context ) {
 }
 </code></pre>
 
-<p>Now, when you call <code>Timber::get_context()</code>, your menu will already be set in the context. You don’t need to initialize the menu in all your template files.</p>
+<p>Now, when you call <code>Timber::context()</code>, your menu will already be set in the context. You don’t need to initialize the menu in all your template files.</p>
 
 <p><strong>index.php</strong></p>
 
 <pre><code class="language-php">&lt;?php
 
-$context = Timber::get_context();
+$context = Timber::context();
 
 Timber::render( 'index.twig', $context );
 </code></pre>
