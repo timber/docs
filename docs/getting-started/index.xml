@@ -18,7 +18,8 @@
       <guid>https://timber.github.io/docs/getting-started/setup/</guid>
       <description>Installation Via WordPress.org (easy) You can grab the all-things-included plugin at WordPress.org either through the WordPress site or through the Plugins menu in the backend. Then skip ahead to using the starter theme.
 Via GitHub (for developers) The GitHub version of Timber requires Composer. If you&amp;rsquo;d prefer one-click installation, you should use the WordPress.org version.
-composer require timber/timber  If your theme is not setup to pull in Composer’s autoload file, you will need to add the following at the top of your functions.</description>
+Run the following Composer command from within your theme&amp;rsquo;s root directory:
+composer require timber/timber  If you&amp;rsquo;re using the starter theme, a composer.</description>
     </item>
     
     <item>

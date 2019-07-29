@@ -262,22 +262,22 @@
 
 <p>The GitHub version of Timber requires <a href="https://getcomposer.org/download/">Composer</a>. If you&rsquo;d prefer one-click installation, you should use the <a href="https://wordpress.org/plugins/timber-library/">WordPress.org</a> version.</p>
 
+<p>Run the following Composer command from within your theme&rsquo;s root directory:</p>
+
 <pre><code class="language-shell">composer require timber/timber
 </code></pre>
 
-<p>If your theme is not setup to pull in Composer’s autoload file, you will need to add the following at the top of your <code>functions.php</code> file:</p>
+<p>If you&rsquo;re using the <a href="https://github.com/timber/starter-theme">starter theme</a>, a <code>composer.json</code> file is already included, so you can run the following command instead:</p>
+
+<pre><code class="language-shell">composer install
+</code></pre>
+
+<p>If you&rsquo;re not using the starter theme or your theme is not setup to pull in Composer’s autoload file, you will need to add the following at the top of your <code>functions.php</code> file to load the Composer dependencies (including Timber), and initialize Timber.</p>
 
 <p><strong>functions.php</strong></p>
 
 <pre><code class="language-php">&lt;?php
 require_once( __DIR__ . '/vendor/autoload.php' );
-</code></pre>
-
-<p>Initialize Timber with:</p>
-
-<p><strong>functions.php</strong></p>
-
-<pre><code class="language-php">&lt;?php
 $timber = new Timber\Timber();
 </code></pre>
 
