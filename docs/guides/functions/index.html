@@ -338,11 +338,12 @@ function add_to_twig( $twig ) {
 
 <ul>
 <li>If you have a function where you want to bypass the output and instead save it as a string, so that you can add it to your context, use <a href="https://timber.github.io/docs/reference/timber-helper/#ob-function"><code>Helper::ob_function</code></a>.</li>
-<li>If you have a function that needs to be called exactly where you use it in your template (e.g. because it depends on certain global values) you can use <code>FunctionWrapper</code>:</li>
-</ul>
+
+<li><p>If you have a function that needs to be called exactly where you use it in your template (e.g. because it depends on certain global values) you can use <code>FunctionWrapper</code>:</p>
 
 <pre><code class="language-php">$context['my_custom_function'] = new FunctionWrapper( 'my_custom_function', $array_of_arguments );
-</code></pre>
+</code></pre></li>
+</ul>
 
 			</div>
 		</div>

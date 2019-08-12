@@ -213,7 +213,8 @@ composer require timber/timber  If you&amp;rsquo;re using the starter theme, a c
       <guid>https://timber.github.io/docs/guides/sidebars/</guid>
       <description>So you want a sidebar?
 Method 1: PHP file Let&amp;rsquo;s say every page on the site has the same content going into its sidebar. If so, you would: Create a sidebar.php file in your theme directory (so wp-content/themes/mytheme/sidebar.php)
-&amp;lt;?php /* sidebar.php */ $context = array(); $context[&#39;widget&#39;] = my_function_to_get_widget(); $context[&#39;ad&#39;] = my_function_to_get_an_ad(); Timber::render(&#39;sidebar.twig&#39;, $context);   Use that php file within your main php file (home.php, single.php, archive.php, etc):  &amp;lt;?</description>
+&amp;lt;?php /* sidebar.php */ $context = array(); $context[&#39;widget&#39;] = my_function_to_get_widget(); $context[&#39;ad&#39;] = my_function_to_get_an_ad(); Timber::render(&#39;sidebar.twig&#39;, $context);   Use that php file within your main php file (home.php, single.php, archive.php, etc):
+&amp;lt;?php /* single.</description>
     </item>
     
     <item>
@@ -322,7 +323,7 @@ wp-content/themes/{timber-starter-theme}/templates/single.twig  Brilliant! Open 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-menu/</guid>
-      <description>Overview Properties    Name Type Description     depth integer The depth of the menu we are rendering   items array/null Array of Timber\Menu objects you can to iterate through.   id integer The ID of the menu, corresponding to the wp_terms table.   ID integer The ID of the menu, corresponding to the wp_terms table.   term_id integer The ID of the menu, corresponding to the wp_terms table.</description>
+      <description></description>
     </item>
     
     <item>
@@ -331,7 +332,7 @@ wp-content/themes/{timber-starter-theme}/templates/single.twig  Brilliant! Open 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-menuitem/</guid>
-      <description>Overview Properties    Name Type Description     children array Array of children of a menu item. Empty if there are no child menu items.   has_child_class bool Whether the menu item has a menu-item-has-children CSS class.   classes array Array of class names.   current bool Whether the menu item links to the currently displayed page.   current_item_parent bool Whether the menu item refers to the parent item of the currently displayed page.</description>
+      <description></description>
     </item>
     
     <item>
@@ -340,12 +341,7 @@ wp-content/themes/{timber-starter-theme}/templates/single.twig  Brilliant! Open 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-pagination/</guid>
-      <description>Overview Methods    Name Type Returns/Description     get_pagination array mixed    Class Methods __construct __construct( array $prefs=array(), mixed $wp_query=null )
-returns: void
-   Name Type Description     $prefs array    $wp_query mixed     get_pagination get_pagination( array $prefs=array() )
-returns: array mixed
-Get pagination.
-   Name Type Description     $prefs array     paginate_links paginate_links( array $args=array() )</description>
+      <description></description>
     </item>
     
     <item>
@@ -445,16 +441,7 @@ commonly used in WordPress development&lt;/p&gt;</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-urlhelper/</guid>
-      <description>Class Methods file_system_to_url file_system_to_url( string $fs )
-returns: void
-   Name Type Description     $fs string     get_content_subdir get_content_subdir( )
-returns: string (ex: /wp-content or /content)
-Get the path to the content directory relative to the site. This replaces the WP_CONTENT_SUBDIR constant
-get_current_url get_current_url( )
-returns: string
-get_full_path get_full_path( string $src )
-returns: string
-   Name Type Description     $src string     get_host get_host( )</description>
+      <description></description>
     </item>
     
     <item>

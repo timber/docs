@@ -71,7 +71,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-menu/</guid>
-      <description>Overview Properties    Name Type Description     depth integer The depth of the menu we are rendering   items array/null Array of Timber\Menu objects you can to iterate through.   id integer The ID of the menu, corresponding to the wp_terms table.   ID integer The ID of the menu, corresponding to the wp_terms table.   term_id integer The ID of the menu, corresponding to the wp_terms table.</description>
+      <description></description>
     </item>
     
     <item>
@@ -80,7 +80,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-menuitem/</guid>
-      <description>Overview Properties    Name Type Description     children array Array of children of a menu item. Empty if there are no child menu items.   has_child_class bool Whether the menu item has a menu-item-has-children CSS class.   classes array Array of class names.   current bool Whether the menu item links to the currently displayed page.   current_item_parent bool Whether the menu item refers to the parent item of the currently displayed page.</description>
+      <description></description>
     </item>
     
     <item>
@@ -89,12 +89,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-pagination/</guid>
-      <description>Overview Methods    Name Type Returns/Description     get_pagination array mixed    Class Methods __construct __construct( array $prefs=array(), mixed $wp_query=null )
-returns: void
-   Name Type Description     $prefs array    $wp_query mixed     get_pagination get_pagination( array $prefs=array() )
-returns: array mixed
-Get pagination.
-   Name Type Description     $prefs array     paginate_links paginate_links( array $args=array() )</description>
+      <description></description>
     </item>
     
     <item>
@@ -194,16 +189,7 @@ commonly used in WordPress development&lt;/p&gt;</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://timber.github.io/docs/reference/timber-urlhelper/</guid>
-      <description>Class Methods file_system_to_url file_system_to_url( string $fs )
-returns: void
-   Name Type Description     $fs string     get_content_subdir get_content_subdir( )
-returns: string (ex: /wp-content or /content)
-Get the path to the content directory relative to the site. This replaces the WP_CONTENT_SUBDIR constant
-get_current_url get_current_url( )
-returns: string
-get_full_path get_full_path( string $src )
-returns: string
-   Name Type Description     $src string     get_host get_host( )</description>
+      <description></description>
     </item>
     
     <item>

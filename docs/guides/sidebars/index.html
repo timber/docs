@@ -259,25 +259,23 @@ Timber::render('sidebar.twig', $context);
 </code></pre>
 
 <ul>
-<li>Use that php file within your main php file (home.php, single.php, archive.php, etc):</li>
-</ul>
+<li><p>Use that php file within your main php file (home.php, single.php, archive.php, etc):</p>
 
 <pre><code class="language-php">&lt;?php
 /* single.php */
 $context = Timber::context();
 $context['sidebar'] = Timber::get_sidebar('sidebar.php');
 Timber::render('single.twig', $context);
-</code></pre>
+</code></pre></li>
 
-<ul>
-<li>In the final twig file make sure you reserve a spot for your sidebar:</li>
-</ul>
+<li><p>In the final twig file make sure you reserve a spot for your sidebar:</p>
 
 <pre><code class="language-twig">{# single.twig #}
 &lt;aside class=&quot;sidebar&quot;&gt;
 	{{sidebar}}
 &lt;/aside&gt;
-</code></pre>
+</code></pre></li>
+</ul>
 
 <hr />
 
@@ -286,19 +284,16 @@ Timber::render('single.twig', $context);
 <p>In this example, you would populate your sidebar from your main PHP file (home.php, single.php, archive.php, etc).</p>
 
 <ul>
-<li>Make a Twig file for what your sidebar should be:</li>
-</ul>
+<li><p>Make a Twig file for what your sidebar should be:</p>
 
 <pre><code class="language-twig">{# views/sidebar-related.twig #}
 &lt;h3&gt;Related Stories&lt;/h3&gt;
 {% for post in related %}
 	&lt;h4&gt;&lt;a href=&quot;{{post.get_path}}&quot;&gt;{{post.post_title}}&lt;/a&gt;&lt;/h4&gt;
 {% endfor %}
-</code></pre>
+</code></pre></li>
 
-<ul>
-<li>Send data to it via your main PHP file:</li>
-</ul>
+<li><p>Send data to it via your main PHP file:</p>
 
 <pre><code class="language-php">&lt;?php
 /* single.php */
@@ -312,17 +307,16 @@ $sidebar_context = array();
 $sidebar_context['related'] = Timber::get_posts('cat='.$post_cat);
 $context['sidebar'] = Timber::get_sidebar('sidebar-related.twig', $sidebar_context);
 Timber::render('single.twig', $context);
-</code></pre>
+</code></pre></li>
 
-<ul>
-<li>In the final twig file, make sure you have spot for your sidebar:</li>
-</ul>
+<li><p>In the final twig file, make sure you have spot for your sidebar:</p>
 
 <pre><code class="language-twig">{# single.twig #}
 &lt;aside class=&quot;sidebar&quot;&gt;
 	{{sidebar}}
 &lt;/aside&gt;
-</code></pre>
+</code></pre></li>
+</ul>
 
 <hr />
 

@@ -201,7 +201,8 @@ Some examples In your functions.php file, this can be called anywhere (don&amp;r
       <guid>https://timber.github.io/docs/guides/sidebars/</guid>
       <description>So you want a sidebar?
 Method 1: PHP file Let&amp;rsquo;s say every page on the site has the same content going into its sidebar. If so, you would: Create a sidebar.php file in your theme directory (so wp-content/themes/mytheme/sidebar.php)
-&amp;lt;?php /* sidebar.php */ $context = array(); $context[&#39;widget&#39;] = my_function_to_get_widget(); $context[&#39;ad&#39;] = my_function_to_get_an_ad(); Timber::render(&#39;sidebar.twig&#39;, $context);   Use that php file within your main php file (home.php, single.php, archive.php, etc):  &amp;lt;?</description>
+&amp;lt;?php /* sidebar.php */ $context = array(); $context[&#39;widget&#39;] = my_function_to_get_widget(); $context[&#39;ad&#39;] = my_function_to_get_an_ad(); Timber::render(&#39;sidebar.twig&#39;, $context);   Use that php file within your main php file (home.php, single.php, archive.php, etc):
+&amp;lt;?php /* single.</description>
     </item>
     
     <item>

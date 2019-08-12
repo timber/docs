@@ -235,7 +235,10 @@
 <ul>
 <li><a href="#1-install-vvv">1. Install VVV</a></li>
 <li><a href="#2-set-up-timber-for-tests">2. Set up Timber for tests</a></li>
-<li><a href="#3-run-the-tests">3. Run the tests!</a></li>
+<li><a href="#3-install-wordpress-s-development-version">3. Install WordPress&rsquo;s Development Version</a></li>
+<li><a href="#4-configure-wordpress-tests">4. Configure WordPress tests</a></li>
+<li><a href="#5-install-wordpress-tests">5. Install WordPress tests</a></li>
+<li><a href="#6-run-the-tests">6. Run the tests!</a></li>
 </ul></li>
 <li><a href="#writing-tests">Writing tests</a></li>
 <li><a href="#gotchas">Gotchas!</a></li>
@@ -264,17 +267,58 @@
 $ git clone git@github.com:timber/timber.git
 </code></pre>
 
-<p>Now install the necessary Composer files&hellip;</p>
+<h3 id="3-install-wordpress-s-development-version">3. Install WordPress&rsquo;s Development Version</h3>
 
-<pre><code>$ cd timber
-$ composer install
+<p>VVV no longer installs the development version of WordPress by default so we have to re-provision with it enabled. Edit <code>vvv-custom.yml</code> and find this line:</p>
+
+<pre><code>  wordpress-trunk:
+    skip_provisioning: true # provisioning this one takes longer, so it's disabled by default
 </code></pre>
 
-<p>Ok, you should be ready to run tests. This is where things get interesting. You&rsquo;re going to login to your Vagrant virtual box to run the tests&hellip;</p>
+<p>Set <code>skip_provisioning</code> to <code>false</code></p>
 
-<h3 id="3-run-the-tests">3. Run the tests!</h3>
+<pre><code>  wordpress-trunk:
+    skip_provisioning: false # provisioning this one takes longer, so it's disabled by default
+</code></pre>
 
-<p>Connect to your Vagrant instance trough SSH:</p>
+<p>Now re-provision Vagrant</p>
+
+<pre><code>$ vagrant halt &amp;&amp; vagrant up --provision
+</code></pre>
+
+<p>Warning: this one will take a while.</p>
+
+<h3 id="4-configure-wordpress-tests">4. Configure WordPress tests</h3>
+
+<p>Copy <code>/wordpress-trunk/public_html/wp-tests-config-sample.php</code> to <code>/wordpress-trunk/public_html/wp-tests-config.php</code>. Assuming you&rsquo;re using VVV&rsquo;s defaults, we just need to specify how to access the database:</p>
+
+<pre><code class="language-php">define( 'DB_NAME', 'wordpress_unit_tests' );
+define( 'DB_USER', 'root' );
+define( 'DB_PASSWORD', 'root' );
+</code></pre>
+
+<h3 id="5-install-wordpress-tests">5. Install WordPress tests</h3>
+
+<p>SSH into Vagrant to install Timber&rsquo;s tests and run them</p>
+
+<pre><code>$ vagrant ssh
+</code></pre>
+
+<p>Now, navigate to where you installed Timber via Git:</p>
+
+<pre><code>$ cd /srv/www/timber
+</code></pre>
+
+<p>And install the tests!</p>
+
+<pre><code>$ bin/install-wp-tests.sh wordpress_tests root root
+</code></pre>
+
+<p>All done! Now, the fun part (and the only part you have to do in the future when writing/running tests)</p>
+
+<h3 id="6-run-the-tests">6. Run the tests!</h3>
+
+<p>Connect to your Vagrant instance trough SSH (if you&rsquo;re not already):</p>
 
 <pre><code>$ vagrant ssh
 </code></pre>
@@ -282,10 +326,11 @@ $ composer install
 <p>Now wait for it to bring you into the virtual box from the virtual environment&hellip;</p>
 
 <pre><code>$ cd /srv/www/timber
+$ composer install
 $ phpunit
 </code></pre>
 
-<p>You should see a bunch of gobbledygook across your screen (the whole process will take about 3 mins.), but we should see that WordPress is testing successfully. Hurrah! For more info, check out the <a href="http://make.wordpress.org/core/handbook/automated-testing/">Handbook on Automated Testing</a>.</p>
+<p>You should see a bunch of gobbledygook across your screen (the whole process will take about 4 mins.), but we should see that WordPress is testing successfully. Hurrah! For more info, check out the <a href="http://make.wordpress.org/core/handbook/automated-testing/">Handbook on Automated Testing</a>.</p>
 
 <h2 id="writing-tests">Writing tests</h2>
 
@@ -295,13 +340,14 @@ $ phpunit
 
 <ul>
 <li>You may need to setup authorization between VVV and GitHub. Just follow the prompts to create a token if that interrupts the <code>composer install</code>.</li>
-<li>You may have <a href="https://getcomposer.org/doc/articles/troubleshooting.md#proc-open-fork-failed-errors">memory problems with Composer</a>. In case that happens, here’s the script I run:</li>
-</ul>
+
+<li><p>You may have <a href="https://getcomposer.org/doc/articles/troubleshooting.md#proc-open-fork-failed-errors">memory problems with Composer</a>. In case that happens, here’s the script I run:</p>
 
 <pre><code>sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024
 sudo /sbin/mkswap /var/swap.1
 sudo /sbin/swapon /var/swap.1
-</code></pre>
+</code></pre></li>
+</ul>
 
 			</div>
 		</div>
