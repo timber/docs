@@ -1,0 +1,29 @@
+table {
+	margin: 2em 0;
+	overflow: auto;
+	width: 100%;
+	display: table;
+	border-collapse: collapse;
+
+	th,
+	td {
+		text-align: left;
+		vertical-align: top;
+		line-height: 1.6em;
+	}
+
+	th {
+		padding: 5px 10px;
+		background-color: $table-header-bg;
+		text-transform: uppercase;
+		letter-spacing: .05em;
+	}
+
+	td {
+		padding: 10px 10px 10px 10px;
+	}
+
+	tr:nth-child(even) {
+		background-color: $table-uneven-color;
+	}
+}

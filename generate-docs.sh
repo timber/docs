@@ -2,6 +2,7 @@
 
 # Install dependencies
 composer install
+# npm install
 
 # Clean out folder to remove deprecated files
 rm -rf ./content/*
@@ -9,41 +10,41 @@ rm -rf ./content/*
 # Copy current docs from timber repository to this repository
 cp -a ../timber/docs/. ./content/
 
+# Move current version to current level
+mv ./content/v2/* ./content/
+rm -rf ./content/v2
+
 # Create necessary folders that might not exist yet
-mkdir -p content/reference
-mkdir -p generator/timber-current
+mkdir -p ./content/contributing
+mkdir -p ./content/integrations/woocommerce
 
-# Copy current timber library to this repository
-cp -a ../timber/lib/. ./generator/timber-current/
+# Copy contributing guide
+cp -a ../timber/CONTRIBUTING.md ./content/contributing/contributing.md
+# Remove first line
+sed -i '' -e 1d ./content/contributing/contributing.md
+# Add front matter
+echo -e "---\ntitle: \"Contributing to Timber\"\nlayout: \"page\"\n---" | cat - ./content/contributing/contributing.md > ./content/contributing/contributing-tmp.md && mv ./content/contributing/contributing-tmp.md ./content/contributing/contributing.md
 
-cd ./generator
+# Copy integration docs
+mkdir -p ./_data/integrations/woocommerce
+cp -a ../timber-integration-woocommerce/docs/ ./content/integrations/woocommerce/
 
+##
 # Build reference docs from PHP files
-./phpdocs-md generate Timber\\Archives > ../content/reference/timber-archives.md
-./phpdocs-md generate Timber\\Comment > ../content/reference/timber-comment.md
-./phpdocs-md generate Timber\\Image > ../content/reference/timber-image.md
-./phpdocs-md generate Timber\\Menu > ../content/reference/timber-menu.md
-./phpdocs-md generate Timber\\MenuItem > ../content/reference/timber-menuitem.md
-./phpdocs-md generate Timber\\Pagination > ../content/reference/timber-pagination.md
-./phpdocs-md generate Timber\\Post > ../content/reference/timber-post.md
-./phpdocs-md generate Timber\\PostQuery > ../content/reference/timber-postquery.md
-./phpdocs-md generate Timber\\PostPreview > ../content/reference/timber-postpreview.md
-./phpdocs-md generate Timber\\Site > ../content/reference/timber-site.md
-./phpdocs-md generate Timber\\Theme > ../content/reference/timber-theme.md
-./phpdocs-md generate Timber\\Term > ../content/reference/timber-term.md
-./phpdocs-md generate Timber\\User > ../content/reference/timber-user.md
+#
 
-./phpdocs-md generate Timber\\Timber > ../content/reference/timber.md
+# Main reference
+./vendor/bin/teak generate:class-reference ../timber/lib --output ./content/reference --front_matter_style=YAML
 
-./phpdocs-md generate Timber\\Helper > ../content/reference/timber-helper.md
-./phpdocs-md generate Timber\\ImageHelper > ../content/reference/timber-imagehelper.md
-./phpdocs-md generate Timber\\URLHelper > ../content/reference/timber-urlhelper.md
-./phpdocs-md generate Timber\\TextHelper > ../content/reference/timber-texthelper.md
+# WooCommerce integration
+./vendor/bin/teak generate:class-reference ../timber-integration-woocommerce/lib --output ./content/integrations/woocommerce/reference --front_matter_style=YAML
 
-cd ..
+##
+# Build hook documentation
+#
 
-# Clean site output folder
-rm -rf ./docs/*
+# Main hooks
+./vendor/bin/teak generate:hook-reference ../timber/lib --output ./content/hooks --hook_type="filter" --hook_prefix="timber" --front_matter_style="YAML" --class_reference_path="/docs/reference"
+./vendor/bin/teak generate:hook-reference ../timber/lib --output ./content/hooks --hook_type="action" --hook_prefix="timber" --front_matter_style="YAML" --class_reference_path="/docs/reference"
 
-# Build documentation site with Hugo
-hugo
+npm run production

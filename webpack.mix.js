@@ -1,50 +1,52 @@
-let mix = require('laravel-mix');
-
-/*
- |--------------------------------------------------------------------------
- | Mix Asset Management
- |--------------------------------------------------------------------------
- |
- | Mix provides a clean, fluent API for defining some Webpack build steps
- | for your Laravel application. By default, we are compiling the Sass
- | file for your application, as well as bundling up your JS files.
- |
- */
+const fs = require('fs');
+const mix = require('laravel-mix');
+const { config } = require('./webpack.mix.config');
 
 mix
-  .copy('static-src/js/highlight.pack.js', 'static/js/highlight.pack.js')
-  .js('static-src/js/scripts.js', 'static/js/scripts.js')
-  .sass('static-src/sass/styles.scss', 'static/css/')
-  .copy('static-src/images/', 'static/images/')
-  .copy('static-src/favicon.ico', 'static/');
+	/**
+	 * JavaScript
+	 */
+	.js('assets/js/app.js', 'build/js')
 
-// Full API
-// mix.js(src, output);
-// mix.react(src, output); <-- Identical to mix.js(), but registers React Babel compilation.
-// mix.extract(vendorLibs);
-// mix.sass(src, output);
-// mix.standaloneSass('src', output); <-- Faster, but isolated from Webpack.
-// mix.fastSass('src', output); <-- Alias for mix.standaloneSass().
-// mix.less(src, output);
-// mix.stylus(src, output);
-// mix.browserSync('my-site.dev');
-// mix.combine(files, destination);
-// mix.babel(files, destination); <-- Identical to mix.combine(), but also includes Babel compilation.
-// mix.copy(from, to);
-// mix.copyDirectory(fromDir, toDir);
-// mix.minify(file);
-// mix.sourceMaps(); // Enable sourcemaps
-// mix.version(); // Enable versioning.
-// mix.disableNotifications();
-// mix.setPublicPath('path/to/public');
-// mix.setResourceRoot('prefix/for/resource/locators');
-// mix.autoload({}); <-- Will be passed to Webpack's ProvidePlugin.
-// mix.webpackConfig({}); <-- Override webpack.config.js, without editing the file directly.
-// mix.then(function () {}) <-- Will be triggered each time Webpack finishes building.
-// mix.options({
-//   extractVueStyles: false, // Extract .vue component styling to file, rather than inline.
-//   processCssUrls: true, // Process/optimize relative stylesheet url()'s. Set to false, if you don't want them touched.
-//   purifyCss: false, // Remove unused CSS selectors.
-//   uglify: {}, // Uglify-specific options. https://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
-//   postCss: [] // Post-CSS options: https://github.com/postcss/postcss/blob/master/docs/plugins.md
-// });
+	/**
+	 * SASS
+	 */
+	.sass('assets/sass/styles.scss', 'build/css', config.sass)
+	.sass('assets/sass/mobile.scss', 'build/css', config.sass)
+
+	/**
+	 * Copy files
+	 */
+	// .copy('assets/css/**', 'build/css')
+	// .copyDirectory('assets/fonts', 'build/fonts')
+	.copyDirectory('assets/img', 'build/img')
+	.copyDirectory('assets/favicons', 'build/favicons')
+	.copyDirectory('node_modules/typeface-source-sans-pro/files', 'build/fonts')
+
+	// The path for mix-manifest.json
+	.setPublicPath('build')
+
+	.version([])
+	.options(config.mix)
+	.webpackConfig(config.webpack)
+
+	/**
+	 * Copy manifest file to _data folder to make it available as global data that
+	 * can be used in an eleventy filter.
+	 */
+	.then(() => {
+		fs.copyFile('build/mix-manifest.json', '_data/mixManifest.json', err => {
+			if (err) throw err;
+		});
+	});
+
+/**
+ * Sourcemaps
+ *
+ * In dev, sourcemaps are inlined into the files directly.
+ *
+ * @link https://github.com/JeffreyWay/laravel-mix/issues/879#issuecomment-354152991
+ */
+if (!mix.inProduction()) {
+	mix.webpackConfig(config.webpack).sourceMaps();
+}

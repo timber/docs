@@ -1,0 +1,114 @@
+/**
+ * [1] Make sure JavaScript listens for menu actions.
+ * [2] Make sure iOS default button styles won’t be applied.
+ */
+.navMobileToggle {
+	backface-visibility: hidden;
+	transition: transform 200ms ease;
+	z-index: 9999;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 32px;
+	height: 32px;
+
+	margin: 0 0 0 1.25rem;
+	padding: 0;
+	background: transparent;
+	color: $green-light;
+
+	cursor: pointer; // [1]
+
+	border: 0; // [2]
+	border-radius: 0; // [2]
+	appearance: none; // [2]
+	-webkit-appearance: none; // [2]
+
+	@media (max-width: 767px) {
+		position: fixed;
+		top: 15px;
+		right: 1rem;
+	}
+}
+
+.navClose {
+	position: fixed;
+	top: 15px;
+	right: 1rem;
+	display: block;
+	flex-grow: 0;
+	flex-shrink: 0;
+	width: 32px;
+	height: 32px;
+	margin: 0;
+	padding: 4px;
+	border: none;
+	background: none;
+	color: $green;
+}
+
+.navMobileToggle,
+.navClose {
+	svg {
+		width: 100%;
+		height: 100%;
+
+		fill: currentColor;
+	}
+}
+
+/**
+ * [1] Needs to be set to scroll for -webkit-overflow-scrolling: touch; to work
+ */
+.slideup-menu {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	display: block;
+	z-index: -1;
+	transition: transform 0.15s ease-out;
+
+	overflow-y: scroll; // [1]
+	-webkit-overflow-scrolling: touch;
+}
+
+.slideup-menu,
+.slideup-open.is-closing .slideup-menu {
+	transform: translateY(100%);
+}
+
+// Hide scrollbars for underlying elements when slideup is open
+.slideup-open,
+.slideup-open body {
+	overflow: hidden;
+}
+
+/**
+ * [1] In certain cases where the .slideup-panel class is applied, that element also needs to be set to height: 100%;
+ * to prevent scrolling the .slide-panel element when the .slideup-menu is open/active.
+ */
+.slideup-open body {
+	height: 100%; // [1]
+}
+
+// Prevent scrollbar glitches when animating between open and closed states
+.slideup-open.is-opening,
+.slideup-open.is-closing  {
+	.slideup-menu {
+		overflow-y: hidden;
+	}
+
+	&, body {
+		overflow: auto;
+	}
+}
+
+// Show slideup
+.slideup-open .slideup-menu {
+	transform: translateY(0%);
+	z-index: 99998;
+}

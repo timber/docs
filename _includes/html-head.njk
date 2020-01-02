@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="{{ site.languageCode }}">
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126807198-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-126807198-1');
+	</script>
+
+	<title>{{ title ~ ' – ' if title }}{{ site.title }}</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+	<!-- Algolia Docsearch -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+
+	<!-- Doc Styles -->
+    <link rel="stylesheet" href="{{ '/build/css/styles.css'|manifest(mixManifest)|url }}">
+    <link rel="stylesheet" href="{{ '/build/css/mobile.css'|manifest(mixManifest)|url }}" media="screen and (max-width: 979px)">
+
+    <script src="{{ '/build/js/app.js'|manifest(mixManifest)|url }}" defer></script>
+
+	{% include 'head/favicons.njk' %}
+</head>

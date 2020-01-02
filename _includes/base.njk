@@ -1,0 +1,16 @@
+{% include 'html-head.njk' %}
+
+<body>
+    {% include 'header.njk' %}
+
+    <div class="wrapper">
+        {% include 'sidebar.njk' %}
+
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+
+    {% include 'scripts-footer.njk' %}
+</body>

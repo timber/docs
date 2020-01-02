@@ -1,0 +1,18 @@
+@mixin font-text {
+  font-family: $font-family-text;
+  font-size: 100%;
+}
+
+@mixin font-code {
+  font-family: $font-family-code;
+  font-size: .8125rem;
+}
+
+@mixin font-header {
+  @include font-text;
+}
+
+@mixin break-words {
+    word-break: break-all;
+    hyphens: auto;
+}
