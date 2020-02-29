@@ -48,3 +48,6 @@ cp -a ../timber-integration-woocommerce/docs/ ./content/integrations/woocommerce
 ./vendor/bin/teak generate:hook-reference ../timber/lib --output ./content/hooks --hook_type="action" --hook_prefix="timber" --front_matter_style="YAML" --class_reference_path="/docs/reference"
 
 npm run production
+
+# Delete the content folder because we don’t need that in our repository
+rm -rf ./content
