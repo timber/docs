@@ -16,12 +16,11 @@ Each page for the documentation needs to be written in Markdown. Each page needs
 ```yaml
 ---
 title: "Cheatsheet"
-tags: guides
 order: "1500"
 ---
 ```
 
-- `tags`: Referse to the section the page will be displayed in.
+- `title`: The display title of the page.
 - `order`: Defines the sort order. The pages in each section will be ordered by the sort order.
 
 ### Sections
@@ -38,6 +37,19 @@ The docs have different sections. Each section needs a JSON file which has the s
 The layout tells Eleventy that it should take the **_includes/page.njk** file to display the contents of that page.
 
 Each section is also listed in the **_data/nav.js** file as a navigation menu item.
+
+### Redirects
+
+Redirects are handled through the **redirect.njk** file that contains a list of redirects that should be applied. Heres an example for how to define a redirect:
+
+```json
+{
+  "from": "/guides/acf-cookbook/",
+  "to": "/integrations/advanced-custom-fields/"
+}
+```
+
+Make sure that you include leading and trailing slashes for the values.
 
 ## Building the docs
 
