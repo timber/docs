@@ -15,11 +15,7 @@ export function slideup() {
     this.isOpen = false;
     this.isAnimating = false;
 
-    this.el = {
-      $menu: document.querySelector('.sidebar'),
-      $open: document.querySelector('.js-menu-open'),
-      $close: document.querySelector('.js-menu-close')
-    };
+    this.el = {};
 
     this.eventTypes = {
       transitionEnd: [
@@ -40,6 +36,12 @@ export function slideup() {
 
   SlideupHandler.prototype = {
     init: function() {
+      this.el = {
+        $menu: document.querySelector('.sidebar'),
+        $open: document.querySelector('.js-menu-open'),
+        $close: document.querySelector('.js-menu-close')
+      };
+
       window.addEventListener('resize', debounce(this.resizeHandler.bind(this), 50));
       this.resizeHandler();
     },
@@ -50,7 +52,7 @@ export function slideup() {
      * If the button has a cursor property != default, then the mobile menu will be bound.
      */
     resizeHandler: function() {
-      if (getComputedStyle(this.el.$open)['cursor'] === 'pointer') {
+      if (getComputedStyle(this.el.$open)['display'] !== 'none') {
         if (!this.isBound) {
           this.bind();
         }
@@ -72,9 +74,6 @@ export function slideup() {
         this.listeners.transitionCompleteClose
       );
 
-      // Add support for smoothScroll plugin
-      document.addEventListener('smooth-scroll', this.listeners.close);
-
       // Set menu state to hidden. This makes all child elements unfocusable.
       this.el.$menu.hidden = true;
 
@@ -92,8 +91,6 @@ export function slideup() {
         'turbolinks:visit',
         this.listeners.transitionCompleteClose
       );
-
-      document.removeEventListener('smooth-scroll', this.listeners.close);
 
       // Remove ARIA roles
       this.el.$menu.removeAttribute('hidden');

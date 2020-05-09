@@ -3,9 +3,7 @@ import Turbolinks from 'turbolinks';
 
 Turbolinks.start();
 
-document.addEventListener('DOMContentLoaded', function() {
-  slideup();
-})
+slideup();
 
 /**
  * Keep scroll position in sidebar.
