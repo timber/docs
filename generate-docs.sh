@@ -49,3 +49,9 @@ cp -a ../timber-integration-woocommerce/docs/ ./content/integrations/woocommerce
 # Main hooks
 ./vendor/bin/teak generate:hook-reference ../timber/lib --output ./content/hooks --hook_type="filter" --hook_prefix="timber" --front_matter_style="YAML" --class_reference_path="/docs/reference"
 ./vendor/bin/teak generate:hook-reference ../timber/lib --output ./content/hooks --hook_type="action" --hook_prefix="timber" --front_matter_style="YAML" --class_reference_path="/docs/reference"
+
+################################################################################
+# Sitemap
+################################################################################
+
+cp ./sitemap.xml.njk ./content/
