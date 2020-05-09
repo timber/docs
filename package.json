@@ -3,7 +3,8 @@
   "private": true,
   "description": "Timber Documentation",
   "scripts": {
-    "build": "bash generate-docs.sh",
+    "build": "composer install && npm install && npm run generate-docs && npm run production && npm run cleanup",
+    "generate-docs": "bash generate-docs.sh",
     "watch": "concurrently \"npm run serve\" \"npm run mix-watch\"",
     "develop": "ELEVENTY_ENV=development concurrently \"npm run mix-development\" \"npx eleventy\"",
     "production": "ELEVENTY_ENV=production npm run mix-production && npx eleventy",
@@ -12,6 +13,7 @@
     "mix-development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "mix-production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "mix-watch": "npm run mix-development -- --watch",
+    "cleanup": "rm -rf ./content",
     "debug": "DEBUG=Eleventy* npx eleventy"
   },
   "dependencies": {
