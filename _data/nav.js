@@ -1,4 +1,10 @@
 module.exports = {
+  'installation': {
+    name: 'Installation',
+    slug: 'installation',
+    url: '/installation/',
+    description: 'All about installing and updating Timber.'
+  },
   'getting-started': {
     name: 'Getting Started',
     slug: 'getting-started',
