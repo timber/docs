@@ -10,14 +10,11 @@ cp -a ../timber/docs/. ./content/
 mv ./content/v2/* ./content/
 rm -rf ./content/v2
 
-# Create necessary folders that might not exist yet.
-mkdir -p ./content/contributing
-mkdir -p ./content/integrations/woocommerce
-
 ################################################################################
 # Contributing guide.
 ################################################################################
 
+mkdir -p ./content/contributing
 # Copy contributing guide.
 cp -a ../timber/CONTRIBUTING.md ./content/contributing/contributing.md
 # Remove first line.
@@ -29,8 +26,9 @@ echo -e "---\ntitle: \"Contributing to Timber\"\nlayout: \"page\"\n---" | cat - 
 # Integration docs.
 ################################################################################
 
-mkdir -p ./_data/integrations/woocommerce
-cp -a ../timber-integration-woocommerce/docs/ ./content/integrations/woocommerce/
+# mkdir -p ./content/integrations/woocommerce
+# mkdir -p ./_data/integrations/woocommerce
+# cp -a ../timber-integration-woocommerce/docs/ ./content/integrations/woocommerce/
 
 ################################################################################
 # Build reference docs from PHP files.
@@ -40,7 +38,7 @@ cp -a ../timber-integration-woocommerce/docs/ ./content/integrations/woocommerce
 ./vendor/bin/teak generate:class-reference ../timber/lib --output ./content/reference --front_matter_style=YAML
 
 # WooCommerce integration
-./vendor/bin/teak generate:class-reference ../timber-integration-woocommerce/lib --output ./content/integrations/woocommerce/reference --front_matter_style=YAML
+# ./vendor/bin/teak generate:class-reference ../timber-integration-woocommerce/lib --output ./content/integrations/woocommerce/reference --front_matter_style=YAML
 
 ################################################################################
 # Build hook documentation.
