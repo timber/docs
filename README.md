@@ -16,6 +16,7 @@ This repository is used to build the documentation pages for [Timber](http://git
     - [Assets](#assets)
 - [Versions](#versions)
 - [Redirects](#redirects)
+- [Search](#search)
 
 <!-- /TOC -->
 
