@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
 	
-    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?db75858961ef100d103393e34f398175">
+    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?c77bdfd53127f8f1e98153f3f27452a2">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
 
     
@@ -228,31 +228,30 @@
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
 			<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#overview">Overview</a>
-<ul>
-<li><a href="#properties">Properties</a></li>
-<li><a href="#methods">Methods</a></li>
-</ul></li>
-<li><a href="#class-methods">Class Methods</a>
-<ul>
-<li><a href="#construct">__construct</a></li>
-<li><a href="#tostring">__toString</a></li>
-<li><a href="#children">children</a></li>
-<li><a href="#description">description</a></li>
-<li><a href="#edit-link">edit_link</a></li>
-<li><a href="#from">from</a></li>
-<li><a href="#link">link</a></li>
-<li><a href="#meta">meta</a></li>
-<li><a href="#path">path</a></li>
-<li><a href="#posts">posts</a></li>
-<li><a href="#title">title</a></li>
-<li><a href="#update">update</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#overview">Overview</a>
+      <ul>
+        <li><a href="#properties">Properties</a></li>
+        <li><a href="#methods">Methods</a></li>
+      </ul>
+    </li>
+    <li><a href="#class-methods">Class Methods</a>
+      <ul>
+        <li><a href="#__construct">__construct</a></li>
+        <li><a href="#__tostring">__toString</a></li>
+        <li><a href="#children">children</a></li>
+        <li><a href="#description">description</a></li>
+        <li><a href="#edit_link">edit_link</a></li>
+        <li><a href="#from">from</a></li>
+        <li><a href="#link">link</a></li>
+        <li><a href="#meta">meta</a></li>
+        <li><a href="#path">path</a></li>
+        <li><a href="#posts">posts</a></li>
+        <li><a href="#title">title</a></li>
+        <li><a href="#update">update</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 		</aside>
 
@@ -260,45 +259,33 @@
 			<div class="content">
 				<p>Terms: WordPress has got &lsquo;em, you want &lsquo;em. Categories. Tags. Custom
 Taxonomies. You don&rsquo;t care, you&rsquo;re a fiend. Well let&rsquo;s get this under control:</p>
-
 <p><strong>PHP</strong></p>
-
-<pre><code class="language-php">&lt;?php
-//Get a term by its ID
-$context['term'] = new Timber\Term(6);
-//Get a term when on a term archive page
-$context['term_page'] = new Timber\Term();
-//Get a term with a slug
-$context['team'] = new Timber\Term('patriots');
-//Get a team with a slug from a specific taxonomy
-$context['st_louis'] = new Timber\Term('cardinals', 'baseball');
-Timber::render('index.twig', $context);
-</code></pre>
-
-<p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;h2&gt;{{term_page.name}} Archives&lt;/h2&gt;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#75715e">//Get a term by its ID
+</span><span style="color:#75715e"></span>$context[<span style="color:#e6db74">&#39;term&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Timber\Term</span>(<span style="color:#ae81ff">6</span>);
+<span style="color:#75715e">//Get a term when on a term archive page
+</span><span style="color:#75715e"></span>$context[<span style="color:#e6db74">&#39;term_page&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Timber\Term</span>();
+<span style="color:#75715e">//Get a term with a slug
+</span><span style="color:#75715e"></span>$context[<span style="color:#e6db74">&#39;team&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Timber\Term</span>(<span style="color:#e6db74">&#39;patriots&#39;</span>);
+<span style="color:#75715e">//Get a team with a slug from a specific taxonomy
+</span><span style="color:#75715e"></span>$context[<span style="color:#e6db74">&#39;st_louis&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Timber\Term</span>(<span style="color:#e6db74">&#39;cardinals&#39;</span>, <span style="color:#e6db74">&#39;baseball&#39;</span>);
+<span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">render</span>(<span style="color:#e6db74">&#39;index.twig&#39;</span>, $context);
+</code></pre></div><p><strong>Twig</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;h2&gt;<span style="color:#75715e">{{</span>term_page.name<span style="color:#75715e">}}</span> Archives&lt;/h2&gt;
 &lt;h3&gt;Teams&lt;/h3&gt;
 &lt;ul&gt;
-    &lt;li&gt;{{st_louis.name}} - {{st_louis.description}}&lt;/li&gt;
-    &lt;li&gt;{{team.name}} - {{team.description}}&lt;/li&gt;
+    &lt;li&gt;<span style="color:#75715e">{{</span>st_louis.name<span style="color:#75715e">}}</span> - <span style="color:#75715e">{{</span>st_louis.description<span style="color:#75715e">}}</span>&lt;/li&gt;
+    &lt;li&gt;<span style="color:#75715e">{{</span>team.name<span style="color:#75715e">}}</span> - <span style="color:#75715e">{{</span>team.description<span style="color:#75715e">}}</span>&lt;/li&gt;
 &lt;/ul&gt;
-</code></pre>
-
-<p><strong>HTML</strong></p>
-
-<pre><code class="language-html">&lt;h2&gt;Team Archives&lt;/h2&gt;
-&lt;h3&gt;Teams&lt;/h3&gt;
-&lt;ul&gt;
-    &lt;li&gt;St. Louis Cardinals - Winner of 11 World Series&lt;/li&gt;
-    &lt;li&gt;New England Patriots - Winner of 6 Super Bowls&lt;/li&gt;
-&lt;/ul&gt;
-</code></pre>
-
-<h2 id="overview">Overview</h2>
-
+</code></pre></div><p><strong>HTML</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">h2</span>&gt;Team Archives&lt;/<span style="color:#f92672">h2</span>&gt;
+&lt;<span style="color:#f92672">h3</span>&gt;Teams&lt;/<span style="color:#f92672">h3</span>&gt;
+&lt;<span style="color:#f92672">ul</span>&gt;
+    &lt;<span style="color:#f92672">li</span>&gt;St. Louis Cardinals - Winner of 11 World Series&lt;/<span style="color:#f92672">li</span>&gt;
+    &lt;<span style="color:#f92672">li</span>&gt;New England Patriots - Winner of 6 Super Bowls&lt;/<span style="color:#f92672">li</span>&gt;
+&lt;/<span style="color:#f92672">ul</span>&gt;
+</code></pre></div><h2 id="overview">Overview</h2>
 <h3 id="properties">Properties</h3>
-
 <table>
 <thead>
 <tr>
@@ -307,14 +294,12 @@ Timber::render('index.twig', $context);
 <th>Description</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>name</td>
 <td><code>string</code></td>
 <td>the human-friendly name of the term (ex: French Cuisine)</td>
 </tr>
-
 <tr>
 <td>taxonomy</td>
 <td><code>string</code></td>
@@ -322,9 +307,7 @@ Timber::render('index.twig', $context);
 </tr>
 </tbody>
 </table>
-
 <h3 id="methods">Methods</h3>
-
 <table>
 <thead>
 <tr>
@@ -333,50 +316,42 @@ Timber::render('index.twig', $context);
 <th>Returns/Description</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><a href="#children">children</a></td>
 <td><code>array</code></td>
 <td></td>
 </tr>
-
 <tr>
 <td><a href="#description">description</a></td>
 <td><code>string</code></td>
 <td></td>
 </tr>
-
 <tr>
 <td><a href="#edit_link">edit_link</a></td>
 <td><code>string</code></td>
 <td></td>
 </tr>
-
 <tr>
 <td><a href="#link">link</a></td>
 <td><code>string</code></td>
 <td></td>
 </tr>
-
 <tr>
 <td><a href="#meta">meta</a></td>
 <td><code>string</code></td>
 <td></td>
 </tr>
-
 <tr>
 <td><a href="#path">path</a></td>
 <td><code>string</code></td>
 <td></td>
 </tr>
-
 <tr>
 <td><a href="#posts">posts</a></td>
 <td><code>array/bool/null</code></td>
 <td></td>
 </tr>
-
 <tr>
 <td><a href="#title">title</a></td>
 <td><code>string</code></td>
@@ -384,17 +359,11 @@ Timber::render('index.twig', $context);
 </tr>
 </tbody>
 </table>
-
-<hr />
-
+<hr>
 <h2 id="class-methods">Class Methods</h2>
-
-<h3 id="construct">__construct</h3>
-
+<h3 id="__construct">__construct</h3>
 <p><code>__construct( mixed/int $tid=null, string $tax=&quot;&quot; )</code></p>
-
 <p><strong>returns:</strong> <code>void</code></p>
-
 <table>
 <thead>
 <tr>
@@ -403,14 +372,12 @@ Timber::render('index.twig', $context);
 <th>Description</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>$tid</td>
 <td><code>mixed/int</code></td>
 <td></td>
 </tr>
-
 <tr>
 <td>$tax</td>
 <td><code>string</code></td>
@@ -418,47 +385,26 @@ Timber::render('index.twig', $context);
 </tr>
 </tbody>
 </table>
-
-<hr />
-
-<h3 id="tostring">__toString</h3>
-
+<hr>
+<h3 id="__tostring">__toString</h3>
 <p><code>__toString( )</code></p>
-
 <p><strong>returns:</strong> <code>string</code></p>
-
-<hr />
-
+<hr>
 <h3 id="children">children</h3>
-
 <p><code>children( )</code></p>
-
 <p><strong>returns:</strong> <code>array</code></p>
-
-<hr />
-
+<hr>
 <h3 id="description">description</h3>
-
 <p><code>description( )</code></p>
-
 <p><strong>returns:</strong> <code>string</code></p>
-
-<hr />
-
-<h3 id="edit-link">edit_link</h3>
-
+<hr>
+<h3 id="edit_link">edit_link</h3>
 <p><code>edit_link( )</code></p>
-
 <p><strong>returns:</strong> <code>string</code></p>
-
-<hr />
-
+<hr>
 <h3 id="from">from</h3>
-
 <p><code>from( mixed $tid, mixed $taxonomy )</code></p>
-
 <p><strong>returns:</strong> <code>\Timber\static</code></p>
-
 <table>
 <thead>
 <tr>
@@ -467,14 +413,12 @@ Timber::render('index.twig', $context);
 <th>Description</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>$tid</td>
 <td><code>mixed</code></td>
 <td></td>
 </tr>
-
 <tr>
 <td>$taxonomy</td>
 <td><code>mixed</code></td>
@@ -482,37 +426,23 @@ Timber::render('index.twig', $context);
 </tr>
 </tbody>
 </table>
-
-<hr />
-
+<hr>
 <h3 id="link">link</h3>
-
 <p><code>link( )</code></p>
-
 <p><strong>returns:</strong> <code>string</code></p>
-
 <p>Returns a full link to the term archive page like
 <code>http://example.com/category/news</code></p>
-
 <p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">See all posts in: &lt;a href=&quot;{{ term.link }}&quot;&gt;{{ term.name }}&lt;/a&gt;
-</code></pre>
-
-<hr />
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">See all posts in: &lt;a href=&#34;<span style="color:#75715e">{{</span> term.link <span style="color:#75715e">}}</span>&#34;&gt;<span style="color:#75715e">{{</span> term.name <span style="color:#75715e">}}</span>&lt;/a&gt;
+</code></pre></div><hr>
 <h3 id="meta">meta</h3>
-
 <p><code>meta( string $field_name )</code></p>
-
 <p><strong>returns:</strong> <code>string</code></p>
-
 <p>Retrieves and outputs meta information stored with a term. This will use
 both data stored under (old) ACF hacks and new (WP 4.6+) where term meta
 has its own table. If retrieving a special ACF field (repeater, etc.) you
 can use the output immediately in Twig — no further processing is
 required.</p>
-
 <table>
 <thead>
 <tr>
@@ -521,7 +451,6 @@ required.</p>
 <th>Description</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>$field_name</td>
@@ -530,41 +459,24 @@ required.</p>
 </tr>
 </tbody>
 </table>
-
 <p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;div class=&quot;location-info&quot;&gt;
-  &lt;h2&gt;{{ term.name }}&lt;/h2&gt;
-  &lt;p&gt;{{ term.meta('address') }}&lt;/p&gt;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;div class=&#34;location-info&#34;&gt;
+  &lt;h2&gt;<span style="color:#75715e">{{</span> term.name <span style="color:#75715e">}}</span>&lt;/h2&gt;
+  &lt;p&gt;<span style="color:#75715e">{{</span> term.meta<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;address&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">}}</span>&lt;/p&gt;
 &lt;/div&gt;
-</code></pre>
-
-<hr />
-
+</code></pre></div><hr>
 <h3 id="path">path</h3>
-
 <p><code>path( )</code></p>
-
 <p><strong>returns:</strong> <code>string</code></p>
-
 <p>Returns a relative link (path) to the term archive page like
 <code>/category/news</code></p>
-
 <p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">See all posts in: &lt;a href=&quot;{{ term.path }}&quot;&gt;{{ term.name }}&lt;/a&gt;
-</code></pre>
-
-<hr />
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">See all posts in: &lt;a href=&#34;<span style="color:#75715e">{{</span> term.path <span style="color:#75715e">}}</span>&#34;&gt;<span style="color:#75715e">{{</span> term.name <span style="color:#75715e">}}</span>&lt;/a&gt;
+</code></pre></div><hr>
 <h3 id="posts">posts</h3>
-
 <p><code>posts( mixed/int/array $numberposts_or_args=10, string $post_type_or_class=&quot;any&quot;, string $post_class=&quot;&quot; )</code></p>
-
 <p><strong>returns:</strong> <code>array/bool/null</code></p>
-
 <p>Gets posts that have the current term assigned.</p>
-
 <table>
 <thead>
 <tr>
@@ -573,20 +485,17 @@ required.</p>
 <th>Description</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>$numberposts_or_args</td>
 <td><code>mixed/int/array</code></td>
 <td>Optional. Either the number of posts or an array of arguments for the post query that this method is going. to perform. Default <code>10</code>.</td>
 </tr>
-
 <tr>
 <td>$post_type_or_class</td>
 <td><code>string</code></td>
 <td>Optional. Either the post type to get or the name of post class to use for the returned posts. Default <code>any</code>.</td>
 </tr>
-
 <tr>
 <td>$post_class</td>
 <td><code>string</code></td>
@@ -594,52 +503,37 @@ required.</p>
 </tr>
 </tbody>
 </table>
-
 <p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;h4&gt;Recent posts in {{ term.name }}&lt;/h4&gt;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;h4&gt;Recent posts in <span style="color:#75715e">{{</span> term.name <span style="color:#75715e">}}</span>&lt;/h4&gt;
 &lt;ul&gt;
-{% for post in term.posts(3, 'post') %}
+<span style="color:#75715e">{%</span> <span style="color:#66d9ef">for</span> post <span style="color:#66d9ef">in</span> term.posts<span style="color:#f92672">(</span><span style="color:#ae81ff">3</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;post&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">%}</span>
     &lt;li&gt;
-        &lt;a href=&quot;{{ post.link }}&quot;&gt;{{ post.title }}&lt;/a&gt;
+        &lt;a href=&#34;<span style="color:#75715e">{{</span> post.link <span style="color:#75715e">}}</span>&#34;&gt;<span style="color:#75715e">{{</span> post.title <span style="color:#75715e">}}</span>&lt;/a&gt;
     &lt;/li&gt;
-{% endfor %}
+<span style="color:#75715e">{%</span> <span style="color:#66d9ef">endfor</span> <span style="color:#75715e">%}</span>
 &lt;/ul&gt;
-</code></pre>
-
-<p>If you need more control over the query that is going to be performed, you can pass your
+</code></pre></div><p>If you need more control over the query that is going to be performed, you can pass your
 custom query arguments in the first parameter.
 <strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;h4&gt;Our branches in {{ region.name }}&lt;/h4&gt;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;h4&gt;Our branches in <span style="color:#75715e">{{</span> region.name <span style="color:#75715e">}}</span>&lt;/h4&gt;
 &lt;ul&gt;
-{% for branch in region.posts({
-    posts_per_page: -1,
-    orderby: 'menu_order'
-}, 'branch', 'Branch') %}
+<span style="color:#75715e">{%</span> <span style="color:#66d9ef">for</span> branch <span style="color:#66d9ef">in</span> region.posts<span style="color:#f92672">({</span>
+    posts_per_page<span style="color:#f92672">:</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">,</span>
+    orderby<span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;menu_order&#39;</span>
+<span style="color:#f92672">},</span> <span style="color:#e6db74">&#39;branch&#39;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;Branch&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">%}</span>
     &lt;li&gt;
-        &lt;a href=&quot;{{ branch.link }}&quot;&gt;{{ branch.title }}&lt;/a&gt;
+        &lt;a href=&#34;<span style="color:#75715e">{{</span> branch.link <span style="color:#75715e">}}</span>&#34;&gt;<span style="color:#75715e">{{</span> branch.title <span style="color:#75715e">}}</span>&lt;/a&gt;
     &lt;/li&gt;
-{% endfor %}
+<span style="color:#75715e">{%</span> <span style="color:#66d9ef">endfor</span> <span style="color:#75715e">%}</span>
 &lt;/ul&gt;
-</code></pre>
-
-<hr />
-
+</code></pre></div><hr>
 <h3 id="title">title</h3>
-
 <p><code>title( )</code></p>
-
 <p><strong>returns:</strong> <code>string</code></p>
-
-<hr />
-
+<hr>
 <h3 id="update">update</h3>
-
 <p><code>update( string $key, mixed $value )</code></p>
-
 <p><strong>returns:</strong> <code>void</code></p>
-
 <table>
 <thead>
 <tr>
@@ -648,14 +542,12 @@ custom query arguments in the first parameter.
 <th>Description</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>$key</td>
 <td><code>string</code></td>
 <td></td>
 </tr>
-
 <tr>
 <td>$value</td>
 <td><code>mixed</code></td>
@@ -663,11 +555,8 @@ custom query arguments in the first parameter.
 </tr>
 </tbody>
 </table>
-
-<hr />
-
+<hr>
 <p><em>This class extends \Timber\Core</em></p>
-
 <p><em>This class implements \Timber\CoreInterface</em></p>
 			</div>
 		</div>
@@ -678,7 +567,7 @@ custom query arguments in the first parameter.
 
 
 <script src="https://timber.github.io/docs/js/highlight.pack.js" defer></script>
-<script src="https://timber.github.io/docs/js/scripts.js?d0b281f642113556d4adaa8032af79eb" defer></script>
+<script src="https://timber.github.io/docs/js/scripts.js?44e60569f8868a72f5a9e8cd72cb0844" defer></script>
 
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>

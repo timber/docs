@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>References on Timber Docs</title>
@@ -53,16 +53,19 @@
       
       <guid>https://timber.github.io/docs/reference/timber-imagehelper/</guid>
       <description>&lt;p&gt;Implements the Twig image filters:
-&lt;a href=&#34;https://timber.github.io/docs/guides/cookbook-images/#arbitrary-resizing-of-images&#34;&gt;https://timber.github.io/docs/guides/cookbook-images/#arbitrary-resizing-of-images&lt;/a&gt;
-- resize
-- retina
-- letterbox
-- tojpg&lt;/p&gt;
-
-&lt;p&gt;Implementation:
-- public static functions provide the methods that are called by the filter
-- most of the work is common to all filters (URL analysis, directory gymnastics, file caching, error management) and done by private static functions
-- the specific part (actual image processing) is delegated to dedicated subclasses of TimberImageOperation&lt;/p&gt;</description>
+&lt;a href=&#34;https://timber.github.io/docs/guides/cookbook-images/#arbitrary-resizing-of-images&#34;&gt;https://timber.github.io/docs/guides/cookbook-images/#arbitrary-resizing-of-images&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;resize&lt;/li&gt;
+&lt;li&gt;retina&lt;/li&gt;
+&lt;li&gt;letterbox&lt;/li&gt;
+&lt;li&gt;tojpg&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Implementation:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;public static functions provide the methods that are called by the filter&lt;/li&gt;
+&lt;li&gt;most of the work is common to all filters (URL analysis, directory gymnastics, file caching, error management) and done by private static functions&lt;/li&gt;
+&lt;li&gt;the specific part (actual image processing) is delegated to dedicated subclasses of TimberImageOperation&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
     
     <item>
@@ -108,13 +111,10 @@
       
       <guid>https://timber.github.io/docs/reference/timber-postpreview/</guid>
       <description>&lt;p&gt;The PostPreview class lets a user modify a post preview/excerpt to their liking.&lt;/p&gt;
-
 &lt;p&gt;It’s designed to be used through the &lt;code&gt;Timber\Post::preview()&lt;/code&gt; method. The public methods of this
 class all return the object itself, which means that this is a &lt;strong&gt;chainable object&lt;/strong&gt;. You can
 change the output of the preview by &lt;strong&gt;adding more methods&lt;/strong&gt;.&lt;/p&gt;
-
 &lt;p&gt;By default, the preview will&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;have a length of 50 words, which will be forced, even if a longer excerpt is set on the post.&lt;/li&gt;
 &lt;li&gt;be stripped of all HTML tags.&lt;/li&gt;
@@ -179,7 +179,6 @@ commonly used in WordPress development&lt;/p&gt;</description>
       
       <guid>https://timber.github.io/docs/reference/timber/</guid>
       <description>&lt;p&gt;Timber Class.&lt;/p&gt;
-
 &lt;p&gt;Main class called Timber for this plugin.&lt;/p&gt;</description>
     </item>
     

@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
 	
-    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?db75858961ef100d103393e34f398175">
+    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?c77bdfd53127f8f1e98153f3f27452a2">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
 
     
@@ -228,127 +228,75 @@
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
 			<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#setup-a-testing-environment-with-phpunit">Setup a testing environment with PHPUnit</a>
-<ul>
-<li><a href="#1-install-vvv">1. Install VVV</a></li>
-<li><a href="#2-set-up-timber-for-tests">2. Set up Timber for tests</a></li>
-<li><a href="#3-install-wordpress-s-development-version">3. Install WordPress&rsquo;s Development Version</a></li>
-<li><a href="#4-configure-wordpress-tests">4. Configure WordPress tests</a></li>
-<li><a href="#5-install-wordpress-tests">5. Install WordPress tests</a></li>
-<li><a href="#6-run-the-tests">6. Run the tests!</a></li>
-</ul></li>
-<li><a href="#writing-tests">Writing tests</a></li>
-<li><a href="#gotchas">Gotchas!</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#setup-a-testing-environment-with-phpunit">Setup a testing environment with PHPUnit</a>
+      <ul>
+        <li><a href="#1-install-vvv">1. Install VVV</a></li>
+        <li><a href="#2-set-up-timber-for-tests">2. Set up Timber for tests</a></li>
+        <li><a href="#3-install-wordpresss-development-version">3. Install WordPress&rsquo;s Development Version</a></li>
+        <li><a href="#4-configure-wordpress-tests">4. Configure WordPress tests</a></li>
+        <li><a href="#5-install-wordpress-tests">5. Install WordPress tests</a></li>
+        <li><a href="#6-run-the-tests">6. Run the tests!</a></li>
+      </ul>
+    </li>
+    <li><a href="#writing-tests">Writing tests</a></li>
+    <li><a href="#gotchas">Gotchas!</a></li>
+  </ul>
 </nav>
 		</aside>
 
 		<div class="content-container">
 			<div class="content">
-				
-
-<h2 id="setup-a-testing-environment-with-phpunit">Setup a testing environment with PHPUnit</h2>
-
+				<h2 id="setup-a-testing-environment-with-phpunit">Setup a testing environment with PHPUnit</h2>
 <p>Follow the setup steps for <a href="https://github.com/Varying-Vagrant-Vagrants/VVV">Varying Vagrant Vagrants</a>. If you’re having trouble I recommend starting 100% fresh (uninstall and delete everything including VirtualBox). For this walk-through we’re going to start from scratch:</p>
-
 <h3 id="1-install-vvv">1. Install VVV</h3>
-
 <p>Follow the <a href="https://varyingvagrantvagrants.org/docs/en-US/installation/">setup instructions</a> — don&rsquo;t forget to install VirtualBox and Vagrant first! For this tutorial I&rsquo;m going to assume you&rsquo;ve installed into <code>~/vagrant-local/</code></p>
-
 <h3 id="2-set-up-timber-for-tests">2. Set up Timber for tests</h3>
-
 <p>Navigate into the <code>www</code> directory and clone Timber&hellip;</p>
-
 <pre><code>$ cd ~/vagrant-local/www/
 $ git clone git@github.com:timber/timber.git
-</code></pre>
-
-<h3 id="3-install-wordpress-s-development-version">3. Install WordPress&rsquo;s Development Version</h3>
-
+</code></pre><h3 id="3-install-wordpresss-development-version">3. Install WordPress&rsquo;s Development Version</h3>
 <p>VVV no longer installs the development version of WordPress by default so we have to re-provision with it enabled. Edit <code>vvv-custom.yml</code> and find this line:</p>
-
 <pre><code>  wordpress-trunk:
     skip_provisioning: true # provisioning this one takes longer, so it's disabled by default
-</code></pre>
-
-<p>Set <code>skip_provisioning</code> to <code>false</code></p>
-
+</code></pre><p>Set <code>skip_provisioning</code> to <code>false</code></p>
 <pre><code>  wordpress-trunk:
     skip_provisioning: false # provisioning this one takes longer, so it's disabled by default
-</code></pre>
-
-<p>Now re-provision Vagrant</p>
-
+</code></pre><p>Now re-provision Vagrant</p>
 <pre><code>$ vagrant halt &amp;&amp; vagrant up --provision
-</code></pre>
-
-<p>Warning: this one will take a while.</p>
-
+</code></pre><p>Warning: this one will take a while.</p>
 <h3 id="4-configure-wordpress-tests">4. Configure WordPress tests</h3>
-
 <p>Copy <code>/wordpress-trunk/public_html/wp-tests-config-sample.php</code> to <code>/wordpress-trunk/public_html/wp-tests-config.php</code>. Assuming you&rsquo;re using VVV&rsquo;s defaults, we just need to specify how to access the database:</p>
-
-<pre><code class="language-php">define( 'DB_NAME', 'wordpress_unit_tests' );
-define( 'DB_USER', 'root' );
-define( 'DB_PASSWORD', 'root' );
-</code></pre>
-
-<h3 id="5-install-wordpress-tests">5. Install WordPress tests</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">define( &#39;DB_NAME&#39;, &#39;wordpress_unit_tests&#39; );
+define( &#39;DB_USER&#39;, &#39;root&#39; );
+define( &#39;DB_PASSWORD&#39;, &#39;root&#39; );
+</code></pre></div><h3 id="5-install-wordpress-tests">5. Install WordPress tests</h3>
 <p>SSH into Vagrant to install Timber&rsquo;s tests and run them</p>
-
 <pre><code>$ vagrant ssh
-</code></pre>
-
-<p>Now, navigate to where you installed Timber via Git:</p>
-
+</code></pre><p>Now, navigate to where you installed Timber via Git:</p>
 <pre><code>$ cd /srv/www/timber
-</code></pre>
-
-<p>And install the tests!</p>
-
+</code></pre><p>And install the tests!</p>
 <pre><code>$ bin/install-wp-tests.sh wordpress_tests root root
-</code></pre>
-
-<p>All done! Now, the fun part (and the only part you have to do in the future when writing/running tests)</p>
-
+</code></pre><p>All done! Now, the fun part (and the only part you have to do in the future when writing/running tests)</p>
 <h3 id="6-run-the-tests">6. Run the tests!</h3>
-
 <p>Connect to your Vagrant instance trough SSH (if you&rsquo;re not already):</p>
-
 <pre><code>$ vagrant ssh
-</code></pre>
-
-<p>Now wait for it to bring you into the virtual box from the virtual environment&hellip;</p>
-
+</code></pre><p>Now wait for it to bring you into the virtual box from the virtual environment&hellip;</p>
 <pre><code>$ cd /srv/www/timber
 $ composer install
 $ phpunit
-</code></pre>
-
-<p>You should see a bunch of gobbledygook across your screen (the whole process will take about 4 mins.), but we should see that WordPress is testing successfully. Hurrah! For more info, check out the <a href="http://make.wordpress.org/core/handbook/automated-testing/">Handbook on Automated Testing</a>.</p>
-
+</code></pre><p>You should see a bunch of gobbledygook across your screen (the whole process will take about 4 mins.), but we should see that WordPress is testing successfully. Hurrah! For more info, check out the <a href="http://make.wordpress.org/core/handbook/automated-testing/">Handbook on Automated Testing</a>.</p>
 <h2 id="writing-tests">Writing tests</h2>
-
 <p>Now we get to the good stuff. You can add tests to the <code>timber/tests</code> directory. Any new features should be covered by tests. You can be a hero and help write tests for existing methods and functionality.</p>
-
 <h2 id="gotchas">Gotchas!</h2>
-
 <ul>
 <li>You may need to setup authorization between VVV and GitHub. Just follow the prompts to create a token if that interrupts the <code>composer install</code>.</li>
-
-<li><p>You may have <a href="https://getcomposer.org/doc/articles/troubleshooting.md#proc-open-fork-failed-errors">memory problems with Composer</a>. In case that happens, here’s the script I run:</p>
-
+<li>You may have <a href="https://getcomposer.org/doc/articles/troubleshooting.md#proc-open-fork-failed-errors">memory problems with Composer</a>. In case that happens, here’s the script I run:</li>
+</ul>
 <pre><code>sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024
 sudo /sbin/mkswap /var/swap.1
 sudo /sbin/swapon /var/swap.1
-</code></pre></li>
-</ul>
-
+</code></pre>
 			</div>
 		</div>
 	</article>
@@ -358,7 +306,7 @@ sudo /sbin/swapon /var/swap.1
 
 
 <script src="https://timber.github.io/docs/js/highlight.pack.js" defer></script>
-<script src="https://timber.github.io/docs/js/scripts.js?d0b281f642113556d4adaa8032af79eb" defer></script>
+<script src="https://timber.github.io/docs/js/scripts.js?44e60569f8868a72f5a9e8cd72cb0844" defer></script>
 
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>

@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
 	
-    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?db75858961ef100d103393e34f398175">
+    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?c77bdfd53127f8f1e98153f3f27452a2">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
 
     
@@ -228,83 +228,70 @@
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
 			<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#overview">Overview</a>
-<ul>
-<li><a href="#properties">Properties</a></li>
-<li><a href="#methods">Methods</a></li>
-</ul></li>
-<li><a href="#class-methods">Class Methods</a>
-<ul>
-<li><a href="#construct">__construct</a></li>
-<li><a href="#tostring">__toString</a></li>
-<li><a href="#alt">alt</a></li>
-<li><a href="#aspect">aspect</a></li>
-<li><a href="#get-pathinfo">get_pathinfo</a></li>
-<li><a href="#strike-get-url-strike"><strike>get_url</strike></a></li>
-<li><a href="#height">height</a></li>
-<li><a href="#img-sizes">img_sizes</a></li>
-<li><a href="#link">link</a></li>
-<li><a href="#parent">parent</a></li>
-<li><a href="#path">path</a></li>
-<li><a href="#src">src</a></li>
-<li><a href="#srcset">srcset</a></li>
-<li><a href="#strike-url-strike"><strike>url</strike></a></li>
-<li><a href="#width">width</a></li>
-<li><a href="#wp-upload-dir">wp_upload_dir</a></li>
-<li><a href="#get-post-custom">get_post_custom</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#overview">Overview</a>
+      <ul>
+        <li><a href="#properties">Properties</a></li>
+        <li><a href="#methods">Methods</a></li>
+      </ul>
+    </li>
+    <li><a href="#class-methods">Class Methods</a>
+      <ul>
+        <li><a href="#__construct">__construct</a></li>
+        <li><a href="#__tostring">__toString</a></li>
+        <li><a href="#alt">alt</a></li>
+        <li><a href="#aspect">aspect</a></li>
+        <li><a href="#get_pathinfo">get_pathinfo</a></li>
+        <li><a href="#strikeget_urlstrike"><!-- raw HTML omitted -->get_url<!-- raw HTML omitted --></a></li>
+        <li><a href="#height">height</a></li>
+        <li><a href="#img_sizes">img_sizes</a></li>
+        <li><a href="#link">link</a></li>
+        <li><a href="#parent">parent</a></li>
+        <li><a href="#path">path</a></li>
+        <li><a href="#src">src</a></li>
+        <li><a href="#srcset">srcset</a></li>
+        <li><a href="#strikeurlstrike"><!-- raw HTML omitted -->url<!-- raw HTML omitted --></a></li>
+        <li><a href="#width">width</a></li>
+        <li><a href="#wp_upload_dir">wp_upload_dir</a></li>
+        <li><a href="#get_post_custom">get_post_custom</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 		</aside>
 
 		<div class="content-container">
 			<div class="content">
 				<p>If TimberPost is the class you&rsquo;re going to spend the most time, Timber\Image is the class you&rsquo;re going to have the most fun with.</p>
-
 <p><strong>PHP</strong></p>
-
-<pre><code class="language-php">&lt;?php
-$context = Timber::context();
-$post = new Timber\Post();
-$context['post'] = $post;
-// lets say you have an alternate large 'cover image' for your post stored in a custom field which returns an image ID
-$cover_image_id = $post-&gt;cover_image;
-$context['cover_image'] = new Timber\Image($cover_image_id);
-Timber::render('single.twig', $context);
-</code></pre>
-
-<p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;article&gt;
-	&lt;img src=&quot;{{cover_image.src}}&quot; class=&quot;cover-image&quot; /&gt;
-	&lt;h1 class=&quot;headline&quot;&gt;{{post.title}}&lt;/h1&gt;
-	&lt;div class=&quot;body&quot;&gt;
-		{{post.content}}
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+$context <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">context</span>();
+$post <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Timber\Post</span>();
+$context[<span style="color:#e6db74">&#39;post&#39;</span>] <span style="color:#f92672">=</span> $post;
+<span style="color:#75715e">// lets say you have an alternate large &#39;cover image&#39; for your post stored in a custom field which returns an image ID
+</span><span style="color:#75715e"></span>$cover_image_id <span style="color:#f92672">=</span> $post<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">cover_image</span>;
+$context[<span style="color:#e6db74">&#39;cover_image&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Timber\Image</span>($cover_image_id);
+<span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">render</span>(<span style="color:#e6db74">&#39;single.twig&#39;</span>, $context);
+</code></pre></div><p><strong>Twig</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;article&gt;
+	&lt;img src=&#34;<span style="color:#75715e">{{</span>cover_image.src<span style="color:#75715e">}}</span>&#34; class=&#34;cover-image&#34; /&gt;
+	&lt;h1 class=&#34;headline&#34;&gt;<span style="color:#75715e">{{</span>post.title<span style="color:#75715e">}}</span>&lt;/h1&gt;
+	&lt;div class=&#34;body&#34;&gt;
+		<span style="color:#75715e">{{</span>post.content<span style="color:#75715e">}}</span>
 	&lt;/div&gt;
-	&lt;img src=&quot;{{ Image(post.custom_field_with_image_id).src }}&quot; alt=&quot;Another way to initialize images as TimberImages, but within Twig&quot; /&gt;
+	&lt;img src=&#34;<span style="color:#75715e">{{</span> <span style="color:#960050;background-color:#1e0010">I</span>mage<span style="color:#f92672">(</span>post.custom_field_with_image_id<span style="color:#f92672">)</span>.src <span style="color:#75715e">}}</span>&#34; alt=&#34;Another way to initialize images as TimberImages, but within Twig&#34; /&gt;
 &lt;/article&gt;
-</code></pre>
-
-<p><strong>HTML</strong></p>
-
-<pre><code class="language-html">&lt;article&gt;
-	&lt;img src=&quot;http://example.org/wp-content/uploads/2015/06/nevermind.jpg&quot; class=&quot;cover-image&quot; /&gt;
-	&lt;h1 class=&quot;headline&quot;&gt;Now you've done it!&lt;/h1&gt;
-	&lt;div class=&quot;body&quot;&gt;
+</code></pre></div><p><strong>HTML</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">article</span>&gt;
+	&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://example.org/wp-content/uploads/2015/06/nevermind.jpg&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;cover-image&#34;</span> /&gt;
+	&lt;<span style="color:#f92672">h1</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;headline&#34;</span>&gt;Now you&#39;ve done it!&lt;/<span style="color:#f92672">h1</span>&gt;
+	&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;body&#34;</span>&gt;
 		Whatever whatever
-	&lt;/div&gt;
-	&lt;img src=&quot;http://example.org/wp-content/uploads/2015/06/kurt.jpg&quot; alt=&quot;Another way to initialize images as TimberImages, but within Twig&quot; /&gt;
-&lt;/article&gt;
-</code></pre>
-
-<h2 id="overview">Overview</h2>
-
+	&lt;/<span style="color:#f92672">div</span>&gt;
+	&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://example.org/wp-content/uploads/2015/06/kurt.jpg&#34;</span> <span style="color:#a6e22e">alt</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Another way to initialize images as TimberImages, but within Twig&#34;</span> /&gt;
+&lt;/<span style="color:#f92672">article</span>&gt;
+</code></pre></div><h2 id="overview">Overview</h2>
 <h3 id="properties">Properties</h3>
-
 <table>
 <thead>
 <tr>
@@ -313,48 +300,40 @@ Timber::render('single.twig', $context);
 <th>Description</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>file_loc</td>
 <td><code>string</code></td>
 <td>$file_loc the location of the image file in the filesystem (ex: <code>/var/www/htdocs/wp-content/uploads/2015/08/my-pic.jpg</code>)</td>
 </tr>
-
 <tr>
 <td>id</td>
 <td><code>integer</code></td>
 <td>the ID of the image (which is a WP_Post)</td>
 </tr>
-
 <tr>
 <td>caption</td>
 <td><code>string</code></td>
 <td>$caption the string stored in the WordPress database</td>
 </tr>
-
 <tr>
 <td>post_status</td>
 <td><code>string</code></td>
-<td>$post_status    the status of a post (&ldquo;draft&rdquo;, &ldquo;publish&rdquo;, etc.)</td>
+<td>$post_status 	the status of a post (&ldquo;draft&rdquo;, &ldquo;publish&rdquo;, etc.)</td>
 </tr>
-
 <tr>
 <td>post_type</td>
 <td><code>string</code></td>
-<td>$post_type      the name of the post type, this is the machine name (so &ldquo;my_custom_post_type&rdquo; as opposed to &ldquo;My Custom Post Type&rdquo;)</td>
+<td>$post_type 		the name of the post type, this is the machine name (so &ldquo;my_custom_post_type&rdquo; as opposed to &ldquo;My Custom Post Type&rdquo;)</td>
 </tr>
-
 <tr>
 <td>slug</td>
 <td><code>string</code></td>
-<td>$slug       the URL-safe slug, this corresponds to the poorly-named &ldquo;post_name&rdquo; in the WP database, ex: &ldquo;hello-world&rdquo;</td>
+<td>$slug 		the URL-safe slug, this corresponds to the poorly-named &ldquo;post_name&rdquo; in the WP database, ex: &ldquo;hello-world&rdquo;</td>
 </tr>
 </tbody>
 </table>
-
 <h3 id="methods">Methods</h3>
-
 <table>
 <thead>
 <tr>
@@ -363,62 +342,52 @@ Timber::render('single.twig', $context);
 <th>Returns/Description</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><a href="#alt">alt</a></td>
 <td><code>string</code></td>
 <td>alt text stored in WordPress</td>
 </tr>
-
 <tr>
 <td><a href="#aspect">aspect</a></td>
 <td><code>\Timber\float</code></td>
 <td></td>
 </tr>
-
 <tr>
 <td><a href="#height">height</a></td>
 <td><code>int</code></td>
 <td></td>
 </tr>
-
 <tr>
 <td><a href="#img_sizes">img_sizes</a></td>
 <td><code>bool/string</code></td>
 <td></td>
 </tr>
-
 <tr>
 <td><a href="#link">link</a></td>
 <td><code>void</code></td>
 <td></td>
 </tr>
-
 <tr>
 <td><a href="#parent">parent</a></td>
 <td><code>bool/\Timber\TimberPost</code></td>
 <td></td>
 </tr>
-
 <tr>
 <td><a href="#path">path</a></td>
 <td><code>string</code></td>
 <td>the /relative/path/to/the/file</td>
 </tr>
-
 <tr>
 <td><a href="#src">src</a></td>
 <td><code>bool/string</code></td>
 <td></td>
 </tr>
-
 <tr>
 <td><a href="#srcset">srcset</a></td>
 <td><code>bool/string</code></td>
 <td></td>
 </tr>
-
 <tr>
 <td><a href="#width">width</a></td>
 <td><code>int</code></td>
@@ -426,19 +395,12 @@ Timber::render('single.twig', $context);
 </tr>
 </tbody>
 </table>
-
-<hr />
-
+<hr>
 <h2 id="class-methods">Class Methods</h2>
-
-<h3 id="construct">__construct</h3>
-
+<h3 id="__construct">__construct</h3>
 <p><code>__construct( bool/int/string $iid )</code></p>
-
 <p><strong>returns:</strong> <code>void</code></p>
-
 <p>Creates a new Timber\Image object</p>
-
 <table>
 <thead>
 <tr>
@@ -447,7 +409,6 @@ Timber::render('single.twig', $context);
 <th>Description</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>$iid</td>
@@ -456,80 +417,45 @@ Timber::render('single.twig', $context);
 </tr>
 </tbody>
 </table>
-
 <p><strong>PHP</strong></p>
-
-<pre><code class="language-php">&lt;?php
-// You can pass it an ID number
-$myImage = new Timber\Image(552);
-//Or send it a URL to an image
-$myImage = new Timber\Image('http://google.com/logo.jpg');
-</code></pre>
-
-<hr />
-
-<h3 id="tostring">__toString</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#75715e">// You can pass it an ID number
+</span><span style="color:#75715e"></span>$myImage <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Timber\Image</span>(<span style="color:#ae81ff">552</span>);
+<span style="color:#75715e">//Or send it a URL to an image
+</span><span style="color:#75715e"></span>$myImage <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Timber\Image</span>(<span style="color:#e6db74">&#39;http://google.com/logo.jpg&#39;</span>);
+</code></pre></div><hr>
+<h3 id="__tostring">__toString</h3>
 <p><code>__toString( )</code></p>
-
 <p><strong>returns:</strong> <code>string</code> the src of the file</p>
-
-<hr />
-
+<hr>
 <h3 id="alt">alt</h3>
-
 <p><code>alt( )</code></p>
-
 <p><strong>returns:</strong> <code>string</code> alt text stored in WordPress</p>
-
 <p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;img src=&quot;{{ image.src }}&quot; alt=&quot;{{ image.alt }}&quot; /&gt;
-</code></pre>
-
-<p><strong>HTML</strong></p>
-
-<pre><code class="language-html">&lt;img src=&quot;http://example.org/wp-content/uploads/2015/08/pic.jpg&quot; alt=&quot;W3 Checker told me to add alt text, so I am&quot; /&gt;
-</code></pre>
-
-<hr />
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;img src=&#34;<span style="color:#75715e">{{</span> image.src <span style="color:#75715e">}}</span>&#34; alt=&#34;<span style="color:#75715e">{{</span> image.alt <span style="color:#75715e">}}</span>&#34; /&gt;
+</code></pre></div><p><strong>HTML</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://example.org/wp-content/uploads/2015/08/pic.jpg&#34;</span> <span style="color:#a6e22e">alt</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;W3 Checker told me to add alt text, so I am&#34;</span> /&gt;
+</code></pre></div><hr>
 <h3 id="aspect">aspect</h3>
-
 <p><code>aspect( )</code></p>
-
 <p><strong>returns:</strong> <code>\Timber\float</code></p>
-
 <p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">{% if post.thumbnail.aspect &lt; 1 %}
-    {# handle vertical image #}
-    &lt;img src=&quot;{{ post.thumbnail.src|resize(300, 500) }}&quot; alt=&quot;A basketball player&quot; /&gt;
-{% else %}
-	   &lt;img src=&quot;{{ post.thumbnail.src|resize(500) }}&quot; alt=&quot;A sumo wrestler&quot; /&gt;
-{% endif %}
-</code></pre>
-
-<hr />
-
-<h3 id="get-pathinfo">get_pathinfo</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{%</span> <span style="color:#66d9ef">if</span> post.thumbnail.aspect <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1</span> <span style="color:#75715e">%}</span>
+    <span style="color:#75715e">{# handle vertical image #}</span>
+    &lt;img src=&#34;<span style="color:#75715e">{{</span> post.thumbnail.src<span style="color:#f92672">|</span><span style="color:#a6e22e">resize</span><span style="color:#f92672">(</span><span style="color:#ae81ff">300</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">500</span><span style="color:#f92672">)</span> <span style="color:#75715e">}}</span>&#34; alt=&#34;A basketball player&#34; /&gt;
+<span style="color:#75715e">{%</span> <span style="color:#66d9ef">else</span> <span style="color:#75715e">%}</span>
+	   &lt;img src=&#34;<span style="color:#75715e">{{</span> post.thumbnail.src<span style="color:#f92672">|</span><span style="color:#a6e22e">resize</span><span style="color:#f92672">(</span><span style="color:#ae81ff">500</span><span style="color:#f92672">)</span> <span style="color:#75715e">}}</span>&#34; alt=&#34;A sumo wrestler&#34; /&gt;
+<span style="color:#75715e">{%</span> <span style="color:#66d9ef">endif</span> <span style="color:#75715e">%}</span>
+</code></pre></div><hr>
+<h3 id="get_pathinfo">get_pathinfo</h3>
 <p><code>get_pathinfo( )</code></p>
-
 <p><strong>returns:</strong> <code>array</code></p>
-
 <p>Get a PHP array with pathinfo() info from the file</p>
-
-<hr />
-
-<h3 id="strike-get-url-strike"><strike>get_url</strike></h3>
-
+<hr>
+<h3 id="strikeget_urlstrike"><!-- raw HTML omitted -->get_url<!-- raw HTML omitted --></h3>
 <p><strong>DEPRECATED</strong> since 0.21.9 use src() instead</p>
-
 <p><code>get_url( string $size=&quot;&quot; )</code></p>
-
 <p><strong>returns:</strong> <code>string</code></p>
-
 <table>
 <thead>
 <tr>
@@ -538,7 +464,6 @@ $myImage = new Timber\Image('http://google.com/logo.jpg');
 <th>Description</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>$size</td>
@@ -547,33 +472,18 @@ $myImage = new Timber\Image('http://google.com/logo.jpg');
 </tr>
 </tbody>
 </table>
-
-<hr />
-
+<hr>
 <h3 id="height">height</h3>
-
 <p><code>height( )</code></p>
-
 <p><strong>returns:</strong> <code>int</code></p>
-
 <p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;img src=&quot;{{ image.src }}&quot; height=&quot;{{ image.height }}&quot; /&gt;
-</code></pre>
-
-<p><strong>HTML</strong></p>
-
-<pre><code class="language-html">&lt;img src=&quot;http://example.org/wp-content/uploads/2015/08/pic.jpg&quot; height=&quot;900&quot; /&gt;
-</code></pre>
-
-<hr />
-
-<h3 id="img-sizes">img_sizes</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;img src=&#34;<span style="color:#75715e">{{</span> image.src <span style="color:#75715e">}}</span>&#34; height=&#34;<span style="color:#75715e">{{</span> image.height <span style="color:#75715e">}}</span>&#34; /&gt;
+</code></pre></div><p><strong>HTML</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://example.org/wp-content/uploads/2015/08/pic.jpg&#34;</span> <span style="color:#a6e22e">height</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;900&#34;</span> /&gt;
+</code></pre></div><hr>
+<h3 id="img_sizes">img_sizes</h3>
 <p><code>img_sizes( string $size=&quot;full&quot; )</code></p>
-
 <p><strong>returns:</strong> <code>bool/string</code></p>
-
 <table>
 <thead>
 <tr>
@@ -582,7 +492,6 @@ $myImage = new Timber\Image('http://google.com/logo.jpg');
 <th>Description</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>$size</td>
@@ -591,72 +500,36 @@ $myImage = new Timber\Image('http://google.com/logo.jpg');
 </tr>
 </tbody>
 </table>
-
 <p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;h1&gt;{{ post.title }}&lt;/h1&gt;
-&lt;img src=&quot;{{ post.thumbnail.src }}&quot; srcset=&quot;{{ post.thumbnail.srcset }}&quot; sizes=&quot;{{ post.thumbnail.img_sizes }}&quot; /&gt;
-</code></pre>
-
-<p><strong>HTML</strong></p>
-
-<pre><code class="language-html">&lt;img src=&quot;http://example.org/wp-content/uploads/2018/10/pic.jpg&quot; srcset=&quot;http://example.org/wp-content/uploads/2018/10/pic.jpg 1024w, http://example.org/wp-content/uploads/2018/10/pic-600x338.jpg 600w, http://example.org/wp-content/uploads/2018/10/pic-300x169.jpg 300w sizes=&quot;(max-width: 1024px) 100vw, 102&quot; /&gt;
-</code></pre>
-
-<hr />
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;h1&gt;<span style="color:#75715e">{{</span> post.title <span style="color:#75715e">}}</span>&lt;/h1&gt;
+&lt;img src=&#34;<span style="color:#75715e">{{</span> post.thumbnail.src <span style="color:#75715e">}}</span>&#34; srcset=&#34;<span style="color:#75715e">{{</span> post.thumbnail.srcset <span style="color:#75715e">}}</span>&#34; sizes=&#34;<span style="color:#75715e">{{</span> post.thumbnail.img_sizes <span style="color:#75715e">}}</span>&#34; /&gt;
+</code></pre></div><p><strong>HTML</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://example.org/wp-content/uploads/2018/10/pic.jpg&#34;</span> <span style="color:#a6e22e">srcset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://example.org/wp-content/uploads/2018/10/pic.jpg 1024w, http://example.org/wp-content/uploads/2018/10/pic-600x338.jpg 600w, http://example.org/wp-content/uploads/2018/10/pic-300x169.jpg 300w sizes=&#34;</span><span style="color:#960050;background-color:#1e0010">(</span><span style="color:#a6e22e">max-width:</span> <span style="color:#a6e22e">1024px</span><span style="color:#960050;background-color:#1e0010">)</span> <span style="color:#a6e22e">100vw</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#a6e22e">102</span><span style="color:#960050;background-color:#1e0010">&#34;</span> /&gt;
+</code></pre></div><hr>
 <h3 id="link">link</h3>
-
 <p><code>link( )</code></p>
-
 <p><strong>returns:</strong> <code>void</code></p>
-
 <p>Returns the link to an image attachment&rsquo;s Permalink page (NOT the link for the image itself!!)</p>
-
 <p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;a href=&quot;{{ image.link }}&quot;&gt;&lt;img src=&quot;{{ image.src }} &quot;/&gt;&lt;/a&gt;
-</code></pre>
-
-<p><strong>HTML</strong></p>
-
-<pre><code class="language-html">&lt;a href=&quot;http://example.org/my-cool-picture&quot;&gt;&lt;img src=&quot;http://example.org/wp-content/uploads/2015/whatever.jpg&quot;/&gt;&lt;/a&gt;
-</code></pre>
-
-<hr />
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;a href=&#34;<span style="color:#75715e">{{</span> image.link <span style="color:#75715e">}}</span>&#34;&gt;&lt;img src=&#34;<span style="color:#75715e">{{</span> image.src <span style="color:#75715e">}}</span> &#34;/&gt;&lt;/a&gt;
+</code></pre></div><p><strong>HTML</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://example.org/my-cool-picture&#34;</span>&gt;&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://example.org/wp-content/uploads/2015/whatever.jpg&#34;</span>/&gt;&lt;/<span style="color:#f92672">a</span>&gt;
+</code></pre></div><hr>
 <h3 id="parent">parent</h3>
-
 <p><code>parent( )</code></p>
-
 <p><strong>returns:</strong> <code>bool/\Timber\TimberPost</code></p>
-
-<hr />
-
+<hr>
 <h3 id="path">path</h3>
-
 <p><code>path( )</code></p>
-
 <p><strong>returns:</strong> <code>string</code> the /relative/path/to/the/file</p>
-
 <p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;img src=&quot;{{ image.path }}&quot; /&gt;
-</code></pre>
-
-<p><strong>HTML</strong></p>
-
-<pre><code class="language-html">&lt;img src=&quot;/wp-content/uploads/2015/08/pic.jpg&quot; /&gt;
-</code></pre>
-
-<hr />
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;img src=&#34;<span style="color:#75715e">{{</span> image.path <span style="color:#75715e">}}</span>&#34; /&gt;
+</code></pre></div><p><strong>HTML</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/wp-content/uploads/2015/08/pic.jpg&#34;</span> /&gt;
+</code></pre></div><hr>
 <h3 id="src">src</h3>
-
 <p><code>src( string $size=&quot;full&quot; )</code></p>
-
 <p><strong>returns:</strong> <code>bool/string</code></p>
-
 <table>
 <thead>
 <tr>
@@ -665,7 +538,6 @@ $myImage = new Timber\Image('http://google.com/logo.jpg');
 <th>Description</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>$size</td>
@@ -674,26 +546,15 @@ $myImage = new Timber\Image('http://google.com/logo.jpg');
 </tr>
 </tbody>
 </table>
-
 <p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;h1&gt;{{ post.title }}&lt;/h1&gt;
-&lt;img src=&quot;{{ post.thumbnail.src }}&quot; /&gt;
-</code></pre>
-
-<p><strong>HTML</strong></p>
-
-<pre><code class="language-html">&lt;img src=&quot;http://example.org/wp-content/uploads/2015/08/pic.jpg&quot; /&gt;
-</code></pre>
-
-<hr />
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;h1&gt;<span style="color:#75715e">{{</span> post.title <span style="color:#75715e">}}</span>&lt;/h1&gt;
+&lt;img src=&#34;<span style="color:#75715e">{{</span> post.thumbnail.src <span style="color:#75715e">}}</span>&#34; /&gt;
+</code></pre></div><p><strong>HTML</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://example.org/wp-content/uploads/2015/08/pic.jpg&#34;</span> /&gt;
+</code></pre></div><hr>
 <h3 id="srcset">srcset</h3>
-
 <p><code>srcset( string $size=&quot;full&quot; )</code></p>
-
 <p><strong>returns:</strong> <code>bool/string</code></p>
-
 <table>
 <thead>
 <tr>
@@ -702,7 +563,6 @@ $myImage = new Timber\Image('http://google.com/logo.jpg');
 <th>Description</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>$size</td>
@@ -711,28 +571,16 @@ $myImage = new Timber\Image('http://google.com/logo.jpg');
 </tr>
 </tbody>
 </table>
-
 <p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;h1&gt;{{ post.title }}&lt;/h1&gt;
-&lt;img src=&quot;{{ post.thumbnail.src }}&quot; srcset=&quot;{{ post.thumbnail.srcset }}&quot; /&gt;
-</code></pre>
-
-<p><strong>HTML</strong></p>
-
-<pre><code class="language-html">&lt;img src=&quot;http://example.org/wp-content/uploads/2018/10/pic.jpg&quot; srcset=&quot;http://example.org/wp-content/uploads/2018/10/pic.jpg 1024w, http://example.org/wp-content/uploads/2018/10/pic-600x338.jpg 600w, http://example.org/wp-content/uploads/2018/10/pic-300x169.jpg 300w&quot; /&gt;
-</code></pre>
-
-<hr />
-
-<h3 id="strike-url-strike"><strike>url</strike></h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;h1&gt;<span style="color:#75715e">{{</span> post.title <span style="color:#75715e">}}</span>&lt;/h1&gt;
+&lt;img src=&#34;<span style="color:#75715e">{{</span> post.thumbnail.src <span style="color:#75715e">}}</span>&#34; srcset=&#34;<span style="color:#75715e">{{</span> post.thumbnail.srcset <span style="color:#75715e">}}</span>&#34; /&gt;
+</code></pre></div><p><strong>HTML</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://example.org/wp-content/uploads/2018/10/pic.jpg&#34;</span> <span style="color:#a6e22e">srcset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://example.org/wp-content/uploads/2018/10/pic.jpg 1024w, http://example.org/wp-content/uploads/2018/10/pic-600x338.jpg 600w, http://example.org/wp-content/uploads/2018/10/pic-300x169.jpg 300w&#34;</span> /&gt;
+</code></pre></div><hr>
+<h3 id="strikeurlstrike"><!-- raw HTML omitted -->url<!-- raw HTML omitted --></h3>
 <p><strong>DEPRECATED</strong> since 0.21.9 use src() instead</p>
-
 <p><code>url( string $size=&quot;&quot; )</code></p>
-
 <p><strong>returns:</strong> <code>string</code></p>
-
 <table>
 <thead>
 <tr>
@@ -741,7 +589,6 @@ $myImage = new Timber\Image('http://google.com/logo.jpg');
 <th>Description</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>$size</td>
@@ -750,41 +597,22 @@ $myImage = new Timber\Image('http://google.com/logo.jpg');
 </tr>
 </tbody>
 </table>
-
-<hr />
-
+<hr>
 <h3 id="width">width</h3>
-
 <p><code>width( )</code></p>
-
 <p><strong>returns:</strong> <code>int</code></p>
-
 <p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;img src=&quot;{{ image.src }}&quot; width=&quot;{{ image.width }}&quot; /&gt;
-</code></pre>
-
-<p><strong>HTML</strong></p>
-
-<pre><code class="language-html">&lt;img src=&quot;http://example.org/wp-content/uploads/2015/08/pic.jpg&quot; width=&quot;1600&quot; /&gt;
-</code></pre>
-
-<hr />
-
-<h3 id="wp-upload-dir">wp_upload_dir</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;img src=&#34;<span style="color:#75715e">{{</span> image.src <span style="color:#75715e">}}</span>&#34; width=&#34;<span style="color:#75715e">{{</span> image.width <span style="color:#75715e">}}</span>&#34; /&gt;
+</code></pre></div><p><strong>HTML</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://example.org/wp-content/uploads/2015/08/pic.jpg&#34;</span> <span style="color:#a6e22e">width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1600&#34;</span> /&gt;
+</code></pre></div><hr>
+<h3 id="wp_upload_dir">wp_upload_dir</h3>
 <p><code>wp_upload_dir( )</code></p>
-
 <p><strong>returns:</strong> <code>void</code></p>
-
-<hr />
-
-<h3 id="get-post-custom">get_post_custom</h3>
-
+<hr>
+<h3 id="get_post_custom">get_post_custom</h3>
 <p><code>get_post_custom( mixed $iid )</code></p>
-
 <p><strong>returns:</strong> <code>array</code></p>
-
 <table>
 <thead>
 <tr>
@@ -793,7 +621,6 @@ $myImage = new Timber\Image('http://google.com/logo.jpg');
 <th>Description</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>$iid</td>
@@ -802,11 +629,8 @@ $myImage = new Timber\Image('http://google.com/logo.jpg');
 </tr>
 </tbody>
 </table>
-
-<hr />
-
+<hr>
 <p><em>This class extends \Timber\Post</em></p>
-
 <p><em>This class implements \Timber\CoreInterface</em></p>
 			</div>
 		</div>
@@ -817,7 +641,7 @@ $myImage = new Timber\Image('http://google.com/logo.jpg');
 
 
 <script src="https://timber.github.io/docs/js/highlight.pack.js" defer></script>
-<script src="https://timber.github.io/docs/js/scripts.js?d0b281f642113556d4adaa8032af79eb" defer></script>
+<script src="https://timber.github.io/docs/js/scripts.js?44e60569f8868a72f5a9e8cd72cb0844" defer></script>
 
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>

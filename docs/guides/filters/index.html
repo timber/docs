@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
 	
-    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?db75858961ef100d103393e34f398175">
+    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?c77bdfd53127f8f1e98153f3f27452a2">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
 
     
@@ -228,207 +228,110 @@
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
 			<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#general-filters">General Filters</a></li>
-<li><a href="#excerpt">excerpt</a></li>
-<li><a href="#function">function</a></li>
-<li><a href="#del-function-deprecated-del"><del>function (deprecated)<del></a></li>
-<li><a href="#relative">relative</a></li>
-<li><a href="#pretags">pretags</a></li>
-<li><a href="#sanitize">sanitize</a></li>
-<li><a href="#shortcodes">shortcodes</a></li>
-<li><a href="#time-ago">time_ago</a></li>
-<li><a href="#truncate">truncate</a></li>
-<li><a href="#wpautop">wpautop</a></li>
-<li><a href="#list">list</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#general-filters">General Filters</a></li>
+    <li><a href="#excerpt">excerpt</a></li>
+    <li><a href="#function">function</a></li>
+    <li><a href="#delfunction-deprecateddel"><!-- raw HTML omitted -->function (deprecated)<!-- raw HTML omitted --></a></li>
+    <li><a href="#relative">relative</a></li>
+    <li><a href="#pretags">pretags</a></li>
+    <li><a href="#sanitize">sanitize</a></li>
+    <li><a href="#shortcodes">shortcodes</a></li>
+    <li><a href="#time_ago">time_ago</a></li>
+    <li><a href="#truncate">truncate</a></li>
+    <li><a href="#wpautop">wpautop</a></li>
+    <li><a href="#list">list</a></li>
+  </ul>
 </nav>
 		</aside>
 
 		<div class="content-container">
 			<div class="content">
-				
-
-<h2 id="general-filters">General Filters</h2>
-
+				<h2 id="general-filters">General Filters</h2>
 <p>Twig offers a variety of <a href="http://twig.sensiolabs.org/doc/filters/index.html">filters</a> to transform text and other information into the desired output. In addition, Timber has added some valuable custom filters for your WP theme:</p>
-
 <h2 id="excerpt">excerpt</h2>
-
 <p>When you need to trim text to a desired length (in words)</p>
-
 <p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;p class=&quot;intro&quot;&gt;{{post.post_content|excerpt(30)}}...&lt;/p&gt;
-</code></pre>
-
-<p><strong>Output</strong></p>
-
-<pre><code class="language-html">&lt;p class=&quot;intro&quot;&gt;Steve-O was born in London, England. His mother, Donna Gay (née Wauthier), was Canadian, and his father, Richard Glover, was American. His paternal grandfather was English and his maternal step-grandfather ...&lt;/p&gt;
-</code></pre>
-
-<hr />
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;p class=&#34;intro&#34;&gt;<span style="color:#75715e">{{</span>post.post_content<span style="color:#f92672">|</span><span style="color:#a6e22e">excerpt</span><span style="color:#f92672">(</span><span style="color:#ae81ff">30</span><span style="color:#f92672">)</span><span style="color:#75715e">}}</span>...&lt;/p&gt;
+</code></pre></div><p><strong>Output</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;intro&#34;</span>&gt;Steve-O was born in London, England. His mother, Donna Gay (née Wauthier), was Canadian, and his father, Richard Glover, was American. His paternal grandfather was English and his maternal step-grandfather ...&lt;/<span style="color:#f92672">p</span>&gt;
+</code></pre></div><hr>
 <h2 id="function">function</h2>
-
 <p>Runs a function where you need. Really valuable for integrating plugins or existing themes</p>
-
 <p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;div class=&quot;entry-meta&quot;&gt;{{function('twenty_ten_entry_meta')}}&lt;/div&gt;
-</code></pre>
-
-<p><strong>Output</strong></p>
-
-<pre><code class="language-html">&lt;div class=&quot;entry-meta&quot;&gt;Posted on September 6, 2013&lt;/div&gt;
-</code></pre>
-
-<h2 id="del-function-deprecated-del"><del>function (deprecated)<del></h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;div class=&#34;entry-meta&#34;&gt;<span style="color:#75715e">{{</span>function<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;twenty_ten_entry_meta&#39;</span><span style="color:#f92672">)</span><span style="color:#75715e">}}</span>&lt;/div&gt;
+</code></pre></div><p><strong>Output</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;entry-meta&#34;</span>&gt;Posted on September 6, 2013&lt;/<span style="color:#f92672">div</span>&gt;
+</code></pre></div><h2 id="delfunction-deprecateddel"><!-- raw HTML omitted -->function (deprecated)<!-- raw HTML omitted --></h2>
 <p>Runs a function where you need. Really valuable for integrating plugins or existing themes</p>
-
 <p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;div class=&quot;entry-meta&quot;&gt;{{'twenty_ten_entry_meta'|function}}&lt;/div&gt;
-</code></pre>
-
-<p><strong>Output</strong></p>
-
-<pre><code class="language-html">&lt;div class=&quot;entry-meta&quot;&gt;Posted on September 6, 2013&lt;/div&gt;
-</code></pre>
-
-<hr />
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;div class=&#34;entry-meta&#34;&gt;<span style="color:#75715e">{{</span><span style="color:#e6db74">&#39;twenty_ten_entry_meta&#39;</span><span style="color:#f92672">|</span><span style="color:#a6e22e">function</span><span style="color:#75715e">}}</span>&lt;/div&gt;
+</code></pre></div><p><strong>Output</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;entry-meta&#34;</span>&gt;Posted on September 6, 2013&lt;/<span style="color:#f92672">div</span>&gt;
+</code></pre></div><hr>
 <h2 id="relative">relative</h2>
-
 <p>Converts an absolute URL into a relative one, for example:</p>
-
-<pre><code class="language-twig">My custom link is &lt;a href=&quot;{{ 'http://example.org/2015/08/my-blog-post' | relative }}&quot;&gt;here!&lt;/a&gt;
-</code></pre>
-
-<pre><code class="language-html">My custom link is &lt;a href=&quot;/2015/08/my-blog-post&quot;&gt;here!&lt;/a&gt;
-</code></pre>
-
-<hr />
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">My custom link is &lt;a href=&#34;<span style="color:#75715e">{{</span> <span style="color:#e6db74">&#39;http://example.org/2015/08/my-blog-post&#39;</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">relative</span> <span style="color:#75715e">}}</span>&#34;&gt;here!&lt;/a&gt;
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">My custom link is &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/2015/08/my-blog-post&#34;</span>&gt;here!&lt;/<span style="color:#f92672">a</span>&gt;
+</code></pre></div><hr>
 <h2 id="pretags">pretags</h2>
-
 <p>Converts tags like <code>&lt;span&gt;</code> into <code>&amp;lt;span&amp;gt;</code>, but only inside of <code>&lt;pre&gt;</code> tags. Great for code samples when you need to preserve other formatting in the non-code sample content.</p>
-
-<hr />
-
+<hr>
 <h2 id="sanitize">sanitize</h2>
-
 <p>Converts Titles like this into <code>titles-like-this</code></p>
-
 <p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">{{post.title|sanitize}}
-</code></pre>
-
-<p><strong>Output</strong></p>
-
-<pre><code class="language-html">my-awesome-post
-</code></pre>
-
-<hr />
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{{</span>post.title<span style="color:#f92672">|</span><span style="color:#a6e22e">sanitize</span><span style="color:#75715e">}}</span>
+</code></pre></div><p><strong>Output</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">my-awesome-post
+</code></pre></div><hr>
 <h2 id="shortcodes">shortcodes</h2>
-
 <p>Runs text through WordPress&rsquo;s shortcodes filter. In this example imagine that you&rsquo;ve added a shortcode to a custom field like <code>[gallery id=&quot;123&quot; size=&quot;medium&quot;]</code></p>
-
 <p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;section class=&quot;gallery&quot;&gt;
-{{post.custom_shortcode_field|shortcodes}}
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;section class=&#34;gallery&#34;&gt;
+<span style="color:#75715e">{{</span>post.custom_shortcode_field<span style="color:#f92672">|</span><span style="color:#a6e22e">shortcodes</span><span style="color:#75715e">}}</span>
 &lt;/section&gt;
-</code></pre>
-
-<p><strong>Output</strong></p>
-
-<pre><code class="language-html">&lt;section class=&quot;gallery&quot;&gt;
-Here is my gallery &lt;div class=&quot;gallery&quot; id=&quot;gallery-123&quot;&gt;&lt;img src=&quot;....&quot; /&gt;...&lt;/div&gt;
-&lt;/section&gt;
-</code></pre>
-
-<hr />
-
-<h2 id="time-ago">time_ago</h2>
-
+</code></pre></div><p><strong>Output</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">section</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;gallery&#34;</span>&gt;
+Here is my gallery &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;gallery&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;gallery-123&#34;</span>&gt;&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;....&#34;</span> /&gt;...&lt;/<span style="color:#f92672">div</span>&gt;
+&lt;/<span style="color:#f92672">section</span>&gt;
+</code></pre></div><hr>
+<h2 id="time_ago">time_ago</h2>
 <p>Displays a date in timeago format:</p>
-
 <p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;p class=&quot;entry-meta&quot;&gt;Posted: &lt;time&gt;{{post.post_date_gmt|time_ago}}&lt;/time&gt;&lt;/p&gt;
-</code></pre>
-
-<p><strong>Output</strong></p>
-
-<pre><code class="language-html">&lt;p class=&quot;entry-meta&quot;&gt;Posted: &lt;time&gt;3 days ago&lt;/time&gt;&lt;/p&gt;
-</code></pre>
-
-<hr />
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;p class=&#34;entry-meta&#34;&gt;Posted: &lt;time&gt;<span style="color:#75715e">{{</span>post.post_date_gmt<span style="color:#f92672">|</span><span style="color:#a6e22e">time_ago</span><span style="color:#75715e">}}</span>&lt;/time&gt;&lt;/p&gt;
+</code></pre></div><p><strong>Output</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;entry-meta&#34;</span>&gt;Posted: &lt;<span style="color:#f92672">time</span>&gt;3 days ago&lt;/<span style="color:#f92672">time</span>&gt;&lt;/<span style="color:#f92672">p</span>&gt;
+</code></pre></div><hr>
 <h2 id="truncate">truncate</h2>
-
 <p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;p class=&quot;entry-meta&quot;&gt;{{ post.character.origin_story | truncate(8) }} ...&lt;/p&gt;
-</code></pre>
-
-<p><strong>Output</strong></p>
-
-<pre><code class="language-html">&lt;p class=&quot;entry-meta&quot;&gt;Bruce Wayne's parents were shot outside the opera ...&lt;/p&gt;
-</code></pre>
-
-<hr />
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;p class=&#34;entry-meta&#34;&gt;<span style="color:#75715e">{{</span> post.character.origin_story <span style="color:#f92672">|</span> <span style="color:#a6e22e">truncate</span><span style="color:#f92672">(</span><span style="color:#ae81ff">8</span><span style="color:#f92672">)</span> <span style="color:#75715e">}}</span> ...&lt;/p&gt;
+</code></pre></div><p><strong>Output</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;entry-meta&#34;</span>&gt;Bruce Wayne&#39;s parents were shot outside the opera ...&lt;/<span style="color:#f92672">p</span>&gt;
+</code></pre></div><hr>
 <h2 id="wpautop">wpautop</h2>
-
 <p>Adds paragraph breaks to new lines</p>
-
 <p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;div class=&quot;body&quot;&gt;
-	{{post.custom_text_area|wpautop}}
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;div class=&#34;body&#34;&gt;
+	<span style="color:#75715e">{{</span>post.custom_text_area<span style="color:#f92672">|</span><span style="color:#a6e22e">wpautop</span><span style="color:#75715e">}}</span>
 &lt;/div&gt;
-</code></pre>
-
-<p><strong>Output</strong></p>
-
-<pre><code class="language-html">&lt;div class=&quot;body&quot;&gt;
-	&lt;p&gt;Sinatra said, &quot;What do you do?&quot;&lt;/p&gt;
-	&lt;p&gt;&quot;I'm a plumber,&quot; Ellison said.&lt;/p&gt;
-	&lt;p&gt;&quot;No, no, he's not,&quot; another young man quickly yelled from across the table. &quot;He wrote The Oscar.&quot;&lt;/p&gt;
-	&lt;p&gt;&quot;Oh, yeah,&quot; Sinatra said, &quot;well I've seen it, and it's a piece of crap.&quot;&lt;/p&gt;
-&lt;/div&gt;
-</code></pre>
-
-<hr />
-
+</code></pre></div><p><strong>Output</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;body&#34;</span>&gt;
+	&lt;<span style="color:#f92672">p</span>&gt;Sinatra said, &#34;What do you do?&#34;&lt;/<span style="color:#f92672">p</span>&gt;
+	&lt;<span style="color:#f92672">p</span>&gt;&#34;I&#39;m a plumber,&#34; Ellison said.&lt;/<span style="color:#f92672">p</span>&gt;
+	&lt;<span style="color:#f92672">p</span>&gt;&#34;No, no, he&#39;s not,&#34; another young man quickly yelled from across the table. &#34;He wrote The Oscar.&#34;&lt;/<span style="color:#f92672">p</span>&gt;
+	&lt;<span style="color:#f92672">p</span>&gt;&#34;Oh, yeah,&#34; Sinatra said, &#34;well I&#39;ve seen it, and it&#39;s a piece of crap.&#34;&lt;/<span style="color:#f92672">p</span>&gt;
+&lt;/<span style="color:#f92672">div</span>&gt;
+</code></pre></div><hr>
 <h2 id="list">list</h2>
-
 <p>Converts an array of strings into a comma-separated list.</p>
-
 <p><strong>PHP</strong></p>
-
-<pre><code class="language-php">&lt;?php
-$context['contributors'] = array('Blake Allen','Rachel White','Maddy May');
-</code></pre>
-
-<p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">Contributions made by {{contributors|list(',','&amp;')}}
-</code></pre>
-
-<p><strong>Output</strong></p>
-
-<pre><code class="language-html">Contributions made by Blake Allen, Rachel White &amp; Maddy May
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+$context[<span style="color:#e6db74">&#39;contributors&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">array</span>(<span style="color:#e6db74">&#39;Blake Allen&#39;</span>,<span style="color:#e6db74">&#39;Rachel White&#39;</span>,<span style="color:#e6db74">&#39;Maddy May&#39;</span>);
+</code></pre></div><p><strong>Twig</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">Contributions made by <span style="color:#75715e">{{</span>contributors<span style="color:#f92672">|</span><span style="color:#a6e22e">list</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;,&#39;</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#39;&amp;&#39;</span><span style="color:#f92672">)</span><span style="color:#75715e">}}</span>
+</code></pre></div><p><strong>Output</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">Contributions made by Blake Allen, Rachel White <span style="color:#960050;background-color:#1e0010">&amp;</span> Maddy May
+</code></pre></div>
 			</div>
 		</div>
 	</article>
@@ -438,7 +341,7 @@ $context['contributors'] = array('Blake Allen','Rachel White','Maddy May');
 
 
 <script src="https://timber.github.io/docs/js/highlight.pack.js" defer></script>
-<script src="https://timber.github.io/docs/js/scripts.js?d0b281f642113556d4adaa8032af79eb" defer></script>
+<script src="https://timber.github.io/docs/js/scripts.js?44e60569f8868a72f5a9e8cd72cb0844" defer></script>
 
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>

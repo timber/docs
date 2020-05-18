@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
 	
-    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?db75858961ef100d103393e34f398175">
+    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?c77bdfd53127f8f1e98153f3f27452a2">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
 
     
@@ -228,62 +228,49 @@
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
 			<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#overview">Overview</a>
-<ul>
-<li><a href="#properties">Properties</a></li>
-<li><a href="#methods">Methods</a></li>
-</ul></li>
-<li><a href="#class-methods">Class Methods</a>
-<ul>
-<li><a href="#construct">__construct</a></li>
-<li><a href="#tostring">__toString</a></li>
-<li><a href="#avatar">avatar</a></li>
-<li><a href="#can">can</a></li>
-<li><a href="#get-custom">get_custom</a></li>
-<li><a href="#get-meta-field">get_meta_field</a></li>
-<li><a href="#link">link</a></li>
-<li><a href="#meta">meta</a></li>
-<li><a href="#name">name</a></li>
-<li><a href="#path">path</a></li>
-<li><a href="#roles">roles</a></li>
-<li><a href="#slug">slug</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#overview">Overview</a>
+      <ul>
+        <li><a href="#properties">Properties</a></li>
+        <li><a href="#methods">Methods</a></li>
+      </ul>
+    </li>
+    <li><a href="#class-methods">Class Methods</a>
+      <ul>
+        <li><a href="#__construct">__construct</a></li>
+        <li><a href="#__tostring">__toString</a></li>
+        <li><a href="#avatar">avatar</a></li>
+        <li><a href="#can">can</a></li>
+        <li><a href="#get_custom">get_custom</a></li>
+        <li><a href="#get_meta_field">get_meta_field</a></li>
+        <li><a href="#link">link</a></li>
+        <li><a href="#meta">meta</a></li>
+        <li><a href="#name">name</a></li>
+        <li><a href="#path">path</a></li>
+        <li><a href="#roles">roles</a></li>
+        <li><a href="#slug">slug</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 		</aside>
 
 		<div class="content-container">
 			<div class="content">
 				<p>This is used in Timber to represent users retrived from WordPress. You can call <code>$my_user = new Timber\User(123);</code> directly, or access it through the <code>{{ post.author }}</code> method.</p>
-
 <p><strong>PHP</strong></p>
-
-<pre><code class="language-php">&lt;?php
-$context['current_user'] = new Timber\User();
-$context['post'] = new Timber\Post();
-Timber::render('single.twig', $context);
-</code></pre>
-
-<p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;p class=&quot;current-user-info&quot;&gt;Your name is {{ current_user.name }}&lt;/p&gt;
-&lt;p class=&quot;article-info&quot;&gt;This article is called &quot;{{ post.title }}&quot; and it's by {{ post.author.name }}
-</code></pre>
-
-<p><strong>HTML</strong></p>
-
-<pre><code class="language-html">&lt;p class=&quot;current-user-info&quot;&gt;Your name is Jesse Eisenberg&lt;/p&gt;
-&lt;p class=&quot;article-info&quot;&gt;This article is called &quot;Consider the Lobster&quot; and it's by David Foster Wallace
-</code></pre>
-
-<h2 id="overview">Overview</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+$context[<span style="color:#e6db74">&#39;current_user&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Timber\User</span>();
+$context[<span style="color:#e6db74">&#39;post&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Timber\Post</span>();
+<span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">render</span>(<span style="color:#e6db74">&#39;single.twig&#39;</span>, $context);
+</code></pre></div><p><strong>Twig</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;p class=&#34;current-user-info&#34;&gt;Your name is <span style="color:#75715e">{{</span> current_user.name <span style="color:#75715e">}}</span>&lt;/p&gt;
+&lt;p class=&#34;article-info&#34;&gt;This article is called &#34;<span style="color:#75715e">{{</span> post.title <span style="color:#75715e">}}</span>&#34; and it&#39;s by <span style="color:#75715e">{{</span> post.author.name <span style="color:#75715e">}}</span>
+</code></pre></div><p><strong>HTML</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;current-user-info&#34;</span>&gt;Your name is Jesse Eisenberg&lt;/<span style="color:#f92672">p</span>&gt;
+&lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;article-info&#34;</span>&gt;This article is called &#34;Consider the Lobster&#34; and it&#39;s by David Foster Wallace
+</code></pre></div><h2 id="overview">Overview</h2>
 <h3 id="properties">Properties</h3>
-
 <table>
 <thead>
 <tr>
@@ -292,38 +279,32 @@ Timber::render('single.twig', $context);
 <th>Description</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>avatar_override</td>
 <td><code>string</code></td>
 <td>A URL to an avatar that overrides anything from Gravatar, etc.</td>
 </tr>
-
 <tr>
 <td>description</td>
 <td><code>string</code></td>
 <td>The description from WordPress</td>
 </tr>
-
 <tr>
 <td>first_name</td>
 <td><code>string</code></td>
 <td>The first name of the user</td>
 </tr>
-
 <tr>
 <td>last_name</td>
 <td><code>string</code></td>
 <td>The last name of the user</td>
 </tr>
-
 <tr>
 <td>id</td>
 <td><code>int</code></td>
 <td>The ID from WordPress</td>
 </tr>
-
 <tr>
 <td>roles</td>
 <td><code>array</code></td>
@@ -331,9 +312,7 @@ Timber::render('single.twig', $context);
 </tr>
 </tbody>
 </table>
-
 <h3 id="methods">Methods</h3>
-
 <table>
 <thead>
 <tr>
@@ -342,44 +321,37 @@ Timber::render('single.twig', $context);
 <th>Returns/Description</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><a href="#avatar">avatar</a></td>
 <td><code>string/\Timber\Image</code></td>
 <td>The avatar URL.</td>
 </tr>
-
 <tr>
 <td><a href="#can">can</a></td>
 <td><code>bool</code></td>
 <td>Whether the user has the capability.</td>
 </tr>
-
 <tr>
 <td><a href="#link">link</a></td>
 <td><code>string</code></td>
 <td><a href="http://example.org/author/lincoln">http://example.org/author/lincoln</a></td>
 </tr>
-
 <tr>
 <td><a href="#name">name</a></td>
 <td><code>string</code></td>
 <td>the human-friendly name of the user (ex: &ldquo;Buster Bluth&rdquo;)</td>
 </tr>
-
 <tr>
 <td><a href="#path">path</a></td>
 <td><code>string</code></td>
 <td>ex: /author/lincoln</td>
 </tr>
-
 <tr>
 <td><a href="#roles">roles</a></td>
 <td><code>array/null</code></td>
 <td></td>
 </tr>
-
 <tr>
 <td><a href="#slug">slug</a></td>
 <td><code>string</code></td>
@@ -387,17 +359,11 @@ Timber::render('single.twig', $context);
 </tr>
 </tbody>
 </table>
-
-<hr />
-
+<hr>
 <h2 id="class-methods">Class Methods</h2>
-
-<h3 id="construct">__construct</h3>
-
+<h3 id="__construct">__construct</h3>
 <p><code>__construct( bool/object/int/bool $uid=false )</code></p>
-
 <p><strong>returns:</strong> <code>void</code></p>
-
 <table>
 <thead>
 <tr>
@@ -406,7 +372,6 @@ Timber::render('single.twig', $context);
 <th>Description</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>$uid</td>
@@ -415,35 +380,19 @@ Timber::render('single.twig', $context);
 </tr>
 </tbody>
 </table>
-
-<hr />
-
-<h3 id="tostring">__toString</h3>
-
+<hr>
+<h3 id="__tostring">__toString</h3>
 <p><code>__toString( )</code></p>
-
 <p><strong>returns:</strong> <code>string</code> a fallback for TimberUser::name()</p>
-
 <p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">This post is by {{ post.author }}
-</code></pre>
-
-<p><strong>HTML</strong></p>
-
-<pre><code class="language-html">This post is by Jared Novack
-</code></pre>
-
-<hr />
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">This post is by <span style="color:#75715e">{{</span> post.author <span style="color:#75715e">}}</span>
+</code></pre></div><p><strong>HTML</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">This post is by Jared Novack
+</code></pre></div><hr>
 <h3 id="avatar">avatar</h3>
-
 <p><code>avatar( mixed/null/array $args=null )</code></p>
-
 <p><strong>returns:</strong> <code>string/\Timber\Image</code> The avatar URL.</p>
-
 <p>Gets a user’s avatar URL.</p>
-
 <table>
 <thead>
 <tr>
@@ -452,7 +401,6 @@ Timber::render('single.twig', $context);
 <th>Description</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>$args</td>
@@ -461,29 +409,19 @@ Timber::render('single.twig', $context);
 </tr>
 </tbody>
 </table>
-
 <p>Get a user avatar with a width and height of 150px:
 <strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;img src=&quot;{{ post.author.avatar({ size: 150 }) }}&quot;&gt;
-</code></pre>
-
-<hr />
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;img src=&#34;<span style="color:#75715e">{{</span> post.author.avatar<span style="color:#f92672">({</span> size<span style="color:#f92672">:</span> <span style="color:#ae81ff">150</span> <span style="color:#f92672">})</span> <span style="color:#75715e">}}</span>&#34;&gt;
+</code></pre></div><hr>
 <h3 id="can">can</h3>
-
 <p><code>can( string $capability )</code></p>
-
 <p><strong>returns:</strong> <code>bool</code> Whether the user has the capability.</p>
-
 <p>Checks whether a user has a capability.</p>
-
 <p>Don’t use role slugs for capability checks. While checking against a role in place of a
 capability is supported in part, this practice is discouraged as it may produce unreliable
 results. This includes cases where you want to check whether a user is registered. If you
 want to check whether a user is a Subscriber, use <code>{{ user.can('read') }}</code>. If you only want
 to check whether a user is logged in, you can use <code>{% if user %}</code>.</p>
-
 <table>
 <thead>
 <tr>
@@ -492,7 +430,6 @@ to check whether a user is logged in, you can use <code>{% if user %}</code>.</p
 <th>Description</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>$capability</td>
@@ -501,31 +438,19 @@ to check whether a user is logged in, you can use <code>{% if user %}</code>.</p
 </tr>
 </tbody>
 </table>
-
 <p>Give moderation users another CSS class to style them differently.
 <strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;span class=&quot;comment-author {{ comment.author.can('moderate_comments') ? 'comment-author--is-moderator }}&quot;&gt;
-    {{ comment.author.name }}
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;span class=&#34;comment-author <span style="color:#75715e">{{</span> comment.author.can<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;moderate_comments&#39;</span><span style="color:#f92672">)</span> <span style="color:#f92672">?</span> <span style="color:#960050;background-color:#1e0010">&#39;</span>comment-author--is-moderator <span style="color:#75715e">}}</span>&#34;&gt;
+    <span style="color:#75715e">{{</span> comment.author.name <span style="color:#75715e">}}</span>
 &lt;/span&gt;
-</code></pre>
-
-<hr />
-
-<h3 id="get-custom">get_custom</h3>
-
+</code></pre></div><hr>
+<h3 id="get_custom">get_custom</h3>
 <p><code>get_custom( )</code></p>
-
 <p><strong>returns:</strong> <code>array/null</code></p>
-
-<hr />
-
-<h3 id="get-meta-field">get_meta_field</h3>
-
+<hr>
+<h3 id="get_meta_field">get_meta_field</h3>
 <p><code>get_meta_field( string $field_name )</code></p>
-
 <p><strong>returns:</strong> <code>mixed</code></p>
-
 <table>
 <thead>
 <tr>
@@ -534,7 +459,6 @@ to check whether a user is logged in, you can use <code>{% if user %}</code>.</p
 <th>Description</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>$field_name</td>
@@ -543,23 +467,14 @@ to check whether a user is logged in, you can use <code>{% if user %}</code>.</p
 </tr>
 </tbody>
 </table>
-
-<hr />
-
+<hr>
 <h3 id="link">link</h3>
-
 <p><code>link( )</code></p>
-
 <p><strong>returns:</strong> <code>string</code> <a href="http://example.org/author/lincoln">http://example.org/author/lincoln</a></p>
-
-<hr />
-
+<hr>
 <h3 id="meta">meta</h3>
-
 <p><code>meta( string $field_name )</code></p>
-
 <p><strong>returns:</strong> <code>mixed</code></p>
-
 <table>
 <thead>
 <tr>
@@ -568,7 +483,6 @@ to check whether a user is logged in, you can use <code>{% if user %}</code>.</p
 <th>Description</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>$field_name</td>
@@ -577,72 +491,42 @@ to check whether a user is logged in, you can use <code>{% if user %}</code>.</p
 </tr>
 </tbody>
 </table>
-
-<hr />
-
+<hr>
 <h3 id="name">name</h3>
-
 <p><code>name( )</code></p>
-
 <p><strong>returns:</strong> <code>string</code> the human-friendly name of the user (ex: &ldquo;Buster Bluth&rdquo;)</p>
-
-<hr />
-
+<hr>
 <h3 id="path">path</h3>
-
 <p><code>path( )</code></p>
-
 <p><strong>returns:</strong> <code>string</code> ex: /author/lincoln</p>
-
-<hr />
-
+<hr>
 <h3 id="roles">roles</h3>
-
 <p><code>roles( )</code></p>
-
 <p><strong>returns:</strong> <code>array/null</code></p>
-
 <p>Gets the user roles.
 Roles shouldn’t be used to check whether a user has a capability. Use roles only for
 displaying purposes. For example, if you want to display the name of the subscription a user
 has on the site behind a paywall.</p>
-
 <p>If you want to check for capabilities, use <code>{{ user.can('capability') }}</code>. If you only want
 to check whether a user is logged in, you can use <code>{% if user %}</code>.</p>
-
 <p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;h2&gt;Role name&lt;/h2&gt;
-{% for role in post.author.roles %}
-    {{ role }}
-{% endfor %}
-</code></pre>
-
-<p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;h2&gt;Role name&lt;/h2&gt;
-{{ post.author.roles|join(', ') }}
-</code></pre>
-
-<p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">{% for slug, name in post.author.roles %}
-    {{ slug }}
-{% endfor %}
-</code></pre>
-
-<hr />
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;h2&gt;Role name&lt;/h2&gt;
+<span style="color:#75715e">{%</span> <span style="color:#66d9ef">for</span> role <span style="color:#66d9ef">in</span> post.author.roles <span style="color:#75715e">%}</span>
+    <span style="color:#75715e">{{</span> role <span style="color:#75715e">}}</span>
+<span style="color:#75715e">{%</span> <span style="color:#66d9ef">endfor</span> <span style="color:#75715e">%}</span>
+</code></pre></div><p><strong>Twig</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;h2&gt;Role name&lt;/h2&gt;
+<span style="color:#75715e">{{</span> post.author.roles<span style="color:#f92672">|</span><span style="color:#a6e22e">join</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;, &#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">}}</span>
+</code></pre></div><p><strong>Twig</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{%</span> <span style="color:#66d9ef">for</span> slug<span style="color:#f92672">,</span> name <span style="color:#66d9ef">in</span> post.author.roles <span style="color:#75715e">%}</span>
+    <span style="color:#75715e">{{</span> slug <span style="color:#75715e">}}</span>
+<span style="color:#75715e">{%</span> <span style="color:#66d9ef">endfor</span> <span style="color:#75715e">%}</span>
+</code></pre></div><hr>
 <h3 id="slug">slug</h3>
-
 <p><code>slug( )</code></p>
-
 <p><strong>returns:</strong> <code>string</code> ex baberaham-lincoln</p>
-
-<hr />
-
+<hr>
 <p><em>This class extends \Timber\Core</em></p>
-
 <p><em>This class implements \Timber\CoreInterface</em></p>
 			</div>
 		</div>
@@ -653,7 +537,7 @@ to check whether a user is logged in, you can use <code>{% if user %}</code>.</p
 
 
 <script src="https://timber.github.io/docs/js/highlight.pack.js" defer></script>
-<script src="https://timber.github.io/docs/js/scripts.js?d0b281f642113556d4adaa8032af79eb" defer></script>
+<script src="https://timber.github.io/docs/js/scripts.js?44e60569f8868a72f5a9e8cd72cb0844" defer></script>
 
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>

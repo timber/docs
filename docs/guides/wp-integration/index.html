@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
 	
-    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?db75858961ef100d103393e34f398175">
+    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?c77bdfd53127f8f1e98153f3f27452a2">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
 
     
@@ -228,212 +228,186 @@
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
 			<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#the-content">the_content</a></li>
-<li><a href="#hooks">Hooks</a></li>
-<li><a href="#actions">Actions</a></li>
-<li><a href="#filters">Filters</a></li>
-<li><a href="#widgets">Widgets</a>
-<ul>
-<li><a href="#using-timber-inside-your-own-widgets">Using Timber inside your own widgets</a></li>
-</ul></li>
-<li><a href="#shortcodes">Shortcodes</a>
-<ul>
-<li><a href="#layouts-with-shortcodes">Layouts with Shortcodes</a></li>
-</ul></li>
-<li><a href="#password-protected-posts">Password protected posts</a>
-<ul>
-<li>
-<ul>
-<li><a href="#using-a-filter">Using a Filter</a></li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#the_content">the_content</a></li>
+    <li><a href="#hooks">Hooks</a></li>
+    <li><a href="#actions">Actions</a></li>
+    <li><a href="#filters">Filters</a>
+      <ul>
+        <li><a href="#real-world-example-with-woocommerce">Real world example with WooCommerce</a></li>
+      </ul>
+    </li>
+    <li><a href="#widgets">Widgets</a>
+      <ul>
+        <li><a href="#using-timber-inside-your-own-widgets">Using Timber inside your own widgets</a></li>
+      </ul>
+    </li>
+    <li><a href="#shortcodes">Shortcodes</a>
+      <ul>
+        <li><a href="#layouts-with-shortcodes">Layouts with Shortcodes</a></li>
+      </ul>
+    </li>
+    <li><a href="#password-protected-posts">Password protected posts</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 		</aside>
 
 		<div class="content-container">
 			<div class="content">
-				
-
-<p>Timber plays nicely with your existing WordPress setup. You can still use other plugins, etc.</p>
-
-<h2 id="the-content">the_content</h2>
-
+				<p>Timber plays nicely with your existing WordPress setup. You can still use other plugins, etc.</p>
+<h2 id="the_content">the_content</h2>
 <p>You’re probably used to call <code>the_content()</code> in your theme file. This is good. Before outputting, WordPress will run all the filters and actions that your plugins and themes are using. If you want to get this into your new Timber theme (and you probably do), call it like this:</p>
-
-<pre><code class="language-twig">&lt;div class=&quot;my-article&quot;&gt;
-    {{ post.content }}
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;div class=&#34;my-article&#34;&gt;
+    <span style="color:#75715e">{{</span> post.content <span style="color:#75715e">}}</span>
 &lt;/div&gt;
-</code></pre>
-
-<p>This differs from <code>{{ post.post_content }}</code>, which will display the raw text stored in the database.</p>
-
+</code></pre></div><p>This differs from <code>{{ post.post_content }}</code>, which will display the raw text stored in the database.</p>
 <h2 id="hooks">Hooks</h2>
-
 <p>Timber hooks to interact with WordPress use <code>this/style/of_hooks</code> instead of <code>this_style_of_hooks</code>. This matches the same methodology as <a href="http://www.advancedcustomfields.com/resources/#actions">Advanced Custom Fields</a>.</p>
-
 <p>Full documentation to come.</p>
-
 <h2 id="actions">Actions</h2>
-
 <p>Call them in your Twig template&hellip;</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{%</span> <span style="color:#66d9ef">do</span> action<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;my_action&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">%}</span>
+<span style="color:#75715e">{%</span> <span style="color:#66d9ef">do</span> action<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;my_action_with_args&#39;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;foo&#39;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;bar&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">%}</span>
+</code></pre></div><p>&hellip; in your <code>functions.php</code> file:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#a6e22e">add_action</span>( <span style="color:#e6db74">&#39;my_action&#39;</span>, <span style="color:#e6db74">&#39;my_function&#39;</span> );
 
-<pre><code class="language-twig">{% do action('my_action') %}
-{% do action('my_action_with_args', 'foo', 'bar') %}
-</code></pre>
-
-<p>&hellip; in your <code>functions.php</code> file:</p>
-
-<pre><code class="language-php">&lt;?php
-add_action( 'my_action', 'my_function' );
-
-function my_function( $context ) {
-    // $context stores the template context in case you need to reference it
-
-    // Outputs title of your post
-    echo $context['post']-&gt;post_title;
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">my_function</span>( $context ) {
+    <span style="color:#75715e">// $context stores the template context in case you need to reference it
+</span><span style="color:#75715e"></span>
+    <span style="color:#75715e">// Outputs title of your post
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">echo</span> $context[<span style="color:#e6db74">&#39;post&#39;</span>]<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">post_title</span>;
 }
-</code></pre>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#a6e22e">add_action</span>( <span style="color:#e6db74">&#39;my_action_with_args&#39;</span>, <span style="color:#e6db74">&#39;my_function_with_args&#39;</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">2</span> );
 
-<pre><code class="language-php">&lt;?php
-add_action( 'my_action_with_args', 'my_function_with_args', 10, 2 );
-
-function my_function_with_args( $foo, $bar ){
-    echo 'I say ' . $foo . ' and ' . $bar;
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">my_function_with_args</span>( $foo, $bar ){
+    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;I say &#39;</span> <span style="color:#f92672">.</span> $foo <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39; and &#39;</span> <span style="color:#f92672">.</span> $bar;
 }
-</code></pre>
+</code></pre></div><p>You can still get the context object when passing args, it’s always the <em>last</em> argument&hellip;</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#a6e22e">add_action</span>( <span style="color:#e6db74">&#39;my_action_with_args&#39;</span>, <span style="color:#e6db74">&#39;my_function_with_args&#39;</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">3</span> );
 
-<p>You can still get the context object when passing args, it’s always the <em>last</em> argument&hellip;</p>
-
-<pre><code class="language-php">&lt;?php
-add_action( 'my_action_with_args', 'my_function_with_args', 10, 3 );
-
-function my_function_with_args( $foo, $bar, $context ){
-    echo 'I say ' . $foo . ' and ' . $bar;
-    echo 'For the post with title ' . $context['post']-&gt;post_title;
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">my_function_with_args</span>( $foo, $bar, $context ){
+    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;I say &#39;</span> <span style="color:#f92672">.</span> $foo <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39; and &#39;</span> <span style="color:#f92672">.</span> $bar;
+    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;For the post with title &#39;</span> <span style="color:#f92672">.</span> $context[<span style="color:#e6db74">&#39;post&#39;</span>]<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">post_title</span>;
 }
-</code></pre>
-
-<p>Please note the argument count that WordPress requires for <code>add_action</code>.</p>
-
+</code></pre></div><p>Please note the argument count that WordPress requires for <code>add_action</code>.</p>
 <h2 id="filters">Filters</h2>
+<p>Timber already comes with a <a href="/docs/guides/filters/">set of useful filters</a>. If you have your own WordPress filters that you want to easily apply in Twig, you can use <code>apply_filters</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{{</span> post.content<span style="color:#f92672">|</span><span style="color:#a6e22e">apply_filters</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;default_message&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">}}</span>
+<span style="color:#75715e">{{</span> <span style="color:#e6db74">&#34;my custom string&#34;</span><span style="color:#f92672">|</span><span style="color:#a6e22e">apply_filters</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;default_message&#39;</span><span style="color:#f92672">,</span> param1<span style="color:#f92672">,</span> param2<span style="color:#f92672">,</span> <span style="color:#f92672">..</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#f92672">)</span> <span style="color:#75715e">}}</span>
+</code></pre></div><p>You can use your filter with a <a href="https://twig.symfony.com/doc/2.x/tags/filter.html">Twig filter tag</a>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{%</span> <span style="color:#66d9ef">filter</span> <span style="color:#a6e22e">apply_filters</span><span style="color:#f92672">(</span> <span style="color:#e6db74">&#39;default_message&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">%}</span>
+        <span style="color:#75715e">{{</span> post.content <span style="color:#75715e">}}</span>
+<span style="color:#75715e">{%</span> <span style="color:#66d9ef">endfilter</span> <span style="color:#75715e">%}</span>
 
-<p>Timber already comes with a <a href="https://timber.github.io/docs/guides/filters/">set of useful filters</a>. If you have your own filters that you want to apply, you can use <code>apply_filters</code>.</p>
+<span style="color:#75715e">{%</span> <span style="color:#66d9ef">filter</span> <span style="color:#a6e22e">apply_filters</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;default_message&#39;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;foo&#39;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;bar, &#39;</span>baz&#39; <span style="color:#f92672">)</span> <span style="color:#75715e">%}</span>
+        I love pizza
+<span style="color:#75715e">{%</span> <span style="color:#66d9ef">endfilter</span> <span style="color:#75715e">%}</span>
+</code></pre></div><p>In <strong>PHP</strong>, you can get the content of the block with the first parameter and the rest of parameters like that.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">add_filter( &#39;default_message&#39;, &#39;my_default_message&#39;, 10, 4 );
 
-<pre><code class="language-twig">{{ post.content|apply_filters('my_filter') }}
-{{ &quot;my custom string&quot;|apply_filters('my_filter', param1, param2, ...) }}
-</code></pre>
-
-<h2 id="widgets">Widgets</h2>
-
+function my_default_message( $tag, $param1, $param2, $param3 ) {
+       var_dump( $tag, $param1, $param2, $param3 ); // &#39;I love pizza&#39;, &#39;foo&#39;, &#39;bar, &#39;baz&#39;
+              
+       echo &#39;I have a message: &#39; . $tag; // I have a message: I love pizza
+}
+</code></pre></div><h3 id="real-world-example-with-woocommerce">Real world example with WooCommerce</h3>
+<p>Sometimes in <strong>WooCommerce</strong> we found very long line of code:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">echo &#39;&lt;<span style="color:#f92672">li</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;woocommerce-notice woocommerce-notice--info woocommerce-info&#34;</span>&gt;&#39; . apply_filters( &#39;woocommerce_no_available_payment_methods_message&#39;, WC()-&gt;customer-&gt;get_billing_country() ? esc_html__( &#39;Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements.&#39;, &#39;woocommerce&#39; ) : esc_html__( &#39;Please fill in your details above to see available payment methods.&#39;, &#39;woocommerce&#39; ) ) . &#39;&lt;/<span style="color:#f92672">li</span>&gt;&#39;;
+</code></pre></div><p>In <strong>Twig</strong>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;li class=&#34;woocommerce-notice woocommerce-notice--info woocommerce-info&#34;&gt;
+    <span style="color:#75715e">{{</span> customer.get_billing_country<span style="color:#f92672">()</span> <span style="color:#f92672">?</span> __<span style="color:#f92672">(</span> <span style="color:#e6db74">&#39;Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements.&#39;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;woocommerce&#39;</span> <span style="color:#f92672">)</span> <span style="color:#f92672">:</span> __<span style="color:#f92672">(</span> <span style="color:#e6db74">&#39;Please fill in your details above to see available payment methods.&#39;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;woocommerce&#39;</span> <span style="color:#f92672">)</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">apply_filters</span><span style="color:#f92672">(</span> <span style="color:#e6db74">&#39;woocommerce_no_available_payment_methods_message&#39;</span> <span style="color:#f92672">)</span> <span style="color:#75715e">}}</span>
+&lt;/li&gt;
+</code></pre></div><p>And with <code>filter</code> tag:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;li class=&#34;woocommerce-notice woocommerce-notice--info woocommerce-info&#34;&gt;
+    <span style="color:#75715e">{%</span> <span style="color:#66d9ef">filter</span> <span style="color:#a6e22e">apply_filters</span><span style="color:#f92672">(</span> <span style="color:#e6db74">&#39;woocommerce_no_available_payment_methods_message&#39;</span> <span style="color:#f92672">)</span> <span style="color:#75715e">%}</span>
+        <span style="color:#75715e">{%</span> <span style="color:#66d9ef">if</span> customer.get_billing_country<span style="color:#f92672">()</span> <span style="color:#75715e">%}</span>
+            <span style="color:#75715e">{{</span> __<span style="color:#f92672">(</span> <span style="color:#e6db74">&#39;Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements.&#39;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;woocommerce&#39;</span> <span style="color:#f92672">)</span> <span style="color:#75715e">}}</span>
+        <span style="color:#75715e">{%</span> <span style="color:#66d9ef">else</span> <span style="color:#75715e">%}</span>
+            <span style="color:#75715e">{{</span> __<span style="color:#f92672">(</span> <span style="color:#e6db74">&#39;Please fill in your details above to see available payment methods.&#39;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;woocommerce&#39;</span> <span style="color:#f92672">)</span>  <span style="color:#75715e">}}</span>
+        <span style="color:#75715e">{%</span> <span style="color:#66d9ef">endif</span> <span style="color:#75715e">%}</span>
+    <span style="color:#75715e">{%</span> <span style="color:#66d9ef">endfilter</span> <span style="color:#75715e">%}</span>
+&lt;/li&gt;
+</code></pre></div><h2 id="widgets">Widgets</h2>
 <p>Everyone loves widgets! Of course they do&hellip;</p>
-
-<pre><code class="language-php">&lt;?php
-$data['footer_widgets'] = Timber::get_widgets( 'footer_widgets' );
-</code></pre>
-
-<p>&hellip;where <code>footer_widgets</code> is the registered name of the widgets you want to get (in twentythirteen these are called <code>sidebar-1</code> and <code>sidebar-2</code>).</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+$data[<span style="color:#e6db74">&#39;footer_widgets&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">get_widgets</span>( <span style="color:#e6db74">&#39;footer_widgets&#39;</span> );
+</code></pre></div><p>&hellip;where <code>footer_widgets</code> is the registered name of the widgets you want to get (in twentythirteen these are called <code>sidebar-1</code> and <code>sidebar-2</code>).</p>
 <p>Then use it in your template:</p>
-
 <p><strong>base.twig</strong></p>
-
-<pre><code class="language-twig">&lt;footer&gt;
-    {{ footer_widgets }}
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;footer&gt;
+    <span style="color:#75715e">{{</span> footer_widgets <span style="color:#75715e">}}</span>
 &lt;/footer&gt;
-</code></pre>
-
-<h3 id="using-timber-inside-your-own-widgets">Using Timber inside your own widgets</h3>
-
+</code></pre></div><h3 id="using-timber-inside-your-own-widgets">Using Timber inside your own widgets</h3>
 <p>You can also use twig templates for your widgets! Let’s imagine we want a widget that shows a random number each time it is rendered.</p>
-
 <p>Inside the widget class, the widget function is used to show the widget:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">widget</span>( $args, $instance ) {
+    $number <span style="color:#f92672">=</span> <span style="color:#a6e22e">rand</span>();
 
-<pre><code class="language-php">&lt;?php
-public function widget( $args, $instance ) {
-    $number = rand();
-
-    Timber::render( 'random-widget.twig', array(
-        'args' =&gt; $args,
-        'instance' =&gt; $instance,
-        'number' =&gt; $number
+    <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">render</span>( <span style="color:#e6db74">&#39;random-widget.twig&#39;</span>, <span style="color:#66d9ef">array</span>(
+        <span style="color:#e6db74">&#39;args&#39;</span> <span style="color:#f92672">=&gt;</span> $args,
+        <span style="color:#e6db74">&#39;instance&#39;</span> <span style="color:#f92672">=&gt;</span> $instance,
+        <span style="color:#e6db74">&#39;number&#39;</span> <span style="color:#f92672">=&gt;</span> $number
     ) );
 }
-</code></pre>
+</code></pre></div><p>The corresponding template file <code>random-widget.twig</code> looks like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{{</span> args.before_widget<span style="color:#f92672">|</span><span style="color:#a6e22e">raw</span> <span style="color:#75715e">}}</span>
+<span style="color:#75715e">{{</span> args.before_title<span style="color:#f92672">|</span><span style="color:#a6e22e">raw</span> <span style="color:#75715e">}}{{</span> instance.title<span style="color:#f92672">|</span><span style="color:#a6e22e">apply_filters</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;widget_title&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">}}{{</span> args.after_title<span style="color:#f92672">|</span><span style="color:#a6e22e">raw</span> <span style="color:#75715e">}}</span>
 
-<p>The corresponding template file <code>random-widget.twig</code> looks like this:</p>
+&lt;p&gt;Your magic number is: &lt;strong&gt;<span style="color:#75715e">{{</span> number <span style="color:#75715e">}}</span>&lt;/strong&gt;&lt;/p&gt;
 
-<pre><code class="language-twig">{{ args.before_widget|raw }}
-{{ args.before_title|raw }}{{ instance.title|apply_filters('widget_title') }}{{ args.after_title|raw }}
-
-&lt;p&gt;Your magic number is: &lt;strong&gt;{{ number }}&lt;/strong&gt;&lt;/p&gt;
-
-{{ args.after_widget|raw }}
-</code></pre>
-
-<p>The raw filter is needed here to embed the widget properly.</p>
-
+<span style="color:#75715e">{{</span> args.after_widget<span style="color:#f92672">|</span><span style="color:#a6e22e">raw</span> <span style="color:#75715e">}}</span>
+</code></pre></div><p>The raw filter is needed here to embed the widget properly.</p>
 <p>You may also want to check if the Timber plugin was loaded before using it:</p>
-
-<pre><code class="language-php">&lt;?php
-public function widget( $args, $instance ) {
-    if ( ! class_exists( 'Timber' ) ) {
-        // if you want to show some error message, this is the right place
-        return;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">widget</span>( $args, $instance ) {
+    <span style="color:#66d9ef">if</span> ( <span style="color:#f92672">!</span> <span style="color:#a6e22e">class_exists</span>( <span style="color:#e6db74">&#39;Timber&#39;</span> ) ) {
+        <span style="color:#75715e">// if you want to show some error message, this is the right place
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span>;
     }
 
-    $number = rand();
+    $number <span style="color:#f92672">=</span> <span style="color:#a6e22e">rand</span>();
 
-    Timber::render( 'random-widget.twig', array(
-        'args' =&gt; $args,
-        'instance' =&gt; $instance,
-        'number' =&gt; $number
+    <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">render</span>( <span style="color:#e6db74">&#39;random-widget.twig&#39;</span>, <span style="color:#66d9ef">array</span>(
+        <span style="color:#e6db74">&#39;args&#39;</span> <span style="color:#f92672">=&gt;</span> $args,
+        <span style="color:#e6db74">&#39;instance&#39;</span> <span style="color:#f92672">=&gt;</span> $instance,
+        <span style="color:#e6db74">&#39;number&#39;</span> <span style="color:#f92672">=&gt;</span> $number
     ) );
 }
-</code></pre>
-
-<h2 id="shortcodes">Shortcodes</h2>
-
+</code></pre></div><h2 id="shortcodes">Shortcodes</h2>
 <p>Well, if it works for widgets, why shouldn&rsquo;t it work for shortcodes? Of course it does!</p>
-
 <p>Let’s implement a <code>[youtube]</code> shortcode which embeds a youtube video.
 For the desired usage of <code>[youtube id=xxxx]</code>, we only need a few lines of code:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#75715e">// Should be called from within an init action hook
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">add_shortcode</span>( <span style="color:#e6db74">&#39;youtube&#39;</span>, <span style="color:#e6db74">&#39;youtube_shortcode&#39;</span> );
 
-<pre><code class="language-php">&lt;?php
-// Should be called from within an init action hook
-add_shortcode( 'youtube', 'youtube_shortcode' );
-
-function youtube_shortcode( $atts ) {
-    if( isset( $atts['id'] ) ) {
-        $id = sanitize_text_field( $atts['id'] );
-    } else {
-        $id = false;
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">youtube_shortcode</span>( $atts ) {
+    <span style="color:#66d9ef">if</span>( <span style="color:#a6e22e">isset</span>( $atts[<span style="color:#e6db74">&#39;id&#39;</span>] ) ) {
+        $id <span style="color:#f92672">=</span> <span style="color:#a6e22e">sanitize_text_field</span>( $atts[<span style="color:#e6db74">&#39;id&#39;</span>] );
+    } <span style="color:#66d9ef">else</span> {
+        $id <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
     }
 
-    // This time we use Timber::compile since shortcodes should return the code
-    return Timber::compile( 'youtube-short.twig', array( 'id' =&gt; $id ) );
+    <span style="color:#75715e">// This time we use Timber::compile since shortcodes should return the code
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">compile</span>( <span style="color:#e6db74">&#39;youtube-short.twig&#39;</span>, <span style="color:#66d9ef">array</span>( <span style="color:#e6db74">&#39;id&#39;</span> <span style="color:#f92672">=&gt;</span> $id ) );
 }
-</code></pre>
-
-<p>In <code>youtube-short.twig</code> we have the following template:</p>
-
-<pre><code class="language-twig">{% if id %}
-	&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;//www.youtube.com/embed/{{ id }}&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
-{% endif %}
-</code></pre>
-
-<p>Now, when the YouTube embed code changes, we only need to edit the <code>youtube-short.twig</code> template. No need to search your PHP files for this one particular line.</p>
-
+</code></pre></div><p>In <code>youtube-short.twig</code> we have the following template:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{%</span> <span style="color:#66d9ef">if</span> id <span style="color:#75715e">%}</span>
+	&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;//www.youtube.com/embed/<span style="color:#75715e">{{</span> id <span style="color:#75715e">}}</span>&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+<span style="color:#75715e">{%</span> <span style="color:#66d9ef">endif</span> <span style="color:#75715e">%}</span>
+</code></pre></div><p>Now, when the YouTube embed code changes, we only need to edit the <code>youtube-short.twig</code> template. No need to search your PHP files for this one particular line.</p>
 <h3 id="layouts-with-shortcodes">Layouts with Shortcodes</h3>
-
-<p>Timber and Twig can process your shortcodes by using the <code>{% filter shortcodes %}</code> tag. Let’s say you&rsquo;re using a <code>[tab]</code> shortcode, for example:</p>
-
-<pre><code class="language-twig">{% filter shortcodes %}
-    [tabs tab1=&quot;Tab 1 title&quot; tab2=&quot;Tab 2 title&quot; layout=&quot;horizontal&quot; backgroundcolor=&quot;&quot; inactivecolor=&quot;&quot;]
+<p>Timber and Twig can process your shortcodes by using the <code>{% apply shortcodes %}</code> tag. Let’s say you&rsquo;re using a <code>[tab]</code> shortcode, for example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{%</span> <span style="color:#66d9ef">apply</span> shortcodes <span style="color:#75715e">%}</span>
+    [tabs tab1=&#34;Tab 1 title&#34; tab2=&#34;Tab 2 title&#34; layout=&#34;horizontal&#34; backgroundcolor=&#34;&#34; inactivecolor=&#34;&#34;]
         [tab id=1]
             Something something something
         [/tab]
@@ -442,74 +416,56 @@ function youtube_shortcode( $atts ) {
             Tab 2 content here
         [/tab]
     [/tabs]
-{% endfilter %}
-</code></pre>
-
-<h2 id="password-protected-posts">Password protected posts</h2>
-
+<span style="color:#75715e">{%</span> <span style="color:#66d9ef">endapply</span> <span style="color:#75715e">%}</span>
+</code></pre></div><h2 id="password-protected-posts">Password protected posts</h2>
 <p>It’s recommended to use the <a href="https://developer.wordpress.org/reference/functions/post_password_required/"><code>post_password_required()</code></a> function to check if a post requires a password. You can add this check in all your single PHP template files</p>
-
 <p><strong>single.php</strong></p>
-
-<pre><code class="language-php">$context = Timber::context();
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$context = Timber::context();
 $post = Timber::query_post();
-$context['post'] = $post;
+$context[&#39;post&#39;] = $post;
 if ( post_password_required( $post-&gt;ID ) ) {
-    Timber::render( 'single-password.twig', $context );
+    Timber::render( &#39;single-password.twig&#39;, $context );
 } else {
-    Timber::render( array( 'single-' . $post-&gt;ID . '.twig', 'single-' . $post-&gt;post_type . '.twig', 'single.twig' ), $context );
+    Timber::render( array( &#39;single-&#39; . $post-&gt;ID . &#39;.twig&#39;, &#39;single-&#39; . $post-&gt;post_type . &#39;.twig&#39;, &#39;single.twig&#39; ), $context );
 }
-</code></pre>
+</code></pre></div><p><strong>single-password.twig</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{%</span> <span style="color:#66d9ef">extends</span> <span style="color:#e6db74">&#34;base.twig&#34;</span> <span style="color:#75715e">%}</span>
 
-<p><strong>single-password.twig</strong></p>
-
-<pre><code class="language-twig">{% extends &quot;base.twig&quot; %}
-
-{% block content %}
-    {{ function('get_the_password_form') }}
-{% endblock %}
-</code></pre>
-
-<h4 id="using-a-filter">Using a Filter</h4>
-
+<span style="color:#75715e">{%</span> <span style="color:#66d9ef">block</span> content <span style="color:#75715e">%}</span>
+    <span style="color:#75715e">{{</span> function<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;get_the_password_form&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">}}</span>
+<span style="color:#75715e">{%</span> <span style="color:#66d9ef">endblock</span> <span style="color:#75715e">%}</span>
+</code></pre></div><h4 id="using-a-filter">Using a Filter</h4>
 <p>With a WordPress filter, you can use a specific PHP template for all your password protected posts. Note: this is accomplished using only standard WordPress functions. This is nothing special to Timber</p>
-
 <p><strong>functions.php</strong></p>
-
-<pre><code class="language-php">/**
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">/**
  * Use specific template for password protected posts.
  *
  * By default, this will use the `password-protected.php` template file. If you want password
  * templates specific to a post type, use `password-protected-$posttype.php`.
  */
-add_filter( 'template_include', 'get_password_protected_template', 99 );
+add_filter( &#39;template_include&#39;, &#39;get_password_protected_template&#39;, 99 );
 
 function get_password_protected_template( $template ) {
     global $post;
 
-    if ( ! empty( $post ) &amp;&amp; post_password_required( $post-&gt;ID ) ) {
+    if ( ! empty( $post ) <span style="color:#960050;background-color:#1e0010">&amp;&amp;</span> post_password_required( $post-&gt;ID ) ) {
         $template = locate_template( [
-            'password-protected.php',
-            &quot;password-protected-{$post-&gt;post_type}.php&quot;,
+            &#39;password-protected.php&#39;,
+            &#34;password-protected-{$post-&gt;post_type}.php&#34;,
         ] ) ?: $template;
     }
 
     return $template;
 };
-</code></pre>
+</code></pre></div><p>With this filter, you can use a <strong>password-protected.php</strong> template file with the following contents:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
 
-<p>With this filter, you can use a <strong>password-protected.php</strong> template file with the following contents:</p>
+$context                  <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">context</span>();
+$context[<span style="color:#e6db74">&#39;post&#39;</span>]          <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Timber\Post</span>();
+$context[<span style="color:#e6db74">&#39;password_form&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">get_the_password_form</span>();
 
-<pre><code class="language-php">&lt;?php
-
-$context                  = Timber::context();
-$context['post']          = new Timber\Post();
-$context['password_form'] = get_the_password_form();
-
-Timber::render( 'password-protected.twig', $context );
-</code></pre>
-
-<p>To display the password on the page, you could then use <code>{{ password_form }}</code> in your Twig file.</p>
+<span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">render</span>( <span style="color:#e6db74">&#39;password-protected.twig&#39;</span>, $context );
+</code></pre></div><p>To display the password on the page, you could then use <code>{{ password_form }}</code> in your Twig file.</p>
 
 			</div>
 		</div>
@@ -520,7 +476,7 @@ Timber::render( 'password-protected.twig', $context );
 
 
 <script src="https://timber.github.io/docs/js/highlight.pack.js" defer></script>
-<script src="https://timber.github.io/docs/js/scripts.js?d0b281f642113556d4adaa8032af79eb" defer></script>
+<script src="https://timber.github.io/docs/js/scripts.js?44e60569f8868a72f5a9e8cd72cb0844" defer></script>
 
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>

@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
 	
-    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?db75858961ef100d103393e34f398175">
+    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?c77bdfd53127f8f1e98153f3f27452a2">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
 
     
@@ -228,64 +228,45 @@
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
 			<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#tl-dr">tl;dr</a></li>
-<li><a href="#cache-everything">Cache Everything</a></li>
-<li><a href="#cache-the-entire-twig-file-and-data">Cache the Entire Twig File and Data</a>
-<ul>
-<li><a href="#set-cache-mode">Set cache mode</a></li>
-</ul></li>
-<li><a href="#cache-parts-of-the-twig-file-and-data">Cache <em>Parts</em> of the Twig File and Data</a>
-<ul>
-<li><a href="#extra-timberkeygeneratorinterface">Extra: TimberKeyGeneratorInterface</a></li>
-</ul></li>
-<li><a href="#cache-the-twig-file-but-not-the-data">Cache the Twig File (but not the data)</a></li>
-<li><a href="#cache-the-php-data">Cache the PHP data</a></li>
-<li><a href="#measuring-performance">Measuring Performance</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#tldr">tl;dr</a></li>
+    <li><a href="#cache-everything">Cache Everything</a></li>
+    <li><a href="#cache-the-entire-twig-file-and-data">Cache the Entire Twig File and Data</a>
+      <ul>
+        <li><a href="#set-cache-mode">Set cache mode</a></li>
+      </ul>
+    </li>
+    <li><a href="#cache-_parts_-of-the-twig-file-and-data">Cache <em>Parts</em> of the Twig File and Data</a>
+      <ul>
+        <li><a href="#extra-timberkeygeneratorinterface">Extra: TimberKeyGeneratorInterface</a></li>
+      </ul>
+    </li>
+    <li><a href="#cache-the-twig-file-but-not-the-data">Cache the Twig File (but not the data)</a></li>
+    <li><a href="#cache-the-php-data">Cache the PHP data</a></li>
+    <li><a href="#measuring-performance">Measuring Performance</a></li>
+  </ul>
 </nav>
 		</aside>
 
 		<div class="content-container">
 			<div class="content">
-				
-
-<p>Timber, especially in conjunction with WordPress and Twig, offers a variety of caching strategies to optimize performance. Here’s a quick rundown of some of the options, ranked in order of most-broad to most-focused.</p>
-
-<h2 id="tl-dr">tl;dr</h2>
-
+				<p>Timber, especially in conjunction with WordPress and Twig, offers a variety of caching strategies to optimize performance. Here’s a quick rundown of some of the options, ranked in order of most-broad to most-focused.</p>
+<h2 id="tldr">tl;dr</h2>
 <p>In my tests with Debug Bar, Timber has no measurable performance hit. Everything compiles to PHP. @fabpot has an <a href="http://fabien.potencier.org/article/34/templating-engines-in-php">overview of the performance costs on his blog</a> (scroll down to the table).</p>
-
 <h2 id="cache-everything">Cache Everything</h2>
-
 <p>You can still use plugins like <a href="https://wordpress.org/plugins/w3-total-cache/">W3 Total Cache</a> in conjunction with Timber. In most settings, this will <em>skip</em> the Twig/Timber layer of your files and serve static pages via whatever mechanism the plugin or settings dictate.</p>
-
 <h2 id="cache-the-entire-twig-file-and-data">Cache the Entire Twig File and Data</h2>
-
 <p>When rendering, use the <code>$expires</code> argument in <a href="https://timber.github.io/docs/reference/timber/#render"><code>Timber::render</code></a>. For example:</p>
-
-<pre><code class="language-php">&lt;?php
-$context['posts'] = Timber::get_posts();
-Timber::render( 'index.twig', $context, 600 );
-</code></pre>
-
-<p>In this example, Timber will cache the template for 10 minutes (600 / 60 = 10). But here’s the cool part: Timber hashes the fields in the view context. This means that <strong>as soon as the data changes, the cache is automatically invalidated</strong>. Yay!</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+$context[<span style="color:#e6db74">&#39;posts&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">get_posts</span>();
+<span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">render</span>( <span style="color:#e6db74">&#39;index.twig&#39;</span>, $context, <span style="color:#ae81ff">600</span> );
+</code></pre></div><p>In this example, Timber will cache the template for 10 minutes (600 / 60 = 10). But here’s the cool part: Timber hashes the fields in the view context. This means that <strong>as soon as the data changes, the cache is automatically invalidated</strong>. Yay!</p>
 <p>This method is very effective, but crude - the whole template is cached. So if you have any context dependent sub-views (eg. current user), this mode won’t do.</p>
-
 <h3 id="set-cache-mode">Set cache mode</h3>
-
 <p>As a fourth parameter for <a href="https://timber.github.io/docs/reference/timber/#render">Timber::render()</a>, you can set the <code>$cache_mode</code>.</p>
-
-<pre><code class="language-php">&lt;?php
-Timber::render( $filenames, $data, $expires, $cache_mode );
-</code></pre>
-
-<p>The following cache modes are available:</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">render</span>( $filenames, $data, $expires, $cache_mode );
+</code></pre></div><p>The following cache modes are available:</p>
 <table>
 <thead>
 <tr>
@@ -293,156 +274,109 @@ Timber::render( $filenames, $data, $expires, $cache_mode );
 <th>Description</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><code>Timber\Loader::CACHE_NONE</code></td>
 <td>Disable caching</td>
 </tr>
-
 <tr>
 <td><code>Timber\Loader::CACHE_OBJECT</code></td>
 <td>WP Object Cache</td>
 </tr>
-
 <tr>
 <td><code>Timber\Loader::CACHE_TRANSIENT</code></td>
 <td>Transients</td>
 </tr>
-
 <tr>
 <td><code>Timber\Loader::CACHE_SITE_TRANSIENT</code></td>
 <td>Network wide transients</td>
 </tr>
-
 <tr>
 <td><code>Timber\Loader::CACHE_USE_DEFAULT</code></td>
 <td>Use whatever caching mechanism is set as the default for <code>Timber\Loader</code>, the default is <code>CACHE_TRANSIENT</code>.</td>
 </tr>
 </tbody>
 </table>
-
-<h2 id="cache-parts-of-the-twig-file-and-data">Cache <em>Parts</em> of the Twig File and Data</h2>
-
+<h2 id="cache-_parts_-of-the-twig-file-and-data">Cache <em>Parts</em> of the Twig File and Data</h2>
 <p>This method implements the <a href="https://github.com/asm89/twig-cache-extension">Twig Cache Extension</a>. It adds the cache tag, for use in templates. Best shown by example:</p>
-
-<pre><code class="language-twig">{% cache 'index/content' posts %}
-    {% for post in posts %}
-        {% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
-    {% endfor %}
-{% endcache %}
-</code></pre>
-
-<p><code>'index/content'</code> will be used as annotation (label) for the cache, while <code>posts</code> will be encoded with all its public fields. You can use anything for the label (&ldquo;foo&rdquo;, &ldquo;elephant&rdquo;, &ldquo;single-posts&rdquo;, whatever).</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{%</span> <span style="color:#66d9ef">cache</span> <span style="color:#e6db74">&#39;index/content&#39;</span> posts <span style="color:#75715e">%}</span>
+    <span style="color:#75715e">{%</span> <span style="color:#66d9ef">for</span> post <span style="color:#66d9ef">in</span> posts <span style="color:#75715e">%}</span>
+        <span style="color:#75715e">{%</span> <span style="color:#66d9ef">include</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;tease-&#39;</span><span style="color:#f92672">~</span>post.post_type<span style="color:#f92672">~</span><span style="color:#e6db74">&#39;.twig&#39;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;tease.twig&#39;</span><span style="color:#f92672">]</span> <span style="color:#75715e">%}</span>
+    <span style="color:#75715e">{%</span> <span style="color:#66d9ef">endfor</span> <span style="color:#75715e">%}</span>
+<span style="color:#75715e">{%</span> <span style="color:#66d9ef">endcache</span> <span style="color:#75715e">%}</span>
+</code></pre></div><p><code>'index/content'</code> will be used as annotation (label) for the cache, while <code>posts</code> will be encoded with all its public fields. You can use anything for the label (&ldquo;foo&rdquo;, &ldquo;elephant&rdquo;, &ldquo;single-posts&rdquo;, whatever).</p>
 <p>The mechanism behind it is the same as with render - the cache key is determined based on a hash of the object/array passed in (in the above example posts).</p>
-
 <p>The cache method used is always the default mode, set using the bespoke filter (by default, transient cache).</p>
-
 <p>This method allows for very fine-grained control over what parts of templates are being cached and which are not. When applied on resource-intensive sections, the performance difference is huge.</p>
-
 <p>In your cache, the eventual key will be:</p>
-
-<pre><code class="language-php">&lt;?php
-$annotation . '__GCS__' . $key
-</code></pre>
-
-<p>That is in this scenario:</p>
-
-<pre><code class="language-php">&lt;?php
-'index/content__GCS__' . md5( json_encode( $context['post'] ) )
-</code></pre>
-
-<h3 id="extra-timberkeygeneratorinterface">Extra: TimberKeyGeneratorInterface</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+$annotation <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;__GCS__&#39;</span> <span style="color:#f92672">.</span> $key
+</code></pre></div><p>That is in this scenario:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#e6db74">&#39;index/content__GCS__&#39;</span> <span style="color:#f92672">.</span> <span style="color:#a6e22e">md5</span>( <span style="color:#a6e22e">json_encode</span>( $context[<span style="color:#e6db74">&#39;post&#39;</span>] ) )
+</code></pre></div><h3 id="extra-timberkeygeneratorinterface">Extra: TimberKeyGeneratorInterface</h3>
 <p>Instead of hashing a whole object, you can specify the cache key in the object itself. If the object implements <code>TimberKeyGeneratorInterface</code>, it can pass a unique key through the method <code>get_cache_key</code>. That way a class can for example simply pass <code>'last_updated'</code> as the unique key.
 If arrays contain the key <code>_cache_key</code>, that one is used as cache key.</p>
-
 <p>This may save yet another few processor cycles.</p>
-
 <h2 id="cache-the-twig-file-but-not-the-data">Cache the Twig File (but not the data)</h2>
-
 <p>Every time you render a <code>.twig</code> file, Twig compiles all the HTML tags and variables into a big, nasty blob of function calls and echo statements that actually gets run by PHP. In general, this is pretty efficient. However, you can cache the resulting PHP blob by turning on Twig’s cache via:</p>
-
 <p><strong>functions.php</strong></p>
-
-<pre><code class="language-php">&lt;?php
-if ( class_exists( 'Timber' ) ){
-	Timber::$cache = true;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">class_exists</span>( <span style="color:#e6db74">&#39;Timber&#39;</span> ) ){
+	<span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span>$cache <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
 }
-</code></pre>
-
-<p>You can look in your <code>/wp-content/plugins/timber/cache/twig</code> directory to see what these files look like.</p>
-
+</code></pre></div><p>You can look in your <code>/wp-content/plugins/timber/cache/twig</code> directory to see what these files look like.</p>
 <p>This does not cache the <em>contents</em> of the variables.</p>
-
 <p>Enabling <code>Timber::$cache</code> works best as a last step in the production process. Once enabled, any change you make to a <code>.twig</code> file (just tweaking the HTML for example) will not go live until the cache is flushed.</p>
-
 <p>Note that when <code>WP_DEBUG</code> is set to <code>true</code>, changes you make to <code>.twig</code> files will be reflected on the site regardless of the <code>Timber::$cache</code> value.</p>
-
 <p>To flush the Twig cache you can do this:</p>
-
-<pre><code class="language-php">&lt;?php
-$loader = new Timber\Loader();
-$loader-&gt;clear_cache_twig();
-</code></pre>
-
-<h2 id="cache-the-php-data">Cache the PHP data</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+$loader <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Timber\Loader</span>();
+$loader<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">clear_cache_twig</span>();
+</code></pre></div><h2 id="cache-the-php-data">Cache the PHP data</h2>
 <p>Sometimes the most expensive parts of the operations are generating the data needed to populate the twig template. You can of course use WordPress’s default <a href="http://codex.wordpress.org/Transients_API">Transient API</a> to store this data.</p>
-
 <p>You can also use some <a href="http://en.wikipedia.org/wiki/Syntactic_sugar">syntactic sugar</a> to make the checking/saving/retrieving of transient data a bit easier:</p>
-
 <p><strong>home.php</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
 
-<pre><code class="language-php">&lt;?php
+$context <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">context</span>();
 
-$context = Timber::context();
+$context[<span style="color:#e6db74">&#39;main_stories&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">TimberHelper</span><span style="color:#f92672">::</span><span style="color:#a6e22e">transient</span>( <span style="color:#e6db74">&#39;main_stories&#39;</span>, <span style="color:#66d9ef">function</span>(){
+    $posts <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">get_posts</span>();
 
-$context['main_stories'] = TimberHelper::transient( 'main_stories', function(){
-    $posts = Timber::get_posts();
+    <span style="color:#75715e">// As an example, do something expensive with these posts
+</span><span style="color:#75715e"></span>    $extra_teases <span style="color:#f92672">=</span> <span style="color:#a6e22e">get_field</span>( <span style="color:#e6db74">&#39;my_extra_teases&#39;</span>, <span style="color:#e6db74">&#39;options&#39;</span> );
 
-    // As an example, do something expensive with these posts
-    $extra_teases = get_field( 'my_extra_teases', 'options' );
-
-    foreach( $extra_teases as &amp;$tease ){
-        $tease = new Timber\Post( $tease );
+    <span style="color:#66d9ef">foreach</span>( $extra_teases <span style="color:#66d9ef">as</span> <span style="color:#f92672">&amp;</span>$tease ){
+        $tease <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Timber\Post</span>( $tease );
     }
 
-    $main_stories = array();
-    $main_stories['posts'] = $posts;
-    $main_stories['extra_teases'] = $extra_teases;
+    $main_stories <span style="color:#f92672">=</span> <span style="color:#66d9ef">array</span>();
+    $main_stories[<span style="color:#e6db74">&#39;posts&#39;</span>] <span style="color:#f92672">=</span> $posts;
+    $main_stories[<span style="color:#e6db74">&#39;extra_teases&#39;</span>] <span style="color:#f92672">=</span> $extra_teases;
 
-    return $main_stories;
-}, 600 );
+    <span style="color:#66d9ef">return</span> $main_stories;
+}, <span style="color:#ae81ff">600</span> );
 
-Timber::render( 'home.twig', $context );
-</code></pre>
-
-<p>Here <code>main_stories</code> is a totally made-up variable. It could be called <code>foo</code>, <code>bar</code>, <code>elephant</code>, etc.</p>
-
+<span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">render</span>( <span style="color:#e6db74">&#39;home.twig&#39;</span>, $context );
+</code></pre></div><p>Here <code>main_stories</code> is a totally made-up variable. It could be called <code>foo</code>, <code>bar</code>, <code>elephant</code>, etc.</p>
 <h2 id="measuring-performance">Measuring Performance</h2>
-
 <p>Some tools like Debug Bar may not properly measure performance because its data (as in, the actual HTML it’s generating to tell you the timing, number of queries, etc.) is swept-up by the page’s cache.</p>
-
 <p>Timber provides some quick shortcuts to measure page timing. Here’s an example of them in action:</p>
-
 <p><strong>single.php</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#75715e">// This generates a starting time
+</span><span style="color:#75715e"></span>$start <span style="color:#f92672">=</span> <span style="color:#a6e22e">TimberHelper</span><span style="color:#f92672">::</span><span style="color:#a6e22e">start_timer</span>();
 
-<pre><code class="language-php">&lt;?php
-// This generates a starting time
-$start = TimberHelper::start_timer();
+$context <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">context</span>();
+$context[<span style="color:#e6db74">&#39;post&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">get_post</span>();
+$context[<span style="color:#e6db74">&#39;whatever&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">get_my_foo</span>();
 
-$context = Timber::context();
-$context['post'] = Timber::get_post();
-$context['whatever'] = get_my_foo();
+<span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">render</span>( <span style="color:#e6db74">&#39;single.twig&#39;</span>, $context, <span style="color:#ae81ff">600</span> );
 
-Timber::render( 'single.twig', $context, 600 );
-
-// This reports the time diff by passing the $start time
-echo TimberHelper::stop_timer( $start);
-</code></pre>
-
+<span style="color:#75715e">// This reports the time diff by passing the $start time
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">TimberHelper</span><span style="color:#f92672">::</span><span style="color:#a6e22e">stop_timer</span>( $start);
+</code></pre></div>
 			</div>
 		</div>
 	</article>
@@ -452,7 +386,7 @@ echo TimberHelper::stop_timer( $start);
 
 
 <script src="https://timber.github.io/docs/js/highlight.pack.js" defer></script>
-<script src="https://timber.github.io/docs/js/scripts.js?d0b281f642113556d4adaa8032af79eb" defer></script>
+<script src="https://timber.github.io/docs/js/scripts.js?44e60569f8868a72f5a9e8cd72cb0844" defer></script>
 
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>

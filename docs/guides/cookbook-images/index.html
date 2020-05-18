@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
 	
-    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?db75858961ef100d103393e34f398175">
+    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?c77bdfd53127f8f1e98153f3f27452a2">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
 
     
@@ -228,174 +228,108 @@
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
 			<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#basic-image-stuff">Basic image stuff</a></li>
-<li><a href="#use-a-wordpress-image-size">Use a WordPress image size</a></li>
-<li><a href="#arbitrary-resizing-of-images">Arbitrary resizing of images</a></li>
-<li><a href="#letterboxing-images">Letterboxing images</a></li>
-<li><a href="#converting-images">Converting images</a>
-<ul>
-<li><a href="#using-webp-images">Using WebP images</a></li>
-</ul></li>
-<li><a href="#generating-retina-sizes">Generating retina sizes</a></li>
-<li><a href="#using-images-in-custom-fields">Using images in custom fields</a>
-<ul>
-<li><a href="#the-quick-way-for-most-situations">The quick way (for most situations)</a></li>
-<li><a href="#the-long-way-for-some-special-situations">The long way (for some special situations)</a></li>
-</ul></li>
-<li><a href="#limitations-when-working-with-a-cdn">Limitations when working with a CDN</a>
-<ul>
-<li><a href="#using-a-pull-cdn">Using a Pull CDN</a></li>
-<li><a href="#using-a-push-cdn">Using a Push CDN</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#basic-image-stuff">Basic image stuff</a></li>
+    <li><a href="#use-a-wordpress-image-size">Use a WordPress image size</a></li>
+    <li><a href="#arbitrary-resizing-of-images">Arbitrary resizing of images</a></li>
+    <li><a href="#letterboxing-images">Letterboxing images</a></li>
+    <li><a href="#converting-images">Converting images</a>
+      <ul>
+        <li><a href="#using-webp-images">Using WebP images</a></li>
+      </ul>
+    </li>
+    <li><a href="#generating-retina-sizes">Generating retina sizes</a></li>
+    <li><a href="#using-images-in-custom-fields">Using images in custom fields</a>
+      <ul>
+        <li><a href="#the-quick-way-for-most-situations">The quick way (for most situations)</a></li>
+        <li><a href="#the-long-way-for-some-special-situations">The long way (for some special situations)</a></li>
+      </ul>
+    </li>
+    <li><a href="#limitations-when-working-with-a-cdn">Limitations when working with a CDN</a>
+      <ul>
+        <li><a href="#using-a-pull-cdn">Using a Pull CDN</a></li>
+        <li><a href="#using-a-push-cdn">Using a Push CDN</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 		</aside>
 
 		<div class="content-container">
 			<div class="content">
-				
-
-<p>Timber makes it damn easy to use an image in a tag.</p>
-
+				<p>Timber makes it damn easy to use an image in a tag.</p>
 <p>Automatically, Timber will interpret images attached to a post’s thumbnail field (&ldquo;Featured Image&rdquo; in the admin) and treat them as instances of <a href="https://timber.github.io/docs/reference/timber-image/">Timber\Image</a>. Then, in your Twig templates, you can access them via <code>{{ post.thumbnail }}</code>.</p>
-
 <h2 id="basic-image-stuff">Basic image stuff</h2>
-
 <p>Again, pretty damn easy:</p>
-
-<pre><code class="language-twig">&lt;img src=&quot;{{ post.thumbnail.src }}&quot; class=&quot;my-thumb-class&quot; alt=&quot;Image for {{ post.title }}&quot; /&gt;
-</code></pre>
-
-<h2 id="use-a-wordpress-image-size">Use a WordPress image size</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;img src=&#34;<span style="color:#75715e">{{</span> post.thumbnail.src <span style="color:#75715e">}}</span>&#34; class=&#34;my-thumb-class&#34; alt=&#34;Image for <span style="color:#75715e">{{</span> post.title <span style="color:#75715e">}}</span>&#34; /&gt;
+</code></pre></div><h2 id="use-a-wordpress-image-size">Use a WordPress image size</h2>
 <p>You can use WordPress image sizes (including ones you register with your theme/plugin) by passing the name of the size to <code>src</code> like so:</p>
-
-<pre><code class="language-twig">&lt;img src=&quot;{{ post.thumbnail.src('medium') }}&quot; class=&quot;my-thumb-class&quot; alt=&quot;Image for {{ post.title }}&quot; /&gt;
-</code></pre>
-
-<p>Note: If the WordPress size (e.g <code>medium</code>) has not been generated, it will return an empty string.</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;img src=&#34;<span style="color:#75715e">{{</span> post.thumbnail.src<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;medium&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">}}</span>&#34; class=&#34;my-thumb-class&#34; alt=&#34;Image for <span style="color:#75715e">{{</span> post.title <span style="color:#75715e">}}</span>&#34; /&gt;
+</code></pre></div><p>Note: If the WordPress size (e.g <code>medium</code>) has not been generated, it will return an empty string.</p>
 <h2 id="arbitrary-resizing-of-images">Arbitrary resizing of images</h2>
-
 <p>Want to resize an image? Here we’re going to use <a href="http://twig.sensiolabs.org/doc/filters/index.html">Twig Filters</a>.</p>
-
-<pre><code class="language-twig">&lt;img src=&quot;{{ post.thumbnail.src|resize(300, 200) }}&quot; /&gt;
-</code></pre>
-
-<p>The first parameter is <code>width</code>, the second is <code>height</code> (optional). So if you don’t know the height of the image, but still want to scale it proportionally, you can do:</p>
-
-<pre><code class="language-twig">&lt;img src=&quot;{{ post.thumbnail.src|resize(640) }}&quot; /&gt;
-</code></pre>
-
-<p>All of these filters are written specifically to interact with WordPress’s image API. So don’t worry, no weird TimThumb stuff going on—this is all using WordPress’s internal image sizing stuff.</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;img src=&#34;<span style="color:#75715e">{{</span> post.thumbnail.src<span style="color:#f92672">|</span><span style="color:#a6e22e">resize</span><span style="color:#f92672">(</span><span style="color:#ae81ff">300</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">200</span><span style="color:#f92672">)</span> <span style="color:#75715e">}}</span>&#34; /&gt;
+</code></pre></div><p>The first parameter is <code>width</code>, the second is <code>height</code> (optional). So if you don’t know the height of the image, but still want to scale it proportionally, you can do:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;img src=&#34;<span style="color:#75715e">{{</span> post.thumbnail.src<span style="color:#f92672">|</span><span style="color:#a6e22e">resize</span><span style="color:#f92672">(</span><span style="color:#ae81ff">640</span><span style="color:#f92672">)</span> <span style="color:#75715e">}}</span>&#34; /&gt;
+</code></pre></div><p>All of these filters are written specifically to interact with WordPress’s image API. So don’t worry, no weird TimThumb stuff going on—this is all using WordPress’s internal image sizing stuff.</p>
 <p>Be aware of the limitations of this function <a href="https://timber.github.io/docs/guides/cookbook-images/#limitations-when-working-with-a-cdn">when working with a CDN</a>.</p>
-
 <h2 id="letterboxing-images">Letterboxing images</h2>
-
 <p>Let’s say you have an image that you want to contain to a certain size without any cropping. If the proportions don’t fit you’ll letterbox the extra space. I find this is really useful when getting logos to all appear next to each other. You can do this with:</p>
-
-<pre><code class="language-twig">&lt;img src=&quot;{{ post.thumbnail.src|letterbox(400, 400, '#FFFFFF') }}&quot; /&gt;
-</code></pre>
-
-<p>Here <code>width</code> and <code>height</code> are required. The third argument is the background color in hex format (default is <code>#000000</code>).</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;img src=&#34;<span style="color:#75715e">{{</span> post.thumbnail.src<span style="color:#f92672">|</span><span style="color:#a6e22e">letterbox</span><span style="color:#f92672">(</span><span style="color:#ae81ff">400</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">400</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;#FFFFFF&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">}}</span>&#34; /&gt;
+</code></pre></div><p>Here <code>width</code> and <code>height</code> are required. The third argument is the background color in hex format (default is <code>#000000</code>).</p>
 <h2 id="converting-images">Converting images</h2>
-
 <p>Let’s say your client or editor is a bit lazy and they resort to PNGs where only JPGs are required. We have all seen this a lot. People will just upload screenshots that are saved by default as PNGs. No problemo!</p>
-
-<pre><code class="language-twig">&lt;img src=&quot;{{ post.thumbnail.src|tojpg }}&quot; /&gt;
-</code></pre>
-
-<p>You can use this in conjunction with other filters.</p>
-
-<pre><code class="language-twig">&lt;img src=&quot;{{ post.thumbnail.src|tojpg|resize(300, 300) }}&quot; /&gt;
-</code></pre>
-
-<p>Filters are executed from left to right. You’ll probably want to convert to JPG before running the resizing, etc.</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;img src=&#34;<span style="color:#75715e">{{</span> post.thumbnail.src<span style="color:#f92672">|</span><span style="color:#a6e22e">tojpg</span> <span style="color:#75715e">}}</span>&#34; /&gt;
+</code></pre></div><p>You can use this in conjunction with other filters.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;img src=&#34;<span style="color:#75715e">{{</span> post.thumbnail.src<span style="color:#f92672">|</span><span style="color:#a6e22e">tojpg</span><span style="color:#f92672">|</span><span style="color:#a6e22e">resize</span><span style="color:#f92672">(</span><span style="color:#ae81ff">300</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">300</span><span style="color:#f92672">)</span> <span style="color:#75715e">}}</span>&#34; /&gt;
+</code></pre></div><p>Filters are executed from left to right. You’ll probably want to convert to JPG before running the resizing, etc.</p>
 <h3 id="using-webp-images">Using WebP images</h3>
-
 <p>Similar to the <code>|tojpg</code> filter, there’s a <code>|towebp</code> filter.</p>
-
-<pre><code class="language-twig">&lt;picture&gt;
-   &lt;source srcset=&quot;{{ post.thumbnail.src|towebp }}&quot; type=&quot;image/webp&quot;&gt;
-   &lt;source srcset=&quot;{{ post.thumbnail.src|tojpg }}&quot; type=&quot;image/jpeg&quot;&gt;
-   &lt;img src=&quot;{{ post.thumbnail.src|tojpg }}&quot; alt=&quot;{{ post.title }}&quot;&gt;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;picture&gt;
+   &lt;source srcset=&#34;<span style="color:#75715e">{{</span> post.thumbnail.src<span style="color:#f92672">|</span><span style="color:#a6e22e">towebp</span> <span style="color:#75715e">}}</span>&#34; type=&#34;image/webp&#34;&gt;
+   &lt;source srcset=&#34;<span style="color:#75715e">{{</span> post.thumbnail.src<span style="color:#f92672">|</span><span style="color:#a6e22e">tojpg</span> <span style="color:#75715e">}}</span>&#34; type=&#34;image/jpeg&#34;&gt;
+   &lt;img src=&#34;<span style="color:#75715e">{{</span> post.thumbnail.src<span style="color:#f92672">|</span><span style="color:#a6e22e">tojpg</span> <span style="color:#75715e">}}</span>&#34; alt=&#34;<span style="color:#75715e">{{</span> post.title <span style="color:#75715e">}}</span>&#34;&gt;
 &lt;/picture&gt;
-</code></pre>
-
-<h2 id="generating-retina-sizes">Generating retina sizes</h2>
-
+</code></pre></div><h2 id="generating-retina-sizes">Generating retina sizes</h2>
 <p>You can use Timber to generate @2x image sizes for retina devices. For example, using <code>srcset</code>:</p>
-
-<pre><code class="language-twig">&lt;img src=&quot;{{ post.thumbnail.src }}&quot; srcset=&quot;{{ post.thumbnail.src|retina(1) }} 1x,
-    {{ post.thumbnail.src|retina(2) }} 2x,
-    {{ post.thumbnail.src|retina(3) }} 3x,
-    {{ post.thumbnail.src|retina(4) }} 4x&quot;&gt;
-</code></pre>
-
-<p>Unfortunately, it’s not possible to use the <code>|retina()</code> filter in combination with <code>|resize()</code>, because it would create an upscaled image. We are working on making this work eventually.</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;img src=&#34;<span style="color:#75715e">{{</span> post.thumbnail.src <span style="color:#75715e">}}</span>&#34; srcset=&#34;<span style="color:#75715e">{{</span> post.thumbnail.src<span style="color:#f92672">|</span><span style="color:#a6e22e">retina</span><span style="color:#f92672">(</span><span style="color:#ae81ff">1</span><span style="color:#f92672">)</span> <span style="color:#75715e">}}</span> 1x,
+    <span style="color:#75715e">{{</span> post.thumbnail.src<span style="color:#f92672">|</span><span style="color:#a6e22e">retina</span><span style="color:#f92672">(</span><span style="color:#ae81ff">2</span><span style="color:#f92672">)</span> <span style="color:#75715e">}}</span> 2x,
+    <span style="color:#75715e">{{</span> post.thumbnail.src<span style="color:#f92672">|</span><span style="color:#a6e22e">retina</span><span style="color:#f92672">(</span><span style="color:#ae81ff">3</span><span style="color:#f92672">)</span> <span style="color:#75715e">}}</span> 3x,
+    <span style="color:#75715e">{{</span> post.thumbnail.src<span style="color:#f92672">|</span><span style="color:#a6e22e">retina</span><span style="color:#f92672">(</span><span style="color:#ae81ff">4</span><span style="color:#f92672">)</span> <span style="color:#75715e">}}</span> 4x&#34;&gt;
+</code></pre></div><p>Unfortunately, it’s not possible to use the <code>|retina()</code> filter in combination with <code>|resize()</code>, because it would create an upscaled image. We are working on making this work eventually.</p>
 <h2 id="using-images-in-custom-fields">Using images in custom fields</h2>
-
 <p>Let’s say you&rsquo;re using a custom field plugin (like the amazing <a href="http://www.advancedcustomfields.com/">Advanced Custom Fields</a>). You can use the resulting images in your Twig templates very easily.</p>
-
 <p>When setting up your custom fields you’ll want to save the <code>image_id</code> to the field. The image object, url, etc. <em>will</em> work but it’s not as fool-proof.</p>
-
 <h3 id="the-quick-way-for-most-situations">The quick way (for most situations)</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{%</span> <span style="color:#66d9ef">set</span> image <span style="color:#f92672">=</span> Image<span style="color:#f92672">(</span>post.hero_image<span style="color:#f92672">)</span> <span style="color:#75715e">%}</span>
 
-<pre><code class="language-twig">&lt;img src=&quot;{{ Image(post.hero_image).src }}&quot; /&gt;
-</code></pre>
-
-<h3 id="the-long-way-for-some-special-situations">The long way (for some special situations)</h3>
-
+&lt;img src=&#34;<span style="color:#75715e">{{</span> image.src <span style="color:#75715e">}}</span>&#34; alt=&#34;<span style="color:#75715e">{{</span> image.alt <span style="color:#75715e">}}</span>&#34; /&gt;
+</code></pre></div><h3 id="the-long-way-for-some-special-situations">The long way (for some special situations)</h3>
 <p>This is where we’ll start in PHP.</p>
-
 <p><strong>single.php</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+$post <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">get_post</span>();
 
-<pre><code class="language-php">&lt;?php
-$post = Timber::get_post();
-
-if ( isset( $post-&gt;hero_image ) &amp;&amp; strlen( $post-&gt;hero_image ) ) {
-    $post-&gt;hero_image = new Timber\Image( $post-&gt;hero_image );
+<span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">isset</span>( $post<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">hero_image</span> ) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">strlen</span>( $post<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">hero_image</span> ) ) {
+    $post<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">hero_image</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Timber\Image</span>( $post<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">hero_image</span> );
 }
 
-$data = Timber::context();
-$data['post'] = $post;
-Timber::render( 'single.twig', $data );
-</code></pre>
-
-<p><code>Timber\Image</code> should be initialized using a WordPress image ID. It can also take URLs and image objects, but that requires extra processing.</p>
-
+$data <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">context</span>();
+$data[<span style="color:#e6db74">&#39;post&#39;</span>] <span style="color:#f92672">=</span> $post;
+<span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">render</span>( <span style="color:#e6db74">&#39;single.twig&#39;</span>, $data );
+</code></pre></div><p><code>Timber\Image</code> should be initialized using a WordPress image ID. It can also take URLs and image objects, but that requires extra processing.</p>
 <p>You can now use all the above functions to transform your custom images in the same way. The format will be:</p>
-
-<pre><code class="language-twig">&lt;img src=&quot;{{ post.hero_image.src|resize(500, 300) }}&quot; /&gt;
-</code></pre>
-
-<h2 id="limitations-when-working-with-a-cdn">Limitations when working with a CDN</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;img src=&#34;<span style="color:#75715e">{{</span> post.hero_image.src<span style="color:#f92672">|</span><span style="color:#a6e22e">resize</span><span style="color:#f92672">(</span><span style="color:#ae81ff">500</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">300</span><span style="color:#f92672">)</span> <span style="color:#75715e">}}</span>&#34; /&gt;
+</code></pre></div><h2 id="limitations-when-working-with-a-cdn">Limitations when working with a CDN</h2>
 <p>Timber’s image functions may be somewhat limited when using a CDN.
 There are <a href="https://cdn.net/push-vs-pull-cdn/">differences between Pull CDN and Push CDN</a>.</p>
-
 <h3 id="using-a-pull-cdn">Using a Pull CDN</h3>
-
 <p>You should be <strong>fine when you use a Pull CDN</strong>, because there, you pass in which directories of your website you want to map to your CDN. The links to assets in those directories will be automatically replaced with the links to the CDN in the resulting HTML. The Pull CDN will «pull» these files to the server, if they don’t exist yet.</p>
-
 <h3 id="using-a-push-cdn">Using a Push CDN</h3>
-
 <p>When you use a Push CDN, you need to be aware of the following limitation:</p>
-
 <p><strong>When you use a filter that creates a new image</strong>, like <code>|resize()</code>, <code>|letterbox()</code> or <strong>a filter that converts your image to another format</strong>, like <code>|tojpg</code> or <code>|towebp</code>, it probably won’t work. With these filters, Timber creates a new file locally. But WordPress doesn’t know about that file, because it’s not associated with a WordPress image size registered through <code>add_image_size()</code>. Because of that, some CDN plugins will not be able to upload/push that image to the CDN server, because they don’t know the file exists, either.</p>
-
 <p><strong>You are safe if you use</strong> <code>{{ image.src }}</code> or if you get the source of a WordPress image size, like <code>{{ image.src('large') }}</code>.</p>
-
 <p>Examples for plugins that work with Push CDN:</p>
-
 <ul>
 <li><a href="https://wordpress.org/plugins/amazon-s3-and-cloudfront/">WP Offload Media Lite</a></li>
 </ul>
@@ -409,7 +343,7 @@ There are <a href="https://cdn.net/push-vs-pull-cdn/">differences between Pull C
 
 
 <script src="https://timber.github.io/docs/js/highlight.pack.js" defer></script>
-<script src="https://timber.github.io/docs/js/scripts.js?d0b281f642113556d4adaa8032af79eb" defer></script>
+<script src="https://timber.github.io/docs/js/scripts.js?44e60569f8868a72f5a9e8cd72cb0844" defer></script>
 
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>

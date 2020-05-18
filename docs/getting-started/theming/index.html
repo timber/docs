@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
 	
-    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?db75858961ef100d103393e34f398175">
+    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?c77bdfd53127f8f1e98153f3f27452a2">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
 
     
@@ -228,238 +228,162 @@
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
 			<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#your-first-timber-project">Your first Timber project</a></li>
-<li><a href="#blocks">Blocks</a>
-<ul>
-<li><a href="#nesting-blocks-multiple-inheritance">Nesting Blocks, Multiple Inheritance</a></li>
-</ul></li>
-<li><a href="#the-index-page">The index page</a>
-<ul>
-<li><a href="#get-the-context">Get the context</a></li>
-<li><a href="#grab-your-posts">Grab your posts</a></li>
-</ul></li>
-<li><a href="#how-to-use-timber-get-posts">How to use Timber::get_posts()</a>
-<ul>
-<li><a href="#use-a-wp-query-array">Use a WP_Query array</a></li>
-<li><a href="#use-a-wp-query-string">Use a WP_Query string</a></li>
-<li><a href="#use-post-id-numbers">Use Post ID numbers</a></li>
-</ul></li>
-<li><a href="#render">Render</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#your-first-timber-project">Your first Timber project</a></li>
+    <li><a href="#blocks">Blocks</a>
+      <ul>
+        <li><a href="#nesting-blocks-multiple-inheritance">Nesting Blocks, Multiple Inheritance</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-index-page">The index page</a>
+      <ul>
+        <li><a href="#get-the-context">Get the context</a></li>
+        <li><a href="#grab-your-posts">Grab your posts</a></li>
+      </ul>
+    </li>
+    <li><a href="#how-to-use-timberget_posts">How to use Timber::get_posts()</a>
+      <ul>
+        <li><a href="#use-a-wp_query-array">Use a WP_Query array</a></li>
+        <li><a href="#use-a-wp_query-string">Use a WP_Query string</a></li>
+        <li><a href="#use-post-id-numbers">Use Post ID numbers</a></li>
+      </ul>
+    </li>
+    <li><a href="#render">Render</a></li>
+  </ul>
 </nav>
 		</aside>
 
 		<div class="content-container">
 			<div class="content">
-				
-
-<h2 id="your-first-timber-project">Your first Timber project</h2>
-
+				<h2 id="your-first-timber-project">Your first Timber project</h2>
 <p>Let’s start with your single post. Find this file:</p>
-
 <pre><code>wp-content/themes/{timber-starter-theme}/templates/single.twig
-</code></pre>
+</code></pre><p>Brilliant! Open it up.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{%</span> <span style="color:#66d9ef">extends</span> <span style="color:#e6db74">&#34;base.twig&#34;</span> <span style="color:#75715e">%}</span>
 
-<p>Brilliant! Open it up.</p>
-
-<pre><code class="language-twig">{% extends &quot;base.twig&quot; %}
-
-{% block content %}
-    &lt;div class=&quot;content-wrapper&quot;&gt;
-        &lt;article class=&quot;post-type-{{ post.post_type }}&quot; id=&quot;post-{{ post.ID }}&quot;&gt;
-            &lt;section class=&quot;article-content&quot;&gt;
-                &lt;h1 class=&quot;article-h1&quot;&gt;{{ post.title }}&lt;/h1&gt;
-                &lt;h2 class=&quot;article-h2&quot;&gt;{{ post.subtitle }}&lt;/h2&gt;
-                &lt;p class=&quot;blog-author&quot;&gt;
-                    &lt;span&gt;By&lt;/span&gt; {{ post.author.name }} &lt;span&gt;&amp;bull;&lt;/span&gt; {{ post.post_date|date }}
+<span style="color:#75715e">{%</span> <span style="color:#66d9ef">block</span> content <span style="color:#75715e">%}</span>
+    &lt;div class=&#34;content-wrapper&#34;&gt;
+        &lt;article class=&#34;post-type-<span style="color:#75715e">{{</span> post.post_type <span style="color:#75715e">}}</span>&#34; id=&#34;post-<span style="color:#75715e">{{</span> post<span style="color:#960050;background-color:#1e0010">.ID</span> <span style="color:#75715e">}}</span>&#34;&gt;
+            &lt;section class=&#34;article-content&#34;&gt;
+                &lt;h1 class=&#34;article-h1&#34;&gt;<span style="color:#75715e">{{</span> post.title <span style="color:#75715e">}}</span>&lt;/h1&gt;
+                &lt;h2 class=&#34;article-h2&#34;&gt;<span style="color:#75715e">{{</span> post.subtitle <span style="color:#75715e">}}</span>&lt;/h2&gt;
+                &lt;p class=&#34;blog-author&#34;&gt;
+                    &lt;span&gt;By&lt;/span&gt; <span style="color:#75715e">{{</span> post.author.name <span style="color:#75715e">}}</span> &lt;span&gt;&amp;bull;&lt;/span&gt; <span style="color:#75715e">{{</span> post.post_date<span style="color:#f92672">|</span><span style="color:#a6e22e">date</span> <span style="color:#75715e">}}</span>
                 &lt;/p&gt;
-                {{ post.content }}
+                <span style="color:#75715e">{{</span> post.content <span style="color:#75715e">}}</span>
             &lt;/section&gt;
         &lt;/article&gt;
     &lt;/div&gt;
-{% endblock %}
-</code></pre>
-
-<p><strong>What did we just do?</strong></p>
-
+<span style="color:#75715e">{%</span> <span style="color:#66d9ef">endblock</span> <span style="color:#75715e">%}</span>
+</code></pre></div><p><strong>What did we just do?</strong></p>
 <p>This is the fun part. Instead of calling stuff from the WordPress API like this:</p>
-
-<pre><code class="language-html">&lt;h1 class=&quot;article-h1&quot;&gt;&lt;?php the_title(); ?&gt;&lt;/h1&gt;
-</code></pre>
-
-<p>We can do it like this in Twig:</p>
-
-<pre><code class="language-twig">&lt;h1 class=&quot;article-h1&quot;&gt;{{ post.title }}&lt;/h1&gt;
-</code></pre>
-
-<p>WordPress wants you to interact with its API in a certain way, which sucks. Because soon you get things like:</p>
-
-<pre><code class="language-html">&lt;h1 class=&quot;article-h1&quot;&gt;&lt;a href=&quot;&lt;?php get_permalink(); ?&gt;&quot;&gt;&lt;?php the_title(); ?&gt;&lt;/a&gt;&lt;/h1&gt;
-</code></pre>
-
-<p>Okay, not <em>too</em> terrible, but doesn’t this (Timber) way look so much nicer?</p>
-
-<pre><code class="language-twig">&lt;h1 class=&quot;article-h1&quot;&gt;&lt;a href=&quot;{{ post.link }}&quot;&gt;{{ post.title }}&lt;/a&gt;&lt;/h1&gt;
-</code></pre>
-
-<p>It get’s better. Let’s explain some other concepts.</p>
-
-<pre><code class="language-twig">{% extends &quot;base.twig&quot; %}
-</code></pre>
-
-<p>This means that <code>single.twig</code> is using <code>base.twig</code> as its parent template. That’s why you don&rsquo;t see any <code>&lt;head&gt;</code>, <code>&lt;header&gt;</code>, or <code>&lt;footer&gt;</code> tags, those site-wide (usually) things are all controlled in <code>base.twig</code>. You can create any number of base files to extend from (the &ldquo;base&rdquo; naming convention is recommended, but not required).</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">h1</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;article-h1&#34;</span>&gt;<span style="color:#75715e">&lt;?php the_title(); ?&gt;</span>&lt;/<span style="color:#f92672">h1</span>&gt;
+</code></pre></div><p>We can do it like this in Twig:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;h1 class=&#34;article-h1&#34;&gt;<span style="color:#75715e">{{</span> post.title <span style="color:#75715e">}}</span>&lt;/h1&gt;
+</code></pre></div><p>WordPress wants you to interact with its API in a certain way, which sucks. Because soon you get things like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">h1</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;article-h1&#34;</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&lt;?php get_permalink(); ?&gt;&#34;</span>&gt;<span style="color:#75715e">&lt;?php the_title(); ?&gt;</span>&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">h1</span>&gt;
+</code></pre></div><p>Okay, not <em>too</em> terrible, but doesn’t this (Timber) way look so much nicer?</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;h1 class=&#34;article-h1&#34;&gt;&lt;a href=&#34;<span style="color:#75715e">{{</span> post.link <span style="color:#75715e">}}</span>&#34;&gt;<span style="color:#75715e">{{</span> post.title <span style="color:#75715e">}}</span>&lt;/a&gt;&lt;/h1&gt;
+</code></pre></div><p>It get’s better. Let’s explain some other concepts.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{%</span> <span style="color:#66d9ef">extends</span> <span style="color:#e6db74">&#34;base.twig&#34;</span> <span style="color:#75715e">%}</span>
+</code></pre></div><p>This means that <code>single.twig</code> is using <code>base.twig</code> as its parent template. That’s why you don&rsquo;t see any <code>&lt;head&gt;</code>, <code>&lt;header&gt;</code>, or <code>&lt;footer&gt;</code> tags, those site-wide (usually) things are all controlled in <code>base.twig</code>. You can create any number of base files to extend from (the &ldquo;base&rdquo; naming convention is recommended, but not required).</p>
 <p>What if you want modify <code>&lt;head&gt;</code>, etc? Read on to learn all about blocks.</p>
-
 <h2 id="blocks">Blocks</h2>
-
 <p>Blocks are the single most important and powerful concept in managing your templates. The <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">official Twig Documentation</a> has more details. Let’s cover the basics.</p>
-
 <p>In <code>single.twig</code> you see opening and closing block declarations that surround the main page contents.</p>
-
-<pre><code class="language-twig">{% block content %}
-    {# other stuff here ... #}
-{% endblock %}
-</code></pre>
-
-<p>If you were to peek into <strong>base.twig</strong> you would see a matching set of <code>{% block content %} / {% endblock %}</code> tags. <strong>single.twig</strong> is replacing the content of base’s <code>{% block content %}</code> with its own.</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{%</span> <span style="color:#66d9ef">block</span> content <span style="color:#75715e">%}</span>
+    <span style="color:#75715e">{# other stuff here ... #}</span>
+<span style="color:#75715e">{%</span> <span style="color:#66d9ef">endblock</span> <span style="color:#75715e">%}</span>
+</code></pre></div><p>If you were to peek into <strong>base.twig</strong> you would see a matching set of <code>{% block content %} / {% endblock %}</code> tags. <strong>single.twig</strong> is replacing the content of base’s <code>{% block content %}</code> with its own.</p>
 <h3 id="nesting-blocks-multiple-inheritance">Nesting Blocks, Multiple Inheritance</h3>
-
 <p>This is when things get really cool. Whereas most people use PHP includes in a linear fashion, you can create infinite levels of nested blocks to particularly control your page templates. For example, let’s say you occasionally want to replace the title/headline on your <code>single.twig</code> template with a custom image or typography.</p>
-
 <p>For this demo, let’s assume that the name of the page is &ldquo;All about Jared&rdquo; (making its slug <code>all-about-jared</code>). First, I&rsquo;m going to surround the part of the template I want to control with block declarations:</p>
-
 <p><strong>single.twig</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{%</span> <span style="color:#66d9ef">extends</span> <span style="color:#e6db74">&#34;base.twig&#34;</span> <span style="color:#75715e">%}</span>
 
-<pre><code class="language-twig">{% extends &quot;base.twig&quot; %}
+<span style="color:#75715e">{%</span> <span style="color:#66d9ef">block</span> content <span style="color:#75715e">%}</span>
+    &lt;div class=&#34;content-wrapper&#34;&gt;
+        &lt;article class=&#34;post-type-<span style="color:#75715e">{{</span> post.post_type <span style="color:#75715e">}}</span>&#34; id=&#34;post-<span style="color:#75715e">{{</span> post<span style="color:#960050;background-color:#1e0010">.ID</span> <span style="color:#75715e">}}</span>&#34;&gt;
+            &lt;section class=&#34;article-content&#34;&gt;
+                <span style="color:#75715e">{%</span> <span style="color:#66d9ef">block</span> headline <span style="color:#75715e">%}</span>
+                    &lt;h1 class=&#34;article-h1&#34;&gt;<span style="color:#75715e">{{</span> post.title <span style="color:#75715e">}}</span>&lt;/h1&gt;
+                    &lt;h2 class=&#34;article-h2&#34;&gt;<span style="color:#75715e">{{</span> post.subtitle <span style="color:#75715e">}}</span>&lt;/h2&gt;
+                <span style="color:#75715e">{%</span> <span style="color:#66d9ef">endblock</span> <span style="color:#75715e">%}</span>
 
-{% block content %}
-    &lt;div class=&quot;content-wrapper&quot;&gt;
-        &lt;article class=&quot;post-type-{{ post.post_type }}&quot; id=&quot;post-{{ post.ID }}&quot;&gt;
-            &lt;section class=&quot;article-content&quot;&gt;
-                {% block headline %}
-                    &lt;h1 class=&quot;article-h1&quot;&gt;{{ post.title }}&lt;/h1&gt;
-                    &lt;h2 class=&quot;article-h2&quot;&gt;{{ post.subtitle }}&lt;/h2&gt;
-                {% endblock %}
-
-                &lt;p class=&quot;blog-author&quot;&gt;&lt;span&gt;By&lt;/span&gt; {{ post.author.name }} &lt;span&gt;&amp;bull;&lt;/span&gt; {{ post.post_date|date }}&lt;/p&gt;
-                {{ post.content }}
+                &lt;p class=&#34;blog-author&#34;&gt;&lt;span&gt;By&lt;/span&gt; <span style="color:#75715e">{{</span> post.author.name <span style="color:#75715e">}}</span> &lt;span&gt;&amp;bull;&lt;/span&gt; <span style="color:#75715e">{{</span> post.post_date<span style="color:#f92672">|</span><span style="color:#a6e22e">date</span> <span style="color:#75715e">}}</span>&lt;/p&gt;
+                <span style="color:#75715e">{{</span> post.content <span style="color:#75715e">}}</span>
             &lt;/section&gt;
         &lt;/article&gt;
     &lt;/div&gt;
-{% endblock %}
-</code></pre>
-
-<p>Compared to the earlier example of this page, we now have the <code>{% block headline %}</code> bit surrounding the <code>&lt;h1&gt;</code> and <code>&lt;h2&gt;</code>.</p>
-
+<span style="color:#75715e">{%</span> <span style="color:#66d9ef">endblock</span> <span style="color:#75715e">%}</span>
+</code></pre></div><p>Compared to the earlier example of this page, we now have the <code>{% block headline %}</code> bit surrounding the <code>&lt;h1&gt;</code> and <code>&lt;h2&gt;</code>.</p>
 <p>To inject my custom bit of markup, I’m going to create a file called <code>single-all-about-jared.twig</code> in the <code>views</code> directory. The logic for which template should be selected is controlled in <code>single.php</code> but generally follows WordPress conventions on Template Hierarchy. Inside that file, all I need is:</p>
-
 <p><strong>single-all-about-jared.twig</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{%</span> <span style="color:#66d9ef">extends</span> <span style="color:#e6db74">&#34;single.twig&#34;</span> <span style="color:#75715e">%}</span>
 
-<pre><code class="language-twig">{% extends &quot;single.twig&quot; %}
-
-{% block headline %}
-    &lt;h1&gt;&lt;img src=&quot;/wp-content/uploads/2014/05/jareds-face.jpg&quot; alt=&quot;Jared’s Mug&quot;/&gt;&lt;/h1&gt;
-{% endblock %}
-</code></pre>
-
-<p>So two big concepts going on here:</p>
-
+<span style="color:#75715e">{%</span> <span style="color:#66d9ef">block</span> headline <span style="color:#75715e">%}</span>
+    &lt;h1&gt;&lt;img src=&#34;/wp-content/uploads/2014/05/jareds-face.jpg&#34; alt=&#34;Jared’s Mug&#34;/&gt;&lt;/h1&gt;
+<span style="color:#75715e">{%</span> <span style="color:#66d9ef">endblock</span> <span style="color:#75715e">%}</span>
+</code></pre></div><p>So two big concepts going on here:</p>
 <ol>
 <li><strong>Multiple Inheritance:</strong> I’m extending <code>{% single.twig %}</code>, which itself extends <code>{% base.twig %}</code>. Thus we stay true to <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY</a> and don’t have very similar code between my two templates hanging around.</li>
 <li><strong>Nested Blocks:</strong> <code>{% block headline %}</code> is located inside <code>{% block content %}</code>. So while I’m replacing the headline, I get to keep all the other markup and variables found in the parent template.</li>
 </ol>
-
 <p>What if you want to <strong>add</strong> to the block as opposed to replace? No prob, just call <code>{{ parent() }}</code> where the parent’s content should go.</p>
-
 <h2 id="the-index-page">The index page</h2>
-
 <p>Let’s crack open <strong>index.php</strong> and see what’s inside:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+$context <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">context</span>();
+$context[<span style="color:#e6db74">&#39;posts&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">get_posts</span>();
 
-<pre><code class="language-php">&lt;?php
-$context = Timber::context();
-$context['posts'] = Timber::get_posts();
-
-Timber::render( 'index.twig', $context );
-</code></pre>
-
-<p>This is where we are going to handle the logic that powers our index file. Let’s go step-by-step.</p>
-
+<span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">render</span>( <span style="color:#e6db74">&#39;index.twig&#39;</span>, $context );
+</code></pre></div><p>This is where we are going to handle the logic that powers our index file. Let’s go step-by-step.</p>
 <h3 id="get-the-context">Get the context</h3>
-
-<pre><code class="language-php">&lt;?php
-$context = Timber::context();
-</code></pre>
-
-<p>This is going to return an object with a lot of the common things we need across the site. Things like the site name, the description or the navigation menu you’ll want to start with each time (even if you over-write them later). You can do a <code>print_r( $context );</code> to see what’s inside or open-up <a href="https://github.com/timber/timber/blob/master/lib/Timber.php"><strong>Timber.php</strong></a> to inspect for yourself.</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+$context <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">context</span>();
+</code></pre></div><p>This is going to return an object with a lot of the common things we need across the site. Things like the site name, the description or the navigation menu you’ll want to start with each time (even if you over-write them later). You can do a <code>print_r( $context );</code> to see what’s inside or open-up <a href="https://github.com/timber/timber/blob/master/lib/Timber.php"><strong>Timber.php</strong></a> to inspect for yourself.</p>
 <h3 id="grab-your-posts">Grab your posts</h3>
-
-<pre><code class="language-php">&lt;?php
-$context['posts'] = Timber::get_posts();
-</code></pre>
-
-<p>We’re now going to grab the posts that are inside the loop and stick them inside our data object under the <strong>posts</strong> key.</p>
-
-<h2 id="how-to-use-timber-get-posts">How to use Timber::get_posts()</h2>
-
-<h3 id="use-a-wp-query-array">Use a WP_Query array</h3>
-
-<pre><code class="language-php">&lt;?php
-$args = array(
-    'post_type' =&gt; 'post',
-    'tax_query' =&gt; array(
-        'relation' =&gt; 'AND',
-        array(
-            'taxonomy' =&gt; 'movie_genre',
-            'field' =&gt; 'slug',
-            'terms' =&gt; array( 'action', 'comedy' )
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+$context[<span style="color:#e6db74">&#39;posts&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">get_posts</span>();
+</code></pre></div><p>We’re now going to grab the posts that are inside the loop and stick them inside our data object under the <strong>posts</strong> key.</p>
+<h2 id="how-to-use-timberget_posts">How to use Timber::get_posts()</h2>
+<h3 id="use-a-wp_query-array">Use a WP_Query array</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+$args <span style="color:#f92672">=</span> <span style="color:#66d9ef">array</span>(
+    <span style="color:#e6db74">&#39;post_type&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;post&#39;</span>,
+    <span style="color:#e6db74">&#39;tax_query&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">array</span>(
+        <span style="color:#e6db74">&#39;relation&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;AND&#39;</span>,
+        <span style="color:#66d9ef">array</span>(
+            <span style="color:#e6db74">&#39;taxonomy&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;movie_genre&#39;</span>,
+            <span style="color:#e6db74">&#39;field&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;slug&#39;</span>,
+            <span style="color:#e6db74">&#39;terms&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">array</span>( <span style="color:#e6db74">&#39;action&#39;</span>, <span style="color:#e6db74">&#39;comedy&#39;</span> )
         ),
-        array(
-            'taxonomy' =&gt; 'actor',
-            'field' =&gt; 'id',
-            'terms' =&gt; array( 103, 115, 206 ),
-            'operator' =&gt; 'NOT IN'
+        <span style="color:#66d9ef">array</span>(
+            <span style="color:#e6db74">&#39;taxonomy&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;actor&#39;</span>,
+            <span style="color:#e6db74">&#39;field&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;id&#39;</span>,
+            <span style="color:#e6db74">&#39;terms&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">array</span>( <span style="color:#ae81ff">103</span>, <span style="color:#ae81ff">115</span>, <span style="color:#ae81ff">206</span> ),
+            <span style="color:#e6db74">&#39;operator&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;NOT IN&#39;</span>
         )
     )
 );
 
-$context['posts'] = Timber::get_posts( $args );
-</code></pre>
+$context[<span style="color:#e6db74">&#39;posts&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">get_posts</span>( $args );
+</code></pre></div><p>You can find all available options in the documentation for <a href="http://codex.wordpress.org/Class_Reference/WP_Query">WP_Query</a>.</p>
+<h3 id="use-a-wp_query-string">Use a WP_Query string</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+$args <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;post_type=movies&amp;numberposts=8&amp;orderby=rand&#39;</span>;
 
-<p>You can find all available options in the documentation for <a href="http://codex.wordpress.org/Class_Reference/WP_Query">WP_Query</a>.</p>
+$context[<span style="color:#e6db74">&#39;posts&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">get_posts</span>( $args );
+</code></pre></div><h3 id="use-post-id-numbers">Use Post ID numbers</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+$ids <span style="color:#f92672">=</span> <span style="color:#66d9ef">array</span>( <span style="color:#ae81ff">14</span>, <span style="color:#ae81ff">123</span>, <span style="color:#ae81ff">234</span>, <span style="color:#ae81ff">421</span>, <span style="color:#ae81ff">811</span>, <span style="color:#ae81ff">6</span> );
 
-<h3 id="use-a-wp-query-string">Use a WP_Query string</h3>
-
-<pre><code class="language-php">&lt;?php
-$args = 'post_type=movies&amp;numberposts=8&amp;orderby=rand';
-
-$context['posts'] = Timber::get_posts( $args );
-</code></pre>
-
-<h3 id="use-post-id-numbers">Use Post ID numbers</h3>
-
-<pre><code class="language-php">&lt;?php
-$ids = array( 14, 123, 234, 421, 811, 6 );
-
-$context['posts'] = Timber::get_posts( $ids );
-</code></pre>
-
-<h2 id="render">Render</h2>
-
-<pre><code class="language-php">&lt;?php
-Timber::render( 'index.twig', $context );
-</code></pre>
-
-<p>We’re now telling Twig to find <strong>index.twig</strong> and send it our data object.</p>
-
+$context[<span style="color:#e6db74">&#39;posts&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">get_posts</span>( $ids );
+</code></pre></div><h2 id="render">Render</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">render</span>( <span style="color:#e6db74">&#39;index.twig&#39;</span>, $context );
+</code></pre></div><p>We’re now telling Twig to find <strong>index.twig</strong> and send it our data object.</p>
 <p>Timber will look first in the child theme and then falls back to the parent theme (same as WordPress logic). The official load order is:</p>
-
 <ol>
 <li>User-defined locations</li>
 <li>Directory of calling PHP script (but not theme)</li>
@@ -467,7 +391,6 @@ Timber::render( 'index.twig', $context );
 <li>Parent theme</li>
 <li>Directory of calling PHP script (including the theme)</li>
 </ol>
-
 <p>Item 2 is inserted above others so that if you’re using Timber in a plugin it will use the twig files in the plugin’s directory.</p>
 
 			</div>
@@ -479,7 +402,7 @@ Timber::render( 'index.twig', $context );
 
 
 <script src="https://timber.github.io/docs/js/highlight.pack.js" defer></script>
-<script src="https://timber.github.io/docs/js/scripts.js?d0b281f642113556d4adaa8032af79eb" defer></script>
+<script src="https://timber.github.io/docs/js/scripts.js?44e60569f8868a72f5a9e8cd72cb0844" defer></script>
 
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>

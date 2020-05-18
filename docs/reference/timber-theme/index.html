@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
 	
-    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?db75858961ef100d103393e34f398175">
+    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?c77bdfd53127f8f1e98153f3f27452a2">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
 
     
@@ -228,54 +228,43 @@
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
 			<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#overview">Overview</a>
-<ul>
-<li><a href="#properties">Properties</a></li>
-<li><a href="#methods">Methods</a></li>
-</ul></li>
-<li><a href="#class-methods">Class Methods</a>
-<ul>
-<li><a href="#construct">__construct</a></li>
-<li><a href="#link">link</a></li>
-<li><a href="#path">path</a></li>
-<li><a href="#theme-mod">theme_mod</a></li>
-<li><a href="#theme-mods">theme_mods</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#overview">Overview</a>
+      <ul>
+        <li><a href="#properties">Properties</a></li>
+        <li><a href="#methods">Methods</a></li>
+      </ul>
+    </li>
+    <li><a href="#class-methods">Class Methods</a>
+      <ul>
+        <li><a href="#__construct">__construct</a></li>
+        <li><a href="#display">display</a></li>
+        <li><a href="#get">get</a></li>
+        <li><a href="#link">link</a></li>
+        <li><a href="#path">path</a></li>
+        <li><a href="#theme_mod">theme_mod</a></li>
+        <li><a href="#theme_mods">theme_mods</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 		</aside>
 
 		<div class="content-container">
 			<div class="content">
 				<p>Need to display info about your theme? Well you&rsquo;ve come to the right place. By default info on the current theme comes for free with what&rsquo;s fetched by <code>Timber::context()</code> in which case you can access it your theme like so:</p>
-
 <p><strong>PHP</strong></p>
-
-<pre><code class="language-php">&lt;?php
-&lt;?php
-$context = Timber::context();
-Timber::render('index.twig', $context);
-?&gt;
-</code></pre>
-
-<p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">&lt;script src=&quot;{{theme.link}}/static/js/all.js&quot;&gt;&lt;/script&gt;
-</code></pre>
-
-<p><strong>HTML</strong></p>
-
-<pre><code class="language-html">&lt;script src=&quot;http://example.org/wp-content/themes/my-theme/static/js/all.js&quot;&gt;&lt;/script&gt;
-</code></pre>
-
-<h2 id="overview">Overview</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+$context <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">context</span>();
+<span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">render</span>(<span style="color:#e6db74">&#39;index.twig&#39;</span>, $context);
+<span style="color:#75715e">?&gt;</span>
+</code></pre></div><p><strong>Twig</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;script src=&#34;<span style="color:#75715e">{{</span>theme.link<span style="color:#75715e">}}</span>/static/js/all.js&#34;&gt;&lt;/script&gt;
+</code></pre></div><p><strong>HTML</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://example.org/wp-content/themes/my-theme/static/js/all.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</code></pre></div><h2 id="overview">Overview</h2>
 <h3 id="properties">Properties</h3>
-
 <table>
 <thead>
 <tr>
@@ -284,32 +273,27 @@ Timber::render('index.twig', $context);
 <th>Description</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>name</td>
 <td><code>string</code></td>
 <td>the human-friendly name of the theme (ex: <code>My Timber Starter Theme</code>)</td>
 </tr>
-
 <tr>
 <td>version</td>
 <td><code>string</code></td>
 <td>the version of the theme (ex: <code>1.2.3</code>)</td>
 </tr>
-
 <tr>
 <td>parent</td>
 <td><code>TimberTheme/bool</code></td>
 <td>the TimberTheme object for the parent theme (if it exists), false otherwise</td>
 </tr>
-
 <tr>
 <td>parent_slug</td>
 <td><code>string</code></td>
 <td>the slug of the parent theme (ex: <code>_s</code>)</td>
 </tr>
-
 <tr>
 <td>slug</td>
 <td><code>string</code></td>
@@ -317,9 +301,7 @@ Timber::render('index.twig', $context);
 </tr>
 </tbody>
 </table>
-
 <h3 id="methods">Methods</h3>
-
 <table>
 <thead>
 <tr>
@@ -328,14 +310,22 @@ Timber::render('index.twig', $context);
 <th>Returns/Description</th>
 </tr>
 </thead>
-
 <tbody>
+<tr>
+<td><a href="#display">display</a></td>
+<td><code>false/string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#get">get</a></td>
+<td><code>false/string</code></td>
+<td>String on success, false on failure.</td>
+</tr>
 <tr>
 <td><a href="#link">link</a></td>
 <td><code>string</code></td>
 <td>the absolute path to the theme (ex: <code>http://example.org/wp-content/themes/my-timber-theme</code>)</td>
 </tr>
-
 <tr>
 <td><a href="#path">path</a></td>
 <td><code>string</code></td>
@@ -343,19 +333,12 @@ Timber::render('index.twig', $context);
 </tr>
 </tbody>
 </table>
-
-<hr />
-
+<hr>
 <h2 id="class-methods">Class Methods</h2>
-
-<h3 id="construct">__construct</h3>
-
+<h3 id="__construct">__construct</h3>
 <p><code>__construct( mixed/string $slug=null )</code></p>
-
 <p><strong>returns:</strong> <code>void</code></p>
-
 <p>Constructs a new TimberTheme object. NOTE the TimberTheme object of the current theme comes in the default <code>Timber::context()</code> call. You can access this in your twig template via `{{site.theme}}.</p>
-
 <table>
 <thead>
 <tr>
@@ -364,7 +347,6 @@ Timber::render('index.twig', $context);
 <th>Description</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>$slug</td>
@@ -373,51 +355,22 @@ Timber::render('index.twig', $context);
 </tr>
 </tbody>
 </table>
-
 <p><strong>PHP</strong></p>
-
-<pre><code class="language-php">&lt;?php
-&lt;?php
-    $theme = new TimberTheme(&quot;my-theme&quot;);
-    $context['theme_stuff'] = $theme;
-    Timber::render('single.twig', $context);
-?&gt;
-</code></pre>
-
-<p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">We are currently using the {{ theme_stuff.name }} theme.
-</code></pre>
-
-<p><strong>HTML</strong></p>
-
-<pre><code class="language-html">We are currently using the My Theme theme.
-</code></pre>
-
-<hr />
-
-<h3 id="link">link</h3>
-
-<p><code>link( )</code></p>
-
-<p><strong>returns:</strong> <code>string</code> the absolute path to the theme (ex: <code>http://example.org/wp-content/themes/my-timber-theme</code>)</p>
-
-<hr />
-
-<h3 id="path">path</h3>
-
-<p><code>path( )</code></p>
-
-<p><strong>returns:</strong> <code>string</code> the relative path to the theme (ex: <code>/wp-content/themes/my-timber-theme</code>)</p>
-
-<hr />
-
-<h3 id="theme-mod">theme_mod</h3>
-
-<p><code>theme_mod( string $name, bool $default=false )</code></p>
-
-<p><strong>returns:</strong> <code>string</code></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+    $theme <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TimberTheme</span>(<span style="color:#e6db74">&#34;my-theme&#34;</span>);
+    $context[<span style="color:#e6db74">&#39;theme_stuff&#39;</span>] <span style="color:#f92672">=</span> $theme;
+    <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">render</span>(<span style="color:#e6db74">&#39;single.twig&#39;</span>, $context);
+<span style="color:#75715e">?&gt;</span>
+</code></pre></div><p><strong>Twig</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">We are currently using the <span style="color:#75715e">{{</span> theme_stuff.name <span style="color:#75715e">}}</span> theme.
+</code></pre></div><p><strong>HTML</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">We are currently using the My Theme theme.
+</code></pre></div><hr>
+<h3 id="display">display</h3>
+<p><code>display( string $header )</code></p>
+<p><strong>returns:</strong> <code>false/string</code></p>
+<p>Gets a theme header, formatted and translated for display.</p>
 <table>
 <thead>
 <tr>
@@ -426,14 +379,65 @@ Timber::render('index.twig', $context);
 <th>Description</th>
 </tr>
 </thead>
-
+<tbody>
+<tr>
+<td>$header</td>
+<td><code>string</code></td>
+<td>Name of the theme header. Name, Description, Author, Version, ThemeURI, AuthorURI, Status, Tags.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Twig</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{{</span> theme.display<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;Description&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">}}</span>
+</code></pre></div><hr>
+<h3 id="get">get</h3>
+<p><code>get( string $header )</code></p>
+<p><strong>returns:</strong> <code>false/string</code> String on success, false on failure.</p>
+<p>Gets a raw, unformatted theme header.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$header</td>
+<td><code>string</code></td>
+<td>Name of the theme header. Name, Description, Author, Version, ThemeURI, AuthorURI, Status, Tags.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Twig</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{{</span> theme.get<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;Version&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">}}</span>
+</code></pre></div><hr>
+<h3 id="link">link</h3>
+<p><code>link( )</code></p>
+<p><strong>returns:</strong> <code>string</code> the absolute path to the theme (ex: <code>http://example.org/wp-content/themes/my-timber-theme</code>)</p>
+<hr>
+<h3 id="path">path</h3>
+<p><code>path( )</code></p>
+<p><strong>returns:</strong> <code>string</code> the relative path to the theme (ex: <code>/wp-content/themes/my-timber-theme</code>)</p>
+<hr>
+<h3 id="theme_mod">theme_mod</h3>
+<p><code>theme_mod( string $name, bool $default=false )</code></p>
+<p><strong>returns:</strong> <code>string</code></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td>$name</td>
 <td><code>string</code></td>
 <td></td>
 </tr>
-
 <tr>
 <td>$default</td>
 <td><code>bool</code></td>
@@ -441,17 +445,11 @@ Timber::render('index.twig', $context);
 </tr>
 </tbody>
 </table>
-
-<hr />
-
-<h3 id="theme-mods">theme_mods</h3>
-
+<hr>
+<h3 id="theme_mods">theme_mods</h3>
 <p><code>theme_mods( )</code></p>
-
 <p><strong>returns:</strong> <code>array</code></p>
-
-<hr />
-
+<hr>
 <p><em>This class extends \Timber\Core</em></p>
 			</div>
 		</div>
@@ -462,7 +460,7 @@ Timber::render('index.twig', $context);
 
 
 <script src="https://timber.github.io/docs/js/highlight.pack.js" defer></script>
-<script src="https://timber.github.io/docs/js/scripts.js?d0b281f642113556d4adaa8032af79eb" defer></script>
+<script src="https://timber.github.io/docs/js/scripts.js?44e60569f8868a72f5a9e8cd72cb0844" defer></script>
 
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>

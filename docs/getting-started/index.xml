@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Getting Started on Timber Docs</title>
@@ -19,7 +19,7 @@
       <description>Installation Via WordPress.org (easy) You can grab the all-things-included plugin at WordPress.org either through the WordPress site or through the Plugins menu in the backend. Then skip ahead to using the starter theme.
 Via GitHub (for developers) The GitHub version of Timber requires Composer. If you&amp;rsquo;d prefer one-click installation, you should use the WordPress.org version.
 Run the following Composer command from within your theme&amp;rsquo;s root directory:
-composer require timber/timber  If you&amp;rsquo;re using the starter theme, a composer.</description>
+composer require timber/timber If you&amp;rsquo;re using the starter theme, a composer.</description>
     </item>
     
     <item>
@@ -29,8 +29,8 @@ composer require timber/timber  If you&amp;rsquo;re using the starter theme, a c
       
       <guid>https://timber.github.io/docs/getting-started/theming/</guid>
       <description>Your first Timber project Let’s start with your single post. Find this file:
-wp-content/themes/{timber-starter-theme}/templates/single.twig  Brilliant! Open it up.
-{% extends &amp;quot;base.twig&amp;quot; %} {% block content %} &amp;lt;div class=&amp;quot;content-wrapper&amp;quot;&amp;gt; &amp;lt;article class=&amp;quot;post-type-{{ post.post_type }}&amp;quot; id=&amp;quot;post-{{ post.ID }}&amp;quot;&amp;gt; &amp;lt;section class=&amp;quot;article-content&amp;quot;&amp;gt; &amp;lt;h1 class=&amp;quot;article-h1&amp;quot;&amp;gt;{{ post.title }}&amp;lt;/h1&amp;gt; &amp;lt;h2 class=&amp;quot;article-h2&amp;quot;&amp;gt;{{ post.subtitle }}&amp;lt;/h2&amp;gt; &amp;lt;p class=&amp;quot;blog-author&amp;quot;&amp;gt; &amp;lt;span&amp;gt;By&amp;lt;/span&amp;gt; {{ post.author.name }} &amp;lt;span&amp;gt;&amp;amp;bull;&amp;lt;/span&amp;gt; {{ post.post_date|date }} &amp;lt;/p&amp;gt; {{ post.content }} &amp;lt;/section&amp;gt; &amp;lt;/article&amp;gt; &amp;lt;/div&amp;gt; {% endblock %}  What did we just do?</description>
+wp-content/themes/{timber-starter-theme}/templates/single.twig Brilliant! Open it up.
+{% extends &amp;#34;base.twig&amp;#34; %} {% block content %} &amp;lt;div class=&amp;#34;content-wrapper&amp;#34;&amp;gt; &amp;lt;article class=&amp;#34;post-type-{{ post.post_type }}&amp;#34; id=&amp;#34;post-{{ post.ID }}&amp;#34;&amp;gt; &amp;lt;section class=&amp;#34;article-content&amp;#34;&amp;gt; &amp;lt;h1 class=&amp;#34;article-h1&amp;#34;&amp;gt;{{ post.title }}&amp;lt;/h1&amp;gt; &amp;lt;h2 class=&amp;#34;article-h2&amp;#34;&amp;gt;{{ post.subtitle }}&amp;lt;/h2&amp;gt; &amp;lt;p class=&amp;#34;blog-author&amp;#34;&amp;gt; &amp;lt;span&amp;gt;By&amp;lt;/span&amp;gt; {{ post.author.name }} &amp;lt;span&amp;gt;&amp;amp;bull;&amp;lt;/span&amp;gt; {{ post.post_date|date }} &amp;lt;/p&amp;gt; {{ post.content }} &amp;lt;/section&amp;gt; &amp;lt;/article&amp;gt; &amp;lt;/div&amp;gt; {% endblock %} What did we just do?</description>
     </item>
     
     <item>

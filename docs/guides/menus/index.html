@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
 	
-    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?db75858961ef100d103393e34f398175">
+    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?c77bdfd53127f8f1e98153f3f27452a2">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
 
     
@@ -228,147 +228,98 @@
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
 			<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#initializing-a-menu">Initializing a menu</a></li>
-<li><a href="#options">Options</a></li>
-<li><a href="#setting-up-a-menu-globally">Setting up a menu globally</a></li>
-<li><a href="#displaying-the-menu-items">Displaying the menu items</a></li>
-<li><a href="#the-current-menu-item">The current menu item</a></li>
-<li><a href="#tips">Tips</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#initializing-a-menu">Initializing a menu</a></li>
+    <li><a href="#options">Options</a></li>
+    <li><a href="#setting-up-a-menu-globally">Setting up a menu globally</a></li>
+    <li><a href="#displaying-the-menu-items">Displaying the menu items</a></li>
+    <li><a href="#the-current-menu-item">The current menu item</a></li>
+    <li><a href="#tips">Tips</a></li>
+  </ul>
 </nav>
 		</aside>
 
 		<div class="content-container">
 			<div class="content">
-				
-
-<p>In Timber, you can use <code>Timber\Menu</code> to make a standard WordPress menu available to the Twig template as an object you can loop through.</p>
-
+				<p>In Timber, you can use <code>Timber\Menu</code> to make a standard WordPress menu available to the Twig template as an object you can loop through.</p>
 <p>Once the menu becomes available to the context, you can get items from it in a way that is a little smoother and more versatile than WordPress’s <code>wp_nav_menu()</code> function. (And you never again need to rely on a crazy <a href="https://codex.wordpress.org/Class_Reference/Walker">Walker Function</a>).</p>
-
 <h2 id="initializing-a-menu">Initializing a menu</h2>
-
 <p><code>Timber\Menu</code> can be initialized with different values:</p>
-
 <p>You can pass the slug of the menu you want to use:</p>
-
-<pre><code class="language-php">$menu = new Timber\Menu( 'site-tools' );
-</code></pre>
-
-<p>Or the ID number of the menu:</p>
-
-<pre><code class="language-php">$menu = new Timber\Menu( 3 );
-</code></pre>
-
-<p>Or the proper name from the admin:</p>
-
-<pre><code class="language-php">$menu = new Timber\Menu( 'Primary Navigation' );
-</code></pre>
-
-<p>Or the slug of the registered location:</p>
-
-<pre><code class="language-php">$menu = new Timber\Menu( 'primary' );
-</code></pre>
-
-<p>Or pass nothing. This is good if you have only one menu. In that case Timber will just grab what you got.</p>
-
-<pre><code class="language-php">$menu = new Timber\Menu();
-</code></pre>
-
-<h2 id="options">Options</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$menu = new Timber\Menu( &#39;site-tools&#39; );
+</code></pre></div><p>Or the ID number of the menu:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$menu = new Timber\Menu( 3 );
+</code></pre></div><p>Or the proper name from the admin:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$menu = new Timber\Menu( &#39;Primary Navigation&#39; );
+</code></pre></div><p>Or the slug of the registered location:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$menu = new Timber\Menu( &#39;primary&#39; );
+</code></pre></div><p>Or pass nothing. This is good if you have only one menu. In that case Timber will just grab what you got.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$menu = new Timber\Menu();
+</code></pre></div><h2 id="options">Options</h2>
 <p>Optionally, you can send additional options to <code>Timber\Menu</code>. Current only <code>depth</code> is supported (see <a href="https://developer.wordpress.org/reference/functions/wp_nav_menu/">https://developer.wordpress.org/reference/functions/wp_nav_menu/</a> for reference)</p>
-
-<pre><code class="language-php">$args = array(
-	'depth' =&gt; 2,
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$args = array(
+	&#39;depth&#39; =&gt; 2,
 );
-$menu = new Timber\Menu( 'primary', $args );
-</code></pre>
-
-<h2 id="setting-up-a-menu-globally">Setting up a menu globally</h2>
-
+$menu = new Timber\Menu( &#39;primary&#39;, $args );
+</code></pre></div><h2 id="setting-up-a-menu-globally">Setting up a menu globally</h2>
 <p>The first thing to do is to initialize your menu using <code>Timber\Menu</code>. This will make the menu available as an object to work with in the context. Because we need the menu on every page, we can add it to the global context through the <code>timber/context</code> filter:</p>
-
 <p><strong>functions.php</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
 
-<pre><code class="language-php">&lt;?php
+<span style="color:#a6e22e">add_filter</span>( <span style="color:#e6db74">&#39;timber/context&#39;</span>, <span style="color:#e6db74">&#39;add_to_context&#39;</span> );
 
-add_filter( 'timber/context', 'add_to_context' );
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">add_to_context</span>( $context ) {
+    <span style="color:#75715e">// So here you are adding data to Timber&#39;s context object, i.e...
+</span><span style="color:#75715e"></span>    $context[<span style="color:#e6db74">&#39;foo&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;I am some other typical value set in your functions.php file, unrelated to the menu&#39;</span>;
 
-function add_to_context( $context ) {
-    // So here you are adding data to Timber's context object, i.e...
-    $context['foo'] = 'I am some other typical value set in your functions.php file, unrelated to the menu';
+    <span style="color:#75715e">// Now, in similar fashion, you add a Timber Menu and send it along to the context.
+</span><span style="color:#75715e"></span>    $context[<span style="color:#e6db74">&#39;menu&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">\Timber\Menu</span>( <span style="color:#e6db74">&#39;primary-menu&#39;</span> );
 
-    // Now, in similar fashion, you add a Timber Menu and send it along to the context.
-    $context['menu'] = new \Timber\Menu( 'primary-menu' );
-
-    return $context;
+    <span style="color:#66d9ef">return</span> $context;
 }
-</code></pre>
-
-<p>Now, when you call <code>Timber::context()</code>, your menu will already be set in the context. You don’t need to initialize the menu in all your template files.</p>
-
+</code></pre></div><p>Now, when you call <code>Timber::context()</code>, your menu will already be set in the context. You don’t need to initialize the menu in all your template files.</p>
 <p><strong>index.php</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
 
-<pre><code class="language-php">&lt;?php
+$context <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">context</span>();
 
-$context = Timber::context();
-
-Timber::render( 'index.twig', $context );
-</code></pre>
-
-<h2 id="displaying-the-menu-items">Displaying the menu items</h2>
-
+<span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">render</span>( <span style="color:#e6db74">&#39;index.twig&#39;</span>, $context );
+</code></pre></div><h2 id="displaying-the-menu-items">Displaying the menu items</h2>
 <p>In your Twig file, you can loop over the menu items like normal arrays. You’re in complete control of the markup.</p>
-
 <p><strong>index.twig</strong></p>
-
-<pre><code class="language-twig">&lt;nav&gt;
-    &lt;ul class=&quot;nav-main&quot;&gt;
-        {% for item in menu.items %}
-            &lt;li class=&quot;nav-main-item {{ item.classes|join(' ') }}&quot;&gt;
-                &lt;a class=&quot;nav-main-link&quot; href=&quot;{{ item.link }}&quot;&gt;{{ item.title }}&lt;/a&gt;
-                {% if item.children %}
-                    &lt;ul class=&quot;nav-drop&quot;&gt;
-                        {% for child in item.children %}
-                            &lt;li class=&quot;nav-drop-item&quot;&gt;
-                                &lt;a href=&quot;{{ child.link }}&quot;&gt;{{ child.title }}&lt;/a&gt;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;nav&gt;
+    &lt;ul class=&#34;nav-main&#34;&gt;
+        <span style="color:#75715e">{%</span> <span style="color:#66d9ef">for</span> item <span style="color:#66d9ef">in</span> menu.items <span style="color:#75715e">%}</span>
+            &lt;li class=&#34;nav-main-item <span style="color:#75715e">{{</span> item.classes<span style="color:#f92672">|</span><span style="color:#a6e22e">join</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39; &#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">}}</span>&#34;&gt;
+                &lt;a class=&#34;nav-main-link&#34; href=&#34;<span style="color:#75715e">{{</span> item.link <span style="color:#75715e">}}</span>&#34;&gt;<span style="color:#75715e">{{</span> item.title <span style="color:#75715e">}}</span>&lt;/a&gt;
+                <span style="color:#75715e">{%</span> <span style="color:#66d9ef">if</span> item.children <span style="color:#75715e">%}</span>
+                    &lt;ul class=&#34;nav-drop&#34;&gt;
+                        <span style="color:#75715e">{%</span> <span style="color:#66d9ef">for</span> child <span style="color:#66d9ef">in</span> item.children <span style="color:#75715e">%}</span>
+                            &lt;li class=&#34;nav-drop-item&#34;&gt;
+                                &lt;a href=&#34;<span style="color:#75715e">{{</span> child.link <span style="color:#75715e">}}</span>&#34;&gt;<span style="color:#75715e">{{</span> child.title <span style="color:#75715e">}}</span>&lt;/a&gt;
                             &lt;/li&gt;
-                        {% endfor %}
+                        <span style="color:#75715e">{%</span> <span style="color:#66d9ef">endfor</span> <span style="color:#75715e">%}</span>
                     &lt;/ul&gt;
-                {% endif %}
+                <span style="color:#75715e">{%</span> <span style="color:#66d9ef">endif</span> <span style="color:#75715e">%}</span>
             &lt;/li&gt;
-        {% endfor %}
+        <span style="color:#75715e">{%</span> <span style="color:#66d9ef">endfor</span> <span style="color:#75715e">%}</span>
     &lt;/ul&gt;
 &lt;/nav&gt;
-</code></pre>
-
-<h2 id="the-current-menu-item">The current menu item</h2>
-
+</code></pre></div><h2 id="the-current-menu-item">The current menu item</h2>
 <p>When you need to check whether a menu item is the current menu item, you can use the <code>current</code> property.
 Here’s an example to display child menu items only if it’s the menu item is the currently visited page:</p>
-
 <p><strong>Twig</strong></p>
-
-<pre><code class="language-twig">{% if item.current and item.children %}
-    &lt;ul class=&quot;nav-child&quot;&gt;
-        {% for child in item.children %}
-            &lt;li class=&quot;nav-child-item&quot;&gt;
-                &lt;a class=&quot;nav-child-link&quot; href=&quot;{{ child.link }}&quot;&gt;{{ child.title }}&lt;/a&gt;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{%</span> <span style="color:#66d9ef">if</span> item.current <span style="color:#66d9ef">and</span> item.children <span style="color:#75715e">%}</span>
+    &lt;ul class=&#34;nav-child&#34;&gt;
+        <span style="color:#75715e">{%</span> <span style="color:#66d9ef">for</span> child <span style="color:#66d9ef">in</span> item.children <span style="color:#75715e">%}</span>
+            &lt;li class=&#34;nav-child-item&#34;&gt;
+                &lt;a class=&#34;nav-child-link&#34; href=&#34;<span style="color:#75715e">{{</span> child.link <span style="color:#75715e">}}</span>&#34;&gt;<span style="color:#75715e">{{</span> child.title <span style="color:#75715e">}}</span>&lt;/a&gt;
             &lt;/li&gt;
-        {% endfor %}
+        <span style="color:#75715e">{%</span> <span style="color:#66d9ef">endfor</span> <span style="color:#75715e">%}</span>
     &lt;/ul&gt;
-{% endif %}
-</code></pre>
-
-<p>Other properties that are available are <code>current_item_parent</code> for direct parents of a menu item and <code>current_item_ancestor</code> for when you have deeper nesting.</p>
-
+<span style="color:#75715e">{%</span> <span style="color:#66d9ef">endif</span> <span style="color:#75715e">%}</span>
+</code></pre></div><p>Other properties that are available are <code>current_item_parent</code> for direct parents of a menu item and <code>current_item_ancestor</code> for when you have deeper nesting.</p>
 <h2 id="tips">Tips</h2>
-
 <ul>
 <li><a href="https://github.com/jarednova/timber/issues/200">Add items dynamically</a></li>
 </ul>
@@ -382,7 +333,7 @@ Here’s an example to display child menu items only if it’s the menu item is 
 
 
 <script src="https://timber.github.io/docs/js/highlight.pack.js" defer></script>
-<script src="https://timber.github.io/docs/js/scripts.js?d0b281f642113556d4adaa8032af79eb" defer></script>
+<script src="https://timber.github.io/docs/js/scripts.js?44e60569f8868a72f5a9e8cd72cb0844" defer></script>
 
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>

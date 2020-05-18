@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
 	
-    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?db75858961ef100d103393e34f398175">
+    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?c77bdfd53127f8f1e98153f3f27452a2">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
 
     
@@ -228,129 +228,95 @@
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
 			<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#some-examples">Some examples</a></li>
-<li><a href="#map">map</a>
-<ul>
-<li><a href="#usage">Usage</a></li>
-<li><a href="#arguments">Arguments</a></li>
-</ul></li>
-<li><a href="#load">load</a>
-<ul>
-<li><a href="#arguments-1">Arguments</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#some-examples">Some examples</a></li>
+    <li><a href="#map">map</a>
+      <ul>
+        <li><a href="#usage">Usage</a></li>
+        <li><a href="#arguments">Arguments</a></li>
+      </ul>
+    </li>
+    <li><a href="#load">load</a>
+      <ul>
+        <li><a href="#arguments-1">Arguments</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 		</aside>
 
 		<div class="content-container">
 			<div class="content">
-				
-
-<p>Among its other special powers, Timber includes modern routing in the Express.js/Ruby on Rails mold, making it easy for you to implement custom pagination — and anything else you might imagine in your wildest dreams of URLs and parameters. OMG so easy!</p>
-
+				<p>Among its other special powers, Timber includes modern routing in the Express.js/Ruby on Rails mold, making it easy for you to implement custom pagination — and anything else you might imagine in your wildest dreams of URLs and parameters. OMG so easy!</p>
 <h2 id="some-examples">Some examples</h2>
-
 <p>In your functions.php file, this can be called anywhere (don&rsquo;t hook it to <code>init</code> or another action or it might be called too late)</p>
-
-<pre><code class="language-php">&lt;?php
-Routes::map('blog/:name', function($params){
-    $query = 'posts_per_page=3&amp;post_type='.$params['name'];
-    Routes::load('archive.php', null, $query, 200);
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#a6e22e">Routes</span><span style="color:#f92672">::</span><span style="color:#a6e22e">map</span>(<span style="color:#e6db74">&#39;blog/:name&#39;</span>, <span style="color:#66d9ef">function</span>($params){
+    $query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;posts_per_page=3&amp;post_type=&#39;</span><span style="color:#f92672">.</span>$params[<span style="color:#e6db74">&#39;name&#39;</span>];
+    <span style="color:#a6e22e">Routes</span><span style="color:#f92672">::</span><span style="color:#a6e22e">load</span>(<span style="color:#e6db74">&#39;archive.php&#39;</span>, <span style="color:#66d9ef">null</span>, $query, <span style="color:#ae81ff">200</span>);
 });
 
-Routes::map('blog/:name/page/:pg', function($params){
-    $query = 'posts_per_page=3&amp;post_type='.$params['name'].'&amp;paged='.$params['pg'];
-    $params = array('thing' =&gt; 'foo', 'bar' =&gt; 'I dont even know');
-    Routes::load('archive.php', $params, $query);
+<span style="color:#a6e22e">Routes</span><span style="color:#f92672">::</span><span style="color:#a6e22e">map</span>(<span style="color:#e6db74">&#39;blog/:name/page/:pg&#39;</span>, <span style="color:#66d9ef">function</span>($params){
+    $query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;posts_per_page=3&amp;post_type=&#39;</span><span style="color:#f92672">.</span>$params[<span style="color:#e6db74">&#39;name&#39;</span>]<span style="color:#f92672">.</span><span style="color:#e6db74">&#39;&amp;paged=&#39;</span><span style="color:#f92672">.</span>$params[<span style="color:#e6db74">&#39;pg&#39;</span>];
+    $params <span style="color:#f92672">=</span> <span style="color:#66d9ef">array</span>(<span style="color:#e6db74">&#39;thing&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;foo&#39;</span>, <span style="color:#e6db74">&#39;bar&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;I dont even know&#39;</span>);
+    <span style="color:#a6e22e">Routes</span><span style="color:#f92672">::</span><span style="color:#a6e22e">load</span>(<span style="color:#e6db74">&#39;archive.php&#39;</span>, $params, $query);
 });
-</code></pre>
-
-<h2 id="map">map</h2>
-
+</code></pre></div><h2 id="map">map</h2>
 <p><code>Routes::map($pattern, $callback)</code></p>
-
 <h3 id="usage">Usage</h3>
-
 <p>A <code>functions.php</code> where I want to display custom paginated content:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#a6e22e">Routes</span><span style="color:#f92672">::</span><span style="color:#a6e22e">map</span>(<span style="color:#e6db74">&#39;info/:name/page/:pg&#39;</span>, <span style="color:#66d9ef">function</span>($params){
+	<span style="color:#75715e">//make a custom query based on incoming path and run it...
+</span><span style="color:#75715e"></span>	$query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;posts_per_page=3&amp;post_type=&#39;</span><span style="color:#f92672">.</span>$params[<span style="color:#e6db74">&#39;name&#39;</span>]<span style="color:#f92672">.</span><span style="color:#e6db74">&#39;&amp;paged=&#39;</span><span style="color:#f92672">.</span><span style="color:#a6e22e">intval</span>($params[<span style="color:#e6db74">&#39;pg&#39;</span>]);
 
-<pre><code class="language-php">&lt;?php
-Routes::map('info/:name/page/:pg', function($params){
-	//make a custom query based on incoming path and run it...
-	$query = 'posts_per_page=3&amp;post_type='.$params['name'].'&amp;paged='.intval($params['pg']);
-
-	//load up a template which will use that query
-	Routes::load('archive.php', null, $query);
+	<span style="color:#75715e">//load up a template which will use that query
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">Routes</span><span style="color:#f92672">::</span><span style="color:#a6e22e">load</span>(<span style="color:#e6db74">&#39;archive.php&#39;</span>, <span style="color:#66d9ef">null</span>, $query);
 });
-</code></pre>
-
-<h3 id="arguments">Arguments</h3>
-
+</code></pre></div><h3 id="arguments">Arguments</h3>
 <p><code>$pattern</code> (required)
 Set a pattern for Timber to match on, by default everything is handled as a string. Any segment that begins with a <code>:</code> is handled as a variable, for example:</p>
-
 <p><strong>To paginate:</strong></p>
-
 <pre><code>page/:pagenum
-</code></pre>
-
-<p><strong>To edit a user:</strong></p>
-
+</code></pre><p><strong>To edit a user:</strong></p>
 <pre><code>my-users/:userid/edit
-</code></pre>
-
-<p><code>$callback</code>
+</code></pre><p><code>$callback</code>
 A function that should fire when the pattern matches the request. Callback takes one argument which is an array of the parameters passed in the URL.</p>
-
-<p>So in this example: <code>'info/:name/page/:pg'</code>, $params would have data for:
-* <code>$data['name']</code>
-* <code>$data['pg']</code></p>
-
+<p>So in this example: <code>'info/:name/page/:pg'</code>, $params would have data for:</p>
+<ul>
+<li><code>$data['name']</code></li>
+<li><code>$data['pg']</code></li>
+</ul>
 <p>&hellip; which you can use in the callback function as a part of your query</p>
-
-<hr />
-
+<hr>
 <h2 id="load">load</h2>
-
 <p><code>Routes::load($php_file, $args, $query = null, $status_code = 200)</code></p>
-
 <h3 id="arguments-1">Arguments</h3>
-
 <p><code>$php_file</code> (required)
 A PHP file to load, in my experience this is usually your archive.php or a generic listing page (but don&rsquo;t worry it can be anything!)</p>
-
-<p><code>$template_params</code>
+<p><code>$args</code>
 Any data you want to send to the resulting view. Example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#75715e">/* functions.php */</span>
 
-<pre><code class="language-php">&lt;?php
-/* functions.php */
+<span style="color:#a6e22e">Routes</span><span style="color:#f92672">::</span><span style="color:#a6e22e">map</span>(<span style="color:#e6db74">&#39;info/:name/page/:pg&#39;</span>, <span style="color:#66d9ef">function</span>($params){
+    <span style="color:#75715e">//make a custom query based on incoming path and run it...
+</span><span style="color:#75715e"></span>    $query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;posts_per_page=3&amp;post_type=&#39;</span><span style="color:#f92672">.</span>$params[<span style="color:#e6db74">&#39;name&#39;</span>]<span style="color:#f92672">.</span><span style="color:#e6db74">&#39;&amp;paged=&#39;</span><span style="color:#f92672">.</span><span style="color:#a6e22e">intval</span>($params[<span style="color:#e6db74">&#39;pg&#39;</span>]);
 
-Routes::map('info/:name/page/:pg', function($params){
-    //make a custom query based on incoming path and run it...
-    $query = 'posts_per_page=3&amp;post_type='.$params['name'].'&amp;paged='.intval($params['pg']);
-
-    //load up a template which will use that query
-    $params = array();
-    $params['my_title'] = 'This is my custom title';
-    Routes::load('archive.php', $params, $query, 200);
+    <span style="color:#75715e">//load up a template which will use that query
+</span><span style="color:#75715e"></span>    $args <span style="color:#f92672">=</span> <span style="color:#66d9ef">array</span>();
+    $args[<span style="color:#e6db74">&#39;my_title&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;This is my custom title&#39;</span>;
+    <span style="color:#a6e22e">Routes</span><span style="color:#f92672">::</span><span style="color:#a6e22e">load</span>(<span style="color:#e6db74">&#39;archive.php&#39;</span>, $args, $query, <span style="color:#ae81ff">200</span>);
 });
-</code></pre>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#75715e">/* archive.php */</span>
 
-<pre><code class="language-php">&lt;?php
-/* archive.php */
-
-global $params;
-$context['wp_title'] = $params['my_title']; // &quot;This is my custom title&quot;
-/* the rest as normal... */
-Timber::render('archive.twig', $context)
-</code></pre>
-
-<p><code>$query</code>
+<span style="color:#66d9ef">global</span> $params;
+$context[<span style="color:#e6db74">&#39;wp_title&#39;</span>] <span style="color:#f92672">=</span> $params[<span style="color:#e6db74">&#39;my_title&#39;</span>]; <span style="color:#75715e">// &#34;This is my custom title&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">/* the rest as normal... */</span>
+<span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">render</span>(<span style="color:#e6db74">&#39;archive.twig&#39;</span>, $context)
+</code></pre></div><p><code>$query</code>
 The query you want to use, it can accept a string or array just like <code>Timber::get_posts</code> &ndash; use the standard WP_Query syntax (or a WP_Query object too)</p>
-
 <p><code>$status_code</code>
 Send an optional status code. Defaults to 200 for &lsquo;Success/OK&rsquo;</p>
 
@@ -363,7 +329,7 @@ Send an optional status code. Defaults to 200 for &lsquo;Success/OK&rsquo;</p>
 
 
 <script src="https://timber.github.io/docs/js/highlight.pack.js" defer></script>
-<script src="https://timber.github.io/docs/js/scripts.js?d0b281f642113556d4adaa8032af79eb" defer></script>
+<script src="https://timber.github.io/docs/js/scripts.js?44e60569f8868a72f5a9e8cd72cb0844" defer></script>
 
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>

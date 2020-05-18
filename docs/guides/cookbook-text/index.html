@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
 	
-    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?db75858961ef100d103393e34f398175">
+    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?c77bdfd53127f8f1e98153f3f27452a2">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
 
     
@@ -228,95 +228,58 @@
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
 			<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#dates">Dates</a>
-<ul>
-<li><a href="#example-1-bylines">Example 1: Bylines</a></li>
-<li><a href="#example-2-copyright-year">Example 2: Copyright year</a></li>
-</ul></li>
-<li><a href="#standard-transforms">Standard transforms</a>
-<ul>
-<li><a href="#run-wordpress-auto-paragraph-filter">Run WordPress’ auto-paragraph filter</a></li>
-<li><a href="#run-wordpress-shortcodes-over-a-block-of-text">Run WordPress shortcodes over a block of text</a></li>
-<li><a href="#code-samples">Code samples</a></li>
-<li><a href="#calling-php-functions-inside-of-your-templates">Calling PHP functions inside of your templates</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#dates">Dates</a>
+      <ul>
+        <li><a href="#example-1-bylines">Example 1: Bylines</a></li>
+        <li><a href="#example-2-copyright-year">Example 2: Copyright year</a></li>
+      </ul>
+    </li>
+    <li><a href="#standard-transforms">Standard transforms</a>
+      <ul>
+        <li><a href="#run-wordpress-auto-paragraph-filter">Run WordPress’ auto-paragraph filter</a></li>
+        <li><a href="#run-wordpress-shortcodes-over-a-block-of-text">Run WordPress shortcodes over a block of text</a></li>
+        <li><a href="#code-samples">Code samples</a></li>
+        <li><a href="#calling-php-functions-inside-of-your-templates">Calling PHP functions inside of your templates</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 		</aside>
 
 		<div class="content-container">
 			<div class="content">
-				
-
-<p>There’s tons of stuff you can do with Twig and Timber filters to make complex transformations easy (and fun).</p>
-
+				<p>There’s tons of stuff you can do with Twig and Timber filters to make complex transformations easy (and fun).</p>
 <h2 id="dates">Dates</h2>
-
 <h3 id="example-1-bylines">Example 1: Bylines</h3>
-
 <p>Timber does bylines like a boss:</p>
-
-<pre><code class="language-twig">&lt;p class=&quot;byline&quot;&gt;
-    &lt;span class=&quot;name&quot;&gt;By {{ post.author.name }}&lt;/span&gt;
-    &lt;span class=&quot;date&quot;&gt;{{ post.post_date|date('F j, Y') }}&lt;/span&gt;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;p class=&#34;byline&#34;&gt;
+    &lt;span class=&#34;name&#34;&gt;By <span style="color:#75715e">{{</span> post.author.name <span style="color:#75715e">}}</span>&lt;/span&gt;
+    &lt;span class=&#34;date&#34;&gt;<span style="color:#75715e">{{</span> post.post_date<span style="color:#f92672">|</span><span style="color:#a6e22e">date</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;F j, Y&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">}}</span>&lt;/span&gt;
 &lt;/p&gt;
-</code></pre>
-
-<p><strong>Renders</strong></p>
-
-<pre><code class="language-html">&lt;p class=&quot;byline&quot;&gt;&lt;span class=&quot;name&quot;&gt;By Mr. WordPress&lt;/span&gt;&lt;span class=&quot;date&quot;&gt;September 28, 2013&lt;/span&gt;&lt;/p&gt;
-</code></pre>
-
-<h3 id="example-2-copyright-year">Example 2: Copyright year</h3>
-
+</code></pre></div><p><strong>Renders</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;byline&#34;</span>&gt;&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;name&#34;</span>&gt;By Mr. WordPress&lt;/<span style="color:#f92672">span</span>&gt;&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;date&#34;</span>&gt;September 28, 2013&lt;/<span style="color:#f92672">span</span>&gt;&lt;/<span style="color:#f92672">p</span>&gt;
+</code></pre></div><h3 id="example-2-copyright-year">Example 2: Copyright year</h3>
 <p>Nothing is worse than an out-of-date copyright year in the footer. Nothing.</p>
-
-<pre><code class="language-twig">&lt;footer&gt;
-	&lt;p class=&quot;copyright&quot;&gt;&amp;copy; {{ now|date('Y') }} by {{ bloginfo('name') }}&lt;/p&gt;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;footer&gt;
+	&lt;p class=&#34;copyright&#34;&gt;&amp;copy; <span style="color:#75715e">{{</span> now<span style="color:#f92672">|</span><span style="color:#a6e22e">date</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;Y&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">}}</span> by <span style="color:#75715e">{{</span> bloginfo<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;name&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">}}</span>&lt;/p&gt;
 &lt;/footer&gt;
-</code></pre>
-
-<p><strong>Renders</strong></p>
-
-<pre><code class="language-html">&lt;footer&gt;&lt;p class=&quot;copyright&quot;&gt;&amp;copy; 2015 by The Daily Orange&lt;/p&gt;&lt;/footer&gt;
-</code></pre>
-
-<h2 id="standard-transforms">Standard transforms</h2>
-
+</code></pre></div><p><strong>Renders</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">footer</span>&gt;&lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;copyright&#34;</span>&gt;&amp;copy; 2015 by The Daily Orange&lt;/<span style="color:#f92672">p</span>&gt;&lt;/<span style="color:#f92672">footer</span>&gt;
+</code></pre></div><h2 id="standard-transforms">Standard transforms</h2>
 <h3 id="run-wordpress-auto-paragraph-filter">Run WordPress’ auto-paragraph filter</h3>
-
-<pre><code class="language-twig">&lt;p class=&quot;content&quot;&gt;{{ post.my_custom_text|wpautop }}&lt;/p&gt;
-</code></pre>
-
-<h3 id="run-wordpress-shortcodes-over-a-block-of-text">Run WordPress shortcodes over a block of text</h3>
-
-<pre><code class="language-twig">&lt;p class=&quot;content&quot;&gt;{{ post.my_custom_text|shortcodes }}&lt;/p&gt;
-</code></pre>
-
-<h3 id="code-samples">Code samples</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;p class=&#34;content&#34;&gt;<span style="color:#75715e">{{</span> post.my_custom_text<span style="color:#f92672">|</span><span style="color:#a6e22e">wpautop</span> <span style="color:#75715e">}}</span>&lt;/p&gt;
+</code></pre></div><h3 id="run-wordpress-shortcodes-over-a-block-of-text">Run WordPress shortcodes over a block of text</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;p class=&#34;content&#34;&gt;<span style="color:#75715e">{{</span> post.my_custom_text<span style="color:#f92672">|</span><span style="color:#a6e22e">shortcodes</span> <span style="color:#75715e">}}</span>&lt;/p&gt;
+</code></pre></div><h3 id="code-samples">Code samples</h3>
 <p>Code Samples? Lord knows I’ve got ’em:</p>
-
-<pre><code class="language-twig">&lt;div class=&quot;code-sample&quot;&gt;{{ post.code_samples|pretags }}&lt;/div&gt;
-</code></pre>
-
-<h3 id="calling-php-functions-inside-of-your-templates">Calling PHP functions inside of your templates</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;div class=&#34;code-sample&#34;&gt;<span style="color:#75715e">{{</span> post.code_samples<span style="color:#f92672">|</span><span style="color:#a6e22e">pretags</span> <span style="color:#75715e">}}</span>&lt;/div&gt;
+</code></pre></div><h3 id="calling-php-functions-inside-of-your-templates">Calling PHP functions inside of your templates</h3>
 <p>WordPress template:</p>
-
-<pre><code class="language-html">&lt;p class=&quot;entry-meta&quot;&gt;&lt;?php twentytwelve_entry_meta(); ?&gt;&lt;/p&gt;
-</code></pre>
-
-<p>Twig template:</p>
-
-<pre><code class="language-twig">&lt;p class=&quot;entry-meta&quot;&gt;{{ function('twentytwelve_entry_meta') }}&lt;/p&gt;
-</code></pre>
-
-<p>You can read more about using functions in the <a href="https://timber.github.io/docs/guides/functions/">Functions</a> guide.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;entry-meta&#34;</span>&gt;<span style="color:#75715e">&lt;?php twentytwelve_entry_meta(); ?&gt;</span>&lt;/<span style="color:#f92672">p</span>&gt;
+</code></pre></div><p>Twig template:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;p class=&#34;entry-meta&#34;&gt;<span style="color:#75715e">{{</span> function<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;twentytwelve_entry_meta&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">}}</span>&lt;/p&gt;
+</code></pre></div><p>You can read more about using functions in the <a href="https://timber.github.io/docs/guides/functions/">Functions</a> guide.</p>
 
 			</div>
 		</div>
@@ -327,7 +290,7 @@
 
 
 <script src="https://timber.github.io/docs/js/highlight.pack.js" defer></script>
-<script src="https://timber.github.io/docs/js/scripts.js?d0b281f642113556d4adaa8032af79eb" defer></script>
+<script src="https://timber.github.io/docs/js/scripts.js?44e60569f8868a72f5a9e8cd72cb0844" defer></script>
 
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>

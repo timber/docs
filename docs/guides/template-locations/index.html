@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
 	
-    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?db75858961ef100d103393e34f398175">
+    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?c77bdfd53127f8f1e98153f3f27452a2">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
 
     
@@ -228,71 +228,46 @@
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
 			<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#changing-the-default-folder-for-twig-files">Changing the default folder for Twig files</a>
-<ul>
-<li><a href="#configure-with-a-string">Configure with a string</a></li>
-<li><a href="#use-an-array-with-fallbacks">Use an array with fallbacks</a></li>
-</ul></li>
-<li><a href="#subdirectories">Subdirectories</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#changing-the-default-folder-for-twig-files">Changing the default folder for Twig files</a>
+      <ul>
+        <li><a href="#configure-with-a-string">Configure with a string</a></li>
+        <li><a href="#use-an-array-with-fallbacks">Use an array with fallbacks</a></li>
+      </ul>
+    </li>
+    <li><a href="#subdirectories">Subdirectories</a></li>
+  </ul>
 </nav>
 		</aside>
 
 		<div class="content-container">
 			<div class="content">
-				
-
-<p>You can set your own locations for your twig files with&hellip;</p>
-
-<pre><code class="language-php">&lt;?php
-Timber::$locations = '/Users/jared/Sandbox/templates';
-</code></pre>
-
-<p>Use the full file path to make sure Timber knows what you&rsquo;re trying to draw from. You can also send an array for multiple locations:</p>
-
-<pre><code class="language-php">&lt;?php
-Timber::$locations = array(
-    '/Users/jared/Sandbox/templates',
-    '~/Sites/timber-templates/',
-    ABSPATH.'/wp-content/templates'
+				<p>You can set your own locations for your twig files with&hellip;</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span>$locations <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/Users/jared/Sandbox/templates&#39;</span>;
+</code></pre></div><p>Use the full file path to make sure Timber knows what you&rsquo;re trying to draw from. You can also send an array for multiple locations:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span>$locations <span style="color:#f92672">=</span> <span style="color:#66d9ef">array</span>(
+    <span style="color:#e6db74">&#39;/Users/jared/Sandbox/templates&#39;</span>,
+    <span style="color:#e6db74">&#39;~/Sites/timber-templates/&#39;</span>,
+    <span style="color:#a6e22e">ABSPATH</span><span style="color:#f92672">.</span><span style="color:#e6db74">&#39;/wp-content/templates&#39;</span>
 );
-</code></pre>
-
-<p>You only need to do this once in your project (in <code>functions.php</code> of your theme). When you call one of the render or compile functions from a PHP file (say <code>single.php</code>), Timber will look for Twig files in these locations before it checks the child or parent theme.</p>
-
+</code></pre></div><p>You only need to do this once in your project (in <code>functions.php</code> of your theme). When you call one of the render or compile functions from a PHP file (say <code>single.php</code>), Timber will look for Twig files in these locations before it checks the child or parent theme.</p>
 <h2 id="changing-the-default-folder-for-twig-files">Changing the default folder for Twig files</h2>
-
 <p>By default, Timber looks in your child and parent theme’s <code>views</code> directory to pull <code>.twig</code> files. If you don&rsquo;t like the default <code>views</code> directory (which by default resides in your theme folder), you can change that.</p>
-
 <p>Example: If I want to use <code>/wp-content/themes/my-theme/twigs</code> as my default folder, I can either configure it with a string or use an array with fallbacks.</p>
-
 <h3 id="configure-with-a-string">Configure with a string</h3>
-
-<pre><code class="language-php">&lt;?php
-Timber::$dirname = 'twigs';
-</code></pre>
-
-<h3 id="use-an-array-with-fallbacks">Use an array with fallbacks</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span>$dirname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;twigs&#39;</span>;
+</code></pre></div><h3 id="use-an-array-with-fallbacks">Use an array with fallbacks</h3>
 <p>This is an alternative to configuring <code>$dirnames</code> with a string.</p>
-
-<pre><code class="language-php">&lt;?php
-Timber::$dirname = array( 'templates', 'templates/shared/mods', 'twigs', 'views' );
-</code></pre>
-
-<h2 id="subdirectories">Subdirectories</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span>$dirname <span style="color:#f92672">=</span> <span style="color:#66d9ef">array</span>( <span style="color:#e6db74">&#39;templates&#39;</span>, <span style="color:#e6db74">&#39;templates/shared/mods&#39;</span>, <span style="color:#e6db74">&#39;twigs&#39;</span>, <span style="color:#e6db74">&#39;views&#39;</span> );
+</code></pre></div><h2 id="subdirectories">Subdirectories</h2>
 <p>You can always reference <strong>subdirectories</strong> in your template folders relatively. For example:</p>
-
-<pre><code class="language-php">&lt;?php
-Timber::render( 'shared/headers/header-home.twig' );
-</code></pre>
-
-<p>&hellip; might correspond to a file in<br />
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">render</span>( <span style="color:#e6db74">&#39;shared/headers/header-home.twig&#39;</span> );
+</code></pre></div><p>&hellip; might correspond to a file in<br>
 <code>/wp-content/themes/my-theme/views/shared/headers/header-home.twig</code>.</p>
 
 			</div>
@@ -304,7 +279,7 @@ Timber::render( 'shared/headers/header-home.twig' );
 
 
 <script src="https://timber.github.io/docs/js/highlight.pack.js" defer></script>
-<script src="https://timber.github.io/docs/js/scripts.js?d0b281f642113556d4adaa8032af79eb" defer></script>
+<script src="https://timber.github.io/docs/js/scripts.js?44e60569f8868a72f5a9e8cd72cb0844" defer></script>
 
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>

@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
 	
-    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?db75858961ef100d103393e34f398175">
+    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?c77bdfd53127f8f1e98153f3f27452a2">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
 
     
@@ -228,55 +228,40 @@
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
 			<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#blog-info">Blog Info</a></li>
-<li><a href="#body-class">Body Class</a></li>
-<li><a href="#post">Post</a></li>
-<li><a href="#theme">Theme</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#blog-info">Blog Info</a></li>
+    <li><a href="#body-class">Body Class</a></li>
+    <li><a href="#post">Post</a></li>
+    <li><a href="#theme">Theme</a></li>
+  </ul>
 </nav>
 		</aside>
 
 		<div class="content-container">
 			<div class="content">
-				
-
-<p>Here are some helpful conversions for functions you’re probably well familiar with in WordPress and their Timber equivalents. These assume a PHP file with the <code>Timber::context();</code> function at the top. For example:</p>
-
-<pre><code class="language-php">$context = Timber::context();
-$context['post'] = new Timber\Post();
-Timber::render( 'single.twig', $context );
-</code></pre>
-
-<h2 id="blog-info">Blog Info</h2>
-
+				<p>Here are some helpful conversions for functions you’re probably well familiar with in WordPress and their Timber equivalents. These assume a PHP file with the <code>Timber::context();</code> function at the top. For example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$context = Timber::context();
+$context[&#39;post&#39;] = new Timber\Post();
+Timber::render( &#39;single.twig&#39;, $context );
+</code></pre></div><h2 id="blog-info">Blog Info</h2>
 <ul>
 <li><code>blog_info('charset')</code> =&gt; <code>{{ site.charset }}</code></li>
 <li><code>blog_info('description')</code> =&gt; <code>{{ site.description }}</code></li>
 <li><code>blog_info('sitename')</code> =&gt; <code>{{ site.name }}</code></li>
 <li><code>blog_info('url')</code> =&gt; <code>{{ site.url }}</code></li>
 </ul>
-
 <h2 id="body-class">Body Class</h2>
-
 <ul>
 <li><code>implode(' ', get_body_class())</code> =&gt; <code>&lt;body class=&quot;{{ body_class }}&quot;&gt;</code></li>
 </ul>
-
 <h2 id="post">Post</h2>
-
 <ul>
 <li><code>the_content()</code> =&gt; <code>{{ post.content }}</code></li>
 <li><code>the_permalink()</code> =&gt; <code>{{ post.link }}</code></li>
 <li><code>the_title()</code> =&gt; <code>{{ post.title }}</code></li>
 <li><code>get_the_tags()</code> =&gt; <code>{{ post.tags }}</code></li>
 </ul>
-
 <h2 id="theme">Theme</h2>
-
 <ul>
 <li><code>get_template_directory_uri()</code> =&gt; <code>{{ theme.link }}</code> (Parent Themes)</li>
 <li><code>get_template_directory_uri()</code> =&gt; <code>{{ theme.parent.link }}</code> (Child Themes)</li>
@@ -284,7 +269,6 @@ Timber::render( 'single.twig', $context );
 <li><code>get_template_directory()</code> =&gt; <code>{{ theme.parent.path }}</code></li>
 <li><code>get_stylesheet_directory()</code> =&gt; <code>{{ theme.path }}</code></li>
 </ul>
-
 <p>In WordPress parlance, stylesheet_directory = child theme, template directory = parent theme. Both WP and Timber functions safely return the current theme info if there&rsquo;s no parent/child going on.</p>
 
 			</div>
@@ -296,7 +280,7 @@ Timber::render( 'single.twig', $context );
 
 
 <script src="https://timber.github.io/docs/js/highlight.pack.js" defer></script>
-<script src="https://timber.github.io/docs/js/scripts.js?d0b281f642113556d4adaa8032af79eb" defer></script>
+<script src="https://timber.github.io/docs/js/scripts.js?44e60569f8868a72f5a9e8cd72cb0844" defer></script>
 
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
