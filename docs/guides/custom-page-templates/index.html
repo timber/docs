@@ -228,47 +228,72 @@
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
 			<nav id="TableOfContents">
-  <ul>
-    <li><a href="#custom-twig-file">Custom Twig File</a></li>
-    <li><a href="#custom-php-file">Custom PHP File</a></li>
-    <li><a href="#custom-page-template">Custom Page Template</a></li>
-  </ul>
+<ul>
+<li>
+<ul>
+<li><a href="#custom-twig-file">Custom Twig File</a></li>
+<li><a href="#custom-php-file">Custom PHP File</a></li>
+<li><a href="#custom-page-template">Custom Page Template</a></li>
+</ul></li>
+</ul>
 </nav>
 		</aside>
 
 		<div class="content-container">
 			<div class="content">
-				<p>Imagine that you’ve created a page called <strong>«About Us»</strong> and WordPress has given it the slug <code>about-us</code>. How would you create a custom template just for this page?</p>
+				
+
+<p>Imagine that you’ve created a page called <strong>«About Us»</strong> and WordPress has given it the slug <code>about-us</code>. How would you create a custom template just for this page?</p>
+
 <p>There are a few ways to manage custom pages in WordPress and Timber, in order from simple to complex.</p>
+
 <h2 id="custom-twig-file">Custom Twig File</h2>
+
 <p>If you&rsquo;re using the <a href="https://github.com/timber/starter-theme">Timber Starter Theme</a> you can</p>
+
 <ul>
 <li>Create a file called <code>page-about-us.twig</code> inside your <code>views</code> and go crazy.</li>
 <li>Copy and paste the contents of <a href="https://github.com/timber/starter-theme/blob/master/templates/page.twig"><code>page.twig</code></a> so you have something to work from.</li>
 </ul>
-<p><strong>How does this work?</strong></p>
-<p>In the <code>page.php</code> file you&rsquo;ll find this code:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
-<span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">render</span>( <span style="color:#66d9ef">array</span>(
-    <span style="color:#e6db74">&#39;page-&#39;</span> <span style="color:#f92672">.</span> $post<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">post_name</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;.twig&#39;</span>,
-    <span style="color:#e6db74">&#39;page.twig&#39;</span>
-), $context );
-</code></pre></div><p>This is telling PHP to first look for a Twig file named <code>page-{{slug}}.twig</code> and then fall back to <code>page.twig</code> if that doesn&rsquo;t exist. With the array notation, you can add as many fallbacks as you need.</p>
-<h2 id="custom-php-file">Custom PHP File</h2>
-<p>If you need to do something special for a page in PHP, you can use the standard WordPress <a href="http://codex.wordpress.org/Template_Hierarchy">template hierarchy</a> to gather and manipulate data for this page. In the example above, you would create a file</p>
-<p><code>/wp-content/themes/my-theme/page-about-us.php</code></p>
-<p>and populate it with the necessary PHP. You can use the contents of the starter theme’s <a href="https://github.com/timber/starter-theme/blob/master/page.php"><code>page.php</code></a> file as a guide.</p>
-<h2 id="custom-page-template">Custom Page Template</h2>
-<p>Create a file with the following comment header:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
-<span style="color:#e6db74">/**
-</span><span style="color:#e6db74"> * Template Name: My Custom Page
-</span><span style="color:#e6db74"> * Description: A Page Template with a darker design.
-</span><span style="color:#e6db74"> */</span>
 
-<span style="color:#75715e">// Code to display Page goes here...
-</span></code></pre></div><p>In the WordPress admin, a new entry will be added in your page’s list of available templates like so:</p>
-<p><img src="http://codex.wordpress.org/images/thumb/a/a3/page-templates-pulldown-screenshot.png/180px-page-templates-pulldown-screenshot.png" alt=""></p>
+<p><strong>How does this work?</strong></p>
+
+<p>In the <code>page.php</code> file you&rsquo;ll find this code:</p>
+
+<pre><code class="language-php">&lt;?php
+Timber::render( array(
+    'page-' . $post-&gt;post_name . '.twig',
+    'page.twig'
+), $context );
+</code></pre>
+
+<p>This is telling PHP to first look for a Twig file named <code>page-{{slug}}.twig</code> and then fall back to <code>page.twig</code> if that doesn&rsquo;t exist. With the array notation, you can add as many fallbacks as you need.</p>
+
+<h2 id="custom-php-file">Custom PHP File</h2>
+
+<p>If you need to do something special for a page in PHP, you can use the standard WordPress <a href="http://codex.wordpress.org/Template_Hierarchy">template hierarchy</a> to gather and manipulate data for this page. In the example above, you would create a file</p>
+
+<p><code>/wp-content/themes/my-theme/page-about-us.php</code></p>
+
+<p>and populate it with the necessary PHP. You can use the contents of the starter theme’s <a href="https://github.com/timber/starter-theme/blob/master/page.php"><code>page.php</code></a> file as a guide.</p>
+
+<h2 id="custom-page-template">Custom Page Template</h2>
+
+<p>Create a file with the following comment header:</p>
+
+<pre><code class="language-php">&lt;?php
+/**
+ * Template Name: My Custom Page
+ * Description: A Page Template with a darker design.
+ */
+
+// Code to display Page goes here...
+</code></pre>
+
+<p>In the WordPress admin, a new entry will be added in your page’s list of available templates like so:</p>
+
+<p><img src="http://codex.wordpress.org/images/thumb/a/a3/page-templates-pulldown-screenshot.png/180px-page-templates-pulldown-screenshot.png" alt="" /></p>
+
 <ul>
 <li>Name it something like <code>/wp-content/themes/my-theme/template-my-custom-page.php</code>.</li>
 <li>Do <strong>NOT</strong> name it something beginning with <code>page-</code> or <a href="http://jespervanengelen.com/page-templates-in-wordpress-template-hierarchy/">WordPress will get very confused</a>.</li>

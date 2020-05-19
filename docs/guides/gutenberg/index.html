@@ -228,120 +228,148 @@
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
 			<nav id="TableOfContents">
-  <ul>
-    <li><a href="#using-gutenberg-with-timber">Using Gutenberg with Timber</a></li>
-    <li><a href="#acf-blocks">ACF Blocks</a>
-      <ul>
-        <li><a href="#what-are-acf-blocks">What are ACF Blocks?</a></li>
-        <li><a href="#how-to-use-acf-blocks-with-timber">How to use ACF Blocks with Timber</a></li>
-        <li><a href="#using-repeaters">Using repeaters</a></li>
-        <li><a href="#using-groups">Using groups</a></li>
-      </ul>
-    </li>
-  </ul>
+<ul>
+<li>
+<ul>
+<li><a href="#using-gutenberg-with-timber">Using Gutenberg with Timber</a></li>
+<li><a href="#acf-blocks">ACF Blocks</a>
+<ul>
+<li><a href="#what-are-acf-blocks">What are ACF Blocks?</a></li>
+<li><a href="#how-to-use-acf-blocks-with-timber">How to use ACF Blocks with Timber</a></li>
+<li><a href="#using-repeaters">Using repeaters</a></li>
+<li><a href="#using-groups">Using groups</a></li>
+</ul></li>
+</ul></li>
+</ul>
 </nav>
 		</aside>
 
 		<div class="content-container">
 			<div class="content">
-				<h2 id="using-gutenberg-with-timber">Using Gutenberg with Timber</h2>
+				
+
+<h2 id="using-gutenberg-with-timber">Using Gutenberg with Timber</h2>
+
 <p>Timber works with Gutenberg out of the box. If you use <code>{{ post.content }}</code>, Timber will render all the Gutenberg blocks.</p>
+
 <h2 id="acf-blocks">ACF Blocks</h2>
+
 <h3 id="what-are-acf-blocks">What are ACF Blocks?</h3>
+
 <p>ACF Blocks are an alternative way to create content blocks without advanced JavaScript knowledge. If you want to learn more about them, read the article on <a href="https://www.advancedcustomfields.com/blog/acf-5-8-introducing-acf-blocks-for-gutenberg/">advancedcustomfields.com</a>.</p>
+
 <h3 id="how-to-use-acf-blocks-with-timber">How to use ACF Blocks with Timber</h3>
+
 <p>Before you can start using ACF Blocks, you must install the Advanced Custom Fields 5.8.0-beta version or later.</p>
+
 <p>To create a content block, you first have to register it in <strong>functions.php</strong> or in a separate plugin:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">add_action( &#39;acf/init&#39;, &#39;my_acf_init&#39; );
+
+<pre><code class="language-php">add_action( 'acf/init', 'my_acf_init' );
 
 function my_acf_init() {
     // Bail out if function doesn’t exist.
-    if ( ! function_exists( &#39;acf_register_block&#39; ) ) {
+    if ( ! function_exists( 'acf_register_block' ) ) {
         return;
     }
 
     // Register a new block.
     acf_register_block( array(
-        &#39;name&#39;            =&gt; &#39;example_block&#39;,
-        &#39;title&#39;           =&gt; __( &#39;Example Block&#39;, &#39;your-text-domain&#39; ),
-        &#39;description&#39;     =&gt; __( &#39;A custom example block.&#39;, &#39;your-text-domain&#39; ),
-        &#39;render_callback&#39; =&gt; &#39;my_acf_block_render_callback&#39;,
-        &#39;category&#39;        =&gt; &#39;formatting&#39;,
-        &#39;icon&#39;            =&gt; &#39;admin-comments&#39;,
-        &#39;keywords&#39;        =&gt; array( &#39;example&#39; ),
+        'name'            =&gt; 'example_block',
+        'title'           =&gt; __( 'Example Block', 'your-text-domain' ),
+        'description'     =&gt; __( 'A custom example block.', 'your-text-domain' ),
+        'render_callback' =&gt; 'my_acf_block_render_callback',
+        'category'        =&gt; 'formatting',
+        'icon'            =&gt; 'admin-comments',
+        'keywords'        =&gt; array( 'example' ),
     ) );
 }
-</code></pre></div><p>Next, you you have to create your <code>render_callback()</code> function:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">/**
+</code></pre>
+
+<p>Next, you you have to create your <code>render_callback()</code> function:</p>
+
+<pre><code class="language-php">/**
  *  This is the callback that displays the block.
  *
  * @param   array  $block      The block settings and attributes.
  * @param   string $content    The block content (emtpy string).
  * @param   bool   $is_preview True during AJAX preview.
  */
-function my_acf_block_render_callback( $block, $content = &#39;&#39;, $is_preview = false ) {
+function my_acf_block_render_callback( $block, $content = '', $is_preview = false ) {
     $context = Timber::context();
 
     // Store block values.
-    $context[&#39;block&#39;] = $block;
+    $context['block'] = $block;
 
     // Store field values.
-    $context[&#39;fields&#39;] = get_fields();
+    $context['fields'] = get_fields();
 
     // Store $is_preview value.
-    $context[&#39;is_preview&#39;] = $is_preview;
+    $context['is_preview'] = $is_preview;
 
     // Render the block.
-    Timber::render( &#39;block/example-block.twig&#39;, $context );
+    Timber::render( 'block/example-block.twig', $context );
 }
-</code></pre></div><p>You create an extra array called <code>$context</code> with three values:</p>
-<ul>
-<li><strong>block</strong> - with all data like block title, alignment etc</li>
-<li><strong>fields</strong> - all custom fields - also all the fields created in <strong>ACF</strong></li>
-<li><strong>is_preview</strong> - returns true during AJAX preview</li>
-</ul>
+</code></pre>
+
+<p>You create an extra array called <code>$context</code> with three values:
+- <strong>block</strong> - with all data like block title, alignment etc
+- <strong>fields</strong> - all custom fields - also all the fields created in <strong>ACF</strong>
+- <strong>is_preview</strong> - returns true during AJAX preview</p>
+
 <p>Finally, you can create the template <strong>block/example-block.twig</strong>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{#
-</span><span style="color:#75715e">/**
-</span><span style="color:#75715e"> * Block Name: Example block
-</span><span style="color:#75715e"> *
-</span><span style="color:#75715e"> * This is the template that displays the example block.
-</span><span style="color:#75715e"> */
-</span><span style="color:#75715e">#}</span>
 
-<span style="color:#75715e">{%</span> <span style="color:#66d9ef">if</span> is_preview <span style="color:#75715e">%}</span>
+<pre><code class="language-twig">{#
+/**
+ * Block Name: Example block
+ *
+ * This is the template that displays the example block.
+ */
+#}
+
+{% if is_preview %}
     &lt;p&gt;I will only appear in the editor.&lt;/p&gt;
-<span style="color:#75715e">{%</span> <span style="color:#66d9ef">endif</span> <span style="color:#75715e">%}</span>
+{% endif %}
 
-&lt;div id=&#34;example-<span style="color:#75715e">{{</span> block.id <span style="color:#75715e">}}</span>&#34; class=&#34;wrapper&#34;&gt;
-    &lt;h1&gt;<span style="color:#75715e">{{</span> fields.title <span style="color:#75715e">}}</span>&lt;/h1&gt;
-    &lt;p&gt;<span style="color:#75715e">{{</span> fields.description <span style="color:#75715e">}}</span>&lt;/p&gt;
+&lt;div id=&quot;example-{{ block.id }}&quot; class=&quot;wrapper&quot;&gt;
+    &lt;h1&gt;{{ fields.title }}&lt;/h1&gt;
+    &lt;p&gt;{{ fields.description }}&lt;/p&gt;
 &lt;/div&gt;
-&lt;style type=&#34;text/css&#34;&gt;
-    #testimonial-<span style="color:#75715e">{{</span> block.id <span style="color:#75715e">}}</span> {
-        background: <span style="color:#75715e">{{</span> fields.background_color <span style="color:#75715e">}}</span>;
-        color: <span style="color:#75715e">{{</span> fields.text_color <span style="color:#75715e">}}</span>;
+&lt;style type=&quot;text/css&quot;&gt;
+    #testimonial-{{ block.id }} {
+        background: {{ fields.background_color }};
+        color: {{ fields.text_color }};
     }
 &lt;/style&gt;
-</code></pre></div><p>If you would like to use an external stylesheet both inside of the block editor and the frontend you should add:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">function my_acf_block_editor_style() {
+</code></pre>
+
+<p>If you would like to use an external stylesheet both inside of the block editor and the frontend you should add:</p>
+
+<pre><code class="language-php">function my_acf_block_editor_style() {
     wp_enqueue_style(
-        &#39;example_block_css&#39;,
-        get_template_directory_uri() . &#39;/assets/example-block.css&#39;
+        'example_block_css',
+        get_template_directory_uri() . '/assets/example-block.css'
     );
 }
 
-add_action( &#39;enqueue_block_assets&#39;, &#39;my_acf_block_editor_style&#39; );
-</code></pre></div><p>For more details about enqueueing assets read the <a href="https://wordpress.org/gutenberg/handbook/blocks/applying-styles-with-stylesheets/#enqueueing-editor-only-block-assets">Gutenberg Handbook</a>.</p>
+add_action( 'enqueue_block_assets', 'my_acf_block_editor_style' );
+</code></pre>
+
+<p>For more details about enqueueing assets read the <a href="https://wordpress.org/gutenberg/handbook/blocks/applying-styles-with-stylesheets/#enqueueing-editor-only-block-assets">Gutenberg Handbook</a>.</p>
+
 <h3 id="using-repeaters">Using repeaters</h3>
+
 <pre><code>{% for field in fields.repeater %}
     Title: {{ field.title }} &lt;br/&gt;
     Url: {{ field.url }}
 {% endfor %}
-</code></pre><h3 id="using-groups">Using groups</h3>
+</code></pre>
+
+<h3 id="using-groups">Using groups</h3>
+
 <pre><code>Title: {{ fields.group.title }} &lt;br/&gt;
 Url: {{ fields.group.url }}
 </code></pre>
+
 			</div>
 		</div>
 	</article>

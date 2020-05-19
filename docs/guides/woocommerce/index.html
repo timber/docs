@@ -228,182 +228,226 @@
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
 			<nav id="TableOfContents">
-  <ul>
-    <li><a href="#point-of-entry---main-woocommerce-php-file">Point of entry - main WooCommerce PHP file</a></li>
-    <li><a href="#archives">Archives</a></li>
-    <li><a href="#single-product">Single Product</a></li>
-    <li><a href="#tease-product">Tease Product</a></li>
-  </ul>
+<ul>
+<li>
+<ul>
+<li><a href="#point-of-entry-main-woocommerce-php-file">Point of entry - main WooCommerce PHP file</a></li>
+<li><a href="#archives">Archives</a></li>
+<li><a href="#single-product">Single Product</a></li>
+<li><a href="#tease-product">Tease Product</a></li>
+</ul></li>
+</ul>
 </nav>
 		</aside>
 
 		<div class="content-container">
 			<div class="content">
-				<h2 id="point-of-entry---main-woocommerce-php-file">Point of entry - main WooCommerce PHP file</h2>
+				
+
+<h2 id="point-of-entry-main-woocommerce-php-file">Point of entry - main WooCommerce PHP file</h2>
+
 <p>The first step to get your WooCommerce project integrated with Timber is declaring WooCommerce support in your theme’s <strong>functions.php</strong> file like so:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">function theme_add_woocommerce_support() {
-    add_theme_support( &#39;woocommerce&#39; );
+
+<pre><code class="language-php">function theme_add_woocommerce_support() {
+    add_theme_support( 'woocommerce' );
 }
 
-add_action( &#39;after_setup_theme&#39;, &#39;theme_add_woocommerce_support&#39; );
-</code></pre></div><p>For more information about how you can enable or disable features and change settings through theme support, refer to the <a href="https://docs.woocommerce.com/document/woocommerce-theme-developer-handbook">WooCommerce Theme Developer Handbook</a>.</p>
+add_action( 'after_setup_theme', 'theme_add_woocommerce_support' );
+</code></pre>
+
+<p>For more information about how you can enable or disable features and change settings through theme support, refer to the <a href="https://docs.woocommerce.com/document/woocommerce-theme-developer-handbook">WooCommerce Theme Developer Handbook</a>.</p>
+
 <p>Once that’s done you can start integrating WooCommerce into your theme by creating a file named <strong>woocommerce.php</strong> in the root of your theme. That will establish the context and data to be passed to your Twig files:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
 
-<span style="color:#66d9ef">if</span> ( <span style="color:#f92672">!</span> <span style="color:#a6e22e">class_exists</span>( <span style="color:#e6db74">&#39;Timber&#39;</span> ) ) {
-    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;Timber not activated. Make sure you activate the plugin in &lt;a href=&#34;/wp-admin/plugins.php#timber&#34;&gt;/wp-admin/plugins.php&lt;/a&gt;&#39;</span>;
+<pre><code class="language-php">&lt;?php
 
-    <span style="color:#66d9ef">return</span>;
+if ( ! class_exists( 'Timber' ) ) {
+    echo 'Timber not activated. Make sure you activate the plugin in &lt;a href=&quot;/wp-admin/plugins.php#timber&quot;&gt;/wp-admin/plugins.php&lt;/a&gt;';
+
+    return;
 }
 
-$context            <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">context</span>();
-$context[<span style="color:#e6db74">&#39;sidebar&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">get_widgets</span>( <span style="color:#e6db74">&#39;shop-sidebar&#39;</span> );
+$context            = Timber::context();
+$context['sidebar'] = Timber::get_widgets( 'shop-sidebar' );
 
-<span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">is_singular</span>( <span style="color:#e6db74">&#39;product&#39;</span> ) ) {
-    $context[<span style="color:#e6db74">&#39;post&#39;</span>]    <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">get_post</span>();
-    $product            <span style="color:#f92672">=</span> <span style="color:#a6e22e">wc_get_product</span>( $context[<span style="color:#e6db74">&#39;post&#39;</span>]<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">ID</span> );
-    $context[<span style="color:#e6db74">&#39;product&#39;</span>] <span style="color:#f92672">=</span> $product;
+if ( is_singular( 'product' ) ) {
+    $context['post']    = Timber::get_post();
+    $product            = wc_get_product( $context['post']-&gt;ID );
+    $context['product'] = $product;
 
-    <span style="color:#75715e">// Get related products
-</span><span style="color:#75715e"></span>    $related_limit               <span style="color:#f92672">=</span> <span style="color:#a6e22e">wc_get_loop_prop</span>( <span style="color:#e6db74">&#39;columns&#39;</span> );
-    $related_ids                 <span style="color:#f92672">=</span> <span style="color:#a6e22e">wc_get_related_products</span>( $context[<span style="color:#e6db74">&#39;post&#39;</span>]<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">id</span>, $related_limit );
-    $context[<span style="color:#e6db74">&#39;related_products&#39;</span>] <span style="color:#f92672">=</span>  <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">get_posts</span>( $related_ids );
+    // Get related products
+    $related_limit               = wc_get_loop_prop( 'columns' );
+    $related_ids                 = wc_get_related_products( $context['post']-&gt;id, $related_limit );
+    $context['related_products'] =  Timber::get_posts( $related_ids );
 
-    <span style="color:#75715e">// Restore the context and loop back to the main query loop.
-</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">wp_reset_postdata</span>();
+    // Restore the context and loop back to the main query loop.
+    wp_reset_postdata();
 
-    <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">render</span>( <span style="color:#e6db74">&#39;views/woo/single-product.twig&#39;</span>, $context );
-} <span style="color:#66d9ef">else</span> {
-    $posts <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">get_posts</span>();
-    $context[<span style="color:#e6db74">&#39;products&#39;</span>] <span style="color:#f92672">=</span> $posts;
+    Timber::render( 'views/woo/single-product.twig', $context );
+} else {
+    $posts = Timber::get_posts();
+    $context['products'] = $posts;
 
-    <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">is_product_category</span>() ) {
-        $queried_object <span style="color:#f92672">=</span> <span style="color:#a6e22e">get_queried_object</span>();
-        $term_id <span style="color:#f92672">=</span> $queried_object<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">term_id</span>;
-        $context[<span style="color:#e6db74">&#39;category&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">get_term</span>( $term_id, <span style="color:#e6db74">&#39;product_cat&#39;</span> );
-        $context[<span style="color:#e6db74">&#39;title&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">single_term_title</span>( <span style="color:#e6db74">&#39;&#39;</span>, <span style="color:#66d9ef">false</span> );
+    if ( is_product_category() ) {
+        $queried_object = get_queried_object();
+        $term_id = $queried_object-&gt;term_id;
+        $context['category'] = get_term( $term_id, 'product_cat' );
+        $context['title'] = single_term_title( '', false );
     }
 
-    <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">render</span>( <span style="color:#e6db74">&#39;views/woo/archive.twig&#39;</span>, $context );
+    Timber::render( 'views/woo/archive.twig', $context );
 }
-</code></pre></div><p>You will now need the two Twig files loaded from <code>woocommerce.php</code>: <code>views/woo/single-product.twig</code> and <code>views/woo/archive.twig</code>.</p>
+</code></pre>
+
+<p>You will now need the two Twig files loaded from <code>woocommerce.php</code>: <code>views/woo/single-product.twig</code> and <code>views/woo/archive.twig</code>.</p>
+
 <h2 id="archives">Archives</h2>
+
 <p>Create a Twig file according to the location asked by the above file, in this example that would be <code>views/woo/archive.twig</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{%</span> <span style="color:#66d9ef">extends</span> <span style="color:#e6db74">&#39;base.twig&#39;</span> <span style="color:#75715e">%}</span>
 
-<span style="color:#75715e">{%</span> <span style="color:#66d9ef">block</span> content <span style="color:#75715e">%}</span>
+<pre><code class="language-twig">{% extends 'base.twig' %}
 
-    <span style="color:#75715e">{%</span> <span style="color:#66d9ef">do</span> action<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;woocommerce_before_main_content&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">%}</span>
+{% block content %}
 
-    &lt;div class=&#34;before-shop-loop&#34;&gt;
-        <span style="color:#75715e">{%</span> <span style="color:#66d9ef">do</span> action<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;woocommerce_before_shop_loop&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">%}</span>
+    {% do action('woocommerce_before_main_content') %}
+
+    &lt;div class=&quot;before-shop-loop&quot;&gt;
+        {% do action('woocommerce_before_shop_loop') %}
     &lt;/div&gt;
 
-    &lt;div class=&#34;loop&#34;&gt;
-        <span style="color:#75715e">{%</span> <span style="color:#66d9ef">for</span> post <span style="color:#66d9ef">in</span> products <span style="color:#75715e">%}</span>
-            <span style="color:#75715e">{%</span> <span style="color:#66d9ef">include</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;partials/tease-product.twig&#34;</span><span style="color:#f92672">]</span> <span style="color:#75715e">%}</span>
-        <span style="color:#75715e">{%</span> <span style="color:#66d9ef">endfor</span> <span style="color:#75715e">%}</span>
+    &lt;div class=&quot;loop&quot;&gt;
+        {% for post in products %}
+            {% include [&quot;partials/tease-product.twig&quot;] %}
+        {% endfor %}
     &lt;/div&gt;
 
-    <span style="color:#75715e">{%</span> <span style="color:#66d9ef">do</span> action<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;woocommerce_after_shop_loop&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">%}</span>
-    <span style="color:#75715e">{%</span> <span style="color:#66d9ef">do</span> action<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;woocommerce_after_main_content&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">%}</span>
+    {% do action('woocommerce_after_shop_loop') %}
+    {% do action('woocommerce_after_main_content') %}
 
-<span style="color:#75715e">{%</span> <span style="color:#66d9ef">endblock</span>  <span style="color:#75715e">%}</span>
-</code></pre></div><p>You’ll notice the inclusion of several of WooCommerce’s default hooks, which you’ll need to keep the integration seamless and allow any WooCommerce extension plugin to still work.</p>
+{% endblock  %}
+</code></pre>
+
+<p>You’ll notice the inclusion of several of WooCommerce’s default hooks, which you’ll need to keep the integration seamless and allow any WooCommerce extension plugin to still work.</p>
+
 <p>Next, we’ll take care of the single product view.</p>
+
 <h2 id="single-product">Single Product</h2>
+
 <p>Create a Twig file according to the location asked by the above file, in this example that would be <code>views/woo/single-product.twig</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{%</span> <span style="color:#66d9ef">extends</span> <span style="color:#e6db74">&#34;base.twig&#34;</span> <span style="color:#75715e">%}</span>
 
-<span style="color:#75715e">{%</span> <span style="color:#66d9ef">block</span> content <span style="color:#75715e">%}</span>
+<pre><code class="language-twig">{% extends &quot;base.twig&quot; %}
 
-    <span style="color:#75715e">{%</span> <span style="color:#66d9ef">do</span> action<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;woocommerce_before_single_product&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">%}</span>
+{% block content %}
 
-    &lt;article itemscope itemtype=&#34;http://schema.org/Product&#34; class=&#34;single-product-details <span style="color:#75715e">{{</span> post.class <span style="color:#75715e">}}</span>&#34;&gt;
+    {% do action('woocommerce_before_single_product') %}
 
-        &lt;div class=&#34;entry-images&#34;&gt;
-            <span style="color:#75715e">{%</span> <span style="color:#66d9ef">do</span> action<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;woocommerce_before_single_product_summary&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">%}</span>
+    &lt;article itemscope itemtype=&quot;http://schema.org/Product&quot; class=&quot;single-product-details {{ post.class }}&quot;&gt;
 
-            &lt;img src=&#34;<span style="color:#75715e">{{</span> post.thumbnail.src<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;shop_single&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">}}</span>&#34; /&gt;
+        &lt;div class=&quot;entry-images&quot;&gt;
+            {% do action('woocommerce_before_single_product_summary') %}
+
+            &lt;img src=&quot;{{ post.thumbnail.src('shop_single') }}&quot; /&gt;
         &lt;/div&gt;
 
-        &lt;div class=&#34;summary entry-summary&#34;&gt;
-            <span style="color:#75715e">{%</span> <span style="color:#66d9ef">do</span> action<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;woocommerce_single_product_summary&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">%}</span>
+        &lt;div class=&quot;summary entry-summary&quot;&gt;
+            {% do action('woocommerce_single_product_summary') %}
         &lt;/div&gt;
 
-        <span style="color:#75715e">{%</span> <span style="color:#66d9ef">do</span> action<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;woocommerce_after_single_product_summary&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">%}</span>
+        {% do action('woocommerce_after_single_product_summary') %}
 
-        &lt;meta itemprop=&#34;url&#34; content=&#34;<span style="color:#75715e">{{</span> post.link <span style="color:#75715e">}}</span>&#34; /&gt;
+        &lt;meta itemprop=&quot;url&quot; content=&quot;{{ post.link }}&quot; /&gt;
 
     &lt;/article&gt;
 
-    <span style="color:#75715e">{%</span> <span style="color:#66d9ef">include</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;partials/tease-product.twig&#34;</span><span style="color:#f92672">]</span> with <span style="color:#f92672">{</span> products<span style="color:#f92672">:</span> related_products <span style="color:#f92672">}</span> <span style="color:#75715e">%}</span>
+    {% include [&quot;partials/tease-product.twig&quot;] with { products: related_products } %}
 
-    <span style="color:#75715e">{%</span> <span style="color:#66d9ef">do</span> action<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;woocommerce_after_single_product&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">%}</span>
+    {% do action('woocommerce_after_single_product') %}
 
-<span style="color:#75715e">{%</span> <span style="color:#66d9ef">endblock</span>  <span style="color:#75715e">%}</span>
-</code></pre></div><p>Again we are keeping things simple by using WooCommerce’s default hooks. If you need to override the output of any of those hooks, my advice would be to remove and add the relevant actions using PHP, keeping your upgrade path simple.</p>
+{% endblock  %}
+</code></pre>
+
+<p>Again we are keeping things simple by using WooCommerce’s default hooks. If you need to override the output of any of those hooks, my advice would be to remove and add the relevant actions using PHP, keeping your upgrade path simple.</p>
+
 <p>If you wanna use the same <code>tease-product.twig</code> output as your related products, you have to remove the default related-products from theme, add the following to your <code>functions.php</code> file:
 <code>remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );</code></p>
+
 <p>Finally, we’ll need to create a teaser file for products in loops. Considering the code above that would be <code>views/partials/tease-product.twig</code>:</p>
+
 <h2 id="tease-product">Tease Product</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;article <span style="color:#75715e">{{</span> fn<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;post_class&#39;</span><span style="color:#f92672">,</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;$classes&#39;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;entry&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">)</span> <span style="color:#75715e">}}</span>&gt;
 
-    <span style="color:#75715e">{{</span> fn<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;timber_set_product&#39;</span><span style="color:#f92672">,</span> post<span style="color:#f92672">)</span> <span style="color:#75715e">}}</span>
+<pre><code class="language-twig">&lt;article {{ fn('post_class', ['$classes', 'entry'] ) }}&gt;
 
-    &lt;div class=&#34;media&#34;&gt;
+    {{ fn('timber_set_product', post) }}
 
-        <span style="color:#75715e">{%</span> <span style="color:#66d9ef">if</span> showthumb <span style="color:#75715e">%}</span>
-            &lt;div class=&#34;media-figure <span style="color:#75715e">{%</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">not</span> post.thumbnail <span style="color:#75715e">%}</span>placeholder<span style="color:#75715e">{%</span> <span style="color:#66d9ef">endif</span> <span style="color:#75715e">%}</span>&#34;&gt;
-                &lt;a href=&#34;<span style="color:#75715e">{{</span> post.link <span style="color:#75715e">}}</span>&#34;&gt;
-                    <span style="color:#75715e">{%</span> <span style="color:#66d9ef">if</span> post.thumbnail <span style="color:#75715e">%}</span>
-                        &lt;img src=&#34;<span style="color:#75715e">{{</span> post.thumbnail.src<span style="color:#f92672">|</span><span style="color:#a6e22e">resize</span><span style="color:#f92672">(</span>post_thumb_size<span style="color:#f92672">[</span><span style="color:#ae81ff">0</span><span style="color:#f92672">],</span> post_thumb_size<span style="color:#f92672">[</span><span style="color:#ae81ff">1</span><span style="color:#f92672">])</span> <span style="color:#75715e">}}</span>&#34; /&gt;
-                    <span style="color:#75715e">{%</span> <span style="color:#66d9ef">else</span> <span style="color:#75715e">%}</span>
-                        &lt;span class=&#34;thumb-placeholder&#34;&gt;&lt;i class=&#34;icon-camera&#34;&gt;&lt;/i&gt;&lt;/span&gt;
-                    <span style="color:#75715e">{%</span> <span style="color:#66d9ef">endif</span> <span style="color:#75715e">%}</span>
+    &lt;div class=&quot;media&quot;&gt;
+
+        {% if showthumb %}
+            &lt;div class=&quot;media-figure {% if not post.thumbnail %}placeholder{% endif %}&quot;&gt;
+                &lt;a href=&quot;{{ post.link }}&quot;&gt;
+                    {% if post.thumbnail %}
+                        &lt;img src=&quot;{{ post.thumbnail.src|resize(post_thumb_size[0], post_thumb_size[1]) }}&quot; /&gt;
+                    {% else %}
+                        &lt;span class=&quot;thumb-placeholder&quot;&gt;&lt;i class=&quot;icon-camera&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+                    {% endif %}
                 &lt;/a&gt;
             &lt;/div&gt;
-        <span style="color:#75715e">{%</span> <span style="color:#66d9ef">endif</span> <span style="color:#75715e">%}</span>
+        {% endif %}
 
-        &lt;div class=&#34;media-content&#34;&gt;
+        &lt;div class=&quot;media-content&quot;&gt;
 
-            <span style="color:#75715e">{%</span> <span style="color:#66d9ef">do</span> action<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;woocommerce_before_shop_loop_item_title&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">%}</span>
+            {% do action('woocommerce_before_shop_loop_item_title') %}
 
-            <span style="color:#75715e">{%</span> <span style="color:#66d9ef">if</span> post.title <span style="color:#75715e">%}</span>
-                &lt;h3 class=&#34;entry-title&#34;&gt;&lt;a href=&#34;<span style="color:#75715e">{{</span> post.link <span style="color:#75715e">}}</span>&#34;&gt;<span style="color:#75715e">{{</span> post.title <span style="color:#75715e">}}</span>&lt;/a&gt;&lt;/h3&gt;
-            <span style="color:#75715e">{%</span> <span style="color:#66d9ef">else</span> <span style="color:#75715e">%}</span>
-                &lt;h3 class=&#34;entry-title&#34;&gt;&lt;a href=&#34;<span style="color:#75715e">{{</span> post.link <span style="color:#75715e">}}</span>&#34;&gt;<span style="color:#75715e">{{</span> fn<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;the_title&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">}}</span>&lt;/a&gt;&lt;/h3&gt;
-            <span style="color:#75715e">{%</span> <span style="color:#66d9ef">endif</span> <span style="color:#75715e">%}</span>
+            {% if post.title %}
+                &lt;h3 class=&quot;entry-title&quot;&gt;&lt;a href=&quot;{{ post.link }}&quot;&gt;{{ post.title }}&lt;/a&gt;&lt;/h3&gt;
+            {% else %}
+                &lt;h3 class=&quot;entry-title&quot;&gt;&lt;a href=&quot;{{ post.link }}&quot;&gt;{{ fn('the_title') }}&lt;/a&gt;&lt;/h3&gt;
+            {% endif %}
 
-            <span style="color:#75715e">{%</span> <span style="color:#66d9ef">do</span> action<span style="color:#f92672">(</span> <span style="color:#e6db74">&#39;woocommerce_after_shop_loop_item_title&#39;</span> <span style="color:#f92672">)</span> <span style="color:#75715e">%}</span>
-            <span style="color:#75715e">{%</span> <span style="color:#66d9ef">do</span> action<span style="color:#f92672">(</span> <span style="color:#e6db74">&#39;woocommerce_after_shop_loop_item&#39;</span> <span style="color:#f92672">)</span> <span style="color:#75715e">%}</span>
+            {% do action( 'woocommerce_after_shop_loop_item_title' ) %}
+            {% do action( 'woocommerce_after_shop_loop_item' ) %}
 
         &lt;/div&gt;
 
     &lt;/div&gt;
 
 &lt;/article&gt;
-</code></pre></div><p>This should all sound familiar by now, except for one line:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{{</span> fn<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;timber_set_product&#39;</span><span style="color:#f92672">,</span> post<span style="color:#f92672">)</span> <span style="color:#75715e">}}</span>
-</code></pre></div><p>For some reason, products in the loop don’t get the right context by default. This line will call the following function that you need to add somewhere in your <code>functions.php</code> file:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">timber_set_product</span>( $post ) {
-    <span style="color:#66d9ef">global</span> $product;
+</code></pre>
 
-    <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">is_woocommerce</span>() ) {
-        $product <span style="color:#f92672">=</span> <span style="color:#a6e22e">wc_get_product</span>( $post<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">ID</span> );
+<p>This should all sound familiar by now, except for one line:</p>
+
+<pre><code class="language-twig">{{ fn('timber_set_product', post) }}
+</code></pre>
+
+<p>For some reason, products in the loop don’t get the right context by default. This line will call the following function that you need to add somewhere in your <code>functions.php</code> file:</p>
+
+<pre><code class="language-php">&lt;?php
+function timber_set_product( $post ) {
+    global $product;
+
+    if ( is_woocommerce() ) {
+        $product = wc_get_product( $post-&gt;ID );
     }
 }
-</code></pre></div><p>Without this, some elements of the listed products would show the same information as the first product in the loop. If you see an error like <code>Warning: call_user_func_array() expects parameter 1 to be a valid callback, no array or string given</code>, this is your problem.</p>
+</code></pre>
+
+<p>Without this, some elements of the listed products would show the same information as the first product in the loop. If you see an error like <code>Warning: call_user_func_array() expects parameter 1 to be a valid callback, no array or string given</code>, this is your problem.</p>
+
 <p><em>Note:</em> Some users reported issues with the loop context even when using the <code>timber_set_product()</code> helper function. Turns out the default WooCommerce hooks interfere with the output of the aforementioned function.</p>
+
 <p>One way to get around this is by building your own image calls, that means removing WooCommerce’s default hooks and declare your own template for the HTML to show the image:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{%</span> <span style="color:#66d9ef">if</span> post.thumbnail <span style="color:#75715e">%}</span>
-    &lt;img src=&#34;<span style="color:#75715e">{{</span> post.thumbnail.src<span style="color:#f92672">|</span><span style="color:#a6e22e">resize</span><span style="color:#f92672">(</span>shop_thumbnail_image_size<span style="color:#f92672">)</span> <span style="color:#75715e">}}</span>&#34; /&gt;
-<span style="color:#75715e">{%</span> <span style="color:#66d9ef">endif</span> <span style="color:#75715e">%}</span>
-</code></pre></div><p>To remove the default image, add the following to your <code>functions.php</code> file:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
-<span style="color:#a6e22e">remove_action</span>( <span style="color:#e6db74">&#39;woocommerce_before_shop_loop_item_title&#39;</span>, <span style="color:#e6db74">&#39;woocommerce_template_loop_product_thumbnail&#39;</span> );
-</code></pre></div><p>This comes with the added benefit that you’ll have total control over where your image is created in the markup.</p>
+
+<pre><code class="language-twig">{% if post.thumbnail %}
+    &lt;img src=&quot;{{ post.thumbnail.src|resize(shop_thumbnail_image_size) }}&quot; /&gt;
+{% endif %}
+</code></pre>
+
+<p>To remove the default image, add the following to your <code>functions.php</code> file:</p>
+
+<pre><code class="language-php">&lt;?php
+remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail' );
+</code></pre>
+
+<p>This comes with the added benefit that you’ll have total control over where your image is created in the markup.</p>
 
 			</div>
 		</div>

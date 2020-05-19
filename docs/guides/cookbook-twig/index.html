@@ -228,46 +228,78 @@
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
 			<nav id="TableOfContents">
-  <ul>
-    <li><a href="#using-twig-vars-in-live-type">Using Twig vars in live type</a></li>
-    <li><a href="#includes">Includes</a>
-      <ul>
-        <li><a href="#simple-include">Simple include</a></li>
-        <li><a href="#dynamic-includes">Dynamic includes</a></li>
-      </ul>
-    </li>
-  </ul>
+<ul>
+<li>
+<ul>
+<li><a href="#using-twig-vars-in-live-type">Using Twig vars in live type</a></li>
+<li><a href="#includes">Includes</a>
+<ul>
+<li><a href="#simple-include">Simple include</a>
+<ul>
+<li><a href="#notes">Notes</a></li>
+</ul></li>
+<li><a href="#dynamic-includes">Dynamic includes</a></li>
+</ul></li>
+</ul></li>
+</ul>
 </nav>
 		</aside>
 
 		<div class="content-container">
 			<div class="content">
-				<h2 id="using-twig-vars-in-live-type">Using Twig vars in live type</h2>
+				
+
+<h2 id="using-twig-vars-in-live-type">Using Twig vars in live type</h2>
+
 <p>Imagine this scenario, I let the users set this in the Admin panel:</p>
+
 <pre><code>Copyright {{year}} by Upstatement, LLC. All Rights Reserved
-</code></pre><p>But on the site I want it to render as:</p>
+</code></pre>
+
+<p>But on the site I want it to render as:</p>
+
 <pre><code>Copyright 2013 by Upstatement, LLC. All Rights Reserved
-</code></pre><p>Ready? There are a bunch of ways, but my favorite is:</p>
+</code></pre>
+
+<p>Ready? There are a bunch of ways, but my favorite is:</p>
+
 <p><strong>In your PHP file</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
-$data[<span style="color:#e6db74">&#39;year&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">date</span>(<span style="color:#e6db74">&#39;Y&#39;</span>);
-$data[<span style="color:#e6db74">&#39;copyright&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">get_option</span>(<span style="color:#e6db74">&#34;footer_message&#34;</span>); <span style="color:#75715e">//&#34;Copyright {{year}} by Upstatement, LLC. All Rights Reserved&#34;
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">render_twig</span>(<span style="color:#e6db74">&#39;footer.twig&#39;</span>, $data);
-</code></pre></div><p><strong>In your HTML file (let&rsquo;s say <strong>footer.twig</strong>)</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{%</span> <span style="color:#66d9ef">include</span> template_from_string<span style="color:#f92672">(</span>copyright<span style="color:#f92672">)</span> <span style="color:#75715e">%}</span>
-</code></pre></div><h2 id="includes">Includes</h2>
+
+<pre><code class="language-php">&lt;?php
+$data['year'] = date('Y');
+$data['copyright'] = get_option(&quot;footer_message&quot;); //&quot;Copyright {{year}} by Upstatement, LLC. All Rights Reserved&quot;
+render_twig('footer.twig', $data);
+</code></pre>
+
+<p>**In your HTML file (let&rsquo;s say <strong>footer.twig</strong>)**</p>
+
+<pre><code class="language-twig">{% include template_from_string(copyright) %}
+</code></pre>
+
+<h2 id="includes">Includes</h2>
+
 <h3 id="simple-include">Simple include</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{%</span> <span style="color:#66d9ef">include</span> <span style="color:#e6db74">&#34;footer.twig&#34;</span> <span style="color:#75715e">%}</span>
-</code></pre></div><h4 id="notes">Notes</h4>
+
+<pre><code class="language-twig">{% include &quot;footer.twig&quot; %}
+</code></pre>
+
+<h4 id="notes">Notes</h4>
+
 <ul>
 <li>Make sure your file actually exists or you&rsquo;re going to have a bad time</li>
 <li>Timber will look in your <code>child-theme/views</code> directory first, then <code>timber/views</code> directory</li>
 <li>Don&rsquo;t forget the quote marks!</li>
 </ul>
+
 <h3 id="dynamic-includes">Dynamic includes</h3>
+
 <p>Use a variable to determine the included file!</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{%</span> <span style="color:#66d9ef">include</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;blocks/block-&#39;</span><span style="color:#f92672">~</span>block.slug<span style="color:#f92672">~</span><span style="color:#e6db74">&#39;.twig&#39;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;blocks/blog.twig&#39;</span><span style="color:#f92672">]</span> ignore missing <span style="color:#75715e">%}</span>
-</code></pre></div><p><strong>Huh?</strong></p>
+
+<pre><code class="language-twig">{% include ['blocks/block-'~block.slug~'.twig', 'blocks/blog.twig'] ignore missing %}
+</code></pre>
+
+<p><strong>Huh?</strong></p>
+
 <ul>
 <li>You&rsquo;re telling Twig to include an array of files</li>
 <li>Same rules as above</li>

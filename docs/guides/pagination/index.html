@@ -228,72 +228,94 @@
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
 			<nav id="TableOfContents">
-  <ul>
-    <li><a href="#default-pagination">Default pagination</a></li>
-    <li><a href="#what-if-im-not-using-the-default-query">What if I&rsquo;m not using the default query?</a></li>
-    <li><a href="#pagination-with-pre_get_posts">Pagination with pre_get_posts</a></li>
-  </ul>
+<ul>
+<li>
+<ul>
+<li><a href="#default-pagination">Default pagination</a></li>
+<li><a href="#what-if-i-m-not-using-the-default-query">What if I&rsquo;m not using the default query?</a></li>
+<li><a href="#pagination-with-pre-get-posts">Pagination with pre_get_posts</a></li>
+</ul></li>
+</ul>
 </nav>
 		</aside>
 
 		<div class="content-container">
 			<div class="content">
-				<p>Do you like pagination? Stupid question, of course you do. Well, here&rsquo;s how you do it.</p>
+				
+
+<p>Do you like pagination? Stupid question, of course you do. Well, here&rsquo;s how you do it.</p>
+
 <h2 id="default-pagination">Default pagination</h2>
+
 <p>This will only work in a php file with an active query (like <code>archive.php</code> or <code>home.php</code>):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">	<span style="color:#75715e">&lt;?php</span>
-	$context <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">context</span>();
-	$context[<span style="color:#e6db74">&#39;posts&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Timber\PostQuery</span>();
-	<span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">render</span>(<span style="color:#e6db74">&#39;archive.twig&#39;</span>, $context);
-</code></pre></div><p>You can then markup the output like so  (of course, the exact markup is up to YOU):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;div class=&#34;tool-pagination&#34;&gt;
-	<span style="color:#75715e">{%</span> <span style="color:#66d9ef">if</span> posts.pagination.prev <span style="color:#75715e">%}</span>
-		&lt;a href=&#34;<span style="color:#75715e">{{</span>posts.pagination.prev.link<span style="color:#75715e">}}</span>&#34; class=&#34;prev <span style="color:#75715e">{{</span>posts.pagination.prev.link<span style="color:#f92672">|</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;invisible&#39;</span><span style="color:#75715e">}}</span>&#34;&gt;Prev&lt;/a&gt;
-	<span style="color:#75715e">{%</span> <span style="color:#66d9ef">endif</span> <span style="color:#75715e">%}</span>
-	&lt;ul class=&#34;pages&#34;&gt;
-		<span style="color:#75715e">{%</span> <span style="color:#66d9ef">for</span> page <span style="color:#66d9ef">in</span> posts.pagination.pages <span style="color:#75715e">%}</span>
+
+<pre><code class="language-php">	&lt;?php
+	$context = Timber::context();
+	$context['posts'] = new Timber\PostQuery();
+	Timber::render('archive.twig', $context);
+</code></pre>
+
+<p>You can then markup the output like so  (of course, the exact markup is up to YOU):</p>
+
+<pre><code class="language-twig">&lt;div class=&quot;tool-pagination&quot;&gt;
+	{% if posts.pagination.prev %}
+		&lt;a href=&quot;{{posts.pagination.prev.link}}&quot; class=&quot;prev {{posts.pagination.prev.link|length ? '' : 'invisible'}}&quot;&gt;Prev&lt;/a&gt;
+	{% endif %}
+	&lt;ul class=&quot;pages&quot;&gt;
+		{% for page in posts.pagination.pages %}
 			&lt;li&gt;
-				<span style="color:#75715e">{%</span> <span style="color:#66d9ef">if</span> page.link <span style="color:#75715e">%}</span>
-					&lt;a href=&#34;<span style="color:#75715e">{{</span>page.link<span style="color:#75715e">}}</span>&#34; class=&#34;<span style="color:#75715e">{{</span>page.class<span style="color:#75715e">}}</span>&#34;&gt;<span style="color:#75715e">{{</span>page.title<span style="color:#75715e">}}</span>&lt;/a&gt;
-				<span style="color:#75715e">{%</span> <span style="color:#66d9ef">else</span> <span style="color:#75715e">%}</span>
-					&lt;span class=&#34;<span style="color:#75715e">{{</span>page.class<span style="color:#75715e">}}</span>&#34;&gt;<span style="color:#75715e">{{</span>page.title<span style="color:#75715e">}}</span>&lt;/span&gt;
-				<span style="color:#75715e">{%</span> <span style="color:#66d9ef">endif</span> <span style="color:#75715e">%}</span>
+				{% if page.link %}
+					&lt;a href=&quot;{{page.link}}&quot; class=&quot;{{page.class}}&quot;&gt;{{page.title}}&lt;/a&gt;
+				{% else %}
+					&lt;span class=&quot;{{page.class}}&quot;&gt;{{page.title}}&lt;/span&gt;
+				{% endif %}
 			&lt;/li&gt;
-		<span style="color:#75715e">{%</span> <span style="color:#66d9ef">endfor</span> <span style="color:#75715e">%}</span>
+		{% endfor %}
 	&lt;/ul&gt;
-	<span style="color:#75715e">{%</span> <span style="color:#66d9ef">if</span> posts.pagination.next <span style="color:#75715e">%}</span>
-		&lt;a href=&#34;<span style="color:#75715e">{{</span>posts.pagination.next.link<span style="color:#75715e">}}</span>&#34; class=&#34;next <span style="color:#75715e">{{</span>posts.pagination.next.link<span style="color:#f92672">|</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;invisible&#39;</span><span style="color:#75715e">}}</span>&#34;&gt;Next&lt;/a&gt;
-	<span style="color:#75715e">{%</span> <span style="color:#66d9ef">endif</span> <span style="color:#75715e">%}</span>
+	{% if posts.pagination.next %}
+		&lt;a href=&quot;{{posts.pagination.next.link}}&quot; class=&quot;next {{posts.pagination.next.link|length ? '' : 'invisible'}}&quot;&gt;Next&lt;/a&gt;
+	{% endif %}
 &lt;/div&gt;
-</code></pre></div><h2 id="what-if-im-not-using-the-default-query">What if I&rsquo;m not using the default query?</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">	<span style="color:#75715e">&lt;?php</span>
-	<span style="color:#66d9ef">global</span> $paged;
-	<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">isset</span>($paged) <span style="color:#f92672">||</span> <span style="color:#f92672">!</span>$paged){
-		$paged <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</code></pre>
+
+<h2 id="what-if-i-m-not-using-the-default-query">What if I&rsquo;m not using the default query?</h2>
+
+<pre><code class="language-php">	&lt;?php
+	global $paged;
+	if (!isset($paged) || !$paged){
+		$paged = 1;
 	}
-	$context <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">context</span>();
-	$args <span style="color:#f92672">=</span> <span style="color:#66d9ef">array</span>(
-		<span style="color:#e6db74">&#39;post_type&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;event&#39;</span>,
-		<span style="color:#e6db74">&#39;posts_per_page&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#ae81ff">5</span>,
-		<span style="color:#e6db74">&#39;paged&#39;</span> <span style="color:#f92672">=&gt;</span> $paged
+	$context = Timber::context();
+	$args = array(
+		'post_type' =&gt; 'event',
+		'posts_per_page' =&gt; 5,
+		'paged' =&gt; $paged
 	);
-	$context[<span style="color:#e6db74">&#39;posts&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Timber\PostQuery</span>($args);
-	<span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">render</span>(<span style="color:#e6db74">&#39;page-events.twig&#39;</span>, $context);
-</code></pre></div><h2 id="pagination-with-pre_get_posts">Pagination with pre_get_posts</h2>
+	$context['posts'] = new Timber\PostQuery($args);
+	Timber::render('page-events.twig', $context);
+</code></pre>
+
+<h2 id="pagination-with-pre-get-posts">Pagination with pre_get_posts</h2>
+
 <p>Custom <code>query_posts</code> sometimes shows 404 on example.com/page/2. In that case you can also use <code>pre_get_posts</code> in your functions.php file:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">	<span style="color:#75715e">&lt;?php</span>
-	<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">my_home_query</span>( $query ) {
-	  <span style="color:#66d9ef">if</span> ( $query<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">is_main_query</span>() <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span><span style="color:#a6e22e">is_admin</span>() ) {
-		$query<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">set</span>( <span style="color:#e6db74">&#39;post_type&#39;</span>, <span style="color:#66d9ef">array</span>( <span style="color:#e6db74">&#39;movie&#39;</span>, <span style="color:#e6db74">&#39;post&#39;</span> ));
+
+<pre><code class="language-php">	&lt;?php
+	function my_home_query( $query ) {
+	  if ( $query-&gt;is_main_query() &amp;&amp; !is_admin() ) {
+		$query-&gt;set( 'post_type', array( 'movie', 'post' ));
 	  }
 	}
-	<span style="color:#a6e22e">add_action</span>( <span style="color:#e6db74">&#39;pre_get_posts&#39;</span>, <span style="color:#e6db74">&#39;my_home_query&#39;</span> );
-</code></pre></div><p>In your archive.php or home.php template:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">	<span style="color:#75715e">&lt;?php</span>
-	$context <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">context</span>();
-	$context[<span style="color:#e6db74">&#39;posts&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Timber\PostQuery</span>();
-	<span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">render</span>(<span style="color:#e6db74">&#39;archive.twig&#39;</span>, $context);
-</code></pre></div>
+	add_action( 'pre_get_posts', 'my_home_query' );
+</code></pre>
+
+<p>In your archive.php or home.php template:</p>
+
+<pre><code class="language-php">	&lt;?php
+	$context = Timber::context();
+	$context['posts'] = new Timber\PostQuery();
+	Timber::render('archive.twig', $context);
+</code></pre>
+
 			</div>
 		</div>
 	</article>

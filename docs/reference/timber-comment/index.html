@@ -228,51 +228,64 @@
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
 			<nav id="TableOfContents">
-  <ul>
-    <li><a href="#overview">Overview</a>
-      <ul>
-        <li><a href="#methods">Methods</a></li>
-      </ul>
-    </li>
-    <li><a href="#class-methods">Class Methods</a>
-      <ul>
-        <li><a href="#__construct">__construct</a></li>
-        <li><a href="#__tostring">__toString</a></li>
-        <li><a href="#add_child">add_child</a></li>
-        <li><a href="#approved">approved</a></li>
-        <li><a href="#author">author</a></li>
-        <li><a href="#avatar">avatar</a></li>
-        <li><a href="#children">children</a></li>
-        <li><a href="#content">content</a></li>
-        <li><a href="#date">date</a></li>
-        <li><a href="#depth">depth</a></li>
-        <li><a href="#is_child">is_child</a></li>
-        <li><a href="#meta">meta</a></li>
-        <li><a href="#reply_link">reply_link</a></li>
-        <li><a href="#time">time</a></li>
-        <li><a href="#update_depth">update_depth</a></li>
-      </ul>
-    </li>
-  </ul>
+<ul>
+<li>
+<ul>
+<li><a href="#overview">Overview</a>
+<ul>
+<li><a href="#methods">Methods</a></li>
+</ul></li>
+<li><a href="#class-methods">Class Methods</a>
+<ul>
+<li><a href="#construct">__construct</a></li>
+<li><a href="#tostring">__toString</a></li>
+<li><a href="#add-child">add_child</a></li>
+<li><a href="#approved">approved</a></li>
+<li><a href="#author">author</a></li>
+<li><a href="#avatar">avatar</a></li>
+<li><a href="#children">children</a></li>
+<li><a href="#content">content</a></li>
+<li><a href="#date">date</a></li>
+<li><a href="#depth">depth</a></li>
+<li><a href="#is-child">is_child</a></li>
+<li><a href="#meta">meta</a></li>
+<li><a href="#reply-link">reply_link</a></li>
+<li><a href="#time">time</a></li>
+<li><a href="#update-depth">update_depth</a></li>
+</ul></li>
+</ul></li>
+</ul>
 </nav>
 		</aside>
 
 		<div class="content-container">
 			<div class="content">
 				<p>The Timber\Comment class is used to view the output of comments. 99% of the time this will be in the context of the comments on a post. However you can also fetch a comment directly using its comment ID.</p>
+
 <p><strong>PHP</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
-$comment <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Timber\Comment</span>($comment_id);
-$context[<span style="color:#e6db74">&#39;comment_of_the_day&#39;</span>] <span style="color:#f92672">=</span> $comment;
-<span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">render</span>(<span style="color:#e6db74">&#39;index.twig&#39;</span>, $context);
-</code></pre></div><p><strong>Twig</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;p class=&#34;comment&#34;&gt;<span style="color:#75715e">{{</span>comment_of_the_day.content<span style="color:#75715e">}}</span>&lt;/p&gt;
-&lt;p class=&#34;comment-attribution&#34;&gt;- <span style="color:#75715e">{{</span>comment.author.name<span style="color:#75715e">}}</span>&lt;/p&gt;
-</code></pre></div><p><strong>HTML</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;comment&#34;</span>&gt;But, O Sarah! If the dead can come back to this earth and flit unseen around those they loved, I shall always be near you; in the garish day and in the darkest night -- amidst your happiest scenes and gloomiest hours - always, always; and if there be a soft breeze upon your cheek, it shall be my breath; or the cool air fans your throbbing temple, it shall be my spirit passing by.&lt;/<span style="color:#f92672">p</span>&gt;
-&lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;comment-attribution&#34;</span>&gt;- Sullivan Ballou&lt;/<span style="color:#f92672">p</span>&gt;
-</code></pre></div><h2 id="overview">Overview</h2>
+
+<pre><code class="language-php">&lt;?php
+$comment = new Timber\Comment($comment_id);
+$context['comment_of_the_day'] = $comment;
+Timber::render('index.twig', $context);
+</code></pre>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">&lt;p class=&quot;comment&quot;&gt;{{comment_of_the_day.content}}&lt;/p&gt;
+&lt;p class=&quot;comment-attribution&quot;&gt;- {{comment.author.name}}&lt;/p&gt;
+</code></pre>
+
+<p><strong>HTML</strong></p>
+
+<pre><code class="language-html">&lt;p class=&quot;comment&quot;&gt;But, O Sarah! If the dead can come back to this earth and flit unseen around those they loved, I shall always be near you; in the garish day and in the darkest night -- amidst your happiest scenes and gloomiest hours - always, always; and if there be a soft breeze upon your cheek, it shall be my breath; or the cool air fans your throbbing temple, it shall be my spirit passing by.&lt;/p&gt;
+&lt;p class=&quot;comment-attribution&quot;&gt;- Sullivan Ballou&lt;/p&gt;
+</code></pre>
+
+<h2 id="overview">Overview</h2>
+
 <h3 id="methods">Methods</h3>
+
 <table>
 <thead>
 <tr>
@@ -281,47 +294,56 @@ $context[<span style="color:#e6db74">&#39;comment_of_the_day&#39;</span>] <span 
 <th>Returns/Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td><a href="#approved">approved</a></td>
 <td><code>boolean</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td><a href="#author">author</a></td>
 <td><code>\Timber\User</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td><a href="#avatar">avatar</a></td>
 <td><code>bool/mixed/string</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td><a href="#children">children</a></td>
 <td><code>array</code></td>
 <td>Comments</td>
 </tr>
+
 <tr>
 <td><a href="#content">content</a></td>
 <td><code>string</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td><a href="#date">date</a></td>
 <td><code>string</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td><a href="#is_child">is_child</a></td>
 <td><code>bool</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td><a href="#reply_link">reply_link</a></td>
 <td><code>string</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td><a href="#time">time</a></td>
 <td><code>string</code></td>
@@ -329,11 +351,17 @@ $context[<span style="color:#e6db74">&#39;comment_of_the_day&#39;</span>] <span 
 </tr>
 </tbody>
 </table>
-<hr>
+
+<hr />
+
 <h2 id="class-methods">Class Methods</h2>
-<h3 id="__construct">__construct</h3>
+
+<h3 id="construct">__construct</h3>
+
 <p><code>__construct( int $cid )</code></p>
+
 <p><strong>returns:</strong> <code>void</code></p>
+
 <table>
 <thead>
 <tr>
@@ -342,6 +370,7 @@ $context[<span style="color:#e6db74">&#39;comment_of_the_day&#39;</span>] <span 
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$cid</td>
@@ -350,14 +379,23 @@ $context[<span style="color:#e6db74">&#39;comment_of_the_day&#39;</span>] <span 
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="__tostring">__toString</h3>
+
+<hr />
+
+<h3 id="tostring">__toString</h3>
+
 <p><code>__toString( )</code></p>
+
 <p><strong>returns:</strong> <code>void</code></p>
-<hr>
-<h3 id="add_child">add_child</h3>
+
+<hr />
+
+<h3 id="add-child">add_child</h3>
+
 <p><code>add_child( \Timber\Comment $child_comment )</code></p>
+
 <p><strong>returns:</strong> <code>void</code></p>
+
 <table>
 <thead>
 <tr>
@@ -366,6 +404,7 @@ $context[<span style="color:#e6db74">&#39;comment_of_the_day&#39;</span>] <span 
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$child_comment</td>
@@ -374,39 +413,62 @@ $context[<span style="color:#e6db74">&#39;comment_of_the_day&#39;</span>] <span 
 </tr>
 </tbody>
 </table>
-<hr>
+
+<hr />
+
 <h3 id="approved">approved</h3>
+
 <p><code>approved( )</code></p>
+
 <p><strong>returns:</strong> <code>boolean</code></p>
+
 <p><strong>Twig</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{%</span> <span style="color:#66d9ef">if</span> comment.approved <span style="color:#75715e">%}</span>
+
+<pre><code class="language-twig">{% if comment.approved %}
 	Your comment is good
-<span style="color:#75715e">{%</span> <span style="color:#66d9ef">else</span> <span style="color:#75715e">%}</span>
+{% else %}
 	Do you kiss your mother with that mouth?
-<span style="color:#75715e">{%</span> <span style="color:#66d9ef">endif</span> <span style="color:#75715e">%}</span>
-</code></pre></div><hr>
+{% endif %}
+</code></pre>
+
+<hr />
+
 <h3 id="author">author</h3>
+
 <p><code>author( )</code></p>
+
 <p><strong>returns:</strong> <code>\Timber\User</code></p>
+
 <p><strong>Twig</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;h3&gt;Comments by...&lt;/h3&gt;
+
+<pre><code class="language-twig">&lt;h3&gt;Comments by...&lt;/h3&gt;
 &lt;ol&gt;
-<span style="color:#75715e">{%</span> <span style="color:#66d9ef">for</span> comment <span style="color:#66d9ef">in</span> post.comments <span style="color:#75715e">%}</span>
-    &lt;li&gt;<span style="color:#75715e">{{</span>comment.author.name<span style="color:#75715e">}}</span>, who has the following roles: <span style="color:#75715e">{{</span>comment.author.roles<span style="color:#f92672">|</span><span style="color:#a6e22e">join</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;, &#39;</span><span style="color:#f92672">)</span><span style="color:#75715e">}}</span>&lt;/li&gt;
-<span style="color:#75715e">{%</span> <span style="color:#66d9ef">endfor</span> <span style="color:#75715e">%}</span>
+{% for comment in post.comments %}
+    &lt;li&gt;{{comment.author.name}}, who has the following roles: {{comment.author.roles|join(', ')}}&lt;/li&gt;
+{% endfor %}
 &lt;/ol&gt;
-</code></pre></div><p><strong>HTML</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">h3</span>&gt;Comments by...&lt;/<span style="color:#f92672">h3</span>&gt;
-&lt;<span style="color:#f92672">ol</span>&gt;
- &lt;<span style="color:#f92672">li</span>&gt;Jared Novack, who is a contributor&lt;/<span style="color:#f92672">li</span>&gt;
- &lt;<span style="color:#f92672">li</span>&gt;Katie Ricci, who is a subscriber&lt;/<span style="color:#f92672">li</span>&gt;
- &lt;<span style="color:#f92672">li</span>&gt;Rebecca Pearl, who is a author&lt;/<span style="color:#f92672">li</span>&gt;
-&lt;/<span style="color:#f92672">ol</span>&gt;
-</code></pre></div><hr>
+</code></pre>
+
+<p><strong>HTML</strong></p>
+
+<pre><code class="language-html">&lt;h3&gt;Comments by...&lt;/h3&gt;
+&lt;ol&gt;
+ &lt;li&gt;Jared Novack, who is a contributor&lt;/li&gt;
+ &lt;li&gt;Katie Ricci, who is a subscriber&lt;/li&gt;
+ &lt;li&gt;Rebecca Pearl, who is a author&lt;/li&gt;
+&lt;/ol&gt;
+</code></pre>
+
+<hr />
+
 <h3 id="avatar">avatar</h3>
+
 <p><code>avatar( mixed/int $size=92, string $default=&quot;&quot; )</code></p>
+
 <p><strong>returns:</strong> <code>bool/mixed/string</code></p>
+
 <p>Fetches the Gravatar</p>
+
 <table>
 <thead>
 <tr>
@@ -415,12 +477,14 @@ $context[<span style="color:#e6db74">&#39;comment_of_the_day&#39;</span>] <span 
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$size</td>
 <td><code>mixed/int</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$default</td>
 <td><code>string</code></td>
@@ -428,22 +492,41 @@ $context[<span style="color:#e6db74">&#39;comment_of_the_day&#39;</span>] <span 
 </tr>
 </tbody>
 </table>
+
 <p><strong>Twig</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;img src=&#34;<span style="color:#75715e">{{</span>comment.avatar<span style="color:#f92672">(</span><span style="color:#ae81ff">36</span><span style="color:#f92672">,</span>template_uri<span style="color:#f92672">~</span><span style="color:#e6db74">&#34;/img/dude.jpg&#34;</span><span style="color:#f92672">)</span><span style="color:#75715e">}}</span>&#34; alt=&#34;Image of <span style="color:#75715e">{{</span>comment.author.name<span style="color:#75715e">}}</span>&#34; /&gt;
-</code></pre></div><p><strong>HTML</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://gravatar.com/i/sfsfsdfasdfsfa.jpg&#34;</span> <span style="color:#a6e22e">alt</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Image of Katherine Rich&#34;</span> /&gt;
-</code></pre></div><hr>
+
+<pre><code class="language-twig">&lt;img src=&quot;{{comment.avatar(36,template_uri~&quot;/img/dude.jpg&quot;)}}&quot; alt=&quot;Image of {{comment.author.name}}&quot; /&gt;
+</code></pre>
+
+<p><strong>HTML</strong></p>
+
+<pre><code class="language-html">&lt;img src=&quot;http://gravatar.com/i/sfsfsdfasdfsfa.jpg&quot; alt=&quot;Image of Katherine Rich&quot; /&gt;
+</code></pre>
+
+<hr />
+
 <h3 id="children">children</h3>
+
 <p><code>children( )</code></p>
+
 <p><strong>returns:</strong> <code>array</code> Comments</p>
-<hr>
+
+<hr />
+
 <h3 id="content">content</h3>
+
 <p><code>content( )</code></p>
+
 <p><strong>returns:</strong> <code>string</code></p>
-<hr>
+
+<hr />
+
 <h3 id="date">date</h3>
+
 <p><code>date( string $date_format=&quot;&quot; )</code></p>
+
 <p><strong>returns:</strong> <code>string</code></p>
+
 <table>
 <thead>
 <tr>
@@ -452,6 +535,7 @@ $context[<span style="color:#e6db74">&#39;comment_of_the_day&#39;</span>] <span 
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$date_format</td>
@@ -460,30 +544,49 @@ $context[<span style="color:#e6db74">&#39;comment_of_the_day&#39;</span>] <span 
 </tr>
 </tbody>
 </table>
+
 <p><strong>Twig</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{%</span> <span style="color:#66d9ef">for</span> comment <span style="color:#66d9ef">in</span> post.comments <span style="color:#75715e">%}</span>
-&lt;article class=&#34;comment&#34;&gt;
-  &lt;p class=&#34;date&#34;&gt;Posted on <span style="color:#75715e">{{</span> comment.date <span style="color:#75715e">}}</span>:&lt;/p&gt;
-  &lt;p class=&#34;comment&#34;&gt;<span style="color:#75715e">{{</span> comment.content <span style="color:#75715e">}}</span>&lt;/p&gt;
+
+<pre><code class="language-twig">{% for comment in post.comments %}
+&lt;article class=&quot;comment&quot;&gt;
+  &lt;p class=&quot;date&quot;&gt;Posted on {{ comment.date }}:&lt;/p&gt;
+  &lt;p class=&quot;comment&quot;&gt;{{ comment.content }}&lt;/p&gt;
 &lt;/article&gt;
-<span style="color:#75715e">{%</span> <span style="color:#66d9ef">endfor</span> <span style="color:#75715e">%}</span>
-</code></pre></div><p><strong>HTML</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">article</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;comment&#34;</span>&gt;
-  &lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;date&#34;</span>&gt;Posted on September 28, 2015:&lt;/<span style="color:#f92672">p</span>&gt;
-  &lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;comment&#34;</span>&gt;Happy Birthday!&lt;/<span style="color:#f92672">p</span>&gt;
-&lt;/<span style="color:#f92672">article</span>&gt;
-</code></pre></div><hr>
+{% endfor %}
+</code></pre>
+
+<p><strong>HTML</strong></p>
+
+<pre><code class="language-html">&lt;article class=&quot;comment&quot;&gt;
+  &lt;p class=&quot;date&quot;&gt;Posted on September 28, 2015:&lt;/p&gt;
+  &lt;p class=&quot;comment&quot;&gt;Happy Birthday!&lt;/p&gt;
+&lt;/article&gt;
+</code></pre>
+
+<hr />
+
 <h3 id="depth">depth</h3>
+
 <p><code>depth( )</code></p>
+
 <p><strong>returns:</strong> <code>void</code></p>
-<hr>
-<h3 id="is_child">is_child</h3>
+
+<hr />
+
+<h3 id="is-child">is_child</h3>
+
 <p><code>is_child( )</code></p>
+
 <p><strong>returns:</strong> <code>bool</code></p>
-<hr>
+
+<hr />
+
 <h3 id="meta">meta</h3>
+
 <p><code>meta( string $field_name )</code></p>
+
 <p><strong>returns:</strong> <code>mixed</code></p>
+
 <table>
 <thead>
 <tr>
@@ -492,6 +595,7 @@ $context[<span style="color:#e6db74">&#39;comment_of_the_day&#39;</span>] <span 
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$field_name</td>
@@ -500,12 +604,18 @@ $context[<span style="color:#e6db74">&#39;comment_of_the_day&#39;</span>] <span 
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="reply_link">reply_link</h3>
+
+<hr />
+
+<h3 id="reply-link">reply_link</h3>
+
 <p><code>reply_link( string $reply_text=&quot;Reply&quot; )</code></p>
+
 <p><strong>returns:</strong> <code>string</code></p>
+
 <p>Enqueue the WP threaded comments javascript,
 and fetch the reply link for various comments.</p>
+
 <table>
 <thead>
 <tr>
@@ -514,6 +624,7 @@ and fetch the reply link for various comments.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$reply_text</td>
@@ -522,10 +633,15 @@ and fetch the reply link for various comments.</p>
 </tr>
 </tbody>
 </table>
-<hr>
+
+<hr />
+
 <h3 id="time">time</h3>
+
 <p><code>time( string $time_format=&quot;&quot; )</code></p>
+
 <p><strong>returns:</strong> <code>string</code></p>
+
 <table>
 <thead>
 <tr>
@@ -534,6 +650,7 @@ and fetch the reply link for various comments.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$time_format</td>
@@ -542,22 +659,33 @@ and fetch the reply link for various comments.</p>
 </tr>
 </tbody>
 </table>
+
 <p><strong>Twig</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{%</span> <span style="color:#66d9ef">for</span> comment <span style="color:#66d9ef">in</span> post.comments <span style="color:#75715e">%}</span>
-&lt;article class=&#34;comment&#34;&gt;
-  &lt;p class=&#34;date&#34;&gt;Posted on <span style="color:#75715e">{{</span> comment.date <span style="color:#75715e">}}</span> at <span style="color:#75715e">{{</span>comment.time<span style="color:#75715e">}}</span>:&lt;/p&gt;
-  &lt;p class=&#34;comment&#34;&gt;<span style="color:#75715e">{{</span> comment.content <span style="color:#75715e">}}</span>&lt;/p&gt;
+
+<pre><code class="language-twig">{% for comment in post.comments %}
+&lt;article class=&quot;comment&quot;&gt;
+  &lt;p class=&quot;date&quot;&gt;Posted on {{ comment.date }} at {{comment.time}}:&lt;/p&gt;
+  &lt;p class=&quot;comment&quot;&gt;{{ comment.content }}&lt;/p&gt;
 &lt;/article&gt;
-<span style="color:#75715e">{%</span> <span style="color:#66d9ef">endfor</span> <span style="color:#75715e">%}</span>
-</code></pre></div><p><strong>HTML</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">article</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;comment&#34;</span>&gt;
-  &lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;date&#34;</span>&gt;Posted on September 28, 2015 at 12:45 am:&lt;/<span style="color:#f92672">p</span>&gt;
-  &lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;comment&#34;</span>&gt;Happy Birthday!&lt;/<span style="color:#f92672">p</span>&gt;
-&lt;/<span style="color:#f92672">article</span>&gt;
-</code></pre></div><hr>
-<h3 id="update_depth">update_depth</h3>
+{% endfor %}
+</code></pre>
+
+<p><strong>HTML</strong></p>
+
+<pre><code class="language-html">&lt;article class=&quot;comment&quot;&gt;
+  &lt;p class=&quot;date&quot;&gt;Posted on September 28, 2015 at 12:45 am:&lt;/p&gt;
+  &lt;p class=&quot;comment&quot;&gt;Happy Birthday!&lt;/p&gt;
+&lt;/article&gt;
+</code></pre>
+
+<hr />
+
+<h3 id="update-depth">update_depth</h3>
+
 <p><code>update_depth( int $depth )</code></p>
+
 <p><strong>returns:</strong> <code>void</code></p>
+
 <table>
 <thead>
 <tr>
@@ -566,6 +694,7 @@ and fetch the reply link for various comments.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$depth</td>
@@ -574,8 +703,11 @@ and fetch the reply link for various comments.</p>
 </tr>
 </tbody>
 </table>
-<hr>
+
+<hr />
+
 <p><em>This class extends \Timber\Core</em></p>
+
 <p><em>This class implements \Timber\CoreInterface</em></p>
 			</div>
 		</div>

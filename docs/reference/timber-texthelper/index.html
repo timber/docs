@@ -228,18 +228,20 @@
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
 			<nav id="TableOfContents">
-  <ul>
-    <li><a href="#class-methods">Class Methods</a>
-      <ul>
-        <li><a href="#close_tags">close_tags</a></li>
-        <li><a href="#ends_with">ends_with</a></li>
-        <li><a href="#remove_tags">remove_tags</a></li>
-        <li><a href="#starts_with">starts_with</a></li>
-        <li><a href="#trim_characters">trim_characters</a></li>
-        <li><a href="#trim_words">trim_words</a></li>
-      </ul>
-    </li>
-  </ul>
+<ul>
+<li>
+<ul>
+<li><a href="#class-methods">Class Methods</a>
+<ul>
+<li><a href="#close-tags">close_tags</a></li>
+<li><a href="#ends-with">ends_with</a></li>
+<li><a href="#remove-tags">remove_tags</a></li>
+<li><a href="#starts-with">starts_with</a></li>
+<li><a href="#trim-characters">trim_characters</a></li>
+<li><a href="#trim-words">trim_words</a></li>
+</ul></li>
+</ul></li>
+</ul>
 </nav>
 		</aside>
 
@@ -247,11 +249,17 @@
 			<div class="content">
 				<p>Class provides different text-related functions
 commonly used in WordPress development</p>
-<hr>
+
+<hr />
+
 <h2 id="class-methods">Class Methods</h2>
-<h3 id="close_tags">close_tags</h3>
+
+<h3 id="close-tags">close_tags</h3>
+
 <p><code>close_tags( string $html )</code></p>
+
 <p><strong>returns:</strong> <code>string</code></p>
+
 <table>
 <thead>
 <tr>
@@ -260,6 +268,7 @@ commonly used in WordPress development</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$html</td>
@@ -268,12 +277,19 @@ commonly used in WordPress development</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="ends_with">ends_with</h3>
+
+<hr />
+
+<h3 id="ends-with">ends_with</h3>
+
 <p><code>ends_with( string $haystack, string $needle )</code></p>
+
 <p><strong>returns:</strong> <code>boolean</code></p>
+
 <p>Does the string in question (haystack)</p>
+
 <p>end with the substring in question (needle)?</p>
+
 <table>
 <thead>
 <tr>
@@ -282,12 +298,14 @@ commonly used in WordPress development</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$haystack</td>
 <td><code>string</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$needle</td>
 <td><code>string</code></td>
@@ -295,10 +313,15 @@ commonly used in WordPress development</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="remove_tags">remove_tags</h3>
+
+<hr />
+
+<h3 id="remove-tags">remove_tags</h3>
+
 <p><code>remove_tags( mixed $string, array $tags=array() )</code></p>
+
 <p><strong>returns:</strong> <code>void</code></p>
+
 <table>
 <thead>
 <tr>
@@ -307,12 +330,14 @@ commonly used in WordPress development</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$string</td>
 <td><code>mixed</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$tags</td>
 <td><code>array</code></td>
@@ -320,10 +345,15 @@ commonly used in WordPress development</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="starts_with">starts_with</h3>
+
+<hr />
+
+<h3 id="starts-with">starts_with</h3>
+
 <p><code>starts_with( string $haystack, string $needle )</code></p>
+
 <p><strong>returns:</strong> <code>boolean</code></p>
+
 <table>
 <thead>
 <tr>
@@ -332,12 +362,14 @@ commonly used in WordPress development</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$haystack</td>
 <td><code>string</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$needle</td>
 <td><code>string</code></td>
@@ -345,14 +377,23 @@ commonly used in WordPress development</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="trim_characters">trim_characters</h3>
+
+<hr />
+
+<h3 id="trim-characters">trim_characters</h3>
+
 <p><code>trim_characters( string $text, mixed/int $num_chars=60, string $more=&quot;&amp;hellip;&quot; )</code></p>
+
 <p><strong>returns:</strong> <code>string</code> trimmed text.</p>
+
 <p>Trims text to a certain number of characters.</p>
+
 <p>This function can be useful for excerpt of the post</p>
+
 <p>As opposed to wp_trim_words trims characters that makes text to</p>
+
 <p>take the same amount of space in each post for example</p>
+
 <table>
 <thead>
 <tr>
@@ -361,28 +402,36 @@ commonly used in WordPress development</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$text</td>
 <td><code>string</code></td>
 <td>Text to trim.</td>
 </tr>
+
 <tr>
 <td>$num_chars</td>
 <td><code>mixed/int</code></td>
 <td>Number of characters. Default is 60.</td>
 </tr>
+
 <tr>
 <td>$more</td>
 <td><code>string</code></td>
-<td>What to append if $text needs to be trimmed. Defaults to &lsquo;…'.</td>
+<td>What to append if $text needs to be trimmed. Defaults to &lsquo;&hellip;&rsquo;.</td>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="trim_words">trim_words</h3>
+
+<hr />
+
+<h3 id="trim-words">trim_words</h3>
+
 <p><code>trim_words( string $text, mixed/int $num_words=55, mixed/string/null/false $more=null, string $allowed_tags=&quot;p a span b i br blockquote&quot; )</code></p>
+
 <p><strong>returns:</strong> <code>string</code></p>
+
 <table>
 <thead>
 <tr>
@@ -391,22 +440,26 @@ commonly used in WordPress development</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$text</td>
 <td><code>string</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$num_words</td>
 <td><code>mixed/int</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$more</td>
 <td><code>mixed/string/null/false</code></td>
-<td>text to appear in &ldquo;Read more&hellip;&quot;. Null to use default, false to hide</td>
+<td>text to appear in &ldquo;Read more&hellip;&rdquo;. Null to use default, false to hide</td>
 </tr>
+
 <tr>
 <td>$allowed_tags</td>
 <td><code>string</code></td>
@@ -414,7 +467,8 @@ commonly used in WordPress development</p>
 </tr>
 </tbody>
 </table>
-<hr>
+
+<hr />
 			</div>
 		</div>
 	</article>

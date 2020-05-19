@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Timber Docs</title>
@@ -27,7 +27,7 @@ While data saved by ACF is available via {{ post.my_acf_field }} you will often 
       
       <guid>https://timber.github.io/docs/guides/cheatsheet/</guid>
       <description>Here are some helpful conversions for functions you’re probably well familiar with in WordPress and their Timber equivalents. These assume a PHP file with the Timber::context(); function at the top. For example:
-$context = Timber::context(); $context[&amp;#39;post&amp;#39;] = new Timber\Post(); Timber::render( &amp;#39;single.twig&amp;#39;, $context ); Blog Info  blog_info(&#39;charset&#39;) =&amp;gt; {{ site.charset }} blog_info(&#39;description&#39;) =&amp;gt; {{ site.description }} blog_info(&#39;sitename&#39;) =&amp;gt; {{ site.name }} blog_info(&#39;url&#39;) =&amp;gt; {{ site.url }}  Body Class  implode(&#39; &#39;, get_body_class()) =&amp;gt; &amp;lt;body class=&amp;quot;{{ body_class }}&amp;quot;&amp;gt;  Post  the_content() =&amp;gt; {{ post.</description>
+$context = Timber::context(); $context[&#39;post&#39;] = new Timber\Post(); Timber::render( &#39;single.twig&#39;, $context );  Blog Info  blog_info(&#39;charset&#39;) =&amp;gt; {{ site.charset }} blog_info(&#39;description&#39;) =&amp;gt; {{ site.description }} blog_info(&#39;sitename&#39;) =&amp;gt; {{ site.name }} blog_info(&#39;url&#39;) =&amp;gt; {{ site.url }}  Body Class  implode(&#39; &#39;, get_body_class()) =&amp;gt; &amp;lt;body class=&amp;quot;{{ body_class }}&amp;quot;&amp;gt;  Post  the_content() =&amp;gt; {{ post.</description>
     </item>
     
     <item>
@@ -38,7 +38,7 @@ $context = Timber::context(); $context[&amp;#39;post&amp;#39;] = new Timber\Post
       <guid>https://timber.github.io/docs/guides/comments/</guid>
       <description>Simple Comment Implementation Looking to do non-threaded comments? This pattern can be expanded upon. If you&amp;rsquo;re looking to customize the HTML of the comment form, you can get the necessary HTML from the starter theme&amp;rsquo;s comment-form.twig file.
 single.twig
-&amp;lt;section class=&amp;#34;post-{{ post.id }}&amp;#34;&amp;gt; &amp;lt;h1&amp;gt;{{ post.title }}&amp;lt;/h1&amp;gt; &amp;lt;div class=&amp;#34;content&amp;#34;&amp;gt; {{ post.content }} &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;comments&amp;#34;&amp;gt; {% for comment in post.comments %} &amp;lt;article class=&amp;#34;comment&amp;#34; id=&amp;#34;comment-{{ comment.id }}&amp;#34;&amp;gt; &amp;lt;h5 class=&amp;#34;comment-author&amp;#34;&amp;gt;{{ comment.author.name }} says&amp;lt;/h5&amp;gt; {{ comment.</description>
+&amp;lt;section class=&amp;quot;post-{{ post.id }}&amp;quot;&amp;gt; &amp;lt;h1&amp;gt;{{ post.title }}&amp;lt;/h1&amp;gt; &amp;lt;div class=&amp;quot;content&amp;quot;&amp;gt; {{ post.content }} &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;comments&amp;quot;&amp;gt; {% for comment in post.comments %} &amp;lt;article class=&amp;quot;comment&amp;quot; id=&amp;quot;comment-{{ comment.id }}&amp;quot;&amp;gt; &amp;lt;h5 class=&amp;quot;comment-author&amp;quot;&amp;gt;{{ comment.author.name }} says&amp;lt;/h5&amp;gt; {{ comment.</description>
     </item>
     
     <item>
@@ -61,11 +61,11 @@ Custom Twig File If you&amp;rsquo;re using the Timber Starter Theme you can
       <guid>https://timber.github.io/docs/guides/debugging/</guid>
       <description>Enable debugging To use debugging, the constant WP_DEBUG needs to be set to true.
 wp-config.php
-define( &amp;#39;WP_DEBUG&amp;#39;, true ); Using Twig’s native functions Twig includes a dump function that can output the properties of an object.
+define( &#39;WP_DEBUG&#39;, true );  Using Twig’s native functions Twig includes a dump function that can output the properties of an object.
 Twig
-{{ dump(post) }} Which will give you:
+{{ dump(post) }}  Which will give you:
 You can also dump everything sent to your template (all the contents of $context that were passed to the Twig file) via:
-{{ dump() }} This will give you something like:</description>
+{{ dump() }}  This will give you something like:</description>
     </item>
     
     <item>
@@ -75,7 +75,7 @@ You can also dump everything sent to your template (all the contents of $context
       
       <guid>https://timber.github.io/docs/guides/escapers/</guid>
       <description>Universal Escaping By default, Timber does not escape the output of standard tags (i.e. {{ post.field }}). If you want to enable autoescape behavior simply add these lines to functions.php:
-if ( class_exists(&amp;#39;Timber&amp;#39;) ) { Timber::$autoescape = &amp;#39;html&amp;#39;; } General Escapers Twig offers a variety of escapers out of the box. These are intended to escape a string for safe insertion into the final output and there are multiple functions to conform to the strategy dependant on the context.</description>
+if ( class_exists(&#39;Timber&#39;) ) { Timber::$autoescape = &#39;html&#39;; }  General Escapers Twig offers a variety of escapers out of the box. These are intended to escape a string for safe insertion into the final output and there are multiple functions to conform to the strategy dependant on the context.</description>
     </item>
     
     <item>
@@ -98,8 +98,8 @@ An example that extends TimberPost Timber&amp;rsquo;s objects like Timber\Post, 
       <description>General Filters Twig offers a variety of filters to transform text and other information into the desired output. In addition, Timber has added some valuable custom filters for your WP theme:
 excerpt When you need to trim text to a desired length (in words)
 Twig
-&amp;lt;p class=&amp;#34;intro&amp;#34;&amp;gt;{{post.post_content|excerpt(30)}}...&amp;lt;/p&amp;gt; Output
-&amp;lt;p class=&amp;#34;intro&amp;#34;&amp;gt;Steve-O was born in London, England. His mother, Donna Gay (née Wauthier), was Canadian, and his father, Richard Glover, was American. His paternal grandfather was English and his maternal step-grandfather .</description>
+&amp;lt;p class=&amp;quot;intro&amp;quot;&amp;gt;{{post.post_content|excerpt(30)}}...&amp;lt;/p&amp;gt;  Output
+&amp;lt;p class=&amp;quot;intro&amp;quot;&amp;gt;Steve-O was born in London, England. His mother, Donna Gay (née Wauthier), was Canadian, and his father, Richard Glover, was American.</description>
     </item>
     
     <item>
@@ -111,7 +111,7 @@ Twig
       <description>My theme/plugin has some functions I need! Do I really have to re-write all of them?
 No, you don’t.
 function() You can call all PHP functions through function() in Twig. For example, if you need to call wp_head() and wp_footer(), you’d do it like this:
-{# single.twig #} &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;!-- Add whatever you need in the head, and then...--&amp;gt; {{ function(&amp;#39;wp_head&amp;#39;) }} &amp;lt;/head&amp;gt; &amp;lt;!-- etc... --&amp;gt; &amp;lt;footer&amp;gt; Copyright &amp;amp;copy; {{ &amp;#34;now&amp;#34;|date(&amp;#39;Y&amp;#39;) }} &amp;lt;/footer&amp;gt; {{ function(&amp;#39;wp_footer&amp;#39;) }} &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; You can also use fn(&#39;my_function&#39;) as an alias for function(&#39;my_function&#39;).</description>
+{# single.twig #} &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;!-- Add whatever you need in the head, and then...--&amp;gt; {{ function(&#39;wp_head&#39;) }} &amp;lt;/head&amp;gt; &amp;lt;!-- etc... --&amp;gt; &amp;lt;footer&amp;gt; Copyright &amp;amp;copy; {{ &amp;quot;now&amp;quot;|date(&#39;Y&#39;) }} &amp;lt;/footer&amp;gt; {{ function(&#39;wp_footer&#39;) }} &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  You can also use fn(&#39;my_function&#39;) as an alias for function(&#39;my_function&#39;).</description>
     </item>
     
     <item>
@@ -134,7 +134,7 @@ How to use ACF Blocks with Timber Before you can start using ACF Blocks, you mus
       <description>Timber makes it damn easy to use an image in a tag.
 Automatically, Timber will interpret images attached to a post’s thumbnail field (&amp;ldquo;Featured Image&amp;rdquo; in the admin) and treat them as instances of Timber\Image. Then, in your Twig templates, you can access them via {{ post.thumbnail }}.
 Basic image stuff Again, pretty damn easy:
-&amp;lt;img src=&amp;#34;{{ post.thumbnail.src }}&amp;#34; class=&amp;#34;my-thumb-class&amp;#34; alt=&amp;#34;Image for {{ post.title }}&amp;#34; /&amp;gt; Use a WordPress image size You can use WordPress image sizes (including ones you register with your theme/plugin) by passing the name of the size to src like so:</description>
+&amp;lt;img src=&amp;quot;{{ post.thumbnail.src }}&amp;quot; class=&amp;quot;my-thumb-class&amp;quot; alt=&amp;quot;Image for {{ post.title }}&amp;quot; /&amp;gt;  Use a WordPress image size You can use WordPress image sizes (including ones you register with your theme/plugin) by passing the name of the size to src like so:</description>
     </item>
     
     <item>
@@ -167,8 +167,8 @@ Initializing a menu Timber\Menu can be initialized with different values:</descr
       <guid>https://timber.github.io/docs/guides/pagination/</guid>
       <description>Do you like pagination? Stupid question, of course you do. Well, here&amp;rsquo;s how you do it.
 Default pagination This will only work in a php file with an active query (like archive.php or home.php):
-&amp;lt;?php $context = Timber::context(); $context[&amp;#39;posts&amp;#39;] = new Timber\PostQuery(); Timber::render(&amp;#39;archive.twig&amp;#39;, $context); You can then markup the output like so (of course, the exact markup is up to YOU):
-&amp;lt;div class=&amp;#34;tool-pagination&amp;#34;&amp;gt; {% if posts.pagination.prev %} &amp;lt;a href=&amp;#34;{{posts.pagination.prev.link}}&amp;#34; class=&amp;#34;prev {{posts.</description>
+&amp;lt;?php $context = Timber::context(); $context[&#39;posts&#39;] = new Timber\PostQuery(); Timber::render(&#39;archive.twig&#39;, $context);  You can then markup the output like so (of course, the exact markup is up to YOU):
+&amp;lt;div class=&amp;quot;tool-pagination&amp;quot;&amp;gt; {% if posts.pagination.prev %} &amp;lt;a href=&amp;quot;{{posts.</description>
     </item>
     
     <item>
@@ -190,7 +190,7 @@ Cache Everything You can still use plugins like W3 Total Cache in conjunction wi
       <guid>https://timber.github.io/docs/guides/routing/</guid>
       <description>Among its other special powers, Timber includes modern routing in the Express.js/Ruby on Rails mold, making it easy for you to implement custom pagination — and anything else you might imagine in your wildest dreams of URLs and parameters. OMG so easy!
 Some examples In your functions.php file, this can be called anywhere (don&amp;rsquo;t hook it to init or another action or it might be called too late)
-&amp;lt;?php Routes::map(&amp;#39;blog/:name&amp;#39;, function($params){ $query = &amp;#39;posts_per_page=3&amp;amp;post_type=&amp;#39;.</description>
+&amp;lt;?php Routes::map(&#39;blog/:name&#39;, function($params){ $query = &#39;posts_per_page=3&amp;amp;post_type=&#39;.</description>
     </item>
     
     <item>
@@ -202,7 +202,7 @@ Some examples In your functions.php file, this can be called anywhere (don&amp;r
       <description>Installation Via WordPress.org (easy) You can grab the all-things-included plugin at WordPress.org either through the WordPress site or through the Plugins menu in the backend. Then skip ahead to using the starter theme.
 Via GitHub (for developers) The GitHub version of Timber requires Composer. If you&amp;rsquo;d prefer one-click installation, you should use the WordPress.org version.
 Run the following Composer command from within your theme&amp;rsquo;s root directory:
-composer require timber/timber If you&amp;rsquo;re using the starter theme, a composer.</description>
+composer require timber/timber  If you&amp;rsquo;re using the starter theme, a composer.</description>
     </item>
     
     <item>
@@ -213,7 +213,8 @@ composer require timber/timber If you&amp;rsquo;re using the starter theme, a co
       <guid>https://timber.github.io/docs/guides/sidebars/</guid>
       <description>So you want a sidebar?
 Method 1: PHP file Let&amp;rsquo;s say every page on the site has the same content going into its sidebar. If so, you would: Create a sidebar.php file in your theme directory (so wp-content/themes/mytheme/sidebar.php)
-&amp;lt;?php /* sidebar.php */ $context = array(); $context[&amp;#39;widget&amp;#39;] = my_function_to_get_widget(); $context[&amp;#39;ad&amp;#39;] = my_function_to_get_an_ad(); Timber::render(&amp;#39;sidebar.twig&amp;#39;, $context);  Use that php file within your main php file (home.php, single.php, archive.php, etc):  &amp;lt;?php /* single.</description>
+&amp;lt;?php /* sidebar.php */ $context = array(); $context[&#39;widget&#39;] = my_function_to_get_widget(); $context[&#39;ad&#39;] = my_function_to_get_an_ad(); Timber::render(&#39;sidebar.twig&#39;, $context);   Use that php file within your main php file (home.php, single.php, archive.php, etc):
+&amp;lt;?php /* single.</description>
     </item>
     
     <item>
@@ -223,8 +224,8 @@ Method 1: PHP file Let&amp;rsquo;s say every page on the site has the same conte
       
       <guid>https://timber.github.io/docs/guides/template-locations/</guid>
       <description>You can set your own locations for your twig files with&amp;hellip;
-&amp;lt;?php Timber::$locations = &amp;#39;/Users/jared/Sandbox/templates&amp;#39;; Use the full file path to make sure Timber knows what you&amp;rsquo;re trying to draw from. You can also send an array for multiple locations:
-&amp;lt;?php Timber::$locations = array( &amp;#39;/Users/jared/Sandbox/templates&amp;#39;, &amp;#39;~/Sites/timber-templates/&amp;#39;, ABSPATH.&amp;#39;/wp-content/templates&amp;#39; ); You only need to do this once in your project (in functions.php of your theme). When you call one of the render or compile functions from a PHP file (say single.</description>
+&amp;lt;?php Timber::$locations = &#39;/Users/jared/Sandbox/templates&#39;;  Use the full file path to make sure Timber knows what you&amp;rsquo;re trying to draw from. You can also send an array for multiple locations:
+&amp;lt;?php Timber::$locations = array( &#39;/Users/jared/Sandbox/templates&#39;, &#39;~/Sites/timber-templates/&#39;, ABSPATH.&#39;/wp-content/templates&#39; );  You only need to do this once in your project (in functions.php of your theme). When you call one of the render or compile functions from a PHP file (say single.</description>
     </item>
     
     <item>
@@ -246,9 +247,8 @@ Method 1: PHP file Let&amp;rsquo;s say every page on the site has the same conte
       <guid>https://timber.github.io/docs/guides/cookbook-text/</guid>
       <description>There’s tons of stuff you can do with Twig and Timber filters to make complex transformations easy (and fun).
 Dates Example 1: Bylines Timber does bylines like a boss:
-&amp;lt;p class=&amp;#34;byline&amp;#34;&amp;gt; &amp;lt;span class=&amp;#34;name&amp;#34;&amp;gt;By {{ post.author.name }}&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;#34;date&amp;#34;&amp;gt;{{ post.post_date|date(&amp;#39;F j, Y&amp;#39;) }}&amp;lt;/span&amp;gt; &amp;lt;/p&amp;gt; Renders
-&amp;lt;p class=&amp;#34;byline&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;name&amp;#34;&amp;gt;By Mr. WordPress&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;date&amp;#34;&amp;gt;September 28, 2013&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt; Example 2: Copyright year Nothing is worse than an out-of-date copyright year in the footer. Nothing.
-&amp;lt;footer&amp;gt; &amp;lt;p class=&amp;#34;copyright&amp;#34;&amp;gt;&amp;amp;copy; {{ now|date(&amp;#39;Y&amp;#39;) }} by {{ bloginfo(&amp;#39;name&amp;#39;) }}&amp;lt;/p&amp;gt; &amp;lt;/footer&amp;gt; Renders</description>
+&amp;lt;p class=&amp;quot;byline&amp;quot;&amp;gt; &amp;lt;span class=&amp;quot;name&amp;quot;&amp;gt;By {{ post.author.name }}&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;date&amp;quot;&amp;gt;{{ post.post_date|date(&#39;F j, Y&#39;) }}&amp;lt;/span&amp;gt; &amp;lt;/p&amp;gt;  Renders
+&amp;lt;p class=&amp;quot;byline&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;name&amp;quot;&amp;gt;By Mr. WordPress&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;date&amp;quot;&amp;gt;September 28, 2013&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;  Example 2: Copyright year Nothing is worse than an out-of-date copyright year in the footer. Nothing.</description>
     </item>
     
     <item>
@@ -258,8 +258,8 @@ Dates Example 1: Bylines Timber does bylines like a boss:
       
       <guid>https://timber.github.io/docs/getting-started/theming/</guid>
       <description>Your first Timber project Let’s start with your single post. Find this file:
-wp-content/themes/{timber-starter-theme}/templates/single.twig Brilliant! Open it up.
-{% extends &amp;#34;base.twig&amp;#34; %} {% block content %} &amp;lt;div class=&amp;#34;content-wrapper&amp;#34;&amp;gt; &amp;lt;article class=&amp;#34;post-type-{{ post.post_type }}&amp;#34; id=&amp;#34;post-{{ post.ID }}&amp;#34;&amp;gt; &amp;lt;section class=&amp;#34;article-content&amp;#34;&amp;gt; &amp;lt;h1 class=&amp;#34;article-h1&amp;#34;&amp;gt;{{ post.title }}&amp;lt;/h1&amp;gt; &amp;lt;h2 class=&amp;#34;article-h2&amp;#34;&amp;gt;{{ post.subtitle }}&amp;lt;/h2&amp;gt; &amp;lt;p class=&amp;#34;blog-author&amp;#34;&amp;gt; &amp;lt;span&amp;gt;By&amp;lt;/span&amp;gt; {{ post.author.name }} &amp;lt;span&amp;gt;&amp;amp;bull;&amp;lt;/span&amp;gt; {{ post.post_date|date }} &amp;lt;/p&amp;gt; {{ post.content }} &amp;lt;/section&amp;gt; &amp;lt;/article&amp;gt; &amp;lt;/div&amp;gt; {% endblock %} What did we just do?</description>
+wp-content/themes/{timber-starter-theme}/templates/single.twig  Brilliant! Open it up.
+{% extends &amp;quot;base.twig&amp;quot; %} {% block content %} &amp;lt;div class=&amp;quot;content-wrapper&amp;quot;&amp;gt; &amp;lt;article class=&amp;quot;post-type-{{ post.post_type }}&amp;quot; id=&amp;quot;post-{{ post.ID }}&amp;quot;&amp;gt; &amp;lt;section class=&amp;quot;article-content&amp;quot;&amp;gt; &amp;lt;h1 class=&amp;quot;article-h1&amp;quot;&amp;gt;{{ post.title }}&amp;lt;/h1&amp;gt; &amp;lt;h2 class=&amp;quot;article-h2&amp;quot;&amp;gt;{{ post.subtitle }}&amp;lt;/h2&amp;gt; &amp;lt;p class=&amp;quot;blog-author&amp;quot;&amp;gt; &amp;lt;span&amp;gt;By&amp;lt;/span&amp;gt; {{ post.author.name }} &amp;lt;span&amp;gt;&amp;amp;bull;&amp;lt;/span&amp;gt; {{ post.post_date|date }} &amp;lt;/p&amp;gt; {{ post.content }} &amp;lt;/section&amp;gt; &amp;lt;/article&amp;gt; &amp;lt;/div&amp;gt; {% endblock %}  What did we just do?</description>
     </item>
     
     <item>
@@ -305,19 +305,16 @@ wp-content/themes/{timber-starter-theme}/templates/single.twig Brilliant! Open i
       
       <guid>https://timber.github.io/docs/reference/timber-imagehelper/</guid>
       <description>&lt;p&gt;Implements the Twig image filters:
-&lt;a href=&#34;https://timber.github.io/docs/guides/cookbook-images/#arbitrary-resizing-of-images&#34;&gt;https://timber.github.io/docs/guides/cookbook-images/#arbitrary-resizing-of-images&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;resize&lt;/li&gt;
-&lt;li&gt;retina&lt;/li&gt;
-&lt;li&gt;letterbox&lt;/li&gt;
-&lt;li&gt;tojpg&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Implementation:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;public static functions provide the methods that are called by the filter&lt;/li&gt;
-&lt;li&gt;most of the work is common to all filters (URL analysis, directory gymnastics, file caching, error management) and done by private static functions&lt;/li&gt;
-&lt;li&gt;the specific part (actual image processing) is delegated to dedicated subclasses of TimberImageOperation&lt;/li&gt;
-&lt;/ul&gt;</description>
+&lt;a href=&#34;https://timber.github.io/docs/guides/cookbook-images/#arbitrary-resizing-of-images&#34;&gt;https://timber.github.io/docs/guides/cookbook-images/#arbitrary-resizing-of-images&lt;/a&gt;
+- resize
+- retina
+- letterbox
+- tojpg&lt;/p&gt;
+
+&lt;p&gt;Implementation:
+- public static functions provide the methods that are called by the filter
+- most of the work is common to all filters (URL analysis, directory gymnastics, file caching, error management) and done by private static functions
+- the specific part (actual image processing) is delegated to dedicated subclasses of TimberImageOperation&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -363,10 +360,13 @@ wp-content/themes/{timber-starter-theme}/templates/single.twig Brilliant! Open i
       
       <guid>https://timber.github.io/docs/reference/timber-postpreview/</guid>
       <description>&lt;p&gt;The PostPreview class lets a user modify a post preview/excerpt to their liking.&lt;/p&gt;
+
 &lt;p&gt;It’s designed to be used through the &lt;code&gt;Timber\Post::preview()&lt;/code&gt; method. The public methods of this
 class all return the object itself, which means that this is a &lt;strong&gt;chainable object&lt;/strong&gt;. You can
 change the output of the preview by &lt;strong&gt;adding more methods&lt;/strong&gt;.&lt;/p&gt;
+
 &lt;p&gt;By default, the preview will&lt;/p&gt;
+
 &lt;ul&gt;
 &lt;li&gt;have a length of 50 words, which will be forced, even if a longer excerpt is set on the post.&lt;/li&gt;
 &lt;li&gt;be stripped of all HTML tags.&lt;/li&gt;
@@ -431,6 +431,7 @@ commonly used in WordPress development&lt;/p&gt;</description>
       
       <guid>https://timber.github.io/docs/reference/timber/</guid>
       <description>&lt;p&gt;Timber Class.&lt;/p&gt;
+
 &lt;p&gt;Main class called Timber for this plugin.&lt;/p&gt;</description>
     </item>
     
@@ -459,10 +460,10 @@ commonly used in WordPress development&lt;/p&gt;</description>
       
       <guid>https://timber.github.io/docs/guides/cookbook-twig/</guid>
       <description>Using Twig vars in live type Imagine this scenario, I let the users set this in the Admin panel:
-Copyright {{year}} by Upstatement, LLC. All Rights Reserved But on the site I want it to render as:
-Copyright 2013 by Upstatement, LLC. All Rights Reserved Ready? There are a bunch of ways, but my favorite is:
+Copyright {{year}} by Upstatement, LLC. All Rights Reserved  But on the site I want it to render as:
+Copyright 2013 by Upstatement, LLC. All Rights Reserved  Ready? There are a bunch of ways, but my favorite is:
 In your PHP file
-&amp;lt;?php $data[&amp;#39;year&amp;#39;] = date(&amp;#39;Y&amp;#39;); $data[&amp;#39;copyright&amp;#39;] = get_option(&amp;#34;footer_message&amp;#34;); //&amp;#34;Copyright {{year}} by Upstatement, LLC.</description>
+&amp;lt;?php $data[&#39;year&#39;] = date(&#39;Y&#39;); $data[&#39;copyright&#39;] = get_option(&amp;quot;footer_message&amp;quot;); //&amp;quot;Copyright {{year}} by Upstatement, LLC.</description>
     </item>
     
     <item>
@@ -503,7 +504,7 @@ Option 2: Via Composer (for developers) 1) Navigate to your WordPress plugins di
       
       <guid>https://timber.github.io/docs/guides/woocommerce/</guid>
       <description>Point of entry - main WooCommerce PHP file The first step to get your WooCommerce project integrated with Timber is declaring WooCommerce support in your theme’s functions.php file like so:
-function theme_add_woocommerce_support() { add_theme_support( &amp;#39;woocommerce&amp;#39; ); } add_action( &amp;#39;after_setup_theme&amp;#39;, &amp;#39;theme_add_woocommerce_support&amp;#39; ); For more information about how you can enable or disable features and change settings through theme support, refer to the WooCommerce Theme Developer Handbook.
+function theme_add_woocommerce_support() { add_theme_support( &#39;woocommerce&#39; ); } add_action( &#39;after_setup_theme&#39;, &#39;theme_add_woocommerce_support&#39; );  For more information about how you can enable or disable features and change settings through theme support, refer to the WooCommerce Theme Developer Handbook.
 Once that’s done you can start integrating WooCommerce into your theme by creating a file named woocommerce.</description>
     </item>
     
@@ -515,7 +516,7 @@ Once that’s done you can start integrating WooCommerce into your theme by crea
       <guid>https://timber.github.io/docs/guides/wp-integration/</guid>
       <description>Timber plays nicely with your existing WordPress setup. You can still use other plugins, etc.
 the_content You’re probably used to call the_content() in your theme file. This is good. Before outputting, WordPress will run all the filters and actions that your plugins and themes are using. If you want to get this into your new Timber theme (and you probably do), call it like this:
-&amp;lt;div class=&amp;#34;my-article&amp;#34;&amp;gt; {{ post.content }} &amp;lt;/div&amp;gt; This differs from {{ post.</description>
+&amp;lt;div class=&amp;quot;my-article&amp;quot;&amp;gt; {{ post.content }} &amp;lt;/div&amp;gt;  This differs from {{ post.</description>
     </item>
     
   </channel>

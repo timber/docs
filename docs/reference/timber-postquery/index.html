@@ -228,20 +228,21 @@
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
 			<nav id="TableOfContents">
-  <ul>
-    <li><a href="#overview">Overview</a>
-      <ul>
-        <li><a href="#properties">Properties</a></li>
-      </ul>
-    </li>
-    <li><a href="#class-methods">Class Methods</a>
-      <ul>
-        <li><a href="#__construct">__construct</a></li>
-        <li><a href="#pagination">pagination</a></li>
-        <li><a href="#get_query">get_query</a></li>
-      </ul>
-    </li>
-  </ul>
+<ul>
+<li>
+<ul>
+<li><a href="#overview">Overview</a>
+<ul>
+<li><a href="#properties">Properties</a></li>
+</ul></li>
+<li><a href="#class-methods">Class Methods</a>
+<ul>
+<li><a href="#construct">__construct</a></li>
+<li><a href="#pagination">pagination</a></li>
+<li><a href="#get-query">get_query</a></li>
+</ul></li>
+</ul></li>
+</ul>
 </nav>
 		</aside>
 
@@ -250,8 +251,11 @@
 				<p>A PostQuery allows a user to query for a Collection of WordPress Posts.
 PostCollections are used directly in Twig templates to iterate through and retrieve
 meta information about the collection of posts</p>
+
 <h2 id="overview">Overview</h2>
+
 <h3 id="properties">Properties</h3>
+
 <table>
 <thead>
 <tr>
@@ -260,6 +264,7 @@ meta information about the collection of posts</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>found_posts</td>
@@ -268,11 +273,17 @@ meta information about the collection of posts</p>
 </tr>
 </tbody>
 </table>
-<hr>
+
+<hr />
+
 <h2 id="class-methods">Class Methods</h2>
-<h3 id="__construct">__construct</h3>
+
+<h3 id="construct">__construct</h3>
+
 <p><code>__construct( bool/mixed $query=false, string $post_class=&quot;\Timber\Post&quot; )</code></p>
+
 <p><strong>returns:</strong> <code>void</code></p>
+
 <table>
 <thead>
 <tr>
@@ -281,12 +292,14 @@ meta information about the collection of posts</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$query</td>
 <td><code>bool/mixed</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$post_class</td>
 <td><code>string</code></td>
@@ -294,11 +307,17 @@ meta information about the collection of posts</p>
 </tr>
 </tbody>
 </table>
-<hr>
+
+<hr />
+
 <h3 id="pagination">pagination</h3>
+
 <p><code>pagination( array $prefs=array() )</code></p>
+
 <p><strong>returns:</strong> <code>\Timber\Timber\Pagination</code> object</p>
+
 <p>Set pagination for the collection. Optionally could be used to get pagination with custom preferences.</p>
+
 <table>
 <thead>
 <tr>
@@ -307,6 +326,7 @@ meta information about the collection of posts</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$prefs</td>
@@ -315,12 +335,19 @@ meta information about the collection of posts</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="get_query">get_query</h3>
+
+<hr />
+
+<h3 id="get-query">get_query</h3>
+
 <p><code>get_query( )</code></p>
+
 <p><strong>returns:</strong> <code>mixed</code> the query the user orignally passed to the pagination object</p>
-<hr>
+
+<hr />
+
 <p><em>This class extends \Timber\PostCollection</em></p>
+
 <p><em>This class implements \IteratorAggregate, \Traversable, \ArrayAccess, \Serializable, \Countable</em></p>
 			</div>
 		</div>

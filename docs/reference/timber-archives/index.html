@@ -228,53 +228,66 @@
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
 			<nav id="TableOfContents">
-  <ul>
-    <li><a href="#overview">Overview</a>
-      <ul>
-        <li><a href="#properties">Properties</a></li>
-        <li><a href="#methods">Methods</a></li>
-      </ul>
-    </li>
-    <li><a href="#class-methods">Class Methods</a>
-      <ul>
-        <li><a href="#__construct">__construct</a></li>
-        <li><a href="#get_items">get_items</a></li>
-      </ul>
-    </li>
-  </ul>
+<ul>
+<li>
+<ul>
+<li><a href="#overview">Overview</a>
+<ul>
+<li><a href="#properties">Properties</a></li>
+<li><a href="#methods">Methods</a></li>
+</ul></li>
+<li><a href="#class-methods">Class Methods</a>
+<ul>
+<li><a href="#construct">__construct</a></li>
+<li><a href="#get-items">get_items</a></li>
+</ul></li>
+</ul></li>
+</ul>
 </nav>
 		</aside>
 
 		<div class="content-container">
 			<div class="content">
 				<p>The TimberArchives class is used to generate a menu based on the date archives of your posts. The <a href="http://nieman.harvard.edu/news/">Nieman Foundation News site</a> has an example of how the output can be used in a real site (<a href="https://cloud.githubusercontent.com/assets/1298086/9610076/3cdca596-50a5-11e5-82fd-acb74c09c482.png">screenshot</a>).</p>
+
 <p><strong>PHP</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
-$context[<span style="color:#e6db74">&#39;archives&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TimberArchives</span>( $args );
-</code></pre></div><p><strong>Twig</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;ul&gt;
-<span style="color:#75715e">{%</span> <span style="color:#66d9ef">for</span> item <span style="color:#66d9ef">in</span> archives.items <span style="color:#75715e">%}</span>
-    &lt;li&gt;&lt;a href=&#34;<span style="color:#75715e">{{</span>item.link<span style="color:#75715e">}}</span>&#34;&gt;<span style="color:#75715e">{{</span>item.name<span style="color:#75715e">}}</span>&lt;/a&gt;&lt;/li&gt;
-    <span style="color:#75715e">{%</span> <span style="color:#66d9ef">for</span> child <span style="color:#66d9ef">in</span> item.children <span style="color:#75715e">%}</span>
-        &lt;li class=&#34;child&#34;&gt;&lt;a href=&#34;<span style="color:#75715e">{{</span>child.link<span style="color:#75715e">}}</span>&#34;&gt;<span style="color:#75715e">{{</span>child.name<span style="color:#75715e">}}</span>&lt;/a&gt;&lt;/li&gt;
-    <span style="color:#75715e">{%</span> <span style="color:#66d9ef">endfor</span> <span style="color:#75715e">%}</span>
-<span style="color:#75715e">{%</span> <span style="color:#66d9ef">endfor</span> <span style="color:#75715e">%}</span>
+
+<pre><code class="language-php">&lt;?php
+$context['archives'] = new TimberArchives( $args );
+</code></pre>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">&lt;ul&gt;
+{% for item in archives.items %}
+    &lt;li&gt;&lt;a href=&quot;{{item.link}}&quot;&gt;{{item.name}}&lt;/a&gt;&lt;/li&gt;
+    {% for child in item.children %}
+        &lt;li class=&quot;child&quot;&gt;&lt;a href=&quot;{{child.link}}&quot;&gt;{{child.name}}&lt;/a&gt;&lt;/li&gt;
+    {% endfor %}
+{% endfor %}
 &lt;/ul&gt;
-</code></pre></div><p><strong>HTML</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">ul</span>&gt;
-    &lt;<span style="color:#f92672">li</span>&gt;2015&lt;/<span style="color:#f92672">li</span>&gt;
-    &lt;<span style="color:#f92672">li</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;child&#34;</span>&gt;May&lt;/<span style="color:#f92672">li</span>&gt;
-    &lt;<span style="color:#f92672">li</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;child&#34;</span>&gt;April&lt;/<span style="color:#f92672">li</span>&gt;
-    &lt;<span style="color:#f92672">li</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;child&#34;</span>&gt;March&lt;/<span style="color:#f92672">li</span>&gt;
-    &lt;<span style="color:#f92672">li</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;child&#34;</span>&gt;February&lt;/<span style="color:#f92672">li</span>&gt;
-    &lt;<span style="color:#f92672">li</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;child&#34;</span>&gt;January&lt;/<span style="color:#f92672">li</span>&gt;
-    &lt;<span style="color:#f92672">li</span>&gt;2014&lt;/<span style="color:#f92672">li</span>&gt;
-    &lt;<span style="color:#f92672">li</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;child&#34;</span>&gt;December&lt;/<span style="color:#f92672">li</span>&gt;
-    &lt;<span style="color:#f92672">li</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;child&#34;</span>&gt;November&lt;/<span style="color:#f92672">li</span>&gt;
-    &lt;<span style="color:#f92672">li</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;child&#34;</span>&gt;October&lt;/<span style="color:#f92672">li</span>&gt;
-&lt;/<span style="color:#f92672">ul</span>&gt;
-</code></pre></div><h2 id="overview">Overview</h2>
+</code></pre>
+
+<p><strong>HTML</strong></p>
+
+<pre><code class="language-html">&lt;ul&gt;
+    &lt;li&gt;2015&lt;/li&gt;
+    &lt;li class=&quot;child&quot;&gt;May&lt;/li&gt;
+    &lt;li class=&quot;child&quot;&gt;April&lt;/li&gt;
+    &lt;li class=&quot;child&quot;&gt;March&lt;/li&gt;
+    &lt;li class=&quot;child&quot;&gt;February&lt;/li&gt;
+    &lt;li class=&quot;child&quot;&gt;January&lt;/li&gt;
+    &lt;li&gt;2014&lt;/li&gt;
+    &lt;li class=&quot;child&quot;&gt;December&lt;/li&gt;
+    &lt;li class=&quot;child&quot;&gt;November&lt;/li&gt;
+    &lt;li class=&quot;child&quot;&gt;October&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<h2 id="overview">Overview</h2>
+
 <h3 id="properties">Properties</h3>
+
 <table>
 <thead>
 <tr>
@@ -283,6 +296,7 @@ $context[<span style="color:#e6db74">&#39;archives&#39;</span>] <span style="col
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>items</td>
@@ -291,7 +305,9 @@ $context[<span style="color:#e6db74">&#39;archives&#39;</span>] <span style="col
 </tr>
 </tbody>
 </table>
+
 <h3 id="methods">Methods</h3>
+
 <table>
 <thead>
 <tr>
@@ -300,12 +316,14 @@ $context[<span style="color:#e6db74">&#39;archives&#39;</span>] <span style="col
 <th>Returns/Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td><a href="#__construct">__construct</a></td>
 <td><code>void</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td><a href="#get_items">get_items</a></td>
 <td><code>array/string</code></td>
@@ -313,11 +331,17 @@ $context[<span style="color:#e6db74">&#39;archives&#39;</span>] <span style="col
 </tr>
 </tbody>
 </table>
-<hr>
+
+<hr />
+
 <h2 id="class-methods">Class Methods</h2>
-<h3 id="__construct">__construct</h3>
+
+<h3 id="construct">__construct</h3>
+
 <p><code>__construct( mixed $args=null, string $base=&quot;&quot; )</code></p>
+
 <p><strong>returns:</strong> <code>void</code></p>
+
 <table>
 <thead>
 <tr>
@@ -326,12 +350,14 @@ $context[<span style="color:#e6db74">&#39;archives&#39;</span>] <span style="col
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$args</td>
 <td><code>mixed</code></td>
 <td>array of arguments {</td>
 </tr>
+
 <tr>
 <td>$base</td>
 <td><code>string</code></td>
@@ -339,10 +365,15 @@ $context[<span style="color:#e6db74">&#39;archives&#39;</span>] <span style="col
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="get_items">get_items</h3>
+
+<hr />
+
+<h3 id="get-items">get_items</h3>
+
 <p><code>get_items( mixed/array/string $args=null )</code></p>
+
 <p><strong>returns:</strong> <code>array/string</code></p>
+
 <table>
 <thead>
 <tr>
@@ -351,6 +382,7 @@ $context[<span style="color:#e6db74">&#39;archives&#39;</span>] <span style="col
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$args</td>
@@ -359,7 +391,9 @@ $context[<span style="color:#e6db74">&#39;archives&#39;</span>] <span style="col
 </tr>
 </tbody>
 </table>
-<hr>
+
+<hr />
+
 <p><em>This class extends \Timber\Core</em></p>
 			</div>
 		</div>

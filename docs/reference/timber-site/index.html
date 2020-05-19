@@ -228,44 +228,57 @@
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
 			<nav id="TableOfContents">
-  <ul>
-    <li><a href="#overview">Overview</a>
-      <ul>
-        <li><a href="#properties">Properties</a></li>
-        <li><a href="#methods">Methods</a></li>
-      </ul>
-    </li>
-    <li><a href="#class-methods">Class Methods</a>
-      <ul>
-        <li><a href="#__construct">__construct</a></li>
-        <li><a href="#__get">__get</a></li>
-        <li><a href="#icon">icon</a></li>
-        <li><a href="#language_attributes">language_attributes</a></li>
-        <li><a href="#link">link</a></li>
-        <li><a href="#strikeurlstrike"><!-- raw HTML omitted -->url<!-- raw HTML omitted --></a></li>
-        <li><a href="#icon_multisite">icon_multisite</a></li>
-        <li><a href="#switch_to_blog">switch_to_blog</a></li>
-      </ul>
-    </li>
-  </ul>
+<ul>
+<li>
+<ul>
+<li><a href="#overview">Overview</a>
+<ul>
+<li><a href="#properties">Properties</a></li>
+<li><a href="#methods">Methods</a></li>
+</ul></li>
+<li><a href="#class-methods">Class Methods</a>
+<ul>
+<li><a href="#construct">__construct</a></li>
+<li><a href="#get">__get</a></li>
+<li><a href="#icon">icon</a></li>
+<li><a href="#language-attributes">language_attributes</a></li>
+<li><a href="#link">link</a></li>
+<li><a href="#strike-url-strike"><strike>url</strike></a></li>
+<li><a href="#icon-multisite">icon_multisite</a></li>
+<li><a href="#switch-to-blog">switch_to_blog</a></li>
+</ul></li>
+</ul></li>
+</ul>
 </nav>
 		</aside>
 
 		<div class="content-container">
 			<div class="content">
 				<p>Timber\Site gives you access to information you need about your site. In Multisite setups, you can get info on other sites in your network.</p>
+
 <p><strong>PHP</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
-$context <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">context</span>();
-$other_site_id <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
-$context[<span style="color:#e6db74">&#39;other_site&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Timber\Site</span>($other_site_id);
-<span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">render</span>(<span style="color:#e6db74">&#39;index.twig&#39;</span>, $context);
-</code></pre></div><p><strong>Twig</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">My site is called <span style="color:#75715e">{{</span>site.name<span style="color:#75715e">}}</span>, another site on my network is <span style="color:#75715e">{{</span>other_site.name<span style="color:#75715e">}}</span>
-</code></pre></div><p><strong>HTML</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">My site is called Jared&#39;s blog, another site on my network is Upstatement.com
-</code></pre></div><h2 id="overview">Overview</h2>
+
+<pre><code class="language-php">&lt;?php
+$context = Timber::context();
+$other_site_id = 2;
+$context['other_site'] = new Timber\Site($other_site_id);
+Timber::render('index.twig', $context);
+</code></pre>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">My site is called {{site.name}}, another site on my network is {{other_site.name}}
+</code></pre>
+
+<p><strong>HTML</strong></p>
+
+<pre><code class="language-html">My site is called Jared's blog, another site on my network is Upstatement.com
+</code></pre>
+
+<h2 id="overview">Overview</h2>
+
 <h3 id="properties">Properties</h3>
+
 <table>
 <thead>
 <tr>
@@ -274,57 +287,68 @@ $context[<span style="color:#e6db74">&#39;other_site&#39;</span>] <span style="c
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>admin_email</td>
 <td><code>string</code></td>
 <td>the admin email address set in the WP admin panel</td>
 </tr>
+
 <tr>
 <td>charset</td>
 <td><code>string</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>description</td>
 <td><code>string</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>id</td>
 <td><code>int</code></td>
 <td>the ID of a site in multisite</td>
 </tr>
+
 <tr>
 <td>language</td>
 <td><code>string</code></td>
 <td>the language setting ex: en-US</td>
 </tr>
+
 <tr>
 <td>multisite</td>
 <td><code>bool</code></td>
 <td>true if multisite, false if plain ole&rsquo; WordPress</td>
 </tr>
+
 <tr>
 <td>name</td>
 <td><code>string</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>pingback_url</td>
 <td><code>string</code></td>
 <td>for people who like trackback spam</td>
 </tr>
+
 <tr>
 <td>theme</td>
 <td><code>[TimberTheme](#TimberTheme)</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>title</td>
 <td><code>string</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>rdf</td>
 <td><code>string</code></td>
@@ -332,7 +356,9 @@ $context[<span style="color:#e6db74">&#39;other_site&#39;</span>] <span style="c
 </tr>
 </tbody>
 </table>
+
 <h3 id="methods">Methods</h3>
+
 <table>
 <thead>
 <tr>
@@ -341,6 +367,7 @@ $context[<span style="color:#e6db74">&#39;other_site&#39;</span>] <span style="c
 <th>Returns/Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td><a href="#link">link</a></td>
@@ -349,12 +376,19 @@ $context[<span style="color:#e6db74">&#39;other_site&#39;</span>] <span style="c
 </tr>
 </tbody>
 </table>
-<hr>
+
+<hr />
+
 <h2 id="class-methods">Class Methods</h2>
-<h3 id="__construct">__construct</h3>
+
+<h3 id="construct">__construct</h3>
+
 <p><code>__construct( mixed/string/int $site_name_or_id=null )</code></p>
+
 <p><strong>returns:</strong> <code>void</code></p>
+
 <p>Constructs a Timber\Site object</p>
+
 <table>
 <thead>
 <tr>
@@ -363,6 +397,7 @@ $context[<span style="color:#e6db74">&#39;other_site&#39;</span>] <span style="c
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$site_name_or_id</td>
@@ -371,17 +406,25 @@ $context[<span style="color:#e6db74">&#39;other_site&#39;</span>] <span style="c
 </tr>
 </tbody>
 </table>
+
 <p><strong>PHP</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
-<span style="color:#75715e">//multisite setup
-</span><span style="color:#75715e"></span>$site <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Timber\Site</span>(<span style="color:#ae81ff">1</span>);
-$site_two <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Timber\Site</span>(<span style="color:#e6db74">&#34;My Cool Site&#34;</span>);
-<span style="color:#75715e">//non-multisite
-</span><span style="color:#75715e"></span>$site <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Timber\Site</span>();
-</code></pre></div><hr>
-<h3 id="__get">__get</h3>
+
+<pre><code class="language-php">&lt;?php
+//multisite setup
+$site = new Timber\Site(1);
+$site_two = new Timber\Site(&quot;My Cool Site&quot;);
+//non-multisite
+$site = new Timber\Site();
+</code></pre>
+
+<hr />
+
+<h3 id="get">__get</h3>
+
 <p><code>__get( string $field )</code></p>
+
 <p><strong>returns:</strong> <code>mixed</code></p>
+
 <table>
 <thead>
 <tr>
@@ -390,6 +433,7 @@ $site_two <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$field</td>
@@ -398,37 +442,67 @@ $site_two <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</
 </tr>
 </tbody>
 </table>
-<hr>
+
+<hr />
+
 <h3 id="icon">icon</h3>
+
 <p><code>icon( )</code></p>
+
 <p><strong>returns:</strong> <code>void</code></p>
-<hr>
-<h3 id="language_attributes">language_attributes</h3>
+
+<hr />
+
+<h3 id="language-attributes">language_attributes</h3>
+
 <p><code>language_attributes( )</code></p>
+
 <p><strong>returns:</strong> <code>string</code></p>
+
 <p>Returns the language attributes that you&rsquo;re looking for</p>
-<hr>
+
+<hr />
+
 <h3 id="link">link</h3>
+
 <p><code>link( )</code></p>
+
 <p><strong>returns:</strong> <code>string</code></p>
+
 <p>Returns the link to the site&rsquo;s home.</p>
+
 <p><strong>Twig</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;a href=&#34;<span style="color:#75715e">{{</span> site.link <span style="color:#75715e">}}</span>&#34; title=&#34;Home&#34;&gt;
-	  &lt;img src=&#34;/wp-content/uploads/logo.png&#34; alt=&#34;Logo for some stupid thing&#34; /&gt;
+
+<pre><code class="language-twig">&lt;a href=&quot;{{ site.link }}&quot; title=&quot;Home&quot;&gt;
+	  &lt;img src=&quot;/wp-content/uploads/logo.png&quot; alt=&quot;Logo for some stupid thing&quot; /&gt;
 &lt;/a&gt;
-</code></pre></div><p><strong>HTML</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://example.org&#34;</span> <span style="color:#a6e22e">title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Home&#34;</span>&gt;
-	  &lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/wp-content/uploads/logo.png&#34;</span> <span style="color:#a6e22e">alt</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Logo for some stupid thing&#34;</span> /&gt;
-&lt;/<span style="color:#f92672">a</span>&gt;
-</code></pre></div><hr>
-<h3 id="strikeurlstrike"><!-- raw HTML omitted -->url<!-- raw HTML omitted --></h3>
+</code></pre>
+
+<p><strong>HTML</strong></p>
+
+<pre><code class="language-html">&lt;a href=&quot;http://example.org&quot; title=&quot;Home&quot;&gt;
+	  &lt;img src=&quot;/wp-content/uploads/logo.png&quot; alt=&quot;Logo for some stupid thing&quot; /&gt;
+&lt;/a&gt;
+</code></pre>
+
+<hr />
+
+<h3 id="strike-url-strike"><strike>url</strike></h3>
+
 <p><strong>DEPRECATED</strong> 1.0.4</p>
+
 <p><code>url( )</code></p>
+
 <p><strong>returns:</strong> <code>string</code></p>
-<hr>
-<h3 id="icon_multisite">icon_multisite</h3>
+
+<hr />
+
+<h3 id="icon-multisite">icon_multisite</h3>
+
 <p><code>icon_multisite( mixed $site_id )</code></p>
+
 <p><strong>returns:</strong> <code>void</code></p>
+
 <table>
 <thead>
 <tr>
@@ -437,6 +511,7 @@ $site_two <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$site_id</td>
@@ -445,11 +520,17 @@ $site_two <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="switch_to_blog">switch_to_blog</h3>
+
+<hr />
+
+<h3 id="switch-to-blog">switch_to_blog</h3>
+
 <p><code>switch_to_blog( string/\Timber\integer/null $site_name_or_id )</code></p>
+
 <p><strong>returns:</strong> <code>\Timber\integer</code> with the ID of the new blog</p>
+
 <p>Switches to the blog requested in the request</p>
+
 <table>
 <thead>
 <tr>
@@ -458,6 +539,7 @@ $site_two <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$site_name_or_id</td>
@@ -466,8 +548,11 @@ $site_two <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</
 </tr>
 </tbody>
 </table>
-<hr>
+
+<hr />
+
 <p><em>This class extends \Timber\Core</em></p>
+
 <p><em>This class implements \Timber\CoreInterface</em></p>
 			</div>
 		</div>

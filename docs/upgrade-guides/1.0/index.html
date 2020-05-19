@@ -228,81 +228,118 @@
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
 			<nav id="TableOfContents">
-  <ul>
-    <li><a href="#should-i-upgrade">Should I upgrade?</a>
-      <ul>
-        <li><a href="#i-have-a-legacy-site">I have a legacy site</a></li>
-        <li><a href="#i-have-a-site-under-continued-development">I have a site under continued development</a></li>
-        <li><a href="#i-am-starting-a-new-site">I am starting a new site.</a></li>
-      </ul>
-    </li>
-    <li><a href="#routes">Routes</a>
-      <ul>
-        <li><a href="#1-add-to-composer-optional-but-recommended">1. Add to Composer (optional, but recommended)</a></li>
-        <li><a href="#2-add-to-your-theme">2. Add to your theme</a></li>
-        <li><a href="#3-update-your-routes">3. Update your Routes</a></li>
-      </ul>
-    </li>
-    <li><a href="#post-object-properties">Post Object Properties</a></li>
-    <li><a href="#static-methods">Static methods</a></li>
-    <li><a href="#deprecated">Deprecated</a></li>
-  </ul>
+<ul>
+<li>
+<ul>
+<li><a href="#should-i-upgrade">Should I upgrade?</a>
+<ul>
+<li><a href="#i-have-a-legacy-site">I have a legacy site</a></li>
+<li><a href="#i-have-a-site-under-continued-development">I have a site under continued development</a></li>
+<li><a href="#i-am-starting-a-new-site">I am starting a new site.</a></li>
+</ul></li>
+<li><a href="#routes">Routes</a>
+<ul>
+<li><a href="#1-add-to-composer-optional-but-recommended">1. Add to Composer (optional, but recommended)</a></li>
+<li><a href="#2-add-to-your-theme">2. Add to your theme</a></li>
+<li><a href="#3-update-your-routes">3. Update your Routes</a></li>
+</ul></li>
+<li><a href="#post-object-properties">Post Object Properties</a></li>
+<li><a href="#static-methods">Static methods</a></li>
+<li><a href="#deprecated">Deprecated</a></li>
+</ul></li>
+</ul>
 </nav>
 		</aside>
 
 		<div class="content-container">
 			<div class="content">
-				<p>A significant part of this 1.0 release is removing lots of deprecated functions and methods that go back to the earliest designs for Timber in early 2013.</p>
+				
+
+<p>A significant part of this 1.0 release is removing lots of deprecated functions and methods that go back to the earliest designs for Timber in early 2013.</p>
+
 <h2 id="should-i-upgrade">Should I upgrade?</h2>
+
 <p>Maybe. Read on:</p>
+
 <h3 id="i-have-a-legacy-site">I have a legacy site</h3>
+
 <p>If you wrote a theme in 2014, it&rsquo;s running fine and the development of the site has concluded: stop right there! Do not upgrade! While there are some slight performance benefits (and not having the warning light on the plugin dashboard) it&rsquo;s not worth it to you. Close this window and forget you ever heard about Timber 1.0</p>
+
 <h3 id="i-have-a-site-under-continued-development">I have a site under continued development</h3>
+
 <p>Maybe. There are going to be tradeoffs with whatever route you pick. I recommend testing your site thoroughly with a staging or local copy to find all the issues before applying Timber 1.0 to production. However, you&rsquo;re the best judge of how much potential refactoring you&rsquo;re looking at and whether it&rsquo;s worth the benefits.</p>
+
 <h3 id="i-am-starting-a-new-site">I am starting a new site.</h3>
+
 <p>Definitely. You&rsquo;ll get the benefits of being on the newest platform. We have some cool stuff ahead that you&rsquo;ll want to include in your development workflow, and of course you&rsquo;ll learn about the newest/best ways to make Timber themes.</p>
+
 <h2 id="routes">Routes</h2>
+
 <p>The Routes feature has now been totally deprecated. If you have custom routes you&rsquo;ll need to add the <a href="https://github.com/upstatement/routes">Upstatement/routes</a> repo to your theme? How to do this?</p>
+
 <h3 id="1-add-to-composer-optional-but-recommended">1. Add to Composer (optional, but recommended)</h3>
+
 <p>Simply add <code>Upstatement/routes</code> to your <code>composer.json</code> file like so:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#e6db74">&#34;require&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
-    <span style="color:#f92672">&#34;timber/timber&#34;</span>:<span style="color:#e6db74">&#34;1.*&#34;</span>,
-    <span style="color:#f92672">&#34;advanced-custom-fields/advanced-custom-fields-pro&#34;</span>: <span style="color:#e6db74">&#34;*&#34;</span>,
-    <span style="color:#f92672">&#34;Upstatement/routes&#34;</span>: <span style="color:#e6db74">&#34;*&#34;</span>
-}<span style="color:#960050;background-color:#1e0010">,</span>
-</code></pre></div><p>Here&rsquo;s a full <a href="https://gist.github.com/jarednova/dc84cf14735a870dbe3d2763e94095a1">Gist</a> of what this looks like. Run a <code>composer install</code> to update your theme&rsquo;s dependencies.</p>
+
+<pre><code class="language-json">&quot;require&quot;: {
+    &quot;timber/timber&quot;:&quot;1.*&quot;,
+    &quot;advanced-custom-fields/advanced-custom-fields-pro&quot;: &quot;*&quot;,
+    &quot;Upstatement/routes&quot;: &quot;*&quot;
+},
+</code></pre>
+
+<p>Here&rsquo;s a full <a href="https://gist.github.com/jarednova/dc84cf14735a870dbe3d2763e94095a1">Gist</a> of what this looks like. Run a <code>composer install</code> to update your theme&rsquo;s dependencies.</p>
+
 <p><em>Note: because we&rsquo;re not monsters, the [Upstatement/routes] repo will continue to be included with Timber for the next several versions</em></p>
+
 <h3 id="2-add-to-your-theme">2. Add to your theme</h3>
+
 <p>If you haven&rsquo;t already, you&rsquo;ll need to load Composer&rsquo;s autoload file into your theme via:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
-<span style="color:#75715e">/* functions.php */</span>
-<span style="color:#66d9ef">require_once</span>(<span style="color:#e6db74">&#39;vendor/autoload.php&#39;</span>);
-</code></pre></div><h3 id="3-update-your-routes">3. Update your Routes</h3>
+
+<pre><code class="language-php">&lt;?php
+/* functions.php */
+require_once('vendor/autoload.php');
+</code></pre>
+
+<h3 id="3-update-your-routes">3. Update your Routes</h3>
+
 <p>Now just update the PHP for your old routes to the new ones. It&rsquo;ll be basically the same code, but with cleaner syntax <strong>and a different arguments order for the <code>::load</code> method</strong></p>
+
 <p><strong>Before</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
-<span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">add_route</span>(<span style="color:#e6db74">&#39;myfoo/bar&#39;</span>, <span style="color:#e6db74">&#39;my_callback_function&#39;</span>);
-<span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">add_route</span>(<span style="color:#e6db74">&#39;my-events/:event&#39;</span>, <span style="color:#66d9ef">function</span>($params) {
-    $query <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">WP_Query</span>(<span style="color:#e6db74">&#39;post_type=event&#39;</span>);
-    <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">load_view</span>(<span style="color:#e6db74">&#39;single.php&#39;</span>, $query, <span style="color:#ae81ff">200</span>, $params);
+
+<pre><code class="language-php">&lt;?php
+Timber::add_route('myfoo/bar', 'my_callback_function');
+Timber::add_route('my-events/:event', function($params) {
+    $query = new WP_Query('post_type=event');
+    Timber::load_view('single.php', $query, 200, $params);
 });
-</code></pre></div><p><strong>After</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
-<span style="color:#a6e22e">Routes</span><span style="color:#f92672">::</span><span style="color:#a6e22e">map</span>(<span style="color:#e6db74">&#39;myfoo/bar&#39;</span>, <span style="color:#e6db74">&#39;my_callback_function&#39;</span>);
-<span style="color:#a6e22e">Routes</span><span style="color:#f92672">::</span><span style="color:#a6e22e">map</span>(<span style="color:#e6db74">&#39;my-events/:event&#39;</span>, <span style="color:#66d9ef">function</span>($params) {
-    $query <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">WP_Query</span>(<span style="color:#e6db74">&#39;post_type=event&#39;</span>);
-    <span style="color:#75715e">/* please note the different order of arguments vs. Timber::load_template */</span>
-    <span style="color:#a6e22e">Routes</span><span style="color:#f92672">::</span><span style="color:#a6e22e">load</span>(<span style="color:#e6db74">&#39;single.php&#39;</span>, $params, $query, <span style="color:#ae81ff">200</span>);
+</code></pre>
+
+<p><strong>After</strong></p>
+
+<pre><code class="language-php">&lt;?php
+Routes::map('myfoo/bar', 'my_callback_function');
+Routes::map('my-events/:event', function($params) {
+    $query = new WP_Query('post_type=event');
+    /* please note the different order of arguments vs. Timber::load_template */
+    Routes::load('single.php', $params, $query, 200);
 });
-</code></pre></div><p>&hellip; and that&rsquo;s the hardest part, done!</p>
+</code></pre>
+
+<p>&hellip; and that&rsquo;s the hardest part, done!</p>
+
 <h2 id="post-object-properties">Post Object Properties</h2>
+
 <ul>
 <li>If you&rsquo;re using <code>{{ post.permalink }}</code> or <code>{{ post.get_permalink }}</code> you should replace with <code>{{ post.link }}</code></li>
 <li>If you&rsquo;re using <code>{{ post.url }}</code> or <code>{{ post.get_url }}</code> you should replace with <code>{{ post.link }}</code></li>
 <li>If you&rsquo;re using <code>{{ post.thumbnail.url }}</code> or <code>{{ post.get_thumbnail.url }}</code> you should replace with <code>{{ post.thumbnail.src }}</code></li>
 </ul>
+
 <h2 id="static-methods">Static methods</h2>
+
 <p>Way back in <code>0.18</code>, a new helper library was added for URLs. In my infinite wisdom I called it <code>TimberURLHelper</code>. Previously old static methods in <code>TimberHelper</code> still worked (like <code>TimberHelper::get_current_url</code>) — they don&rsquo;t any longer. The full list of methods you&rsquo;ll need to update is&hellip;</p>
+
 <ul>
 <li><code>TimberHelper::get_current_url</code> &mdash; becomes &mdash;&gt; <code>Timber\URLHelper::get_current_url()</code></li>
 <li><code>TimberHelper::is_url</code> &mdash; becomes &mdash;&gt; <code>Timber\URLHelper::is_url()</code></li>
@@ -318,7 +355,9 @@
 <li><code>TimberHelper::download_url</code> &mdash; becomes &mdash;&gt; <code>Timber\URLHelper::download_url()</code></li>
 <li><code>TimberHelper::get_params</code> &mdash; becomes &mdash;&gt; <code>Timber\URLHelper::get_params()</code></li>
 </ul>
+
 <h2 id="deprecated">Deprecated</h2>
+
 <p>Many of the aliases with <code>get_*</code> are now deprecated. For awhile, we&rsquo;ve recommended using <code>post.title</code> instead of <code>post.get_title</code>, <code>post.thumbnail</code> instead of <code>post.get_thumbnail</code>, etc. In future versions this will be enforced.</p>
 
 			</div>

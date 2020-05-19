@@ -228,47 +228,54 @@
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
 			<nav id="TableOfContents">
-  <ul>
-    <li><a href="#class-methods">Class Methods</a>
-      <ul>
-        <li><a href="#file_system_to_url">file_system_to_url</a></li>
-        <li><a href="#get_content_subdir">get_content_subdir</a></li>
-        <li><a href="#get_current_url">get_current_url</a></li>
-        <li><a href="#get_full_path">get_full_path</a></li>
-        <li><a href="#get_host">get_host</a></li>
-        <li><a href="#get_params">get_params</a></li>
-        <li><a href="#get_path_base">get_path_base</a></li>
-        <li><a href="#get_rel_path">get_rel_path</a></li>
-        <li><a href="#get_rel_url">get_rel_url</a></li>
-        <li><a href="#get_scheme">get_scheme</a></li>
-        <li><a href="#is_absolute">is_absolute</a></li>
-        <li><a href="#is_external">is_external</a></li>
-        <li><a href="#is_external_content">is_external_content</a></li>
-        <li><a href="#is_local">is_local</a></li>
-        <li><a href="#is_url">is_url</a></li>
-        <li><a href="#prepend_to_url">prepend_to_url</a></li>
-        <li><a href="#preslashit">preslashit</a></li>
-        <li><a href="#remove_double_slashes">remove_double_slashes</a></li>
-        <li><a href="#remove_trailing_slash">remove_trailing_slash</a></li>
-        <li><a href="#remove_url_component">remove_url_component</a></li>
-        <li><a href="#starts_with">starts_with</a></li>
-        <li><a href="#swap_protocol">swap_protocol</a></li>
-        <li><a href="#unpreslashit">unpreslashit</a></li>
-        <li><a href="#url_to_file_system">url_to_file_system</a></li>
-        <li><a href="#user_trailingslashit">user_trailingslashit</a></li>
-      </ul>
-    </li>
-  </ul>
+<ul>
+<li>
+<ul>
+<li><a href="#class-methods">Class Methods</a>
+<ul>
+<li><a href="#file-system-to-url">file_system_to_url</a></li>
+<li><a href="#get-content-subdir">get_content_subdir</a></li>
+<li><a href="#get-current-url">get_current_url</a></li>
+<li><a href="#get-full-path">get_full_path</a></li>
+<li><a href="#get-host">get_host</a></li>
+<li><a href="#get-params">get_params</a></li>
+<li><a href="#get-path-base">get_path_base</a></li>
+<li><a href="#get-rel-path">get_rel_path</a></li>
+<li><a href="#get-rel-url">get_rel_url</a></li>
+<li><a href="#get-scheme">get_scheme</a></li>
+<li><a href="#is-absolute">is_absolute</a></li>
+<li><a href="#is-external">is_external</a></li>
+<li><a href="#is-external-content">is_external_content</a></li>
+<li><a href="#is-local">is_local</a></li>
+<li><a href="#is-url">is_url</a></li>
+<li><a href="#prepend-to-url">prepend_to_url</a></li>
+<li><a href="#preslashit">preslashit</a></li>
+<li><a href="#remove-double-slashes">remove_double_slashes</a></li>
+<li><a href="#remove-trailing-slash">remove_trailing_slash</a></li>
+<li><a href="#remove-url-component">remove_url_component</a></li>
+<li><a href="#starts-with">starts_with</a></li>
+<li><a href="#swap-protocol">swap_protocol</a></li>
+<li><a href="#unpreslashit">unpreslashit</a></li>
+<li><a href="#url-to-file-system">url_to_file_system</a></li>
+<li><a href="#user-trailingslashit">user_trailingslashit</a></li>
+</ul></li>
+</ul></li>
+</ul>
 </nav>
 		</aside>
 
 		<div class="content-container">
 			<div class="content">
-				<hr>
+				<hr />
+
 <h2 id="class-methods">Class Methods</h2>
-<h3 id="file_system_to_url">file_system_to_url</h3>
+
+<h3 id="file-system-to-url">file_system_to_url</h3>
+
 <p><code>file_system_to_url( string $fs )</code></p>
+
 <p><strong>returns:</strong> <code>void</code></p>
+
 <table>
 <thead>
 <tr>
@@ -277,6 +284,7 @@
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$fs</td>
@@ -285,20 +293,34 @@
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="get_content_subdir">get_content_subdir</h3>
+
+<hr />
+
+<h3 id="get-content-subdir">get_content_subdir</h3>
+
 <p><code>get_content_subdir( )</code></p>
+
 <p><strong>returns:</strong> <code>string</code> (ex: /wp-content or /content)</p>
+
 <p>Get the path to the content directory relative to the site.
 This replaces the WP_CONTENT_SUBDIR constant</p>
-<hr>
-<h3 id="get_current_url">get_current_url</h3>
+
+<hr />
+
+<h3 id="get-current-url">get_current_url</h3>
+
 <p><code>get_current_url( )</code></p>
+
 <p><strong>returns:</strong> <code>string</code></p>
-<hr>
-<h3 id="get_full_path">get_full_path</h3>
+
+<hr />
+
+<h3 id="get-full-path">get_full_path</h3>
+
 <p><code>get_full_path( string $src )</code></p>
+
 <p><strong>returns:</strong> <code>string</code></p>
+
 <table>
 <thead>
 <tr>
@@ -307,6 +329,7 @@ This replaces the WP_CONTENT_SUBDIR constant</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$src</td>
@@ -315,18 +338,29 @@ This replaces the WP_CONTENT_SUBDIR constant</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="get_host">get_host</h3>
+
+<hr />
+
+<h3 id="get-host">get_host</h3>
+
 <p><code>get_host( )</code></p>
+
 <p><strong>returns:</strong> <code>string</code> the HTTP_HOST or SERVER_NAME</p>
+
 <p>Some setups like HTTP_HOST, some like SERVER_NAME, it&rsquo;s complicated</p>
-<hr>
-<h3 id="get_params">get_params</h3>
+
+<hr />
+
+<h3 id="get-params">get_params</h3>
+
 <p><code>get_params( bool/int $i=false )</code></p>
+
 <p><strong>returns:</strong> <code>array/string</code></p>
+
 <p>Returns the url parameters, for example for url <a href="http://example.org/blog/post/news/2014/whatever">http://example.org/blog/post/news/2014/whatever</a>
 this will return array(&lsquo;blog&rsquo;, &lsquo;post&rsquo;, &lsquo;news&rsquo;, &lsquo;2014&rsquo;, &lsquo;whatever&rsquo;);
 OR if sent an integer like: TimberUrlHelper::get_params(2); this will return &lsquo;news&rsquo;;</p>
+
 <table>
 <thead>
 <tr>
@@ -335,6 +369,7 @@ OR if sent an integer like: TimberUrlHelper::get_params(2); this will return &ls
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$i</td>
@@ -343,14 +378,23 @@ OR if sent an integer like: TimberUrlHelper::get_params(2); this will return &ls
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="get_path_base">get_path_base</h3>
+
+<hr />
+
+<h3 id="get-path-base">get_path_base</h3>
+
 <p><code>get_path_base( )</code></p>
+
 <p><strong>returns:</strong> <code>string</code></p>
-<hr>
-<h3 id="get_rel_path">get_rel_path</h3>
+
+<hr />
+
+<h3 id="get-rel-path">get_rel_path</h3>
+
 <p><code>get_rel_path( string $src )</code></p>
+
 <p><strong>returns:</strong> <code>string</code></p>
+
 <table>
 <thead>
 <tr>
@@ -359,6 +403,7 @@ OR if sent an integer like: TimberUrlHelper::get_params(2); this will return &ls
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$src</td>
@@ -367,10 +412,15 @@ OR if sent an integer like: TimberUrlHelper::get_params(2); this will return &ls
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="get_rel_url">get_rel_url</h3>
+
+<hr />
+
+<h3 id="get-rel-url">get_rel_url</h3>
+
 <p><code>get_rel_url( string $url, bool $force=false )</code></p>
+
 <p><strong>returns:</strong> <code>string</code></p>
+
 <table>
 <thead>
 <tr>
@@ -379,12 +429,14 @@ OR if sent an integer like: TimberUrlHelper::get_params(2); this will return &ls
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$url</td>
 <td><code>string</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$force</td>
 <td><code>bool</code></td>
@@ -392,16 +444,27 @@ OR if sent an integer like: TimberUrlHelper::get_params(2); this will return &ls
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="get_scheme">get_scheme</h3>
+
+<hr />
+
+<h3 id="get-scheme">get_scheme</h3>
+
 <p><code>get_scheme( )</code></p>
+
 <p><strong>returns:</strong> <code>string</code></p>
+
 <p>Get url scheme</p>
-<hr>
-<h3 id="is_absolute">is_absolute</h3>
+
+<hr />
+
+<h3 id="is-absolute">is_absolute</h3>
+
 <p><code>is_absolute( string $path )</code></p>
+
 <p><strong>returns:</strong> <code>boolean</code> true if $path is an absolute url, false if relative.</p>
+
 <p>This will evaluate wheter a URL is at an aboslute location (like <a href="http://example.org/whatever">http://example.org/whatever</a>)</p>
+
 <table>
 <thead>
 <tr>
@@ -410,6 +473,7 @@ OR if sent an integer like: TimberUrlHelper::get_params(2); this will return &ls
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$path</td>
@@ -418,12 +482,18 @@ OR if sent an integer like: TimberUrlHelper::get_params(2); this will return &ls
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="is_external">is_external</h3>
+
+<hr />
+
+<h3 id="is-external">is_external</h3>
+
 <p><code>is_external( string $url )</code></p>
+
 <p><strong>returns:</strong> <code>bool</code> true if $path is an external url, false if relative or local. true if it&rsquo;s a subdomain (<a href="http://cdn.example.org">http://cdn.example.org</a> = true)</p>
+
 <p>Checks if URL is external or internal.
 Works with domains, subdomains and protocol relative domains.</p>
+
 <table>
 <thead>
 <tr>
@@ -432,6 +502,7 @@ Works with domains, subdomains and protocol relative domains.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$url</td>
@@ -440,13 +511,19 @@ Works with domains, subdomains and protocol relative domains.</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="is_external_content">is_external_content</h3>
+
+<hr />
+
+<h3 id="is-external-content">is_external_content</h3>
+
 <p><code>is_external_content( string $url )</code></p>
+
 <p><strong>returns:</strong> <code>boolean</code> if $url points to an external location returns true</p>
+
 <p>This function is slightly different from the one below in the case of:
 an image hosted on the same domain BUT on a different site than the
 Wordpress install will be reported as external content.</p>
+
 <table>
 <thead>
 <tr>
@@ -455,6 +532,7 @@ Wordpress install will be reported as external content.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$url</td>
@@ -463,10 +541,15 @@ Wordpress install will be reported as external content.</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="is_local">is_local</h3>
+
+<hr />
+
+<h3 id="is-local">is_local</h3>
+
 <p><code>is_local( string $url )</code></p>
+
 <p><strong>returns:</strong> <code>bool</code></p>
+
 <table>
 <thead>
 <tr>
@@ -475,6 +558,7 @@ Wordpress install will be reported as external content.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$url</td>
@@ -483,10 +567,15 @@ Wordpress install will be reported as external content.</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="is_url">is_url</h3>
+
+<hr />
+
+<h3 id="is-url">is_url</h3>
+
 <p><code>is_url( string $url )</code></p>
+
 <p><strong>returns:</strong> <code>bool</code></p>
+
 <table>
 <thead>
 <tr>
@@ -495,6 +584,7 @@ Wordpress install will be reported as external content.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$url</td>
@@ -503,10 +593,15 @@ Wordpress install will be reported as external content.</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="prepend_to_url">prepend_to_url</h3>
+
+<hr />
+
+<h3 id="prepend-to-url">prepend_to_url</h3>
+
 <p><code>prepend_to_url( string $url, string $path )</code></p>
+
 <p><strong>returns:</strong> <code>string</code></p>
+
 <table>
 <thead>
 <tr>
@@ -515,12 +610,14 @@ Wordpress install will be reported as external content.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$url</td>
 <td><code>string</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$path</td>
 <td><code>string</code></td>
@@ -528,10 +625,15 @@ Wordpress install will be reported as external content.</p>
 </tr>
 </tbody>
 </table>
-<hr>
+
+<hr />
+
 <h3 id="preslashit">preslashit</h3>
+
 <p><code>preslashit( string $path )</code></p>
+
 <p><strong>returns:</strong> <code>string</code></p>
+
 <table>
 <thead>
 <tr>
@@ -540,6 +642,7 @@ Wordpress install will be reported as external content.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$path</td>
@@ -548,10 +651,15 @@ Wordpress install will be reported as external content.</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="remove_double_slashes">remove_double_slashes</h3>
+
+<hr />
+
+<h3 id="remove-double-slashes">remove_double_slashes</h3>
+
 <p><code>remove_double_slashes( string $url )</code></p>
+
 <p><strong>returns:</strong> <code>string</code></p>
+
 <table>
 <thead>
 <tr>
@@ -560,6 +668,7 @@ Wordpress install will be reported as external content.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$url</td>
@@ -568,11 +677,17 @@ Wordpress install will be reported as external content.</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="remove_trailing_slash">remove_trailing_slash</h3>
+
+<hr />
+
+<h3 id="remove-trailing-slash">remove_trailing_slash</h3>
+
 <p><code>remove_trailing_slash( string $link )</code></p>
+
 <p><strong>returns:</strong> <code>string</code></p>
+
 <p>Pass links through untrailingslashit unless they are a single /</p>
+
 <table>
 <thead>
 <tr>
@@ -581,6 +696,7 @@ Wordpress install will be reported as external content.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$link</td>
@@ -589,11 +705,17 @@ Wordpress install will be reported as external content.</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="remove_url_component">remove_url_component</h3>
+
+<hr />
+
+<h3 id="remove-url-component">remove_url_component</h3>
+
 <p><code>remove_url_component( string $haystack, string $needle )</code></p>
+
 <p><strong>returns:</strong> <code>string</code></p>
+
 <p>Removes the subcomponent of a URL regardless of protocol</p>
+
 <table>
 <thead>
 <tr>
@@ -602,12 +724,14 @@ Wordpress install will be reported as external content.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$haystack</td>
 <td><code>string</code></td>
 <td>ex: <a href="http://example.org/wp-content/uploads/dog.jpg">http://example.org/wp-content/uploads/dog.jpg</a></td>
 </tr>
+
 <tr>
 <td>$needle</td>
 <td><code>string</code></td>
@@ -615,13 +739,19 @@ Wordpress install will be reported as external content.</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="starts_with">starts_with</h3>
+
+<hr />
+
+<h3 id="starts-with">starts_with</h3>
+
 <p><code>starts_with( mixed $haystack, mixed $starts_with )</code></p>
+
 <p><strong>returns:</strong> <code>boolean</code></p>
+
 <p>Check to see if the URL begins with the string in question
 Because it&rsquo;s a URL we don&rsquo;t care about protocol (HTTP vs HTTPS)
 Or case (so it&rsquo;s cAsE iNsEnSeTiVe)</p>
+
 <table>
 <thead>
 <tr>
@@ -630,12 +760,14 @@ Or case (so it&rsquo;s cAsE iNsEnSeTiVe)</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$haystack</td>
 <td><code>mixed</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$starts_with</td>
 <td><code>mixed</code></td>
@@ -643,11 +775,17 @@ Or case (so it&rsquo;s cAsE iNsEnSeTiVe)</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="swap_protocol">swap_protocol</h3>
+
+<hr />
+
+<h3 id="swap-protocol">swap_protocol</h3>
+
 <p><code>swap_protocol( string $url )</code></p>
+
 <p><strong>returns:</strong> <code>string</code> ex: <a href="https://example.org/wp-content/uploads/dog.jpg">https://example.org/wp-content/uploads/dog.jpg</a></p>
+
 <p>Swaps whatever protocol of a URL is sent. http becomes https and vice versa</p>
+
 <table>
 <thead>
 <tr>
@@ -656,6 +794,7 @@ Or case (so it&rsquo;s cAsE iNsEnSeTiVe)</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$url</td>
@@ -664,10 +803,15 @@ Or case (so it&rsquo;s cAsE iNsEnSeTiVe)</p>
 </tr>
 </tbody>
 </table>
-<hr>
+
+<hr />
+
 <h3 id="unpreslashit">unpreslashit</h3>
+
 <p><code>unpreslashit( string $path )</code></p>
+
 <p><strong>returns:</strong> <code>string</code></p>
+
 <table>
 <thead>
 <tr>
@@ -676,6 +820,7 @@ Or case (so it&rsquo;s cAsE iNsEnSeTiVe)</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$path</td>
@@ -684,13 +829,19 @@ Or case (so it&rsquo;s cAsE iNsEnSeTiVe)</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="url_to_file_system">url_to_file_system</h3>
+
+<hr />
+
+<h3 id="url-to-file-system">url_to_file_system</h3>
+
 <p><code>url_to_file_system( string $url )</code></p>
+
 <p><strong>returns:</strong> <code>string</code></p>
+
 <p>Takes a url and figures out its place based in the file system based on path
 NOTE: Not fool-proof, makes a lot of assumptions about the file path
 matching the URL path</p>
+
 <table>
 <thead>
 <tr>
@@ -699,6 +850,7 @@ matching the URL path</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$url</td>
@@ -707,11 +859,17 @@ matching the URL path</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="user_trailingslashit">user_trailingslashit</h3>
+
+<hr />
+
+<h3 id="user-trailingslashit">user_trailingslashit</h3>
+
 <p><code>user_trailingslashit( string $link )</code></p>
+
 <p><strong>returns:</strong> <code>string</code></p>
+
 <p>Pass links through user_trailingslashit handling query strings properly</p>
+
 <table>
 <thead>
 <tr>
@@ -720,6 +878,7 @@ matching the URL path</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$link</td>
@@ -728,7 +887,8 @@ matching the URL path</p>
 </tr>
 </tbody>
 </table>
-<hr>
+
+<hr />
 			</div>
 		</div>
 	</article>

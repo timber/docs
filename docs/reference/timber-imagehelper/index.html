@@ -228,63 +228,64 @@
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
 			<nav id="TableOfContents">
-  <ul>
-    <li><a href="#overview">Overview</a>
-      <ul>
-        <li><a href="#methods">Methods</a></li>
-      </ul>
-    </li>
-    <li><a href="#class-methods">Class Methods</a>
-      <ul>
-        <li><a href="#_delete_generated_if_image">_delete_generated_if_image</a></li>
-        <li><a href="#add_relative_upload_dir_key">add_relative_upload_dir_key</a></li>
-        <li><a href="#analyze_url">analyze_url</a></li>
-        <li><a href="#delete_attachment">delete_attachment</a></li>
-        <li><a href="#delete_generated_files">delete_generated_files</a></li>
-        <li><a href="#generate_attachment_metadata">generate_attachment_metadata</a></li>
-        <li><a href="#get_letterbox_file_path">get_letterbox_file_path</a></li>
-        <li><a href="#get_letterbox_file_url">get_letterbox_file_url</a></li>
-        <li><a href="#get_resize_file_path">get_resize_file_path</a></li>
-        <li><a href="#get_resize_file_url">get_resize_file_url</a></li>
-        <li><a href="#get_server_location">get_server_location</a></li>
-        <li><a href="#get_sideloaded_file_loc">get_sideloaded_file_loc</a></li>
-        <li><a href="#img_to_jpg">img_to_jpg</a></li>
-        <li><a href="#img_to_webp">img_to_webp</a></li>
-        <li><a href="#init">init</a></li>
-        <li><a href="#is_animated_gif">is_animated_gif</a></li>
-        <li><a href="#is_svg">is_svg</a></li>
-        <li><a href="#letterbox">letterbox</a></li>
-        <li><a href="#resize">resize</a></li>
-        <li><a href="#retina_resize">retina_resize</a></li>
-        <li><a href="#sideload_image">sideload_image</a></li>
-        <li><a href="#theme_url_to_dir">theme_url_to_dir</a></li>
-        <li><a href="#is_in_theme_dir">is_in_theme_dir</a></li>
-        <li><a href="#maybe_realpath">maybe_realpath</a></li>
-        <li><a href="#process_delete_generated_files">process_delete_generated_files</a></li>
-      </ul>
-    </li>
-  </ul>
+<ul>
+<li>
+<ul>
+<li><a href="#overview">Overview</a>
+<ul>
+<li><a href="#methods">Methods</a></li>
+</ul></li>
+<li><a href="#class-methods">Class Methods</a>
+<ul>
+<li><a href="#delete-generated-if-image">_delete_generated_if_image</a></li>
+<li><a href="#add-relative-upload-dir-key">add_relative_upload_dir_key</a></li>
+<li><a href="#analyze-url">analyze_url</a></li>
+<li><a href="#delete-attachment">delete_attachment</a></li>
+<li><a href="#delete-generated-files">delete_generated_files</a></li>
+<li><a href="#generate-attachment-metadata">generate_attachment_metadata</a></li>
+<li><a href="#get-letterbox-file-path">get_letterbox_file_path</a></li>
+<li><a href="#get-letterbox-file-url">get_letterbox_file_url</a></li>
+<li><a href="#get-resize-file-path">get_resize_file_path</a></li>
+<li><a href="#get-resize-file-url">get_resize_file_url</a></li>
+<li><a href="#get-server-location">get_server_location</a></li>
+<li><a href="#get-sideloaded-file-loc">get_sideloaded_file_loc</a></li>
+<li><a href="#img-to-jpg">img_to_jpg</a></li>
+<li><a href="#img-to-webp">img_to_webp</a></li>
+<li><a href="#init">init</a></li>
+<li><a href="#is-animated-gif">is_animated_gif</a></li>
+<li><a href="#is-svg">is_svg</a></li>
+<li><a href="#letterbox">letterbox</a></li>
+<li><a href="#resize">resize</a></li>
+<li><a href="#retina-resize">retina_resize</a></li>
+<li><a href="#sideload-image">sideload_image</a></li>
+<li><a href="#theme-url-to-dir">theme_url_to_dir</a></li>
+<li><a href="#is-in-theme-dir">is_in_theme_dir</a></li>
+<li><a href="#maybe-realpath">maybe_realpath</a></li>
+<li><a href="#process-delete-generated-files">process_delete_generated_files</a></li>
+</ul></li>
+</ul></li>
+</ul>
 </nav>
 		</aside>
 
 		<div class="content-container">
 			<div class="content">
 				<p>Implements the Twig image filters:
-<a href="https://timber.github.io/docs/guides/cookbook-images/#arbitrary-resizing-of-images">https://timber.github.io/docs/guides/cookbook-images/#arbitrary-resizing-of-images</a></p>
-<ul>
-<li>resize</li>
-<li>retina</li>
-<li>letterbox</li>
-<li>tojpg</li>
-</ul>
-<p>Implementation:</p>
-<ul>
-<li>public static functions provide the methods that are called by the filter</li>
-<li>most of the work is common to all filters (URL analysis, directory gymnastics, file caching, error management) and done by private static functions</li>
-<li>the specific part (actual image processing) is delegated to dedicated subclasses of TimberImageOperation</li>
-</ul>
+<a href="https://timber.github.io/docs/guides/cookbook-images/#arbitrary-resizing-of-images">https://timber.github.io/docs/guides/cookbook-images/#arbitrary-resizing-of-images</a>
+- resize
+- retina
+- letterbox
+- tojpg</p>
+
+<p>Implementation:
+- public static functions provide the methods that are called by the filter
+- most of the work is common to all filters (URL analysis, directory gymnastics, file caching, error management) and done by private static functions
+- the specific part (actual image processing) is delegated to dedicated subclasses of TimberImageOperation</p>
+
 <h2 id="overview">Overview</h2>
+
 <h3 id="methods">Methods</h3>
+
 <table>
 <thead>
 <tr>
@@ -293,6 +294,7 @@
 <th>Returns/Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td><a href="#resize">resize</a></td>
@@ -301,12 +303,19 @@
 </tr>
 </tbody>
 </table>
-<hr>
+
+<hr />
+
 <h2 id="class-methods">Class Methods</h2>
-<h3 id="_delete_generated_if_image">_delete_generated_if_image</h3>
+
+<h3 id="delete-generated-if-image">_delete_generated_if_image</h3>
+
 <p><code>_delete_generated_if_image( int $post_id )</code></p>
+
 <p><strong>returns:</strong> <code>void</code></p>
+
 <p>Checks if attachment is an image before deleting generated files</p>
+
 <table>
 <thead>
 <tr>
@@ -315,6 +324,7 @@
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$post_id</td>
@@ -323,12 +333,18 @@
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="add_relative_upload_dir_key">add_relative_upload_dir_key</h3>
+
+<hr />
+
+<h3 id="add-relative-upload-dir-key">add_relative_upload_dir_key</h3>
+
 <p><code>add_relative_upload_dir_key( array $arr )</code></p>
+
 <p><strong>returns:</strong> <code>array</code></p>
+
 <p>Adds a &lsquo;relative&rsquo; key to wp_upload_dir() result.
 It will contain the relative url to upload dir.</p>
+
 <table>
 <thead>
 <tr>
@@ -337,6 +353,7 @@ It will contain the relative url to upload dir.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$arr</td>
@@ -345,13 +362,19 @@ It will contain the relative url to upload dir.</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="analyze_url">analyze_url</h3>
+
+<hr />
+
+<h3 id="analyze-url">analyze_url</h3>
+
 <p><code>analyze_url( string $url )</code></p>
+
 <p><strong>returns:</strong> <code>array</code> an array (see keys in code below)</p>
+
 <p>Takes in an URL and breaks it into components,
 that will then be used in the different steps of image processing.
 The image is expected to be either part of a theme, plugin, or an upload.</p>
+
 <table>
 <thead>
 <tr>
@@ -360,6 +383,7 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$url</td>
@@ -368,11 +392,17 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="delete_attachment">delete_attachment</h3>
+
+<hr />
+
+<h3 id="delete-attachment">delete_attachment</h3>
+
 <p><code>delete_attachment( int $post_id )</code></p>
+
 <p><strong>returns:</strong> <code>void</code></p>
+
 <p>Deletes all resized versions of an image when the source is deleted.</p>
+
 <table>
 <thead>
 <tr>
@@ -381,6 +411,7 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$post_id</td>
@@ -389,11 +420,17 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="delete_generated_files">delete_generated_files</h3>
+
+<hr />
+
+<h3 id="delete-generated-files">delete_generated_files</h3>
+
 <p><code>delete_generated_files( string $local_file )</code></p>
+
 <p><strong>returns:</strong> <code>void</code></p>
+
 <p>Deletes the auto-generated files for resize and letterboxing created by Timber</p>
+
 <table>
 <thead>
 <tr>
@@ -402,6 +439,7 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$local_file</td>
@@ -410,11 +448,17 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="generate_attachment_metadata">generate_attachment_metadata</h3>
+
+<hr />
+
+<h3 id="generate-attachment-metadata">generate_attachment_metadata</h3>
+
 <p><code>generate_attachment_metadata( array $metadata, int $post_id )</code></p>
+
 <p><strong>returns:</strong> <code>array</code></p>
+
 <p>Delete all resized version of an image when its meta data is regenerated.</p>
+
 <table>
 <thead>
 <tr>
@@ -423,12 +467,14 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$metadata</td>
 <td><code>array</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$post_id</td>
 <td><code>int</code></td>
@@ -436,10 +482,15 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="get_letterbox_file_path">get_letterbox_file_path</h3>
+
+<hr />
+
+<h3 id="get-letterbox-file-path">get_letterbox_file_path</h3>
+
 <p><code>get_letterbox_file_path( mixed $url, mixed $w, mixed $h, mixed $color )</code></p>
+
 <p><strong>returns:</strong> <code>mixed</code></p>
+
 <table>
 <thead>
 <tr>
@@ -448,22 +499,26 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$url</td>
 <td><code>mixed</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$w</td>
 <td><code>mixed</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$h</td>
 <td><code>mixed</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$color</td>
 <td><code>mixed</code></td>
@@ -471,10 +526,15 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="get_letterbox_file_url">get_letterbox_file_url</h3>
+
+<hr />
+
+<h3 id="get-letterbox-file-url">get_letterbox_file_url</h3>
+
 <p><code>get_letterbox_file_url( mixed $url, mixed $w, mixed $h, mixed $color )</code></p>
+
 <p><strong>returns:</strong> <code>mixed</code></p>
+
 <table>
 <thead>
 <tr>
@@ -483,22 +543,26 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$url</td>
 <td><code>mixed</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$w</td>
 <td><code>mixed</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$h</td>
 <td><code>mixed</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$color</td>
 <td><code>mixed</code></td>
@@ -506,10 +570,15 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="get_resize_file_path">get_resize_file_path</h3>
+
+<hr />
+
+<h3 id="get-resize-file-path">get_resize_file_path</h3>
+
 <p><code>get_resize_file_path( mixed $url, mixed $w, mixed $h, mixed $crop )</code></p>
+
 <p><strong>returns:</strong> <code>mixed</code></p>
+
 <table>
 <thead>
 <tr>
@@ -518,22 +587,26 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$url</td>
 <td><code>mixed</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$w</td>
 <td><code>mixed</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$h</td>
 <td><code>mixed</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$crop</td>
 <td><code>mixed</code></td>
@@ -541,10 +614,15 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="get_resize_file_url">get_resize_file_url</h3>
+
+<hr />
+
+<h3 id="get-resize-file-url">get_resize_file_url</h3>
+
 <p><code>get_resize_file_url( mixed $url, mixed $w, mixed $h, mixed $crop )</code></p>
+
 <p><strong>returns:</strong> <code>mixed</code></p>
+
 <table>
 <thead>
 <tr>
@@ -553,22 +631,26 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$url</td>
 <td><code>mixed</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$w</td>
 <td><code>mixed</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$h</td>
 <td><code>mixed</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$crop</td>
 <td><code>mixed</code></td>
@@ -576,11 +658,17 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="get_server_location">get_server_location</h3>
+
+<hr />
+
+<h3 id="get-server-location">get_server_location</h3>
+
 <p><code>get_server_location( string $url )</code></p>
+
 <p><strong>returns:</strong> <code>string</code></p>
+
 <p>Determines the filepath corresponding to a given URL</p>
+
 <table>
 <thead>
 <tr>
@@ -589,6 +677,7 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$url</td>
@@ -597,11 +686,17 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="get_sideloaded_file_loc">get_sideloaded_file_loc</h3>
+
+<hr />
+
+<h3 id="get-sideloaded-file-loc">get_sideloaded_file_loc</h3>
+
 <p><code>get_sideloaded_file_loc( string $file )</code></p>
+
 <p><strong>returns:</strong> <code>string</code></p>
+
 <p>Determines the filepath where a given external file will be stored.</p>
+
 <table>
 <thead>
 <tr>
@@ -610,6 +705,7 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$file</td>
@@ -618,11 +714,17 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="img_to_jpg">img_to_jpg</h3>
+
+<hr />
+
+<h3 id="img-to-jpg">img_to_jpg</h3>
+
 <p><code>img_to_jpg( string $src, string $bghex=&quot;#FFFFFF&quot;, bool $force=false )</code></p>
+
 <p><strong>returns:</strong> <code>string</code></p>
+
 <p>Generates a new image by converting the source GIF or PNG into JPG</p>
+
 <table>
 <thead>
 <tr>
@@ -631,17 +733,20 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$src</td>
 <td><code>string</code></td>
 <td>a url or path to the image (<a href="http://example.org/wp-content/uploads/2014/image.jpg">http://example.org/wp-content/uploads/2014/image.jpg</a>) or (/wp-content/uploads/2014/image.jpg)</td>
 </tr>
+
 <tr>
 <td>$bghex</td>
 <td><code>string</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$force</td>
 <td><code>bool</code></td>
@@ -649,11 +754,17 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="img_to_webp">img_to_webp</h3>
+
+<hr />
+
+<h3 id="img-to-webp">img_to_webp</h3>
+
 <p><code>img_to_webp( string $src, mixed/int $quality=80, bool $force=false )</code></p>
+
 <p><strong>returns:</strong> <code>void</code></p>
+
 <p>Generates a new image by converting the source into WEBP if supported by the server</p>
+
 <table>
 <thead>
 <tr>
@@ -662,17 +773,20 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$src</td>
 <td><code>string</code></td>
 <td>a url or path to the image (<a href="http://example.org/wp-content/uploads/2014/image.webp">http://example.org/wp-content/uploads/2014/image.webp</a>) or (/wp-content/uploads/2014/image.jpg) If webp is not supported, a jpeg image will be generated</td>
 </tr>
+
 <tr>
 <td>$quality</td>
 <td><code>mixed/int</code></td>
 <td>ranges from (worst quality, smaller file) to 100 (best quality, biggest file)</td>
 </tr>
+
 <tr>
 <td>$force</td>
 <td><code>bool</code></td>
@@ -680,15 +794,25 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 </tr>
 </tbody>
 </table>
-<hr>
+
+<hr />
+
 <h3 id="init">init</h3>
+
 <p><code>init( )</code></p>
+
 <p><strong>returns:</strong> <code>void</code></p>
-<hr>
-<h3 id="is_animated_gif">is_animated_gif</h3>
+
+<hr />
+
+<h3 id="is-animated-gif">is_animated_gif</h3>
+
 <p><code>is_animated_gif( string $file )</code></p>
+
 <p><strong>returns:</strong> <code>boolean</code> true if it&rsquo;s an animated gif, false if not</p>
+
 <p>checks to see if the given file is an aimated gif</p>
+
 <table>
 <thead>
 <tr>
@@ -697,6 +821,7 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$file</td>
@@ -705,11 +830,17 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="is_svg">is_svg</h3>
+
+<hr />
+
+<h3 id="is-svg">is_svg</h3>
+
 <p><code>is_svg( string $file_path )</code></p>
+
 <p><strong>returns:</strong> <code>bool</code> True if SVG, false if not SVG or file doesn&rsquo;t exist.</p>
+
 <p>Checks if file is an SVG.</p>
+
 <table>
 <thead>
 <tr>
@@ -718,6 +849,7 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$file_path</td>
@@ -726,12 +858,18 @@ The image is expected to be either part of a theme, plugin, or an upload.</p>
 </tr>
 </tbody>
 </table>
-<hr>
+
+<hr />
+
 <h3 id="letterbox">letterbox</h3>
+
 <p><code>letterbox( string $src, int $w, int $h, bool/string $color=false, bool $force=false )</code></p>
+
 <p><strong>returns:</strong> <code>string</code></p>
+
 <p>Generate a new image with the specified dimensions.
 New dimensions are achieved by adding colored bands to maintain ratio.</p>
+
 <table>
 <thead>
 <tr>
@@ -740,27 +878,32 @@ New dimensions are achieved by adding colored bands to maintain ratio.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$src</td>
 <td><code>string</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$w</td>
 <td><code>int</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$h</td>
 <td><code>int</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$color</td>
 <td><code>bool/string</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$force</td>
 <td><code>bool</code></td>
@@ -768,12 +911,18 @@ New dimensions are achieved by adding colored bands to maintain ratio.</p>
 </tr>
 </tbody>
 </table>
-<hr>
+
+<hr />
+
 <h3 id="resize">resize</h3>
+
 <p><code>resize( string $src, mixed $w, int $h, string $crop=&quot;default&quot;, bool $force=false )</code></p>
+
 <p><strong>returns:</strong> <code>string</code> (ex: )</p>
+
 <p>Generates a new image with the specified dimensions.
 New dimensions are achieved by cropping to maintain ratio.</p>
+
 <table>
 <thead>
 <tr>
@@ -782,27 +931,32 @@ New dimensions are achieved by cropping to maintain ratio.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$src</td>
 <td><code>string</code></td>
 <td>an URL (absolute or relative) to the original image</td>
 </tr>
+
 <tr>
 <td>$w</td>
 <td><code>mixed</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$h</td>
 <td><code>int</code></td>
 <td>target height (ignored if $w is WP image size). If not set, will ignore and resize based on $w only.</td>
 </tr>
+
 <tr>
 <td>$crop</td>
 <td><code>string</code></td>
 <td>your choices are &lsquo;default&rsquo;, &lsquo;center&rsquo;, &lsquo;top&rsquo;, &lsquo;bottom&rsquo;, &lsquo;left&rsquo;, &lsquo;right&rsquo;</td>
 </tr>
+
 <tr>
 <td>$force</td>
 <td><code>bool</code></td>
@@ -810,15 +964,27 @@ New dimensions are achieved by cropping to maintain ratio.</p>
 </tr>
 </tbody>
 </table>
+
 <p><strong>Twig</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;img src=&#34;<span style="color:#75715e">{{</span> image.src <span style="color:#f92672">|</span> <span style="color:#a6e22e">resize</span><span style="color:#f92672">(</span><span style="color:#ae81ff">300</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">200</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;top&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">}}</span>&#34; /&gt;
-</code></pre></div><p><strong>HTML</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://example.org/wp-content/uploads/pic-300x200-c-top.jpg&#34;</span> /&gt;
-</code></pre></div><hr>
-<h3 id="retina_resize">retina_resize</h3>
+
+<pre><code class="language-twig">&lt;img src=&quot;{{ image.src | resize(300, 200, 'top') }}&quot; /&gt;
+</code></pre>
+
+<p><strong>HTML</strong></p>
+
+<pre><code class="language-html">&lt;img src=&quot;http://example.org/wp-content/uploads/pic-300x200-c-top.jpg&quot; /&gt;
+</code></pre>
+
+<hr />
+
+<h3 id="retina-resize">retina_resize</h3>
+
 <p><code>retina_resize( string $src, mixed/\Timber\float $multiplier=2, bool/boolean $force=false )</code></p>
+
 <p><strong>returns:</strong> <code>string</code> url to the new image</p>
+
 <p>Generates a new image with increased size, for display on Retina screens.</p>
+
 <table>
 <thead>
 <tr>
@@ -827,17 +993,20 @@ New dimensions are achieved by cropping to maintain ratio.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$src</td>
 <td><code>string</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$multiplier</td>
 <td><code>mixed/\Timber\float</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$force</td>
 <td><code>bool/boolean</code></td>
@@ -845,11 +1014,17 @@ New dimensions are achieved by cropping to maintain ratio.</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="sideload_image">sideload_image</h3>
+
+<hr />
+
+<h3 id="sideload-image">sideload_image</h3>
+
 <p><code>sideload_image( string $file )</code></p>
+
 <p><strong>returns:</strong> <code>string</code> the URL to the downloaded file</p>
+
 <p>downloads an external image to the server and stores it on the server</p>
+
 <table>
 <thead>
 <tr>
@@ -858,6 +1033,7 @@ New dimensions are achieved by cropping to maintain ratio.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$file</td>
@@ -866,11 +1042,17 @@ New dimensions are achieved by cropping to maintain ratio.</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="theme_url_to_dir">theme_url_to_dir</h3>
+
+<hr />
+
+<h3 id="theme-url-to-dir">theme_url_to_dir</h3>
+
 <p><code>theme_url_to_dir( string $src )</code></p>
+
 <p><strong>returns:</strong> <code>string</code> full path to the file in question</p>
+
 <p>Converts a URL located in a theme directory into the raw file path</p>
+
 <table>
 <thead>
 <tr>
@@ -879,6 +1061,7 @@ New dimensions are achieved by cropping to maintain ratio.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$src</td>
@@ -887,11 +1070,17 @@ New dimensions are achieved by cropping to maintain ratio.</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="is_in_theme_dir">is_in_theme_dir</h3>
+
+<hr />
+
+<h3 id="is-in-theme-dir">is_in_theme_dir</h3>
+
 <p><code>is_in_theme_dir( string $path )</code></p>
+
 <p><strong>returns:</strong> <code>bool</code> If the image is located in the theme directory it returns true. If not or $path doesn&rsquo;t exits it returns false.</p>
+
 <p>Checks if uploaded image is located in theme.</p>
+
 <table>
 <thead>
 <tr>
@@ -900,6 +1089,7 @@ New dimensions are achieved by cropping to maintain ratio.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$path</td>
@@ -908,11 +1098,17 @@ New dimensions are achieved by cropping to maintain ratio.</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="maybe_realpath">maybe_realpath</h3>
+
+<hr />
+
+<h3 id="maybe-realpath">maybe_realpath</h3>
+
 <p><code>maybe_realpath( string $path )</code></p>
+
 <p><strong>returns:</strong> <code>string</code> the resolved path</p>
+
 <p>Runs realpath to resolve symbolic links (../, etc). But only if it&rsquo;s a path and not a URL</p>
+
 <table>
 <thead>
 <tr>
@@ -921,6 +1117,7 @@ New dimensions are achieved by cropping to maintain ratio.</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$path</td>
@@ -929,15 +1126,22 @@ New dimensions are achieved by cropping to maintain ratio.</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="process_delete_generated_files">process_delete_generated_files</h3>
+
+<hr />
+
+<h3 id="process-delete-generated-files">process_delete_generated_files</h3>
+
 <p><code>process_delete_generated_files( string $filename, string $ext, string $dir, string $search_pattern, mixed/string $match_pattern=null )</code></p>
+
 <p><strong>returns:</strong> <code>void</code></p>
+
 <p>Deletes resized versions of the supplied file name.
 So if passed a value like my-pic.jpg, this function will delete my-pic-500x200-c-left.jpg, my-pic-400x400-c-default.jpg, etc.</p>
+
 <p>keeping these here so I know what the hell we&rsquo;re matching
-$match = preg_match(&quot;//srv/www/wordpress-develop/src/wp-content/uploads/2014/05/$filename-[0-9]<em>x[0-9]</em>-c-[a-z]<em>.jpg/&quot;, $found_file);
-$match = preg_match(&quot;//srv/www/wordpress-develop/src/wp-content/uploads/2014/05/arch-[0-9]<em>x[0-9]</em>-c-[a-z]</em>.jpg/&quot;, $filename);</p>
+$match = preg_match(&ldquo;/\/srv\/www\/wordpress-develop\/src\/wp-content\/uploads\/2014\/05\/$filename-[0-9]<em>x[0-9]</em>-c-[a-z]*.jpg/&ldquo;, $found_file);
+$match = preg_match(&ldquo;/\/srv\/www\/wordpress-develop\/src\/wp-content\/uploads\/2014\/05\/arch-[0-9]<em>x[0-9]</em>-c-[a-z]*.jpg/&ldquo;, $filename);</p>
+
 <table>
 <thead>
 <tr>
@@ -946,27 +1150,32 @@ $match = preg_match(&quot;//srv/www/wordpress-develop/src/wp-content/uploads/201
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$filename</td>
 <td><code>string</code></td>
 <td>ex: my-pic</td>
 </tr>
+
 <tr>
 <td>$ext</td>
 <td><code>string</code></td>
 <td>ex: jpg</td>
 </tr>
+
 <tr>
 <td>$dir</td>
 <td><code>string</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$search_pattern</td>
 <td><code>string</code></td>
 <td>pattern of files to pluck from</td>
 </tr>
+
 <tr>
 <td>$match_pattern</td>
 <td><code>mixed/string</code></td>
@@ -974,7 +1183,8 @@ $match = preg_match(&quot;//srv/www/wordpress-develop/src/wp-content/uploads/201
 </tr>
 </tbody>
 </table>
-<hr>
+
+<hr />
 			</div>
 		</div>
 	</article>

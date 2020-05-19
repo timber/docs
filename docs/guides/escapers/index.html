@@ -228,27 +228,39 @@
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
 			<nav id="TableOfContents">
-  <ul>
-    <li><a href="#universal-escaping">Universal Escaping</a></li>
-    <li><a href="#general-escapers">General Escapers</a></li>
-    <li><a href="#wp_kses_post">wp_kses_post</a></li>
-    <li><a href="#esc_url">esc_url</a></li>
-    <li><a href="#esc_html">esc_html</a></li>
-    <li><a href="#esc_js">esc_js</a></li>
-  </ul>
+<ul>
+<li>
+<ul>
+<li><a href="#universal-escaping">Universal Escaping</a></li>
+<li><a href="#general-escapers">General Escapers</a></li>
+<li><a href="#wp-kses-post">wp_kses_post</a></li>
+<li><a href="#esc-url">esc_url</a></li>
+<li><a href="#esc-html">esc_html</a></li>
+<li><a href="#esc-js">esc_js</a></li>
+</ul></li>
+</ul>
 </nav>
 		</aside>
 
 		<div class="content-container">
 			<div class="content">
-				<h2 id="universal-escaping">Universal Escaping</h2>
+				
+
+<h2 id="universal-escaping">Universal Escaping</h2>
+
 <p>By default, Timber does <em>not</em> escape the output of standard tags (i.e. <code>{{ post.field }}</code>). If you want to enable <code>autoescape</code> behavior simply add these lines to <code>functions.php</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">if ( class_exists(&#39;Timber&#39;) ) {
-	Timber::$autoescape = &#39;html&#39;;
+
+<pre><code class="language-php">if ( class_exists('Timber') ) {
+	Timber::$autoescape = 'html';
 }
-</code></pre></div><h2 id="general-escapers">General Escapers</h2>
+</code></pre>
+
+<h2 id="general-escapers">General Escapers</h2>
+
 <p>Twig offers a variety of <a href="http://twig.sensiolabs.org/doc/filters/escape.html">escapers</a> out of the box. These are intended to escape a string for safe insertion into the final output and there are multiple functions to conform to the strategy dependant on the context. In addition, Timber has added some valuable custom escapers for your WP theme. To use the escaper (see documentation link above) you use pipe your content through a function <code>e</code> if you want to use a custom escaper you would supply an argument to the function, e.g. <code>e('wp_kses_post')</code></p>
+
 <p>This all follows the WordPress (and greater development philosophy) to:</p>
+
 <ol>
 <li>Never trust user input.</li>
 <li>Escape as late as possible.</li>
@@ -258,37 +270,69 @@
 <li>Sanitation is okay, but validation/rejection is better.</li>
 <li>Never trust user input.</li>
 </ol>
+
 <p><a href="https://vip.wordpress.com/documentation/vip/best-practices/security/validating-sanitizing-escaping/">Relevant Documentation</a></p>
-<h2 id="wp_kses_post">wp_kses_post</h2>
+
+<h2 id="wp-kses-post">wp_kses_post</h2>
+
 <p>Background on KSES. KSES is a recursive acronym for <code>KSES Kills Evil Scripts</code>. It&rsquo;s goal is to ensure only  &ldquo;allowed&rdquo; HTML element names, attribute names and attribute values plus only sane HTML entities in the string. Allowed is based on a configuration.</p>
-<p>This uses ths internal WordPress method that sanitize content for allowed HTML tags for post content. The configuration used can be found by running <code> wp_kses_allowed_html( 'post' );</code> <a href="https://codex.wordpress.org/Function_Reference/wp_kses_post">WordPress Documentation</a></p>
+
+<p>This uses ths internal WordPress method that sanitize content for allowed HTML tags for post content. The configuration used can be found by running <code>wp_kses_allowed_html( 'post' );</code> <a href="https://codex.wordpress.org/Function_Reference/wp_kses_post">WordPress Documentation</a></p>
+
 <p><strong>Twig</strong></p>
+
 <p><code>&lt;p class=&quot;intro&quot;&gt;{{post.post_content|e('wp_kses_post')}}&lt;/p&gt;</code></p>
+
 <p>In this example, <code>post.post_content</code> is:</p>
+
 <p><code>&lt;div foo=&quot;bar&quot; src=&quot;bum&quot;&gt;Foo&lt;/div&gt;&lt;script&gt;DoEvilThing();&lt;/script&gt;</code></p>
+
 <p><strong>Output</strong></p>
+
 <p><code>&lt;div&gt;Foo&lt;/div&gt;DoEvilThing();</code></p>
-<hr>
-<h2 id="esc_url">esc_url</h2>
+
+<hr />
+
+<h2 id="esc-url">esc_url</h2>
+
 <p>Uses WordPress&rsquo; internal <code>esc_url</code> function on text. This should be used to sanitize URLs. <a href="https://codex.wordpress.org/Function_Reference/esc_url">WordPress Documentation</a></p>
+
 <p><strong>Twig</strong></p>
+
 <p><code>&lt;a href=&quot;{{ post.get_field('custom_link')|e('esc_url') }}&quot;&gt;&lt;/a&gt;</code></p>
+
 <p><strong>Output</strong></p>
+
 <p><code>&lt;a href=&quot;http://google.com&quot;&gt;&lt;/a&gt;</code></p>
-<hr>
-<h2 id="esc_html">esc_html</h2>
-<p>Escaping for HTML blocks. It converts any potentially conflicting HTML entities to their encoded equivalent to prevent them from being rendered as markup by the browser, e.g. converts &ldquo;&lt;&rdquo; to &ldquo;&lt;&rdquo; and double quotes &quot; to &ldquo;$quot;&rdquo;</p>
+
+<hr />
+
+<h2 id="esc-html">esc_html</h2>
+
+<p>Escaping for HTML blocks. It converts any potentially conflicting HTML entities to their encoded equivalent to prevent them from being rendered as markup by the browser, e.g. converts &ldquo;&lt;&rdquo; to &ldquo;&lt;&rdquo; and double quotes &ldquo; to &ldquo;$quot;&rdquo;</p>
+
 <p>This is for plain old text. If your content has HTML markup you should not use <code>esc_html</code> which will render the HTML as it looks in your code editor &ndash; to preserve the HTML you will want to use <code>wp_kses_post</code></p>
+
 <p><strong>Twig</strong></p>
+
 <p><code>&lt;div class=&quot;equation&quot;&gt;{{ post.get_field('equation')|e('esc_html') }}&lt;/div&gt;</code></p>
+
 <p><strong>Output</strong></p>
+
 <p><code>&lt;div class=&quot;equation&quot;&gt;is x &amp;lt; y?&lt;/div&gt;</code></p>
-<hr>
-<h2 id="esc_js">esc_js</h2>
+
+<hr />
+
+<h2 id="esc-js">esc_js</h2>
+
 <p>Escapes text strings for echoing in JS. It is intended to be used for inline JS (in a tag attribute, for example onclick=”…”). Note that the strings have to be in single quotes. The filter ‘js_escape’ is also applied.</p>
+
 <p><strong>Twig</strong></p>
+
 <p><code>&lt;script&gt;var bar = '{{ post.get_field('name') }}';&lt;/script&gt;</code></p>
+
 <p><strong>Output</strong></p>
+
 <p><code>&lt;script&gt;var bar = 'Gabrielle';&lt;/script&gt;</code></p>
 
 			</div>

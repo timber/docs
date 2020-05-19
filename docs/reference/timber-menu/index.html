@@ -228,28 +228,31 @@
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
 			<nav id="TableOfContents">
-  <ul>
-    <li><a href="#overview">Overview</a>
-      <ul>
-        <li><a href="#properties">Properties</a></li>
-        <li><a href="#methods">Methods</a></li>
-      </ul>
-    </li>
-    <li><a href="#class-methods">Class Methods</a>
-      <ul>
-        <li><a href="#__construct">__construct</a></li>
-        <li><a href="#find_parent_item_in_menu">find_parent_item_in_menu</a></li>
-        <li><a href="#get_items">get_items</a></li>
-      </ul>
-    </li>
-  </ul>
+<ul>
+<li>
+<ul>
+<li><a href="#overview">Overview</a>
+<ul>
+<li><a href="#properties">Properties</a></li>
+<li><a href="#methods">Methods</a></li>
+</ul></li>
+<li><a href="#class-methods">Class Methods</a>
+<ul>
+<li><a href="#construct">__construct</a></li>
+<li><a href="#find-parent-item-in-menu">find_parent_item_in_menu</a></li>
+<li><a href="#get-items">get_items</a></li>
+</ul></li>
+</ul></li>
+</ul>
 </nav>
 		</aside>
 
 		<div class="content-container">
 			<div class="content">
 				<h2 id="overview">Overview</h2>
+
 <h3 id="properties">Properties</h3>
+
 <table>
 <thead>
 <tr>
@@ -258,57 +261,68 @@
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>depth</td>
 <td><code>integer</code></td>
 <td>The depth of the menu we are rendering</td>
 </tr>
+
 <tr>
 <td>items</td>
 <td><code>array/null</code></td>
 <td>Array of <code>Timber\Menu</code> objects you can to iterate through.</td>
 </tr>
+
 <tr>
 <td>id</td>
 <td><code>integer</code></td>
 <td>The ID of the menu, corresponding to the wp_terms table.</td>
 </tr>
+
 <tr>
 <td>ID</td>
 <td><code>integer</code></td>
 <td>The ID of the menu, corresponding to the wp_terms table.</td>
 </tr>
+
 <tr>
 <td>term_id</td>
 <td><code>integer</code></td>
 <td>The ID of the menu, corresponding to the wp_terms table.</td>
 </tr>
+
 <tr>
 <td>name</td>
 <td><code>string</code></td>
 <td>The name of the menu (ex: <code>Main Navigation</code>).</td>
 </tr>
+
 <tr>
 <td>title</td>
 <td><code>string</code></td>
 <td>The name of the menu (ex: <code>Main Navigation</code>).</td>
 </tr>
+
 <tr>
 <td>options</td>
 <td><code>array</code></td>
 <td>An array of menu options.</td>
 </tr>
+
 <tr>
 <td>raw_options</td>
 <td><code>array</code></td>
 <td>The unfiltered options sent forward via the user in the __construct</td>
 </tr>
+
 <tr>
 <td>theme_location</td>
 <td><code>string</code></td>
 <td>The theme location of the menu, if available.</td>
 </tr>
+
 <tr>
 <td>taxonomy</td>
 <td><code>string</code></td>
@@ -316,7 +330,9 @@
 </tr>
 </tbody>
 </table>
+
 <h3 id="methods">Methods</h3>
+
 <table>
 <thead>
 <tr>
@@ -325,12 +341,14 @@
 <th>Returns/Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td><a href="#find_parent_item_in_menu">find_parent_item_in_menu</a></td>
 <td><code>\Timber\MenuItem/bool</code></td>
 <td>A menu item. False if no parent was found.</td>
 </tr>
+
 <tr>
 <td><a href="#get_items">get_items</a></td>
 <td><code>array</code></td>
@@ -338,12 +356,19 @@
 </tr>
 </tbody>
 </table>
-<hr>
+
+<hr />
+
 <h2 id="class-methods">Class Methods</h2>
-<h3 id="__construct">__construct</h3>
+
+<h3 id="construct">__construct</h3>
+
 <p><code>__construct( int/string $slug, array $options=array() )</code></p>
+
 <p><strong>returns:</strong> <code>void</code></p>
+
 <p>Initialize a menu.</p>
+
 <table>
 <thead>
 <tr>
@@ -352,12 +377,14 @@
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$slug</td>
 <td><code>int/string</code></td>
 <td>A menu slug, the term ID of the menu, the full name from the admin menu, the slug of the registered location or nothing. Passing nothing is good if you only have one menu. Timber will grab what it finds.</td>
 </tr>
+
 <tr>
 <td>$options</td>
 <td><code>array</code></td>
@@ -365,11 +392,17 @@
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="find_parent_item_in_menu">find_parent_item_in_menu</h3>
+
+<hr />
+
+<h3 id="find-parent-item-in-menu">find_parent_item_in_menu</h3>
+
 <p><code>find_parent_item_in_menu( array $menu_items, int $parent_id )</code></p>
+
 <p><strong>returns:</strong> <code>\Timber\MenuItem/bool</code> A menu item. False if no parent was found.</p>
+
 <p>Find a parent menu item in a set of menu items.</p>
+
 <table>
 <thead>
 <tr>
@@ -378,12 +411,14 @@
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$menu_items</td>
 <td><code>array</code></td>
 <td>An array of menu items.</td>
 </tr>
+
 <tr>
 <td>$parent_id</td>
 <td><code>int</code></td>
@@ -391,19 +426,31 @@
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="get_items">get_items</h3>
+
+<hr />
+
+<h3 id="get-items">get_items</h3>
+
 <p><code>get_items( )</code></p>
+
 <p><strong>returns:</strong> <code>array</code> Array of <code>Timber\MenuItem</code> objects. Empty array if no items could be found.</p>
+
 <p>Get menu items.</p>
+
 <p>Instead of using this function, you can use the <code>$items</code> property directly to get the items
 for a menu.</p>
+
 <p><strong>Twig</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{%</span> <span style="color:#66d9ef">for</span> item <span style="color:#66d9ef">in</span> menu.get_items <span style="color:#75715e">%}</span>
-    &lt;a href=&#34;<span style="color:#75715e">{{</span> item.link <span style="color:#75715e">}}</span>&#34;&gt;<span style="color:#75715e">{{</span> item.title <span style="color:#75715e">}}</span>&lt;/a&gt;
-<span style="color:#75715e">{%</span> <span style="color:#66d9ef">endfor</span> <span style="color:#75715e">%}</span>
-</code></pre></div><hr>
+
+<pre><code class="language-twig">{% for item in menu.get_items %}
+    &lt;a href=&quot;{{ item.link }}&quot;&gt;{{ item.title }}&lt;/a&gt;
+{% endfor %}
+</code></pre>
+
+<hr />
+
 <p><em>This class extends \Timber\Term</em></p>
+
 <p><em>This class implements \Timber\CoreInterface</em></p>
 			</div>
 		</div>

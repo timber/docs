@@ -228,29 +228,41 @@
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
 			<nav id="TableOfContents">
-  <ul>
-    <li><a href="#translation-functions">Translation functions</a>
-      <ul>
-        <li><a href="#sprintf-notation">sprintf notation</a></li>
-      </ul>
-    </li>
-    <li><a href="#generating-localization-files">Generating localization files</a>
-      <ul>
-        <li><a href="#generating-l10n-files-with-poedit-2">Generating l10n files with Poedit 2</a></li>
-        <li><a href="#generating-l10n-files-with-poedit-1x">Generating l10n files with Poedit 1.x</a></li>
-        <li><a href="#use-a-gulp-script">Use a gulp script</a></li>
-      </ul>
-    </li>
-  </ul>
+<ul>
+<li>
+<ul>
+<li><a href="#translation-functions">Translation functions</a>
+<ul>
+<li><a href="#sprintf-notation">sprintf notation</a></li>
+</ul></li>
+<li><a href="#generating-localization-files">Generating localization files</a>
+<ul>
+<li><a href="#generating-l10n-files-with-poedit-2">Generating l10n files with Poedit 2</a></li>
+<li><a href="#generating-l10n-files-with-poedit-1-x">Generating l10n files with Poedit 1.x</a>
+<ul>
+<li><a href="#let-gettext-parse-twig-files-as-php-files">Let gettext parse Twig files as PHP files</a></li>
+<li><a href="#use-a-custom-python-parser">Use a custom Python parser</a></li>
+<li><a href="#use-twig-gettext-extractor">Use Twig Gettext Extractor</a></li>
+</ul></li>
+<li><a href="#use-a-gulp-script">Use a gulp script</a></li>
+</ul></li>
+</ul></li>
+</ul>
 </nav>
 		</aside>
 
 		<div class="content-container">
 			<div class="content">
-				<p>Internationalization of a Timber theme works pretty much the same way as it does for default WordPress themes. Follow the guide in the <a href="https://developer.wordpress.org/themes/functionality/internationalization/">WordPress Theme Handbook</a> to setup i18n for your theme.</p>
+				
+
+<p>Internationalization of a Timber theme works pretty much the same way as it does for default WordPress themes. Follow the guide in the <a href="https://developer.wordpress.org/themes/functionality/internationalization/">WordPress Theme Handbook</a> to setup i18n for your theme.</p>
+
 <p>Twig has its own i18n extension that gives you <code>{% trans %}</code> tags to define translatable blocks, but there’s no need to use it, because with Timber, you have all you need.</p>
+
 <h2 id="translation-functions">Translation functions</h2>
+
 <p>Timber supports all the translation functions used in WordPress:</p>
+
 <ul>
 <li>__()</li>
 <li>_x()</li>
@@ -261,37 +273,71 @@
 <li>translate()</li>
 <li>translate_nooped_plural()</li>
 </ul>
+
 <p>The functions <code>_e()</code> and <code>_ex()</code> are also supported, but you probably won’t need them in Twig, because <code>{{ }}</code> already echoes the output.</p>
+
 <p><strong>WordPress:</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;entry-meta&#34;</span>&gt;<span style="color:#75715e">&lt;?php _e( &#39;Posted on&#39;, &#39;my-text-domain&#39; ) ?&gt;</span> [...]&lt;/<span style="color:#f92672">p</span>&gt;
-</code></pre></div><p><strong>Timber:</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;p class=&#34;entry-meta&#34;&gt;<span style="color:#75715e">{{</span> __<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;Posted on&#39;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;my-text-domain&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">}}</span> [...]&lt;/p&gt;
-</code></pre></div><h3 id="sprintf-notation">sprintf notation</h3>
+
+<pre><code class="language-html">&lt;p class=&quot;entry-meta&quot;&gt;&lt;?php _e( 'Posted on', 'my-text-domain' ) ?&gt; [...]&lt;/p&gt;
+</code></pre>
+
+<p><strong>Timber:</strong></p>
+
+<pre><code class="language-twig">&lt;p class=&quot;entry-meta&quot;&gt;{{ __('Posted on', 'my-text-domain') }} [...]&lt;/p&gt;
+</code></pre>
+
+<h3 id="sprintf-notation">sprintf notation</h3>
+
 <p>You can use sprintf-type placeholders, using the <code>format</code> filter:</p>
+
 <p><strong>WordPress:</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;entry-meta&#34;</span>&gt;<span style="color:#75715e">&lt;?php printf( __(&#39;Posted on %s&#39;, &#39;my-text-domain&#39;), $posted_on_date ) ?&gt;</span>&lt;/<span style="color:#f92672">p</span>&gt;
-</code></pre></div><p><strong>Timber:</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;p class=&#34;entry-meta&#34;&gt;<span style="color:#75715e">{{</span> __<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;Posted on %s&#39;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;my-text-domain&#39;</span><span style="color:#f92672">)|</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span>posted_on_date<span style="color:#f92672">)</span> <span style="color:#75715e">}}</span>&lt;/p&gt;
-</code></pre></div><p>If you want to use the <code>sprintf</code> function in Twig, you have to <a href="https://timber.github.io/docs/guides/functions/#make-functions-available-in-twig">add it yourself</a>.</p>
+
+<pre><code class="language-html">&lt;p class=&quot;entry-meta&quot;&gt;&lt;?php printf( __('Posted on %s', 'my-text-domain'), $posted_on_date ) ?&gt;&lt;/p&gt;
+</code></pre>
+
+<p><strong>Timber:</strong></p>
+
+<pre><code class="language-twig">&lt;p class=&quot;entry-meta&quot;&gt;{{ __('Posted on %s', 'my-text-domain')|format(posted_on_date) }}&lt;/p&gt;
+</code></pre>
+
+<p>If you want to use the <code>sprintf</code> function in Twig, you have to <a href="https://timber.github.io/docs/guides/functions/#make-functions-available-in-twig">add it yourself</a>.</p>
+
 <h2 id="generating-localization-files">Generating localization files</h2>
+
 <p>To generate <code>.pot</code>, <code>.po</code> and <code>.mo</code> files, you need a tool that supports parsing Twig files to detect all your translations. While there are a lot of tools that can parse PHP files, the solution that works best for Twig files is <a href="https://poedit.net/">Poedit</a>.</p>
+
 <h3 id="generating-l10n-files-with-poedit-2">Generating l10n files with Poedit 2</h3>
+
 <p><a href="https://poedit.net/">Poedit 2</a> fully supports Twig file parsing (Pro version only) with the following functions: __(), _x(), _n(), _nx().</p>
-<h3 id="generating-l10n-files-with-poedit-1x">Generating l10n files with Poedit 1.x</h3>
+
+<h3 id="generating-l10n-files-with-poedit-1-x">Generating l10n files with Poedit 1.x</h3>
+
 <p>Internationalization functions in Twig files are not automatically parsed by gettext in Poedit 1.x. The are multiple workarounds listed below.</p>
+
 <p><strong>Note however that the first two methods may miss some strings</strong>. Quotes can cause gettext to skip over <code>__</code> calls. Here’s an example for a string in an HTML attribute that won’t be recognized:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig">&lt;nav aria-label=&#34;<span style="color:#75715e">{{</span> __<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;Main menu&#39;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;my-textdomain&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">}}</span>&#34; /&gt;
-</code></pre></div><p>As a workaround, you could assign the translation to a variable, which you can then use in the attribute.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-twig" data-lang="twig"><span style="color:#75715e">{%</span> <span style="color:#66d9ef">set</span> nav_aria_label <span style="color:#f92672">=</span> __<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;Main Menu&#39;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;my-text-domain&#39;</span><span style="color:#f92672">)</span> <span style="color:#75715e">%}</span>
-&lt;nav aria-label=&#34;<span style="color:#75715e">{{</span> nav_aria_label <span style="color:#75715e">}}</span>&#34;&gt;
-</code></pre></div><h4 id="let-gettext-parse-twig-files-as-php-files">Let gettext parse Twig files as PHP files</h4>
+
+<pre><code class="language-twig">&lt;nav aria-label=&quot;{{ __('Main menu', 'my-textdomain') }}&quot; /&gt;
+</code></pre>
+
+<p>As a workaround, you could assign the translation to a variable, which you can then use in the attribute.</p>
+
+<pre><code class="language-twig">{% set nav_aria_label = __('Main Menu', 'my-text-domain') %}
+&lt;nav aria-label=&quot;{{ nav_aria_label }}&quot;&gt;
+</code></pre>
+
+<h4 id="let-gettext-parse-twig-files-as-php-files">Let gettext parse Twig files as PHP files</h4>
+
 <p>The quick and dirty workaround is to start each Twig file with <code>{#&lt;?php#}</code>. By doing this, gettext will interpret whatever comes next as PHP, and start looking for <code>__</code>.</p>
+
 <h4 id="use-a-custom-python-parser">Use a custom Python parser</h4>
+
 <p>Alternatively, you can use a custom parser for Python instead. This will throw a warning or two, but <em>most</em> of your strings are extracted! (&ldquo;Most&rdquo; because this method has the same problems with quotes as the PHP workaround above.) To add the parser, follow these steps:</p>
+
 <ol>
 <li>Create a Poedit project for your theme if you haven&rsquo;t already, and make sure to add <code>__</code> on the <em>Sources keywords</em> tab.</li>
 <li>Go to <em>Edit</em> &gt; <em>Preferences</em>.</li>
 <li>On the <em>Parsers</em> tab, add a new parser with these settings:
+
 <ul>
 <li>Language: <code>Timber</code></li>
 <li>List of extensions: <code>*.twig</code></li>
@@ -299,14 +345,18 @@
 <li>An item in keyword list: <code>-k%k</code></li>
 <li>An item in input files list: <code>%f</code></li>
 <li>Source code charset: <code>--from-code=%c</code></li>
-</ul>
-</li>
+</ul></li>
 <li>Save and Update!</li>
 </ol>
+
 <h4 id="use-twig-gettext-extractor">Use Twig Gettext Extractor</h4>
+
 <p>Another solution is <a href="https://github.com/umpirsky/Twig-Gettext-Extractor">Twig Gettext Extractor</a>, a special Twig parser for Poedit. The linked page contains instructions on how to set it up.</p>
+
 <h3 id="use-a-gulp-script">Use a gulp script</h3>
+
 <p>You can use <a href="https://gist.github.com/luism-s/ebca42b8b8d70e81f8917f675a784060">a gulp script to generate POT files</a> instead of using Poedit. The script will convert gettext functions in Twig into PHP tags and save each file as a PHP file in a cache folder. It will then iterate over these cached files (including other PHP files in your project) and generate a POT file. This approach will also consider strings in HTML attributes.</p>
+
 <p>You can find installation instructions in the comments of the gulpfile in the linked gist. Basic understanding of NPM is required.</p>
 
 			</div>

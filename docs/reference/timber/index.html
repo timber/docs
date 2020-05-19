@@ -228,58 +228,66 @@
 		<aside class="toc">
 			<h2 class="heading-4 toc__title">Contents of this page</h2>
 			<nav id="TableOfContents">
-  <ul>
-    <li><a href="#overview">Overview</a>
-      <ul>
-        <li><a href="#methods">Methods</a></li>
-      </ul>
-    </li>
-    <li><a href="#class-methods">Class Methods</a>
-      <ul>
-        <li><a href="#__construct">__construct</a></li>
-        <li><a href="#strikeadd_routestrike"><!-- raw HTML omitted -->add_route<!-- raw HTML omitted --></a></li>
-        <li><a href="#compile">compile</a></li>
-        <li><a href="#compile_string">compile_string</a></li>
-        <li><a href="#context">context</a></li>
-        <li><a href="#fetch">fetch</a></li>
-        <li><a href="#get_context">get_context</a></li>
-        <li><a href="#get_pagination">get_pagination</a></li>
-        <li><a href="#get_post">get_post</a></li>
-        <li><a href="#get_posts">get_posts</a></li>
-        <li><a href="#get_sidebar">get_sidebar</a></li>
-        <li><a href="#get_sidebar_from_php">get_sidebar_from_php</a></li>
-        <li><a href="#get_sites">get_sites</a></li>
-        <li><a href="#get_term">get_term</a></li>
-        <li><a href="#get_terms">get_terms</a></li>
-        <li><a href="#get_widgets">get_widgets</a></li>
-        <li><a href="#init_constants">init_constants</a></li>
-        <li><a href="#query_post">query_post</a></li>
-        <li><a href="#query_posts">query_posts</a></li>
-        <li><a href="#render">render</a></li>
-        <li><a href="#render_string">render_string</a></li>
-        <li><a href="#init">init</a></li>
-        <li><a href="#test_compatibility">test_compatibility</a></li>
-      </ul>
-    </li>
-  </ul>
+<ul>
+<li>
+<ul>
+<li><a href="#overview">Overview</a>
+<ul>
+<li><a href="#methods">Methods</a></li>
+</ul></li>
+<li><a href="#class-methods">Class Methods</a>
+<ul>
+<li><a href="#construct">__construct</a></li>
+<li><a href="#strike-add-route-strike"><strike>add_route</strike></a></li>
+<li><a href="#compile">compile</a></li>
+<li><a href="#compile-string">compile_string</a></li>
+<li><a href="#context">context</a></li>
+<li><a href="#fetch">fetch</a></li>
+<li><a href="#get-context">get_context</a></li>
+<li><a href="#get-pagination">get_pagination</a></li>
+<li><a href="#get-post">get_post</a></li>
+<li><a href="#get-posts">get_posts</a></li>
+<li><a href="#get-sidebar">get_sidebar</a></li>
+<li><a href="#get-sidebar-from-php">get_sidebar_from_php</a></li>
+<li><a href="#get-sites">get_sites</a></li>
+<li><a href="#get-term">get_term</a></li>
+<li><a href="#get-terms">get_terms</a></li>
+<li><a href="#get-widgets">get_widgets</a></li>
+<li><a href="#init-constants">init_constants</a></li>
+<li><a href="#query-post">query_post</a></li>
+<li><a href="#query-posts">query_posts</a></li>
+<li><a href="#render">render</a></li>
+<li><a href="#render-string">render_string</a></li>
+<li><a href="#init">init</a></li>
+<li><a href="#test-compatibility">test_compatibility</a></li>
+</ul></li>
+</ul></li>
+</ul>
 </nav>
 		</aside>
 
 		<div class="content-container">
 			<div class="content">
 				<p>Timber Class.</p>
+
 <p>Main class called Timber for this plugin.</p>
+
 <p><strong>PHP</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
- $posts <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">get_posts</span>();
- $posts <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">get_posts</span>(<span style="color:#e6db74">&#39;post_type = article&#39;</span>)
- $posts <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">get_posts</span>(<span style="color:#66d9ef">array</span>(<span style="color:#e6db74">&#39;post_type&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;article&#39;</span>, <span style="color:#e6db74">&#39;category_name&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;sports&#39;</span>)); <span style="color:#75715e">// uses wp_query format.
-</span><span style="color:#75715e"></span> $posts <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">get_posts</span>(<span style="color:#66d9ef">array</span>(<span style="color:#ae81ff">23</span>,<span style="color:#ae81ff">24</span>,<span style="color:#ae81ff">35</span>,<span style="color:#ae81ff">67</span>), <span style="color:#e6db74">&#39;InkwellArticle&#39;</span>);
- $context <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">context</span>(); <span style="color:#75715e">// returns wp favorites!
-</span><span style="color:#75715e"></span> $context[<span style="color:#e6db74">&#39;posts&#39;</span>] <span style="color:#f92672">=</span> $posts;
- <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">render</span>(<span style="color:#e6db74">&#39;index.twig&#39;</span>, $context);
-</code></pre></div><h2 id="overview">Overview</h2>
+
+<pre><code class="language-php">&lt;?php
+ $posts = Timber::get_posts();
+ $posts = Timber::get_posts('post_type = article')
+ $posts = Timber::get_posts(array('post_type' =&gt; 'article', 'category_name' =&gt; 'sports')); // uses wp_query format.
+ $posts = Timber::get_posts(array(23,24,35,67), 'InkwellArticle');
+ $context = Timber::context(); // returns wp favorites!
+ $context['posts'] = $posts;
+ Timber::render('index.twig', $context);
+</code></pre>
+
+<h2 id="overview">Overview</h2>
+
 <h3 id="methods">Methods</h3>
+
 <table>
 <thead>
 <tr>
@@ -288,92 +296,110 @@
 <th>Returns/Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td><a href="#compile">compile</a></td>
 <td><code>bool/string</code></td>
 <td>The returned output.</td>
 </tr>
+
 <tr>
 <td><a href="#compile_string">compile_string</a></td>
 <td><code>bool/string</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td><a href="#context">context</a></td>
 <td><code>array</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td><a href="#fetch">fetch</a></td>
 <td><code>bool/string</code></td>
 <td>The returned output.</td>
 </tr>
+
 <tr>
 <td><a href="#get_context">get_context</a></td>
 <td><code>array</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td><a href="#get_pagination">get_pagination</a></td>
 <td><code>array</code></td>
 <td>mixed</td>
 </tr>
+
 <tr>
 <td><a href="#get_post">get_post</a></td>
 <td><code>\Timber\Post/bool</code></td>
 <td>Timber\Post object if a post was found, false if no post was found.</td>
 </tr>
+
 <tr>
 <td><a href="#get_posts">get_posts</a></td>
 <td><code>array/bool/null</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td><a href="#get_sidebar">get_sidebar</a></td>
 <td><code>bool/string</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td><a href="#get_sidebar_from_php">get_sidebar_from_php</a></td>
 <td><code>string</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td><a href="#get_sites">get_sites</a></td>
 <td><code>array</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td><a href="#get_term">get_term</a></td>
 <td><code>\Timber\Timber\Term/\Timber\WP_Error/null</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td><a href="#get_terms">get_terms</a></td>
 <td><code>mixed</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td><a href="#get_widgets">get_widgets</a></td>
 <td><code>string</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td><a href="#query_post">query_post</a></td>
 <td><code>\Timber\Post/array/bool/null</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td><a href="#query_posts">query_posts</a></td>
 <td><code>\Timber\PostCollection</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td><a href="#render">render</a></td>
 <td><code>bool/string</code></td>
 <td>The echoed output.</td>
 </tr>
+
 <tr>
 <td><a href="#render_string">render_string</a></td>
 <td><code>bool/string</code></td>
@@ -381,17 +407,29 @@
 </tr>
 </tbody>
 </table>
-<hr>
+
+<hr />
+
 <h2 id="class-methods">Class Methods</h2>
-<h3 id="__construct">__construct</h3>
+
+<h3 id="construct">__construct</h3>
+
 <p><code>__construct( )</code></p>
+
 <p><strong>returns:</strong> <code>void</code></p>
-<hr>
-<h3 id="strikeadd_routestrike"><!-- raw HTML omitted -->add_route<!-- raw HTML omitted --></h3>
+
+<hr />
+
+<h3 id="strike-add-route-strike"><strike>add_route</strike></h3>
+
 <p><strong>DEPRECATED</strong> since 0.20.0 and will be removed in 1.1</p>
+
 <p><code>add_route( string $route, \Timber\callable $callback, array $args=array() )</code></p>
+
 <p><strong>returns:</strong> <code>void</code></p>
+
 <p>Add route.</p>
+
 <table>
 <thead>
 <tr>
@@ -400,17 +438,20 @@
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$route</td>
 <td><code>string</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$callback</td>
 <td><code>\Timber\callable</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$args</td>
 <td><code>array</code></td>
@@ -418,13 +459,20 @@
 </tr>
 </tbody>
 </table>
-<hr>
+
+<hr />
+
 <h3 id="compile">compile</h3>
+
 <p><code>compile( array/string $filenames, array $data=array(), bool/bool/int $expires=false, string $cache_mode=&quot;default&quot;, bool $via_render=false )</code></p>
+
 <p><strong>returns:</strong> <code>bool/string</code> The returned output.</p>
+
 <p>Compile a Twig file.</p>
+
 <p>Passes data to a Twig file and returns the output.
 If the template file doesn&rsquo;t exist it will throw a warning when WP_DEBUG is enabled.</p>
+
 <table>
 <thead>
 <tr>
@@ -433,27 +481,32 @@ If the template file doesn&rsquo;t exist it will throw a warning when WP_DEBUG i
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$filenames</td>
 <td><code>array/string</code></td>
 <td>Name of the Twig file to render. If this is an array of files, Timber will render the first file that exists.</td>
 </tr>
+
 <tr>
 <td>$data</td>
 <td><code>array</code></td>
 <td>Optional. An array of data to use in Twig template.</td>
 </tr>
+
 <tr>
 <td>$expires</td>
 <td><code>bool/bool/int</code></td>
 <td>Optional. In seconds. Use false to disable cache altogether. When passed an array, the first value is used for non-logged in visitors, the second for users. Default false.</td>
 </tr>
+
 <tr>
 <td>$cache_mode</td>
 <td><code>string</code></td>
 <td>Optional. Any of the cache mode constants defined in TimberLoader.</td>
 </tr>
+
 <tr>
 <td>$via_render</td>
 <td><code>bool</code></td>
@@ -461,19 +514,28 @@ If the template file doesn&rsquo;t exist it will throw a warning when WP_DEBUG i
 </tr>
 </tbody>
 </table>
+
 <p><strong>PHP</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
-$data <span style="color:#f92672">=</span> <span style="color:#66d9ef">array</span>(
-    <span style="color:#e6db74">&#39;firstname&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;Jane&#39;</span>,
-    <span style="color:#e6db74">&#39;lastname&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;Doe&#39;</span>,
-    <span style="color:#e6db74">&#39;email&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;jane.doe@example.org&#39;</span>,
+
+<pre><code class="language-php">&lt;?php
+$data = array(
+    'firstname' =&gt; 'Jane',
+    'lastname' =&gt; 'Doe',
+    'email' =&gt; 'jane.doe@example.org',
 );
-$team_member <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">compile</span>( <span style="color:#e6db74">&#39;team-member.twig&#39;</span>, $data );
-</code></pre></div><hr>
-<h3 id="compile_string">compile_string</h3>
+$team_member = Timber::compile( 'team-member.twig', $data );
+</code></pre>
+
+<hr />
+
+<h3 id="compile-string">compile_string</h3>
+
 <p><code>compile_string( string $string, array $data=array() )</code></p>
+
 <p><strong>returns:</strong> <code>bool/string</code></p>
+
 <p>Compile a string.</p>
+
 <table>
 <thead>
 <tr>
@@ -482,12 +544,14 @@ $team_member <span style="color:#f92672">=</span> <span style="color:#a6e22e">Ti
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$string</td>
 <td><code>string</code></td>
 <td>A string with Twig variables.</td>
 </tr>
+
 <tr>
 <td>$data</td>
 <td><code>array</code></td>
@@ -495,25 +559,40 @@ $team_member <span style="color:#f92672">=</span> <span style="color:#a6e22e">Ti
 </tr>
 </tbody>
 </table>
+
 <p><strong>PHP</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
-$data <span style="color:#f92672">=</span> <span style="color:#66d9ef">array</span>(
-    <span style="color:#e6db74">&#39;username&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;Jane Doe&#39;</span>,
+
+<pre><code class="language-php">&lt;?php
+$data = array(
+    'username' =&gt; 'Jane Doe',
 );
-$welcome <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">compile_string</span>( <span style="color:#e6db74">&#39;Hi {{ username }}, I’m a string with a custom Twig variable&#39;</span>, $data );
-</code></pre></div><hr>
+$welcome = Timber::compile_string( 'Hi {{ username }}, I’m a string with a custom Twig variable', $data );
+</code></pre>
+
+<hr />
+
 <h3 id="context">context</h3>
+
 <p><code>context( )</code></p>
+
 <p><strong>returns:</strong> <code>array</code></p>
+
 <p>Alias for Timber::get_context() which is deprecated in 2.0.</p>
+
 <p>This will allow us to update the starter theme to use the ::context() method and better
 prepare users for the upgrade (even if the details of what the method returns differs
 slightly).</p>
-<hr>
+
+<hr />
+
 <h3 id="fetch">fetch</h3>
+
 <p><code>fetch( array/string $filenames, array $data=array(), bool/bool/int $expires=false, string $cache_mode=&quot;default&quot; )</code></p>
+
 <p><strong>returns:</strong> <code>bool/string</code> The returned output.</p>
+
 <p>Fetch function.</p>
+
 <table>
 <thead>
 <tr>
@@ -522,22 +601,26 @@ slightly).</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$filenames</td>
 <td><code>array/string</code></td>
 <td>Name of the Twig file to render. If this is an array of files, Timber will render the first file that exists.</td>
 </tr>
+
 <tr>
 <td>$data</td>
 <td><code>array</code></td>
 <td>Optional. An array of data to use in Twig template.</td>
 </tr>
+
 <tr>
 <td>$expires</td>
 <td><code>bool/bool/int</code></td>
 <td>Optional. In seconds. Use false to disable cache altogether. When passed an array, the first value is used for non-logged in visitors, the second for users. Default false.</td>
 </tr>
+
 <tr>
 <td>$cache_mode</td>
 <td><code>string</code></td>
@@ -545,16 +628,27 @@ slightly).</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="get_context">get_context</h3>
+
+<hr />
+
+<h3 id="get-context">get_context</h3>
+
 <p><code>get_context( )</code></p>
+
 <p><strong>returns:</strong> <code>array</code></p>
+
 <p>Get context.</p>
-<hr>
-<h3 id="get_pagination">get_pagination</h3>
+
+<hr />
+
+<h3 id="get-pagination">get_pagination</h3>
+
 <p><code>get_pagination( array $prefs=array() )</code></p>
+
 <p><strong>returns:</strong> <code>array</code> mixed</p>
+
 <p>Get pagination.</p>
+
 <table>
 <thead>
 <tr>
@@ -563,6 +657,7 @@ slightly).</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$prefs</td>
@@ -571,12 +666,18 @@ slightly).</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="get_post">get_post</h3>
+
+<hr />
+
+<h3 id="get-post">get_post</h3>
+
 <p><code>get_post( bool/mixed $query=false, string/string/array $PostClass=&quot;Timber\Post&quot; )</code></p>
+
 <p><strong>returns:</strong> <code>\Timber\Post/bool</code> Timber\Post object if a post was found, false if no post was found.</p>
+
 <p>Get a post by post ID or query (as a query string or an array of arguments).
 But it&rsquo;s also cool</p>
+
 <table>
 <thead>
 <tr>
@@ -585,12 +686,14 @@ But it&rsquo;s also cool</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$query</td>
 <td><code>bool/mixed</code></td>
 <td>Optional. Post ID or query (as query string or an array of arguments for WP_Query). If a query is provided, only the first post of the result will be returned. Default false.</td>
 </tr>
+
 <tr>
 <td>$PostClass</td>
 <td><code>string/string/array</code></td>
@@ -598,11 +701,17 @@ But it&rsquo;s also cool</p>
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="get_posts">get_posts</h3>
+
+<hr />
+
+<h3 id="get-posts">get_posts</h3>
+
 <p><code>get_posts( bool/mixed $query=false, string/string/array $PostClass=&quot;Timber\Post&quot;, bool $return_collection=false )</code></p>
+
 <p><strong>returns:</strong> <code>array/bool/null</code></p>
+
 <p>Get posts.</p>
+
 <table>
 <thead>
 <tr>
@@ -611,17 +720,20 @@ But it&rsquo;s also cool</p>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$query</td>
 <td><code>bool/mixed</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$PostClass</td>
 <td><code>string/string/array</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$return_collection</td>
 <td><code>bool</code></td>
@@ -629,17 +741,26 @@ But it&rsquo;s also cool</p>
 </tr>
 </tbody>
 </table>
+
 <p><strong>PHP</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
-$posts <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">get_posts</span>();
- $posts <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">get_posts</span>(<span style="color:#e6db74">&#39;post_type = article&#39;</span>)
- $posts <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">get_posts</span>(<span style="color:#66d9ef">array</span>(<span style="color:#e6db74">&#39;post_type&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;article&#39;</span>, <span style="color:#e6db74">&#39;category_name&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;sports&#39;</span>)); <span style="color:#75715e">// uses wp_query format.
-</span><span style="color:#75715e"></span> $posts <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">get_posts</span>(<span style="color:#e6db74">&#39;post_type=any&#39;</span>, <span style="color:#66d9ef">array</span>(<span style="color:#e6db74">&#39;portfolio&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;MyPortfolioClass&#39;</span>, <span style="color:#e6db74">&#39;alert&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;MyAlertClass&#39;</span>)); <span style="color:#75715e">//use a classmap for the $PostClass
-</span></code></pre></div><hr>
-<h3 id="get_sidebar">get_sidebar</h3>
+
+<pre><code class="language-php">&lt;?php
+$posts = Timber::get_posts();
+ $posts = Timber::get_posts('post_type = article')
+ $posts = Timber::get_posts(array('post_type' =&gt; 'article', 'category_name' =&gt; 'sports')); // uses wp_query format.
+ $posts = Timber::get_posts('post_type=any', array('portfolio' =&gt; 'MyPortfolioClass', 'alert' =&gt; 'MyAlertClass')); //use a classmap for the $PostClass
+</code></pre>
+
+<hr />
+
+<h3 id="get-sidebar">get_sidebar</h3>
+
 <p><code>get_sidebar( string $sidebar=&quot;sidebar.php&quot;, array $data=array() )</code></p>
+
 <p><strong>returns:</strong> <code>bool/string</code></p>
+
 <p>Get sidebar.</p>
+
 <table>
 <thead>
 <tr>
@@ -648,12 +769,14 @@ $posts <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$sidebar</td>
 <td><code>string</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$data</td>
 <td><code>array</code></td>
@@ -661,11 +784,17 @@ $posts <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="get_sidebar_from_php">get_sidebar_from_php</h3>
+
+<hr />
+
+<h3 id="get-sidebar-from-php">get_sidebar_from_php</h3>
+
 <p><code>get_sidebar_from_php( string $sidebar=&quot;&quot;, array $data )</code></p>
+
 <p><strong>returns:</strong> <code>string</code></p>
+
 <p>Get sidebar from PHP</p>
+
 <table>
 <thead>
 <tr>
@@ -674,12 +803,14 @@ $posts <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$sidebar</td>
 <td><code>string</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$data</td>
 <td><code>array</code></td>
@@ -687,11 +818,17 @@ $posts <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="get_sites">get_sites</h3>
+
+<hr />
+
+<h3 id="get-sites">get_sites</h3>
+
 <p><code>get_sites( bool/array/bool $blog_ids=false )</code></p>
+
 <p><strong>returns:</strong> <code>array</code></p>
+
 <p>Get sites.</p>
+
 <table>
 <thead>
 <tr>
@@ -700,6 +837,7 @@ $posts <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$blog_ids</td>
@@ -708,11 +846,17 @@ $posts <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="get_term">get_term</h3>
+
+<hr />
+
+<h3 id="get-term">get_term</h3>
+
 <p><code>get_term( int/\Timber\WP_Term/object $term, string $taxonomy=&quot;post_tag&quot;, string $TermClass=&quot;Timber\Term&quot; )</code></p>
+
 <p><strong>returns:</strong> <code>\Timber\Timber\Term/\Timber\WP_Error/null</code></p>
+
 <p>Get term.</p>
+
 <table>
 <thead>
 <tr>
@@ -721,17 +865,20 @@ $posts <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$term</td>
 <td><code>int/\Timber\WP_Term/object</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$taxonomy</td>
 <td><code>string</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$TermClass</td>
 <td><code>string</code></td>
@@ -739,11 +886,17 @@ $posts <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="get_terms">get_terms</h3>
+
+<hr />
+
+<h3 id="get-terms">get_terms</h3>
+
 <p><code>get_terms( mixed/string/array $args=null, array $maybe_args=array(), string $TermClass=&quot;Timber\Term&quot; )</code></p>
+
 <p><strong>returns:</strong> <code>mixed</code></p>
+
 <p>Get terms.</p>
+
 <table>
 <thead>
 <tr>
@@ -752,17 +905,20 @@ $posts <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$args</td>
 <td><code>mixed/string/array</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$maybe_args</td>
 <td><code>array</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$TermClass</td>
 <td><code>string</code></td>
@@ -770,11 +926,17 @@ $posts <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="get_widgets">get_widgets</h3>
+
+<hr />
+
+<h3 id="get-widgets">get_widgets</h3>
+
 <p><code>get_widgets( int/string $widget_id )</code></p>
+
 <p><strong>returns:</strong> <code>string</code></p>
+
 <p>Get widgets.</p>
+
 <table>
 <thead>
 <tr>
@@ -783,6 +945,7 @@ $posts <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$widget_id</td>
@@ -791,15 +954,25 @@ $posts <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="init_constants">init_constants</h3>
+
+<hr />
+
+<h3 id="init-constants">init_constants</h3>
+
 <p><code>init_constants( )</code></p>
+
 <p><strong>returns:</strong> <code>void</code></p>
-<hr>
-<h3 id="query_post">query_post</h3>
+
+<hr />
+
+<h3 id="query-post">query_post</h3>
+
 <p><code>query_post( bool/mixed $query=false, string $PostClass=&quot;Timber\Post&quot; )</code></p>
+
 <p><strong>returns:</strong> <code>\Timber\Post/array/bool/null</code></p>
+
 <p>Query post.</p>
+
 <table>
 <thead>
 <tr>
@@ -808,12 +981,14 @@ $posts <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$query</td>
 <td><code>bool/mixed</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$PostClass</td>
 <td><code>string</code></td>
@@ -821,11 +996,17 @@ $posts <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</
 </tr>
 </tbody>
 </table>
-<hr>
-<h3 id="query_posts">query_posts</h3>
+
+<hr />
+
+<h3 id="query-posts">query_posts</h3>
+
 <p><code>query_posts( bool/mixed $query=false, string $PostClass=&quot;Timber\Post&quot; )</code></p>
+
 <p><strong>returns:</strong> <code>\Timber\PostCollection</code></p>
+
 <p>Query posts.</p>
+
 <table>
 <thead>
 <tr>
@@ -834,12 +1015,14 @@ $posts <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$query</td>
 <td><code>bool/mixed</code></td>
 <td></td>
 </tr>
+
 <tr>
 <td>$PostClass</td>
 <td><code>string</code></td>
@@ -847,12 +1030,19 @@ $posts <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</
 </tr>
 </tbody>
 </table>
-<hr>
+
+<hr />
+
 <h3 id="render">render</h3>
+
 <p><code>render( array/string $filenames, array $data=array(), bool/bool/int $expires=false, string $cache_mode=&quot;default&quot; )</code></p>
+
 <p><strong>returns:</strong> <code>bool/string</code> The echoed output.</p>
+
 <p>Render function.</p>
+
 <p>Passes data to a Twig file and echoes the output.</p>
+
 <table>
 <thead>
 <tr>
@@ -861,22 +1051,26 @@ $posts <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$filenames</td>
 <td><code>array/string</code></td>
 <td>Name of the Twig file to render. If this is an array of files, Timber will render the first file that exists.</td>
 </tr>
+
 <tr>
 <td>$data</td>
 <td><code>array</code></td>
 <td>Optional. An array of data to use in Twig template.</td>
 </tr>
+
 <tr>
 <td>$expires</td>
 <td><code>bool/bool/int</code></td>
 <td>Optional. In seconds. Use false to disable cache altogether. When passed an array, the first value is used for non-logged in visitors, the second for users. Default false.</td>
 </tr>
+
 <tr>
 <td>$cache_mode</td>
 <td><code>string</code></td>
@@ -884,15 +1078,24 @@ $posts <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</
 </tr>
 </tbody>
 </table>
+
 <p><strong>PHP</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
-$context <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">context</span>();
-<span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">render</span>( <span style="color:#e6db74">&#39;index.twig&#39;</span>, $context );
-</code></pre></div><hr>
-<h3 id="render_string">render_string</h3>
+
+<pre><code class="language-php">&lt;?php
+$context = Timber::context();
+Timber::render( 'index.twig', $context );
+</code></pre>
+
+<hr />
+
+<h3 id="render-string">render_string</h3>
+
 <p><code>render_string( string $string, array $data=array() )</code></p>
+
 <p><strong>returns:</strong> <code>bool/string</code></p>
+
 <p>Render a string with Twig variables.</p>
+
 <table>
 <thead>
 <tr>
@@ -901,12 +1104,14 @@ $context <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>$string</td>
 <td><code>string</code></td>
 <td>A string with Twig variables.</td>
 </tr>
+
 <tr>
 <td>$data</td>
 <td><code>array</code></td>
@@ -914,22 +1119,35 @@ $context <span style="color:#f92672">=</span> <span style="color:#a6e22e">Timber
 </tr>
 </tbody>
 </table>
+
 <p><strong>PHP</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
-$data <span style="color:#f92672">=</span> <span style="color:#66d9ef">array</span>(
-    <span style="color:#e6db74">&#39;username&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;Jane Doe&#39;</span>,
+
+<pre><code class="language-php">&lt;?php
+$data = array(
+    'username' =&gt; 'Jane Doe',
 );
-<span style="color:#a6e22e">Timber</span><span style="color:#f92672">::</span><span style="color:#a6e22e">render_string</span>( <span style="color:#e6db74">&#39;Hi {{ username }}, I’m a string with a custom Twig variable&#39;</span>, $data );
-</code></pre></div><hr>
+Timber::render_string( 'Hi {{ username }}, I’m a string with a custom Twig variable', $data );
+</code></pre>
+
+<hr />
+
 <h3 id="init">init</h3>
+
 <p><code>init( )</code></p>
+
 <p><strong>returns:</strong> <code>void</code></p>
-<hr>
-<h3 id="test_compatibility">test_compatibility</h3>
+
+<hr />
+
+<h3 id="test-compatibility">test_compatibility</h3>
+
 <p><code>test_compatibility( )</code></p>
+
 <p><strong>returns:</strong> <code>void</code></p>
+
 <p>Tests whether we can use Timber</p>
-<hr>
+
+<hr />
 			</div>
 		</div>
 	</article>
