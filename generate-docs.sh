@@ -46,4 +46,4 @@ cd ..
 rm -rf ./docs/*
 
 # Build documentation site with Hugo
-hugo
+./hugo
