@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
 	
-    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?db75858961ef100d103393e34f398175">
+    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?c77bdfd53127f8f1e98153f3f27452a2">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
 
     
@@ -322,7 +322,7 @@ A function that should fire when the pattern matches the request. Callback takes
 <p><code>$php_file</code> (required)
 A PHP file to load, in my experience this is usually your archive.php or a generic listing page (but don&rsquo;t worry it can be anything!)</p>
 
-<p><code>$template_params</code>
+<p><code>$args</code>
 Any data you want to send to the resulting view. Example:</p>
 
 <pre><code class="language-php">&lt;?php
@@ -333,9 +333,9 @@ Routes::map('info/:name/page/:pg', function($params){
     $query = 'posts_per_page=3&amp;post_type='.$params['name'].'&amp;paged='.intval($params['pg']);
 
     //load up a template which will use that query
-    $params = array();
-    $params['my_title'] = 'This is my custom title';
-    Routes::load('archive.php', $params, $query, 200);
+    $args = array();
+    $args['my_title'] = 'This is my custom title';
+    Routes::load('archive.php', $args, $query, 200);
 });
 </code></pre>
 
@@ -363,7 +363,7 @@ Send an optional status code. Defaults to 200 for &lsquo;Success/OK&rsquo;</p>
 
 
 <script src="https://timber.github.io/docs/js/highlight.pack.js" defer></script>
-<script src="https://timber.github.io/docs/js/scripts.js?d0b281f642113556d4adaa8032af79eb" defer></script>
+<script src="https://timber.github.io/docs/js/scripts.js?44e60569f8868a72f5a9e8cd72cb0844" defer></script>
 
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>

@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
 	
-    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?db75858961ef100d103393e34f398175">
+    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?c77bdfd53127f8f1e98153f3f27452a2">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
 
     
@@ -239,6 +239,7 @@
 </ul></li>
 <li><a href="#gallery-field">Gallery field</a></li>
 <li><a href="#group-field">Group field</a></li>
+<li><a href="#relationship-field">Relationship field</a></li>
 <li><a href="#repeater-field">Repeater field</a>
 <ul>
 <li><a href="#nested-repeater-fields">Nested Repeater fields</a></li>
@@ -328,6 +329,18 @@ Timber::render('single.twig', $data);
 <pre><code class="language-twig">{% set group = post.meta('group') %}
 {{ group.first_field }}
 {{ group.second_field }}
+</code></pre>
+
+<hr />
+
+<h2 id="relationship-field">Relationship field</h2>
+
+<p>The post data returned from a relationship field will not contain the Timber methods needed for easy handling inside of your Twig file. To get these, you&rsquo;ll need to convert them into a proper Timber <code>Post</code> object like so:</p>
+
+<pre><code class="language-twig">{% for item in Post(post.relationship_field) %} 
+   {{ item.title }}
+   {# Do something with item #}
+{% endfor %}
 </code></pre>
 
 <hr />
@@ -490,7 +503,7 @@ $context['posts'] = Timber::get_posts($args);
 
 
 <script src="https://timber.github.io/docs/js/highlight.pack.js" defer></script>
-<script src="https://timber.github.io/docs/js/scripts.js?d0b281f642113556d4adaa8032af79eb" defer></script>
+<script src="https://timber.github.io/docs/js/scripts.js?44e60569f8868a72f5a9e8cd72cb0844" defer></script>
 
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>

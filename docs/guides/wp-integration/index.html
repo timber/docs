@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
 	
-    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?db75858961ef100d103393e34f398175">
+    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?c77bdfd53127f8f1e98153f3f27452a2">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
 
     
@@ -234,7 +234,10 @@
 <li><a href="#the-content">the_content</a></li>
 <li><a href="#hooks">Hooks</a></li>
 <li><a href="#actions">Actions</a></li>
-<li><a href="#filters">Filters</a></li>
+<li><a href="#filters">Filters</a>
+<ul>
+<li><a href="#real-world-example-with-woocommerce">Real world example with WooCommerce</a></li>
+</ul></li>
 <li><a href="#widgets">Widgets</a>
 <ul>
 <li><a href="#using-timber-inside-your-own-widgets">Using Timber inside your own widgets</a></li>
@@ -322,10 +325,59 @@ function my_function_with_args( $foo, $bar, $context ){
 
 <h2 id="filters">Filters</h2>
 
-<p>Timber already comes with a <a href="https://timber.github.io/docs/guides/filters/">set of useful filters</a>. If you have your own filters that you want to apply, you can use <code>apply_filters</code>.</p>
+<p>Timber already comes with a <a href="/docs/guides/filters/">set of useful filters</a>. If you have your own WordPress filters that you want to easily apply in Twig, you can use <code>apply_filters</code>.</p>
 
-<pre><code class="language-twig">{{ post.content|apply_filters('my_filter') }}
-{{ &quot;my custom string&quot;|apply_filters('my_filter', param1, param2, ...) }}
+<pre><code class="language-twig">{{ post.content|apply_filters('default_message') }}
+{{ &quot;my custom string&quot;|apply_filters('default_message', param1, param2, ...) }}
+</code></pre>
+
+<p>You can use your filter with a <a href="https://twig.symfony.com/doc/2.x/tags/filter.html">Twig filter tag</a>.</p>
+
+<pre><code class="language-twig">{% filter apply_filters( 'default_message') %}
+        {{ post.content }}
+{% endfilter %}
+
+{% filter apply_filters('default_message', 'foo', 'bar, 'baz' ) %}
+        I love pizza
+{% endfilter %}
+</code></pre>
+
+<p>In <strong>PHP</strong>, you can get the content of the block with the first parameter and the rest of parameters like that.</p>
+
+<pre><code class="language-php">add_filter( 'default_message', 'my_default_message', 10, 4 );
+
+function my_default_message( $tag, $param1, $param2, $param3 ) {
+       var_dump( $tag, $param1, $param2, $param3 ); // 'I love pizza', 'foo', 'bar, 'baz'
+              
+       echo 'I have a message: ' . $tag; // I have a message: I love pizza
+}
+</code></pre>
+
+<h3 id="real-world-example-with-woocommerce">Real world example with WooCommerce</h3>
+
+<p>Sometimes in <strong>WooCommerce</strong> we found very long line of code:</p>
+
+<pre><code class="language-php">echo '&lt;li class=&quot;woocommerce-notice woocommerce-notice--info woocommerce-info&quot;&gt;' . apply_filters( 'woocommerce_no_available_payment_methods_message', WC()-&gt;customer-&gt;get_billing_country() ? esc_html__( 'Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements.', 'woocommerce' ) : esc_html__( 'Please fill in your details above to see available payment methods.', 'woocommerce' ) ) . '&lt;/li&gt;';
+</code></pre>
+
+<p>In <strong>Twig</strong>:</p>
+
+<pre><code class="language-twig">&lt;li class=&quot;woocommerce-notice woocommerce-notice--info woocommerce-info&quot;&gt;
+    {{ customer.get_billing_country() ? __( 'Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements.', 'woocommerce' ) : __( 'Please fill in your details above to see available payment methods.', 'woocommerce' ) | apply_filters( 'woocommerce_no_available_payment_methods_message' ) }}
+&lt;/li&gt;
+</code></pre>
+
+<p>And with <code>filter</code> tag:</p>
+
+<pre><code class="language-twig">&lt;li class=&quot;woocommerce-notice woocommerce-notice--info woocommerce-info&quot;&gt;
+    {% filter apply_filters( 'woocommerce_no_available_payment_methods_message' ) %}
+        {% if customer.get_billing_country() %}
+            {{ __( 'Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements.', 'woocommerce' ) }}
+        {% else %}
+            {{ __( 'Please fill in your details above to see available payment methods.', 'woocommerce' )  }}
+        {% endif %}
+    {% endfilter %}
+&lt;/li&gt;
 </code></pre>
 
 <h2 id="widgets">Widgets</h2>
@@ -430,9 +482,9 @@ function youtube_shortcode( $atts ) {
 
 <h3 id="layouts-with-shortcodes">Layouts with Shortcodes</h3>
 
-<p>Timber and Twig can process your shortcodes by using the <code>{% filter shortcodes %}</code> tag. Let’s say you&rsquo;re using a <code>[tab]</code> shortcode, for example:</p>
+<p>Timber and Twig can process your shortcodes by using the <code>{% apply shortcodes %}</code> tag. Let’s say you&rsquo;re using a <code>[tab]</code> shortcode, for example:</p>
 
-<pre><code class="language-twig">{% filter shortcodes %}
+<pre><code class="language-twig">{% apply shortcodes %}
     [tabs tab1=&quot;Tab 1 title&quot; tab2=&quot;Tab 2 title&quot; layout=&quot;horizontal&quot; backgroundcolor=&quot;&quot; inactivecolor=&quot;&quot;]
         [tab id=1]
             Something something something
@@ -442,7 +494,7 @@ function youtube_shortcode( $atts ) {
             Tab 2 content here
         [/tab]
     [/tabs]
-{% endfilter %}
+{% endapply %}
 </code></pre>
 
 <h2 id="password-protected-posts">Password protected posts</h2>
@@ -520,7 +572,7 @@ Timber::render( 'password-protected.twig', $context );
 
 
 <script src="https://timber.github.io/docs/js/highlight.pack.js" defer></script>
-<script src="https://timber.github.io/docs/js/scripts.js?d0b281f642113556d4adaa8032af79eb" defer></script>
+<script src="https://timber.github.io/docs/js/scripts.js?44e60569f8868a72f5a9e8cd72cb0844" defer></script>
 
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>

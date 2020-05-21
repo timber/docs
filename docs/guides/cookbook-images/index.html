@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
 	
-    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?db75858961ef100d103393e34f398175">
+    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?c77bdfd53127f8f1e98153f3f27452a2">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
 
     
@@ -349,7 +349,9 @@
 
 <h3 id="the-quick-way-for-most-situations">The quick way (for most situations)</h3>
 
-<pre><code class="language-twig">&lt;img src=&quot;{{ Image(post.hero_image).src }}&quot; /&gt;
+<pre><code class="language-twig">{% set image = Image(post.hero_image) %}
+
+&lt;img src=&quot;{{ image.src }}&quot; alt=&quot;{{ image.alt }}&quot; /&gt;
 </code></pre>
 
 <h3 id="the-long-way-for-some-special-situations">The long way (for some special situations)</h3>
@@ -409,7 +411,7 @@ There are <a href="https://cdn.net/push-vs-pull-cdn/">differences between Pull C
 
 
 <script src="https://timber.github.io/docs/js/highlight.pack.js" defer></script>
-<script src="https://timber.github.io/docs/js/scripts.js?d0b281f642113556d4adaa8032af79eb" defer></script>
+<script src="https://timber.github.io/docs/js/scripts.js?44e60569f8868a72f5a9e8cd72cb0844" defer></script>
 
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>

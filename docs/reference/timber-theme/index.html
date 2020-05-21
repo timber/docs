@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
 	
-    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?db75858961ef100d103393e34f398175">
+    <link rel="stylesheet" href="https://timber.github.io/docs/css/styles.css?c77bdfd53127f8f1e98153f3f27452a2">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
 
     
@@ -239,6 +239,8 @@
 <li><a href="#class-methods">Class Methods</a>
 <ul>
 <li><a href="#construct">__construct</a></li>
+<li><a href="#display">display</a></li>
+<li><a href="#get">get</a></li>
 <li><a href="#link">link</a></li>
 <li><a href="#path">path</a></li>
 <li><a href="#theme-mod">theme_mod</a></li>
@@ -331,6 +333,18 @@ Timber::render('index.twig', $context);
 
 <tbody>
 <tr>
+<td><a href="#display">display</a></td>
+<td><code>false/string</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#get">get</a></td>
+<td><code>false/string</code></td>
+<td>String on success, false on failure.</td>
+</tr>
+
+<tr>
 <td><a href="#link">link</a></td>
 <td><code>string</code></td>
 <td>the absolute path to the theme (ex: <code>http://example.org/wp-content/themes/my-timber-theme</code>)</td>
@@ -392,6 +406,72 @@ Timber::render('index.twig', $context);
 <p><strong>HTML</strong></p>
 
 <pre><code class="language-html">We are currently using the My Theme theme.
+</code></pre>
+
+<hr />
+
+<h3 id="display">display</h3>
+
+<p><code>display( string $header )</code></p>
+
+<p><strong>returns:</strong> <code>false/string</code></p>
+
+<p>Gets a theme header, formatted and translated for display.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$header</td>
+<td><code>string</code></td>
+<td>Name of the theme header. Name, Description, Author, Version, ThemeURI, AuthorURI, Status, Tags.</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">{{ theme.display('Description') }}
+</code></pre>
+
+<hr />
+
+<h3 id="get">get</h3>
+
+<p><code>get( string $header )</code></p>
+
+<p><strong>returns:</strong> <code>false/string</code> String on success, false on failure.</p>
+
+<p>Gets a raw, unformatted theme header.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$header</td>
+<td><code>string</code></td>
+<td>Name of the theme header. Name, Description, Author, Version, ThemeURI, AuthorURI, Status, Tags.</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Twig</strong></p>
+
+<pre><code class="language-twig">{{ theme.get('Version') }}
 </code></pre>
 
 <hr />
@@ -462,7 +542,7 @@ Timber::render('index.twig', $context);
 
 
 <script src="https://timber.github.io/docs/js/highlight.pack.js" defer></script>
-<script src="https://timber.github.io/docs/js/scripts.js?d0b281f642113556d4adaa8032af79eb" defer></script>
+<script src="https://timber.github.io/docs/js/scripts.js?44e60569f8868a72f5a9e8cd72cb0844" defer></script>
 
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
