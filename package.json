@@ -5,7 +5,7 @@
   "scripts": {
     "build": "composer install && npm install && npm run generate-docs && npm run production && npm run cleanup",
     "generate-docs": "bash generate-docs.sh",
-    "watch": "concurrently \"npm run serve\" \"npm run mix-watch\"",
+    "watch": "npm run generate-docs && concurrently \"npm run serve\" \"npm run mix-watch\"",
     "develop": "ELEVENTY_ENV=development concurrently \"npm run mix-development\" \"npx eleventy\"",
     "production": "ELEVENTY_ENV=production npm run mix-production && npx eleventy",
     "serve": "ELEVENTY_ENV=development npx eleventy --serve",
