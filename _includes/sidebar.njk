@@ -26,7 +26,10 @@
         <ul class="navMain-sections">
             {% if collections[version] %}
                 {% for section in collections[version] %}
-                    {% set item = nav[section.slug] %}
+                    {% set item = baseVersion.nav[section.slug]
+                        if version == baseVersion.version and baseVersion.nav
+                        else nav[section.slug]
+                    %}
 
                     <li class="navMain-section">
                         <h3 class="navMain-sectionTitle">{{ item.name }}</h3>

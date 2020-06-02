@@ -3,24 +3,30 @@
 # Clean out folder to remove deprecated files.
 rm -rf ./content/*
 
+# Copy static content.
+# cp -a ./content-static/. ./content/
+
 # Copy current docs from timber repository to this repository.
 cp -a ../timber/docs/. ./content/
 
 # Move current version to current level.
-mv ./content/v2/* ./content/
-rm -rf ./content/v2
+mv ./content/v1/* ./content/
+rm -rf ./content/v1
+
+# Move data file from base version to global data.
+mv ./content/v1.json ./_data/baseVersion.json
 
 ################################################################################
 # Contributing guide.
 ################################################################################
 
-mkdir -p ./content/contributing
+mkdir -p ./content/v2/contributing
 # Copy contributing guide.
-cp -a ../timber/CONTRIBUTING.md ./content/contributing/contributing.md
+cp -a ../timber/CONTRIBUTING.md ./content/v2/contributing/contributing.md
 # Remove first line.
-sed -i '' -e 1d ./content/contributing/contributing.md
+sed -i '' -e 1d ./content/v2/contributing/contributing.md
 # Add front matter.
-echo -e "---\ntitle: \"Contributing to Timber\"\nlayout: \"page\"\n---" | cat - ./content/contributing/contributing.md > ./content/contributing/contributing-tmp.md && mv ./content/contributing/contributing-tmp.md ./content/contributing/contributing.md
+echo -e "---\ntitle: \"Contributing to Timber\"\nlayout: \"page\"\n---" | cat - ./content/v2/contributing/contributing.md > ./content/v2/contributing/contributing-tmp.md && mv ./content/v2/contributing/contributing-tmp.md ./content/v2/contributing/contributing.md
 
 ################################################################################
 # Integration docs.
@@ -35,7 +41,7 @@ echo -e "---\ntitle: \"Contributing to Timber\"\nlayout: \"page\"\n---" | cat - 
 ################################################################################
 
 # Main reference
-./vendor/bin/teak generate:class-reference ../timber/lib --output ./content/reference --front_matter_style=YAML
+./vendor/bin/teak generate:class-reference ../timber/lib --output ./content/v2/reference --front_matter_style=YAML
 
 # WooCommerce integration
 # ./vendor/bin/teak generate:class-reference ../timber-integration-woocommerce/lib --output ./content/integrations/woocommerce/reference --front_matter_style=YAML
@@ -45,8 +51,8 @@ echo -e "---\ntitle: \"Contributing to Timber\"\nlayout: \"page\"\n---" | cat - 
 ################################################################################
 
 # Main hooks
-./vendor/bin/teak generate:hook-reference ../timber/lib --output ./content/hooks --hook_type="filter" --hook_prefix="timber" --front_matter_style="YAML" --class_reference_path="/docs/reference"
-./vendor/bin/teak generate:hook-reference ../timber/lib --output ./content/hooks --hook_type="action" --hook_prefix="timber" --front_matter_style="YAML" --class_reference_path="/docs/reference"
+./vendor/bin/teak generate:hook-reference ../timber/lib --output ./content/v2/hooks --hook_type="filter" --hook_prefix="timber" --front_matter_style="YAML" --class_reference_path="/docs/reference"
+./vendor/bin/teak generate:hook-reference ../timber/lib --output ./content/v2/hooks --hook_type="action" --hook_prefix="timber" --front_matter_style="YAML" --class_reference_path="/docs/reference"
 
 ################################################################################
 # Sitemap
