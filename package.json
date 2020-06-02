@@ -3,7 +3,7 @@
   "private": true,
   "description": "Timber Documentation",
   "scripts": {
-    "build": "composer install && npm install && npm run generate-docs && npm run production && npm run cleanup",
+    "build": "composer install && npm install && npm run cleanup && npm run generate-docs && npm run production",
     "generate-docs": "bash generate-docs.sh",
     "watch": "npm run generate-docs && concurrently \"npm run serve\" \"npm run mix-watch\"",
     "develop": "ELEVENTY_ENV=development concurrently \"npm run mix-development\" \"npx eleventy\"",
