@@ -3,5 +3,6 @@ npm-debug.log*
 node_modules/
 vendor/
 .vscode/
+build/
 
 # Never ignore the content/ folder, or this will stop working
