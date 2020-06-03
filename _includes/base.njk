@@ -1,3 +1,8 @@
+{% set version = version
+    if version
+    else site.versions[0].slug
+%}
+
 {% include 'html-head.njk' %}
 
 <body>
