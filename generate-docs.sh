@@ -4,7 +4,7 @@
 rm -rf ./content/*
 
 # Copy static content.
-# cp -a ./content-static/. ./content/
+cp -a ./content-static/. ./content/
 
 # Copy current docs from timber repository to this repository.
 cp -a ../timber/docs/. ./content/
