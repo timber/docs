@@ -1,4 +1,3 @@
-
 ---
 title: "Timber\\Image"
 menu:

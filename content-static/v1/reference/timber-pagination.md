@@ -1,4 +1,3 @@
-
 ---
 title: "Timber\\Pagination"
 menu:

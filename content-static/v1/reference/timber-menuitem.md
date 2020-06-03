@@ -1,4 +1,3 @@
-
 ---
 title: "Timber\\MenuItem"
 menu:
