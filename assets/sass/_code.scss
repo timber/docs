@@ -1,0 +1,54 @@
+code {
+	color: $pink;
+	white-space: pre-wrap;
+	text-transform: none;
+	font-weight: $font-weight-normal;
+	@include font-code;
+}
+
+p > code,
+li > code,
+a > code {
+	padding: 3px 5px;
+	background: $grey-light;
+	margin: 0 2px;
+	border-radius: 2px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	code {
+		font-size: inherit;
+	}
+}
+
+a > code {
+	color: $link-color;
+	@include font-code;
+}
+
+table code {
+	word-break: normal;
+}
+
+pre > code {
+	background-color: transparent;
+	padding: 0;
+}
+
+pre {
+	background-color: $code-bg;
+	color: $text-color;
+	border-radius: 4px;
+
+	padding: 2em $gutter-width/2;
+	margin: 5px 0 20px $gutter-width/-2;
+	width: calc(100% + #{$gutter-width/2});
+
+	clear: right;
+
+	& > p {
+		margin: 0;
+	}
+
+	@include font-code;
+}

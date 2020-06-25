@@ -1,0 +1,78 @@
+p {
+	padding: 0;
+	margin: 0 0 0.5em;
+
+	&:empty {
+		display: none;
+	}
+}
+
+// Lead
+p.summary {
+	font-size: 1.6em;
+	font-weight: $font-weight-normal;
+	line-height: 1.6em;
+
+	a {
+		color: $text-color;
+		font-weight: $font-weight-normal;
+		text-decoration: underline;
+
+		&:hover, &:focus {
+			color: $green;
+		}
+	}
+}
+
+.content {
+	max-width: 46em;
+
+	& > * + * {
+		margin-top: 1em;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		* + & {
+			margin-top: 1.5em;
+
+		}
+	}
+
+	h1, h2 {
+		& + * {
+			margin-top: 1.5em;
+		}
+	}
+
+    hr {
+        margin: 2em 0;
+        border-style: none;
+        border-top: 2px solid $grey-light;
+    }
+
+    dt {
+        font-weight: $font-weight-bold;
+    }
+
+    dd {
+        margin-left: 15px;
+    }
+
+    li,
+    dt,
+    dd {
+        margin-top: 0;
+    }
+
+    blockquote {
+        margin: 1.5em 0;
+
+        & > p {
+            background-color: $white;
+            color: $green;
+            font-size: 1.4em;
+            font-weight: $font-weight-normal;
+			font-style: italic;
+        }
+    }
+}

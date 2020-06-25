@@ -1,0 +1,18 @@
+{% extends 'base.njk' %}
+
+{% block content %}
+    <article>
+        <h1>{{ title }}</h1>
+
+        {% if content|toc !== '<nav class="toc"></nav>' %}
+            <aside>
+                <h2 class="heading-small">On this page</h2>
+                {{ content|toc|safe }}
+            </aside>
+        {% endif %}
+
+        <div class="content">
+            {{ content|safe }}
+        </div>
+    </article>
+{% endblock %}

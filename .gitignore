@@ -1,6 +1,8 @@
 .DS_Store
-/node_modules/
-/vendor/
-/content/**/*
-/generator/timber-current/*
-studio.json
+npm-debug.log*
+node_modules/
+vendor/
+.vscode/
+build/
+
+# Never ignore the content/ folder, or this will stop working

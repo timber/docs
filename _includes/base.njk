@@ -1,0 +1,29 @@
+{% set version = version
+    if version
+    else site.versions[0].slug
+%}
+
+{% include 'html-head.njk' %}
+
+<body>
+    {% include 'header.njk' %}
+
+    <div class="wrapper">
+        {% include 'sidebar.njk' %}
+
+        <main>
+            {% if "v2" == version %}
+                <div class="globalCallout">
+                    <h2>Version 2 👋</h2>
+                    <p>You’re looking at the documentation for version 2 of Timber, which is <strong>still in development</strong>. You can’t use it yet, but you may have a look at the <a href="https://timber.github.io/docs/v2/upgrade-guides/2.0/">upcoming changes</a>.</p>
+                    <p>Follow us on <a href="https://twitter.com/TimberWP">Twitter</a> or start <a href="https://help.github.com/en/enterprise/2.15/user/articles/watching-and-unwatching-repositories#watching-a-single-repository">watching new releases</a> of our <a href="https://github.com/timber/timber/">GitHub repository</a> to be notified about a version you can use.</p>
+                </div>
+            {% endif %}
+
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+
+    {% include 'scripts-footer.njk' %}
+</body>

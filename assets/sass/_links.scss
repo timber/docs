@@ -1,0 +1,43 @@
+/**
+ * Make links inside headings inherit the style
+ * of the heading.
+ */
+h1, h2, h3, h4, h5, h6,
+.heading-1, .heading-2, .heading-3, .heading-4, .heading-5, .heading-6 {
+	a {
+		color: inherit;
+		text-decoration: inherit;
+	}
+}
+
+// General links styling
+a {
+	color: $link-color;
+	text-decoration: none;
+
+	&:hover,
+	&:focus {
+		color: $link-hover-color;
+		text-decoration: underline;
+	}
+}
+
+.directLink {
+	color: $meta;
+	visibility: hidden;
+
+	&:hover, &:focus {
+		color: $green;
+		text-decoration: none;
+	}
+}
+
+.content {
+	h2, h3, h4, h5, h6 {
+		&:hover, &:focus {
+			.directLink {
+				visibility: visible;
+			}
+		}
+	}
+}

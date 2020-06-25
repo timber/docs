@@ -1,49 +1,61 @@
 #!/usr/bin/env bash
 
-# Install dependencies
-composer install
-
-# Clean out folder to remove deprecated files
+# Clean out folder to remove deprecated files.
 rm -rf ./content/*
 
-# Copy current docs from timber repository to this repository
+# Copy static content.
+cp -a ./content-static/. ./content/
+
+# Copy current docs from timber repository to this repository.
 cp -a ../timber/docs/. ./content/
 
-# Create necessary folders that might not exist yet
-mkdir -p content/reference
-mkdir -p generator/timber-current
+# Move current version to current level.
+mv ./content/v1/* ./content/
+rm -rf ./content/v1
 
-# Copy current timber library to this repository
-cp -a ../timber/lib/. ./generator/timber-current/
+# Move data file from base version to global data.
+mv ./content/v1.json ./_data/baseVersion.json
 
-cd ./generator
+################################################################################
+# Contributing guide.
+################################################################################
 
-# Build reference docs from PHP files
-./phpdocs-md generate Timber\\Archives > ../content/reference/timber-archives.md
-./phpdocs-md generate Timber\\Comment > ../content/reference/timber-comment.md
-./phpdocs-md generate Timber\\Image > ../content/reference/timber-image.md
-./phpdocs-md generate Timber\\Menu > ../content/reference/timber-menu.md
-./phpdocs-md generate Timber\\MenuItem > ../content/reference/timber-menuitem.md
-./phpdocs-md generate Timber\\Pagination > ../content/reference/timber-pagination.md
-./phpdocs-md generate Timber\\Post > ../content/reference/timber-post.md
-./phpdocs-md generate Timber\\PostQuery > ../content/reference/timber-postquery.md
-./phpdocs-md generate Timber\\PostPreview > ../content/reference/timber-postpreview.md
-./phpdocs-md generate Timber\\Site > ../content/reference/timber-site.md
-./phpdocs-md generate Timber\\Theme > ../content/reference/timber-theme.md
-./phpdocs-md generate Timber\\Term > ../content/reference/timber-term.md
-./phpdocs-md generate Timber\\User > ../content/reference/timber-user.md
+mkdir -p ./content/v2/contributing
+# Copy contributing guide.
+cp -a ../timber/CONTRIBUTING.md ./content/v2/contributing/contributing.md
+# Remove first line.
+sed -i '' -e 1d ./content/v2/contributing/contributing.md
+# Add front matter.
+echo -e "---\ntitle: \"Contributing to Timber\"\nlayout: \"page\"\n---" | cat - ./content/v2/contributing/contributing.md > ./content/v2/contributing/contributing-tmp.md && mv ./content/v2/contributing/contributing-tmp.md ./content/v2/contributing/contributing.md
 
-./phpdocs-md generate Timber\\Timber > ../content/reference/timber.md
+################################################################################
+# Integration docs.
+################################################################################
 
-./phpdocs-md generate Timber\\Helper > ../content/reference/timber-helper.md
-./phpdocs-md generate Timber\\ImageHelper > ../content/reference/timber-imagehelper.md
-./phpdocs-md generate Timber\\URLHelper > ../content/reference/timber-urlhelper.md
-./phpdocs-md generate Timber\\TextHelper > ../content/reference/timber-texthelper.md
+# mkdir -p ./content/integrations/woocommerce
+# mkdir -p ./_data/integrations/woocommerce
+# cp -a ../timber-integration-woocommerce/docs/ ./content/integrations/woocommerce/
 
-cd ..
+################################################################################
+# Build reference docs from PHP files.
+################################################################################
 
-# Clean site output folder
-rm -rf ./docs/*
+# Main reference
+./vendor/bin/teak generate:class-reference ../timber/lib --output ./content/v2/reference --front_matter_style=YAML
 
-# Build documentation site with Hugo
-./hugo
+# WooCommerce integration
+# ./vendor/bin/teak generate:class-reference ../timber-integration-woocommerce/lib --output ./content/integrations/woocommerce/reference --front_matter_style=YAML
+
+################################################################################
+# Build hook documentation.
+################################################################################
+
+# Main hooks
+./vendor/bin/teak generate:hook-reference ../timber/lib --output ./content/v2/hooks --hook_type="filter" --hook_prefix="timber" --front_matter_style="YAML" --class_reference_path="/docs/reference"
+./vendor/bin/teak generate:hook-reference ../timber/lib --output ./content/v2/hooks --hook_type="action" --hook_prefix="timber" --front_matter_style="YAML" --class_reference_path="/docs/reference"
+
+################################################################################
+# Sitemap
+################################################################################
+
+cp ./sitemap.xml.njk ./content/

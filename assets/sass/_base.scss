@@ -1,0 +1,84 @@
+html {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	box-sizing: border-box;
+
+	scroll-padding-top: calc(#{$header-height} + 1em);
+}
+
+/**
+ * Let box-sizing be inherited from the html element
+ *
+ * @link https://github.com/AllThingsSmitty/css-protips#inherit-box-sizing
+ */
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+body {
+	display: flex;
+	min-height: 100vh;
+  	flex-direction: column;
+
+    color: $text-color;
+    padding: 0;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: $main-bg;
+    height: 100%;
+	line-height: 1.6;
+    -webkit-text-size-adjust: none; /* Never autoresize text */
+    @include font-text;
+}
+
+.wrapper {
+	@media (min-width: $mobile-breakpoint) {
+		display: flex;
+		flex: 1;
+	}
+}
+
+main {
+	flex: 1;
+	padding: $gutter-width $gutter-width/2;
+	position: relative;
+	z-index: 0;
+
+	@media (min-width: $mobile-breakpoint) {
+		width: calc(100% - #{$sidebar-width});
+		margin-top: $header-height;
+		padding-top: 3em;
+		padding-left: $gutter-width;
+		padding-right: $gutter-width;
+	}
+}
+
+article {
+	& > * + * {
+		margin-top: 1.5em;
+	}
+}
+
+.content-container {
+	max-width: $content-max-width;
+	padding: $gutter-width/2 $gutter-width/2;
+
+	@media (min-width: $mobile-breakpoint) {
+		width: percentage(8/12);
+		padding: 0 0 $gutter-width 0;
+		@include make-column;
+
+		.toc + & {
+			right: percentage(4/12);
+		}
+	}
+}
+
+.anchor {
+	margin-left: -24px;
+}
+
+.turbolinks-progress-bar {
+	height: 2px;
+	background-color: $green-light;
+}

@@ -1,0 +1,15 @@
+{% set last_heading_level = heading_level %}
+
+{% if children|length > 0 %}
+    <ul>
+        {% for section in children %}
+            {% if section.pages %}
+                {% set pages = section.pages %}
+                {% set heading_level = last_heading_level + 1 %}
+                {% include 'sidebar-pages.njk' %}
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% set heading_level = last_heading_level %}

@@ -1,0 +1,60 @@
+h1, h2, h3, h4, h5, h6 {
+    display: block;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+	align-items: center;
+}
+
+h2, h3, h4, h5, h6 {
+    color: $headings-color;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: $green;
+    font-weight: $font-weight-normal;
+    line-height: 1.2em;
+}
+
+h2 {
+    font-size: 2em;
+    color: $headings-color;
+    font-weight: $font-weight-bold;
+
+}
+
+.content h2 {
+    &:after {
+        content: "";
+        display: block;
+        width: 100%;
+        margin-top: 0.25em;
+        height: 2px;
+        background: linear-gradient(to right, $green-light, rgba(0, 0, 0, 0) 75%);
+    }
+}
+
+h3 {
+    font-size: 1.4rem;
+    font-weight: $font-weight-bold;
+}
+
+h4, .heading-4,
+h6 {
+    font-size: 1.25rem;
+    font-weight: $font-weight-bold;
+}
+
+h5 {
+    font-size: .875rem;
+    font-weight: $font-weight-bold;
+}
+
+.heading-small {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    color: $meta;
+    letter-spacing: 1.5px;
+}

@@ -1,0 +1,51 @@
+<header class="header">
+    <div class="logoContainer">
+        <a href="{{ '/'|url }}">
+            <img
+                src="{{ '/build/img/timber-logo.svg'|url }}"
+                alt="Timber Logo"
+                style="width: 105px; height: 30px; border: 0"
+                role="img"
+            />
+        </a>
+    </div>
+
+    <div class="search">
+        <label for="search-input" class="sr-only">Search</label>
+        <input type="search" name="search" class="search-input" id="search-input" placeholder="Search the docs" />
+
+        <div class="search-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"></path></svg>
+        </div>
+    </div>
+
+    <nav class="navTop" id="nav-top">
+        <ul>
+            {% for item in navTop %}
+                <li>
+                    <a href="{{ item.url }}" target="_blank" rel="noreferrer noopener">
+                        {% if item.name %}
+                            {{ item.name }}
+                        {% elseif item.image %}
+                            <img
+                                    src="{{ item.image.src|url }}"
+                                    alt="{{ item.image.alt }}"
+                                    style="{{ item.image.style if item.image.style }}"
+                            >
+                        {% endif %}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </nav>
+
+    <button
+        class="navMobileToggle js-menu-open"
+        type="button"
+        id="nav-mobile-toggle"
+    >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 34"><path d="M45.6,19.43H2.4a2.43,2.43,0,0,1,0-4.86H45.6a2.43,2.43,0,0,1,0,4.86Z"/><path d="M45.6,4.86H2.4A2.41,2.41,0,0,1,0,2.43,2.41,2.41,0,0,1,2.4,0H45.6A2.41,2.41,0,0,1,48,2.43,2.41,2.41,0,0,1,45.6,4.86Z"/><path d="M45.6,34H2.4a2.43,2.43,0,0,1,0-4.86H45.6a2.43,2.43,0,0,1,0,4.86Z"/></svg>
+
+        <span class="sr-only">Menu</span>
+    </button>
+</header>

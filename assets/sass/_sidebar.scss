@@ -1,0 +1,52 @@
+.sidebar {
+	padding: $nav-padding $gutter-width/2 $gutter-width/2 $gutter-width/2;
+    background-color: $grey-light;
+
+	@media (min-width: $mobile-breakpoint) {
+		position: sticky;
+		top: $header-height;
+		height: calc(100vh - #{$header-height});
+		overflow-y: scroll;
+	}
+
+    @media (min-width: $header-breakpoint) {
+		flex: 0 0 $sidebar-width;
+		padding: 3em $nav-padding $nav-padding 4em;
+	}
+}
+
+.sidebar__heading {
+	font-size: 1em;
+	text-transform: uppercase;
+	color: $sidebar-color;
+	margin-bottom: 0;
+	margin-top: 2em;
+}
+
+.navVersions {
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+
+		display: flex;
+
+		& > * + * {
+			margin-left: 0.5em;
+		}
+	}
+
+	a {
+		display: block;
+		border: 1px solid $green;
+		border-radius: 3px;
+		padding: 0 0.5em;
+		font-weight: $font-weight-bold;
+		text-decoration: none;
+
+		&.is-current, &:hover, &:focus {
+			background: $green;
+			color: $white;
+		}
+	}
+}

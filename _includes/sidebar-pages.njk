@@ -1,0 +1,20 @@
+{% for post in pages %}
+    {% if not post.data.hideInMenu %}
+        <li class="navMain-item" data-order="{{ post.data.order }}">
+            {% if post.data.isIndex %}
+                <h{{ heading_level }}>{{ post.data.title }}</h{{ heading_level }}>
+            {% else %}
+                <a
+                    class="navMain-link"
+                    href="{{ post.url|url }}"
+                    {% if page.url == post.url %}aria-current{% endif %}
+                >{{ post.data.linktitle if post.data.linktitle else post.data.title }}</a>
+            {% endif %}
+
+            {% if section.children %}
+                {% set children = section.children|selectChildren(post.fileSlug) %}
+                {% include 'sidebar-children.njk' %}
+            {% endif %}
+        </li>
+    {% endif %}
+{% endfor %}

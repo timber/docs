@@ -1,0 +1,11 @@
+.sr-only {
+	position: absolute !important;
+	top: 0;
+    height: 1px;
+    width: 1px;
+    clip: rect(1px 1px 1px 1px); // [1]
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: polygon(0px 0px, 0px 0px, 0px 0px, 0px 0px); // [2]
+    overflow: hidden;
+	white-space: nowrap;
+}

@@ -1,0 +1,12 @@
+.content {
+	img {
+        max-width: 100%;
+        padding: 15px 0;
+
+        a & {
+            text-decoration: none !important;
+            background-image: none !important;
+            text-shadow: none !important;
+        }
+    }
+}
