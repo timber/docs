@@ -1,4 +1,6 @@
 const { DateTime } = require("luxon");
+const htmlmin = require("html-minifier");
+
 const markdown = require('./lib/markdown');
 const manifestFilter = require('./lib/manifestFilter');
 const pageCollection = require('./lib/pageCollection');
@@ -31,6 +33,23 @@ module.exports = function(config) {
   config.addPlugin(pluginRss);
 
   config.setLibrary('md', markdown);
+
+  /**
+   * Minify the output
+   *
+   * @link https://www.11ty.dev/docs/config/#transforms-example-minify-html-output
+   */
+  config.addTransform("htmlmin", function(content, outputPath) {
+    if( outputPath.endsWith(".html") ) {
+      return htmlmin.minify(content, {
+        useShortDoctype: true,
+        removeComments: true,
+        collapseWhitespace: true
+      });
+    }
+
+    return content;
+  });
 
   site.versions.forEach(version => {
     config.addCollection(version.slug, function(collection) {
