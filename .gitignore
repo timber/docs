@@ -5,3 +5,4 @@ vendor/
 .vscode/
 
 # Never ignore the content/ folder, or this will stop working
+# Never ignore the /build/ or the /docs/build/ folder, otherwise they won’t appear on timber.github.io/docs/
