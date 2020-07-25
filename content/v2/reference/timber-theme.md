@@ -40,7 +40,7 @@ Timber::render('index.twig', $context);
 | --- | --- | --- |
 | $name | `string` | the human-friendly name of the theme (ex: `My Timber Starter Theme`) |
 | $version | `string` | the version of the theme (ex: `1.2.3`) |
-| $parent | `\Timber\Theme` or `bool` | the Timber\Theme object for the parent theme (if it exists), false otherwise |
+| $parent | `\Timber\Theme` | the Timber\Theme object for the parent theme |
 | $parent_slug | `string` | the slug of the parent theme (ex: `_s`) |
 | $slug | `string` | the slug of the theme (ex: `my-super-theme`) |
 | $uri | `string` |  |
