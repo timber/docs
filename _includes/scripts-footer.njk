@@ -3,8 +3,24 @@
 <script>
   docsearch({
     apiKey: '4907f57b267887b1da360de600656085',
-    indexName: 'timber',
     inputSelector: '#search-input',
-    debug: true // Set debug to true if you want to inspect the dropdown
+    /**
+     * Timber config.
+     *
+     * @link https://github.com/algolia/docsearch-configs/blob/master/configs/timber.json
+     */
+    indexName: 'timber',
+    /**
+     * Filter for different doc versions.
+     *
+     * @link https://www.algolia.com/doc/api-reference/api-parameters/facetFilters/
+     */
+    algoliaOptions: {
+      facetFilters: [
+        'version:{{ version }}'
+      ]
+    },
+    // Set debug to true if you want to inspect the dropdown.
+    // debug: true
   })
 </script>
