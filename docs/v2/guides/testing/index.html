@@ -22,7 +22,23 @@ sudo /sbin/swapon /var/swap.1
 </code></pre><h2 id="static-analysis">Static Analysis <a class="directLink" href="#static-analysis">#</a></h2><p>Version 2.x is also covered by static analysis courtesy of <a href="https://github.com/phpstan/phpstan">PHPStan</a>. This analyzes our code files and structure to ensure things like existence and accessibility of called methods and functions, number of passed arguments, data types in docs, etc.</p><p>To run, use:</p><pre><code>vendor/bin/phpstan analyze -l 1
 </code></pre><p>Where the last argument is the level of <a href="https://medium.com/@ondrejmirtes/phpstan-0-12-released-f1a88036535d">strictness</a> (0-7) to apply. We're currently starting at level 1 and working our way up over time.</p></div></article></main></div><script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script>docsearch({
     apiKey: '4907f57b267887b1da360de600656085',
-    indexName: 'timber',
     inputSelector: '#search-input',
-    debug: true // Set debug to true if you want to inspect the dropdown
+    /**
+     * Timber config.
+     *
+     * @link https://github.com/algolia/docsearch-configs/blob/master/configs/timber.json
+     */
+    indexName: 'timber',
+    /**
+     * Filter for different doc versions.
+     *
+     * @link https://www.algolia.com/doc/api-reference/api-parameters/facetFilters/
+     */
+    algoliaOptions: {
+      facetFilters: [
+        'version:v2'
+      ]
+    },
+    // Set debug to true if you want to inspect the dropdown.
+    // debug: true
   })</script></body></html>

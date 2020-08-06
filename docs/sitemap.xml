@@ -1,435 +1,439 @@
 <?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
             <url>
-                <loc>https://timber.github.io/docs/reference/timber-archives/</loc>
-                <lastmod>2020-06-25</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/reference/timber-comment/</loc>
-                <lastmod>2020-06-25</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/reference/timber-helper/</loc>
-                <lastmod>2020-06-25</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/reference/timber-image/</loc>
-                <lastmod>2020-06-25</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/reference/timber-imagehelper/</loc>
-                <lastmod>2020-06-25</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/reference/timber-menu/</loc>
-                <lastmod>2020-06-25</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/reference/timber-menuitem/</loc>
-                <lastmod>2020-06-25</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/reference/timber-pagination/</loc>
-                <lastmod>2020-06-25</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/reference/timber-post/</loc>
-                <lastmod>2020-06-25</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/reference/timber-postpreview/</loc>
-                <lastmod>2020-06-25</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/reference/timber-postquery/</loc>
-                <lastmod>2020-06-25</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/reference/timber-site/</loc>
-                <lastmod>2020-06-25</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/reference/timber-term/</loc>
-                <lastmod>2020-06-25</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/reference/timber-texthelper/</loc>
-                <lastmod>2020-06-25</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/reference/timber-theme/</loc>
-                <lastmod>2020-06-25</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/reference/timber-urlhelper/</loc>
-                <lastmod>2020-06-25</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/reference/timber-user/</loc>
-                <lastmod>2020-06-25</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/reference/timber/</loc>
-                <lastmod>2020-06-25</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/getting-started/setup/</loc>
-                <lastmod>2020-07-01</lastmod>
+                <loc>https://timber.github.io/docs/_index/</loc>
+                <lastmod>2020-08-05</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/guides/escapers/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/getting-started/theming/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/getting-started/twig-tools/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/getting-started/video-tutorials/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/guides/acf-cookbook/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/guides/cheatsheet/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/guides/cookbook-images/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/guides/cookbook-text/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/guides/cookbook-twig/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/guides/custom-page-templates/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/guides/debugging/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/guides/escapers/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/guides/extending-timber/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/guides/filters/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/guides/functions/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/guides/gutenberg/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/guides/internationalization/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/guides/menus/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/guides/pagination/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/guides/performance/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/guides/routing/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/guides/sidebars/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/guides/template-locations/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/guides/testing/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/guides/woocommerce/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/guides/wp-integration/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/upgrade-guides/1.0/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/v2/guides/cheatsheet/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/v2/guides/comments/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/v2/guides/custom-page-templates/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/v2/guides/debugging/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/v2/guides/escaping/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/v2/guides/filters/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/v2/guides/gutenberg/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/v2/guides/pagination/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/v2/guides/routing/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/v2/guides/sidebars/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/v2/guides/testing/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/v2/guides/woocommerce/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/v2/installation/intro-to-composer/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/v2/installation/manage-timber-with-composer/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/v2/integrations/advanced-custom-fields/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/v2/upgrade-guides/1.0/</loc>
-                <lastmod>2020-07-01</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/guides/comments/</loc>
-                <lastmod>2020-07-25</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/v2/guides/menus/</loc>
-                <lastmod>2020-07-25</lastmod>
-            </url>
-            <url>
-                <loc>https://timber.github.io/docs/_index/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-05</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/getting-started/a-post-archive/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-05</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/getting-started/a-single-post/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-05</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/getting-started/introduction/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-05</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/getting-started/template-inheritance-and-includes/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-05</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/v2/guides/cheatsheet/</loc>
+                <lastmod>2020-08-05</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/v2/guides/comments/</loc>
+                <lastmod>2020-08-05</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/guides/context/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-05</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/guides/cookbook-images/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-05</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/guides/cookbook-text/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-05</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/guides/cookbook-twig/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-05</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/guides/custom-fields/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-05</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/v2/guides/custom-page-templates/</loc>
+                <lastmod>2020-08-05</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/guides/date-time/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-05</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/v2/guides/debugging/</loc>
+                <lastmod>2020-08-05</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/v2/guides/escaping/</loc>
+                <lastmod>2020-08-05</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/guides/extending-timber/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-05</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/v2/guides/filters/</loc>
+                <lastmod>2020-08-05</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/guides/functions/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-05</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/v2/guides/gutenberg/</loc>
+                <lastmod>2020-08-05</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/guides/internationalization/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-05</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/v2/guides/menus/</loc>
+                <lastmod>2020-08-05</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/v2/guides/pagination/</loc>
+                <lastmod>2020-08-05</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/guides/performance/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-05</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/v2/guides/routing/</loc>
+                <lastmod>2020-08-05</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/v2/guides/sidebars/</loc>
+                <lastmod>2020-08-05</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/guides/template-locations/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-05</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/v2/guides/testing/</loc>
+                <lastmod>2020-08-05</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/v2/guides/woocommerce/</loc>
+                <lastmod>2020-08-05</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/guides/wp-integration/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-05</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-05</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/installation/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-05</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/v2/installation/intro-to-composer/</loc>
+                <lastmod>2020-08-05</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/v2/installation/manage-timber-with-composer/</loc>
+                <lastmod>2020-08-05</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/v2/integrations/advanced-custom-fields/</loc>
+                <lastmod>2020-08-05</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/v2/upgrade-guides/1.0/</loc>
+                <lastmod>2020-08-05</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/upgrade-guides/2.0/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-05</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/guides/hosts-servers/</loc>
+                <lastmod>2020-08-05</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/getting-started/setup/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/getting-started/theming/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/getting-started/twig-tools/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/getting-started/video-tutorials/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/guides/routing/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/guides/comments/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/guides/cookbook-images/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/guides/filters/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/guides/pagination/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/guides/sidebars/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/guides/cheatsheet/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/guides/menus/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/guides/performance/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/guides/testing/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/guides/cookbook-text/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/guides/cookbook-twig/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/guides/custom-page-templates/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/guides/functions/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/guides/internationalization/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/guides/acf-cookbook/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/guides/debugging/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/guides/escapers/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/guides/extending-timber/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/guides/template-locations/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/guides/woocommerce/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/guides/gutenberg/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/guides/wp-integration/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/reference/timber-helper/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/reference/timber-theme/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/reference/timber-menu/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/reference/timber-menuitem/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/reference/timber-site/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/reference/timber/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/reference/timber-post/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/reference/timber-postpreview/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/reference/timber-postquery/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/reference/timber-texthelper/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/reference/timber-comment/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/reference/timber-pagination/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/reference/timber-urlhelper/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/reference/timber-user/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/reference/timber-archives/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/reference/timber-image/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/reference/timber-imagehelper/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/reference/timber-term/</loc>
+                <lastmod>2020-08-06</lastmod>
+            </url>
+            <url>
+                <loc>https://timber.github.io/docs/upgrade-guides/1.0/</loc>
+                <lastmod>2020-08-06</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/contributing/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-06</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/reference/timber-archives/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-06</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/reference/timber-attachment/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-06</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/reference/timber-comment/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-06</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/reference/timber-datetimehelper/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-06</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/reference/timber-image/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-06</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/reference/timber-imagehelper/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-06</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/reference/timber-menu/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-06</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/reference/timber-menuitem/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-06</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/reference/timber-pagination/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-06</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/reference/timber-pathhelper/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-06</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/reference/timber-post/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-06</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/reference/timber-postcollection/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-06</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/reference/timber-postquery/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-06</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/reference/timber-site/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-06</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/reference/timber-term/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-06</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/reference/timber-texthelper/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-06</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/reference/timber-theme/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-06</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/reference/timber-timber/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-06</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/reference/timber-urlhelper/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-06</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/reference/timber-user/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-06</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/hooks/filters/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-06</lastmod>
             </url>
             <url>
                 <loc>https://timber.github.io/docs/v2/hooks/actions/</loc>
-                <lastmod>2020-07-25</lastmod>
+                <lastmod>2020-08-06</lastmod>
             </url>
 </urlset>
