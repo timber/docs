@@ -10,7 +10,7 @@ cp -a ./content-static/. ./content/
 cp -a ../timber/docs/. ./content/
 
 # Move current version to current level.
-mv ./content/v1/* ./content/
+cp -r ./content/v1/* ./content/
 rm -rf ./content/v1
 
 # Move data file from base version to global data.
