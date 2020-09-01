@@ -1,5 +1,8 @@
 ---
 title: "Twig Cookbook"
+menu:
+  main:
+    parent: "guides"
 ---
 
 ## Using Twig vars in live type

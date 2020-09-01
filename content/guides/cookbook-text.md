@@ -1,5 +1,8 @@
 ---
 title: "Text Cookbook"
+menu:
+  main:
+    parent: "guides"
 ---
 
 There’s tons of stuff you can do with Twig and Timber filters to make complex transformations easy (and fun).

@@ -1,5 +1,8 @@
 ---
 title: "Twig Tools"
+menu:
+  main:
+    parent: "getting-started"
 ---
 
 The purpose of this page is to identify helpful tools for working with Twig.

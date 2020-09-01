@@ -1,5 +1,8 @@
 ---
 title: "Template Locations"
+menu:
+  main:
+    parent: "guides"
 ---
 
 You can set your own locations for your twig files with...

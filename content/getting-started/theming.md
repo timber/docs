@@ -1,5 +1,8 @@
 ---
 title: "Theming"
+menu:
+  main:
+    parent: "getting-started"
 ---
 
 ## Your first Timber project
@@ -7,7 +10,7 @@ title: "Theming"
 Let’s start with your single post. Find this file:
 
 ```
-wp-content/themes/{timber-starter-theme}/templates/single.twig
+wp-content/themes/{timber-starter-theme}/views/single.twig
 ```
 
 Brilliant! Open it up.
