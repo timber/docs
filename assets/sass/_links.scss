@@ -12,8 +12,8 @@ h1, h2, h3, h4, h5, h6,
 
 // General links styling
 a {
-	color: $link-color;
-	text-decoration: none;
+	color: $white;
+	text-decoration: underline;
 
 	&:hover,
 	&:focus {

@@ -155,7 +155,7 @@ article > * + * {
 }
 
 .globalCallout {
-  background: #000;
+  background: #858585;
   padding: 2em;
 }
 .globalCallout p {
@@ -445,8 +445,8 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
 }
 
 a {
-  color: #169c65;
-  text-decoration: none;
+  color: #fff;
+  text-decoration: underline;
 }
 a:hover, a:focus {
   color: #106f48;
@@ -868,8 +868,8 @@ aside > *:not(.navClose) + *, .toc > *:not(.navClose) + * {
 }
 .toc a {
   display: block;
-  color: #169c65;
-  text-decoration: none;
+  color: #fff;
+  text-decoration: underline;
   margin-bottom: 0.3em;
 }
 .toc a:before {

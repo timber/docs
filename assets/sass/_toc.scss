@@ -34,8 +34,8 @@ aside, .toc {
 
 	a {
 		display: block;
-		color: $link-color;
-		text-decoration: none;
+		color: $white;
+		text-decoration: underline;
 		margin-bottom: 0.3em;
 
 		&:before {
