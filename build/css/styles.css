@@ -155,7 +155,7 @@ article > * + * {
 }
 
 .globalCallout {
-  background: #858585;
+  background: #000;
   padding: 2em;
 }
 .globalCallout p {
