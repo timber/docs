@@ -35,6 +35,24 @@
   src: local("Source Sans Pro Bold italic"), local("Source Sans Pro-Bolditalic"), url("../fonts/source-sans-pro-latin-700italic.woff2") format("woff2"), url("../fonts/source-sans-pro-latin-700italic.woff") format("woff");
   /* Modern Browsers */
 }
+/* gt-america-standard-light - latin */
+@font-face {
+  font-family: "GT America";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300;
+  src: local("GT America Light "), local("GT America Light"), url("../fonts/GT-America-Standard-Light.woff2") format("woff2"), url("../fonts/GT-America-Standard-Light.woff") format("woff");
+  /* Modern Browsers */
+}
+/* gt-america-standard-lightitalic - latin */
+@font-face {
+  font-family: "GT America";
+  font-style: italic;
+  font-display: swap;
+  font-weight: 300;
+  src: local("GT America Light italic"), local("GT America Lightitalic"), url("../fonts/GT-America-Standard-Light-italic.woff2") format("woff2"), url("../fonts/GT-America-Standard-Light-italic.woff") format("woff");
+  /* Modern Browsers */
+}
 /**
  * [1] Make sure JavaScript listens for menu actions.
  * [2] Make sure iOS default button styles won’t be applied.

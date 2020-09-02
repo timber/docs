@@ -1,6 +1,6 @@
 .sidebar {
 	padding: $nav-padding $gutter-width/2 $gutter-width/2 $gutter-width/2;
-    background-color: $grey-light;
+    background-color: $black;
 
 	@media (min-width: $mobile-breakpoint) {
 		position: sticky;
@@ -18,7 +18,7 @@
 .sidebar__heading {
 	font-size: 1em;
 	text-transform: uppercase;
-	color: $sidebar-color;
+	color: $white;
 	margin-bottom: 0;
 	margin-top: 2em;
 }
@@ -37,16 +37,18 @@
 	}
 
 	a {
+		color: $white;
 		display: block;
-		border: 1px solid $green;
-		border-radius: 3px;
-		padding: 0 0.5em;
+		border: 1px solid $white;
+		border-radius: 100px;
+		// padding: 0 0.5em;
+		padding: 8px 15px 9px;
 		font-weight: $font-weight-bold;
 		text-decoration: none;
 
 		&.is-current, &:hover, &:focus {
-			background: $green;
-			color: $white;
+			background: $white;
+			color: $black;
 		}
 	}
 }

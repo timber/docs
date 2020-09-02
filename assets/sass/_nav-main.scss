@@ -16,7 +16,7 @@
 }
 
 .navMain-title {
-	color: $green;
+	color: $white;
 	font-size: 0.85em;
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
@@ -42,7 +42,7 @@
 .navMain-link {
 	display: block;
 	text-decoration: none;
-	color: $grey-dark;
+	color: $white;
 
 	&:hover, &:focus {
 		text-decoration: underline;

@@ -1,4 +1,5 @@
-$black: #031103;
+// $black: #031103;
+$black: #000;
 $white: #fff;
 $green: #169c65;
 $green-light: #54ffb9;
@@ -6,24 +7,24 @@ $pink: #a63db0;
 
 $yellow: #fff8e5;
 
-$grey: #e3e3de;
+$grey: #858585;
 $grey-light: #f6f6f1;
 $grey-dark: #474747;
 
 $border-color: #dddddd;
 
-$text-color: #4e4e4e;
-$headings-color: #454d45;
+$text-color: $white;
+$headings-color: $white;
 
-$meta: #888888;
+$meta: #888;
 
 $sidebar-color: #4e4e49;
 
 $link-color: $green;
 $link-hover-color: darken($green, 10%);
 
-$code-bg: #f9f9f9;
-$main-bg: #ffffff;
+$code-bg: #999;
+$main-bg: #000;
 $table-header-bg: $grey;
 $table-uneven-color: #f7f7f2;
 
@@ -35,11 +36,11 @@ $header-height: 4rem;
 $sidebar-width: 20em;
 $content-max-width: 800px;
 
-$font-weight-normal: 400;
+$font-weight-normal: 300;
 $font-weight-bold: 700;
 
 $mobile-breakpoint: 980px;
 $header-breakpoint: 1120px;
 
-$font-family-text: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-text: "GT America", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-family-code: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;

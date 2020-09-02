@@ -49,3 +49,29 @@
     url('../fonts/source-sans-pro-latin-700italic.woff2') format('woff2'), /* Super Modern Browsers */
     url('../fonts/source-sans-pro-latin-700italic.woff') format('woff'); /* Modern Browsers */
 }
+
+/* gt-america-standard-light - latin */
+@font-face {
+  font-family: 'GT America';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300;
+  src:
+    local('GT America Light '),
+    local('GT America Light'),
+    url('../fonts/GT-America-Standard-Light.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/GT-America-Standard-Light.woff') format('woff'); /* Modern Browsers */
+}
+
+/* gt-america-standard-lightitalic - latin */
+@font-face {
+  font-family: 'GT America';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 300;
+  src:
+    local('GT America Light italic'),
+    local('GT America Lightitalic'),
+    url('../fonts/GT-America-Standard-Light-italic.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/GT-America-Standard-Light-italic.woff') format('woff'); /* Modern Browsers */
+}
