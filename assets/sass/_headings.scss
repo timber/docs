@@ -21,8 +21,7 @@ h1 {
 h2 {
     font-size: 2.25em;
     color: $headings-color;
-    font-weight: $font-weight-bold;
-
+    // font-weight: $font-weight-bold;
 }
 
 .content h2 {
@@ -53,8 +52,9 @@ h5 {
 }
 
 .heading-small {
-    font-size: 0.875rem;
-    text-transform: uppercase;
-    color: $meta;
-    letter-spacing: 1.5px;
+    // font-size: 0.875rem;
+    font-size: 1.3em;
+    // text-transform: uppercase;
+    color: $white;
+    // letter-spacing: 1.5px;
 }

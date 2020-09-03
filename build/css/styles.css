@@ -190,7 +190,7 @@ p.summary {
 p.summary a {
   color: #fff;
   font-weight: 300;
-  text-decoration: underline;
+  text-decoration: none;
 }
 p.summary a:hover, p.summary a:focus {
   color: #169c65;
@@ -211,7 +211,7 @@ p.summary a:hover, p.summary a:focus {
 .content hr {
   margin: 2em 0;
   border-style: none;
-  border-top: 2px solid #f6f6f1;
+  border-top: 2px solid #555;
 }
 .content dt {
   font-weight: 700;
@@ -248,7 +248,7 @@ p > code,
 li > code,
 a > code {
   padding: 3px 5px;
-  background: #f6f6f1;
+  background: #555;
   margin: 0 2px;
   border-radius: 2px;
 }
@@ -389,7 +389,6 @@ h1 {
 h2 {
   font-size: 2.25em;
   color: #fff;
-  font-weight: 700;
 }
 
 .content h2:after {
@@ -418,10 +417,8 @@ h5 {
 }
 
 .heading-small {
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  color: #888;
-  letter-spacing: 1.5px;
+  font-size: 1.3em;
+  color: #fff;
 }
 
 .content img {
@@ -589,7 +586,7 @@ pre[class*=language-] {
 }
 
 code.language-html {
-  color: #474747;
+  color: #323436;
 }
 
 .token.comment,
@@ -841,7 +838,7 @@ table tr:nth-child(even) {
 
 aside {
   padding: 0 0 1.5em 0;
-  border-bottom: 1px solid #dddddd;
+  margin-top: 3em;
 }
 
 aside > *:not(.navClose) + *, .toc > *:not(.navClose) + * {
@@ -852,7 +849,7 @@ aside > *:not(.navClose) + *, .toc > *:not(.navClose) + * {
   list-style: none;
   margin: 0;
   padding: 0;
-  font-weight: 700;
+  border-top: 1px solid #fff;
 }
 .toc ul ul,
 .toc ol ol {
@@ -862,6 +859,10 @@ aside > *:not(.navClose) + *, .toc > *:not(.navClose) + * {
 }
 .toc li {
   display: block;
+  border-bottom: 1px solid #323436;
+}
+.toc li:hover {
+  border-bottom: 1px solid #169c65;
 }
 .toc p {
   margin: 0;
@@ -869,13 +870,13 @@ aside > *:not(.navClose) + *, .toc > *:not(.navClose) + * {
 .toc a {
   display: block;
   color: #fff;
-  text-decoration: underline;
-  margin-bottom: 0.3em;
+  text-decoration: none;
+  padding: 0.6em 0;
+  font-size: 1.3em;
 }
 .toc a:before {
   display: inline-block;
   margin-right: 0.5em;
-  content: "#";
   color: #888;
 }
 .toc a code {
@@ -883,8 +884,8 @@ aside > *:not(.navClose) + *, .toc > *:not(.navClose) + * {
   font-size: 0.9em;
 }
 .toc a:hover, .toc a:focus {
-  color: #106f48;
-  text-decoration: underline;
+  color: #169c65;
+  text-decoration: none;
 }
 
 .toc__title {
