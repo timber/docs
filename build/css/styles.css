@@ -211,7 +211,7 @@ p.summary a:hover, p.summary a:focus {
 .content hr {
   margin: 2em 0;
   border-style: none;
-  border-top: 2px solid #555;
+  border-top: 2px solid #999;
 }
 .content dt {
   font-weight: 700;
@@ -236,7 +236,7 @@ p.summary a:hover, p.summary a:focus {
 }
 
 code {
-  color: #a63db0;
+  color: #FFB3C9;
   white-space: pre-wrap;
   text-transform: none;
   font-weight: 300;
@@ -248,7 +248,7 @@ p > code,
 li > code,
 a > code {
   padding: 3px 5px;
-  background: #555;
+  background: #202020;
   margin: 0 2px;
   border-radius: 2px;
 }
@@ -273,7 +273,7 @@ pre > code {
 }
 
 pre {
-  background-color: #999;
+  background-color: #202020;
   color: #fff;
   border-radius: 4px;
   padding: 2em 30px;
@@ -526,7 +526,6 @@ code[class*=language-],
 pre[class*=language-] {
   color: #fff;
   background: none;
-  text-shadow: 0 1px white;
   font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
   text-align: left;
   white-space: pre;
@@ -575,7 +574,7 @@ pre[class*=language-] {
 
 :not(pre) > code[class*=language-],
 pre[class*=language-] {
-  background: #f5f2f0;
+  background: #202020;
 }
 
 /* Inline code */
@@ -586,14 +585,14 @@ pre[class*=language-] {
 }
 
 code.language-html {
-  color: #323436;
+  color: #202020;
 }
 
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: slategray;
+  color: #999;
 }
 
 .token.punctuation {
@@ -610,11 +609,11 @@ code.language-html {
 }
 
 .token .tag {
-  color: #07a;
+  color: #2175FF;
 }
 
 .token .attr-name {
-  color: #07a;
+  color: #2175FF;
 }
 
 .token.property {
@@ -622,7 +621,7 @@ code.language-html {
 }
 
 .tag .token.property {
-  color: #a63db0;
+  color: #FFB3C9;
 }
 
 .token.boolean,
@@ -630,7 +629,7 @@ code.language-html {
 .token.constant,
 .token.symbol,
 .token.deleted {
-  color: #905;
+  color: #EB3E41;
 }
 
 .token.selector,
@@ -646,7 +645,7 @@ code.language-html {
 .token.url,
 .language-css .token.string,
 .style .token.string {
-  color: #9a6e3a;
+  color: #FFB302;
 }
 
 .token.atrule,
@@ -661,7 +660,7 @@ code.language-html {
 
 .token.function,
 .token.class-name {
-  color: #a63db0;
+  color: #FFB3C9;
 }
 
 .token.regex,
@@ -670,7 +669,7 @@ code.language-html {
 }
 
 .token.delimiter.important {
-  color: slategray;
+  color: #999;
   font-weight: 700;
 }
 

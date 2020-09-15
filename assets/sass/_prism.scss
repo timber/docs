@@ -4,21 +4,21 @@
  */
 
 $prism-code: $text-color;
-$prism-light: slategray;
+$prism-light: $grey-light;
 $prism-string: $green; // #690;
-$prism-symbol: #905;// #905;
+$prism-symbol: $red;// #905;
 $prism-keyword: $text-color; // #07a;
 $prism-function: $pink;// #DD4A68;
 $prism-property: $text-color;
-$prism-tag: #07a;
-$prism-attribute: #07a;
+$prism-tag: $blue;
+$prism-attribute: $blue;
 $prism-attribute-value: $green;
 
 code[class*="language-"],
 pre[class*="language-"] {
 	color: $prism-code;
 	background: none;
-	text-shadow: 0 1px white;
+	// text-shadow: 0 1px #999;
 	font-family: $font-family-code;
 	text-align: left;
 	white-space: pre;
@@ -66,7 +66,7 @@ pre[class*="language-"] {
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-	background: #f5f2f0;
+	background: $grey-dark;
 }
 
 /* Inline code */
@@ -141,7 +141,8 @@ code.language-html {
 .token.url,
 .language-css .token.string,
 .style .token.string {
-	color: #9a6e3a;
+	// color: #9a6e3a;
+	color: $orange;
 }
 
 .token.atrule,
