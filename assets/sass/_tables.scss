@@ -13,17 +13,23 @@ table {
 	}
 
 	th {
-		padding: 5px 10px;
-		background-color: $table-header-bg;
-		text-transform: uppercase;
+		padding: 1em 0;
+		border-bottom: 1px solid $white;
 		letter-spacing: .05em;
 	}
 
 	td {
-		padding: 10px 10px 10px 10px;
+		// padding: 10px 10px 10px 10px;
+		padding: 1em 1em 1em 0;
 	}
 
-	tr:nth-child(even) {
-		background-color: $table-uneven-color;
+	tbody {
+		tr {
+			border-bottom: 1px solid #323436;
+		}
 	}
+
+	// tr:nth-child(even) {
+	// 	background-color: $table-uneven-color;
+	// }
 }

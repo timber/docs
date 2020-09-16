@@ -824,16 +824,15 @@ table td {
   line-height: 1.6em;
 }
 table th {
-  padding: 5px 10px;
-  background-color: #858585;
-  text-transform: uppercase;
+  padding: 1em 0;
+  border-bottom: 1px solid #fff;
   letter-spacing: 0.05em;
 }
 table td {
-  padding: 10px 10px 10px 10px;
+  padding: 1em 1em 1em 0;
 }
-table tr:nth-child(even) {
-  background-color: #f7f7f2;
+table tbody tr {
+  border-bottom: 1px solid #323436;
 }
 
 aside {
