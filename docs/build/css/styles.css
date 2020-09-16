@@ -236,7 +236,7 @@ p.summary a:hover, p.summary a:focus {
 }
 
 code {
-  color: #FFB3C9;
+  color: #54ffb9;
   white-space: pre-wrap;
   text-transform: none;
   font-weight: 300;
@@ -248,7 +248,7 @@ p > code,
 li > code,
 a > code {
   padding: 3px 5px;
-  background: #202020;
+  background: #161616;
   margin: 0 2px;
   border-radius: 2px;
 }
@@ -273,7 +273,7 @@ pre > code {
 }
 
 pre {
-  background-color: #202020;
+  background-color: #161616;
   color: #fff;
   border-radius: 4px;
   padding: 2em 30px;
@@ -574,7 +574,7 @@ pre[class*=language-] {
 
 :not(pre) > code[class*=language-],
 pre[class*=language-] {
-  background: #202020;
+  background: #161616;
 }
 
 /* Inline code */
@@ -585,7 +585,7 @@ pre[class*=language-] {
 }
 
 code.language-html {
-  color: #202020;
+  color: #858585;
 }
 
 .token.comment,
@@ -609,11 +609,11 @@ code.language-html {
 }
 
 .token .tag {
-  color: #2175FF;
+  color: #999;
 }
 
 .token .attr-name {
-  color: #2175FF;
+  color: #999;
 }
 
 .token.property {
@@ -621,7 +621,7 @@ code.language-html {
 }
 
 .tag .token.property {
-  color: #FFB3C9;
+  color: #54ffb9;
 }
 
 .token.boolean,
@@ -660,7 +660,7 @@ code.language-html {
 
 .token.function,
 .token.class-name {
-  color: #FFB3C9;
+  color: #54ffb9;
 }
 
 .token.regex,

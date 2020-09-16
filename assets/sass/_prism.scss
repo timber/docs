@@ -8,10 +8,10 @@ $prism-light: $grey-light;
 $prism-string: $green; // #690;
 $prism-symbol: $red;// #905;
 $prism-keyword: $text-color; // #07a;
-$prism-function: $pink;// #DD4A68;
+$prism-function: $green-light;// #DD4A68;
 $prism-property: $text-color;
-$prism-tag: $blue;
-$prism-attribute: $blue;
+$prism-tag: $grey-light;
+$prism-attribute: $grey-light;
 $prism-attribute-value: $green;
 
 code[class*="language-"],
@@ -77,7 +77,7 @@ pre[class*="language-"] {
 }
 
 code.language-html {
-	color: $grey-dark;
+	color: $grey;
 }
 
 .token.comment,
