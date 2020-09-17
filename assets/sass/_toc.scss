@@ -16,7 +16,7 @@ aside, .toc {
 		margin: 0;
 		padding: 0;
 		// font-weight: $font-weight-bold;
-		border-top: 1px solid $white;
+		// border-top: 1px solid $white;
 	}
 
 	ul ul,
@@ -28,10 +28,6 @@ aside, .toc {
 
 	li {
 		display: block;
-		border-bottom: 1px solid #323436;
-		&:hover {
-			border-bottom: 1px solid $green;
-		}
 	}
 
 	p {
@@ -43,7 +39,7 @@ aside, .toc {
 		color: $white;
 		text-decoration: none;
 		// margin-bottom: 0.3em;
-		padding: 0.6em 0;
+		padding: 0.3em 0;
 		font-size: 1.3em;
 
 		&:before {
