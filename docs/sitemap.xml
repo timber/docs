@@ -133,10 +133,6 @@
                 <lastmod>2020-09-17</lastmod>
             </url>
             <url>
-                <loc>/docs/reference/timber-theme/</loc>
-                <lastmod>2020-09-17</lastmod>
-            </url>
-            <url>
                 <loc>/docs/reference/timber-menu/</loc>
                 <lastmod>2020-09-17</lastmod>
             </url>
@@ -145,7 +141,19 @@
                 <lastmod>2020-09-17</lastmod>
             </url>
             <url>
+                <loc>/docs/reference/timber-theme/</loc>
+                <lastmod>2020-09-17</lastmod>
+            </url>
+            <url>
                 <loc>/docs/reference/timber/</loc>
+                <lastmod>2020-09-17</lastmod>
+            </url>
+            <url>
+                <loc>/docs/reference/timber-comment/</loc>
+                <lastmod>2020-09-17</lastmod>
+            </url>
+            <url>
+                <loc>/docs/reference/timber-post/</loc>
                 <lastmod>2020-09-17</lastmod>
             </url>
             <url>
@@ -165,22 +173,6 @@
                 <lastmod>2020-09-17</lastmod>
             </url>
             <url>
-                <loc>/docs/reference/timber-comment/</loc>
-                <lastmod>2020-09-17</lastmod>
-            </url>
-            <url>
-                <loc>/docs/reference/timber-post/</loc>
-                <lastmod>2020-09-17</lastmod>
-            </url>
-            <url>
-                <loc>/docs/reference/timber-urlhelper/</loc>
-                <lastmod>2020-09-17</lastmod>
-            </url>
-            <url>
-                <loc>/docs/reference/timber-user/</loc>
-                <lastmod>2020-09-17</lastmod>
-            </url>
-            <url>
                 <loc>/docs/reference/timber-image/</loc>
                 <lastmod>2020-09-17</lastmod>
             </url>
@@ -194,6 +186,14 @@
             </url>
             <url>
                 <loc>/docs/reference/timber-term/</loc>
+                <lastmod>2020-09-17</lastmod>
+            </url>
+            <url>
+                <loc>/docs/reference/timber-urlhelper/</loc>
+                <lastmod>2020-09-17</lastmod>
+            </url>
+            <url>
+                <loc>/docs/reference/timber-user/</loc>
                 <lastmod>2020-09-17</lastmod>
             </url>
             <url>
