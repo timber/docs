@@ -258,7 +258,7 @@ h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
 }
 
 a > code {
-  color: #169c65;
+  color: #54ffb9;
   font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
   font-size: 0.8125rem;
 }
@@ -444,11 +444,11 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
 
 a {
   color: #fff;
-  text-decoration: underline;
+  text-decoration: none;
 }
 a:hover, a:focus {
-  color: #106f48;
-  text-decoration: underline;
+  color: #54ffb9;
+  text-decoration: none;
 }
 
 .directLink {
@@ -456,7 +456,7 @@ a:hover, a:focus {
   visibility: hidden;
 }
 .directLink:hover, .directLink:focus {
-  color: #169c65;
+  color: #54ffb9;
   text-decoration: none;
 }
 
@@ -505,9 +505,10 @@ a:hover, a:focus {
   display: block;
   text-decoration: none;
   color: #fff;
+  border-bottom: none;
 }
 .navMain-link:hover, .navMain-link:focus {
-  text-decoration: underline;
+  text-decoration: none;
 }
 .navMain-link[aria-current] {
   font-weight: 700;

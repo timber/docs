@@ -43,9 +43,10 @@
 	display: block;
 	text-decoration: none;
 	color: $white;
+	border-bottom: none;
 
 	&:hover, &:focus {
-		text-decoration: underline;
+		text-decoration: none;
 	}
 
 	&[aria-current] {
