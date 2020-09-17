@@ -20,8 +20,8 @@ h1 {
 
 h2 {
     font-size: 2.25em;
+    font-weight: $font-weight-normal;
     color: $headings-color;
-    // font-weight: $font-weight-bold;
 }
 
 .content h2 {
@@ -31,7 +31,8 @@ h2 {
         width: 100%;
         margin-top: 0.25em;
         height: 2px;
-        background: linear-gradient(to right, $green-light, rgba(0, 0, 0, 0) 75%);
+        // background: linear-gradient(to right, $green-light, rgba(0, 0, 0, 0) 75%);
+        border-bottom: 2px solid $green;
     }
 }
 
