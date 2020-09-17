@@ -849,6 +849,7 @@ aside > *:not(.navClose) + *, .toc > *:not(.navClose) + * {
   list-style: none;
   margin: 0;
   padding: 0;
+  font-weight: 700;
 }
 .toc ul ul,
 .toc ol ol {
@@ -866,8 +867,7 @@ aside > *:not(.navClose) + *, .toc > *:not(.navClose) + * {
   display: block;
   color: #fff;
   text-decoration: none;
-  padding: 0.3em 0;
-  font-size: 1.3em;
+  margin-bottom: 0.3em;
 }
 .toc a:before {
   display: inline-block;
@@ -879,7 +879,7 @@ aside > *:not(.navClose) + *, .toc > *:not(.navClose) + * {
   font-size: 0.9em;
 }
 .toc a:hover, .toc a:focus {
-  color: #169c65;
+  color: #54ffb9;
   text-decoration: none;
 }
 
