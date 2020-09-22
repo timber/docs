@@ -23,8 +23,9 @@ $meta: #888;
 
 $sidebar-color: #4e4e49;
 
-$link-color: $green;
-$link-hover-color: darken($green, 10%);
+$link-color: $green-light;
+// $link-hover-color: darken($green-light, 10%);
+$link-hover-color: $green-light;
 
 $code-bg: $grey-dark;
 $main-bg: #000;

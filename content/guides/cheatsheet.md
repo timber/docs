@@ -1,8 +1,5 @@
 ---
 title: "Cheatsheet"
-menu:
-  main:
-    parent: "guides"
 ---
 
 Here are some helpful conversions for functions you’re probably well familiar with in WordPress and their Timber equivalents. These assume a PHP file with the `Timber::context();` function at the top. For example:

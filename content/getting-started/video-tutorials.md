@@ -1,8 +1,5 @@
 ---
 title: "Video Tutorials"
-menu:
-  main:
-    parent: "getting-started"
 ---
 
 ## 1. Install Timber
