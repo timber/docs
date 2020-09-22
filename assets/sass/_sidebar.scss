@@ -1,7 +1,7 @@
 .sidebar {
 	padding: $nav-padding $gutter-width/2 $gutter-width/2 $gutter-width/2;
 	background-color: $black;
-	border-right: solid 1px rgba($grey-dark, 0.3);
+	border-right: solid 1px $grey-dark;
 
 	@media (min-width: $mobile-breakpoint) {
 		position: sticky;
