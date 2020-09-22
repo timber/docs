@@ -1,8 +1,5 @@
 ---
 title: "Sidebars"
-menu:
-  main:
-    parent: "guides"
 ---
 
 So you want a sidebar?
