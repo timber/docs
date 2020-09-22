@@ -16,10 +16,10 @@
 	border: none;
 	font-size: 1rem;
 	outline: none;
-	background-color: #333;
+	background-color: $grey-dark;
 	color: $white;
 
-	border-radius: 3px;
+	border-radius: 100px;
 	-webkit-appearance: none;
 	box-sizing: border-box !important;
 
@@ -54,9 +54,9 @@
 
 .algolia-autocomplete .algolia-docsearch-suggestion--highlight {
 	color: $green;
-	background: rgba($green, 0.1);
+	background: rgba($grey-dark, 0.1);
 }
 
 .algolia-autocomplete .ds-dropdown-menu .ds-suggestion.ds-cursor .algolia-docsearch-suggestion:not(.suggestion-layout-simple) .algolia-docsearch-suggestion--content {
-  background-color: rgba($green, 0.05);
+  background-color: rgba($grey-dark, 0.05);
 }
