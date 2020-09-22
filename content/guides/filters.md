@@ -1,8 +1,5 @@
 ---
 title: "Filters"
-menu:
-  main:
-    parent: "guides"
 ---
 
 ## General Filters

@@ -1,8 +1,5 @@
 ---
 title: "Debugging"
-menu:
-  main:
-    parent: "guides"
 ---
 
 ## Enable debugging

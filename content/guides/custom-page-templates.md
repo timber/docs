@@ -1,8 +1,5 @@
 ---
 title: "Custom Page Templates"
-menu:
-  main:
-    parent: "guides"
 ---
 
 Imagine that you’ve created a page called **«About Us»** and WordPress has given it the slug `about-us`. How would you create a custom template just for this page?
