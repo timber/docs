@@ -18,7 +18,6 @@ code[class*="language-"],
 pre[class*="language-"] {
 	color: $prism-code;
 	background: none;
-	// text-shadow: 0 1px #999;
 	font-family: $font-family-code;
 	text-align: left;
 	white-space: pre;
@@ -141,7 +140,6 @@ code.language-html {
 .token.url,
 .language-css .token.string,
 .style .token.string {
-	// color: #9a6e3a;
 	color: $orange;
 }
 
