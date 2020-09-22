@@ -19,17 +19,12 @@ table {
 	}
 
 	td {
-		// padding: 10px 10px 10px 10px;
 		padding: 1em 1em 1em 0;
 	}
 
 	tbody {
 		tr {
-			border-bottom: 1px solid #323436;
+			border-bottom: 1px solid $dark-grey;
 		}
 	}
-
-	// tr:nth-child(even) {
-	// 	background-color: $table-uneven-color;
-	// }
 }
