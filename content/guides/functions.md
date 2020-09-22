@@ -1,8 +1,5 @@
 ---
 title: "Functions"
-menu:
-  main:
-    parent: "guides"
 ---
 
 My theme/plugin has some functions I need! Do I really have to re-write all of them?  

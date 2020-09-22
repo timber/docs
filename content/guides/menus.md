@@ -1,8 +1,5 @@
 ---
 title: "Menus"
-menu:
-  main:
-    parent: "guides"
 ---
 
 In Timber, you can use `Timber\Menu` to make a standard WordPress menu available to the Twig template as an object you can loop through.

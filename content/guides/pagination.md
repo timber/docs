@@ -1,8 +1,5 @@
 ---
 title: "Pagination"
-menu:
-  main:
-    parent: "guides"
 ---
 
 Do you like pagination? Stupid question, of course you do. Well, here's how you do it.

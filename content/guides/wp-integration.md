@@ -1,8 +1,5 @@
 ---
 title: "WordPress Integration"
-menu:
-  main:
-    parent: "guides"
 ---
 
 Timber plays nicely with your existing WordPress setup. You can still use other plugins, etc.
@@ -242,10 +239,10 @@ Now, when the YouTube embed code changes, we only need to edit the `youtube-shor
 
 ### Layouts with Shortcodes
 
-Timber and Twig can process your shortcodes by using the `{% apply shortcodes %}` tag. Let’s say you're using a `[tab]` shortcode, for example:
+Timber and Twig can process your shortcodes by using the `{% filter shortcodes %}` tag. Let’s say you're using a `[tab]` shortcode, for example:
 
 ```twig
-{% apply shortcodes %}
+{% filter shortcodes %}
     [tabs tab1="Tab 1 title" tab2="Tab 2 title" layout="horizontal" backgroundcolor="" inactivecolor=""]
         [tab id=1]
             Something something something
@@ -255,7 +252,7 @@ Timber and Twig can process your shortcodes by using the `{% apply shortcodes %}
             Tab 2 content here
         [/tab]
     [/tabs]
-{% endapply %}
+{% endfilter %}
 ```
 
 ## Password protected posts
