@@ -1,5 +1,5 @@
 code {
-	color: $pink;
+	color: $green-light;
 	white-space: pre-wrap;
 	text-transform: none;
 	font-weight: $font-weight-normal;
@@ -10,7 +10,7 @@ p > code,
 li > code,
 a > code {
 	padding: 3px 5px;
-	background: $grey-light;
+	background: $grey-dark;
 	margin: 0 2px;
 	border-radius: 2px;
 }
