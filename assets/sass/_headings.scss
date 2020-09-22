@@ -31,7 +31,6 @@ h2 {
         width: 100%;
         margin-top: 0.25em;
         height: 2px;
-        // background: linear-gradient(to right, $green-light, rgba(0, 0, 0, 0) 75%);
         border-bottom: 2px solid $green;
     }
 }
@@ -53,9 +52,6 @@ h5 {
 }
 
 .heading-small {
-    // font-size: 0.875rem;
     font-size: 1.3em;
-    // text-transform: uppercase;
     color: $white;
-    // letter-spacing: 1.5px;
 }
