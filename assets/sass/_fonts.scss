@@ -49,3 +49,29 @@
     url('../fonts/source-sans-pro-latin-700italic.woff2') format('woff2'), /* Super Modern Browsers */
     url('../fonts/source-sans-pro-latin-700italic.woff') format('woff'); /* Modern Browsers */
 }
+
+/* gt-america-standard-light - latin */
+@font-face {
+  font-family: 'GT America';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300;
+  src:
+    local('GT America Light '),
+    local('GT America Light'),
+    url('https://upstatement.com/_nuxt/fonts/GT-America-Standard-Light.7d4ccd9.woff2') format('woff2'), /* Super Modern Browsers */
+    url('https://upstatement.com/_nuxt/fonts/GT-America-Standard-Light.7c0df44.woff') format('woff'); /* Modern Browsers */
+}
+
+/* gt-america-standard-lightitalic - latin */
+@font-face {
+  font-family: 'GT America';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 300;
+  src:
+    local('GT America Light italic'),
+    local('GT America Lightitalic'),
+    url('https://upstatement.com/_nuxt/fonts/GT-America-Standard-Light-Italic.6dd8d85.woff2') format('woff2'), /* Super Modern Browsers */
+    url('https://upstatement.com/_nuxt/fonts/GT-America-Standard-Light-Italic.985894e.woff') format('woff'); /* Modern Browsers */
+}
