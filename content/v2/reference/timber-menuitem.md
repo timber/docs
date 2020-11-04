@@ -148,7 +148,7 @@ In combination with `is_target_blank()`:
 **Twig**
 
 ```twig
-<a href="{{ item.link }}" {{ item.is_external or item.is_target_blank ? 'target="_blank"' }}">
+<a href="{{ item.link }}" {{ item.is_external or item.is_target_blank ? 'target="_blank"' }}>
 ```
 
 ---
