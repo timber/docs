@@ -31,9 +31,14 @@
 		position: fixed;
 		flex-wrap: nowrap;
 		justify-content: space-between;
-    }
+	}
+	
+	a {
+		border-bottom: none;
+	}
 
 }
+
 
 .logo {
 	height: $header-height;
@@ -77,12 +82,12 @@
         font-weight: $font-weight-bold;
         letter-spacing: .25px;
 		padding: 4px;
-		border-bottom: none;
+		
 
 		&:hover, &:focus {
 			color: $white;
 			text-decoration: underline;
-			border-bottom: none;
+			
 		}
 
 		img {
