@@ -51,6 +51,8 @@
 
 	&[aria-current] {
 		font-weight: $font-weight-bold;
+		padding-top: 0.2em;
+		padding-bottom: 0.3em;
 		color: $green-light;
 	}
 }

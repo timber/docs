@@ -2,6 +2,10 @@ aside {
 	padding: 1em 0 1.5em 0;
 	margin-top: 3em;
 	border-bottom: solid 1px $grey-dark;
+
+	.heading-small {
+		color: $grey-light;
+	}
 }
 
 aside, .toc {
