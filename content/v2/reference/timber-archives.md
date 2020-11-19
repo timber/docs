@@ -52,18 +52,26 @@ $context['archives'] = new Timber\Archives( $args );
 
 ### Properties
 
+<div class="table-properties">
+
 | Name | Type | Description |
 | --- | --- | --- |
-| $base | `string` |  |
-| $items | `array` | The items of the archives to iterate through and markup for your page. |
+| <span class="property-name">$base</span> | <span class="property-type">`string`</span> | <span class="property-description"></span> |
+| <span class="property-name">$items</span> | <span class="property-type">`array`</span> | <span class="property-description">The items of the archives to iterate through and markup for your page.</span> |
+
+</div>
 
 ### Methods
 
+<div class="table-methods">
+
 | Name | Return Type | Summary/Returns |
 | --- | --- | --- |
-| [__construct()](#__construct) |  | Build an Archives menu |
-| [~~get_items~~()](#get_items) | `array` or `string` | Gets archive items. |
-| [items()](#items) | `array` or `string` |  |
+| <span class="method-name">[__construct()](#__construct)</span> | <span class="method-type"></span> | <span class="method-description">Build an Archives menu</span> |
+| <span class="method-name">[~~get_items~~()](#get_items)</span> | <span class="method-type">`array` or `string`</span> | <span class="method-description">Gets archive items.</span> |
+| <span class="method-name">[items()](#items)</span> | <span class="method-type">`array` or `string`</span> | <span class="method-description"></span> |
+
+</div>
 
 
 ## Class Methods

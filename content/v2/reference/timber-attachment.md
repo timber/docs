@@ -16,55 +16,39 @@ objects build upon.
 
 ### Properties
 
+<div class="table-properties">
+
 | Name | Type | Description |
 | --- | --- | --- |
-| $file | `mixed` |  |
-| $file_loc | `string` | The absolute path to the attachmend file in the filesystem (Example: `/var/www/htdocs/wp-content/uploads/2015/08/my-pic.jpg`) |
-| $file_size_raw | `int` | Raw file size in bytes. |
-| $file_size | `null` or `string` | File size string. |
-| $file_extension | `null` or `string` | A file extension. |
-| $id | `int` | The attachment ID. |
-| $caption | `string` | The caption that is stored as post_excerpt in the posts table in the database. |
+| <span class="property-name">$file</span> | <span class="property-type">`mixed`</span> | <span class="property-description"></span> |
+| <span class="property-name">$file_loc</span> | <span class="property-type">`string`</span> | <span class="property-description">The absolute path to the attachmend file in the filesystem (Example: `/var/www/htdocs/wp-content/uploads/2015/08/my-pic.jpg`)</span> |
+| <span class="property-name">$file_size_raw</span> | <span class="property-type">`int`</span> | <span class="property-description">Raw file size in bytes.</span> |
+| <span class="property-name">$file_size</span> | <span class="property-type">`null` or `string`</span> | <span class="property-description">File size string.</span> |
+| <span class="property-name">$file_extension</span> | <span class="property-type">`null` or `string`</span> | <span class="property-description">A file extension.</span> |
+| <span class="property-name">$id</span> | <span class="property-type">`int`</span> | <span class="property-description">The attachment ID.</span> |
+| <span class="property-name">$caption</span> | <span class="property-type">`string`</span> | <span class="property-description">The caption that is stored as post_excerpt in the posts table in the database.</span> |
+
+</div>
 
 ### Methods
 
+<div class="table-methods">
+
 | Name | Return Type | Summary/Returns |
 | --- | --- | --- |
-| [__construct()](#__construct) |  | Creates a new `Timber\Attachment` object. |
-| [__toString()](#__toString) | `string` | Gets the src for an attachment.<br><br>*Returns:* The src of the attachment. |
-| [extension()](#extension) | `null` or `string` | Gets the extension of the attached file.<br><br>*Returns:* An uppercase extension string. |
-| [get_pathinfo()](#get_pathinfo) | `array` | Gets a PHP array with pathinfo() info from the file.<br><br>*Returns:* Path info from the file. |
-| [link()](#link) | `string` | Gets the link to an attachment.<br><br>*Returns:* The URL of the attachment. |
-| [parent()](#parent) | `bool` or `\Timber\Post` | Gets the parent object.<br><br>*Returns:* Parent object as a `Timber\Post`. Returns `false` if no parent object is defined. |
-| [path()](#path) | `string` | Gets the relative path to an attachment.<br><br>*Returns:* The relative path to an attachment. |
-| [size()](#size) | `mixed` or `null` | Gets filesize in a human readable format.<br><br>*Returns:* The filesize string in a human readable format. |
-| [size_raw()](#size_raw) | `mixed` or `null` | Gets filesize in bytes.<br><br>*Returns:* The filesize string in bytes, or false if the filesize can’t be read. |
-| [src()](#src) | `bool` or `string` | Gets the source URL for an attachment. |
+| <span class="method-name">[__toString()](#__toString)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the src for an attachment.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The src of the attachment.</span></span> |
+| <span class="method-name">[extension()](#extension)</span> | <span class="method-type">`null` or `string`</span> | <span class="method-description">Gets the extension of the attached file.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> An uppercase extension string.</span></span> |
+| <span class="method-name">[link()](#link)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the link to an attachment.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The URL of the attachment.</span></span> |
+| <span class="method-name">[parent()](#parent)</span> | <span class="method-type">`bool` or `\Timber\Post`</span> | <span class="method-description">Gets the parent object.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Parent object as a `Timber\Post`. Returns `false` if no parent object is defined.</span></span> |
+| <span class="method-name">[path()](#path)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the relative path to an attachment.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The relative path to an attachment.</span></span> |
+| <span class="method-name">[size()](#size)</span> | <span class="method-type">`mixed` or `null`</span> | <span class="method-description">Gets filesize in a human readable format.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The filesize string in a human readable format.</span></span> |
+| <span class="method-name">[size_raw()](#size_raw)</span> | <span class="method-type">`mixed` or `null`</span> | <span class="method-description">Gets filesize in bytes.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The filesize string in bytes, or false if the filesize can’t be read.</span></span> |
+| <span class="method-name">[src()](#src)</span> | <span class="method-type">`bool` or `string`</span> | <span class="method-description">Gets the source URL for an attachment.</span> |
+
+</div>
 
 
 ## Class Methods
-
-### \_\_construct()
-
-Creates a new `Timber\Attachment` object.
-
-`__construct( int|mixed $attachment )`
-
-| Name | Type | Description |
-| --- | --- | --- |
-| $attachment | `int` or `mixed` | An attachment ID, a `Timber\Post`, a `WP_Post` object, an ACF image array, a path (absolute or relative) or an URL. |
-
-**PHP**
-
-```php
-// You can pass it an ID number
-$myImage = new Timber\Attachment(552);
-
-// Or send it a URL to an image
-$myImage = new Timber\Attachment( 'http://google.com/logo.jpg' );
-```
-
----
 
 ### \_\_toString()
 
@@ -125,7 +109,7 @@ Gets the source URL for an attachment.
 **Twig**
 
 ```twig
-<a href="{{ Attachment(post.meta('job_pdf')).src }}" download>
+<a href="{{ get_attachment(post.meta('job_pdf')).src }}" download>
 ```
 **HTML**
 
@@ -220,14 +204,6 @@ object is defined.
 ```twig
 This image is assigned to {{ image.parent.title }}
 ```
-
----
-
-### get\_pathinfo()
-
-Gets a PHP array with pathinfo() info from the file.
-
-**Returns:** `array` Path info from the file.
 
 ---
 

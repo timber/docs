@@ -11,26 +11,34 @@ is_reference: true
 
 ### Properties
 
+<div class="table-properties">
+
 | Name | Type | Description |
 | --- | --- | --- |
-| $depth | `int` | The depth of the menu we are rendering |
-| $items | `array` or `null` | Array of `Timber\Menu` objects you can to iterate through. |
-| $id | `int` | The ID of the menu, corresponding to the wp_terms table. |
-| $ID | `int` | The ID of the menu, corresponding to the wp_terms table. |
-| $term_id | `int` | The ID of the menu, corresponding to the wp_terms table. |
-| $name | `string` | The name of the menu (ex: `Main Navigation`). |
-| $title | `string` | The name of the menu (ex: `Main Navigation`). |
-| $options | `array` | An array of menu options. |
-| $raw_options | `array` | The unfiltered options sent forward via the user in the __construct |
-| $theme_location | `string` | The theme location of the menu, if available. |
+| <span class="property-name">$depth</span> | <span class="property-type">`int`</span> | <span class="property-description">The depth of the menu we are rendering</span> |
+| <span class="property-name">$items</span> | <span class="property-type">`array` or `null`</span> | <span class="property-description">Array of `Timber\Menu` objects you can to iterate through.</span> |
+| <span class="property-name">$id</span> | <span class="property-type">`int`</span> | <span class="property-description">The ID of the menu, corresponding to the wp_terms table.</span> |
+| <span class="property-name">$ID</span> | <span class="property-type">`int`</span> | <span class="property-description">The ID of the menu, corresponding to the wp_terms table.</span> |
+| <span class="property-name">$term_id</span> | <span class="property-type">`int`</span> | <span class="property-description">The ID of the menu, corresponding to the wp_terms table.</span> |
+| <span class="property-name">$name</span> | <span class="property-type">`string`</span> | <span class="property-description">The name of the menu (ex: `Main Navigation`).</span> |
+| <span class="property-name">$title</span> | <span class="property-type">`string`</span> | <span class="property-description">The name of the menu (ex: `Main Navigation`).</span> |
+| <span class="property-name">$options</span> | <span class="property-type">`array`</span> | <span class="property-description">An array of menu options.</span> |
+| <span class="property-name">$raw_options</span> | <span class="property-type">`array`</span> | <span class="property-description">The unfiltered options sent forward via the user in the __construct</span> |
+| <span class="property-name">$theme_location</span> | <span class="property-type">`string`</span> | <span class="property-description">The theme location of the menu, if available.</span> |
+
+</div>
 
 ### Methods
 
+<div class="table-methods">
+
 | Name | Return Type | Summary/Returns |
 | --- | --- | --- |
-| [__construct()](#__construct) |  | Initialize a menu. |
-| [find_parent_item_in_menu()](#find_parent_item_in_menu) | `\Timber\MenuItem` or `bool` | Find a parent menu item in a set of menu items.<br><br>*Returns:* A menu item. False if no parent was found. |
-| [get_items()](#get_items) | `array` | Get menu items.<br><br>*Returns:* Array of `Timber\MenuItem` objects. Empty array if no items could be found. |
+| <span class="method-name">[__construct()](#__construct)</span> | <span class="method-type"></span> | <span class="method-description">Initialize a menu.</span> |
+| <span class="method-name">[find_parent_item_in_menu()](#find_parent_item_in_menu)</span> | <span class="method-type">`\Timber\MenuItem` or `bool`</span> | <span class="method-description">Find a parent menu item in a set of menu items.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> A menu item. False if no parent was found.</span></span> |
+| <span class="method-name">[get_items()](#get_items)</span> | <span class="method-type">`array`</span> | <span class="method-description">Get menu items.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Array of `Timber\MenuItem` objects. Empty array if no items could be found.</span></span> |
+
+</div>
 
 
 ## Class Methods

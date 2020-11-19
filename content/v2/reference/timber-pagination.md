@@ -8,10 +8,14 @@ is_reference: true
 
 ### Methods
 
+<div class="table-methods">
+
 | Name | Return Type | Summary/Returns |
 | --- | --- | --- |
-| [__construct()](#__construct) |  | Pagination constructor. |
-| [get_pagination()](#get_pagination) | `array` | Get pagination.<br><br>*Returns:* mixed |
+| <span class="method-name">[__construct()](#__construct)</span> | <span class="method-type"></span> | <span class="method-description">Pagination constructor.</span> |
+| <span class="method-name">[get_pagination()](#get_pagination)</span> | <span class="method-type">`array`</span> | <span class="method-description">Get pagination.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> mixed</span></span> |
+
+</div>
 
 
 ## Class Methods

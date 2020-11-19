@@ -35,36 +35,43 @@ My site is called Jared's blog, another site on my network is Upstatement.com
 
 ### Properties
 
+<div class="table-properties">
+
 | Name | Type | Description |
 | --- | --- | --- |
-| $admin_email | `string` | The admin email address set in the WP admin panel |
-| $blogname | `string` |  |
-| $charset | `string` |  |
-| $description | `string` |  |
-| $id | `int` | the ID of a site in multisite |
-| $language | `string` | the language setting ex: en-US |
-| $multisite | `bool` | true if multisite, false if plain ole' WordPress |
-| $name | `string` |  |
-| $pingback_url | `string` | for people who like trackback spam |
-| $siteurl | `string` |  |
-| $theme | `\Timber\Theme` |  |
-| $title | `string` |  |
-| $url | `string` |  |
-| $home_url | `string` |  |
-| $site_url | `string` |  |
-| $rdf | `string` |  |
+| <span class="property-name">$admin_email</span> | <span class="property-type">`string`</span> | <span class="property-description">The admin email address set in the WP admin panel</span> |
+| <span class="property-name">$blogname</span> | <span class="property-type">`string`</span> | <span class="property-description"></span> |
+| <span class="property-name">$charset</span> | <span class="property-type">`string`</span> | <span class="property-description"></span> |
+| <span class="property-name">$description</span> | <span class="property-type">`string`</span> | <span class="property-description"></span> |
+| <span class="property-name">$id</span> | <span class="property-type">`int`</span> | <span class="property-description">the ID of a site in multisite</span> |
+| <span class="property-name">$language</span> | <span class="property-type">`string`</span> | <span class="property-description">the language setting ex: en-US</span> |
+| <span class="property-name">$multisite</span> | <span class="property-type">`bool`</span> | <span class="property-description">true if multisite, false if plain ole' WordPress</span> |
+| <span class="property-name">$name</span> | <span class="property-type">`string`</span> | <span class="property-description"></span> |
+| <span class="property-name">$pingback_url</span> | <span class="property-type">`string`</span> | <span class="property-description">for people who like trackback spam</span> |
+| <span class="property-name">$siteurl</span> | <span class="property-type">`string`</span> | <span class="property-description"></span> |
+| <span class="property-name">$theme</span> | <span class="property-type">`\Timber\Theme`</span> | <span class="property-description"></span> |
+| <span class="property-name">$title</span> | <span class="property-type">`string`</span> | <span class="property-description"></span> |
+| <span class="property-name">$url</span> | <span class="property-type">`string`</span> | <span class="property-description"></span> |
+| <span class="property-name">$home_url</span> | <span class="property-type">`string`</span> | <span class="property-description"></span> |
+| <span class="property-name">$site_url</span> | <span class="property-type">`string`</span> | <span class="property-description"></span> |
+| <span class="property-name">$rdf</span> | <span class="property-type">`string`</span> | <span class="property-description"></span> |
+
+</div>
 
 ### Methods
 
+<div class="table-methods">
+
 | Name | Return Type | Summary/Returns |
 | --- | --- | --- |
-| [__construct()](#__construct) |  | Constructs a Timber\Site object |
-| [__get()](#__get) | `mixed` | Get the value for a site option.<br><br>*Returns:* The option value. |
-| [icon()](#icon) | `null` or `\Timber\Image` |  |
-| [link()](#link) | `string` | Returns the link to the site's home. |
-| [~~meta~~()](#meta) |  | Get the value for a site option. |
-| [option()](#option) | `mixed` | Get the value for a site option.<br><br>*Returns:* The option value. |
-| [~~url~~()](#url) | `string` |  |
+| <span class="method-name">[__construct()](#__construct)</span> | <span class="method-type"></span> | <span class="method-description">Constructs a Timber\Site object</span> |
+| <span class="method-name">[__get()](#__get)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Get the value for a site option.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The option value.</span></span> |
+| <span class="method-name">[icon()](#icon)</span> | <span class="method-type">`null` or `\Timber\Image`</span> | <span class="method-description"></span> |
+| <span class="method-name">[link()](#link)</span> | <span class="method-type">`string`</span> | <span class="method-description">Returns the link to the site's home.</span> |
+| <span class="method-name">[~~meta~~()](#meta)</span> | <span class="method-type"></span> | <span class="method-description">Get the value for a site option.</span> |
+| <span class="method-name">[option()](#option)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Get the value for a site option.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The option value.</span></span> |
+
+</div>
 
 
 ## Class Methods
@@ -167,16 +174,6 @@ Returns the link to the site's home.
 	  <img src="/wp-content/uploads/logo.png" alt="Logo for some stupid thing" />
 </a>
 ```
-
----
-
-### ~~url~~()
-
-**DEPRECATED** since 1.0.4, use `{{ site.link }}` instead.
-
-**see** [Timber\Site::link()](../timber-site/#link)
-
-**Returns:** `string` 
 
 ---
 

@@ -12,14 +12,14 @@ you're a fiend. Well let's get this under control:
 **PHP**
 
 ```php
-//Get a term by its ID
-$context['term'] = new Timber\Term(6);
-//Get a term when on a term archive page
-$context['term_page'] = new Timber\Term();
-//Get a term with a slug
-$context['team'] = new Timber\Term('patriots');
-//Get a team with a slug from a specific taxonomy
-$context['st_louis'] = new Timber\Term('cardinals', 'baseball');
+// Get a term by its ID
+$context['term'] = Timber::get_term(6);
+
+// Get a term when on a term archive page
+$context['term_page'] = Timber::get_term();
+
+// Get a term with a slug
+$context['team'] = Timber::get_term('patriots');
 Timber::render('index.twig', $context);
 ```
 **Twig**
@@ -50,45 +50,41 @@ Timber::render('index.twig', $context);
 
 ### Properties
 
+<div class="table-properties">
+
 | Name | Type | Description |
 | --- | --- | --- |
-| $name | `string` | the human-friendly name of the term (ex: French Cuisine) |
-| $taxonomy | `string` | the WordPress taxonomy slug (ex: `post_tag` or `actors`) |
+| <span class="property-name">$name</span> | <span class="property-type">`string`</span> | <span class="property-description">the human-friendly name of the term (ex: French Cuisine)</span> |
+| <span class="property-name">$taxonomy</span> | <span class="property-type">`string`</span> | <span class="property-description">the WordPress taxonomy slug (ex: `post_tag` or `actors`)</span> |
+
+</div>
 
 ### Methods
 
+<div class="table-methods">
+
 | Name | Return Type | Summary/Returns |
 | --- | --- | --- |
-| [__construct()](#__construct) |  |  |
-| [__toString()](#__toString) | `string` | The string the term will render as by default |
-| [description()](#description) | `string` | Return the description of the term |
-| [edit_link()](#edit_link) | `string` |  |
-| [from()](#from) | `static` |  |
-| [~~get_children~~()](#get_children) | `array` |  |
-| [~~get_edit_url~~()](#get_edit_url) | `string` |  |
-| [~~get_field~~()](#get_field) | `mixed` | Gets a term meta value.<br><br>*Returns:* The meta field value. |
-| [~~get_meta_field~~()](#get_meta_field) | `string` | Gets a term meta value.<br><br>*Returns:* The meta field value. |
-| [~~get_posts~~()](#get_posts) | `array` or `bool` or `null` | Get Posts that have been "tagged" with the particular term |
-| [link()](#link) | `string` | Returns a full link to the term archive page like `http://example.com/category/news` |
-| [meta()](#meta) | `mixed` | Gets a term meta value.<br><br>*Returns:* The custom field value or an array of custom field values. Null if no value could be found. |
-| [path()](#path) | `string` | Returns a relative link (path) to the term archive page like `/category/news` |
-| [posts()](#posts) | `\Timber\PostQuery` | Gets posts that have the current term assigned. |
-| [raw_meta()](#raw_meta) | `null` or `mixed` | Gets a term meta value directly from the database.<br><br>*Returns:* The custom field value(s). Null if no value could be found, an empty array if all fields were requested but no values could be found. |
-| [title()](#title) | `string` |  |
+| <span class="method-name">[__toString()](#__toString)</span> | <span class="method-type">`string`</span> | <span class="method-description">The string the term will render as by default</span> |
+| <span class="method-name">[description()](#description)</span> | <span class="method-type">`string`</span> | <span class="method-description">Return the description of the term</span> |
+| <span class="method-name">[edit_link()](#edit_link)</span> | <span class="method-type">`string`</span> | <span class="method-description"></span> |
+| <span class="method-name">[from()](#from)</span> | <span class="method-type">`static`</span> | <span class="method-description"></span> |
+| <span class="method-name">[~~get_children~~()](#get_children)</span> | <span class="method-type">`array`</span> | <span class="method-description"></span> |
+| <span class="method-name">[~~get_edit_url~~()](#get_edit_url)</span> | <span class="method-type">`string`</span> | <span class="method-description"></span> |
+| <span class="method-name">[~~get_field~~()](#get_field)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets a term meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value.</span></span> |
+| <span class="method-name">[~~get_meta_field~~()](#get_meta_field)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets a term meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value.</span></span> |
+| <span class="method-name">[~~get_posts~~()](#get_posts)</span> | <span class="method-type">`array` or `bool` or `null`</span> | <span class="method-description">Get Posts that have been "tagged" with the particular term</span> |
+| <span class="method-name">[link()](#link)</span> | <span class="method-type">`string`</span> | <span class="method-description">Returns a full link to the term archive page like `http://example.com/category/news`</span> |
+| <span class="method-name">[meta()](#meta)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets a term meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The custom field value or an array of custom field values. Null if no value could be found.</span></span> |
+| <span class="method-name">[path()](#path)</span> | <span class="method-type">`string`</span> | <span class="method-description">Returns a relative link (path) to the term archive page like `/category/news`</span> |
+| <span class="method-name">[posts()](#posts)</span> | <span class="method-type">`\Timber\PostQuery`</span> | <span class="method-description">Gets posts that have the current term assigned.</span> |
+| <span class="method-name">[raw_meta()](#raw_meta)</span> | <span class="method-type">`null` or `mixed`</span> | <span class="method-description">Gets a term meta value directly from the database.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The custom field value(s). Null if no value could be found, an empty array if all fields were requested but no values could be found.</span></span> |
+| <span class="method-name">[title()](#title)</span> | <span class="method-type">`string`</span> | <span class="method-description"></span> |
+
+</div>
 
 
 ## Class Methods
-
-### \_\_construct()
-
-`__construct( int $tid = null, string $tax = '' )`
-
-| Name | Type | Description |
-| --- | --- | --- |
-| $tid | `int` |  |
-| $tax | `string` |  |
-
----
 
 ### \_\_toString()
 
@@ -255,15 +251,18 @@ See all posts in: <a href="{{ term.path }}">{{ term.name }}</a>
 
 Gets posts that have the current term assigned.
 
-`posts( int|array $numberposts_or_args = 10, string $post_type_or_class = any, string $post_class = '' )`
+**see** https://timber.github.io/docs/v2/guides/posts/
+
+`posts( $query = [], string $post_type_or_class = null )`
 
 **Returns:** `\Timber\PostQuery` 
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $numberposts_or_args | `int` or `array` | Optional. Either the number of posts or an array of arguments for the post query that this method is going. to perform. Default `10`. |
-| $post_type_or_class | `string` | Optional. Either the post type to get or the name of post class to use for the returned posts. Default `any`. |
-| $post_class | `string` | Optional. The name of the post class to use for the returned posts. Default `Timber\Post`. |
+| $numberposts_or_args | `int` or `array` | Optional. Either the number of posts or an array of arguments for the post query to be performed. Default is an empty array, the equivalent of: ```php [   'posts_per_page' => get_option('posts_per_page'),   'post_type'      => 'any',   'tax_query'      => [ ...tax query for this Term... ] ] ``` |
+| $post_type_or_class | `string` | Deprecated. Before Timber 2.x this was a post_type to be used for querying posts OR the Timber\Post subclass to instantiate for each post returned. As of Timber 2.0.0, specify `post_type` in the `$query` array argument. To specify the class, use Class Maps. |
+
+Query the default posts_per_page for this Term:
 
 **Twig**
 
@@ -271,7 +270,23 @@ Gets posts that have the current term assigned.
 <h4>Recent posts in {{ term.name }}</h4>
 
 <ul>
-{% for post in term.posts(3, 'post') %}
+{% for post in term.posts() %}
+    <li>
+        <a href="{{ post.link }}">{{ post.title }}</a>
+    </li>
+{% endfor %}
+</ul>
+```
+
+Query exactly 3 Posts from this Term:
+
+**Twig**
+
+```twig
+<h4>Recent posts in {{ term.name }}</h4>
+
+<ul>
+{% for post in term.posts(3) %}
     <li>
         <a href="{{ post.link }}">{{ post.title }}</a>
     </li>
@@ -289,9 +304,10 @@ custom query arguments in the first parameter.
 
 <ul>
 {% for branch in region.posts({
+    post_type: 'branch',
     posts_per_page: -1,
     orderby: 'menu_order'
-}, 'branch', 'Branch') %}
+}) %}
     <li>
         <a href="{{ branch.link }}">{{ branch.title }}</a>
     </li>
@@ -313,15 +329,13 @@ Get Posts that have been "tagged" with the particular term
 
 **DEPRECATED** since 2.0.0 use `{{ term.posts }}` instead
 
-`get_posts( int $numberposts = 10, string $post_type = any, string $PostClass = '' )`
+`get_posts( int $numberposts = 10 )`
 
 **Returns:** `array|bool|null` 
 
 | Name | Type | Description |
 | --- | --- | --- |
 | $numberposts | `int` |  |
-| $post_type | `string` |  |
-| $PostClass | `string` |  |
 
 ---
 

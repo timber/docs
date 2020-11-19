@@ -52,34 +52,42 @@ Timber::render( 'single.twig', $context );
 
 ### Properties
 
+<div class="table-properties">
+
 | Name | Type | Description |
 | --- | --- | --- |
-| $avatar_override | `string` | A URL to an avatar that overrides anything from Gravatar, etc. |
-| $description | `string` | The description from WordPress |
-| $display_name | `string` |  |
-| $first_name | `string` | The first name of the user |
-| $last_name | `string` | The last name of the user |
-| $id | `int` | The ID from WordPress |
-| $user_nicename | `string` |  |
-| $roles | `array` |  |
+| <span class="property-name">$avatar_override</span> | <span class="property-type">`string`</span> | <span class="property-description">A URL to an avatar that overrides anything from Gravatar, etc.</span> |
+| <span class="property-name">$description</span> | <span class="property-type">`string`</span> | <span class="property-description">The description from WordPress</span> |
+| <span class="property-name">$display_name</span> | <span class="property-type">`string`</span> | <span class="property-description"></span> |
+| <span class="property-name">$first_name</span> | <span class="property-type">`string`</span> | <span class="property-description">The first name of the user</span> |
+| <span class="property-name">$last_name</span> | <span class="property-type">`string`</span> | <span class="property-description">The last name of the user</span> |
+| <span class="property-name">$id</span> | <span class="property-type">`int`</span> | <span class="property-description">The ID from WordPress</span> |
+| <span class="property-name">$user_nicename</span> | <span class="property-type">`string`</span> | <span class="property-description"></span> |
+| <span class="property-name">$roles</span> | <span class="property-type">`array`</span> | <span class="property-description"></span> |
+
+</div>
 
 ### Methods
 
+<div class="table-methods">
+
 | Name | Return Type | Summary/Returns |
 | --- | --- | --- |
-| [__toString()](#__toString) | `string` | <br><br>*Returns:* a fallback for Timber\User::name() |
-| [avatar()](#avatar) | `string` or `\Timber\Image` | Gets a user’s avatar URL.<br><br>*Returns:* The avatar URL. |
-| [can()](#can) | `bool` | Checks whether a user has a capability.<br><br>*Returns:* Whether the user has the capability. |
-| [~~get_field~~()](#get_field) | `mixed` | Gets a user meta value.<br><br>*Returns:* The meta field value. |
-| [~~get_meta~~()](#get_meta) | `mixed` | Gets a user meta value.<br><br>*Returns:* The meta field value. |
-| [~~get_meta_field~~()](#get_meta_field) | `mixed` | Gets a user meta value.<br><br>*Returns:* The meta field value. |
-| [link()](#link) | `string` | Get the URL of the user's profile<br><br>*Returns:* http://example.org/author/lincoln |
-| [meta()](#meta) | `mixed` | Gets a user meta value.<br><br>*Returns:* The meta field value. Null if no value could be found. |
-| [name()](#name) | `string` | Get the name of the User<br><br>*Returns:* the human-friendly name of the user (ex: "Buster Bluth") |
-| [path()](#path) | `string` | Get the relative path to the user's profile<br><br>*Returns:* ex: /author/lincoln |
-| [raw_meta()](#raw_meta) | `null` or `mixed` | Gets a user meta value directly from the database.<br><br>*Returns:* The meta field value(s). Null if no value could be found, an empty array if all fields were requested but no values could be found. |
-| [roles()](#roles) | `array` or `null` | Gets the user roles. |
-| [slug()](#slug) | `string` | <br><br>*Returns:* ex baberaham-lincoln |
+| <span class="method-name">[__toString()](#__toString)</span> | <span class="method-type">`string`</span> | <span class="method-description"><br><br><span class="method-return"><span class="method-return-label">Returns:</span> a fallback for Timber\User::name()</span></span> |
+| <span class="method-name">[avatar()](#avatar)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets a user’s avatar URL.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The avatar URL.</span></span> |
+| <span class="method-name">[can()](#can)</span> | <span class="method-type">`bool`</span> | <span class="method-description">Checks whether a user has a capability.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Whether the user has the capability.</span></span> |
+| <span class="method-name">[~~get_field~~()](#get_field)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets a user meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value.</span></span> |
+| <span class="method-name">[~~get_meta~~()](#get_meta)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets a user meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value.</span></span> |
+| <span class="method-name">[~~get_meta_field~~()](#get_meta_field)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets a user meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value.</span></span> |
+| <span class="method-name">[link()](#link)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the URL of the user's profile<br><br><span class="method-return"><span class="method-return-label">Returns:</span> http://example.org/author/lincoln</span></span> |
+| <span class="method-name">[meta()](#meta)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets a user meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value. Null if no value could be found.</span></span> |
+| <span class="method-name">[name()](#name)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the name of the User<br><br><span class="method-return"><span class="method-return-label">Returns:</span> the human-friendly name of the user (ex: "Buster Bluth")</span></span> |
+| <span class="method-name">[path()](#path)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the relative path to the user's profile<br><br><span class="method-return"><span class="method-return-label">Returns:</span> ex: /author/lincoln</span></span> |
+| <span class="method-name">[raw_meta()](#raw_meta)</span> | <span class="method-type">`null` or `mixed`</span> | <span class="method-description">Gets a user meta value directly from the database.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value(s). Null if no value could be found, an empty array if all fields were requested but no values could be found.</span></span> |
+| <span class="method-name">[roles()](#roles)</span> | <span class="method-type">`array` or `null`</span> | <span class="method-description">Gets the user roles.</span> |
+| <span class="method-name">[slug()](#slug)</span> | <span class="method-type">`string`</span> | <span class="method-description"><br><br><span class="method-return"><span class="method-return-label">Returns:</span> ex baberaham-lincoln</span></span> |
+
+</div>
 
 
 ## Class Methods
@@ -302,7 +310,7 @@ Gets a user’s avatar URL.
 
 `avatar( null|array $args = null )`
 
-**Returns:** `string|\Timber\Image` The avatar URL.
+**Returns:** `string` The avatar URL.
 
 | Name | Type | Description |
 | --- | --- | --- |

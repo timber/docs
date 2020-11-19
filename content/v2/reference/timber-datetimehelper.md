@@ -12,9 +12,13 @@ Helper class to work with dates and times.
 
 ### Methods
 
+<div class="table-methods">
+
 | Name | Return Type | Summary/Returns |
 | --- | --- | --- |
-| [wp_date()](#wp_date) | `bool` or `string` | Wrapper for wp_date(). |
+| <span class="method-name">[wp_date()](#wp_date)</span> | <span class="method-type">`bool` or `string`</span> | <span class="method-description">Wrapper for wp_date().</span> |
+
+</div>
 
 
 ## Class Methods

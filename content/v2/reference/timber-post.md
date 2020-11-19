@@ -54,98 +54,85 @@ Timber::render( 'single.twig', $context );
 
 ### Properties
 
+<div class="table-properties">
+
 | Name | Type | Description |
 | --- | --- | --- |
-| $id | `int` | The numeric WordPress id of a post. |
-| $ID | `int` | The numeric WordPress id of a post, capitalized to match WordPress usage. |
-| $post_author | `int` | The numeric ID of the a post's author corresponding to the wp_user database table |
-| $post_content | `string` | The raw text of a WP post as stored in the database |
-| $post_date | `string` | The raw date string as stored in the WP database, ex: 2014-07-05 18:01:39 |
-| $post_excerpt | `string` | The raw text of a manual post excerpt as stored in the database |
-| $post_parent | `int` | The numeric ID of a post's parent post |
-| $post_status | `string` | The status of a post ("draft", "publish", etc.) |
-| $post_title | `string` | The raw text of a post's title as stored in the database |
-| $post_type | `string` | The name of the post type, this is the machine name (so "my_custom_post_type" as opposed to "My Custom Post Type") |
-| $slug | `string` | The URL-safe slug, this corresponds to the poorly-named "post_name" in the WP database, ex: "hello-world" |
+| <span class="property-name">$id</span> | <span class="property-type">`int`</span> | <span class="property-description">The numeric WordPress id of a post.</span> |
+| <span class="property-name">$ID</span> | <span class="property-type">`int`</span> | <span class="property-description">The numeric WordPress id of a post, capitalized to match WordPress usage.</span> |
+| <span class="property-name">$post_author</span> | <span class="property-type">`int`</span> | <span class="property-description">The numeric ID of the a post's author corresponding to the wp_user database table</span> |
+| <span class="property-name">$post_content</span> | <span class="property-type">`string`</span> | <span class="property-description">The raw text of a WP post as stored in the database</span> |
+| <span class="property-name">$post_date</span> | <span class="property-type">`string`</span> | <span class="property-description">The raw date string as stored in the WP database, ex: 2014-07-05 18:01:39</span> |
+| <span class="property-name">$post_excerpt</span> | <span class="property-type">`string`</span> | <span class="property-description">The raw text of a manual post excerpt as stored in the database</span> |
+| <span class="property-name">$post_parent</span> | <span class="property-type">`int`</span> | <span class="property-description">The numeric ID of a post's parent post</span> |
+| <span class="property-name">$post_status</span> | <span class="property-type">`string`</span> | <span class="property-description">The status of a post ("draft", "publish", etc.)</span> |
+| <span class="property-name">$post_title</span> | <span class="property-type">`string`</span> | <span class="property-description">The raw text of a post's title as stored in the database</span> |
+| <span class="property-name">$post_type</span> | <span class="property-type">`string`</span> | <span class="property-description">The name of the post type, this is the machine name (so "my_custom_post_type" as opposed to "My Custom Post Type")</span> |
+| <span class="property-name">$slug</span> | <span class="property-type">`string`</span> | <span class="property-description">The URL-safe slug, this corresponds to the poorly-named "post_name" in the WP database, ex: "hello-world"</span> |
+
+</div>
 
 ### Methods
 
+<div class="table-methods">
+
 | Name | Return Type | Summary/Returns |
 | --- | --- | --- |
-| [__call()](#__call) | `mixed` | This is helpful for twig to return properties and methods see: https://github.com/fabpot/Twig/issues/2 |
-| [__construct()](#__construct) |  | If you send the constructor nothing it will try to figure out the current post id based on being inside The_Loop. |
-| [__get()](#__get) | `mixed` | This is helpful for twig to return properties and methods see: https://github.com/fabpot/Twig/issues/2 |
-| [__toString()](#__toString) | `string` | Outputs the title of the post if you do something like `<h1>{{post}}</h1>` |
-| [audio()](#audio) | `bool` or `array` | Returns audio tags embedded in the post’s content.<br><br>*Returns:* A list of found HTML embeds. |
-| [author()](#author) | `\Timber\User` or `null` | Return the author of a post<br><br>*Returns:* A User object if found, false if not |
-| [authors()](#authors) | `array` | Got more than one author? That's cool, but you'll need Co-Authors plus or another plugin to access any data |
-| [categories()](#categories) | `array` | Get the categories on a particular post<br><br>*Returns:* of Timber\Term objects |
-| [category()](#category) | `\Timber\Term` or `null` | Returns a category attached to a post |
-| [children()](#children) | `array` | Returns an array of children on the post as Timber\Posts (or other claass as you define). |
-| [comment_count()](#comment_count) | `int` | <br><br>*Returns:* the number of comments on a post |
-| [comment_form()](#comment_form) | `string` | Gets the comment form for use on a single article page<br><br>*Returns:* of HTML for the form |
-| [comments()](#comments) | `bool` or `\Timber\CommentThread` | Gets the comments on a Timber\Post and returns them as an array of `Timber\Comment` objects (or whatever comment class you set). |
-| [content()](#content) | `string` | Gets the actual content of a WP Post, as opposed to post_content this will run the hooks/filters attached to the_content. \This guy will return your posts content with WordPress filters run on it (like for shortcodes and wpautop). |
-| [convert()](#convert) |  | Finds any WP_Post objects and converts them to Timber\Posts |
-| [date()](#date) | `string` | Gets the publishing date of the post. |
-| [edit_link()](#edit_link) | `bool` or `string` | Returns the edit URL of a post if the user has access to it<br><br>*Returns:* the edit URL of a post in the WordPress admin |
-| [excerpt()](#excerpt) | `\Timber\PostPreview` | Gets a preview/excerpt of your post. |
-| [field_object()](#field_object) | `mixed` | Gets the field object data from Advanced Custom Fields. |
-| [format()](#format) | `mixed` |  |
-| [gallery()](#gallery) | `array` | Returns galleries from the post’s content.<br><br>*Returns:* A list of arrays, each containing gallery data and srcs parsed from the expanded shortcode. |
-| [~~get_field~~()](#get_field) | `mixed` | Gets a post meta value.<br><br>*Returns:* The meta field value. |
-| [has_field()](#has_field) | `bool` |  |
-| [has_term()](#has_term) | `bool` |  |
-| [~~import_field~~()](#import_field) |  | Import field data onto this object |
-| [link()](#link) | `string` | get the permalink for a post object<br><br>*Returns:* ex: http://example.org/2015/07/my-awesome-post |
-| [meta()](#meta) | `mixed` | Gets a post meta value.<br><br>*Returns:* The custom field value or an array of custom field values. Null if no value could be found. |
-| [modified_author()](#modified_author) | `\Timber\User` or `null` | Get the author (WordPress user) who last modified the post<br><br>*Returns:* A User object if found, false if not |
-| [modified_date()](#modified_date) | `string` | Gets the date the post was last modified. |
-| [modified_time()](#modified_time) | `string` | Gets the time of the last modification of the post to use in your template. |
-| [modified_timestamp()](#modified_timestamp) | `bool` or `int` | Gets the timestamp when the post was last modified.<br><br>*Returns:* Unix timestamp on success, false on failure. |
-| [name()](#name) | `string` |  |
-| [next()](#next) | `mixed` |  |
-| [pagination()](#pagination) | `array` | Get a data array of pagination so you can navigate to the previous/next for a paginated post. |
-| [parent()](#parent) | `bool` or `\Timber\Post` | Gets the parent (if one exists) from a post as a Timber\Post object (or whatever is set in Timber\Post::$PostClass) |
-| [password_required()](#password_required) | `bool` | whether post requires password and correct password has been provided |
-| [path()](#path) | `string` | Gets the relative path of a WP Post, so while link() will return http://example.org/2015/07/my-cool-post this will return just /2015/07/my-cool-post |
-| [prev()](#prev) | `mixed` | Get the previous post in a set |
-| [~~preview~~()](#preview) | `\Timber\PostPreview` | Gets a preview (excerpt) of your post. |
-| [raw_meta()](#raw_meta) | `null` or `mixed` | Gets a post meta value directly from the database.<br><br>*Returns:* The meta field value(s). Null if no value could be found, an empty array if all fields were requested but no values could be found. |
-| [setup()](#setup) | `\Timber\Post` | Sets up a post.<br><br>*Returns:* The post instance. |
-| [tags()](#tags) | `array` | Gets the tags on a post, uses WP's post_tag taxonomy |
-| [teardown()](#teardown) | `\Timber\Post` | Resets variables after post has been used.<br><br>*Returns:* The post instance. |
-| [terms()](#terms) | `array` | Gets the terms associated with the post.<br><br>*Returns:* An array of taxonomies. |
-| [thumbnail()](#thumbnail) | `\Timber\Image` or `null` | get the featured image as a Timber/Image<br><br>*Returns:* of your thumbnail |
-| [thumbnail_id()](#thumbnail_id) | `bool` or `int` | Gets the post’s thumbnail ID.<br><br>*Returns:* The default post’s ID. False if no thumbnail was defined. |
-| [time()](#time) | `string` | Gets the time the post was published to use in your template. |
-| [timestamp()](#timestamp) | `bool` or `int` | Gets the timestamp when the post was published.<br><br>*Returns:* Unix timestamp on success, false on failure. |
-| [title()](#title) | `string` | Returns the processed title to be used in templates. This returns the title of the post after WP's filters have run. This is analogous to `the_title()` in standard WP template tags. |
-| [type()](#type) | `\Timber\PostType` | Returns the PostType object for a post’s post type with labels and other info. |
-| [video()](#video) | `bool` or `array` | Returns video tags embedded in the post’s content.<br><br>*Returns:* A list of found HTML embeds. |
+| <span class="method-name">[__call()](#__call)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">This is helpful for twig to return properties and methods see: https://github.com/fabpot/Twig/issues/2</span> |
+| <span class="method-name">[__get()](#__get)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">This is helpful for twig to return properties and methods see: https://github.com/fabpot/Twig/issues/2</span> |
+| <span class="method-name">[__toString()](#__toString)</span> | <span class="method-type">`string`</span> | <span class="method-description">Outputs the title of the post if you do something like `<h1>{{post}}</h1>`</span> |
+| <span class="method-name">[audio()](#audio)</span> | <span class="method-type">`bool` or `array`</span> | <span class="method-description">Returns audio tags embedded in the post’s content.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> A list of found HTML embeds.</span></span> |
+| <span class="method-name">[author()](#author)</span> | <span class="method-type">`\Timber\User` or `null`</span> | <span class="method-description">Return the author of a post<br><br><span class="method-return"><span class="method-return-label">Returns:</span> A User object if found, false if not</span></span> |
+| <span class="method-name">[authors()](#authors)</span> | <span class="method-type">`array`</span> | <span class="method-description">Got more than one author? That's cool, but you'll need Co-Authors plus or another plugin to access any data</span> |
+| <span class="method-name">[categories()](#categories)</span> | <span class="method-type">`array`</span> | <span class="method-description">Get the categories on a particular post<br><br><span class="method-return"><span class="method-return-label">Returns:</span> of Timber\Term objects</span></span> |
+| <span class="method-name">[category()](#category)</span> | <span class="method-type">`\Timber\Term` or `null`</span> | <span class="method-description">Returns a category attached to a post</span> |
+| <span class="method-name">[children()](#children)</span> | <span class="method-type">`\Timber\Timber\PostCollectionInterface`</span> | <span class="method-description">Returns an array of children on the post as Timber\Posts (or other claass as you define).</span> |
+| <span class="method-name">[comment_count()](#comment_count)</span> | <span class="method-type">`int`</span> | <span class="method-description"><br><br><span class="method-return"><span class="method-return-label">Returns:</span> the number of comments on a post</span></span> |
+| <span class="method-name">[comment_form()](#comment_form)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the comment form for use on a single article page<br><br><span class="method-return"><span class="method-return-label">Returns:</span> of HTML for the form</span></span> |
+| <span class="method-name">[comments()](#comments)</span> | <span class="method-type">`bool` or `\Timber\CommentThread`</span> | <span class="method-description">Gets the comments on a Timber\Post and returns them as an array of `Timber\Comment` objects (or whatever comment class you set).</span> |
+| <span class="method-name">[content()](#content)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the actual content of a WordPress post.</span> |
+| <span class="method-name">[convert()](#convert)</span> | <span class="method-type"></span> | <span class="method-description">Finds any WP_Post objects and converts them to Timber\Posts</span> |
+| <span class="method-name">[date()](#date)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the publishing date of the post.</span> |
+| <span class="method-name">[edit_link()](#edit_link)</span> | <span class="method-type">`bool` or `string`</span> | <span class="method-description">Returns the edit URL of a post if the user has access to it<br><br><span class="method-return"><span class="method-return-label">Returns:</span> the edit URL of a post in the WordPress admin</span></span> |
+| <span class="method-name">[excerpt()](#excerpt)</span> | <span class="method-type">`\Timber\PostPreview`</span> | <span class="method-description">Gets a preview/excerpt of your post.</span> |
+| <span class="method-name">[field_object()](#field_object)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets the field object data from Advanced Custom Fields.</span> |
+| <span class="method-name">[format()](#format)</span> | <span class="method-type">`mixed`</span> | <span class="method-description"></span> |
+| <span class="method-name">[gallery()](#gallery)</span> | <span class="method-type">`array`</span> | <span class="method-description">Returns galleries from the post’s content.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> A list of arrays, each containing gallery data and srcs parsed from the expanded shortcode.</span></span> |
+| <span class="method-name">[~~get_field~~()](#get_field)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets a post meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value.</span></span> |
+| <span class="method-name">[has_field()](#has_field)</span> | <span class="method-type">`bool`</span> | <span class="method-description"></span> |
+| <span class="method-name">[has_term()](#has_term)</span> | <span class="method-type">`bool`</span> | <span class="method-description"></span> |
+| <span class="method-name">[~~import_field~~()](#import_field)</span> | <span class="method-type"></span> | <span class="method-description">Import field data onto this object</span> |
+| <span class="method-name">[link()](#link)</span> | <span class="method-type">`string`</span> | <span class="method-description">get the permalink for a post object<br><br><span class="method-return"><span class="method-return-label">Returns:</span> ex: http://example.org/2015/07/my-awesome-post</span></span> |
+| <span class="method-name">[meta()](#meta)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets a post meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The custom field value or an array of custom field values. Null if no value could be found.</span></span> |
+| <span class="method-name">[modified_author()](#modified_author)</span> | <span class="method-type">`\Timber\User` or `null`</span> | <span class="method-description">Get the author (WordPress user) who last modified the post<br><br><span class="method-return"><span class="method-return-label">Returns:</span> A User object if found, false if not</span></span> |
+| <span class="method-name">[modified_date()](#modified_date)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the date the post was last modified.</span> |
+| <span class="method-name">[modified_time()](#modified_time)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the time of the last modification of the post to use in your template.</span> |
+| <span class="method-name">[modified_timestamp()](#modified_timestamp)</span> | <span class="method-type">`bool` or `int`</span> | <span class="method-description">Gets the timestamp when the post was last modified.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Unix timestamp on success, false on failure.</span></span> |
+| <span class="method-name">[name()](#name)</span> | <span class="method-type">`string`</span> | <span class="method-description"></span> |
+| <span class="method-name">[next()](#next)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets the next post that is adjacent to the current post in a collection.</span> |
+| <span class="method-name">[pagination()](#pagination)</span> | <span class="method-type">`array`</span> | <span class="method-description">Gets a data array to display a pagination for your paginated post.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> An array with data to build your paginated content.</span></span> |
+| <span class="method-name">[parent()](#parent)</span> | <span class="method-type">`bool` or `\Timber\Post`</span> | <span class="method-description">Gets the parent (if one exists) from a post as a Timber\Post object.</span> |
+| <span class="method-name">[password_required()](#password_required)</span> | <span class="method-type">`bool`</span> | <span class="method-description">whether post requires password and correct password has been provided</span> |
+| <span class="method-name">[path()](#path)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the relative path of a WP Post, so while link() will return http://example.org/2015/07/my-cool-post this will return just /2015/07/my-cool-post</span> |
+| <span class="method-name">[prev()](#prev)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Get the previous post that is adjacent to the current post in a collection.</span> |
+| <span class="method-name">[~~preview~~()](#preview)</span> | <span class="method-type">`\Timber\PostPreview`</span> | <span class="method-description">Gets a preview (excerpt) of your post.</span> |
+| <span class="method-name">[raw_meta()](#raw_meta)</span> | <span class="method-type">`null` or `mixed`</span> | <span class="method-description">Gets a post meta value directly from the database.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value(s). Null if no value could be found, an empty array if all fields were requested but no values could be found.</span></span> |
+| <span class="method-name">[setup()](#setup)</span> | <span class="method-type">`\Timber\Post`</span> | <span class="method-description">Sets up a post.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The post instance.</span></span> |
+| <span class="method-name">[tags()](#tags)</span> | <span class="method-type">`array`</span> | <span class="method-description">Gets the tags on a post, uses WP's post_tag taxonomy</span> |
+| <span class="method-name">[teardown()](#teardown)</span> | <span class="method-type">`\Timber\Post`</span> | <span class="method-description">Resets variables after post has been used.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The post instance.</span></span> |
+| <span class="method-name">[terms()](#terms)</span> | <span class="method-type">`array`</span> | <span class="method-description">Gets the terms associated with the post.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> An array of taxonomies.</span></span> |
+| <span class="method-name">[thumbnail()](#thumbnail)</span> | <span class="method-type">`\Timber\Image` or `null`</span> | <span class="method-description">get the featured image as a Timber/Image<br><br><span class="method-return"><span class="method-return-label">Returns:</span> of your thumbnail</span></span> |
+| <span class="method-name">[thumbnail_id()](#thumbnail_id)</span> | <span class="method-type">`bool` or `int`</span> | <span class="method-description">Gets the post’s thumbnail ID.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The default post’s ID. False if no thumbnail was defined.</span></span> |
+| <span class="method-name">[time()](#time)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the time the post was published to use in your template.</span> |
+| <span class="method-name">[timestamp()](#timestamp)</span> | <span class="method-type">`bool` or `int`</span> | <span class="method-description">Gets the timestamp when the post was published.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Unix timestamp on success, false on failure.</span></span> |
+| <span class="method-name">[title()](#title)</span> | <span class="method-type">`string`</span> | <span class="method-description">Returns the processed title to be used in templates. This returns the title of the post after WP's filters have run. This is analogous to `the_title()` in standard WP template tags.</span> |
+| <span class="method-name">[type()](#type)</span> | <span class="method-type">`\Timber\PostType`</span> | <span class="method-description">Returns the PostType object for a post’s post type with labels and other info.</span> |
+| <span class="method-name">[video()](#video)</span> | <span class="method-type">`bool` or `array`</span> | <span class="method-description">Returns video tags embedded in the post’s content.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> A list of found HTML embeds.</span></span> |
+
+</div>
 
 
 ## Class Methods
-
-### \_\_construct()
-
-If you send the constructor nothing it will try to figure out the current post id based on
-being inside The_Loop.
-
-`__construct( mixed $pid = null )`
-
-| Name | Type | Description |
-| --- | --- | --- |
-| $pid | `mixed` |  |
-
-**PHP**
-
-```php
-$post = new Timber\Post();
-$other_post = new Timber\Post($random_post_id);
-```
-
----
 
 ### \_\_get()
 
@@ -288,13 +275,14 @@ Gets the comment form for use on a single article page
 
 Gets the terms associated with the post.
 
-`terms( string|array $args = array() )`
+`terms( string|array $query_args = [], array $options = [] )`
 
 **Returns:** `array` An array of taxonomies.
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $args | `string` or `array` | Optional. Name of the taxonomy or array of arguments.<br><br><ul><li>**$query**<br>`array` Any array of term query parameters for getting the terms. See `WP_Term_Query::__construct()` for supported arguments. Use the `taxonomy` argument to choose which taxonomies to get. Defaults to querying all registered taxonomies for the post type. You can use custom or built-in WordPress taxonomies (category, tag). Timber plays nice and figures out that `tag`, `tags` or `post_tag` are all the same (also for `categories` or `category`). For custom taxonomies you need to define the proper name.</li><li>**$merge**<br>`bool` Whether the resulting array should be one big one (`true`) or whether it should be an array of sub-arrays for each taxonomy (`false`). Default `true`.</li><li>**$term_class**<br>`string` The Timber term class to use for the term objects.</li></ul> |
+| $query_args | `string` or `array` | Any array of term query parameters for getting the terms. See `WP_Term_Query::__construct()` for supported arguments. Use the `taxonomy` argument to choose which taxonomies to get. Defaults to querying all registered taxonomies for the post type. You can use custom or built-in WordPress taxonomies (category, tag). Timber plays nice and figures out that `tag`, `tags` or `post_tag` are all the same (also for `categories` or `category`). For custom taxonomies you need to define the proper name. |
+| $options | `array` | Optional. An array of options for the function.<br><br><ul><li>**$merge**<br>`bool` Whether the resulting array should be one big one (`true`) or whether it should be an array of sub-arrays for each taxonomy (`false`). Default `true`.</li></ul> |
 
 **Twig**
 
@@ -303,7 +291,11 @@ Gets the terms associated with the post.
 {% for post in job %}
     <div class="job">
         <h2>{{ post.title }}</h2>
-        <p>{{ post.terms( {query:{taxonomy:'category', orderby:'name', order: 'ASC'}} )|join(', ') }}</p>
+        <p>{{ post.terms({
+            taxonomy: 'category',
+            orderby: 'name',
+            order: 'ASC'
+        })|join(', ') }}</p>
     </div>
 {% endfor %}
 </section>
@@ -332,14 +324,12 @@ $terms = $post->terms( 'category' );
 $terms = $post->terms( array( 'books', 'movies' ) );
 
 // Use custom arguments for taxonomy query and options.
-$terms = $post->terms( array(
-    'query' => [
-        'taxonomy' => 'custom_tax',
-        'orderby'  => 'count',
-    ],
-    'merge'      => false,
-    'term_class' => 'My_Term_Class'
-) );
+$terms = $post->terms( [
+    'taxonomy' => 'custom_tax',
+    'orderby'  => 'count'
+], [
+    'merge' => false
+] );
 ```
 
 ---
@@ -539,14 +529,13 @@ If multiple categories are set, it will return just the first one
 Returns an array of children on the post as Timber\Posts
 (or other claass as you define).
 
-`children( string|array $post_type = any, string|bool $child_post_class = false )`
+`children( string|array $post_type = any )`
 
-**Returns:** `array` 
+**Returns:** `\Timber\Timber\PostCollectionInterface` 
 
 | Name | Type | Description |
 | --- | --- | --- |
 | $post_type | `string` or `array` | _optional_ use to find children of a particular post type (attachment vs. page for example). You might want to restrict to certain types of children in case other stuff gets all mucked in there. You can use 'parent' to use the parent's post type or you can pass an array of post types. |
-| $child_post_class | `string` or `bool` | _optional_ a custom post class (ex: 'MyTimber\Post') to return the objects as. By default (false) it will use Timber\Post::$post_class value. |
 
 **Twig**
 
@@ -567,7 +556,7 @@ Gets the comments on a Timber\Post and returns them as an array of `Timber\Comme
 
 **see** Timber\CommentThread for an example with nested comments
 
-`comments( int $count = null, string $order = wp, string $type = comment, string $status = approve, $CommentClass = Timber\Comment )`
+`comments( int $count = null, string $order = wp, string $type = comment, string $status = approve )`
 
 **Returns:** `bool|\Timber\CommentThread` 
 
@@ -612,7 +601,14 @@ Gets the comments on a Timber\Post and returns them as an array of `Timber\Comme
 
 ### content()
 
-Gets the actual content of a WP Post, as opposed to post_content this will run the hooks/filters attached to the_content. \This guy will return your posts content with WordPress filters run on it (like for shortcodes and wpautop).
+Gets the actual content of a WordPress post.
+
+As opposed to using `{{ post.post_content }}`, this will run the hooks/filters attached to
+the `the_content` filter. It will return your post’s content with WordPress filters run on it
+– which means it will parse blocks, convert shortcodes or run `wpautop()` on the content.
+
+If you use page breaks in your content to split your post content into multiple pages,
+use `{{ post.paged_content }}` to display only the content for the current page.
 
 `content( int $page = '', $len = -1 )`
 
@@ -620,15 +616,16 @@ Gets the actual content of a WP Post, as opposed to post_content this will run t
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $page | `int` |  |
+| $page | `int` | Optional. The page to show if the content of the post is split into multiple pages. Read more about this in the [Pagination Guide](https://timber.github.io/docs/v2/guides/pagination/#paged-content-within-a-post). Default `0`. |
 
 **Twig**
 
 ```twig
-<div class="article">
-    <h2>{{post.title}}</h2>
+<article>
+    <h1>{{ post.title }}</h1>
+
     <div class="content">{{ post.content }}</div>
-</div>
+</article>
 ```
 
 ---
@@ -859,21 +856,69 @@ get the permalink for a post object
 
 ### next()
 
+Gets the next post that is adjacent to the current post in a collection.
+
+Works pretty much the same as
+[`get_next_post()`](https://developer.wordpress.org/reference/functions/get_next_post/).
+
 `next( bool|string $in_same_term = false )`
 
 **Returns:** `mixed` 
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $in_same_term | `bool` or `string` |  |
+| $in_same_term | `bool` or `string` | Whether the post should be in a same taxonomy term. Default `false`. |
+
+**Twig**
+
+```twig
+{% if post.next %}
+    <a href="{{ post.next.link }}">{{ post.next.title }}</a>
+{% endif %}
+```
 
 ---
 
 ### pagination()
 
-Get a data array of pagination so you can navigate to the previous/next for a paginated post.
+Gets a data array to display a pagination for your paginated post.
 
-**Returns:** `array` 
+Use this in combination with `{{ post.paged_content }}`.
+
+**Returns:** `array` An array with data to build your paginated content.
+
+Using simple links to the next an previous page.
+**Twig**
+
+```twig
+{% if post.pagination.next is not empty %}
+    <a href="{{ post.pagination.next.link|e('esc_url') }}">Go to next page</a>
+{% endif %}
+
+{% if post.pagination.prev is not empty %}
+    <a href="{{ post.pagination.prev.link|e('esc_url') }}">Go to previous page</a>
+{% endif %}
+```
+Using a pagination for all pages.
+**Twig**
+
+```twig
+{% if post.pagination.pages is not empty %}
+   <nav aria-label="pagination">
+       <ul>
+           {% for page in post.pagination.pages %}
+               <li>
+                   {% if page.current %}
+                       <span aria-current="page">Page {{ page.title }}</span>
+                   {% else %}
+                       <a href="{{ page.link|e('esc_url') }}">Page {{ page.title }}</a>
+                   {% endif %}
+               </li>
+           {% endfor %}
+       </ul>
+   </nav>
+{% endif %}
+```
 
 ---
 
@@ -892,8 +937,9 @@ Finds any WP_Post objects and converts them to Timber\Posts
 
 ### parent()
 
-Gets the parent (if one exists) from a post as a Timber\Post object (or whatever is set in
-Timber\Post::$PostClass)
+Gets the parent (if one exists) from a post as a Timber\Post object.
+
+Honors Class Maps.
 
 **Returns:** `bool|\Timber\Post` 
 
@@ -922,22 +968,25 @@ this will return just /2015/07/my-cool-post
 
 ### prev()
 
-Get the previous post in a set
+Get the previous post that is adjacent to the current post in a collection.
 
-`prev( string|bool $in_same_term = false )`
+Works pretty much the same as
+[`get_previous_post()`](https://developer.wordpress.org/reference/functions/get_previous_post/).
+
+`prev( bool|string $in_same_term = false )`
 
 **Returns:** `mixed` 
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $in_same_term | `string` or `bool` |  |
+| $in_same_term | `bool` or `string` | Whether the post should be in a same taxonomy term. Default `false`. |
 
 **Twig**
 
 ```twig
-<h4>Prior Entry:</h4>
-<h3>{{post.prev.title}}</h3>
-<p>{{post.prev.preview(25)}}</p>
+{% if post.prev %}
+    <a href="{{ post.prev.link }}">{{ post.prev.title }}</a>
+{% endif %}
 ```
 
 ---

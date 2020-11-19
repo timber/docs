@@ -36,26 +36,34 @@ Timber::render('index.twig', $context);
 
 ### Properties
 
+<div class="table-properties">
+
 | Name | Type | Description |
 | --- | --- | --- |
-| $name | `string` | the human-friendly name of the theme (ex: `My Timber Starter Theme`) |
-| $version | `string` | the version of the theme (ex: `1.2.3`) |
-| $parent | `\Timber\Theme` | the Timber\Theme object for the parent theme |
-| $parent_slug | `string` | the slug of the parent theme (ex: `_s`) |
-| $slug | `string` | the slug of the theme (ex: `my-super-theme`) |
-| $uri | `string` |  |
+| <span class="property-name">$name</span> | <span class="property-type">`string`</span> | <span class="property-description">the human-friendly name of the theme (ex: `My Timber Starter Theme`)</span> |
+| <span class="property-name">$version</span> | <span class="property-type">`string`</span> | <span class="property-description">the version of the theme (ex: `1.2.3`)</span> |
+| <span class="property-name">$parent</span> | <span class="property-type">`\Timber\Theme`</span> | <span class="property-description">the Timber\Theme object for the parent theme</span> |
+| <span class="property-name">$parent_slug</span> | <span class="property-type">`string`</span> | <span class="property-description">the slug of the parent theme (ex: `_s`)</span> |
+| <span class="property-name">$slug</span> | <span class="property-type">`string`</span> | <span class="property-description">the slug of the theme (ex: `my-super-theme`)</span> |
+| <span class="property-name">$uri</span> | <span class="property-type">`string`</span> | <span class="property-description"></span> |
+
+</div>
 
 ### Methods
 
+<div class="table-methods">
+
 | Name | Return Type | Summary/Returns |
 | --- | --- | --- |
-| [__construct()](#__construct) |  | Constructs a new `Timber\Theme` object. |
-| [display()](#display) | `bool` or `string` | Gets a theme header, formatted and translated for display. |
-| [get()](#get) | `bool` or `string` | Gets a raw, unformatted theme header.<br><br>*Returns:* String on success, false on failure. |
-| [link()](#link) | `string` | <br><br>*Returns:* the absolute path to the theme (ex: `http://example.org/wp-content/themes/my-timber-theme`) |
-| [path()](#path) | `string` | <br><br>*Returns:* the relative path to the theme (ex: `/wp-content/themes/my-timber-theme`) |
-| [theme_mod()](#theme_mod) | `string` |  |
-| [theme_mods()](#theme_mods) | `array` |  |
+| <span class="method-name">[__construct()](#__construct)</span> | <span class="method-type"></span> | <span class="method-description">Constructs a new `Timber\Theme` object.</span> |
+| <span class="method-name">[display()](#display)</span> | <span class="method-type">`bool` or `string`</span> | <span class="method-description">Gets a theme header, formatted and translated for display.</span> |
+| <span class="method-name">[get()](#get)</span> | <span class="method-type">`bool` or `string`</span> | <span class="method-description">Gets a raw, unformatted theme header.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> String on success, false on failure.</span></span> |
+| <span class="method-name">[link()](#link)</span> | <span class="method-type">`string`</span> | <span class="method-description"><br><br><span class="method-return"><span class="method-return-label">Returns:</span> the absolute path to the theme (ex: `http://example.org/wp-content/themes/my-timber-theme`)</span></span> |
+| <span class="method-name">[path()](#path)</span> | <span class="method-type">`string`</span> | <span class="method-description"><br><br><span class="method-return"><span class="method-return-label">Returns:</span> the relative path to the theme (ex: `/wp-content/themes/my-timber-theme`)</span></span> |
+| <span class="method-name">[theme_mod()](#theme_mod)</span> | <span class="method-type">`string`</span> | <span class="method-description"></span> |
+| <span class="method-name">[theme_mods()](#theme_mods)</span> | <span class="method-type">`array`</span> | <span class="method-description"></span> |
+
+</div>
 
 
 ## Class Methods

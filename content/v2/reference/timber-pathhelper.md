@@ -12,10 +12,14 @@ Useful methods for working with file paths.
 
 ### Methods
 
+<div class="table-methods">
+
 | Name | Return Type | Summary/Returns |
 | --- | --- | --- |
-| [basename()](#basename) | `string` | Returns trailing name component of path. |
-| [pathinfo()](#pathinfo) | `mixed` | Returns information about a file path. |
+| <span class="method-name">[basename()](#basename)</span> | <span class="method-type">`string`</span> | <span class="method-description">Returns trailing name component of path.</span> |
+| <span class="method-name">[pathinfo()](#pathinfo)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Returns information about a file path.</span> |
+
+</div>
 
 
 ## Class Methods

@@ -8,32 +8,36 @@ is_reference: true
 
 ### Methods
 
+<div class="table-methods">
+
 | Name | Return Type | Summary/Returns |
 | --- | --- | --- |
-| [file_system_to_url()](#file_system_to_url) |  |  |
-| [get_content_subdir()](#get_content_subdir) | `string` | Get the path to the content directory relative to the site.<br><br>*Returns:* (ex: /wp-content or /content) |
-| [get_current_url()](#get_current_url) | `string` | Get the current URL of the page |
-| [get_full_path()](#get_full_path) | `string` |  |
-| [get_host()](#get_host) | `string` | Some setups like HTTP_HOST, some like SERVER_NAME, it's complicated<br><br>*Returns:* the HTTP_HOST or SERVER_NAME |
-| [get_params()](#get_params) | `array` or `string` | Returns the url parameters |
-| [get_path_base()](#get_path_base) | `string` |  |
-| [get_rel_path()](#get_rel_path) | `string` |  |
-| [get_rel_url()](#get_rel_url) | `string` |  |
-| [get_scheme()](#get_scheme) | `string` | Get url scheme |
-| [is_external()](#is_external) | `bool` | Determines if URL is an external URL. |
-| [is_external_content()](#is_external_content) | `bool` | This function is slightly different from the one below in the case of: an image hosted on the same domain BUT on a different site than the WordPress install will be reported as external content.<br><br>*Returns:* if $url points to an external location returns true |
-| [is_local()](#is_local) | `bool` |  |
-| [is_url()](#is_url) | `bool` |  |
-| [prepend_to_url()](#prepend_to_url) | `string` | Add something to the start of the path in an URL<br><br>*Returns:* the result (ex 'https://nytimes.com/2017/news/article.html') |
-| [preslashit()](#preslashit) | `string` | Add slash (if not already present) to a path |
-| [remove_double_slashes()](#remove_double_slashes) | `string` | Look for accidental slashes in a URL and remove them<br><br>*Returns:* the result (ex: http://nytimes.com/news/article.html) |
-| [remove_trailing_slash()](#remove_trailing_slash) | `string` | Pass links through untrailingslashit unless they are a single / |
-| [remove_url_component()](#remove_url_component) | `string` | Removes the subcomponent of a URL regardless of protocol |
-| [starts_with()](#starts_with) | `bool` | Check to see if the URL begins with the string in question Because it's a URL we don't care about protocol (HTTP vs HTTPS) Or case (so it's cAsE iNsEnSeTiVe) |
-| [swap_protocol()](#swap_protocol) | `string` | Swaps whatever protocol of a URL is sent. http becomes https and vice versa<br><br>*Returns:* ex: https://example.org/wp-content/uploads/dog.jpg |
-| [unpreslashit()](#unpreslashit) | `string` | Remove slashes (if found) from a path |
-| [url_to_file_system()](#url_to_file_system) | `string` | Takes a url and figures out its place based in the file system based on path NOTE: Not fool-proof, makes a lot of assumptions about the file path matching the URL path |
-| [user_trailingslashit()](#user_trailingslashit) | `string` | Pass links through user_trailingslashit handling query strings properly |
+| <span class="method-name">[file_system_to_url()](#file_system_to_url)</span> | <span class="method-type"></span> | <span class="method-description"></span> |
+| <span class="method-name">[get_content_subdir()](#get_content_subdir)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the path to the content directory relative to the site.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> (ex: /wp-content or /content)</span></span> |
+| <span class="method-name">[get_current_url()](#get_current_url)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the current URL of the page</span> |
+| <span class="method-name">[get_full_path()](#get_full_path)</span> | <span class="method-type">`string`</span> | <span class="method-description"></span> |
+| <span class="method-name">[get_host()](#get_host)</span> | <span class="method-type">`string`</span> | <span class="method-description">Some setups like HTTP_HOST, some like SERVER_NAME, it's complicated<br><br><span class="method-return"><span class="method-return-label">Returns:</span> the HTTP_HOST or SERVER_NAME</span></span> |
+| <span class="method-name">[get_params()](#get_params)</span> | <span class="method-type">`array` or `string`</span> | <span class="method-description">Returns the url parameters</span> |
+| <span class="method-name">[get_path_base()](#get_path_base)</span> | <span class="method-type">`string`</span> | <span class="method-description"></span> |
+| <span class="method-name">[get_rel_path()](#get_rel_path)</span> | <span class="method-type">`string`</span> | <span class="method-description"></span> |
+| <span class="method-name">[get_rel_url()](#get_rel_url)</span> | <span class="method-type">`string`</span> | <span class="method-description"></span> |
+| <span class="method-name">[get_scheme()](#get_scheme)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get url scheme</span> |
+| <span class="method-name">[is_external()](#is_external)</span> | <span class="method-type">`bool`</span> | <span class="method-description">Determines if URL is an external URL.</span> |
+| <span class="method-name">[is_external_content()](#is_external_content)</span> | <span class="method-type">`bool`</span> | <span class="method-description">This function is slightly different from the one below in the case of: an image hosted on the same domain BUT on a different site than the WordPress install will be reported as external content.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> if $url points to an external location returns true</span></span> |
+| <span class="method-name">[is_local()](#is_local)</span> | <span class="method-type">`bool`</span> | <span class="method-description"></span> |
+| <span class="method-name">[is_url()](#is_url)</span> | <span class="method-type">`bool`</span> | <span class="method-description"></span> |
+| <span class="method-name">[prepend_to_url()](#prepend_to_url)</span> | <span class="method-type">`string`</span> | <span class="method-description">Add something to the start of the path in an URL<br><br><span class="method-return"><span class="method-return-label">Returns:</span> the result (ex 'https://nytimes.com/2017/news/article.html')</span></span> |
+| <span class="method-name">[preslashit()](#preslashit)</span> | <span class="method-type">`string`</span> | <span class="method-description">Add slash (if not already present) to a path</span> |
+| <span class="method-name">[remove_double_slashes()](#remove_double_slashes)</span> | <span class="method-type">`string`</span> | <span class="method-description">Look for accidental slashes in a URL and remove them<br><br><span class="method-return"><span class="method-return-label">Returns:</span> the result (ex: http://nytimes.com/news/article.html)</span></span> |
+| <span class="method-name">[remove_trailing_slash()](#remove_trailing_slash)</span> | <span class="method-type">`string`</span> | <span class="method-description">Pass links through untrailingslashit unless they are a single /</span> |
+| <span class="method-name">[remove_url_component()](#remove_url_component)</span> | <span class="method-type">`string`</span> | <span class="method-description">Removes the subcomponent of a URL regardless of protocol</span> |
+| <span class="method-name">[starts_with()](#starts_with)</span> | <span class="method-type">`bool`</span> | <span class="method-description">Check to see if the URL begins with the string in question Because it's a URL we don't care about protocol (HTTP vs HTTPS) Or case (so it's cAsE iNsEnSeTiVe)</span> |
+| <span class="method-name">[swap_protocol()](#swap_protocol)</span> | <span class="method-type">`string`</span> | <span class="method-description">Swaps whatever protocol of a URL is sent. http becomes https and vice versa<br><br><span class="method-return"><span class="method-return-label">Returns:</span> ex: https://example.org/wp-content/uploads/dog.jpg</span></span> |
+| <span class="method-name">[unpreslashit()](#unpreslashit)</span> | <span class="method-type">`string`</span> | <span class="method-description">Remove slashes (if found) from a path</span> |
+| <span class="method-name">[url_to_file_system()](#url_to_file_system)</span> | <span class="method-type">`string`</span> | <span class="method-description">Takes a url and figures out its place based in the file system based on path NOTE: Not fool-proof, makes a lot of assumptions about the file path matching the URL path</span> |
+| <span class="method-name">[user_trailingslashit()](#user_trailingslashit)</span> | <span class="method-type">`string`</span> | <span class="method-description">Pass links through user_trailingslashit handling query strings properly</span> |
+
+</div>
 
 
 ## Class Methods

@@ -22,13 +22,17 @@ Implementation:
 
 ### Methods
 
+<div class="table-methods">
+
 | Name | Return Type | Summary/Returns |
 | --- | --- | --- |
-| [img_to_jpg()](#img_to_jpg) | `string` | Generates a new image by converting the source GIF or PNG into JPG.<br><br>*Returns:* The URL of the processed image. |
-| [is_animated_gif()](#is_animated_gif) | `bool` | Checks to see if the given file is an animated GIF.<br><br>*Returns:* True if it’s an animated GIF, false if not. |
-| [letterbox()](#letterbox) | `string` | Generate a new image with the specified dimensions. |
-| [resize()](#resize) | `string` | Generates a new image with the specified dimensions.<br><br>*Returns:* The URL of the resized image. |
-| [retina_resize()](#retina_resize) | `string` | Generates a new image with increased size, for display on Retina screens.<br><br>*Returns:* URL to the new image. |
+| <span class="method-name">[img_to_jpg()](#img_to_jpg)</span> | <span class="method-type">`string`</span> | <span class="method-description">Generates a new image by converting the source GIF or PNG into JPG.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The URL of the processed image.</span></span> |
+| <span class="method-name">[is_animated_gif()](#is_animated_gif)</span> | <span class="method-type">`bool`</span> | <span class="method-description">Checks to see if the given file is an animated GIF.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> True if it’s an animated GIF, false if not.</span></span> |
+| <span class="method-name">[letterbox()](#letterbox)</span> | <span class="method-type">`string`</span> | <span class="method-description">Generate a new image with the specified dimensions.</span> |
+| <span class="method-name">[resize()](#resize)</span> | <span class="method-type">`string`</span> | <span class="method-description">Generates a new image with the specified dimensions.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The URL of the resized image.</span></span> |
+| <span class="method-name">[retina_resize()](#retina_resize)</span> | <span class="method-type">`string`</span> | <span class="method-description">Generates a new image with increased size, for display on Retina screens.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> URL to the new image.</span></span> |
+
+</div>
 
 
 ## Class Methods

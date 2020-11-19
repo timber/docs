@@ -16,7 +16,7 @@ $context         = Timber::context();
 // Lets say you have an alternate large 'cover image' for your post
 // stored in a custom field which returns an image ID.
 $cover_image_id = $context['post']->cover_image;
-$context['cover_image'] = new Timber\Image($cover_image_id);
+$context['cover_image'] = Timber::get_post($cover_image_id);
 Timber::render('single.twig', $context);
 ```
 
@@ -31,7 +31,7 @@ Timber::render('single.twig', $context);
   </div>
 
  <img
-   src="{{ Image(post.custom_field_with_image_id).src }}"
+   src="{{ get_image(post.custom_field_with_image_id).src }}"
    alt="Another way to initialize images as Timber\Image objects, but within Twig" />
 </article>
 ```
@@ -58,23 +58,31 @@ Timber::render('single.twig', $context);
 
 ### Properties
 
+<div class="table-properties">
+
 | Name | Type | Description |
 | --- | --- | --- |
-| $object_type | `string` | What the object represents in WordPress terms. |
-| $representation | `string` | What does this class represent in WordPress terms? |
-| $sizes | `array` | An array of available sizes for the image. |
+| <span class="property-name">$object_type</span> | <span class="property-type">`string`</span> | <span class="property-description">What the object represents in WordPress terms.</span> |
+| <span class="property-name">$representation</span> | <span class="property-type">`string`</span> | <span class="property-description">What does this class represent in WordPress terms?</span> |
+| <span class="property-name">$sizes</span> | <span class="property-type">`array`</span> | <span class="property-description">An array of available sizes for the image.</span> |
+
+</div>
 
 ### Methods
 
+<div class="table-methods">
+
 | Name | Return Type | Summary/Returns |
 | --- | --- | --- |
-| [alt()](#alt) | `string` | Gets the alt text for an image.<br><br>*Returns:* Alt text stored in WordPress. |
-| [aspect()](#aspect) | `float` | Gets the aspect ratio of the image.<br><br>*Returns:* The aspect ratio of the image. |
-| [height()](#height) | `int` | Gets the height of the image in pixels.<br><br>*Returns:* The height of the image in pixels. |
-| [img_sizes()](#img_sizes) | `bool` or `string` |  |
-| [src()](#src) | `bool` or `string` | Gets the source URL for the image.<br><br>*Returns:* The src URL for the image. |
-| [srcset()](#srcset) | `bool` or `string` |  |
-| [width()](#width) | `int` | Gets the width of the image in pixels.<br><br>*Returns:* The width of the image in pixels. |
+| <span class="method-name">[alt()](#alt)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the alt text for an image.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Alt text stored in WordPress.</span></span> |
+| <span class="method-name">[aspect()](#aspect)</span> | <span class="method-type">`float`</span> | <span class="method-description">Gets the aspect ratio of the image.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The aspect ratio of the image.</span></span> |
+| <span class="method-name">[height()](#height)</span> | <span class="method-type">`int`</span> | <span class="method-description">Gets the height of the image in pixels.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The height of the image in pixels.</span></span> |
+| <span class="method-name">[img_sizes()](#img_sizes)</span> | <span class="method-type">`bool` or `string`</span> | <span class="method-description"></span> |
+| <span class="method-name">[src()](#src)</span> | <span class="method-type">`bool` or `string`</span> | <span class="method-description">Gets the source URL for the image.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The src URL for the image.</span></span> |
+| <span class="method-name">[srcset()](#srcset)</span> | <span class="method-type">`bool` or `string`</span> | <span class="method-description"></span> |
+| <span class="method-name">[width()](#width)</span> | <span class="method-type">`int`</span> | <span class="method-description">Gets the width of the image in pixels.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The width of the image in pixels.</span></span> |
+
+</div>
 
 
 ## Class Methods

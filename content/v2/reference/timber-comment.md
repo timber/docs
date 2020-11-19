@@ -39,39 +39,47 @@ Timber::render('index.twig', $context);
 
 ### Properties
 
+<div class="table-properties">
+
 | Name | Type | Description |
 | --- | --- | --- |
-| $ID | `int` |  |
-| $id | `int` |  |
-| $comment_author_email | `string` |  |
-| $comment_content | `string` |  |
-| $comment_date | `string` |  |
-| $comment_ID | `int` |  |
-| $user_id | `int` |  |
-| $post_id | `int` |  |
-| $comment_author | `string` |  |
+| <span class="property-name">$ID</span> | <span class="property-type">`int`</span> | <span class="property-description"></span> |
+| <span class="property-name">$id</span> | <span class="property-type">`int`</span> | <span class="property-description"></span> |
+| <span class="property-name">$comment_author_email</span> | <span class="property-type">`string`</span> | <span class="property-description"></span> |
+| <span class="property-name">$comment_content</span> | <span class="property-type">`string`</span> | <span class="property-description"></span> |
+| <span class="property-name">$comment_date</span> | <span class="property-type">`string`</span> | <span class="property-description"></span> |
+| <span class="property-name">$comment_ID</span> | <span class="property-type">`int`</span> | <span class="property-description"></span> |
+| <span class="property-name">$user_id</span> | <span class="property-type">`int`</span> | <span class="property-description"></span> |
+| <span class="property-name">$post_id</span> | <span class="property-type">`int`</span> | <span class="property-description"></span> |
+| <span class="property-name">$comment_author</span> | <span class="property-type">`string`</span> | <span class="property-description"></span> |
+
+</div>
 
 ### Methods
 
+<div class="table-methods">
+
 | Name | Return Type | Summary/Returns |
 | --- | --- | --- |
-| [__toString()](#__toString) | `string` | Gets the content. |
-| [add_child()](#add_child) | `array` | Adds a child.<br><br>*Returns:* Comment children. |
-| [approved()](#approved) | `bool` | Is the comment approved? |
-| [author()](#author) | `\Timber\User` | Gets the author. |
-| [avatar()](#avatar) | `bool` or `mixed` or `string` | Fetches the Gravatar. |
-| [children()](#children) | `array` | Gets the comment children.<br><br>*Returns:* Comments |
-| [content()](#content) | `string` | Gets the content. |
-| [date()](#date) | `string` | The date for the comment. |
-| [depth()](#depth) | `int` | At what depth is this comment? |
-| [~~get_field~~()](#get_field) | `mixed` | Gets a comment meta value.<br><br>*Returns:* The meta field value. |
-| [~~get_meta_field~~()](#get_meta_field) | `mixed` | Gets a comment meta value.<br><br>*Returns:* The meta field value. |
-| [is_child()](#is_child) | `bool` | Checks if the comment is a child. |
-| [meta()](#meta) | `mixed` | Gets a comment meta value.<br><br>*Returns:* The meta field value. Null if no value could be found. |
-| [raw_meta()](#raw_meta) | `null` or `mixed` | Gets a comment meta value directly from the database.<br><br>*Returns:* The meta field value(s). Null if no value could be found, an empty array if all fields were requested but no values could be found. |
-| [reply_link()](#reply_link) | `string` | Enqueue the WP threaded comments JavaScript, and fetch the reply link for various comments. |
-| [time()](#time) | `string` | What time was the comment posted? |
-| [update_depth()](#update_depth) |  | Updates the comment depth. |
+| <span class="method-name">[__toString()](#__toString)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the content.</span> |
+| <span class="method-name">[add_child()](#add_child)</span> | <span class="method-type">`array`</span> | <span class="method-description">Adds a child.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Comment children.</span></span> |
+| <span class="method-name">[approved()](#approved)</span> | <span class="method-type">`bool`</span> | <span class="method-description">Is the comment approved?</span> |
+| <span class="method-name">[author()](#author)</span> | <span class="method-type">`\Timber\User`</span> | <span class="method-description">Gets the author.</span> |
+| <span class="method-name">[avatar()](#avatar)</span> | <span class="method-type">`bool` or `mixed` or `string`</span> | <span class="method-description">Fetches the Gravatar.</span> |
+| <span class="method-name">[children()](#children)</span> | <span class="method-type">`array`</span> | <span class="method-description">Gets the comment children.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Comments</span></span> |
+| <span class="method-name">[content()](#content)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the content.</span> |
+| <span class="method-name">[date()](#date)</span> | <span class="method-type">`string`</span> | <span class="method-description">The date for the comment.</span> |
+| <span class="method-name">[depth()](#depth)</span> | <span class="method-type">`int`</span> | <span class="method-description">At what depth is this comment?</span> |
+| <span class="method-name">[~~get_field~~()](#get_field)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets a comment meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value.</span></span> |
+| <span class="method-name">[~~get_meta_field~~()](#get_meta_field)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets a comment meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value.</span></span> |
+| <span class="method-name">[is_child()](#is_child)</span> | <span class="method-type">`bool`</span> | <span class="method-description">Checks if the comment is a child.</span> |
+| <span class="method-name">[meta()](#meta)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets a comment meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value. Null if no value could be found.</span></span> |
+| <span class="method-name">[raw_meta()](#raw_meta)</span> | <span class="method-type">`null` or `mixed`</span> | <span class="method-description">Gets a comment meta value directly from the database.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value(s). Null if no value could be found, an empty array if all fields were requested but no values could be found.</span></span> |
+| <span class="method-name">[reply_link()](#reply_link)</span> | <span class="method-type">`string`</span> | <span class="method-description">Enqueue the WP threaded comments JavaScript, and fetch the reply link for various comments.</span> |
+| <span class="method-name">[time()](#time)</span> | <span class="method-type">`string`</span> | <span class="method-description">What time was the comment posted?</span> |
+| <span class="method-name">[update_depth()](#update_depth)</span> | <span class="method-type"></span> | <span class="method-description">Updates the comment depth.</span> |
+
+</div>
 
 
 ## Class Methods

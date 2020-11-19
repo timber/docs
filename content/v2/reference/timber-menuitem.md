@@ -11,36 +11,44 @@ is_reference: true
 
 ### Properties
 
+<div class="table-properties">
+
 | Name | Type | Description |
 | --- | --- | --- |
-| $children | `array` | Array of children of a menu item. Empty if there are no child menu items. |
-| $has_child_class | `bool` | Whether the menu item has a `menu-item-has-children` CSS class. |
-| $classes | `array` | Array of class names. |
-| $current | `bool` | Whether the menu item links to the currently displayed page. |
-| $current_item_parent | `bool` | Whether the menu item refers to the parent item of the currently displayed page. |
-| $current_item_ancestor | `bool` | Whether the menu item refers to an ancestor (including direct parent) of the currently displayed page. |
-| $object_id | `int` or `null` | Linked object ID. |
+| <span class="property-name">$children</span> | <span class="property-type">`array`</span> | <span class="property-description">Array of children of a menu item. Empty if there are no child menu items.</span> |
+| <span class="property-name">$has_child_class</span> | <span class="property-type">`bool`</span> | <span class="property-description">Whether the menu item has a `menu-item-has-children` CSS class.</span> |
+| <span class="property-name">$classes</span> | <span class="property-type">`array`</span> | <span class="property-description">Array of class names.</span> |
+| <span class="property-name">$current</span> | <span class="property-type">`bool`</span> | <span class="property-description">Whether the menu item links to the currently displayed page.</span> |
+| <span class="property-name">$current_item_parent</span> | <span class="property-type">`bool`</span> | <span class="property-description">Whether the menu item refers to the parent item of the currently displayed page.</span> |
+| <span class="property-name">$current_item_ancestor</span> | <span class="property-type">`bool`</span> | <span class="property-description">Whether the menu item refers to an ancestor (including direct parent) of the currently displayed page.</span> |
+| <span class="property-name">$object_id</span> | <span class="property-type">`int` or `null`</span> | <span class="property-description">Linked object ID.</span> |
+
+</div>
 
 ### Methods
 
+<div class="table-methods">
+
 | Name | Return Type | Summary/Returns |
 | --- | --- | --- |
-| [__toString()](#__toString) | `string` | Magic method to get the label for the menu item.<br><br>*Returns:* The label for the menu item. |
-| [add_child()](#add_child) |  | Add a new `Timber\MenuItem` object as a child of this menu item. |
-| [children()](#children) | `array` or `bool` | Get the child menu items of a `Timber\MenuItem`.<br><br>*Returns:* Array of children of a menu item. Empty if there are no child menu items. |
-| [~~external~~()](#external) | `bool` | Checks to see if the menu item is an external link.<br><br>*Returns:* Whether the link is external or not. |
-| [~~get_field~~()](#get_field) | `mixed` | Gets a menu item meta value.<br><br>*Returns:* The meta field value. |
-| [is_external()](#is_external) | `bool` | Checks to see if the menu item is an external link.<br><br>*Returns:* Whether the link is external or not. |
-| [link()](#link) | `string` | Get the full link to a menu item.<br><br>*Returns:* A full URL, like `http://mysite.com/thing/`. |
-| [master_object()](#master_object) | `mixed` | Allows dev to access the "master object" (ex: post or page) the menu item represents<br><br>*Returns:* Whatever object (Timber\Post, Timber\Term, etc.) the menu item represents. |
-| [menu()](#menu) | `\Timber\Menu` | Timber Menu.<br><br>*Returns:* The `Timber\Menu` object the menu item is associated with. |
-| [meta()](#meta) | `mixed` | Get a meta value of the menu item.<br><br>*Returns:* Whatever value is stored in the database. Null if no value could be found. |
-| [name()](#name) | `string` | Get the label for the menu item.<br><br>*Returns:* The label for the menu item. |
-| [path()](#path) | `string` | Get the relative path of the menu item’s link.<br><br>*Returns:* The path of a URL, like `/foo`. |
-| [raw_meta()](#raw_meta) | `null` or `mixed` | Gets a menu item’s meta value directly from the database.<br><br>*Returns:* The meta field value. Null if no value could be found. |
-| [slug()](#slug) | `string` | Get the slug for the menu item.<br><br>*Returns:* The URL-safe slug of the menu item. |
-| [title()](#title) | `string` | Get the public label for the menu item.<br><br>*Returns:* The public label, like "Foo". |
-| [type()](#type) | `string` | Get the type of the menu item.<br><br>*Returns:* The type of the menu item. |
+| <span class="method-name">[__toString()](#__toString)</span> | <span class="method-type">`string`</span> | <span class="method-description">Magic method to get the label for the menu item.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The label for the menu item.</span></span> |
+| <span class="method-name">[add_child()](#add_child)</span> | <span class="method-type"></span> | <span class="method-description">Add a new `Timber\MenuItem` object as a child of this menu item.</span> |
+| <span class="method-name">[children()](#children)</span> | <span class="method-type">`array` or `bool`</span> | <span class="method-description">Get the child menu items of a `Timber\MenuItem`.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Array of children of a menu item. Empty if there are no child menu items.</span></span> |
+| <span class="method-name">[~~external~~()](#external)</span> | <span class="method-type">`bool`</span> | <span class="method-description">Checks to see if the menu item is an external link.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Whether the link is external or not.</span></span> |
+| <span class="method-name">[~~get_field~~()](#get_field)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets a menu item meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value.</span></span> |
+| <span class="method-name">[is_external()](#is_external)</span> | <span class="method-type">`bool`</span> | <span class="method-description">Checks to see if the menu item is an external link.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Whether the link is external or not.</span></span> |
+| <span class="method-name">[link()](#link)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the full link to a menu item.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> A full URL, like `http://mysite.com/thing/`.</span></span> |
+| <span class="method-name">[master_object()](#master_object)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Allows dev to access the "master object" (ex: post or page) the menu item represents<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Whatever object (Timber\Post, Timber\Term, etc.) the menu item represents.</span></span> |
+| <span class="method-name">[menu()](#menu)</span> | <span class="method-type">`\Timber\Menu`</span> | <span class="method-description">Timber Menu.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The `Timber\Menu` object the menu item is associated with.</span></span> |
+| <span class="method-name">[meta()](#meta)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Get a meta value of the menu item.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Whatever value is stored in the database. Null if no value could be found.</span></span> |
+| <span class="method-name">[name()](#name)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the label for the menu item.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The label for the menu item.</span></span> |
+| <span class="method-name">[path()](#path)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the relative path of the menu item’s link.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The path of a URL, like `/foo`.</span></span> |
+| <span class="method-name">[raw_meta()](#raw_meta)</span> | <span class="method-type">`null` or `mixed`</span> | <span class="method-description">Gets a menu item’s meta value directly from the database.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value. Null if no value could be found.</span></span> |
+| <span class="method-name">[slug()](#slug)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the slug for the menu item.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The URL-safe slug of the menu item.</span></span> |
+| <span class="method-name">[title()](#title)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the public label for the menu item.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The public label, like "Foo".</span></span> |
+| <span class="method-name">[type()](#type)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the type of the menu item.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The type of the menu item.</span></span> |
+
+</div>
 
 
 ## Class Methods
@@ -140,7 +148,7 @@ Or when you only want to add a target attribute if it is really needed:
 **Twig**
 
 ```twig
-<a href="{{ item.link }}" {{ item.is_external ? 'target="_blank"' }}">
+<a href="{{ item.link }}" {{ item.is_external ? 'target="_blank"' }}>
 ```
 
 In combination with `is_target_blank()`:
@@ -148,7 +156,7 @@ In combination with `is_target_blank()`:
 **Twig**
 
 ```twig
-<a href="{{ item.link }}" {{ item.is_external or item.is_target_blank ? 'target="_blank"' }}">
+<a href="{{ item.link }}" {{ item.is_external or item.is_target_blank ? 'target="_blank"' }}>
 ```
 
 ---
