@@ -31,12 +31,17 @@
 		position: fixed;
 		flex-wrap: nowrap;
 		justify-content: space-between;
-    }
+	}
+	
+	a {
+		border-bottom: none;
+	}
 
 }
 
+
 .logo {
-    height: $header-height;
+	height: $header-height;
 
     img {
         position: relative;
@@ -77,10 +82,12 @@
         font-weight: $font-weight-bold;
         letter-spacing: .25px;
 		padding: 4px;
+		
 
 		&:hover, &:focus {
 			color: $white;
 			text-decoration: underline;
+			
 		}
 
 		img {

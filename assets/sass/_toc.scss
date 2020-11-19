@@ -1,6 +1,11 @@
 aside {
-	padding: 0 0 1.5em 0;
-	border-bottom: 1px solid $border-color;
+	padding: 1em 0 1.5em 0;
+	margin-top: 3em;
+	border-bottom: solid 1px $grey-dark;
+
+	.heading-small {
+		color: $grey-light;
+	}
 }
 
 aside, .toc {
@@ -34,14 +39,14 @@ aside, .toc {
 
 	a {
 		display: block;
-		color: $link-color;
+		color: $white;
 		text-decoration: none;
 		margin-bottom: 0.3em;
+		border-bottom: none;
 
 		&:before {
 			display: inline-block;
 			margin-right: 0.5em;
-			content: "#";
 			color: $meta;
 		}
 
@@ -51,8 +56,8 @@ aside, .toc {
 		}
 
 		&:hover, &:focus {
-			color: $link-hover-color;
-			text-decoration: underline;
+			color: $green-light;
+			text-decoration: none;
 		}
 	}
 }

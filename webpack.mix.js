@@ -21,7 +21,6 @@ mix
 	// .copyDirectory('assets/fonts', 'build/fonts')
 	.copyDirectory('assets/img', 'build/img')
 	.copyDirectory('assets/favicons', 'build/favicons')
-	.copyDirectory('node_modules/typeface-source-sans-pro/files', 'build/fonts')
 
 	// The path for mix-manifest.json
 	.setPublicPath('build')

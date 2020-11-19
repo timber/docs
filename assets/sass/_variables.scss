@@ -1,29 +1,34 @@
-$black: #031103;
+// $black: #031103;
+$black: #000;
 $white: #fff;
 $green: #169c65;
 $green-light: #54ffb9;
-$pink: #a63db0;
+$orange: #FFB302;
+$red: #EB3E41;
+$blue: #2175FF;
+$pink: #FFB3C9;
+$yellow: #FADD1B;
+$purple: #8E4CF8;
 
-$yellow: #fff8e5;
-
-$grey: #e3e3de;
-$grey-light: #f6f6f1;
-$grey-dark: #474747;
+$grey: #858585;
+$grey-light: #999;
+$grey-dark: #161616;
 
 $border-color: #dddddd;
 
-$text-color: #4e4e4e;
-$headings-color: #454d45;
+$text-color: $white;
+$headings-color: $white;
 
-$meta: #888888;
+$meta: #888;
 
 $sidebar-color: #4e4e49;
 
-$link-color: $green;
-$link-hover-color: darken($green, 10%);
+$link-color: $green-light;
+// $link-hover-color: darken($green-light, 10%);
+$link-hover-color: $green-light;
 
-$code-bg: #f9f9f9;
-$main-bg: #ffffff;
+$code-bg: $grey-dark;
+$main-bg: #000;
 $table-header-bg: $grey;
 $table-uneven-color: #f7f7f2;
 
@@ -41,5 +46,5 @@ $font-weight-bold: 700;
 $mobile-breakpoint: 980px;
 $header-breakpoint: 1120px;
 
-$font-family-text: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-text: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-family-code: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;

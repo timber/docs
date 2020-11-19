@@ -16,7 +16,7 @@
 }
 
 .navMain-title {
-	color: $green;
+	color: $white;
 	font-size: 0.85em;
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
@@ -42,14 +42,18 @@
 .navMain-link {
 	display: block;
 	text-decoration: none;
-	color: $grey-dark;
+	color: $white;
+	border-bottom: none;
 
 	&:hover, &:focus {
-		text-decoration: underline;
+		text-decoration: none;
 	}
 
 	&[aria-current] {
 		font-weight: $font-weight-bold;
+		padding-top: 0.2em;
+		padding-bottom: 0.3em;
+		color: $green-light;
 	}
 }
 

@@ -16,7 +16,7 @@ p.summary {
 	a {
 		color: $text-color;
 		font-weight: $font-weight-normal;
-		text-decoration: underline;
+		text-decoration: none;
 
 		&:hover, &:focus {
 			color: $green;

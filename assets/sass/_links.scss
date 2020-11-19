@@ -7,18 +7,20 @@ h1, h2, h3, h4, h5, h6,
 	a {
 		color: inherit;
 		text-decoration: inherit;
+		// border-bottom: 1px solid $green-light;
 	}
 }
 
 // General links styling
 a {
-	color: $link-color;
+	color: $white;
 	text-decoration: none;
+	border-bottom: 1px solid $green-light;
 
 	&:hover,
 	&:focus {
 		color: $link-hover-color;
-		text-decoration: underline;
+		text-decoration: none;
 	}
 }
 
@@ -27,7 +29,7 @@ a {
 	visibility: hidden;
 
 	&:hover, &:focus {
-		color: $green;
+		color: $green-light;
 		text-decoration: none;
 	}
 }
