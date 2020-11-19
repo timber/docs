@@ -14,7 +14,7 @@
   ],
   "require": {
     "php": ">=7.0.0",
-    "timber/teak": "*@dev"
+    "timber/teak": "1.*"
   },
   "minimum-stability": "alpha",
   "prefer-stable": true

@@ -27,6 +27,21 @@ a > code {
 	border-bottom: 1px solid $green-light;
 }
 
+.method-name,
+.method-name a,
+.property-name {
+	color: $green-light;
+	@include font-code;
+}
+
+.method-type,
+.method-type code,
+.property-type, 
+.property-type code{
+	color: $purple;
+	@include font-code;
+}
+
 table code {
 	word-break: normal;
 }
