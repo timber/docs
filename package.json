@@ -19,8 +19,7 @@
   "dependencies": {
     "lodash.debounce": "^4.0.8",
     "normalize.css": "^8.0.1",
-    "turbolinks": "^5.2.0",
-    "typeface-source-sans-pro": "^1.1.13"
+    "turbolinks": "^5.2.0"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.10.0",
