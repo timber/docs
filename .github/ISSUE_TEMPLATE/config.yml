@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: File an issue about documentation content (typos, grammar, etc.)
+    url: https://github.com/timber/timber/issues/
+    about: The content of the documentation is generated automatically from the main Timber repository. That’s why you have report issues with the content of the documentation or create pull request there.
+  - name: Support or usage question for Timber
+    url: http://stackoverflow.com/questions/tagged/timber
+    about: Is this a support or usage question? Please post to Stack Overflow using the Timber tag.
