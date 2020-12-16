@@ -232,6 +232,29 @@ Similar to nested repeaters, you should only call the `meta` method once when yo
 {% endfor %}
 ```
 
+### Split into small chunks flexible content fields
+
+We can break flexible content field into small blocks thanks to `acf_fc_layout` value. This way we have more flexibility and reusability. It could be a way to build a landing page for instance.
+
+Assuming blocks are inside a `blocks` folder:
+
+```twig
+{% for block in post.meta( 'blocks' ) %}
+    {% 
+        include "blocks/#{ block.acf_fc_layout | sanitize ) }.twig"
+        with { block: block }
+    %}
+{% endfor %}
+```
+
+> The filter [sanitize](https://timber.github.io/docs/v2/guides/filters/#sanitize), slugify the block name
+
+And for exemple for a flexible content named `text` containing a `text` field, inside a `blocks/text.twig` file:
+
+```twig
+<p>{{ block.text }}</p>   
+```
+
 * * *
 
 ## Options Page
