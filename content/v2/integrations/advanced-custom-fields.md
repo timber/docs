@@ -249,7 +249,7 @@ Assuming blocks are inside a `blocks` folder:
 
 > The filter [sanitize](https://timber.github.io/docs/v2/guides/filters/#sanitize), slugify the block name
 
-And for exemple for a flexible content named `text` containing a `text` field, inside a `blocks/text.twig` file:
+And for example for a flexible content named `text` containing a `text` field, inside a `blocks/text.twig` file:
 
 ```twig
 <p>{{ block.text }}</p>   
