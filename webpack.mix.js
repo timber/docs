@@ -11,8 +11,8 @@ mix
 	/**
 	 * SASS
 	 */
-	.sass('assets/sass/styles.scss', 'build/css', config.sass)
-	.sass('assets/sass/mobile.scss', 'build/css', config.sass)
+	.sass('assets/sass/styles.scss', 'css/', config.sass)
+	.sass('assets/sass/mobile.scss', 'css/', config.sass)
 
 	/**
 	 * Copy files
@@ -27,7 +27,7 @@ mix
 
 	.version([])
 	.options(config.mix)
-	.webpackConfig(config.webpack)
+	.webpackConfig({ ...config.webpack, ...{ devtool: false } })
 
 	/**
 	 * Copy manifest file to _data folder to make it available as global data that

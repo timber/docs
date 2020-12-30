@@ -5,9 +5,11 @@ const config = {
 	 * @link https://github.com/sass/dart-sass#javascript-api
 	 */
 	sass: {
-		// Include additional SASS files into load paths
-		// Example: includePaths: ['assets/vendor/bootstrap-sass/assets/stylesheets/']
-		includePaths: ['assets/sass', 'node_modules']
+		sassOptions: {
+			// Include additional SASS files into load paths
+			// Example: includePaths: ['assets/vendor/bootstrap-sass/assets/stylesheets/']
+			includePaths: ['assets/sass', 'node_modules']
+		}
 	},
 
 	mix: {
