@@ -422,29 +422,6 @@ Filters …
 
 **DEPRECATED** since 2.0.0, use `timber/locations`
 
-## timber/post/get\_preview/read\_more\_class
-
-Filters the CSS class used for the preview link for a post.
-
-This filter only applies when you use `{{ post.get_preview() }}`. When you want to
-change the CSS class for all preview links in general, you can use the
-`timber/post/preview/read_more_class` filter.
-
-**since** 0.22.3 
-
-| Name | Type | Description |
-| --- | --- | --- |
-| $class | `string` | The CSS class to use for the preview link. Default `read-more`. |
-
-**PHP**
-
-```php
-// Change the CSS class for preview links
-add_filter( 'timber/post/get_preview/read_more_class', function( $class ) {
-    return 'post__read-more__link';
-} );
-```
-
 ## timber/post/meta\_object\_field
 
 Filters field object data from Advanced Custom Fields.
@@ -605,24 +582,75 @@ add_filter( 'timber/post/content/password_form', function( $form, $post ) {
 }, 10, 2 );
 ```
 
-## timber/post/preview/read\_more\_class
+## timber/post/excerpt/defaults
 
-Filters the CSS class used for preview links.
+Filters the default options used for post excerpts.
 
-**since** 1.0.4 
+**since** 2.0.0 
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $class | `string` | The CSS class to use for the preview link. Default `read-more`. |
+| $defaults | `array` | An array of default options. You can see which options you can use  when you look at the `$options` parameter for [PostExcerpt::__construct()](https://timber.github.io/docs/v2/reference/timber-postexcerpt/#__construct). |
 
 **PHP**
 
 ```php
-// Change the CSS class for preview links
-add_filter( 'timber/post/preview/read_more_class', function( $class ) {
+add_filter( 'timber/post/excerpt/defaults', function( $defaults ) {
+    // Only add a read more link if the post content isn’t longer than the excerpt.
+    $defaults['always_add_read_more'] = false;
+
+    // Set a default character limit.
+    $defaults['words'] = 240;
+
+    return $defaults;
+} );
+```
+
+## timber/post/excerpt/read\_more\_class
+
+Filters the CSS class used for excerpt links.
+
+**since** 2.0.0 
+
+| Name | Type | Description |
+| --- | --- | --- |
+| $class | `string` | The CSS class to use for the excerpt link. Default `read-more`. |
+
+**PHP**
+
+```php
+// Change the CSS class for excerpt links.
+add_filter( 'timber/post/excerpt/read_more_class', function( $class ) {
     return 'read-more__link';
 } );
 ```
+
+## timber/post/preview/read\_more\_class
+
+Filters the CSS class used for excerpt links.
+
+**DEPRECATED** since 2.0.0 
+
+**since** 1.0.4 
+
+## timber/post/excerpt/read\_more\_link
+
+Filters the link used for a read more text in an excerpt.
+
+**since** 2.0.0 
+
+| Name | Type | Description |
+| --- | --- | --- |
+| $link | `string` | The HTML link. |
+| $post | `\Timber\Post` | Post instance. |
+
+## timber/post/get\_preview/read\_more\_link
+
+Filters the link used for a read more text in an excerpt.
+
+**DEPRECATED** since 2.0.0 
+
+**since** 1.1.3 
 
 ## timber/site/update\_option
 

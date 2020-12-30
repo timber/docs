@@ -94,7 +94,7 @@ Timber::render( 'single.twig', $context );
 | <span class="method-name">[convert()](#convert)</span> | <span class="method-type"></span> | <span class="method-description">Finds any WP_Post objects and converts them to Timber\Posts</span> |
 | <span class="method-name">[date()](#date)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the publishing date of the post.</span> |
 | <span class="method-name">[edit_link()](#edit_link)</span> | <span class="method-type">`bool` or `string`</span> | <span class="method-description">Returns the edit URL of a post if the user has access to it<br><br><span class="method-return"><span class="method-return-label">Returns:</span> the edit URL of a post in the WordPress admin</span></span> |
-| <span class="method-name">[excerpt()](#excerpt)</span> | <span class="method-type">`\Timber\PostPreview`</span> | <span class="method-description">Gets a preview/excerpt of your post.</span> |
+| <span class="method-name">[excerpt()](#excerpt)</span> | <span class="method-type">`\Timber\PostExcerpt`</span> | <span class="method-description">Gets a excerpt of your post.</span> |
 | <span class="method-name">[field_object()](#field_object)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets the field object data from Advanced Custom Fields.</span> |
 | <span class="method-name">[format()](#format)</span> | <span class="method-type">`mixed`</span> | <span class="method-description"></span> |
 | <span class="method-name">[gallery()](#gallery)</span> | <span class="method-type">`array`</span> | <span class="method-description">Returns galleries from the post’s content.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> A list of arrays, each containing gallery data and srcs parsed from the expanded shortcode.</span></span> |
@@ -115,7 +115,7 @@ Timber::render( 'single.twig', $context );
 | <span class="method-name">[password_required()](#password_required)</span> | <span class="method-type">`bool`</span> | <span class="method-description">whether post requires password and correct password has been provided</span> |
 | <span class="method-name">[path()](#path)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the relative path of a WP Post, so while link() will return http://example.org/2015/07/my-cool-post this will return just /2015/07/my-cool-post</span> |
 | <span class="method-name">[prev()](#prev)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Get the previous post that is adjacent to the current post in a collection.</span> |
-| <span class="method-name">[~~preview~~()](#preview)</span> | <span class="method-type">`\Timber\PostPreview`</span> | <span class="method-description">Gets a preview (excerpt) of your post.</span> |
+| <span class="method-name">[~~preview~~()](#preview)</span> | <span class="method-type">`\Timber\PostExcerpt`</span> | <span class="method-description">Gets an excerpt of your post.</span> |
 | <span class="method-name">[raw_meta()](#raw_meta)</span> | <span class="method-type">`null` or `mixed`</span> | <span class="method-description">Gets a post meta value directly from the database.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value(s). Null if no value could be found, an empty array if all fields were requested but no values could be found.</span></span> |
 | <span class="method-name">[setup()](#setup)</span> | <span class="method-type">`\Timber\Post`</span> | <span class="method-description">Sets up a post.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The post instance.</span></span> |
 | <span class="method-name">[tags()](#tags)</span> | <span class="method-type">`array`</span> | <span class="method-description">Gets the tags on a post, uses WP's post_tag taxonomy</span> |
@@ -198,17 +198,17 @@ Outputs the title of the post if you do something like `<h1>{{post}}</h1>`
 
 ### excerpt()
 
-Gets a preview/excerpt of your post.
+Gets a excerpt of your post.
 
 If you have an excerpt is set on the post, the excerpt will be used. Otherwise it will try to
-pull from a preview from `post_content`. If there’s a `<!-- more -->` tag in the post
+pull from an excerpt from `post_content`. If there’s a `<!-- more -->` tag in the post
 content, it will use that to mark where to pull through.
 
-**see** Timber\PostPreview
+**see** [Timber\PostExcerpt](../timber-postexcerpt/)
 
 `excerpt( array $options = array() )`
 
-**Returns:** `\Timber\PostPreview` 
+**Returns:** `\Timber\PostExcerpt` 
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -225,34 +225,34 @@ content, it will use that to mark where to pull through.
 
 ### ~~preview~~()
 
-Gets a preview (excerpt) of your post.
+Gets an excerpt of your post.
 
 **DEPRECATED** since 2.0.0, use `{{ post.excerpt }}` instead.
 
 If you have an excerpt is set on the post, the excerpt will be used. Otherwise it will try to
-pull from a preview from `post_content`. If there’s a `<!-- more -->` tag in the post
+pull from an excerpt from `post_content`. If there’s a `<!-- more -->` tag in the post
 content, it will use that to mark where to pull through.
 
-This method returns a `Timber\PostPreview` object, which is a **chainable object**. This
-means that you can change the output of the preview by **adding more methods**. Refer to the
-[documentation of the `Timber\PostPreview` class](https://timber.github.io/docs/reference/timber-postpreview/)
+This method returns a `Timber\PostExcerpt` object, which is a **chainable object**. This
+means that you can change the output of the excerpt by **adding more methods**. Refer to the
+[documentation of the `Timber\PostExcerpt` class](https://timber.github.io/docs/reference/timber-postexcerpt/)
 to get an overview of all the available methods.
 
-**see** Timber\PostPreview
+**see** [Timber\PostExcerpt](../timber-postexcerpt/)
 
-**Returns:** `\Timber\PostPreview` 
+**Returns:** `\Timber\PostExcerpt` 
 
 **Twig**
 
 ```twig
-{# Use default preview #}
-<p>{{ post.preview }}</p>
+{# Use default excerpt #}
+<p>{{ post.excerpt }}</p>
 
-{# Change the post preview text #}
-<p>{{ post.preview.read_more('Continue Reading') }}</p>
+{# Change the post excerpt text #}
+<p>{{ post.excerpt.read_more('Continue Reading') }}</p>
 
 {# Additionally restrict the length to 50 words #}
-<p>{{ post.preview.length(50).read_more('Continue Reading') }}</p>
+<p>{{ post.excerpt.length(50).read_more('Continue Reading') }}</p>
 ```
 
 ---
