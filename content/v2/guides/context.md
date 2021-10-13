@@ -27,7 +27,9 @@ Timber::render( 'single.twig', $data );
 <p>{{ message }}</p>
 ```
 
-Of course, you don’t have to figure out all the variables you need for yourself. Timber will provide you with a set of useful variables when you call `Timber::context()`.
+## The `Timber::context()` function
+
+You don’t have to figure out all the variables you need in a template for yourself. Timber will provide you with a set of useful variables when you call `Timber::context()`.
 
 **single.php**
 
@@ -38,6 +40,28 @@ Timber::render( 'single.twig', $context );
 ```
 
 Follow this guide to get an overview of what’s in the context, or use `var_dump( $context );` in PHP or `{{ dump() }}` in Twig to display the contents of the context in your browser.
+
+### Setting variables in the context
+
+After you’ve called `Timber::context()`, you can add additional variables or overwrite existing variables in your context.
+
+```php
+$context = Timber::get_context();
+
+$context['today'] = wp_date( 'Ymd' );
+
+Timber::render( 'single.twig', $context );
+```
+
+Another way to do this is to pass your custom data to the `Timber::context()` function itself:
+
+```php
+$context = Timber::get_context( [
+    'today' => wp_date( 'Ymd' )
+] );
+
+Timber::render( 'single.twig', $context );
+```
 
 ## Global context
 
@@ -81,7 +105,7 @@ Having a cached global context can be useful if you need the context in other pl
 
 ```php
 /**
- * Shortcode for address inside a WYSIWG field
+ * Shortcode for address inside a WYSIWG field.
  */
 add_shortcode( 'company_address', function() {
     return Timber::compile(
@@ -91,7 +115,7 @@ add_shortcode( 'company_address', function() {
 } );
 ```
 
-In this example, we've provided all the global context variables to `shortcode/company-address.twig` via `Timber::context_global()`. Whenever you only need the global context, you should use the `Timber::context_global()` function. You can call that function multiple times without losing performance.
+In this example, we've provided all the global context variables to **shortcode/company-address.twig** via `Timber::context_global()`. Whenever you only need the global context, you should use the `Timber::context_global()` function. You can call that function multiple times without losing performance.
 
 Timber will not cache template contexts.
 
@@ -99,7 +123,7 @@ Timber will not cache template contexts.
 
 When WordPress decides [which PHP template file](https://wphierarchy.com/) it will display, it has already run database queries to fetch posts for archive templates or to set up the `$post` global for singular templates.
 
-When you call `Timber::context()`, Timber will automatically populate your context with a `post` or `posts` variable, depending on which type of template file you’re in.
+When you call `Timber::context()`, Timber will automatically populate your context with different variables like `post`, `posts`, `term`, `terms` or `author`, depending on which type of template file you’re in.
 
 ### Singular templates
 
@@ -134,25 +158,46 @@ If you want to use [your own post class](https://timber.github.io/docs/v2/guides
 If you want to overwrite the existing `post` variable in the context, you can do that.
 
 ```php
-$context = Timber::context();
-
 // Getting another post.
 $post = Timber::get_post( 12 );
 $post->setup();
 
-$context['post'] = $post;
+// Get context with your post.
+$context = Timber::context( [
+    'post' => $post,
+] );
+```
 
-// Or very short
-$context['post'] = Timber::get_post()->setup();
+Or even shorter:
+
+```php
+// Getting another post.
+$post = Timber::get_post( 12 );
+
+$context = Timber::context( [
+    'post' => $post->setup(),
+] )
 ```
 
 **Be aware!** Whenever you set up **a post in a singular template** (instead of relying on `Timber::context()` to do it for you), **you need to set up your post through `$post->setup()`**. The `setup()` function improves compatibility with third-party plugins.
 
 ### Archive templates
 
-The `posts` variable will be available in archive templates (when [ `is_archive()`](https://developer.wordpress.org/reference/functions/is_archive/) returns `true`), like your posts index page, category or tag archives, date-based or author archives. It will contain a `Timber\PostCollection` object with the posts that WordPress already fetched for your archive page.
+The `posts` variable will be available in archive templates (when [ `is_archive()`](https://developer.wordpress.org/reference/functions/is_archive/) returns `true`). In addition to that, it will also contain `post` or `term` variables for different archive types. Here’s a small overview.
+
+| Archive | Condition | Context variables |
+|---|---|---|
+| Home | `is_home()` | `post`<br>`posts` |
+| Taxonomy Archive | `is_category()`<br>`is_tag()`<br>`is_tax()` | `term`<br>`posts` |
+| Author Archive | `is_author()` | `author`<br>`posts` |
+| Search Archive | `is_search()` | `posts`<br>`search_query` |
+| All other archives | `is_archive()` | `posts` |
+
+The `posts` variable will contain a `Timber\PostCollection` object with the posts that WordPress already fetched for your archive page.
 
 #### Use the default query
+
+**archive.php**
 
 ```php
 $context = Timber::context();
@@ -164,13 +209,16 @@ Timber::render( 'archive.twig', $context );
 
 When you don’t need the default query, you can pass in your own arguments to `Timber::get_posts()`.
 
+**archive.php**
+
 ```php
-$context          = Timber::context();
-$context['posts'] = Timber::get_posts( [
-    'post_type'      => 'book',
-    'posts_per_page' => -1,
-    'post_status'    => 'publish',
-] );
+$context = Timber::context(
+    'posts' => Timber::get_posts( [
+        'post_type'      => 'book',
+        'posts_per_page' => -1,
+        'post_status'    => 'publish',
+    ] ),
+);
 ```
 
 #### Change arguments for default query
@@ -180,12 +228,16 @@ Sometimes you don’t want to use the default query, but build on the default qu
 **archive.php**
 
 ```php
-$context          = Timber::context();
-$context['posts'] = Timber::get_posts( [
-    'author__in' => [ 1, 6, 14 ],
-], [
-    'merge_default' => true,
-] );
+$context = Timber::context(
+    'posts' => Timber::get_posts(
+        [
+            'author__in' => [ 1, 6, 14 ],
+        ],
+        [
+            'merge_default' => true,
+        ]
+    ),
+);
 
 Timber::render( 'archive.twig', $context );
 ```

@@ -15,6 +15,7 @@ can access it your theme like so:
 ```php
 <?php
 $context = Timber::context();
+
 Timber::render('index.twig', $context);
 ?>
 ```

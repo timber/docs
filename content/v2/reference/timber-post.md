@@ -49,8 +49,8 @@ Timber::render( 'single.twig', $context );
 
 ## Overview
 
-*This class extends `Timber\Core`*  
-*This class implements `Timber\CoreInterface`, `Timber\MetaInterface`, `Timber\DatedInterface`, `Timber\Setupable`*  
+*This class extends `Timber\CoreEntity`*  
+*This class implements `Timber\DatedInterface`, `Timber\Setupable`*  
 
 ### Properties
 
@@ -103,7 +103,6 @@ Timber::render( 'single.twig', $context );
 | <span class="method-name">[has_term()](#has_term)</span> | <span class="method-type">`bool`</span> | <span class="method-description"></span> |
 | <span class="method-name">[~~import_field~~()](#import_field)</span> | <span class="method-type"></span> | <span class="method-description">Import field data onto this object</span> |
 | <span class="method-name">[link()](#link)</span> | <span class="method-type">`string`</span> | <span class="method-description">get the permalink for a post object<br><br><span class="method-return"><span class="method-return-label">Returns:</span> ex: http://example.org/2015/07/my-awesome-post</span></span> |
-| <span class="method-name">[meta()](#meta)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets a post meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The custom field value or an array of custom field values. Null if no value could be found.</span></span> |
 | <span class="method-name">[modified_author()](#modified_author)</span> | <span class="method-type">`\Timber\User` or `null`</span> | <span class="method-description">Get the author (WordPress user) who last modified the post<br><br><span class="method-return"><span class="method-return-label">Returns:</span> A User object if found, false if not</span></span> |
 | <span class="method-name">[modified_date()](#modified_date)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the date the post was last modified.</span> |
 | <span class="method-name">[modified_time()](#modified_time)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the time of the last modification of the post to use in your template.</span> |
@@ -116,7 +115,6 @@ Timber::render( 'single.twig', $context );
 | <span class="method-name">[path()](#path)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the relative path of a WP Post, so while link() will return http://example.org/2015/07/my-cool-post this will return just /2015/07/my-cool-post</span> |
 | <span class="method-name">[prev()](#prev)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Get the previous post that is adjacent to the current post in a collection.</span> |
 | <span class="method-name">[~~preview~~()](#preview)</span> | <span class="method-type">`\Timber\PostExcerpt`</span> | <span class="method-description">Gets an excerpt of your post.</span> |
-| <span class="method-name">[raw_meta()](#raw_meta)</span> | <span class="method-type">`null` or `mixed`</span> | <span class="method-description">Gets a post meta value directly from the database.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value(s). Null if no value could be found, an empty array if all fields were requested but no values could be found.</span></span> |
 | <span class="method-name">[setup()](#setup)</span> | <span class="method-type">`\Timber\Post`</span> | <span class="method-description">Sets up a post.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The post instance.</span></span> |
 | <span class="method-name">[tags()](#tags)</span> | <span class="method-type">`array`</span> | <span class="method-description">Gets the tags on a post, uses WP's post_tag taxonomy</span> |
 | <span class="method-name">[teardown()](#teardown)</span> | <span class="method-type">`\Timber\Post`</span> | <span class="method-description">Resets variables after post has been used.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The post instance.</span></span> |
@@ -380,53 +378,6 @@ This includes metadata on the field like whether it's conditional or not.
 | Name | Type | Description |
 | --- | --- | --- |
 | $field_name | `string` | of the field you want to lookup. |
-
----
-
-### meta()
-
-Gets a post meta value.
-
-Returns a meta value or all meta values for all custom fields of a post saved in the post
-meta database table.
-
-Fetching all values is only advised during development, because it can have a big performance
-impact, when all filters are applied.
-
-`meta( string $field_name = '', array $args = array() )`
-
-**Returns:** `mixed` The custom field value or an array of custom field values. Null if no value
-could be found.
-
-| Name | Type | Description |
-| --- | --- | --- |
-| $field_name | `string` | Optional. The field name for which you want to get the value. If no field name is provided, this function will fetch values for all custom fields. Default empty string. |
-| $args | `array` | An array of arguments for getting the meta value. Third-party integrations can use this argument to make their API arguments available in Timber. Default empty array.<br><br><ul><li>**$apply_filters**<br>`bool` Whether to apply filtering of meta values. You can also use the `raw_meta()` method as a shortcut to apply this argument. Default true.</li></ul> |
-
----
-
-### raw\_meta()
-
-Gets a post meta value directly from the database.
-
-Returns a raw meta value or all raw meta values saved in the post meta database table. In
-comparison to `meta()`, this function will return raw values that are not filtered by third-
-party plugins.
-
-Fetching raw values for all custom fields will not have a big performance impact, because
-WordPress gets all meta values, when the first meta value is accessed.
-
-**since** 2.0.0 
-
-`raw_meta( string $field_name = '', array $args = array() )`
-
-**Returns:** `null|mixed` The meta field value(s). Null if no value could be found, an empty array
-if all fields were requested but no values could be found.
-
-| Name | Type | Description |
-| --- | --- | --- |
-| $field_name | `string` | Optional. The field name for which you want to get the value. If no field name is provided, this function will fetch values for all custom fields. Default empty string. |
-| $args | `array` | Optional. An array of args for `Post::meta()`. Default empty array. |
 
 ---
 

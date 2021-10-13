@@ -12,12 +12,12 @@ is_reference: true
 
 | Name | Return Type | Summary/Returns |
 | --- | --- | --- |
-| <span class="method-name">[file_system_to_url()](#file_system_to_url)</span> | <span class="method-type"></span> | <span class="method-description"></span> |
+| <span class="method-name">[file_system_to_url()](#file_system_to_url)</span> | <span class="method-type">`string`</span> | <span class="method-description"></span> |
 | <span class="method-name">[get_content_subdir()](#get_content_subdir)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the path to the content directory relative to the site.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> (ex: /wp-content or /content)</span></span> |
 | <span class="method-name">[get_current_url()](#get_current_url)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the current URL of the page</span> |
 | <span class="method-name">[get_full_path()](#get_full_path)</span> | <span class="method-type">`string`</span> | <span class="method-description"></span> |
 | <span class="method-name">[get_host()](#get_host)</span> | <span class="method-type">`string`</span> | <span class="method-description">Some setups like HTTP_HOST, some like SERVER_NAME, it's complicated<br><br><span class="method-return"><span class="method-return-label">Returns:</span> the HTTP_HOST or SERVER_NAME</span></span> |
-| <span class="method-name">[get_params()](#get_params)</span> | <span class="method-type">`array` or `string`</span> | <span class="method-description">Returns the url parameters</span> |
+| <span class="method-name">[get_params()](#get_params)</span> | <span class="method-type">`array` or `string` or `bool`</span> | <span class="method-description">Returns the url path parameters, or a single parameter if given an index.</span> |
 | <span class="method-name">[get_path_base()](#get_path_base)</span> | <span class="method-type">`string`</span> | <span class="method-description"></span> |
 | <span class="method-name">[get_rel_path()](#get_rel_path)</span> | <span class="method-type">`string`</span> | <span class="method-description"></span> |
 | <span class="method-name">[get_rel_url()](#get_rel_url)</span> | <span class="method-type">`string`</span> | <span class="method-description"></span> |
@@ -154,6 +154,8 @@ matching the URL path
 ### file\_system\_to\_url()
 
 `file_system_to_url( string $fs )`
+
+**Returns:** `string` 
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -336,19 +338,38 @@ Pass links through user_trailingslashit handling query strings properly
 
 ### get\_params()
 
-Returns the url parameters
+Returns the url path parameters, or a single parameter if given an index.
 
-For example, for URL `http://example.org/blog/post/news/2014/whatever` this will return
-`array('blog', 'post', 'news', '2014', 'whatever');` OR if sent an integer like:
-`Timber\URLHelper::get_params(2);` this will return `news`.
+Normalizes REQUEST_URI to lower-case. Returns false if given a
+non-existent index.
 
-`get_params( int $i = false )`
+`get_params( bool|int $i = false )`
 
-**Returns:** `array|string` 
+**Returns:** `array|string|bool` 
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $i | `int` | the position of the parameter to grab. |
+| $i | `bool` or `int` | the position of the parameter to grab. |
+
+**PHP**
+
+```php
+// Given a $_SERVER["REQUEST_URI"] of:
+// http://example.org/blog/post/news/2014/whatever
+
+$params = URLHelper::get_params();
+// => ["blog", "post", "news", "2014", "whatever"]
+
+$third = URLHelper::get_params(2);
+// => "news"
+
+// get_params() supports negative indices:
+$last = URLHelper::get_params(-1);
+// => "whatever"
+
+$nada = URLHelper::get_params(99);
+// => false
+```
 
 ---
 

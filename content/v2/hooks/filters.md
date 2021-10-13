@@ -3,53 +3,142 @@ title: "Filter Hooks"
 is_reference: true
 ---
 
-## timber/comment/pre\_meta
+## timber/meta/transform\_value
 
-Filters the value for a comment meta field before it is fetched from the database.
+Filters whether to transform a meta value.
 
-**since** 2.0.0 
-
-| Name | Type | Description |
-| --- | --- | --- |
-| $comment_meta | `string` | The field value. Passing a non-null value will skip fetching the value from the database. Default null. |
-| $comment_id | `int` | The comment ID. |
-| $field_name | `string` | The name of the meta field to get the value for. |
-| $comment | `\Timber\Comment` | The comment object. |
-| $args | `array` | An array of arguments. |
-
-## timber\_comment\_get\_meta\_field\_pre
-
-Filters the value for a comment meta field before it is fetched from the database.
-
-**DEPRECATED** since 2.0.0, use `timber/comment/pre_meta`
-
-## timber/comment/meta
-
-Filters the value for a comment meta field.
+If the filter returns `true`, all meta value will be transformed to Timber/standard PHP objects if possible.
 
 **since** 2.0.0 
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $comment_meta | `string` | The field value. |
-| $comment_id | `int` | The comment ID. |
+| $transform_value | `bool` |  |
+
+**PHP**
+
+```php
+// Transforms all meta value.
+add_filter( 'timber/meta/transform_value', '__return_true' );
+```
+
+## timber/{$object\_type}/pre\_meta
+
+Filters object meta data before it is fetched from the database.
+
+**since** 2.0.0 
+
+| Name | Type | Description |
+| --- | --- | --- |
+| $object_meta | `string` | The field value. Default null. Passing a non-null value will skip fetching the value from the database and will use the value from the filter instead. |
+| $post_id | `int` | The post ID. |
 | $field_name | `string` | The name of the meta field to get the value for. |
-| $comment | `\Timber\Comment` | The comment object. |
+| $object | `object` | The Timber object. |
 | $args | `array` | An array of arguments. |
 
-## timber\_comment\_get\_meta
+**PHP**
 
-Filters comment meta data fetched from the database.
+```php
+// Disable fetching meta values.
+add_filter( 'timber/post/pre_meta', '__return_false' );
 
-**DEPRECATED** since 2.0.0, use `timber/comment/meta`
+// Add your own meta data.
+add_filter( 'timber/post/pre_meta', function( $post_meta, $post_id, $post ) {
+    $post_meta = array_merge( $post_meta, [
+        'custom_data_1' => 73,
+        'custom_data_2' => 274,
+    ] );
 
-**since** 0.15.4 
+    return $post_meta;
+}, 10, 3 );
+```
 
-## timber\_comment\_get\_meta\_field
+## timber\_{$object\_type}\_get\_meta\_field\_pre
 
-Filters the value for a comment meta field.
+Filters the value for a post meta field before it is fetched from the database.
 
-**DEPRECATED** since 2.0.0, use `timber/comment/meta`
+**DEPRECATED** since 2.0.0, use `timber/{object_type}/pre_meta`
+
+## timber/{$object\_type}/meta
+
+Filters the value for a post meta field.
+
+This filter is used by the ACF Integration.
+
+**see** [Timber\Post::meta()](/docs/reference/timber-post/#meta)
+
+**since** 2.0.0 
+
+| Name | Type | Description |
+| --- | --- | --- |
+| $post_meta | `string` | The field value. |
+| $post_id | `int` | The post ID. |
+| $field_name | `string` | The name of the meta field to get the value for. |
+| $post | `\Timber\Post` | The post object. |
+| $args | `array` | An array of arguments. |
+
+**PHP**
+
+```php
+add_filter( 'timber/post/meta', function( $post_meta, $post_id, $field_name, $post ) {
+    if ( 'event' === $post->post_type ) {
+        // Do something special.
+        $post_meta['foo'] = $post_meta['foo'] . ' bar';
+    }
+
+    return $post_meta;
+}, 10, 4 );
+```
+
+## timber/term/meta/field
+
+Filters the value for a term meta field.
+
+**DEPRECATED** since 2.0.0, use `timber/term/meta`
+
+## timber\_{$object\_type}\_get\_meta\_field
+
+Filters the value for an object meta field.
+
+**DEPRECATED** since 2.0.0, use `timber/{object_type}/meta`
+
+## timber\_{$object\_type}\_get\_meta
+
+Filters object meta data fetched from the database.
+
+**DEPRECATED** since 2.0.0, use `timber/{object_type}/meta`
+
+## timber/post/classmap
+
+Filters the class(es) used for different post types.
+
+Read more about this in the documentation for [Post Class Maps](https://timber.github.io/docs/v2/guides/class-maps/#the-post-class-map).
+
+The default Post Class Map will contain class names for posts, pages that map to
+`Timber\Post` and a callback that will map attachments to `Timber\Attachment` and
+attachments that are images to `Timber\Image`.
+
+Make sure to merge in your additional classes instead of overwriting the whole Class Map.
+
+**since** 2.0.0 
+
+| Name | Type | Description |
+| --- | --- | --- |
+| $classmap | `array` | The post class(es) to use. An associative array where the key is the post type and the value the name of the class to use for this post type or a callback that determines the class to use. |
+
+```
+use Book;
+use Page;
+
+add_filter( 'timber/post/classmap', function( $classmap ) {
+    $custom_classmap = [
+        'page' => Page::class,
+        'book' => Book::class,
+    ];
+
+    return array_merge( $classmap, $custom_classmap );
+} );
+```
 
 ## timber/user/classmap
 
@@ -163,6 +252,28 @@ Filters the src URL for a `Timber\Image`.
 Filters the src URL for a `Timber\Image`.
 
 **DEPRECATED** since 2.0.0, use `timber/image/src`
+
+## timber/sideload\_image/subdir
+
+Filters to directory that should be used for sideloaded images.
+
+**since** 2.0.0 
+
+| Name | Type | Description |
+| --- | --- | --- |
+| $subdir | `string` | The subdir name to use for sideloaded images. Return an empty string or a falsey value in order to not use a subfolder. Default `external`. |
+
+**PHP**
+
+```php
+// Change the subdirectory used for sideloaded images.
+add_filter( 'timber/sideload_image/subdir', function( $subdir ) {
+    return 'sideloaded';
+} );
+
+// Disable subdirectory used for sideloaded images.
+add_filter( 'timber/sideload_image/subdir', '__return_false' );
+```
 
 ## timber/image/new\_url
 
@@ -323,36 +434,6 @@ will be created automatically.
 | --- | --- | --- |
 | $twig_cache_loc | `string` | Full path to the cache location. Default `/cache/twig` in the Timber root folder. |
 
-## timber/twig/filters
-
-Filters …
-
-**since** 0.21.9 
-
-| Name | Type | Description |
-| --- | --- | --- |
-| $twig | `\Twig\Environment` | The Twig environment you can add functionality to. |
-
-## timber/twig/functions
-
-Filters …
-
-**since** 1.3.0-rc2 
-
-| Name | Type | Description |
-| --- | --- | --- |
-| $twig | `\Twig\Environment` | The Twig environment you can add functionality to. |
-
-## timber/twig/escapers
-
-Filters …
-
-**since** 1.1.1 
-
-| Name | Type | Description |
-| --- | --- | --- |
-| $twig | `\Twig\Environment` | The Twig environment you can add functionality to. |
-
 ## timber/loader/twig
 
 Filters …
@@ -438,88 +519,6 @@ This filter is used by the ACF Integration.
 | $post_id | `int` | The post ID. |
 | $field_name | `string` | The ACF field name. |
 | $post | `\Timber\Post` | The post object. |
-
-## timber/post/pre\_meta
-
-Filters post meta data before it is fetched from the database.
-
-**see** [Timber\Post::meta()](/docs/reference/timber-post/#meta)
-
-**since** 2.0.0 
-
-| Name | Type | Description |
-| --- | --- | --- |
-| $post_meta | `string` | The field value. Default null. Passing a non-null value will skip fetching the value from the database and will use the value from the filter instead. |
-| $post_id | `int` | The post ID. |
-| $field_name | `string` | The name of the meta field to get the value for. |
-| $post | `\Timber\Post` | The post object. |
-| $args | `array` | An array of arguments. |
-
-**PHP**
-
-```php
-// Disable fetching meta values.
-add_filter( 'timber/post/pre_meta', '__return_false' );
-
-// Add your own meta data.
-add_filter( 'timber/post/pre_meta', function( $post_meta, $post_id, $post ) {
-    $post_meta = array_merge( $post_meta, array(
-        'custom_data_1' => 73,
-        'custom_data_2' => 274,
-    ) );
-
-    return $post_meta;
-}, 10, 3 );
-```
-
-## timber\_post\_get\_meta\_field\_pre
-
-Filters the value for a post meta field before it is fetched from the database.
-
-**DEPRECATED** since 2.0.0, use `timber/post/pre_meta`
-
-## timber/post/meta
-
-Filters the value for a post meta field.
-
-This filter is used by the ACF Integration.
-
-**see** [Timber\Post::meta()](/docs/reference/timber-post/#meta)
-
-**since** 2.0.0 
-
-| Name | Type | Description |
-| --- | --- | --- |
-| $post_meta | `string` | The field value. |
-| $post_id | `int` | The post ID. |
-| $field_name | `string` | The name of the meta field to get the value for. |
-| $post | `\Timber\Post` | The post object. |
-| $args | `array` | An array of arguments. |
-
-**PHP**
-
-```php
-add_filter( 'timber/post/meta', function( $post_meta, $post_id, $field_name, $post ) {
-    if ( 'event' === $post->post_type ) {
-        // Do something special.
-        $post_meta['foo'] = $post_meta['foo'] . ' bar';
-    }
-
-    return $post_meta;
-}, 10, 4 );
-```
-
-## timber\_post\_get\_meta\_field
-
-Filters the value for a post meta field.
-
-**DEPRECATED** since 2.0.0, use `timber/post/meta`
-
-## timber\_post\_get\_meta
-
-Filters post meta data fetched from the database.
-
-**DEPRECATED** since 2.0.0, use `timber/post/meta`
 
 ## timber/post/authors
 
@@ -692,75 +691,6 @@ Filters the link to the term archive page.
 
 **DEPRECATED** since 0.21.9, use `timber/term/link`
 
-## timber/term/pre\_meta
-
-Filters the value for a term meta field before it is fetched from the database.
-
-**see** [Timber\Term::meta()](/docs/reference/timber-term/#meta)
-
-**since** 2.0.0 
-
-| Name | Type | Description |
-| --- | --- | --- |
-| $term_meta | `string` | The field value. Passing a non-null value will skip fetching the value from the database. Default null. |
-| $post_id | `int` | The post ID. |
-| $field_name | `string` | The name of the meta field to get the value for. |
-| $term | `\Timber\Term` | The term object. |
-| $args | `array` | An array of arguments. |
-
-**PHP**
-
-```php
-// Disable fetching meta values.
-add_filter( 'timber/term/pre_meta', '__return_false' );
-
-// Add your own meta data.
-add_filter( 'timber/term/pre_meta', function( $term_meta, $term_id, $term ) {
-    $term_meta = array(
-        'custom_data_1' => 73,
-        'custom_data_2' => 274,
-    );
-
-    return $term_meta;
-}, 10, 3);
-```
-
-## timber/term/meta
-
-Filters the value for a term meta field.
-
-This filter is used by the ACF Integration.
-
-**see** [Timber\Term::meta()](/docs/reference/timber-term/#meta)
-
-**since** 0.21.9 
-
-| Name | Type | Description |
-| --- | --- | --- |
-| $term_meta | `mixed` | The field value. |
-| $term_id | `int` | The term ID. |
-| $field_name | `string` | The name of the meta field to get the value for. |
-| $term | `\Timber\Term` | The term object. |
-| $args | `array` | An array of arguments. |
-
-## timber\_term\_get\_meta
-
-Filters term meta data fetched from the database.
-
-**DEPRECATED** since 2.0.0, use `timber/term/meta`
-
-## timber/term/meta/field
-
-Filters the value for a term meta field.
-
-**DEPRECATED** since 2.0.0, use `timber/term/meta`
-
-## timber\_term\_get\_meta\_field
-
-Filters the value for a term meta field.
-
-**DEPRECATED** since 2.0.0, use `timber/term/meta`
-
 ## timber/term/path
 
 Filters the relative link (path) to a term archive page.
@@ -809,6 +739,16 @@ in Twig), you can use this filter to set the allowed tags.
 | Name | Type | Description |
 | --- | --- | --- |
 | $allowed_tags | `string` | Allowed tags, separated by one whitespace. Default `p a span b i br blockquote`. |
+
+## timber/integrations
+
+Filters the integrations that should be initialized by Timber.
+
+**since** 2.0.0 
+
+| Name | Type | Description |
+| --- | --- | --- |
+| $integrations | `array` | An array of PHP class names. Default: array of integrations that Timber initializes by default. |
 
 ## timber/context
 
@@ -960,6 +900,82 @@ Filters the compiled result before it is returned.
 | --- | --- | --- |
 | $output | `string` | The compiled output. |
 
+## timber/twig/functions
+
+Filters the functions that are added to Twig.
+
+The `$functions` array is an associative array with the filter name as a key and an
+arguments array as the value. In the arguments array, you pass the function to call with
+a `callable` entry.
+
+This is an alternative filter that you can use instead of adding your function in the
+`timber/twig` filter.
+
+**since** 2.0.0 
+
+| Name | Type | Description |
+| --- | --- | --- |
+| $functions | `array` |  |
+
+**PHP**
+
+```php
+add_filter( 'timber/twig/functions', function( $functions ) {
+    // Add your own function.
+    $functions['url_to_domain'] = [
+        'callable' => 'url_to_domain',
+    ];
+
+    // Replace a function.
+    $functions['get_image'] = [
+        'callable' => 'custom_image_get',
+    ];
+
+    // Remove a function.
+    unset( $functions['bloginfo'] );
+
+    return $functions;
+} );
+```
+
+## timber/twig/filters
+
+Filters the filters that are added to Twig.
+
+The `$filters` array is an associative array with the filter name as a key and an
+arguments array as the value. In the arguments array, you pass the function to call with
+a `callable` entry.
+
+This is an alternative filter that you can use instead of adding your filter in the
+`timber/twig` filter.
+
+**since** 2.0.0 
+
+| Name | Type | Description |
+| --- | --- | --- |
+| $filters | `array` |  |
+
+**PHP**
+
+```php
+add_filter( 'timber/twig/default_filters', function( $filters ) {
+    // Add your own filter.
+    $filters['price'] = [
+        'callable' => 'format_price',
+    ];
+
+    // Replace a filter.
+    $filters['list'] = [
+        'callable' => 'custom_list_filter',
+    ];
+
+    // Remove a filter.
+    unset( $filters['list'] );
+
+    return $filters;
+} );
+```
+
 ## timber/url\_helper/url\_to\_file\_system/path
 
 Filters the path of a parsed URL.
@@ -1015,62 +1031,6 @@ Filters the home URL that is used to get the path relative to the content direct
 Filters the home URL that is used to get the path relative to the content directory.
 
 **DEPRECATED** since 2.0.0, use `timber/url_helper/get_content_subdir/home_url`
-
-## timber/user/pre\_meta
-
-Filters a user meta field before it is fetched from the database.
-
-**see** [Timber\User::meta()](/docs/reference/timber-user/#meta)
-
-**since** 2.0.0 
-
-| Name | Type | Description |
-| --- | --- | --- |
-| $user_meta | `mixed` | The field value. Passing a non-null value will skip fetching the value from the database, returning the filtered value instead. Default null. |
-| $user_id | `int` | The user ID. |
-| $field_name | `string` | The name of the meta field to get the value for. |
-| $args | `array` | An array of arguments. |
-| $user | `\Timber\User` | The user object. |
-
-## timber\_user\_get\_meta\_pre
-
-Filters user meta data before it is fetched from the database.
-
-**DEPRECATED** since 2.0.0, use `timber/user/pre_meta`
-
-## timber\_user\_get\_meta\_field\_pre
-
-Filters a user meta field before it is fetched from the database.
-
-**DEPRECATED** since 2.0.0, use `timber/user/pre_meta`
-
-## timber/user/meta
-
-Filters the value for a user meta field.
-
-**see** [Timber\User::meta()](/docs/reference/timber-user/#meta)
-
-**since** 2.0.0 
-
-| Name | Type | Description |
-| --- | --- | --- |
-| $user_meta | `mixed` | The field value. |
-| $user_id | `int` | The user ID. |
-| $field_name | `string` | The name of the meta field to get the value for. |
-| $user | `\Timber\User` | The user object. |
-| $args | `array` | An array of arguments. |
-
-## timber\_user\_get\_meta
-
-Filters user meta data fetched from the database.
-
-**DEPRECATED** since 2.0.0, use `timber/user/meta`
-
-## timber\_user\_get\_meta\_field
-
-Filters the value for a user meta field.
-
-**DEPRECATED** since 2.0.0, use `timber/user/meta`
 
 ## timber/user/name
 

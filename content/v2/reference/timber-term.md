@@ -45,7 +45,7 @@ Timber::render('index.twig', $context);
 
 ## Overview
 
-*This class extends `Timber\Core`*  
+*This class extends `Timber\CoreEntity`*  
 *This class implements `Timber\CoreInterface`, `Timber\MetaInterface`*  
 
 ### Properties
@@ -68,17 +68,12 @@ Timber::render('index.twig', $context);
 | <span class="method-name">[__toString()](#__toString)</span> | <span class="method-type">`string`</span> | <span class="method-description">The string the term will render as by default</span> |
 | <span class="method-name">[description()](#description)</span> | <span class="method-type">`string`</span> | <span class="method-description">Return the description of the term</span> |
 | <span class="method-name">[edit_link()](#edit_link)</span> | <span class="method-type">`string`</span> | <span class="method-description"></span> |
-| <span class="method-name">[from()](#from)</span> | <span class="method-type">`static`</span> | <span class="method-description"></span> |
 | <span class="method-name">[~~get_children~~()](#get_children)</span> | <span class="method-type">`array`</span> | <span class="method-description"></span> |
-| <span class="method-name">[~~get_edit_url~~()](#get_edit_url)</span> | <span class="method-type">`string`</span> | <span class="method-description"></span> |
 | <span class="method-name">[~~get_field~~()](#get_field)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets a term meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value.</span></span> |
-| <span class="method-name">[~~get_meta_field~~()](#get_meta_field)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets a term meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value.</span></span> |
 | <span class="method-name">[~~get_posts~~()](#get_posts)</span> | <span class="method-type">`array` or `bool` or `null`</span> | <span class="method-description">Get Posts that have been "tagged" with the particular term</span> |
 | <span class="method-name">[link()](#link)</span> | <span class="method-type">`string`</span> | <span class="method-description">Returns a full link to the term archive page like `http://example.com/category/news`</span> |
-| <span class="method-name">[meta()](#meta)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets a term meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The custom field value or an array of custom field values. Null if no value could be found.</span></span> |
 | <span class="method-name">[path()](#path)</span> | <span class="method-type">`string`</span> | <span class="method-description">Returns a relative link (path) to the term archive page like `/category/news`</span> |
 | <span class="method-name">[posts()](#posts)</span> | <span class="method-type">`\Timber\PostQuery`</span> | <span class="method-description">Gets posts that have the current term assigned.</span> |
-| <span class="method-name">[raw_meta()](#raw_meta)</span> | <span class="method-type">`null` or `mixed`</span> | <span class="method-description">Gets a term meta value directly from the database.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The custom field value(s). Null if no value could be found, an empty array if all fields were requested but no values could be found.</span></span> |
 | <span class="method-name">[title()](#title)</span> | <span class="method-type">`string`</span> | <span class="method-description"></span> |
 
 </div>
@@ -91,43 +86,6 @@ Timber::render('index.twig', $context);
 The string the term will render as by default
 
 **Returns:** `string` 
-
----
-
-### from()
-
-`from(  $tid,  $taxonomy )`
-
-**Returns:** `static` 
-
-| Name | Type | Description |
-| --- | --- | --- |
-| $tid |  |  |
-| $taxonomy |  |  |
-
----
-
-### ~~get\_edit\_url~~()
-
-**DEPRECATED** since 2.0.0, use `{{ term.edit_link }}` instead.
-
-**Returns:** `string` 
-
----
-
-### ~~get\_meta\_field~~()
-
-Gets a term meta value.
-
-**DEPRECATED** since 2.0.0, use `{{ term.meta('field_name') }}` instead.
-
-`get_meta_field( string $field_name )`
-
-**Returns:** `string` The meta field value.
-
-| Name | Type | Description |
-| --- | --- | --- |
-| $field_name | `string` | The field name for which you want to get the value. |
 
 ---
 
@@ -156,62 +114,6 @@ Returns a full link to the term archive page like `http://example.com/category/n
 ```twig
 See all posts in: <a href="{{ term.link }}">{{ term.name }}</a>
 ```
-
----
-
-### meta()
-
-Gets a term meta value.
-
-Returns a meta value or all meta values for all custom fields of a term saved in the term
-meta database table.
-
-Fetching all values is only advised during development, because it can have a big performance
-impact, when all filters are applied.
-
-`meta( string $field_name = '', array $args = array() )`
-
-**Returns:** `mixed` The custom field value or an array of custom field values. Null if no value
-could be found.
-
-| Name | Type | Description |
-| --- | --- | --- |
-| $field_name | `string` | Optional. The field name for which you want to get the value. If no field name is provided, this function will fetch values for all custom fields. Default empty string. |
-| $args | `array` | An array of arguments for getting the meta value. Third-party integrations can use this argument to make their API arguments available in Timber. Default empty array.<br><br><ul><li>**$apply_filters**<br>`bool` Whether to apply filtering of meta values. You can also use the `raw_meta()` method as a shortcut to apply this argument. Default true.</li></ul> |
-
-**Twig**
-
-```twig
-<div class="location-info">
-  <h2>{{ term.name }}</h2>
-  <p>{{ term.meta('address') }}</p>
-</div>
-```
-
----
-
-### raw\_meta()
-
-Gets a term meta value directly from the database.
-
-Returns a raw meta value or all raw meta values saved in the term meta database table. In
-comparison to `meta()`, this function will return raw values that are not filtered by third-
-party plugins.
-
-Fetching raw values for all custom fields will not have a big performance impact, because
-WordPress gets all meta values, when the first meta value is accessed.
-
-**since** 2.0.0 
-
-`raw_meta( string $field_name = '', array $args = array() )`
-
-**Returns:** `null|mixed` The custom field value(s). Null if no value could be found, an empty array
-if all fields were requested but no values could be found.
-
-| Name | Type | Description |
-| --- | --- | --- |
-| $field_name | `string` | Optional. The field name for which you want to get the value. If no field name is provided, this function will fetch values for all custom fields. Default empty string. |
-| $args | `array` | Optional. An array of args for `Term::meta()`. Default empty array. |
 
 ---
 

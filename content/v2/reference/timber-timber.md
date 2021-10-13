@@ -20,8 +20,9 @@ $posts = Timber::get_posts( [
     'category_name' => 'sports',
 ] );
 
-$context = Timber::context();
-$context['posts'] = $posts;
+$context = Timber::context( [
+    'posts' => $posts,
+] );
 
 Timber::render( 'index.twig', $context );
 ```
@@ -54,7 +55,8 @@ Timber::render( 'index.twig', $context );
 | <span class="method-name">[get_sidebar_from_php()](#get_sidebar_from_php)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get sidebar from PHP</span> |
 | <span class="method-name">[get_sites()](#get_sites)</span> | <span class="method-type">`array`</span> | <span class="method-description">Get sites.</span> |
 | <span class="method-name">[get_term()](#get_term)</span> | <span class="method-type">`\Timber\Term` or `bool`</span> | <span class="method-description">Get term.</span> |
-| <span class="method-name">[get_terms()](#get_terms)</span> | <span class="method-type">`iterable`</span> | <span class="method-description">Get terms.</span> |
+| <span class="method-name">[get_term_by()](#get_term_by)</span> | <span class="method-type">`\Timber\Term` or `null`</span> | <span class="method-description">Gets a term by field.</span> |
+| <span class="method-name">[get_terms()](#get_terms)</span> | <span class="method-type">`iterable`</span> | <span class="method-description">Gets terms.</span> |
 | <span class="method-name">[get_user()](#get_user)</span> | <span class="method-type">`\Timber\User` or `bool`</span> | <span class="method-description">Gets a single user.</span> |
 | <span class="method-name">[get_user_by()](#get_user_by)</span> | <span class="method-type">`\Timber\User` or `null`</span> | <span class="method-description">Gets a user by field.</span> |
 | <span class="method-name">[get_users()](#get_users)</span> | <span class="method-type">`\Iterable`</span> | <span class="method-description">Gets one or more users as an array.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> An array of users objects. Will be empty if no users were found.</span></span> |
@@ -269,7 +271,7 @@ $attachment     = Timber::get_attachment_by( $mystery_string );
 
 ### get\_terms()
 
-Get terms.
+Gets terms.
 
 **see** https://developer.wordpress.org/reference/classes/wp_term_query/__construct/
 
@@ -279,30 +281,30 @@ Get terms.
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $args | `string` or `array` | a string or array identifying the taxonomy or `WP_Term_Query` args. Numeric strings are treated as term IDs; non-numeric strings are treated as taxonomy names. Numeric arrays are treated as a list a of term identifiers; associative arrays are treated as args to `WP_Term_Query::__construct()` and accepts any valid parameters to that constructor. |
-| $options | `array` | optional; none are currently supported. |
+| $args | `string` or `array` | A string or array identifying the taxonomy or `WP_Term_Query` args. Numeric strings are treated as term IDs; non-numeric strings are treated as taxonomy names. Numeric arrays are treated as a list a of term identifiers; associative arrays are treated as args for `WP_Term_Query::__construct()` and accept any valid parameters to that constructor. Default `null`, which will get terms from all queryable taxonomies. |
+| $options | `array` | Optional. None are currently supported. Default empty array. |
 
 **PHP**
 
 ```php
 // Get all tags.
-$tags = Timber::get_terms('post_tag');
+$tags = Timber::get_terms( 'post_tag' );
 // Note that this is equivalent to:
 $tags = Timber::get_terms( 'tag' );
 $tags = Timber::get_terms( 'tags' );
 
 // Get all categories.
-$cats = Timber::get_terms('category');
+$cats = Timber::get_terms( 'category' );
 
 // Get all terms in a custom taxonomy.
 $cats = Timber::get_terms('my_taxonomy');
 
 // Perform a custom Term query.
-$cats = Timber::get_terms([
+$cats = Timber::get_terms( [
   'taxonomy' => 'my_taxonomy',
   'orderby'  => 'slug',
   'order'    => 'DESC',
-]);
+] );
 ```
 
 ---
@@ -323,7 +325,42 @@ Get term.
 
 ```php
 // Get a Term.
-$tag = Timber::get_term(123);
+$tag = Timber::get_term( 123 );
+```
+
+---
+
+### get\_term\_by()
+
+Gets a term by field.
+
+This function works like
+[`get_term_by()`](https://developer.wordpress.org/reference/functions/get_term_by/), but
+returns a `Timber\Term` object.
+
+**since** 2.0.0 
+
+`get_term_by( string $field, int|string $value, string $taxonomy = '' )`
+
+**Returns:** `\Timber\Term|null` 
+
+| Name | Type | Description |
+| --- | --- | --- |
+| $field | `string` | The name of the field to retrieve the term with. One of: `id`, `ID`, `slug`, `name` or `term_taxonomy_id`. |
+| $value | `int` or `string` | The value to search for by `$field`. |
+| $taxonomy | `string` | The taxonomy you want to retrieve from. Empty string will search from all. |
+
+**PHP**
+
+```php
+// Get a term by slug.
+$term = Timber::get_term_by( 'slug', 'security' );
+
+// Get a term by name.
+$term = Timber::get_term_by( 'name', 'Security' );
+
+// Get a term by slug from a specific taxonomy.
+$term = Timber::get_term_by( 'slug', 'security', 'category' );
 ```
 
 ---
@@ -733,7 +770,7 @@ Get sidebar.
 
 Get sidebar from PHP
 
-`get_sidebar_from_php( string $sidebar = '', array $data )`
+`get_sidebar_from_php( string $sidebar = '', array $data = array() )`
 
 **Returns:** `string` 
 

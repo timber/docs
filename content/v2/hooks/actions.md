@@ -3,13 +3,11 @@ title: "Action Hooks"
 is_reference: true
 ---
 
-## timber\_comment\_get\_meta\_pre
+## timber\_{$object\_type}\_get\_meta\_pre
 
-Fires before comment meta data is imported into the object.
+Filters post meta data before it is fetched from the database.
 
-**DEPRECATED** since 2.0.0, use `timber/comment/pre_meta`
-
-**since** 0.19.1 Switched from filter to action functionality.
+**DEPRECATED** since 2.0.0, use `timber/{object_type}/pre_meta`
 
 ## timber/loader/render\_file
 
@@ -26,12 +24,6 @@ Fires after …
 **DEPRECATED** since 2.0.0, use `timber/loader/render_file`
 
 This action is used by the Timber Debug Bar extension.
-
-## timber\_post\_get\_meta\_pre
-
-Filters post meta data before it is fetched from the database.
-
-**DEPRECATED** since 2.0.0, use `timber/post/pre_meta`
 
 ## timber/calling\_php\_file
 

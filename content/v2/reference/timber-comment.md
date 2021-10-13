@@ -13,8 +13,12 @@ comment ID.
 **PHP**
 
 ```php
-$comment = new Timber\Comment($comment_id);
-$context['comment_of_the_day'] = $comment;
+$comment = Timber::get_comment( $comment_id );
+
+$context = [
+    'comment_of_the_day' => $comment
+];
+
 Timber::render('index.twig', $context);
 ```
 
@@ -34,7 +38,7 @@ Timber::render('index.twig', $context);
 
 ## Overview
 
-*This class extends `Timber\Core`*  
+*This class extends `Timber\CoreEntity`*  
 *This class implements `Timber\CoreInterface`, `Timber\MetaInterface`*  
 
 ### Properties
@@ -73,8 +77,6 @@ Timber::render('index.twig', $context);
 | <span class="method-name">[~~get_field~~()](#get_field)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets a comment meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value.</span></span> |
 | <span class="method-name">[~~get_meta_field~~()](#get_meta_field)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets a comment meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value.</span></span> |
 | <span class="method-name">[is_child()](#is_child)</span> | <span class="method-type">`bool`</span> | <span class="method-description">Checks if the comment is a child.</span> |
-| <span class="method-name">[meta()](#meta)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets a comment meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value. Null if no value could be found.</span></span> |
-| <span class="method-name">[raw_meta()](#raw_meta)</span> | <span class="method-type">`null` or `mixed`</span> | <span class="method-description">Gets a comment meta value directly from the database.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value(s). Null if no value could be found, an empty array if all fields were requested but no values could be found.</span></span> |
 | <span class="method-name">[reply_link()](#reply_link)</span> | <span class="method-type">`string`</span> | <span class="method-description">Enqueue the WP threaded comments JavaScript, and fetch the reply link for various comments.</span> |
 | <span class="method-name">[time()](#time)</span> | <span class="method-type">`string`</span> | <span class="method-description">What time was the comment posted?</span> |
 | <span class="method-name">[update_depth()](#update_depth)</span> | <span class="method-type"></span> | <span class="method-description">Updates the comment depth.</span> |
@@ -302,48 +304,6 @@ Gets a comment meta value.
 Checks if the comment is a child.
 
 **Returns:** `bool` 
-
----
-
-### meta()
-
-Gets a comment meta value.
-
-Returns a meta value for a comment that’s saved in the comment meta database table.
-
-`meta( string $field_name = '', array $args = array() )`
-
-**Returns:** `mixed` The meta field value. Null if no value could be found.
-
-| Name | Type | Description |
-| --- | --- | --- |
-| $field_name | `string` | The field name for which you want to get the value. |
-| $args | `array` | An array of arguments for getting the meta value. Third-party integrations can use this argument to make their API arguments available in Timber. Default empty. |
-
----
-
-### raw\_meta()
-
-Gets a comment meta value directly from the database.
-
-Returns a raw meta value or all raw meta values saved in the comment meta database table. In
-comparison to `meta()`, this function will return raw values that are not filtered by third-
-party plugins.
-
-Fetching raw values for all custom fields will not have a big performance impact, because
-WordPress gets all meta values, when the first meta value is accessed.
-
-**since** 2.0.0 
-
-`raw_meta( string $field_name = '', array $args = array() )`
-
-**Returns:** `null|mixed` The meta field value(s). Null if no value could be found, an empty array
-if all fields were requested but no values could be found.
-
-| Name | Type | Description |
-| --- | --- | --- |
-| $field_name | `string` | Optional. The field name for which you want to get the value. If no field name is provided, this function will fetch values for all custom fields. Default empty string. |
-| $args | `array` | Optional. An array of args for `Comment::meta()`. Default empty array. |
 
 ---
 

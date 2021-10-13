@@ -11,12 +11,14 @@ The `Timber\Image` class represents WordPress attachments that are images.
 **PHP**
 
 ```php
-$context         = Timber::context();
+$context = Timber::context();
 
 // Lets say you have an alternate large 'cover image' for your post
 // stored in a custom field which returns an image ID.
 $cover_image_id = $context['post']->cover_image;
+
 $context['cover_image'] = Timber::get_post($cover_image_id);
+
 Timber::render('single.twig', $context);
 ```
 
@@ -62,7 +64,6 @@ Timber::render('single.twig', $context);
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <span class="property-name">$object_type</span> | <span class="property-type">`string`</span> | <span class="property-description">What the object represents in WordPress terms.</span> |
 | <span class="property-name">$representation</span> | <span class="property-type">`string`</span> | <span class="property-description">What does this class represent in WordPress terms?</span> |
 | <span class="property-name">$sizes</span> | <span class="property-type">`array`</span> | <span class="property-description">An array of available sizes for the image.</span> |
 
