@@ -5,7 +5,7 @@ module.exports = [
   },
   {
     name: 'Twig Docs',
-    url: 'http://twig.sensiolabs.org/doc/templates.html'
+    url: 'https://twig.symfony.com/doc/1.x/'
   },
   {
     image: {
