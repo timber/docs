@@ -106,7 +106,7 @@ Timber::render( 'single.twig', $context );
 | <span class="method-name">[modified_author()](#modified_author)</span> | <span class="method-type">`\Timber\User` or `null`</span> | <span class="method-description">Get the author (WordPress user) who last modified the post<br><br><span class="method-return"><span class="method-return-label">Returns:</span> A User object if found, false if not</span></span> |
 | <span class="method-name">[modified_date()](#modified_date)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the date the post was last modified.</span> |
 | <span class="method-name">[modified_time()](#modified_time)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the time of the last modification of the post to use in your template.</span> |
-| <span class="method-name">[modified_timestamp()](#modified_timestamp)</span> | <span class="method-type">`bool` or `int`</span> | <span class="method-description">Gets the timestamp when the post was last modified.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Unix timestamp on success, false on failure.</span></span> |
+| <span class="method-name">[modified_timestamp()](#modified_timestamp)</span> | <span class="method-type">`false` or `int`</span> | <span class="method-description">Gets the timestamp when the post was last modified.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Unix timestamp on success, false on failure.</span></span> |
 | <span class="method-name">[name()](#name)</span> | <span class="method-type">`string`</span> | <span class="method-description"></span> |
 | <span class="method-name">[next()](#next)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets the next post that is adjacent to the current post in a collection.</span> |
 | <span class="method-name">[pagination()](#pagination)</span> | <span class="method-type">`array`</span> | <span class="method-description">Gets a data array to display a pagination for your paginated post.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> An array with data to build your paginated content.</span></span> |
@@ -120,9 +120,9 @@ Timber::render( 'single.twig', $context );
 | <span class="method-name">[teardown()](#teardown)</span> | <span class="method-type">`\Timber\Post`</span> | <span class="method-description">Resets variables after post has been used.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The post instance.</span></span> |
 | <span class="method-name">[terms()](#terms)</span> | <span class="method-type">`array`</span> | <span class="method-description">Gets the terms associated with the post.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> An array of taxonomies.</span></span> |
 | <span class="method-name">[thumbnail()](#thumbnail)</span> | <span class="method-type">`\Timber\Image` or `null`</span> | <span class="method-description">get the featured image as a Timber/Image<br><br><span class="method-return"><span class="method-return-label">Returns:</span> of your thumbnail</span></span> |
-| <span class="method-name">[thumbnail_id()](#thumbnail_id)</span> | <span class="method-type">`bool` or `int`</span> | <span class="method-description">Gets the post’s thumbnail ID.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The default post’s ID. False if no thumbnail was defined.</span></span> |
+| <span class="method-name">[thumbnail_id()](#thumbnail_id)</span> | <span class="method-type">`false` or `int`</span> | <span class="method-description">Gets the post’s thumbnail ID.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The default post’s ID. False if no thumbnail was defined.</span></span> |
 | <span class="method-name">[time()](#time)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the time the post was published to use in your template.</span> |
-| <span class="method-name">[timestamp()](#timestamp)</span> | <span class="method-type">`bool` or `int`</span> | <span class="method-description">Gets the timestamp when the post was published.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Unix timestamp on success, false on failure.</span></span> |
+| <span class="method-name">[timestamp()](#timestamp)</span> | <span class="method-type">`false` or `int`</span> | <span class="method-description">Gets the timestamp when the post was published.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Unix timestamp on success, false on failure.</span></span> |
 | <span class="method-name">[title()](#title)</span> | <span class="method-type">`string`</span> | <span class="method-description">Returns the processed title to be used in templates. This returns the title of the post after WP's filters have run. This is analogous to `the_title()` in standard WP template tags.</span> |
 | <span class="method-name">[type()](#type)</span> | <span class="method-type">`\Timber\PostType`</span> | <span class="method-description">Returns the PostType object for a post’s post type with labels and other info.</span> |
 | <span class="method-name">[video()](#video)</span> | <span class="method-type">`bool` or `array`</span> | <span class="method-description">Returns video tags embedded in the post’s content.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> A list of found HTML embeds.</span></span> |
@@ -139,7 +139,7 @@ https://github.com/fabpot/Twig/issues/2
 
 This is also here to ensure that {{ post.class }} remains usable.
 
-`__get( $field )`
+`__get( mixed $field )`
 
 **Returns:** `mixed` 
 
@@ -152,7 +152,7 @@ https://github.com/fabpot/Twig/issues/2
 
 This is also here to ensure that {{ post.class }} remains usable
 
-`__call( $field, $args )`
+`__call( mixed $field, mixed $args )`
 
 **Returns:** `mixed` 
 
@@ -168,7 +168,7 @@ Sets up the `$post` global, and other global variables as well as variables in t
 This function will be called automatically when you loop over Timber posts as well as in
 `Timber::context()`.
 
-**since** 2.0.0 
+**since** 2.0.0
 
 **Returns:** `\Timber\Post` The post instance.
 
@@ -180,7 +180,7 @@ Resets variables after post has been used.
 
 This function will be called automatically when you loop over Timber posts.
 
-**since** 2.0.0 
+**since** 2.0.0
 
 **Returns:** `\Timber\Post` The post instance.
 
@@ -334,7 +334,7 @@ $terms = $post->terms( [
 
 ### has\_term()
 
-`has_term( string|int $term_name_or_id, string $taxonomy = all )`
+`has_term( string|int $term_name_or_id, string $taxonomy = 'all' )`
 
 **Returns:** `bool` 
 
@@ -369,7 +369,7 @@ Gets the field object data from Advanced Custom Fields.
 
 This includes metadata on the field like whether it's conditional or not.
 
-**since** 1.6.0 
+**since** 1.6.0
 
 `field_object( string $field_name )`
 
@@ -403,7 +403,7 @@ Gets a post meta value.
 
 Import field data onto this object
 
-**DEPRECATED** since  since 2.0.0
+**DEPRECATED** since since 2.0.0
 
 `import_field( string $field_name )`
 
@@ -480,7 +480,7 @@ If multiple categories are set, it will return just the first one
 Returns an array of children on the post as Timber\Posts
 (or other claass as you define).
 
-`children( string|array $post_type = any )`
+`children( string|array $post_type = 'any' )`
 
 **Returns:** `\Timber\Timber\PostCollectionInterface` 
 
@@ -507,7 +507,7 @@ Gets the comments on a Timber\Post and returns them as an array of `Timber\Comme
 
 **see** Timber\CommentThread for an example with nested comments
 
-`comments( int $count = null, string $order = wp, string $type = comment, string $status = approve )`
+`comments( int $count = null, string $order = 'wp', string $type = 'comment', string $status = 'approve' )`
 
 **Returns:** `bool|\Timber\CommentThread` 
 
@@ -561,7 +561,7 @@ the `the_content` filter. It will return your post’s content with WordPress fi
 If you use page breaks in your content to split your post content into multiple pages,
 use `{{ post.paged_content }}` to display only the content for the current page.
 
-`content( int $page = '', $len = -1 )`
+`content( int $page = '', mixed $len = -1 )`
 
 **Returns:** `string` 
 
@@ -585,9 +585,9 @@ use `{{ post.paged_content }}` to display only the content for the current page.
 
 Gets the timestamp when the post was published.
 
-**since** 2.0.0 
+**since** 2.0.0
 
-**Returns:** `bool|int` Unix timestamp on success, false on failure.
+**Returns:** `false|int` Unix timestamp on success, false on failure.
 
 ---
 
@@ -595,9 +595,9 @@ Gets the timestamp when the post was published.
 
 Gets the timestamp when the post was last modified.
 
-**since** 2.0.0 
+**since** 2.0.0
 
-**Returns:** `bool|int` Unix timestamp on success, false on failure.
+**Returns:** `false|int` Unix timestamp on success, false on failure.
 
 ---
 
@@ -745,7 +745,7 @@ Published at 13:25
 
 Returns the PostType object for a post’s post type with labels and other info.
 
-**since** 1.0.4 
+**since** 1.0.4
 
 **Returns:** `\Timber\PostType` 
 
@@ -954,9 +954,9 @@ Gets the tags on a post, uses WP's post_tag taxonomy
 
 Gets the post’s thumbnail ID.
 
-**since** 2.0.0 
+**since** 2.0.0
 
-**Returns:** `bool|int` The default post’s ID. False if no thumbnail was defined.
+**Returns:** `false|int` The default post’s ID. False if no thumbnail was defined.
 
 ---
 
@@ -992,7 +992,7 @@ Returns the processed title to be used in templates. This returns the title of t
 
 Returns galleries from the post’s content.
 
-`gallery( $html = true )`
+`gallery( mixed $html = true )`
 
 **Returns:** `array` A list of arrays, each containing gallery data and srcs parsed from the
 expanded shortcode.

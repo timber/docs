@@ -57,8 +57,8 @@ Timber::render('index.twig', $context);
 | Name | Return Type | Summary/Returns |
 | --- | --- | --- |
 | <span class="method-name">[__construct()](#__construct)</span> | <span class="method-type"></span> | <span class="method-description">Constructs a new `Timber\Theme` object.</span> |
-| <span class="method-name">[display()](#display)</span> | <span class="method-type">`bool` or `string`</span> | <span class="method-description">Gets a theme header, formatted and translated for display.</span> |
-| <span class="method-name">[get()](#get)</span> | <span class="method-type">`bool` or `string`</span> | <span class="method-description">Gets a raw, unformatted theme header.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> String on success, false on failure.</span></span> |
+| <span class="method-name">[display()](#display)</span> | <span class="method-type">`false` or `string`</span> | <span class="method-description">Gets a theme header, formatted and translated for display.</span> |
+| <span class="method-name">[get()](#get)</span> | <span class="method-type">`false` or `string`</span> | <span class="method-description">Gets a raw, unformatted theme header.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> String on success, false on failure.</span></span> |
 | <span class="method-name">[link()](#link)</span> | <span class="method-type">`string`</span> | <span class="method-description"><br><br><span class="method-return"><span class="method-return-label">Returns:</span> the absolute path to the theme (ex: `http://example.org/wp-content/themes/my-timber-theme`)</span></span> |
 | <span class="method-name">[path()](#path)</span> | <span class="method-type">`string`</span> | <span class="method-description"><br><br><span class="method-return"><span class="method-return-label">Returns:</span> the relative path to the theme (ex: `/wp-content/themes/my-timber-theme`)</span></span> |
 | <span class="method-name">[theme_mod()](#theme_mod)</span> | <span class="method-type">`string`</span> | <span class="method-description"></span> |
@@ -142,7 +142,7 @@ Gets a raw, unformatted theme header.
 
 `get( string $header )`
 
-**Returns:** `bool|string` String on success, false on failure.
+**Returns:** `false|string` String on success, false on failure.
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -164,7 +164,7 @@ Gets a theme header, formatted and translated for display.
 
 `display( string $header )`
 
-**Returns:** `bool|string` 
+**Returns:** `false|string` 
 
 | Name | Type | Description |
 | --- | --- | --- |

@@ -48,7 +48,7 @@ Timber::render( 'single.twig', $context );
 ## Overview
 
 *This class extends `Timber\CoreEntity`*  
-*This class implements `Timber\CoreInterface`, `Timber\MetaInterface`*  
+  
 
 ### Properties
 
@@ -198,7 +198,7 @@ has on the site behind a paywall.
 If you want to check for capabilities, use `{{ user.can('capability') }}`. If you only want
 to check whether a user is logged in, you can use `{% if user %}`.
 
-**since** 1.8.5 
+**since** 1.8.5
 
 **Returns:** `array|null` 
 
@@ -236,7 +236,7 @@ results. This includes cases where you want to check whether a user is registere
 want to check whether a user is a Subscriber, use `{{ user.can('read') }}`. If you only want
 to check whether a user is logged in, you can use `{% if user %}`.
 
-**since** 1.8.5 
+**since** 1.8.5
 
 `can( string $capability )`
 
@@ -262,7 +262,7 @@ Give moderation users another CSS class to style them differently.
 
 Gets a user’s avatar URL.
 
-**since** 1.9.1 
+**since** 1.9.1
 
 `avatar( null|array $args = null )`
 

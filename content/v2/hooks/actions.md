@@ -32,7 +32,7 @@ function.
 
 This action is used by the Timber Debug Bar extension.
 
-**since** 1.1.2 
+**since** 1.1.2
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -46,7 +46,7 @@ is returned.
 This action can be helpful if you need to debug Twig template
 compilation.
 
-**since** 2.0.0 
+**since** 2.0.0
 
 | Name | Type | Description |
 | --- | --- | --- |

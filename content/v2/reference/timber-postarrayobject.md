@@ -27,7 +27,7 @@ is_reference: true
 Takes an arbitrary array of WP_Posts to wrap and (lazily) translate to
 Timber\Post instances.
 
-`__construct( \WP_Post[] $posts )`
+`__construct( array $posts )`
 
 | Name | Type | Description |
 | --- | --- | --- |

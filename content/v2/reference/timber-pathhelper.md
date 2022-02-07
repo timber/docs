@@ -32,7 +32,7 @@ Unicode-friendly version of PHP’s pathinfo() function.
 
 **link** <https://www.php.net/manual/en/function.pathinfo.php>
 
-**since** 1.11.1 
+**since** 1.11.1
 
 `pathinfo( string $path, int $options = PATHINFO_DIRNAME | PATHINFO_BASENAME | PATHINFO_EXTENSION | PATHINFO_FILENAME )`
 
@@ -53,7 +53,7 @@ Unicode-friendly version of the PHP basename() function.
 
 **link** <https://www.php.net/manual/en/function.basename.php>
 
-**since** 1.11.1 
+**since** 1.11.1
 
 `basename( string $path, string $suffix = '' )`
 

@@ -6,7 +6,7 @@ is_reference: true
 
 ## Overview
 
-*This class extends `Timber\Term`*  
+*This class extends `Timber\CoreEntity`*  
   
 
 ### Properties
@@ -22,8 +22,8 @@ is_reference: true
 | <span class="property-name">$term_id</span> | <span class="property-type">`int`</span> | <span class="property-description">The ID of the menu, corresponding to the wp_terms table.</span> |
 | <span class="property-name">$name</span> | <span class="property-type">`string`</span> | <span class="property-description">The name of the menu (ex: `Main Navigation`).</span> |
 | <span class="property-name">$title</span> | <span class="property-type">`string`</span> | <span class="property-description">The name of the menu (ex: `Main Navigation`).</span> |
-| <span class="property-name">$options</span> | <span class="property-type">`array`</span> | <span class="property-description">An array of menu options.</span> |
-| <span class="property-name">$raw_options</span> | <span class="property-type">`array`</span> | <span class="property-description">The unfiltered options sent forward via the user in the __construct</span> |
+| <span class="property-name">$args</span> | <span class="property-type">`array`</span> | <span class="property-description">An array of menu args.</span> |
+| <span class="property-name">$raw_args</span> | <span class="property-type">`array`</span> | <span class="property-description">The unfiltered args sent forward via the user in the __construct</span> |
 | <span class="property-name">$theme_location</span> | <span class="property-type">`string`</span> | <span class="property-description">The theme location of the menu, if available.</span> |
 
 </div>
@@ -36,6 +36,7 @@ is_reference: true
 | --- | --- | --- |
 | <span class="method-name">[__construct()](#__construct)</span> | <span class="method-type"></span> | <span class="method-description">Initialize a menu.</span> |
 | <span class="method-name">[find_parent_item_in_menu()](#find_parent_item_in_menu)</span> | <span class="method-type">`\Timber\MenuItem` or `bool`</span> | <span class="method-description">Find a parent menu item in a set of menu items.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> A menu item. False if no parent was found.</span></span> |
+| <span class="method-name">[~~get_field~~()](#get_field)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets a menu meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value.</span></span> |
 | <span class="method-name">[get_items()](#get_items)</span> | <span class="method-type">`array`</span> | <span class="method-description">Get menu items.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Array of `Timber\MenuItem` objects. Empty array if no items could be found.</span></span> |
 
 </div>
@@ -47,12 +48,12 @@ is_reference: true
 
 Initialize a menu.
 
-`__construct( int|string $slug = '', array $options = array() )`
+`__construct( int|string $slug = '', array $args = array() )`
 
 | Name | Type | Description |
 | --- | --- | --- |
 | $slug | `int` or `string` | A menu slug, the term ID of the menu, the full name from the admin menu, the slug of the registered location or nothing. Passing nothing is good if you only have one menu. Timber will grab what it finds. |
-| $options | `array` | Optional. An array of options. Right now, only the `depth` is supported which says how many levels of hierarchy should be included in the menu. Default `0`, which is all levels. |
+| $args | `array` | Optional. Right now, only the `depth` is supported which says how many levels of hierarchy should be included in the menu. Default `0`, which is all levels. |
 
 ---
 
@@ -68,6 +69,24 @@ Find a parent menu item in a set of menu items.
 | --- | --- | --- |
 | $menu_items | `array` | An array of menu items. |
 | $parent_id | `int` | The parent ID to look for. |
+
+---
+
+### ~~get\_field~~()
+
+Gets a menu meta value.
+
+**DEPRECATED** since 2.0.0, use `{{ menu.meta('field_name') }}` instead.
+
+**see** [Timber\Menu::meta()](../timber-menu/#meta)
+
+`get_field( string $field_name = null )`
+
+**Returns:** `mixed` The meta field value.
+
+| Name | Type | Description |
+| --- | --- | --- |
+| $field_name | `string` | The field name for which you want to get the value. |
 
 ---
 

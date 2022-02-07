@@ -147,7 +147,7 @@ Get the value for a site option.
 
 **DEPRECATED** since 2.0.0, use `{{ site.option }}` instead
 
-`meta( $option )`
+`meta( mixed $option )`
 
 ---
 

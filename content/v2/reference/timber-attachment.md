@@ -12,7 +12,7 @@ objects build upon.
 ## Overview
 
 *This class extends `Timber\Post`*  
-*This class implements `Timber\CoreInterface`*  
+  
 
 ### Properties
 
@@ -39,7 +39,7 @@ objects build upon.
 | <span class="method-name">[__toString()](#__toString)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the src for an attachment.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The src of the attachment.</span></span> |
 | <span class="method-name">[extension()](#extension)</span> | <span class="method-type">`null` or `string`</span> | <span class="method-description">Gets the extension of the attached file.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> An uppercase extension string.</span></span> |
 | <span class="method-name">[link()](#link)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the link to an attachment.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The URL of the attachment.</span></span> |
-| <span class="method-name">[parent()](#parent)</span> | <span class="method-type">`bool` or `\Timber\Post`</span> | <span class="method-description">Gets the parent object.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Parent object as a `Timber\Post`. Returns `false` if no parent object is defined.</span></span> |
+| <span class="method-name">[parent()](#parent)</span> | <span class="method-type">`false` or `\Timber\Post`</span> | <span class="method-description">Gets the parent object.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Parent object as a `Timber\Post`. Returns `false` if no parent object is defined.</span></span> |
 | <span class="method-name">[path()](#path)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the relative path to an attachment.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The relative path to an attachment.</span></span> |
 | <span class="method-name">[size()](#size)</span> | <span class="method-type">`mixed` or `null`</span> | <span class="method-description">Gets filesize in a human readable format.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The filesize string in a human readable format.</span></span> |
 | <span class="method-name">[size_raw()](#size_raw)</span> | <span class="method-type">`mixed` or `null`</span> | <span class="method-description">Gets filesize in bytes.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The filesize string in bytes, or false if the filesize can’t be read.</span></span> |
@@ -126,7 +126,7 @@ Gets filesize in a human readable format.
 This can be useful if you want to display the human readable filesize for a file. It’s
 easier to read «16 KB» than «16555 bytes» or «1 MB» than «1048576 bytes».
 
-**since** 2.0.0 
+**since** 2.0.0
 
 **Returns:** `mixed|null` The filesize string in a human readable format.
 
@@ -147,7 +147,7 @@ Use filesize information in a link that downloads a file:
 
 Gets filesize in bytes.
 
-**since** 2.0.0 
+**since** 2.0.0
 
 **Returns:** `mixed|null` The filesize string in bytes, or false if the filesize can’t be read.
 
@@ -171,7 +171,7 @@ Gets filesize in bytes.
 
 Gets the extension of the attached file.
 
-**since** 2.0.0 
+**since** 2.0.0
 
 **Returns:** `null|string` An uppercase extension string.
 
@@ -196,7 +196,7 @@ Gets the parent object.
 
 The parent object of an attachment is a post it is assigned to.
 
-**Returns:** `bool|\Timber\Post` Parent object as a `Timber\Post`. Returns `false` if no parent
+**Returns:** `false|\Timber\Post` Parent object as a `Timber\Post`. Returns `false` if no parent
 object is defined.
 
 **Twig**

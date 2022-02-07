@@ -97,7 +97,7 @@ Gets archive items.
 
 **see** [Timber\Archives::items()](../timber-archives/#items)
 
-`get_items( $args = null )`
+`get_items( mixed $args = null )`
 
 **Returns:** `array|string` 
 

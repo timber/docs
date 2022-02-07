@@ -96,7 +96,7 @@ You can use WordPress image sizes (including the ones you registered with your t
 plugin) by passing the name of the size to this function (like `medium` or `large`). If the
 WordPress size has not been generated, it will return an empty string.
 
-`src( string $size = full )`
+`src( string $size = 'full' )`
 
 **Returns:** `bool|string` The src URL for the image.
 
@@ -201,7 +201,7 @@ empty.
 
 ### srcset()
 
-`srcset( string $size = full )`
+`srcset( string $size = 'full' )`
 
 **Returns:** `bool|string` 
 
@@ -225,7 +225,7 @@ empty.
 
 ### img\_sizes()
 
-`img_sizes( string $size = full )`
+`img_sizes( string $size = 'full' )`
 
 **Returns:** `bool|string` 
 

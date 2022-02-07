@@ -6,8 +6,8 @@ is_reference: true
 
 ## Overview
 
-*This class extends `Timber\Core`*  
-*This class implements `Timber\CoreInterface`, `Timber\MetaInterface`*  
+*This class extends `Timber\CoreEntity`*  
+  
 
 ### Properties
 
@@ -38,15 +38,12 @@ is_reference: true
 | <span class="method-name">[~~get_field~~()](#get_field)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets a menu item meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value.</span></span> |
 | <span class="method-name">[is_external()](#is_external)</span> | <span class="method-type">`bool`</span> | <span class="method-description">Checks to see if the menu item is an external link.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Whether the link is external or not.</span></span> |
 | <span class="method-name">[link()](#link)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the full link to a menu item.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> A full URL, like `http://mysite.com/thing/`.</span></span> |
-| <span class="method-name">[master_object()](#master_object)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Allows dev to access the "master object" (ex: post or page) the menu item represents<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Whatever object (Timber\Post, Timber\Term, etc.) the menu item represents.</span></span> |
+| <span class="method-name">[master_object()](#master_object)</span> | <span class="method-type">`mixed` or `null`</span> | <span class="method-description">Allows dev to access the "master object" (ex: post, page, category, post type object) the menu item represents<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Whatever object (Timber\Post, Timber\Term, etc.) the menu item represents.</span></span> |
 | <span class="method-name">[menu()](#menu)</span> | <span class="method-type">`\Timber\Menu`</span> | <span class="method-description">Timber Menu.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The `Timber\Menu` object the menu item is associated with.</span></span> |
-| <span class="method-name">[meta()](#meta)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Get a meta value of the menu item.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Whatever value is stored in the database. Null if no value could be found.</span></span> |
 | <span class="method-name">[name()](#name)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the label for the menu item.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The label for the menu item.</span></span> |
 | <span class="method-name">[path()](#path)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the relative path of the menu item’s link.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The path of a URL, like `/foo`.</span></span> |
-| <span class="method-name">[raw_meta()](#raw_meta)</span> | <span class="method-type">`null` or `mixed`</span> | <span class="method-description">Gets a menu item’s meta value directly from the database.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value. Null if no value could be found.</span></span> |
 | <span class="method-name">[slug()](#slug)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the slug for the menu item.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The URL-safe slug of the menu item.</span></span> |
 | <span class="method-name">[title()](#title)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the public label for the menu item.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The public label, like "Foo".</span></span> |
-| <span class="method-name">[type()](#type)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the type of the menu item.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The type of the menu item.</span></span> |
 
 </div>
 
@@ -99,9 +96,9 @@ Get the slug for the menu item.
 
 ### master\_object()
 
-Allows dev to access the "master object" (ex: post or page) the menu item represents
+Allows dev to access the "master object" (ex: post, page, category, post type object) the menu item represents
 
-**Returns:** `mixed` Whatever object (Timber\Post, Timber\Term, etc.) the menu item represents.
+**Returns:** `mixed|null` Whatever object (Timber\Post, Timber\Term, etc.) the menu item represents.
 
 **Twig**
 
@@ -161,70 +158,13 @@ In combination with `is_target_blank()`:
 
 ---
 
-### type()
-
-Get the type of the menu item.
-
-Depending on what is the menu item links to. Can be `post_type` for posts, pages and custom
-posts, `post_type_archive` for post type archive pages, `taxonomy` for terms or `custom` for
-custom links.
-
-**since** 1.0.4 
-
-**Returns:** `string` The type of the menu item.
-
----
-
 ### menu()
 
 Timber Menu.
 
-**since** 1.12.0 
+**since** 1.12.0
 
 **Returns:** `\Timber\Menu` The `Timber\Menu` object the menu item is associated with.
-
----
-
-### meta()
-
-Get a meta value of the menu item.
-
-Plugins like Advanced Custom Fields allow you to set custom fields for menu items.
-With this method you can retrieve the value of these.
-
-`meta( string $field_name = '', array $args = array() )`
-
-**Returns:** `mixed` Whatever value is stored in the database. Null if no value could be found.
-
-| Name | Type | Description |
-| --- | --- | --- |
-| $field_name | `string` | Optional. The field name for which you want to get the value. If no field name is provided, this function will fetch values for all custom fields. Default empty string. |
-| $args | `array` | An array of arguments for getting the meta value. Third-party integrations can use this argument to make their API arguments available in Timber. Default empty. |
-
-**Twig**
-
-```twig
-<a class="icon-{{ item.meta('icon') }}" href="{{ item.link }}">{{ item.title }}</a>
-```
-
----
-
-### raw\_meta()
-
-Gets a menu item’s meta value directly from the database.
-
-Returns a raw meta value for a menu item that’s saved in the post meta database table. Be
-aware that the value can still be filtered by plugins.
-
-**since** 2.0.0 
-
-`raw_meta( string $field_name = '' )`
-
-**Returns:** `null|mixed` The meta field value. Null if no value could be found.
-
-| Name | Type | Description |
-| --- | --- | --- |
-| $field_name | `string` | The field name for which you want to get the value. |
 
 ---
 

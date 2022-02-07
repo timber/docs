@@ -39,7 +39,7 @@ Timber::render('index.twig', $context);
 ## Overview
 
 *This class extends `Timber\CoreEntity`*  
-*This class implements `Timber\CoreInterface`, `Timber\MetaInterface`*  
+  
 
 ### Properties
 
@@ -329,7 +329,7 @@ Gets a comment meta value.
 
 Enqueue the WP threaded comments JavaScript, and fetch the reply link for various comments.
 
-`reply_link( string $reply_text = Reply )`
+`reply_link( string $reply_text = 'Reply' )`
 
 **Returns:** `string` 
 

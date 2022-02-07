@@ -17,7 +17,7 @@ is_reference: true
 | <span class="method-name">[get_current_url()](#get_current_url)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the current URL of the page</span> |
 | <span class="method-name">[get_full_path()](#get_full_path)</span> | <span class="method-type">`string`</span> | <span class="method-description"></span> |
 | <span class="method-name">[get_host()](#get_host)</span> | <span class="method-type">`string`</span> | <span class="method-description">Some setups like HTTP_HOST, some like SERVER_NAME, it's complicated<br><br><span class="method-return"><span class="method-return-label">Returns:</span> the HTTP_HOST or SERVER_NAME</span></span> |
-| <span class="method-name">[get_params()](#get_params)</span> | <span class="method-type">`array` or `string` or `bool`</span> | <span class="method-description">Returns the url path parameters, or a single parameter if given an index.</span> |
+| <span class="method-name">[get_params()](#get_params)</span> | <span class="method-type">`array` or `string` or `false`</span> | <span class="method-description">Returns the url path parameters, or a single parameter if given an index.</span> |
 | <span class="method-name">[get_path_base()](#get_path_base)</span> | <span class="method-type">`string`</span> | <span class="method-description"></span> |
 | <span class="method-name">[get_rel_path()](#get_rel_path)</span> | <span class="method-type">`string`</span> | <span class="method-description"></span> |
 | <span class="method-name">[get_rel_url()](#get_rel_url)</span> | <span class="method-type">`string`</span> | <span class="method-description"></span> |
@@ -64,7 +64,7 @@ Check to see if the URL begins with the string in question
 Because it's a URL we don't care about protocol (HTTP vs HTTPS)
 Or case (so it's cAsE iNsEnSeTiVe)
 
-`starts_with( $haystack, $starts_with )`
+`starts_with( mixed $haystack, mixed $starts_with )`
 
 **Returns:** `bool` 
 
@@ -293,7 +293,7 @@ Pass links through untrailingslashit unless they are a single /
 
 Removes the subcomponent of a URL regardless of protocol
 
-**since** 1.3.3 
+**since** 1.3.3
 
 `remove_url_component( string $haystack, string $needle )`
 
@@ -310,7 +310,7 @@ Removes the subcomponent of a URL regardless of protocol
 
 Swaps whatever protocol of a URL is sent. http becomes https and vice versa
 
-**since** 1.3.3 
+**since** 1.3.3
 
 `swap_protocol( string $url )`
 
@@ -345,7 +345,7 @@ non-existent index.
 
 `get_params( bool|int $i = false )`
 
-**Returns:** `array|string|bool` 
+**Returns:** `array|string|false` 
 
 | Name | Type | Description |
 | --- | --- | --- |

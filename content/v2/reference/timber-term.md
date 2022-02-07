@@ -46,7 +46,7 @@ Timber::render('index.twig', $context);
 ## Overview
 
 *This class extends `Timber\CoreEntity`*  
-*This class implements `Timber\CoreInterface`, `Timber\MetaInterface`*  
+  
 
 ### Properties
 
@@ -155,7 +155,7 @@ Gets posts that have the current term assigned.
 
 **see** https://timber.github.io/docs/v2/guides/posts/
 
-`posts( $query = [], string $post_type_or_class = null )`
+`posts( mixed $query = [], string $post_type_or_class = null )`
 
 **Returns:** `\Timber\PostQuery` 
 

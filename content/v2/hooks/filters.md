@@ -9,7 +9,7 @@ Filters whether to transform a meta value.
 
 If the filter returns `true`, all meta value will be transformed to Timber/standard PHP objects if possible.
 
-**since** 2.0.0 
+**since** 2.0.0
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -26,7 +26,7 @@ add_filter( 'timber/meta/transform_value', '__return_true' );
 
 Filters object meta data before it is fetched from the database.
 
-**since** 2.0.0 
+**since** 2.0.0
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -67,7 +67,7 @@ This filter is used by the ACF Integration.
 
 **see** [Timber\Post::meta()](/docs/reference/timber-post/#meta)
 
-**since** 2.0.0 
+**since** 2.0.0
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -108,6 +108,78 @@ Filters object meta data fetched from the database.
 
 **DEPRECATED** since 2.0.0, use `timber/{object_type}/meta`
 
+## timber/menu/classmap
+
+Filters the class(es) used for different menus.
+
+Read more about this in the documentation for [Menu Class Maps](https://timber.github.io/docs/v2/guides/class-maps/#the-menu-class-map).
+
+The default Menu Class Map will contain class names for locations that map to `Timber\Menu`.
+
+**since** 2.0.0
+
+| Name | Type | Description |
+| --- | --- | --- |
+| $classmap | `array` | The menu class(es) to use. An associative array where the key is the location and the value the name of the class to use for this menu or a callback that determines the class to use. |
+
+```
+add_filter( 'timber/menu/classmap', function( $classmap ) {
+    $custom_classmap = [
+        'primary'   => MenuPrimary::class,
+        'secondary' => MenuSecondary::class,
+    ];
+
+    return array_merge( $classmap, $custom_classmap );
+} );
+```
+
+## timber/menu/class
+
+Filters the menu class based on your custom criterias.
+
+Maybe the location is not appropriate in some cases. This filter will allow you to filter the class
+on whatever data is available.
+
+**since** 2.0.0
+
+| Name | Type | Description |
+| --- | --- | --- |
+| $class | `string` | The class to use. |
+| $term | `\WP_Term` | The menu term. |
+| $args | `array` | The arguments passed to the menu. |
+
+```
+add_filter( 'timber/menu/class', function( $class, $term, $args ) {
+    if ( $args['depth'] === 1 ) {
+        return SingleLevelMenu::class;
+    }
+
+    return MultiLevelMenu::class;
+}, 10, 3 );
+```
+
+## timber/menuitem/class
+
+Filters the menu item class
+
+**since** 2.0.0
+
+| Name | Type | Description |
+| --- | --- | --- |
+| $class | `string` | The class to use. |
+| $item | `\WP_Post` | The menu item. |
+| $menu | `\Menu` | The menu object. |
+
+```
+add_filter( 'timber/menuitem/class', function( $class, $item, $menu ) {
+    if ( $item->post_parent ) {
+        return SubMenuItem::class;
+    }
+
+    return MenuItem::class;
+}, 10, 3 );
+```
+
 ## timber/post/classmap
 
 Filters the class(es) used for different post types.
@@ -120,7 +192,7 @@ attachments that are images to `Timber\Image`.
 
 Make sure to merge in your additional classes instead of overwriting the whole Class Map.
 
-**since** 2.0.0 
+**since** 2.0.0
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -140,14 +212,14 @@ add_filter( 'timber/post/classmap', function( $classmap ) {
 } );
 ```
 
-## timber/user/classmap
+## timber/user/class
 
 Filters the name of the PHP class used to instantiate `Timber\User` objects.
 
 The User Class Map receives the default `Timber\User` class and a `WP_User` object. You
 should be able to decide which class to use based on that user object.
 
-**since** 2.0.0 
+**since** 2.0.0
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -160,7 +232,7 @@ should be able to decide which class to use based on that user object.
 use Administrator;
 use Editor;
 
-add_filter( 'timber/user/classmap', function( $class, \WP_User $user ) {
+add_filter( 'timber/user/class', function( $class, \WP_User $user ) {
     if ( in_array( 'editor', $user->roles, true ) ) {
         return Editor::class;
     } elseif ( in_array( 'author', $user->roles, true ) ) {
@@ -177,7 +249,7 @@ Filters the transient slug.
 
 This might be useful if you are using a multilingual solution.
 
-**since** 0.22.6 
+**since** 0.22.6
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -187,7 +259,7 @@ This might be useful if you are using a multilingual solution.
 
 Filters …
 
-**since** 2.0.0 
+**since** 2.0.0
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -206,7 +278,7 @@ Filters …
 Here is a description about the filter.
 `$slug` The transient slug.
 
-**since** 2.0.0 
+**since** 2.0.0
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -222,7 +294,7 @@ Filters …
 
 Filters the separator used for the page title.
 
-**since** 2.0.0 
+**since** 2.0.0
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -240,7 +312,7 @@ Filters the src URL for a `Timber\Image`.
 
 **see** [Timber\Image::src()](/docs/reference/timber-image/#src)
 
-**since** 0.21.7 
+**since** 0.21.7
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -257,7 +329,7 @@ Filters the src URL for a `Timber\Image`.
 
 Filters to directory that should be used for sideloaded images.
 
-**since** 2.0.0 
+**since** 2.0.0
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -281,7 +353,7 @@ Filters the URL for the resized version of a `Timber\Image`.
 
 You’ll probably need to use this in combination with `timber/image/new_path`.
 
-**since** 1.0.0 
+**since** 1.0.0
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -295,7 +367,7 @@ A possible use case for this would be to store all images generated by Timber in
 separate directory. You’ll probably need to use this in combination with
 `timber/image/new_url`.
 
-**since** 1.0.0 
+**since** 1.0.0
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -308,7 +380,7 @@ Filters the cache mode.
 You can read more about Caching in the
 [Performance/Caching]({{<relref "performance.md" >}}) guide.
 
-**since** 0.20.10 
+**since** 0.20.10
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -324,7 +396,7 @@ Filters the cache mode.
 
 Filters …
 
-**since** 0.20.10 
+**since** 0.20.10
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -341,7 +413,7 @@ Filters …
 
 Filters …
 
-**since** 0.20.10 
+**since** 0.20.10
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -361,7 +433,7 @@ Filters the template paths used by the Loader.
 
 **DEPRECATED** since 2.0.0, use `timber/locations`
 
-**since** 0.20.10 
+**since** 0.20.10
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -373,7 +445,7 @@ Filters …
 
 **link** <https://github.com/timber/timber/pull/1254>
 
-**since** 1.1.11 
+**since** 1.1.11
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -391,7 +463,7 @@ By default, Timber sets the following values:
 
 **link** <https://twig.symfony.com/doc/2.x/api.html#environment-options>
 
-**since** 1.9.5 
+**since** 1.9.5
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -423,22 +495,34 @@ function update_twig_environment_options( $options ) {
 
 Filters the cache location used for Twig.
 
-**DEPRECATED** since 2.0.0 
+**DEPRECATED** since 2.0.0
 
 Allows you to set a new cache location for Twig. If the folder doesn’t exist yet, it
 will be created automatically.
 
-**since** 0.20.10 
+**since** 0.20.10
 
 | Name | Type | Description |
 | --- | --- | --- |
 | $twig_cache_loc | `string` | Full path to the cache location. Default `/cache/twig` in the Timber root folder. |
 
+## timber/cache/enable\_extension
+
+Filters the cache extension activation
+
+Allows users to disable the cache extension and use their own
+
+**since** 2.0.0
+
+| Name | Type | Description |
+| --- | --- | --- |
+| $enable_cache_extension | `bool` |  |
+
 ## timber/loader/twig
 
 Filters …
 
-**since** 0.20.10 
+**since** 0.20.10
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -451,7 +535,7 @@ Filters the Twig environment used in the global context.
 You can use this filter if you want to add additional functionality to Twig, like global
 variables, filters or functions.
 
-**since** 0.21.9 
+**since** 0.21.9
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -485,13 +569,13 @@ add_filter( 'timber/twig', function( $twig ) {
 
 Filters the Twig environment used in the global context.
 
-**DEPRECATED** since 2.0.0 
+**DEPRECATED** since 2.0.0
 
 ## timber/locations
 
 Filters …
 
-**since** 0.20.10 
+**since** 0.20.10
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -511,7 +595,7 @@ This filter is used by the ACF Integration.
 
 **see** [Timber\Post::field_object()](/docs/reference/timber-post/#field_object)
 
-**since** 1.6.0 
+**since** 1.6.0
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -528,7 +612,7 @@ This filter is used by the CoAuthorsPlus integration.
 
 **see** [Timber\Post::authors()](/docs/reference/timber-post/#authors)
 
-**since** 1.1.4 
+**since** 1.1.4
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -544,7 +628,7 @@ post. When this filter returns `true`, a password form will be shown instead of 
 post content. If you want to modify the form itself, you can use the
 `timber/post/content/password_form` filter.
 
-**since** 1.1.4 
+**since** 1.1.4
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -565,7 +649,7 @@ As an alternative to this filter, you could also use WordPress’s `the_password
 The difference to this filter is, that you’ll also have the post object available as a second
 parameter, in case you need that.
 
-**since** 1.1.4 
+**since** 1.1.4
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -585,7 +669,7 @@ add_filter( 'timber/post/content/password_form', function( $form, $post ) {
 
 Filters the default options used for post excerpts.
 
-**since** 2.0.0 
+**since** 2.0.0
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -609,7 +693,7 @@ add_filter( 'timber/post/excerpt/defaults', function( $defaults ) {
 
 Filters the CSS class used for excerpt links.
 
-**since** 2.0.0 
+**since** 2.0.0
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -628,15 +712,15 @@ add_filter( 'timber/post/excerpt/read_more_class', function( $class ) {
 
 Filters the CSS class used for excerpt links.
 
-**DEPRECATED** since 2.0.0 
+**DEPRECATED** since 2.0.0
 
-**since** 1.0.4 
+**since** 1.0.4
 
 ## timber/post/excerpt/read\_more\_link
 
 Filters the link used for a read more text in an excerpt.
 
-**since** 2.0.0 
+**since** 2.0.0
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -647,15 +731,15 @@ Filters the link used for a read more text in an excerpt.
 
 Filters the link used for a read more text in an excerpt.
 
-**DEPRECATED** since 2.0.0 
+**DEPRECATED** since 2.0.0
 
-**since** 1.1.3 
+**since** 1.1.3
 
 ## timber/site/update\_option
 
 Filters a value before it is updated in the site options.
 
-**since** 2.0.0 
+**since** 2.0.0
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -670,7 +754,7 @@ Filters a value before it is updated in the site options.
 
 **DEPRECATED** since 2.0.0, use `timber/site/update_option`
 
-**since** 0.20.0 
+**since** 0.20.0
 
 ## timber/term/link
 
@@ -678,7 +762,7 @@ Filters the link to the term archive page.
 
 **see** [Timber\Term::link()](/docs/reference/timber-term/#link)
 
-**since** 0.21.9 
+**since** 0.21.9
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -697,7 +781,7 @@ Filters the relative link (path) to a term archive page.
 
 **see** [Timber\Term::path()](/docs/reference/timber-term/#path)
 
-**since** 0.21.9 
+**since** 0.21.9
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -734,7 +818,7 @@ in Twig), you can use this filter to set the allowed tags.
 
 **see** [Timber\TextHelper::trim_words()](/docs/reference/timber-texthelper/#trim_words)
 
-**since** 0.21.9 
+**since** 0.21.9
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -744,7 +828,7 @@ in Twig), you can use this filter to set the allowed tags.
 
 Filters the integrations that should be initialized by Timber.
 
-**since** 2.0.0 
+**since** 2.0.0
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -764,7 +848,7 @@ first time. That’s why you should add this filter before you call
 
 **see** [Timber\Timber::context()](/docs/reference/timber-timber/#context)
 
-**since** 0.21.7 
+**since** 0.21.7
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -812,7 +896,7 @@ Filters the global Timber context.
 
 Filters the Twig template that should be rendered.
 
-**since** 2.0.0 
+**since** 2.0.0
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -828,7 +912,7 @@ Filters the Twig file that should be rendered.
 
 Filters the Twig template that should be compiled.
 
-**since** 2.0.0 
+**since** 2.0.0
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -838,13 +922,13 @@ Filters the Twig template that should be compiled.
 
 Filters the Twig template that should be compiled.
 
-**DEPRECATED** since 2.0.0 
+**DEPRECATED** since 2.0.0
 
 ## timber/render/data
 
 Filters the data that should be passed for rendering a Twig template.
 
-**since** 2.0.0 
+**since** 2.0.0
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -855,13 +939,13 @@ Filters the data that should be passed for rendering a Twig template.
 
 Filters the data that should be passed for rendering a Twig template.
 
-**DEPRECATED** since 2.0.0 
+**DEPRECATED** since 2.0.0
 
 ## timber/compile/data
 
 Filters the data that should be passed for compiling a Twig template.
 
-**since** 2.0.0 
+**since** 2.0.0
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -880,7 +964,7 @@ Filters the compiled result before it is returned in `Timber::compile()`.
 
 It adds the posibility to filter the output ready for render.
 
-**since** 2.0.0 
+**since** 2.0.0
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -894,7 +978,7 @@ Filters the compiled result before it is returned.
 
 **see** [Timber\Timber::fetch()](/docs/reference/timber-timber/#fetch)
 
-**since** 0.16.7 
+**since** 0.16.7
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -911,7 +995,7 @@ a `callable` entry.
 This is an alternative filter that you can use instead of adding your function in the
 `timber/twig` filter.
 
-**since** 2.0.0 
+**since** 2.0.0
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -949,7 +1033,7 @@ a `callable` entry.
 This is an alternative filter that you can use instead of adding your filter in the
 `timber/twig` filter.
 
-**since** 2.0.0 
+**since** 2.0.0
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -984,7 +1068,7 @@ This filter is used by the WPML integration.
 
 **see** [Timber\URLHelper::url_to_file_system()](/docs/reference/timber-urlhelper/#url_to_file_system)
 
-**since** 1.3.2 
+**since** 1.3.2
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -1004,7 +1088,7 @@ This filter is used by the WPML integration.
 
 **see** [Timber\URLHelper::file_system_to_url()](/docs/reference/timber-urlhelper/#file_system_to_url)
 
-**since** 1.3.2 
+**since** 1.3.2
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -1020,7 +1104,7 @@ Filters the home URL …
 
 Filters the home URL that is used to get the path relative to the content directory.
 
-**since** 1.3.2 
+**since** 1.3.2
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -1036,7 +1120,7 @@ Filters the home URL that is used to get the path relative to the content direct
 
 Filters the name of a user.
 
-**since** 1.1.4 
+**since** 1.1.4
 
 | Name | Type | Description |
 | --- | --- | --- |

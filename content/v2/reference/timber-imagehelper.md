@@ -43,7 +43,7 @@ Generates a new image with the specified dimensions.
 
 New dimensions are achieved by cropping to maintain ratio.
 
-`resize( string $src, int|string $w, int $h = '', string $crop = default, bool $force = false )`
+`resize( string $src, int|string $w, int $h = '', string $crop = 'default', bool $force = false )`
 
 **Returns:** `string` The URL of the resized image.
 
@@ -122,7 +122,7 @@ New dimensions are achieved by adding colored bands to maintain ratio.
 
 Generates a new image by converting the source GIF or PNG into JPG.
 
-`img_to_jpg( string $src, string $bghex = #FFFFFF, $force = false )`
+`img_to_jpg( string $src, string $bghex = '#FFFFFF', mixed $force = false )`
 
 **Returns:** `string` The URL of the processed image.
 

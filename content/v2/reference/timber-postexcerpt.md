@@ -133,7 +133,7 @@ Restricts the length of the excerpt to a certain amount of characters.
 
 Defines the text to end the excerpt with.
 
-`end( string $end = &hellip; )`
+`end( string $end = '&hellip;' )`
 
 **Returns:** `\Timber\PostExcerpt` 
 
@@ -179,7 +179,7 @@ Defines the text to be used for the "Read More" link.
 
 Set this to `false` to not add a "Read More" link.
 
-`read_more( string $text = Read More )`
+`read_more( string $text = 'Read More' )`
 
 **Returns:** `\Timber\PostExcerpt` 
 

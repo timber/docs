@@ -35,9 +35,9 @@ This function can be useful for excerpt of the post
 As opposed to wp_trim_words trims characters that makes text to
 take the same amount of space in each post for example
 
-**since** 1.2.0 
+**since** 1.2.0
 
-`trim_characters( string $text, int $num_chars = 60, string $more = &hellip; )`
+`trim_characters( string $text, int $num_chars = 60, string $more = '&hellip;' )`
 
 **Returns:** `string` trimmed text.
 
@@ -51,7 +51,7 @@ take the same amount of space in each post for example
 
 ### trim\_words()
 
-`trim_words( string $text, int $num_words = 55, string|null|bool $more = null, string $allowed_tags = p a span b i br blockquote )`
+`trim_words( string $text, int $num_words = 55, string|null|false $more = null, string $allowed_tags = 'p a span b i br blockquote' )`
 
 **Returns:** `string` 
 
@@ -59,14 +59,14 @@ take the same amount of space in each post for example
 | --- | --- | --- |
 | $text | `string` |  |
 | $num_words | `int` |  |
-| $more | `string` or `null` or `bool` | text to appear in "Read more...". Null to use default, false to hide |
+| $more | `string` or `null` or `false` | text to appear in "Read more...". Null to use default, false to hide |
 | $allowed_tags | `string` |  |
 
 ---
 
 ### remove\_tags()
 
-`remove_tags(  $string, array $tags = array() )`
+`remove_tags( mixed $string, array $tags = array() )`
 
 **Returns:** `null|string|string[]` 
 
