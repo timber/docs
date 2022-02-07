@@ -2,7 +2,7 @@
   "name": "timber/docs",
   "type": "library",
   "description": "Generate reference documentation for PHP classes used in Timber",
-  "homepage": "http://timber.upstatement.com",
+  "homepage": "https://timber.github.io/docs/",
   "license": "MIT",
   "version": "2.0.0",
   "authors": [
@@ -13,9 +13,7 @@
     }
   ],
   "require": {
-    "php": ">=7.0.0",
-    "timber/teak": "1.*"
-  },
-  "minimum-stability": "alpha",
-  "prefer-stable": true
+    "php": ">=7.4.0",
+    "timber/teak": "^1.0"
+  }
 }
