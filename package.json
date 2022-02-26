@@ -38,7 +38,7 @@
     "markdown-it-anchor": "^6.0.1",
     "nunjucks": "^3.2.2",
     "postcss": "^8.2.2",
-    "prismjs": "^1.22.0",
+    "prismjs": "^1.27.0",
     "sass": "^1.32.0",
     "sass-loader": "^10.1.0",
     "slugify": "^1.4.6",
