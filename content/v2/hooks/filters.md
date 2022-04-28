@@ -108,6 +108,29 @@ Filters object meta data fetched from the database.
 
 **DEPRECATED** since 2.0.0, use `timber/{object_type}/meta`
 
+## timber/comment/class
+
+Filters the comment class based on your custom criteria.
+
+Maybe you want to set a custom class based upon the comment type?
+This allows you to filter the PHP class, utilizing data from the WP_Comment object.
+
+**since** 2.0.0
+
+| Name | Type | Description |
+| --- | --- | --- |
+| $class | `string` | The class to use. |
+| $comment | `\WP_Comment` | The comment object. |
+
+```
+add_filter( 'timber/comment/class', function( $class, $comment ) {
+    if ( $comment->comment_type === 'pingback' ) {
+        return PingBackComment::class;
+    }
+    return $class;
+}, 10, 2 );
+```
+
 ## timber/menu/classmap
 
 Filters the class(es) used for different menus.
@@ -210,6 +233,54 @@ add_filter( 'timber/post/classmap', function( $classmap ) {
 
     return array_merge( $classmap, $custom_classmap );
 } );
+```
+
+## timber/post/class
+
+Filters the post class based on your custom criteria.
+
+Maybe you want to set a custom class based upon how blocks are used?
+This allows you to filter the PHP class, utilizing data from the WP_Post object.
+
+**since** 2.0.0
+
+| Name | Type | Description |
+| --- | --- | --- |
+| $class | `string` | The class to use. |
+| $post | `\WP_Post` | The post object. |
+
+```
+add_filter( 'timber/post/class', function( $class, $post ) {
+    if ( has_blocks($post) ) {
+        return GutenbergPost::class;
+    }
+
+    return $class;
+}, 10, 2 );
+```
+
+## timber/term/class
+
+Filters the term class based on your custom criteria.
+
+Maybe you want to set a custom class based upon a certain category?
+This allows you to filter the PHP class, utilizing data from the WP_Term object.
+
+**since** 2.0.0
+
+| Name | Type | Description |
+| --- | --- | --- |
+| $class | `string` | The class to use. |
+| $term | `\WP_Term` | The term object. |
+
+```
+add_filter( 'timber/term/class', function( $class, $term ) {
+    if ( get_term_meta($term->term_id, 'is_special_category', true) ) {
+        return MyCustomTermClass::class;
+    }
+
+    return $class;
+}, 10, 2 );
 ```
 
 ## timber/user/class
@@ -508,7 +579,7 @@ will be created automatically.
 
 ## timber/cache/enable\_extension
 
-Filters the cache extension activation
+Filters the cache extension activation.
 
 Allows users to disable the cache extension and use their own
 
@@ -516,7 +587,7 @@ Allows users to disable the cache extension and use their own
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $enable_cache_extension | `bool` |  |
+| $enable_cache_extension | `bool` | Whether to enable the cache extension. |
 
 ## timber/loader/twig
 

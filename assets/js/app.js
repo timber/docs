@@ -3,7 +3,9 @@ import Turbolinks from 'turbolinks';
 
 Turbolinks.start();
 
-slideup();
+document.addEventListener('turbolinks:load', () => {
+  slideup();
+})
 
 /**
  * Keep scroll position in sidebar.
@@ -15,13 +17,13 @@ function findElements() {
 
 const scrollTops = {};
 
-addEventListener('turbolinks:before-render', function() {
+document.addEventListener('turbolinks:before-render', function() {
   findElements().forEach(function(element) {
     scrollTops[element.id] = element.scrollTop;
   });
 });
 
-addEventListener('turbolinks:render', function() {
+document.addEventListener('turbolinks:render', function() {
   findElements().forEach(function(element) {
     if (scrollTops[element.id]) {
       element.scrollTop = scrollTops[element.id];

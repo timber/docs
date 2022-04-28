@@ -1,5 +1,5 @@
 <!-- Algolia Docsearch -->
-<script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
 <script>
   docsearch({
     appId: '7REN4GR6X4',
@@ -10,16 +10,14 @@
      * @link https://github.com/algolia/docsearch-configs/blob/master/configs/timber.json
      */
     indexName: 'timber',
-    inputSelector: '#search-input',
+    container: '#docsearch',
     /**
      * Filter for different doc versions.
      *
      * @link https://www.algolia.com/doc/api-reference/api-parameters/facetFilters/
      */
-    algoliaOptions: {
-      facetFilters: [
-        'version:{{ version }}'
-      ]
+    searchParameters: {
+      facetFilters: ['version:{{ version }}']
     },
     // Set debug to true if you want to inspect the dropdown.
     // debug: true
