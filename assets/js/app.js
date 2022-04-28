@@ -1,9 +1,12 @@
 import { slideup } from './navigation';
 import Turbolinks from 'turbolinks';
+import { domReady } from './domready';
 
 Turbolinks.start();
 
-slideup();
+domReady(() => {
+  slideup();
+});
 
 /**
  * Keep scroll position in sidebar.
