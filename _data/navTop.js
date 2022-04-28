@@ -1,7 +1,7 @@
 module.exports = [
   {
     name: 'About Timber',
-    url: 'http://upstatement.com/timber/'
+    url: 'https://upstatement.com/timber/'
   },
   {
     name: 'Twig Docs',
