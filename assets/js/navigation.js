@@ -68,9 +68,9 @@ export function slideup() {
       this.el.$close.addEventListener('click', this.listeners.close);
 
       // Add support for Turbolinks
-      document.addEventListener('turbolinks:visit', this.listeners.close);
+      document.addEventListener('turbolinks:load', this.listeners.close);
       document.addEventListener(
-        'turbolinks:visit',
+        'turbolinks:load',
         this.listeners.transitionCompleteClose
       );
 
