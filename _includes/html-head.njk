@@ -1,5 +1,13 @@
 <!DOCTYPE html>
-<html lang="{{ site.languageCode }}">
+<html
+    lang="{{ site.languageCode }}"
+    {##
+     # Dark theme for Algolia Docsearch.
+     #
+     # @link https://github.com/algolia/docsearch/blob/1219a68b6765959450bb54591d5cd2c2f3c7ca5c/packages/docsearch-css/src/_variables.css#L51
+     ##}
+    data-theme="dark"
+>
 <head>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126807198-1"></script>
@@ -25,7 +33,7 @@
     <meta name="docsearch:version" content="{{ version }}" />
 
 	<!-- Algolia Docsearch -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
 	<!-- Doc Styles -->
     <link rel="stylesheet" href="{{ '/build/css/styles.css'|manifest(mixManifest)|url }}">
