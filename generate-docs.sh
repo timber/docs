@@ -41,18 +41,18 @@ echo -e "---\ntitle: \"Contributing to Timber\"\nlayout: \"page\"\n---" | cat - 
 ################################################################################
 
 # Main reference
-./vendor/bin/teak generate:class-reference ../timber/lib --output ./content/v2/reference --front_matter_style=YAML
+./vendor/bin/teak generate:class-reference ../timber/src --output ./content/v2/reference --front_matter_style=YAML
 
 # WooCommerce integration
-# ./vendor/bin/teak generate:class-reference ../timber-integration-woocommerce/lib --output ./content/integrations/woocommerce/reference --front_matter_style=YAML
+# ./vendor/bin/teak generate:class-reference ../timber-integration-woocommerce/src --output ./content/integrations/woocommerce/reference --front_matter_style=YAML
 
 ################################################################################
 # Build hook documentation.
 ################################################################################
 
 # Main hooks
-./vendor/bin/teak generate:hook-reference ../timber/lib --output ./content/v2/hooks --hook_type="filter" --hook_prefix="timber" --front_matter_style="YAML" --class_reference_path="/docs/reference"
-./vendor/bin/teak generate:hook-reference ../timber/lib --output ./content/v2/hooks --hook_type="action" --hook_prefix="timber" --front_matter_style="YAML" --class_reference_path="/docs/reference"
+./vendor/bin/teak generate:hook-reference ../timber/src --output ./content/v2/hooks --hook_type="filter" --hook_prefix="timber" --front_matter_style="YAML" --class_reference_path="/docs/reference"
+./vendor/bin/teak generate:hook-reference ../timber/src --output ./content/v2/hooks --hook_type="action" --hook_prefix="timber" --front_matter_style="YAML" --class_reference_path="/docs/reference"
 
 ################################################################################
 # Sitemap
