@@ -59,18 +59,19 @@ the arguments that can be used for the `$query` parameter.
 **PHP**
 
 ```php
-// Get posts from default query
+// Get posts from default query.
 global $wp_query;
+
 $posts = Timber::get_posts( $wp_query );
 
-// Using the WP_Query argument format
+// Using the WP_Query argument format.
 $posts = Timber::get_posts( [
     'post_type'     => 'article',
     'category_name' => 'sports',
 ] );
 
-// Passing a WP_Query instance
-$posts = Timber::get_posts( new WP_Query( 'post_type=any' ) );
+// Passing a WP_Query instance.
+$posts = Timber::get_posts( new WP_Query( [ 'post_type' => 'any' ) );
 ```
 
 ---
@@ -83,7 +84,7 @@ Refer to the [Pagination Guide]({{< relref "../guides/pagination.md" >}}) for a 
 
 Optionally could be used to get pagination with custom preferences.
 
-`pagination( array $prefs = array() )`
+`pagination( array $prefs = [] )`
 
 **Returns:** `\Timber\Pagination` object
 

@@ -167,14 +167,14 @@ Returns the link to the site's home.
 
 ```twig
 <a href="{{ site.link }}" title="Home">
-	  <img src="/wp-content/uploads/logo.png" alt="Logo for some stupid thing" />
+      <img src="/wp-content/uploads/logo.png" alt="Logo for some stupid thing" />
 </a>
 ```
 **HTML**
 
 ```html
 <a href="http://example.org" title="Home">
-	  <img src="/wp-content/uploads/logo.png" alt="Logo for some stupid thing" />
+      <img src="/wp-content/uploads/logo.png" alt="Logo for some stupid thing" />
 </a>
 ```
 

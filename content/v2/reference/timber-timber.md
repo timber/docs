@@ -40,29 +40,31 @@ Timber::render( 'index.twig', $context );
 | <span class="method-name">[context()](#context)</span> | <span class="method-type">`array`</span> | <span class="method-description">Gets the global context.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> An array of context variables that is used to pass into Twig templates through a render or compile function.</span></span> |
 | <span class="method-name">[context_global()](#context_global)</span> | <span class="method-type">`array`</span> | <span class="method-description">Gets the global context.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> An array of global context variables.</span></span> |
 | <span class="method-name">[~~fetch~~()](#fetch)</span> | <span class="method-type">`bool` or `string`</span> | <span class="method-description">Fetch function.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The returned output.</span></span> |
-| <span class="method-name">[get_attachment()](#get_attachment)</span> | <span class="method-type">`\Timber\Attachment` or `false`</span> | <span class="method-description">Behaves just like Timber::get_post(), except that it returns false if it finds a Post that is not an Attachment. Honors Class Maps and falsifies return value *after* Class Map for the found Post has been resolved.</span> |
-| <span class="method-name">[get_attachment_by()](#get_attachment_by)</span> | <span class="method-type">`\Timber\Attachment` or `false`</span> | <span class="method-description">Gets an attachment by its URL or absolute file path.</span> |
-| <span class="method-name">[get_comment()](#get_comment)</span> | <span class="method-type">`\Timber\Comment` or `null`</span> | <span class="method-description">Get comment.</span> |
+| <span class="method-name">[get_attachment()](#get_attachment)</span> | <span class="method-type">`\Timber\Attachment` or `null`</span> | <span class="method-description">Gets an attachment.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Timber\Attachment object if an attachment was found, null if no attachment was found.</span></span> |
+| <span class="method-name">[get_attachment_by()](#get_attachment_by)</span> | <span class="method-type">`\Timber\Attachment` or `null`</span> | <span class="method-description">Gets an attachment by its URL or absolute file path.</span> |
+| <span class="method-name">[get_comment()](#get_comment)</span> | <span class="method-type">`\Timber\Comment` or `null`</span> | <span class="method-description">Gets comment.</span> |
 | <span class="method-name">[get_comments()](#get_comments)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Get comments.</span> |
 | <span class="method-name">[~~get_context~~()](#get_context)</span> | <span class="method-type">`array`</span> | <span class="method-description">Get context.</span> |
-| <span class="method-name">[get_image()](#get_image)</span> | <span class="method-type">`\Timber\Image` or `false`</span> | <span class="method-description">Behaves just like Timber::get_post(), except that it returns false if it finds a Post that is not an Image. Honors Class Maps and falsifies return value *after* Class Map for the found Post has been resolved.</span> |
-| <span class="method-name">[get_menu()](#get_menu)</span> | <span class="method-type">`\Timber\Menu` or `false`</span> | <span class="method-description">Gets a nav menu object.</span> |
+| <span class="method-name">[get_image()](#get_image)</span> | <span class="method-type">`\Timber\Image` or `null`</span> | <span class="method-description">Gets an image.</span> |
+| <span class="method-name">[get_menu()](#get_menu)</span> | <span class="method-type">`\Timber\Menu` or `null`</span> | <span class="method-description">Gets a nav menu object.</span> |
+| <span class="method-name">[get_menu_by()](#get_menu_by)</span> | <span class="method-type">`\Timber\Menu` or `null`</span> | <span class="method-description">Gets a menu by field.</span> |
+| <span class="method-name">[get_pages_menu()](#get_pages_menu)</span> | <span class="method-type"></span> | <span class="method-description">Gets a menu from the existing pages.</span> |
 | <span class="method-name">[~~get_pagination~~()](#get_pagination)</span> | <span class="method-type">`array` or `mixed`</span> | <span class="method-description">Get pagination.</span> |
-| <span class="method-name">[get_post()](#get_post)</span> | <span class="method-type">`\Timber\Post` or `bool`</span> | <span class="method-description">Get a Timber Post from a post ID, WP_Post object, a WP_Query object, or an associative array of arguments for WP_Query::__construct().<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Timber\Post object if a post was found, false if no post was found.</span></span> |
-| <span class="method-name">[get_post_by()](#get_post_by)</span> | <span class="method-type">`\Timber\Post` or `false`</span> | <span class="method-description">Gets a post by title or slug.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> A Timber post or `false` if no post could be found. If multiple posts with the same slug or title were found, it will select the post with the oldest date.</span></span> |
-| <span class="method-name">[get_posts()](#get_posts)</span> | <span class="method-type">`array` or `bool` or `null`</span> | <span class="method-description">Get posts.</span> |
+| <span class="method-name">[get_post()](#get_post)</span> | <span class="method-type">`\Timber\Post` or `null`</span> | <span class="method-description">Gets a Timber Post from a post ID, WP_Post object, a WP_Query object, or an associative array of arguments for WP_Query::__construct().<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Timber\Post object if a post was found, null if no post was found.</span></span> |
+| <span class="method-name">[get_post_by()](#get_post_by)</span> | <span class="method-type">`\Timber\Post` or `null`</span> | <span class="method-description">Gets a post by title or slug.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> A Timber post or `null` if no post could be found. If multiple posts with the same slug or title were found, it will select the post with the oldest date.</span></span> |
+| <span class="method-name">[get_posts()](#get_posts)</span> | <span class="method-type">`\Timber\PostCollectionInterface` or `null`</span> | <span class="method-description">Gets a collection of posts.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Null if no query could be run with the used query parameters.</span></span> |
 | <span class="method-name">[get_sidebar()](#get_sidebar)</span> | <span class="method-type">`bool` or `string`</span> | <span class="method-description">Get sidebar.</span> |
 | <span class="method-name">[get_sidebar_from_php()](#get_sidebar_from_php)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get sidebar from PHP</span> |
 | <span class="method-name">[get_sites()](#get_sites)</span> | <span class="method-type">`array`</span> | <span class="method-description">Get sites.</span> |
-| <span class="method-name">[get_term()](#get_term)</span> | <span class="method-type">`\Timber\Term` or `false`</span> | <span class="method-description">Get term.</span> |
+| <span class="method-name">[get_term()](#get_term)</span> | <span class="method-type">`\Timber\Term` or `null`</span> | <span class="method-description">Gets a term.</span> |
 | <span class="method-name">[get_term_by()](#get_term_by)</span> | <span class="method-type">`\Timber\Term` or `null`</span> | <span class="method-description">Gets a term by field.</span> |
 | <span class="method-name">[get_terms()](#get_terms)</span> | <span class="method-type">`iterable`</span> | <span class="method-description">Gets terms.</span> |
-| <span class="method-name">[get_user()](#get_user)</span> | <span class="method-type">`\Timber\User` or `false`</span> | <span class="method-description">Gets a single user.</span> |
+| <span class="method-name">[get_user()](#get_user)</span> | <span class="method-type">`\Timber\User` or `null`</span> | <span class="method-description">Gets a single user.</span> |
 | <span class="method-name">[get_user_by()](#get_user_by)</span> | <span class="method-type">`\Timber\User` or `null`</span> | <span class="method-description">Gets a user by field.</span> |
 | <span class="method-name">[get_users()](#get_users)</span> | <span class="method-type">`\Iterable`</span> | <span class="method-description">Gets one or more users as an array.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> An array of users objects. Will be empty if no users were found.</span></span> |
 | <span class="method-name">[get_widgets()](#get_widgets)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get widgets.</span> |
 | <span class="method-name">[~~query_post~~()](#query_post)</span> | <span class="method-type">`\Timber\Post` or `array` or `bool` or `null`</span> | <span class="method-description">Query post.</span> |
-| <span class="method-name">[~~query_posts~~()](#query_posts)</span> | <span class="method-type">`\Timber\PostCollection`</span> | <span class="method-description">Query posts.</span> |
+| <span class="method-name">[~~query_posts~~()](#query_posts)</span> | <span class="method-type">`\Timber\PostCollectionInterface`</span> | <span class="method-description">Query posts.</span> |
 | <span class="method-name">[render()](#render)</span> | <span class="method-type">`bool` or `string`</span> | <span class="method-description">Render function.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The echoed output.</span></span> |
 | <span class="method-name">[render_string()](#render_string)</span> | <span class="method-type">`bool` or `string`</span> | <span class="method-description">Render a string with Twig variables.</span> |
 
@@ -73,7 +75,7 @@ Timber::render( 'index.twig', $context );
 
 ### get\_post()
 
-Get a Timber Post from a post ID, WP_Post object, a WP_Query object, or an associative
+Gets a Timber Post from a post ID, WP_Post object, a WP_Query object, or an associative
 array of arguments for WP_Query::__construct().
 
 By default, Timber will use the `Timber\Post` class to create a new post object. To control
@@ -83,7 +85,7 @@ which class is instantiated for your Post object, use [Class Maps](https://timbe
 
 `get_post( mixed $query = false, array $options = [] )`
 
-**Returns:** `\Timber\Post|bool` Timber\Post object if a post was found, false if no post was
+**Returns:** `\Timber\Post|null` Timber\Post object if a post was found, null if no post was
 found.
 
 | Name | Type | Description |
@@ -120,54 +122,87 @@ $post = Timber::get_post( get_field('associated_post_id') ); // Better!
 
 ### get\_attachment()
 
-Behaves just like Timber::get_post(), except that it returns false if it
-finds a Post that is not an Attachment. Honors Class Maps and falsifies return
-value *after* Class Map for the found Post has been resolved.
+Gets an attachment.
+
+Behaves just like Timber::get_post(), except that it returns null if it finds a Timber\Post
+that is not an Attachment. Honors Class Maps and falsifies return value *after* Class Map for
+the found Timber\Post has been resolved.
 
 **see** [Timber\Timber::get_post()](../timber-timber/#get_post)
 
+**since** 2.0.0
+
 `get_attachment( mixed $query = false, array $options = [] )`
 
-**Returns:** `\Timber\Attachment|false` 
+**Returns:** `\Timber\Attachment|null` Timber\Attachment object if an attachment was found, null if no
+attachment was found.
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $query | `mixed` | query or post identifier |
-| $options | `array` | options to ::get_post() |
+| $query | `mixed` | Optional. Query or post identifier. Default false. |
+| $options | `array` | Optional. Options for Timber\Timber::get_post(). |
 
 ---
 
 ### get\_image()
 
-Behaves just like Timber::get_post(), except that it returns false if it
-finds a Post that is not an Image. Honors Class Maps and falsifies return
-value *after* Class Map for the found Post has been resolved.
+Gets an image.
+
+Behaves just like Timber::get_post(), except that it returns null if it finds a Timber\Post
+that is not an Image. Honors Class Maps and falsifies return value *after* Class Map for the
+found Timber\Post has been resolved.
 
 **see** [Timber\Timber::get_post()](../timber-timber/#get_post)
 
+**since** 2.0.0
+
 `get_image( mixed $query = false, array $options = [] )`
 
-**Returns:** `\Timber\Image|false` 
+**Returns:** `\Timber\Image|null` 
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $query | `mixed` | query or post identifier |
-| $options | `array` | options to ::get_post() |
+| $query | `mixed` | Optional. Query or post identifier. Default false. |
+| $options | `array` | Optional. Options for Timber\Timber::get_post(). |
 
 ---
 
 ### get\_posts()
 
-Get posts.
+Gets a collection of posts.
+
+Refer to the official documentation for
+[WP_Query](https://developer.wordpress.org/reference/classes/wp_query/) for a list of all
+the arguments that can be used for the `$query` parameter.
 
 `get_posts( mixed $query = false, array $options = [] )`
 
-**Returns:** `array|bool|null` 
+**Returns:** `\Timber\PostCollectionInterface|null` Null if no query could be run with the used
+query parameters.
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $query | `mixed` |  |
-| $options | `array` |  |
+| $query | `mixed` | Optional. Query args. Default `false`, which means that Timber will use the global query. Accepts an array of `WP_Query` arguments, a `WP_Query` instance or a list of post IDs. |
+| $options | `array` | Optional. Options for the query.<br><br><ul><li>**$merge_default**<br>`bool` Merge query parameters with the default query parameters of the current template. Default false.</li></ul> |
+
+**PHP**
+
+```php
+// Use the global query.
+$posts = Timber::get_posts();
+
+// Using the WP_Query argument format.
+$posts = Timber::get_posts( [
+   'post_type'     => 'article',
+   'category_name' => 'sports',
+] );
+
+// Using a WP_Query instance.
+$posts = Timber::get_posts( new WP_Query( [ 'post_type' => 'any' ) );
+
+// Using an array of post IDs.
+$posts = Timber::get_posts( [ 47, 543, 3220 ] );
+```
 
 ---
 
@@ -177,9 +212,9 @@ Gets a post by title or slug.
 
 **since** 2.0.0
 
-`get_post_by( string $type, string $search_value, array $args = array() )`
+`get_post_by( string $type, string $search_value, array $args = [] )`
 
-**Returns:** `\Timber\Post|false` A Timber post or `false` if no post could be found. If multiple
+**Returns:** `\Timber\Post|null` A Timber post or `null` if no post could be found. If multiple
 posts with the same slug or title were found, it will select the
 post with the oldest date.
 
@@ -226,7 +261,7 @@ Query posts.
 
 `query_posts( mixed $query = false, array $options = [] )`
 
-**Returns:** `\Timber\PostCollection` 
+**Returns:** `\Timber\PostCollectionInterface` 
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -246,7 +281,7 @@ attachment is identified as an image. Also honors Class Maps.
 
 `get_attachment_by( string $field_or_ident, string $ident = '' )`
 
-**Returns:** `\Timber\Attachment|false` 
+**Returns:** `\Timber\Attachment|null` 
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -311,15 +346,15 @@ $cats = Timber::get_terms( [
 
 ### get\_term()
 
-Get term.
+Gets a term.
 
 `get_term( int|\WP_Term $term = null )`
 
-**Returns:** `\Timber\Term|false` 
+**Returns:** `\Timber\Term|null` 
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $term | `int` or `\WP_Term` | a WP_Term or term_id |
+| $term | `int` or `\WP_Term` | A WP_Term or term_id |
 
 **PHP**
 
@@ -413,7 +448,7 @@ control which class is used for your post objects, use [Class Maps]().
 
 `get_user( int|\WP_User $user = null )`
 
-**Returns:** `\Timber\User|false` 
+**Returns:** `\Timber\User|null` 
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -478,14 +513,14 @@ Gets a nav menu object.
 
 **since** 2.0.0
 
-`get_menu( int|string $ident = null, array $options = [] )`
+`get_menu( int|string $identifier = null, array $args = [] )`
 
-**Returns:** `\Timber\Menu|false` 
+**Returns:** `\Timber\Menu|null` 
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $ident | `int` or `string` | A menu identifier: a term_id, slug, menu name, or menu location name |
-| $options | `array` | An associative array of options. Currently only one option is supported: - `depth`: How deep down the tree of menu items to query. Useful if you only want   the first N levels of items in the menu. |
+| $identifier | `int` or `string` | A menu identifier: a term_id, slug, menu name, or menu location name |
+| $args | `array` | An associative array of options. Currently only one option is supported: - `depth`: How deep down the tree of menu items to query. Useful if you only want   the first N levels of items in the menu. |
 
 **PHP**
 
@@ -505,9 +540,58 @@ $menu = Timber::get_menu( 123 );
 
 ---
 
+### get\_menu\_by()
+
+Gets a menu by field.
+
+**since** 2.0.0
+
+`get_menu_by( string $field, int|string $value, array $args = [] )`
+
+**Returns:** `\Timber\Menu|null` 
+
+| Name | Type | Description |
+| --- | --- | --- |
+| $field | `string` | The name of the field to retrieve the menu with. One of: `id`, `ID`, `term_id`, `slug`, `name` or `location`. |
+| $value | `int` or `string` | The value to search for by `$field`. |
+
+**PHP**
+
+```php
+// Get a menu by location.
+$menu = Timber::get_menu_by( 'location', 'primary' );
+
+// Get a menu by slug.
+$menu = Timber::get_menu_by( 'slug', 'primary-menu' );
+```
+
+---
+
+### get\_pages\_menu()
+
+Gets a menu from the existing pages.
+
+**since** 2.0.0
+
+`get_pages_menu( array $args = [] )`
+
+| Name | Type | Description |
+| --- | --- | --- |
+| $args | `array` | Optional. Arguments for `wp_list_pages()`. Timber doesn’t use that function under the hood, but supports all arguments for that function. It will use `get_pages()` to get the pages that will be used for the Pages Menu. |
+
+**PHP**
+
+```php
+$menu = Timber::get_pages_menu();
+```
+
+---
+
 ### get\_comments()
 
 Get comments.
+
+**since** 2.0.0
 
 `get_comments( array $query = [], array $options = [] )`
 
@@ -522,7 +606,9 @@ Get comments.
 
 ### get\_comment()
 
-Get comment.
+Gets comment.
+
+**since** 2.0.0
 
 `get_comment( int|\WP_Comment $comment )`
 
@@ -576,7 +662,7 @@ The context always contains the global context with the following variables:
 The global context will be cached, which means that you can call this function again without
 losing performance.
 
-Additionally to that, the context will contain template contexts depending on which template
+In addition to that, the context will contain template contexts depending on which template
 is being displayed. For archive templates, a `posts` variable will be present that will
 contain a collection of `Timber\Post` objects for the default query. For singular templates,
 a `post` variable will be present that that contains a `Timber\Post` object of the `$post`
@@ -591,7 +677,7 @@ a render or compile function.
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $extra | `array` | any extra data to merge in. Overrides whatever is already there for this call only. In other words, the underlying context data is immutable and unaffected by passing this param. |
+| $extra | `array` | Any extra data to merge in. Overrides whatever is already there for this call only. In other words, the underlying context data is immutable and unaffected by passing this param. |
 
 ---
 
@@ -629,7 +715,7 @@ Compile a Twig file.
 Passes data to a Twig file and returns the output.
 If the template file doesn't exist it will throw a warning when WP_DEBUG is enabled.
 
-`compile( array|string $filenames, array $data = array(), bool|int $expires = false, string $cache_mode = Loader::CACHE_USE_DEFAULT, bool $via_render = false )`
+`compile( array|string $filenames, array $data = [], bool|int $expires = false, string $cache_mode = Loader::CACHE_USE_DEFAULT, bool $via_render = false )`
 
 **Returns:** `bool|string` The returned output.
 
@@ -659,7 +745,7 @@ $team_member = Timber::compile( 'team-member.twig', $data );
 
 Compile a string.
 
-`compile_string( string $string, array $data = array() )`
+`compile_string( string $string, array $data = [] )`
 
 **Returns:** `bool|string` 
 
@@ -686,7 +772,7 @@ Fetch function.
 
 **DEPRECATED** since 2.0.0 use Timber::compile()
 
-`fetch( array|string $filenames, array $data = array(), bool|int $expires = false, string $cache_mode = Loader::CACHE_USE_DEFAULT )`
+`fetch( array|string $filenames, array $data = [], bool|int $expires = false, string $cache_mode = Loader::CACHE_USE_DEFAULT )`
 
 **Returns:** `bool|string` The returned output.
 
@@ -705,7 +791,7 @@ Render function.
 
 Passes data to a Twig file and echoes the output.
 
-`render( array|string $filenames, array $data = array(), bool|int $expires = false, string $cache_mode = Loader::CACHE_USE_DEFAULT )`
+`render( array|string $filenames, array $data = [], bool|int $expires = false, string $cache_mode = Loader::CACHE_USE_DEFAULT )`
 
 **Returns:** `bool|string` The echoed output.
 
@@ -730,7 +816,7 @@ Timber::render( 'index.twig', $context );
 
 Render a string with Twig variables.
 
-`render_string( string $string, array $data = array() )`
+`render_string( string $string, array $data = [] )`
 
 **Returns:** `bool|string` 
 
@@ -755,7 +841,7 @@ Timber::render_string( 'Hi {{ username }}, I’m a string with a custom Twig var
 
 Get sidebar.
 
-`get_sidebar( string $sidebar = 'sidebar.php', array $data = array() )`
+`get_sidebar( string $sidebar = 'sidebar.php', array $data = [] )`
 
 **Returns:** `bool|string` 
 
@@ -770,7 +856,7 @@ Get sidebar.
 
 Get sidebar from PHP
 
-`get_sidebar_from_php( string $sidebar = '', array $data = array() )`
+`get_sidebar_from_php( string $sidebar = '', array $data = [] )`
 
 **Returns:** `string` 
 
@@ -803,7 +889,7 @@ Get pagination.
 
 **link** <https://timber.github.io/docs/guides/pagination/>
 
-`get_pagination( array $prefs = array() )`
+`get_pagination( array $prefs = [] )`
 
 **Returns:** `array|mixed` 
 

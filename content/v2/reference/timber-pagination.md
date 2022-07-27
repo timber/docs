@@ -24,7 +24,7 @@ is_reference: true
 
 Pagination constructor.
 
-`__construct( array $prefs = array(), \WP_Query|null $wp_query = null )`
+`__construct( array $prefs = [], \WP_Query|null $wp_query = null )`
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -37,7 +37,7 @@ Pagination constructor.
 
 Get pagination.
 
-`get_pagination( array $prefs = array() )`
+`get_pagination( array $prefs = [] )`
 
 **Returns:** `array` mixed
 

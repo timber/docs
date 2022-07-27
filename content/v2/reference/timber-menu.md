@@ -22,7 +22,7 @@ is_reference: true
 | <span class="property-name">$term_id</span> | <span class="property-type">`int`</span> | <span class="property-description">The ID of the menu, corresponding to the wp_terms table.</span> |
 | <span class="property-name">$name</span> | <span class="property-type">`string`</span> | <span class="property-description">The name of the menu (ex: `Main Navigation`).</span> |
 | <span class="property-name">$title</span> | <span class="property-type">`string`</span> | <span class="property-description">The name of the menu (ex: `Main Navigation`).</span> |
-| <span class="property-name">$args</span> | <span class="property-type">`array`</span> | <span class="property-description">An array of menu args.</span> |
+| <span class="property-name">$args</span> | <span class="property-type">`object`</span> | <span class="property-description">An object of menu args.</span> |
 | <span class="property-name">$raw_args</span> | <span class="property-type">`array`</span> | <span class="property-description">The unfiltered args sent forward via the user in the __construct</span> |
 | <span class="property-name">$theme_location</span> | <span class="property-type">`string`</span> | <span class="property-description">The theme location of the menu, if available.</span> |
 
@@ -35,7 +35,7 @@ is_reference: true
 | Name | Return Type | Summary/Returns |
 | --- | --- | --- |
 | <span class="method-name">[__construct()](#__construct)</span> | <span class="method-type"></span> | <span class="method-description">Initialize a menu.</span> |
-| <span class="method-name">[find_parent_item_in_menu()](#find_parent_item_in_menu)</span> | <span class="method-type">`\Timber\MenuItem` or `bool`</span> | <span class="method-description">Find a parent menu item in a set of menu items.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> A menu item. False if no parent was found.</span></span> |
+| <span class="method-name">[find_parent_item_in_menu()](#find_parent_item_in_menu)</span> | <span class="method-type">`\Timber\MenuItem` or `null`</span> | <span class="method-description">Find a parent menu item in a set of menu items.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> A menu item. False if no parent was found.</span></span> |
 | <span class="method-name">[~~get_field~~()](#get_field)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets a menu meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value.</span></span> |
 | <span class="method-name">[get_items()](#get_items)</span> | <span class="method-type">`array`</span> | <span class="method-description">Get menu items.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Array of `Timber\MenuItem` objects. Empty array if no items could be found.</span></span> |
 
@@ -48,7 +48,7 @@ is_reference: true
 
 Initialize a menu.
 
-`__construct( int|string $slug = '', array $args = array() )`
+`__construct( ?\WP_Term $term, array $args )`
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -63,7 +63,7 @@ Find a parent menu item in a set of menu items.
 
 `find_parent_item_in_menu( array $menu_items, int $parent_id )`
 
-**Returns:** `\Timber\MenuItem|bool` A menu item. False if no parent was found.
+**Returns:** `\Timber\MenuItem|null` A menu item. False if no parent was found.
 
 | Name | Type | Description |
 | --- | --- | --- |

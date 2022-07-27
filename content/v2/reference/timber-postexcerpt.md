@@ -72,7 +72,7 @@ filter.
 
 PostExcerpt constructor.
 
-`__construct( \Timber\Post $post, array $options = array() )`
+`__construct( \Timber\Post $post, array $options = [] )`
 
 | Name | Type | Description |
 | --- | --- | --- |

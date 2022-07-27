@@ -66,7 +66,7 @@ take the same amount of space in each post for example
 
 ### remove\_tags()
 
-`remove_tags( mixed $string, array $tags = array() )`
+`remove_tags( mixed $string, array $tags = [] )`
 
 **Returns:** `null|string|string[]` 
 

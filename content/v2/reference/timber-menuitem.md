@@ -16,7 +16,6 @@ is_reference: true
 | Name | Type | Description |
 | --- | --- | --- |
 | <span class="property-name">$children</span> | <span class="property-type">`array`</span> | <span class="property-description">Array of children of a menu item. Empty if there are no child menu items.</span> |
-| <span class="property-name">$has_child_class</span> | <span class="property-type">`bool`</span> | <span class="property-description">Whether the menu item has a `menu-item-has-children` CSS class.</span> |
 | <span class="property-name">$classes</span> | <span class="property-type">`array`</span> | <span class="property-description">Array of class names.</span> |
 | <span class="property-name">$current</span> | <span class="property-type">`bool`</span> | <span class="property-description">Whether the menu item links to the currently displayed page.</span> |
 | <span class="property-name">$current_item_parent</span> | <span class="property-type">`bool`</span> | <span class="property-description">Whether the menu item refers to the parent item of the currently displayed page.</span> |

@@ -86,7 +86,7 @@ Timber::render( 'single.twig', $context );
 | <span class="method-name">[authors()](#authors)</span> | <span class="method-type">`array`</span> | <span class="method-description">Got more than one author? That's cool, but you'll need Co-Authors plus or another plugin to access any data</span> |
 | <span class="method-name">[categories()](#categories)</span> | <span class="method-type">`array`</span> | <span class="method-description">Get the categories on a particular post<br><br><span class="method-return"><span class="method-return-label">Returns:</span> of Timber\Term objects</span></span> |
 | <span class="method-name">[category()](#category)</span> | <span class="method-type">`\Timber\Term` or `null`</span> | <span class="method-description">Returns a category attached to a post</span> |
-| <span class="method-name">[children()](#children)</span> | <span class="method-type">`\Timber\Timber\PostCollectionInterface`</span> | <span class="method-description">Returns an array of children on the post as Timber\Posts (or other claass as you define).</span> |
+| <span class="method-name">[children()](#children)</span> | <span class="method-type">`\Timber\PostCollectionInterface`</span> | <span class="method-description">Returns an array of children on the post as Timber\Posts (or other claass as you define).</span> |
 | <span class="method-name">[comment_count()](#comment_count)</span> | <span class="method-type">`int`</span> | <span class="method-description"><br><br><span class="method-return"><span class="method-return-label">Returns:</span> the number of comments on a post</span></span> |
 | <span class="method-name">[comment_form()](#comment_form)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the comment form for use on a single article page<br><br><span class="method-return"><span class="method-return-label">Returns:</span> of HTML for the form</span></span> |
 | <span class="method-name">[comments()](#comments)</span> | <span class="method-type">`bool` or `\Timber\CommentThread`</span> | <span class="method-description">Gets the comments on a Timber\Post and returns them as an array of `Timber\Comment` objects (or whatever comment class you set).</span> |
@@ -204,7 +204,7 @@ content, it will use that to mark where to pull through.
 
 **see** [Timber\PostExcerpt](../timber-postexcerpt/)
 
-`excerpt( array $options = array() )`
+`excerpt( array $options = [] )`
 
 **Returns:** `\Timber\PostExcerpt` 
 
@@ -259,7 +259,7 @@ to get an overview of all the available methods.
 
 Gets the comment form for use on a single article page
 
-`comment_form( array $args = array() )`
+`comment_form( array $args = [] )`
 
 **Returns:** `string` of HTML for the form
 
@@ -482,7 +482,7 @@ Returns an array of children on the post as Timber\Posts
 
 `children( string|array $post_type = 'any' )`
 
-**Returns:** `\Timber\Timber\PostCollectionInterface` 
+**Returns:** `\Timber\PostCollectionInterface` 
 
 | Name | Type | Description |
 | --- | --- | --- |

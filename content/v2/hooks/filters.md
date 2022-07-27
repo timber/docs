@@ -181,6 +181,31 @@ add_filter( 'timber/menu/class', function( $class, $term, $args ) {
 }, 10, 3 );
 ```
 
+## timber/menuitem/classmap
+
+Filters the class(es) used for different menu items.
+
+Read more about this in the documentation for [Menu Item Class Maps](https://timber.github.io/docs/v2/guides/class-maps/#the-menu-item-class-map).
+
+The default Menu Item Class Map will contain class names for locations that map to `Timber\MenuItem`.
+
+**since** 2.0.0
+
+| Name | Type | Description |
+| --- | --- | --- |
+| $classmap | `array` | The menu item class(es) to use. An associative array where the key is the location and the value the name of the class to use for this menu item or a callback that determines the class to use. |
+
+```
+add_filter( 'timber/menuitem/classmap', function( $classmap ) {
+    $custom_classmap = [
+        'primary'   => MenuItemFooter::class,
+        'secondary' => MenuItemHeader::class,
+    ];
+
+    return array_merge( $classmap, $custom_classmap );
+} );
+```
+
 ## timber/menuitem/class
 
 Filters the menu item class
@@ -201,6 +226,25 @@ add_filter( 'timber/menuitem/class', function( $class, $item, $menu ) {
 
     return MenuItem::class;
 }, 10, 3 );
+```
+
+## timber/pages\_menu/class
+
+Filters the class used for different menus.
+
+Read more about this in the documentation for [Pages Menu Class filter](https://timber.github.io/docs/v2/guides/class-maps/#the-pages-menu-class-filter).
+
+**since** 2.0.0
+
+| Name | Type | Description |
+| --- | --- | --- |
+| $class | `array` | The pages menu class to use. |
+| $args | `array` | The arguments passed to `Timber::get_pages_menu()`. |
+
+```
+add_filter( 'timber/pages_menu/class', function( $class ) {
+    return ExtendedPagesMenu::class;
+} );
 ```
 
 ## timber/post/classmap
