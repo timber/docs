@@ -26,7 +26,6 @@ objects build upon.
 | <span class="property-name">$file_size</span> | <span class="property-type">`null` or `string`</span> | <span class="property-description">File size string.</span> |
 | <span class="property-name">$file_extension</span> | <span class="property-type">`null` or `string`</span> | <span class="property-description">A file extension.</span> |
 | <span class="property-name">$id</span> | <span class="property-type">`int`</span> | <span class="property-description">The attachment ID.</span> |
-| <span class="property-name">$caption</span> | <span class="property-type">`string`</span> | <span class="property-description">The caption that is stored as post_excerpt in the posts table in the database.</span> |
 
 </div>
 
@@ -37,6 +36,7 @@ objects build upon.
 | Name | Return Type | Summary/Returns |
 | --- | --- | --- |
 | <span class="method-name">[__toString()](#__toString)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the src for an attachment.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The src of the attachment.</span></span> |
+| <span class="method-name">[caption()](#caption)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the caption of an attachment.</span> |
 | <span class="method-name">[extension()](#extension)</span> | <span class="method-type">`null` or `string`</span> | <span class="method-description">Gets the extension of the attached file.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> An uppercase extension string.</span></span> |
 | <span class="method-name">[link()](#link)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the link to an attachment.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The URL of the attachment.</span></span> |
 | <span class="method-name">[parent()](#parent)</span> | <span class="method-type">`false` or `\Timber\Post`</span> | <span class="method-description">Gets the parent object.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Parent object as a `Timber\Post`. Returns `false` if no parent object is defined.</span></span> |
@@ -115,6 +115,28 @@ Gets the source URL for an attachment.
 
 ```html
 <a href="http://example.org/wp-content/uploads/2015/08/job-ad-5noe2304i.pdf" download>
+```
+
+---
+
+### caption()
+
+Gets the caption of an attachment.
+
+**since** 2.0
+
+**Returns:** `string` 
+
+**Twig**
+
+```twig
+<figure>
+    <img src="{{ post.thumbnail.src }}">
+
+    {% if post.thumbnail is not empty %}
+        <figcaption>{{ post.thumbnail.caption }}</figcaption
+    {% endif %}
+</figure>
 ```
 
 ---
