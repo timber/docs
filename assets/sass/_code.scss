@@ -11,8 +11,12 @@ li > code,
 a > code {
 	padding: 3px 5px;
 	background: $grey-dark;
-	margin: 0 2px;
 	border-radius: 2px;
+}
+
+p > code,
+li > code {
+	margin: 0 2px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -25,6 +29,10 @@ a > code {
 	color: $green-light;
 	@include font-code;
 	border-bottom: 1px solid $green-light;
+}
+
+a:has(> code){
+	margin: 0 2px;
 }
 
 .method-name,
