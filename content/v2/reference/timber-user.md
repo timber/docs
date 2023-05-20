@@ -57,12 +57,9 @@ Timber::render( 'single.twig', $context );
 | Name | Type | Description |
 | --- | --- | --- |
 | <span class="property-name">$avatar_override</span> | <span class="property-type">`string`</span> | <span class="property-description">A URL to an avatar that overrides anything from Gravatar, etc.</span> |
-| <span class="property-name">$description</span> | <span class="property-type">`string`</span> | <span class="property-description">The description from WordPress</span> |
-| <span class="property-name">$display_name</span> | <span class="property-type">`string`</span> | <span class="property-description"></span> |
-| <span class="property-name">$first_name</span> | <span class="property-type">`string`</span> | <span class="property-description">The first name of the user</span> |
-| <span class="property-name">$last_name</span> | <span class="property-type">`string`</span> | <span class="property-description">The last name of the user</span> |
 | <span class="property-name">$id</span> | <span class="property-type">`int`</span> | <span class="property-description">The ID from WordPress</span> |
 | <span class="property-name">$user_nicename</span> | <span class="property-type">`string`</span> | <span class="property-description"></span> |
+| <span class="property-name">$user_email</span> | <span class="property-type">`string`</span> | <span class="property-description"></span> |
 | <span class="property-name">$roles</span> | <span class="property-type">`array`</span> | <span class="property-description"></span> |
 
 </div>
@@ -76,6 +73,8 @@ Timber::render( 'single.twig', $context );
 | <span class="method-name">[__toString()](#__toString)</span> | <span class="method-type">`string`</span> | <span class="method-description"><br><br><span class="method-return"><span class="method-return-label">Returns:</span> a fallback for Timber\User::name()</span></span> |
 | <span class="method-name">[avatar()](#avatar)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets a user’s avatar URL.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The avatar URL.</span></span> |
 | <span class="method-name">[can()](#can)</span> | <span class="method-type">`bool`</span> | <span class="method-description">Checks whether a user has a capability.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Whether the user has the capability.</span></span> |
+| <span class="method-name">[can_edit()](#can_edit)</span> | <span class="method-type">`bool`</span> | <span class="method-description">Checks whether the current user can edit the post.</span> |
+| <span class="method-name">[edit_link()](#edit_link)</span> | <span class="method-type">`string` or `null`</span> | <span class="method-description">Gets the edit link for a user if the current user has the correct rights or the profile link for the current user.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The edit URL of a user in the WordPress admin or the profile link if the user object is for the current user. Null if the current user can’t edit the user.</span></span> |
 | <span class="method-name">[~~get_field~~()](#get_field)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets a user meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value.</span></span> |
 | <span class="method-name">[~~get_meta~~()](#get_meta)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets a user meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value.</span></span> |
 | <span class="method-name">[~~get_meta_field~~()](#get_meta_field)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets a user meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value.</span></span> |
@@ -238,13 +237,14 @@ to check whether a user is logged in, you can use `{% if user %}`.
 
 **since** 1.8.5
 
-`can( string $capability )`
+`can( string $capability, mixed $args )`
 
 **Returns:** `bool` Whether the user has the capability.
 
 | Name | Type | Description |
 | --- | --- | --- |
 | $capability | `string` | The capability to check. |
+| $args | `mixed` | Additional arguments to pass to the user_can function |
 
 Give moderation users another CSS class to style them differently.
 
@@ -254,6 +254,53 @@ Give moderation users another CSS class to style them differently.
 <span class="comment-author {{ comment.author.can('moderate_comments') ? 'comment-author--is-moderator }}">
     {{ comment.author.name }}
 </span>
+```
+
+---
+
+### can\_edit()
+
+Checks whether the current user can edit the post.
+
+**Returns:** `bool` 
+
+**Twig**
+
+```twig
+{% if user.can_edit %}
+    <a href="{{ user.edit_link }}">Edit</a>
+{% endif %}
+```
+
+---
+
+### edit\_link()
+
+Gets the edit link for a user if the current user has the correct rights or the profile link for the current
+user.
+
+**since** 2.0.0
+
+**Returns:** `string|null` The edit URL of a user in the WordPress admin or the profile link if the user object is for
+the current user. Null if the current user can’t edit the user.
+
+**Twig**
+
+```twig
+{% if user.can_edit %}
+    <a href="{{ user.edit_link }}">Edit</a>
+{% endif %}
+```
+
+Get the profile URL for the current user:
+
+**Twig**
+
+```twig
+{# Assuming user is the current user. #}
+{% if user %}
+    <a href="{{ user.edit_link }}">My profile</a>
+{% endif %}
 ```
 
 ---

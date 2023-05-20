@@ -35,7 +35,7 @@ Timber::render( 'index.twig', $context );
 
 | Name | Return Type | Summary/Returns |
 | --- | --- | --- |
-| <span class="method-name">[compile()](#compile)</span> | <span class="method-type">`bool` or `string`</span> | <span class="method-description">Compile a Twig file.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The returned output.</span></span> |
+| <span class="method-name">[compile()](#compile)</span> | <span class="method-type">`bool` or `string`</span> | <span class="method-description">Compiles a Twig file.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The returned output.</span></span> |
 | <span class="method-name">[compile_string()](#compile_string)</span> | <span class="method-type">`bool` or `string`</span> | <span class="method-description">Compile a string.</span> |
 | <span class="method-name">[context()](#context)</span> | <span class="method-type">`array`</span> | <span class="method-description">Gets the global context.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> An array of context variables that is used to pass into Twig templates through a render or compile function.</span></span> |
 | <span class="method-name">[context_global()](#context_global)</span> | <span class="method-type">`array`</span> | <span class="method-description">Gets the global context.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> An array of global context variables.</span></span> |
@@ -45,6 +45,7 @@ Timber::render( 'index.twig', $context );
 | <span class="method-name">[get_comment()](#get_comment)</span> | <span class="method-type">`\Timber\Comment` or `null`</span> | <span class="method-description">Gets comment.</span> |
 | <span class="method-name">[get_comments()](#get_comments)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Get comments.</span> |
 | <span class="method-name">[~~get_context~~()](#get_context)</span> | <span class="method-type">`array`</span> | <span class="method-description">Get context.</span> |
+| <span class="method-name">[get_external_image()](#get_external_image)</span> | <span class="method-type">`\Timber\ExternalImage` or `null`</span> | <span class="method-description">Gets an external image.</span> |
 | <span class="method-name">[get_image()](#get_image)</span> | <span class="method-type">`\Timber\Image` or `null`</span> | <span class="method-description">Gets an image.</span> |
 | <span class="method-name">[get_menu()](#get_menu)</span> | <span class="method-type">`\Timber\Menu` or `null`</span> | <span class="method-description">Gets a nav menu object.</span> |
 | <span class="method-name">[get_menu_by()](#get_menu_by)</span> | <span class="method-type">`\Timber\Menu` or `null`</span> | <span class="method-description">Gets a menu by field.</span> |
@@ -61,12 +62,12 @@ Timber::render( 'index.twig', $context );
 | <span class="method-name">[get_terms()](#get_terms)</span> | <span class="method-type">`iterable`</span> | <span class="method-description">Gets terms.</span> |
 | <span class="method-name">[get_user()](#get_user)</span> | <span class="method-type">`\Timber\User` or `null`</span> | <span class="method-description">Gets a single user.</span> |
 | <span class="method-name">[get_user_by()](#get_user_by)</span> | <span class="method-type">`\Timber\User` or `null`</span> | <span class="method-description">Gets a user by field.</span> |
-| <span class="method-name">[get_users()](#get_users)</span> | <span class="method-type">`\Iterable`</span> | <span class="method-description">Gets one or more users as an array.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> An array of users objects. Will be empty if no users were found.</span></span> |
+| <span class="method-name">[get_users()](#get_users)</span> | <span class="method-type">`iterable`</span> | <span class="method-description">Gets one or more users as an array.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> An array of users objects. Will be empty if no users were found.</span></span> |
 | <span class="method-name">[get_widgets()](#get_widgets)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get widgets.</span> |
 | <span class="method-name">[~~query_post~~()](#query_post)</span> | <span class="method-type">`\Timber\Post` or `array` or `bool` or `null`</span> | <span class="method-description">Query post.</span> |
 | <span class="method-name">[~~query_posts~~()](#query_posts)</span> | <span class="method-type">`\Timber\PostCollectionInterface`</span> | <span class="method-description">Query posts.</span> |
-| <span class="method-name">[render()](#render)</span> | <span class="method-type">`bool` or `string`</span> | <span class="method-description">Render function.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The echoed output.</span></span> |
-| <span class="method-name">[render_string()](#render_string)</span> | <span class="method-type">`bool` or `string`</span> | <span class="method-description">Render a string with Twig variables.</span> |
+| <span class="method-name">[render()](#render)</span> | <span class="method-type"></span> | <span class="method-description">Renders a Twig file.</span> |
+| <span class="method-name">[render_string()](#render_string)</span> | <span class="method-type"></span> | <span class="method-description">Render a string with Twig variables.</span> |
 
 </div>
 
@@ -164,6 +165,29 @@ found Timber\Post has been resolved.
 | --- | --- | --- |
 | $query | `mixed` | Optional. Query or post identifier. Default false. |
 | $options | `array` | Optional. Options for Timber\Timber::get_post(). |
+
+---
+
+### get\_external\_image()
+
+Gets an external image.
+
+Behaves just like Timber::get_image(), except that you can use an absolute or relative path or a URL to load an
+image. You can also pass in an external URL. In that case, Timber will sideload the image and store it in the
+uploads folder of your WordPress installation. The next time the image is accessed, it will be loaded from there.
+
+**see** [Timber\Timber::get_image()](../timber-timber/#get_image)
+
+**since** 2.0.0
+
+`get_external_image( bool $url = false, array $args = [] )`
+
+**Returns:** `\Timber\ExternalImage|null` 
+
+| Name | Type | Description |
+| --- | --- | --- |
+| $url | `bool` | Image path or URL. The path can be absolute or relative to the WordPress installation. |
+| $args | `array` | An associative array with additional arguments for the image.<br><br><ul><li>**$alt**<br>`string` Alt text for the image.</li><li>**$caption**<br>`string` Caption text for the image.</li></ul> |
 
 ---
 
@@ -411,7 +435,7 @@ control which class is used for your post objects, use [Class Maps]().
 
 `get_users( array $query = [], array $options = [] )`
 
-**Returns:** `\Iterable` An array of users objects. Will be empty if no users were found.
+**Returns:** `iterable` An array of users objects. Will be empty if no users were found.
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -710,10 +734,10 @@ add_shortcode( 'global_address', function() {
 
 ### compile()
 
-Compile a Twig file.
+Compiles a Twig file.
 
-Passes data to a Twig file and returns the output.
-If the template file doesn't exist it will throw a warning when WP_DEBUG is enabled.
+Passes data to a Twig file and returns the output. If the template file doesn't exist it will throw a warning
+when WP_DEBUG is enabled.
 
 `compile( array|string $filenames, array $data = [], bool|int $expires = false, string $cache_mode = Loader::CACHE_USE_DEFAULT, bool $via_render = false )`
 
@@ -721,7 +745,7 @@ If the template file doesn't exist it will throw a warning when WP_DEBUG is enab
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $filenames | `array` or `string` | Name of the Twig file to render. If this is an array of files, Timber will render the first file that exists. |
+| $filenames | `array` or `string` | Name or full path of the Twig file to compile. If this is an array of file names or paths, Timber will compile the first file that exists. |
 | $data | `array` | Optional. An array of data to use in Twig template. |
 | $expires | `bool` or `int` | Optional. In seconds. Use false to disable cache altogether. When passed an array, the first value is used for non-logged in visitors, the second for users. Default false. |
 | $cache_mode | `string` | Optional. Any of the cache mode constants defined in Timber\Loader. |
@@ -787,17 +811,15 @@ Fetch function.
 
 ### render()
 
-Render function.
+Renders a Twig file.
 
 Passes data to a Twig file and echoes the output.
 
 `render( array|string $filenames, array $data = [], bool|int $expires = false, string $cache_mode = Loader::CACHE_USE_DEFAULT )`
 
-**Returns:** `bool|string` The echoed output.
-
 | Name | Type | Description |
 | --- | --- | --- |
-| $filenames | `array` or `string` | Name of the Twig file to render. If this is an array of files, Timber will render the first file that exists. |
+| $filenames | `array` or `string` | Name or full path of the Twig file to render. If this is an array of file names or paths, Timber will render the first file that exists. |
 | $data | `array` | Optional. An array of data to use in Twig template. |
 | $expires | `bool` or `int` | Optional. In seconds. Use false to disable cache altogether. When passed an array, the first value is used for non-logged in visitors, the second for users. Default false. |
 | $cache_mode | `string` | Optional. Any of the cache mode constants defined in Timber\Loader. |
@@ -817,8 +839,6 @@ Timber::render( 'index.twig', $context );
 Render a string with Twig variables.
 
 `render_string( string $string, array $data = [] )`
-
-**Returns:** `bool|string` 
 
 | Name | Type | Description |
 | --- | --- | --- |

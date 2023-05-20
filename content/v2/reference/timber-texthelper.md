@@ -16,9 +16,7 @@ Class provides different text-related functions commonly used in WordPress devel
 
 | Name | Return Type | Summary/Returns |
 | --- | --- | --- |
-| <span class="method-name">[ends_with()](#ends_with)</span> | <span class="method-type">`bool`</span> | <span class="method-description"></span> |
 | <span class="method-name">[remove_tags()](#remove_tags)</span> | <span class="method-type">`null` or `string` or `string[]`</span> | <span class="method-description"></span> |
-| <span class="method-name">[starts_with()](#starts_with)</span> | <span class="method-type">`bool`</span> | <span class="method-description"></span> |
 | <span class="method-name">[trim_characters()](#trim_characters)</span> | <span class="method-type">`string`</span> | <span class="method-description">Trims text to a certain number of characters.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> trimmed text.</span></span> |
 | <span class="method-name">[trim_words()](#trim_words)</span> | <span class="method-type">`string`</span> | <span class="method-description"></span> |
 
@@ -74,32 +72,6 @@ take the same amount of space in each post for example
 | --- | --- | --- |
 | $string |  |  |
 | $tags | `array` |  |
-
----
-
-### starts\_with()
-
-`starts_with( string $haystack, string $needle )`
-
-**Returns:** `bool` 
-
-| Name | Type | Description |
-| --- | --- | --- |
-| $haystack | `string` |  |
-| $needle | `string` |  |
-
----
-
-### ends\_with()
-
-`ends_with( string $haystack, string $needle )`
-
-**Returns:** `bool` 
-
-| Name | Type | Description |
-| --- | --- | --- |
-| $haystack | `string` |  |
-| $needle | `string` |  |
 
 ---
 

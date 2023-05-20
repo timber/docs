@@ -30,7 +30,7 @@ Filters object meta data before it is fetched from the database.
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $object_meta | `string` | The field value. Default null. Passing a non-null value will skip fetching the value from the database and will use the value from the filter instead. |
+| $object_meta | `string` or `null` | The field value. Default null. Passing a non-null value will skip fetching the value from the database and will use the value from the filter instead. |
 | $post_id | `int` | The post ID. |
 | $field_name | `string` | The name of the meta field to get the value for. |
 | $object | `object` | The Timber object. |
@@ -74,7 +74,7 @@ This filter is used by the ACF Integration.
 | $post_meta | `string` | The field value. |
 | $post_id | `int` | The post ID. |
 | $field_name | `string` | The name of the meta field to get the value for. |
-| $post | `\Timber\Post` | The post object. |
+| $post | `\Timber\CoreEntity` | The post object. |
 | $args | `array` | An array of arguments. |
 
 **PHP**
@@ -238,7 +238,7 @@ Read more about this in the documentation for [Pages Menu Class filter](https://
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $class | `array` | The pages menu class to use. |
+| $class | `string` | The pages menu class to use. |
 | $args | `array` | The arguments passed to `Timber::get_pages_menu()`. |
 
 ```
@@ -562,10 +562,6 @@ Filters …
 
 **since** 1.1.11
 
-| Name | Type | Description |
-| --- | --- | --- |
-| $paths | `array` |  |
-
 ## timber/twig/environment/options
 
 Filters the environment options that are used when creating a Twig Environment instance.
@@ -594,7 +590,7 @@ add_filter( 'timber/twig/environment/options', 'update_twig_environment_options'
  *
  * @link https://twig.symfony.com/doc/2.x/api.html#environment-options
  *
- * @param array $options An array of environment options.
+ * \@param array $options An array of environment options.
  *
  * @return array
  */
@@ -662,7 +658,7 @@ variables, filters or functions.
 /**
  * Adds Twig functionality.
  *
- * @param \Twig\Environment $twig The Twig Environment to which you can add additional functionality.
+ * \@param \Twig\Environment $twig The Twig Environment to which you can add additional functionality.
  */
 add_filter( 'timber/twig', function( $twig ) {
     // Make get_theme_file_uri() usable as {{ theme_file() }} in Twig.
@@ -702,6 +698,44 @@ Filters …
 
 **DEPRECATED** since 2.0.0, use `timber/locations`
 
+## timber/menu/item\_objects
+
+Filters the sorted list of menu item objects before creating the Menu object.
+
+**since** 2.0.0
+
+| Name | Type | Description |
+| --- | --- | --- |
+| $item | `array` |  |
+| $menu | `\WP_Term` |  |
+
+```
+add_filter( 'timber/menu/item_objects', function ( $items ) {
+    return array_map(function ($item) {
+        if ( is_object( $item ) && ! ( $item instanceof \WP_Post ) ) {
+            return new \WP_Post( get_object_vars( $item ) );
+        }
+
+        return $item;
+    }, $items);
+} );
+```
+
+## timber/post/import\_data
+
+Filters the imported post data.
+
+Used internally for previews.
+
+**see** Timber::init()
+
+**since** 2.0.0
+
+| Name | Type | Description |
+| --- | --- | --- |
+| $data | `array` | An array of post data to import. |
+| $post | `\Timber\Post` | The Timber post instance. |
+
 ## timber/post/meta\_object\_field
 
 Filters field object data from Advanced Custom Fields.
@@ -714,8 +748,8 @@ This filter is used by the ACF Integration.
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $value | `array` | The field object array. |
-| $post_id | `int` | The post ID. |
+| $value | `mixed` | The value. |
+| $post_id | `int` or `null` | The post ID. |
 | $field_name | `string` | The ACF field name. |
 | $post | `\Timber\Post` | The post object. |
 
@@ -841,6 +875,8 @@ Filters the link used for a read more text in an excerpt.
 | --- | --- | --- |
 | $link | `string` | The HTML link. |
 | $post | `\Timber\Post` | Post instance. |
+| $linktext | `string` | The link text. |
+| $read_more_class | `string` | The CSS class name. |
 
 ## timber/post/get\_preview/read\_more\_link
 
@@ -947,7 +983,7 @@ Filters the integrations that should be initialized by Timber.
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $integrations | `array` | An array of PHP class names. Default: array of integrations that Timber initializes by default. |
+| $integrations | `\IntegrationInterface[]` | An array of PHP class names. Default: array of integrations that Timber initializes by default. |
 
 ## timber/context
 

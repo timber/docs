@@ -33,7 +33,7 @@ Timber::render('index.twig', $context);
 ## Overview
 
 *This class extends `Timber\Core`*  
-  
+*This class implements `JsonSerializable`*  
 
 ### Properties
 

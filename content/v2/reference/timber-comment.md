@@ -70,10 +70,12 @@ Timber::render('index.twig', $context);
 | <span class="method-name">[approved()](#approved)</span> | <span class="method-type">`bool`</span> | <span class="method-description">Is the comment approved?</span> |
 | <span class="method-name">[author()](#author)</span> | <span class="method-type">`\Timber\User`</span> | <span class="method-description">Gets the author.</span> |
 | <span class="method-name">[avatar()](#avatar)</span> | <span class="method-type">`bool` or `mixed` or `string`</span> | <span class="method-description">Fetches the Gravatar.</span> |
+| <span class="method-name">[can_edit()](#can_edit)</span> | <span class="method-type">`bool`</span> | <span class="method-description">Checks whether the current user can edit the comment.</span> |
 | <span class="method-name">[children()](#children)</span> | <span class="method-type">`array`</span> | <span class="method-description">Gets the comment children.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Comments</span></span> |
 | <span class="method-name">[content()](#content)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the content.</span> |
 | <span class="method-name">[date()](#date)</span> | <span class="method-type">`string`</span> | <span class="method-description">The date for the comment.</span> |
 | <span class="method-name">[depth()](#depth)</span> | <span class="method-type">`int`</span> | <span class="method-description">At what depth is this comment?</span> |
+| <span class="method-name">[edit_link()](#edit_link)</span> | <span class="method-type">`string` or `null`</span> | <span class="method-description">Gets the edit link for a comment if the current user has the correct rights.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The edit URL of a comment in the WordPress admin or null if the current user can’t edit the comment.</span></span> |
 | <span class="method-name">[~~get_field~~()](#get_field)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets a comment meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value.</span></span> |
 | <span class="method-name">[~~get_meta_field~~()](#get_meta_field)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets a comment meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value.</span></span> |
 | <span class="method-name">[is_child()](#is_child)</span> | <span class="method-type">`bool`</span> | <span class="method-description">Checks if the comment is a child.</span> |
@@ -336,6 +338,41 @@ Enqueue the WP threaded comments JavaScript, and fetch the reply link for variou
 | Name | Type | Description |
 | --- | --- | --- |
 | $reply_text | `string` | Text of the reply link. |
+
+---
+
+### can\_edit()
+
+Checks whether the current user can edit the comment.
+
+**Returns:** `bool` 
+
+**Twig**
+
+```twig
+{% if comment.can_edit %}
+    <a href="{{ comment.edit_link }}">Edit</a>
+{% endif %}
+```
+
+---
+
+### edit\_link()
+
+Gets the edit link for a comment if the current user has the correct rights.
+
+**since** 2.0.0
+
+**Returns:** `string|null` The edit URL of a comment in the WordPress admin or null if the current user can’t edit the
+comment.
+
+**Twig**
+
+```twig
+{% if comment.can_edit %}
+    <a href="{{ comment.edit_link }}">Edit</a>
+{% endif %}
+```
 
 ---
 

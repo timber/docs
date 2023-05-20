@@ -66,8 +66,9 @@ Timber::render('index.twig', $context);
 | Name | Return Type | Summary/Returns |
 | --- | --- | --- |
 | <span class="method-name">[__toString()](#__toString)</span> | <span class="method-type">`string`</span> | <span class="method-description">The string the term will render as by default</span> |
+| <span class="method-name">[can_edit()](#can_edit)</span> | <span class="method-type">`bool`</span> | <span class="method-description">Checks whether the current user can edit the term.</span> |
 | <span class="method-name">[description()](#description)</span> | <span class="method-type">`string`</span> | <span class="method-description">Return the description of the term</span> |
-| <span class="method-name">[edit_link()](#edit_link)</span> | <span class="method-type">`string`</span> | <span class="method-description"></span> |
+| <span class="method-name">[edit_link()](#edit_link)</span> | <span class="method-type">`string` or `null`</span> | <span class="method-description">Gets the edit link for a term if the current user has the correct rights.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The edit URL of a term in the WordPress admin or null if the current user can’t edit the term.</span></span> |
 | <span class="method-name">[~~get_children~~()](#get_children)</span> | <span class="method-type">`array`</span> | <span class="method-description"></span> |
 | <span class="method-name">[~~get_field~~()](#get_field)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets a term meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value.</span></span> |
 | <span class="method-name">[~~get_posts~~()](#get_posts)</span> | <span class="method-type">`array` or `bool` or `null`</span> | <span class="method-description">Get Posts that have been "tagged" with the particular term</span> |
@@ -97,9 +98,36 @@ Return the description of the term
 
 ---
 
+### can\_edit()
+
+Checks whether the current user can edit the term.
+
+**Returns:** `bool` 
+
+**Twig**
+
+```twig
+{% if term.can_edit %}
+    <a href="{{ term.edit_link }}">Edit</a>
+{% endif %}
+```
+
+---
+
 ### edit\_link()
 
-**Returns:** `string` 
+Gets the edit link for a term if the current user has the correct rights.
+
+**Returns:** `string|null` The edit URL of a term in the WordPress admin or null if the current user can’t edit the
+term.
+
+**Twig**
+
+```twig
+{% if term.can_edit %}
+   <a href="{{ term.edit_link }}">Edit</a>
+{% endif %}
+```
 
 ---
 

@@ -21,6 +21,7 @@ is_reference: true
 | <span class="property-name">$current_item_parent</span> | <span class="property-type">`bool`</span> | <span class="property-description">Whether the menu item refers to the parent item of the currently displayed page.</span> |
 | <span class="property-name">$current_item_ancestor</span> | <span class="property-type">`bool`</span> | <span class="property-description">Whether the menu item refers to an ancestor (including direct parent) of the currently displayed page.</span> |
 | <span class="property-name">$object_id</span> | <span class="property-type">`int` or `null`</span> | <span class="property-description">Linked object ID.</span> |
+| <span class="property-name">$object</span> | <span class="property-type">`string`</span> | <span class="property-description">The underlying menu object type. E.g. a post type name, a taxonomy name or 'custom'.</span> |
 
 </div>
 
@@ -32,6 +33,7 @@ is_reference: true
 | --- | --- | --- |
 | <span class="method-name">[__toString()](#__toString)</span> | <span class="method-type">`string`</span> | <span class="method-description">Magic method to get the label for the menu item.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The label for the menu item.</span></span> |
 | <span class="method-name">[add_child()](#add_child)</span> | <span class="method-type"></span> | <span class="method-description">Add a new `Timber\MenuItem` object as a child of this menu item.</span> |
+| <span class="method-name">[can_edit()](#can_edit)</span> | <span class="method-type">`bool`</span> | <span class="method-description">Checks whether the current user can edit the menu item.</span> |
 | <span class="method-name">[children()](#children)</span> | <span class="method-type">`array` or `bool`</span> | <span class="method-description">Get the child menu items of a `Timber\MenuItem`.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Array of children of a menu item. Empty if there are no child menu items.</span></span> |
 | <span class="method-name">[~~external~~()](#external)</span> | <span class="method-type">`bool`</span> | <span class="method-description">Checks to see if the menu item is an external link.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Whether the link is external or not.</span></span> |
 | <span class="method-name">[~~get_field~~()](#get_field)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets a menu item meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value.</span></span> |
@@ -260,6 +262,16 @@ Get the public label for the menu item.
     <li><a href="{{ item.link }}">{{ item.title }}</a></li>
 {% endfor %}
 ```
+
+---
+
+### can\_edit()
+
+Checks whether the current user can edit the menu item.
+
+**since** 2.0.0
+
+**Returns:** `bool` 
 
 ---
 

@@ -84,16 +84,17 @@ Timber::render( 'single.twig', $context );
 | <span class="method-name">[audio()](#audio)</span> | <span class="method-type">`bool` or `array`</span> | <span class="method-description">Returns audio tags embedded in the post’s content.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> A list of found HTML embeds.</span></span> |
 | <span class="method-name">[author()](#author)</span> | <span class="method-type">`\Timber\User` or `null`</span> | <span class="method-description">Return the author of a post<br><br><span class="method-return"><span class="method-return-label">Returns:</span> A User object if found, false if not</span></span> |
 | <span class="method-name">[authors()](#authors)</span> | <span class="method-type">`array`</span> | <span class="method-description">Got more than one author? That's cool, but you'll need Co-Authors plus or another plugin to access any data</span> |
+| <span class="method-name">[can_edit()](#can_edit)</span> | <span class="method-type">`bool`</span> | <span class="method-description">Checks whether the current user can edit the post.</span> |
 | <span class="method-name">[categories()](#categories)</span> | <span class="method-type">`array`</span> | <span class="method-description">Get the categories on a particular post<br><br><span class="method-return"><span class="method-return-label">Returns:</span> of Timber\Term objects</span></span> |
 | <span class="method-name">[category()](#category)</span> | <span class="method-type">`\Timber\Term` or `null`</span> | <span class="method-description">Returns a category attached to a post</span> |
 | <span class="method-name">[children()](#children)</span> | <span class="method-type">`\Timber\PostCollectionInterface`</span> | <span class="method-description">Returns an array of children on the post as Timber\Posts (or other claass as you define).</span> |
-| <span class="method-name">[comment_count()](#comment_count)</span> | <span class="method-type">`int`</span> | <span class="method-description"><br><br><span class="method-return"><span class="method-return-label">Returns:</span> the number of comments on a post</span></span> |
+| <span class="method-name">[comment_count()](#comment_count)</span> | <span class="method-type">`int`</span> | <span class="method-description">Gets the number of comments on a post.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The number of comments on a post</span></span> |
 | <span class="method-name">[comment_form()](#comment_form)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the comment form for use on a single article page<br><br><span class="method-return"><span class="method-return-label">Returns:</span> of HTML for the form</span></span> |
 | <span class="method-name">[comments()](#comments)</span> | <span class="method-type">`bool` or `\Timber\CommentThread`</span> | <span class="method-description">Gets the comments on a Timber\Post and returns them as an array of `Timber\Comment` objects (or whatever comment class you set).</span> |
 | <span class="method-name">[content()](#content)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the actual content of a WordPress post.</span> |
 | <span class="method-name">[convert()](#convert)</span> | <span class="method-type"></span> | <span class="method-description">Finds any WP_Post objects and converts them to Timber\Posts</span> |
 | <span class="method-name">[date()](#date)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the publishing date of the post.</span> |
-| <span class="method-name">[edit_link()](#edit_link)</span> | <span class="method-type">`bool` or `string`</span> | <span class="method-description">Returns the edit URL of a post if the user has access to it<br><br><span class="method-return"><span class="method-return-label">Returns:</span> the edit URL of a post in the WordPress admin</span></span> |
+| <span class="method-name">[edit_link()](#edit_link)</span> | <span class="method-type">`string` or `null`</span> | <span class="method-description">Gets the edit link for a post if the current user has the correct rights.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The edit URL of a post in the WordPress admin or null if the current user can’t edit the post.</span></span> |
 | <span class="method-name">[excerpt()](#excerpt)</span> | <span class="method-type">`\Timber\PostExcerpt`</span> | <span class="method-description">Gets a excerpt of your post.</span> |
 | <span class="method-name">[field_object()](#field_object)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets the field object data from Advanced Custom Fields.</span> |
 | <span class="method-name">[format()](#format)</span> | <span class="method-type">`mixed`</span> | <span class="method-description"></span> |
@@ -347,7 +348,9 @@ $terms = $post->terms( [
 
 ### comment\_count()
 
-**Returns:** `int` the number of comments on a post
+Gets the number of comments on a post.
+
+**Returns:** `int` The number of comments on a post
 
 ---
 
@@ -763,11 +766,36 @@ This post is from <span>Recipes</span>
 
 ---
 
+### can\_edit()
+
+Checks whether the current user can edit the post.
+
+**Returns:** `bool` 
+
+**Twig**
+
+```twig
+{% if post.can_edit %}
+    <a href="{{ post.edit_link }}">Edit</a>
+{% endif %}
+```
+
+---
+
 ### edit\_link()
 
-Returns the edit URL of a post if the user has access to it
+Gets the edit link for a post if the current user has the correct rights.
 
-**Returns:** `bool|string` the edit URL of a post in the WordPress admin
+**Returns:** `string|null` The edit URL of a post in the WordPress admin or null if the current user can’t edit the
+post.
+
+**Twig**
+
+```twig
+{% if post.can_edit %}
+    <a href="{{ post.edit_link }}">Edit</a>
+{% endif %}
+```
 
 ---
 
