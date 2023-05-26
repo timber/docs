@@ -14,7 +14,7 @@ module.exports = {
       glob: './content/!(v?)/**'
     },
     {
-      name: 'v2.0 DEV',
+      name: 'v2.0.0 Beta 1',
       slug: 'v2',
       link: '/v2',
       glob: './content/v2/**'
