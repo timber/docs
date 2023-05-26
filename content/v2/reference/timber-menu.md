@@ -50,7 +50,7 @@ is_reference: true
 
 Initialize a menu.
 
-`__construct( ?\WP_Term $term, array $args )`
+`__construct( ?\WP_Term $term, array $args = [] )`
 
 | Name | Type | Description |
 | --- | --- | --- |
