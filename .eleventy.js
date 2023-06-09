@@ -57,21 +57,5 @@ module.exports = function(config) {
     });
   });
 
-  config.setBrowserSyncConfig({
-    /**
-     * Insert Browsersync snippet into head, to make it compatible with Turbolinks.
-     *
-     * @link https://github.com/BrowserSync/browser-sync/wiki/Browsersync-for-Turbolinks
-     */
-    snippetOptions: {
-      rule: {
-        match: /<\/head>/i,
-        fn: function(snippet, match) {
-          return snippet + match;
-        }
-      }
-    }
-  });
-
   return options;
 };
