@@ -20,11 +20,9 @@ objects build upon.
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <span class="property-name">$file</span> | <span class="property-type">`mixed`</span> | <span class="property-description"></span> |
+| <span class="property-name">$file</span> | <span class="property-type">`string`</span> | <span class="property-description"></span> |
 | <span class="property-name">$file_loc</span> | <span class="property-type">`string`</span> | <span class="property-description">The absolute path to the attachmend file in the filesystem (Example: `/var/www/htdocs/wp-content/uploads/2015/08/my-pic.jpg`)</span> |
-| <span class="property-name">$file_size</span> | <span class="property-type">`\Timber\FileSize`</span> | <span class="property-description">File size string.</span> |
-| <span class="property-name">$file_extension</span> | <span class="property-type">`null` or `string`</span> | <span class="property-description">A file extension.</span> |
-| <span class="property-name">$id</span> | <span class="property-type">`int`</span> | <span class="property-description">The attachment ID.</span> |
+| <span class="property-name">$file_extension</span> | <span class="property-type">`string`</span> | <span class="property-description">A file extension.</span> |
 
 </div>
 
@@ -36,13 +34,14 @@ objects build upon.
 | --- | --- | --- |
 | <span class="method-name">[__toString()](#__toString)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the src for an attachment.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The src of the attachment.</span></span> |
 | <span class="method-name">[caption()](#caption)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the caption of an attachment.</span> |
-| <span class="method-name">[extension()](#extension)</span> | <span class="method-type">`string` or `null`</span> | <span class="method-description">Gets the extension of the attached file.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> An uppercase extension string.</span></span> |
+| <span class="method-name">[extension()](#extension)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the extension of the attached file.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> An uppercase extension string.</span></span> |
+| <span class="method-name">[file()](#file)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the relative path to the uploads folder of an attachment.</span> |
+| <span class="method-name">[file_loc()](#file_loc)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the absolute path to an attachment.</span> |
 | <span class="method-name">[link()](#link)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the link to an attachment.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The URL of the attachment.</span></span> |
-| <span class="method-name">[parent()](#parent)</span> | <span class="method-type">`false` or `\Timber\Post`</span> | <span class="method-description">Gets the parent object.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Parent object as a `Timber\Post`. Returns `false` if no parent object is defined.</span></span> |
+| <span class="method-name">[parent()](#parent)</span> | <span class="method-type">`null` or `\Timber\Post`</span> | <span class="method-description">Gets the parent object.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Parent object as a `Timber\Post`. Returns `false` if no parent object is defined.</span></span> |
 | <span class="method-name">[path()](#path)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the relative path to an attachment.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The relative path to an attachment.</span></span> |
-| <span class="method-name">[size()](#size)</span> | <span class="method-type">`string` or `null`</span> | <span class="method-description">Gets filesize in a human readable format.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The filesize string in a human-readable format or null if the filesize can’t be read.</span></span> |
-| <span class="method-name">[size_raw()](#size_raw)</span> | <span class="method-type">`int` or `false`</span> | <span class="method-description">Gets filesize in bytes.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The filesize string in bytes, or false if the filesize can’t be read.</span></span> |
-| <span class="method-name">[src()](#src)</span> | <span class="method-type">`bool` or `string`</span> | <span class="method-description">Gets the source URL for an attachment.</span> |
+| <span class="method-name">[size()](#size)</span> | <span class="method-type">`int` or `null`</span> | <span class="method-description">Gets filesize in a human readable format.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The filesize string in a human-readable format or null if the filesize can’t be read.</span></span> |
+| <span class="method-name">[src()](#src)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the source URL for an attachment.</span> |
 
 </div>
 
@@ -99,11 +98,27 @@ Gets the relative path to an attachment.
 
 ---
 
+### file()
+
+Gets the relative path to the uploads folder of an attachment.
+
+**Returns:** `string` 
+
+---
+
+### file\_loc()
+
+Gets the absolute path to an attachment.
+
+**Returns:** `string` 
+
+---
+
 ### src()
 
 Gets the source URL for an attachment.
 
-**Returns:** `bool|string` 
+**Returns:** `string` 
 
 **Twig**
 
@@ -149,7 +164,7 @@ easier to read «16 KB» than «16555 bytes» or «1 MB» than «1048576 bytes»
 
 **since** 2.0.0
 
-**Returns:** `string|null` The filesize string in a human-readable format or null if the
+**Returns:** `int|null` The filesize string in a human-readable format or null if the
 filesize can’t be read.
 
 Use filesize information in a link that downloads a file:
@@ -165,37 +180,13 @@ Use filesize information in a link that downloads a file:
 
 ---
 
-### size\_raw()
-
-Gets filesize in bytes.
-
-**since** 2.0.0
-
-**Returns:** `int|false` The filesize string in bytes, or false if the filesize can’t be read.
-
-**Twig**
-
-```twig
-<table>
-    {% for attachment in Attachment(attachment_ids) %}
-        <tr>
-            <td>{{ attachment.title }}</td>
-            <td>{{ attachment.extension }}</td>
-            <td>{{ attachment.size_raw }} bytes</td>
-        </tr>
-    {% endfor %}
-</table>
-```
-
----
-
 ### extension()
 
 Gets the extension of the attached file.
 
 **since** 2.0.0
 
-**Returns:** `string|null` An uppercase extension string.
+**Returns:** `string` An uppercase extension string.
 
 Use extension information in a link that downloads a file:
 
@@ -218,7 +209,7 @@ Gets the parent object.
 
 The parent object of an attachment is a post it is assigned to.
 
-**Returns:** `false|\Timber\Post` Parent object as a `Timber\Post`. Returns `false` if no parent
+**Returns:** `null|\Timber\Post` Parent object as a `Timber\Post`. Returns `false` if no parent
 object is defined.
 
 **Twig**

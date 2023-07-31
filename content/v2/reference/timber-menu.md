@@ -54,7 +54,7 @@ Initialize a menu.
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $slug | `int` or `string` | A menu slug, the term ID of the menu, the full name from the admin menu, the slug of the registered location or nothing. Passing nothing is good if you only have one menu. Timber will grab what it finds. |
+| $term | `\WP_Term` or `null` | A menu slug, the term ID of the menu, the full name from the admin menu, the slug of the registered location or nothing. Passing nothing is good if you only have one menu. Timber will grab what it finds. |
 | $args | `array` | Optional. Right now, only the `depth` is supported which says how many levels of hierarchy should be included in the menu. Default `0`, which is all levels. |
 
 ---

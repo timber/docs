@@ -43,7 +43,7 @@ Timber::render( 'index.twig', $context );
 | <span class="method-name">[get_attachment()](#get_attachment)</span> | <span class="method-type">`\Timber\Attachment` or `null`</span> | <span class="method-description">Gets an attachment.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Timber\Attachment object if an attachment was found, null if no attachment was found.</span></span> |
 | <span class="method-name">[get_attachment_by()](#get_attachment_by)</span> | <span class="method-type">`\Timber\Attachment` or `null`</span> | <span class="method-description">Gets an attachment by its URL or absolute file path.</span> |
 | <span class="method-name">[get_comment()](#get_comment)</span> | <span class="method-type">`\Timber\Comment` or `null`</span> | <span class="method-description">Gets comment.</span> |
-| <span class="method-name">[get_comments()](#get_comments)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Get comments.</span> |
+| <span class="method-name">[get_comments()](#get_comments)</span> | <span class="method-type">`array`</span> | <span class="method-description">Get comments.</span> |
 | <span class="method-name">[~~get_context~~()](#get_context)</span> | <span class="method-type">`array`</span> | <span class="method-description">Get context.</span> |
 | <span class="method-name">[get_external_image()](#get_external_image)</span> | <span class="method-type">`\Timber\ExternalImage` or `null`</span> | <span class="method-description">Gets an external image.</span> |
 | <span class="method-name">[get_image()](#get_image)</span> | <span class="method-type">`\Timber\Image` or `null`</span> | <span class="method-description">Gets an image.</span> |
@@ -617,14 +617,14 @@ Get comments.
 
 **since** 2.0.0
 
-`get_comments( array $query = [], array $options = [] )`
+`get_comments( array|\WP_Comment_Query $query = [], array $options = [] )`
 
-**Returns:** `mixed` 
+**Returns:** `array` 
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $query | `array` |  |
-| $options | `array` | optional; none are currently supported |
+| $query | `array` or `\WP_Comment_Query` |  |
+| $options | `array` | Optional. None are currently supported. |
 
 ---
 

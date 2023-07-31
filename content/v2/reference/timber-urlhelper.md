@@ -22,9 +22,9 @@ is_reference: true
 | <span class="method-name">[get_rel_path()](#get_rel_path)</span> | <span class="method-type">`string`</span> | <span class="method-description"></span> |
 | <span class="method-name">[get_rel_url()](#get_rel_url)</span> | <span class="method-type">`string`</span> | <span class="method-description"></span> |
 | <span class="method-name">[get_scheme()](#get_scheme)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get url scheme</span> |
-| <span class="method-name">[is_external()](#is_external)</span> | <span class="method-type">`bool`</span> | <span class="method-description">Determines if URL is an external URL.</span> |
+| <span class="method-name">[is_external()](#is_external)</span> | <span class="method-type">`bool`</span> | <span class="method-description">Checks whether a URL or domain is external.</span> |
 | <span class="method-name">[is_external_content()](#is_external_content)</span> | <span class="method-type">`bool`</span> | <span class="method-description">This function is slightly different from the one below in the case of: an image hosted on the same domain BUT on a different site than the WordPress install will be reported as external content.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> if $url points to an external location returns true</span></span> |
-| <span class="method-name">[is_local()](#is_local)</span> | <span class="method-type">`bool`</span> | <span class="method-description"></span> |
+| <span class="method-name">[is_local()](#is_local)</span> | <span class="method-type">`bool`</span> | <span class="method-description">Checks whether a URL or domain is local.</span> |
 | <span class="method-name">[is_url()](#is_url)</span> | <span class="method-type">`bool`</span> | <span class="method-description"></span> |
 | <span class="method-name">[prepend_to_url()](#prepend_to_url)</span> | <span class="method-type">`string`</span> | <span class="method-description">Add something to the start of the path in an URL<br><br><span class="method-return"><span class="method-return-label">Returns:</span> the result (ex 'https://nytimes.com/2017/news/article.html')</span></span> |
 | <span class="method-name">[preslashit()](#preslashit)</span> | <span class="method-type">`string`</span> | <span class="method-description">Add slash (if not already present) to a path</span> |
@@ -113,13 +113,18 @@ Some setups like HTTP_HOST, some like SERVER_NAME, it's complicated
 
 ### is\_local()
 
+Checks whether a URL or domain is local.
+
+True if `$url` has a host name matching the server’s host name. False if
+a relative URL or if it’s a subdomain.
+
 `is_local( string $url )`
 
 **Returns:** `bool` 
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $url | `string` |  |
+| $url | `string` | URL to check. |
 
 ---
 
@@ -260,10 +265,10 @@ WordPress install will be reported as external content.
 
 ### is\_external()
 
-Determines if URL is an external URL.
+Checks whether a URL or domain is external.
 
-True if `$url` is an external url or subdomain (http://cdn.example.org = true). False if
-relative or local true if it's a subdomain
+True if the `$url` host name does not match the server’s host name.
+Otherwise, false.
 
 `is_external( string $url )`
 
@@ -271,7 +276,7 @@ relative or local true if it's a subdomain
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $url | `string` | to evalute. |
+| $url | `string` | URL to evalute. |
 
 ---
 

@@ -183,13 +183,13 @@ Gets posts that have the current term assigned.
 
 **see** https://timber.github.io/docs/v2/guides/posts/
 
-`posts( mixed $query = [], string $post_type_or_class = null )`
+`posts( int|array $query = [], string $post_type_or_class = null )`
 
 **Returns:** `\Timber\PostQuery` 
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $numberposts_or_args | `int` or `array` | Optional. Either the number of posts or an array of arguments for the post query to be performed. Default is an empty array, the equivalent of: ```php [   'posts_per_page' => get_option('posts_per_page'),   'post_type'      => 'any',   'tax_query'      => [ ...tax query for this Term... ] ] ``` |
+| $query | `int` or `array` | Optional. Either the number of posts or an array of arguments for the post query to be performed. Default is an empty array, the equivalent of: ```php [   'posts_per_page' => get_option('posts_per_page'),   'post_type'      => 'any',   'tax_query'      => [ ...tax query for this Term... ] ] ``` |
 | $post_type_or_class | `string` | Deprecated. Before Timber 2.x this was a post_type to be used for querying posts OR the Timber\Post subclass to instantiate for each post returned. As of Timber 2.0.0, specify `post_type` in the `$query` array argument. To specify the class, use Class Maps. |
 
 Query the default posts_per_page for this Term:

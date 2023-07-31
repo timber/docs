@@ -79,7 +79,7 @@ Timber::render('single.twig', $context);
 | <span class="method-name">[aspect()](#aspect)</span> | <span class="method-type">`float`</span> | <span class="method-description">Gets the aspect ratio of the image.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The aspect ratio of the image.</span></span> |
 | <span class="method-name">[height()](#height)</span> | <span class="method-type">`int`</span> | <span class="method-description">Gets the height of the image in pixels.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The height of the image in pixels.</span></span> |
 | <span class="method-name">[img_sizes()](#img_sizes)</span> | <span class="method-type">`string` or `null`</span> | <span class="method-description">Gets the sizes attribute for an image based on a WordPress image size.</span> |
-| <span class="method-name">[src()](#src)</span> | <span class="method-type">`string` or `bool`</span> | <span class="method-description">Gets the source URL for the image.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The src URL for the image.</span></span> |
+| <span class="method-name">[src()](#src)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the source URL for the image.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The src URL for the image.</span></span> |
 | <span class="method-name">[srcset()](#srcset)</span> | <span class="method-type">`string` or `null`</span> | <span class="method-description">Gets the srcset attribute for an image based on a WordPress image size.</span> |
 | <span class="method-name">[width()](#width)</span> | <span class="method-type">`int`</span> | <span class="method-description">Gets the width of the image in pixels.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The width of the image in pixels.</span></span> |
 
@@ -98,7 +98,7 @@ WordPress size has not been generated, it will return an empty string.
 
 `src( string $size = 'full' )`
 
-**Returns:** `string|bool` The src URL for the image.
+**Returns:** `string` The src URL for the image.
 
 | Name | Type | Description |
 | --- | --- | --- |

@@ -156,7 +156,7 @@ Output a value (string, array, object, etc.) to the error log
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $arg | `mixed` | that you want to error_log |
+| $error | `mixed` | The error that you want to error_log(). |
 
 ---
 
