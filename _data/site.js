@@ -11,13 +11,13 @@ module.exports = {
       slug: 'v1',
       link: '/',
       // Ignore folders of other versions.
-      glob: './content/!(v?)/**'
+      glob: './content/!(v?)/**',
     },
     {
-      name: 'v2.0.0 Beta 1',
+      name: 'v2.0.0 RC.1',
       slug: 'v2',
       link: '/v2',
-      glob: './content/v2/**'
+      glob: './content/v2/**',
     },
-  ]
+  ],
 };

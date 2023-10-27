@@ -59,10 +59,8 @@ Timber::render('single.twig', $context);
 | --- | --- | --- |
 | <span class="property-name">$alt_text</span> | <span class="property-type">`string`</span> | <span class="property-description"></span> |
 | <span class="property-name">$caption</span> | <span class="property-type">`string`</span> | <span class="property-description"></span> |
-| <span class="property-name">$file</span> | <span class="property-type">`mixed`</span> | <span class="property-description"></span> |
-| <span class="property-name">$file_loc</span> | <span class="property-type">`string`</span> | <span class="property-description">The absolute path to the attachmend file in the filesystem (Example: `/var/www/htdocs/wp-content/themes/my-theme/images/my-pic.jpg`)</span> |
-| <span class="property-name">$file_extension</span> | <span class="property-type">`null` or `string`</span> | <span class="property-description">A file extension.</span> |
-| <span class="property-name">$file_size</span> | <span class="property-type">`\Timber\FileSize`</span> | <span class="property-description">File size string.</span> |
+| <span class="property-name">$file_loc</span> | <span class="property-type">`string`</span> | <span class="property-description">The absolute path to the attachmend file in the filesystem (Example: `/var/www/htdocs/wp-content/themes/my-theme/images/`)</span> |
+| <span class="property-name">$file_extension</span> | <span class="property-type">`string`</span> | <span class="property-description">A file extension.</span> |
 
 </div>
 
@@ -76,10 +74,10 @@ Timber::render('single.twig', $context);
 | <span class="method-name">[alt()](#alt)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the alt text for an image.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Alt text stored in WordPress.</span></span> |
 | <span class="method-name">[aspect()](#aspect)</span> | <span class="method-type">`float`</span> | <span class="method-description">Gets the aspect ratio of the image.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The aspect ratio of the image.</span></span> |
 | <span class="method-name">[extension()](#extension)</span> | <span class="method-type">`string` or `null`</span> | <span class="method-description">Gets the extension of the attached file.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> An uppercase extension string.</span></span> |
+| <span class="method-name">[file_loc()](#file_loc)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the absolute path to the image.</span> |
 | <span class="method-name">[height()](#height)</span> | <span class="method-type">`int` or `null`</span> | <span class="method-description">Gets the height of the image in pixels.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The height of the image in pixels. Null if the height can’t be read, e.g. because the file doesn’t exist.</span></span> |
-| <span class="method-name">[path()](#path)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the relative path to an attachment.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The relative path to an attachment.</span></span> |
-| <span class="method-name">[size()](#size)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets filesize in a human-readable format.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The filesize string in a human-readable format or null if the filesize can’t be read.</span></span> |
-| <span class="method-name">[size_raw()](#size_raw)</span> | <span class="method-type">`int` or `null`</span> | <span class="method-description">Gets filesize in bytes.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The filesize number in bytes, or null if the filesize can’t be read.</span></span> |
+| <span class="method-name">[path()](#path)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the relative path to the file.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The relative path to the image file.</span></span> |
+| <span class="method-name">[size()](#size)</span> | <span class="method-type">`null` or `int`</span> | <span class="method-description">Gets filesize in a human-readable format.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Filsize or null if the filesize couldn't be determined.</span></span> |
 | <span class="method-name">[src()](#src)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the source URL for the image.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The src URL for the image.</span></span> |
 | <span class="method-name">[width()](#width)</span> | <span class="method-type">`int` or `null`</span> | <span class="method-description">Gets the width of the image in pixels.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The width of the image in pixels. Null if the width can’t be read, e.g. because the file doesn’t exist.</span></span> |
 
@@ -117,9 +115,9 @@ Gets the source URL for the image.
 
 ### path()
 
-Gets the relative path to an attachment.
+Gets the relative path to the file.
 
-**Returns:** `string` The relative path to an attachment.
+**Returns:** `string` The relative path to the image file.
 
 **Twig**
 
@@ -134,6 +132,14 @@ Gets the relative path to an attachment.
 
 ---
 
+### file\_loc()
+
+Gets the absolute path to the image.
+
+**Returns:** `string` 
+
+---
+
 ### size()
 
 Gets filesize in a human-readable format.
@@ -143,8 +149,7 @@ easier to read «16 KB» than «16555 bytes» or «1 MB» than «1048576 bytes»
 
 **since** 2.0.0
 
-**Returns:** `string` The filesize string in a human-readable format or null if the
-filesize can’t be read.
+**Returns:** `null|int` Filsize or null if the filesize couldn't be determined.
 
 Use filesize information in a link that downloads a file:
 
@@ -155,30 +160,6 @@ Use filesize information in a link that downloads a file:
     <span class="download-title">{{ attachment.title }}</span>
     <span class="download-info">(Download, {{ attachment.size }})</span>
 </a>
-```
-
----
-
-### size\_raw()
-
-Gets filesize in bytes.
-
-**since** 2.0.0
-
-**Returns:** `int|null` The filesize number in bytes, or null if the filesize can’t be read.
-
-**Twig**
-
-```twig
-<table>
-    {% for attachment in Attachment(attachment_ids) %}
-        <tr>
-            <td>{{ attachment.title }}</td>
-            <td>{{ attachment.extension }}</td>
-            <td>{{ attachment.size_raw }} bytes</td>
-        </tr>
-    {% endfor %}
-</table>
 ```
 
 ---

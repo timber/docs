@@ -81,18 +81,17 @@ Timber::render( 'single.twig', $context );
 | <span class="method-name">[__call()](#__call)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">This is helpful for twig to return properties and methods see: https://github.com/fabpot/Twig/issues/2</span> |
 | <span class="method-name">[__get()](#__get)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">This is helpful for twig to return properties and methods see: https://github.com/fabpot/Twig/issues/2</span> |
 | <span class="method-name">[__toString()](#__toString)</span> | <span class="method-type">`string`</span> | <span class="method-description">Outputs the title of the post if you do something like `<h1>{{post}}</h1>`</span> |
-| <span class="method-name">[audio()](#audio)</span> | <span class="method-type">`bool` or `array`</span> | <span class="method-description">Returns audio tags embedded in the post’s content.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> A list of found HTML embeds.</span></span> |
 | <span class="method-name">[author()](#author)</span> | <span class="method-type">`\Timber\User` or `null`</span> | <span class="method-description">Return the author of a post<br><br><span class="method-return"><span class="method-return-label">Returns:</span> A User object if found, false if not</span></span> |
 | <span class="method-name">[authors()](#authors)</span> | <span class="method-type">`array`</span> | <span class="method-description">Got more than one author? That's cool, but you'll need Co-Authors plus or another plugin to access any data</span> |
 | <span class="method-name">[can_edit()](#can_edit)</span> | <span class="method-type">`bool`</span> | <span class="method-description">Checks whether the current user can edit the post.</span> |
 | <span class="method-name">[categories()](#categories)</span> | <span class="method-type">`array`</span> | <span class="method-description">Get the categories on a particular post<br><br><span class="method-return"><span class="method-return-label">Returns:</span> of Timber\Term objects</span></span> |
-| <span class="method-name">[category()](#category)</span> | <span class="method-type">`\Timber\Term` or `null`</span> | <span class="method-description">Returns a category attached to a post</span> |
+| <span class="method-name">[category()](#category)</span> | <span class="method-type">`\Timber\Term` or `null`</span> | <span class="method-description">Gets a category attached to a post.</span> |
 | <span class="method-name">[children()](#children)</span> | <span class="method-type">`\Timber\PostCollectionInterface`</span> | <span class="method-description">Returns an array of children on the post as Timber\Posts (or other claass as you define).</span> |
 | <span class="method-name">[comment_count()](#comment_count)</span> | <span class="method-type">`int`</span> | <span class="method-description">Gets the number of comments on a post.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The number of comments on a post</span></span> |
 | <span class="method-name">[comment_form()](#comment_form)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the comment form for use on a single article page<br><br><span class="method-return"><span class="method-return-label">Returns:</span> of HTML for the form</span></span> |
 | <span class="method-name">[comments()](#comments)</span> | <span class="method-type">`bool` or `\Timber\CommentThread`</span> | <span class="method-description">Gets the comments on a Timber\Post and returns them as an array of `Timber\Comment` objects (or whatever comment class you set).</span> |
 | <span class="method-name">[content()](#content)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the actual content of a WordPress post.</span> |
-| <span class="method-name">[convert()](#convert)</span> | <span class="method-type"></span> | <span class="method-description">Finds any WP_Post objects and converts them to Timber\Posts</span> |
+| <span class="method-name">[convert()](#convert)</span> | <span class="method-type"></span> | <span class="method-description">Finds any WP_Post objects and converts them to Timber\Post objects.</span> |
 | <span class="method-name">[date()](#date)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the publishing date of the post.</span> |
 | <span class="method-name">[edit_link()](#edit_link)</span> | <span class="method-type">`string` or `null`</span> | <span class="method-description">Gets the edit link for a post if the current user has the correct rights.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The edit URL of a post in the WordPress admin or null if the current user can’t edit the post.</span></span> |
 | <span class="method-name">[excerpt()](#excerpt)</span> | <span class="method-type">`\Timber\PostExcerpt`</span> | <span class="method-description">Gets a excerpt of your post.</span> |
@@ -126,7 +125,6 @@ Timber::render( 'single.twig', $context );
 | <span class="method-name">[timestamp()](#timestamp)</span> | <span class="method-type">`false` or `int`</span> | <span class="method-description">Gets the timestamp when the post was published.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Unix timestamp on success, false on failure.</span></span> |
 | <span class="method-name">[title()](#title)</span> | <span class="method-type">`string`</span> | <span class="method-description">Returns the processed title to be used in templates. This returns the title of the post after WP's filters have run. This is analogous to `the_title()` in standard WP template tags.</span> |
 | <span class="method-name">[type()](#type)</span> | <span class="method-type">`\Timber\PostType`</span> | <span class="method-description">Returns the PostType object for a post’s post type with labels and other info.</span> |
-| <span class="method-name">[video()](#video)</span> | <span class="method-type">`bool` or `array`</span> | <span class="method-description">Returns video tags embedded in the post’s content.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> A list of found HTML embeds.</span></span> |
 
 </div>
 
@@ -470,9 +468,9 @@ Get the categories on a particular post
 
 ### category()
 
-Returns a category attached to a post
+Gets a category attached to a post.
 
-If multiple categories are set, it will return just the first one
+If multiple categories are set, it will return just the first one.
 
 **Returns:** `\Timber\Term|null` 
 
@@ -612,6 +610,9 @@ This function will also apply the
 [`get_the_date`](https://developer.wordpress.org/reference/hooks/get_the_date/) filter to the
 output.
 
+If you use {{ post.date }} with the |time_ago filter, then make sure that you use a time
+format including the full time and not just the date.
+
 `date( string|null $date_format = null )`
 
 **Returns:** `string` 
@@ -627,6 +628,10 @@ output.
 Published on {{ post.date }}
 OR
 Published on {{ post.date('F jS') }}
+which was
+{{ post.date('U')|time_ago }}
+{{ post.date('Y-m-d H:i:s')|time_ago }}
+{{ post.date(constant('DATE_ATOM'))|time_ago }}
 ```
 
 **HTML**
@@ -635,6 +640,8 @@ Published on {{ post.date('F jS') }}
 Published on January 12, 2015
 OR
 Published on Jan 12th
+which was
+8 years ago
 ```
 
 ---
@@ -903,14 +910,13 @@ Using a pagination for all pages.
 
 ### convert()
 
-Finds any WP_Post objects and converts them to Timber\Posts
+Finds any WP_Post objects and converts them to Timber\Post objects.
 
 `convert( array|\WP_Post $data )`
 
 | Name | Type | Description |
 | --- | --- | --- |
 | $data | `array` or `\WP_Post` |  |
-| $class | `string` |  |
 
 ---
 
@@ -1029,34 +1035,6 @@ expanded shortcode.
 
 ```twig
 {{ post.gallery }}
-```
-
----
-
-### audio()
-
-Returns audio tags embedded in the post’s content.
-
-**Returns:** `bool|array` A list of found HTML embeds.
-
-**Twig**
-
-```twig
-{{ post.audio }}
-```
-
----
-
-### video()
-
-Returns video tags embedded in the post’s content.
-
-**Returns:** `bool|array` A list of found HTML embeds.
-
-**Twig**
-
-```twig
-{{ post.video }}
 ```
 
 ---

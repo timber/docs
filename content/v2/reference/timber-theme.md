@@ -45,8 +45,8 @@ Timber::render('index.twig', $context);
 | <span class="property-name">$version</span> | <span class="property-type">`string`</span> | <span class="property-description">the version of the theme (ex: `1.2.3`)</span> |
 | <span class="property-name">$parent</span> | <span class="property-type">`\Timber\Theme`</span> | <span class="property-description">the Timber\Theme object for the parent theme</span> |
 | <span class="property-name">$parent_slug</span> | <span class="property-type">`string`</span> | <span class="property-description">the slug of the parent theme (ex: `_s`)</span> |
-| <span class="property-name">$slug</span> | <span class="property-type">`string`</span> | <span class="property-description">the slug of the theme (ex: `my-super-theme`)</span> |
-| <span class="property-name">$uri</span> | <span class="property-type">`string`</span> | <span class="property-description"></span> |
+| <span class="property-name">$slug</span> | <span class="property-type">`string`</span> | <span class="property-description">the slug of the theme (ex: `my-timber-theme`)</span> |
+| <span class="property-name">$uri</span> | <span class="property-type">`string`</span> | <span class="property-description">Retrieves template directory URI for the active (parent) theme. (ex: `http://example.org/wp-content/themes/my-timber-theme`).</span> |
 
 </div>
 
@@ -59,8 +59,8 @@ Timber::render('index.twig', $context);
 | <span class="method-name">[__construct()](#__construct)</span> | <span class="method-type"></span> | <span class="method-description">Constructs a new `Timber\Theme` object.</span> |
 | <span class="method-name">[display()](#display)</span> | <span class="method-type">`false` or `string`</span> | <span class="method-description">Gets a theme header, formatted and translated for display.</span> |
 | <span class="method-name">[get()](#get)</span> | <span class="method-type">`false` or `string`</span> | <span class="method-description">Gets a raw, unformatted theme header.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> String on success, false on failure.</span></span> |
-| <span class="method-name">[link()](#link)</span> | <span class="method-type">`string`</span> | <span class="method-description"><br><br><span class="method-return"><span class="method-return-label">Returns:</span> the absolute path to the theme (ex: `http://example.org/wp-content/themes/my-timber-theme`)</span></span> |
-| <span class="method-name">[path()](#path)</span> | <span class="method-type">`string`</span> | <span class="method-description"><br><br><span class="method-return"><span class="method-return-label">Returns:</span> the relative path to the theme (ex: `/wp-content/themes/my-timber-theme`)</span></span> |
+| <span class="method-name">[link()](#link)</span> | <span class="method-type">`string`</span> | <span class="method-description"><br><br><span class="method-return"><span class="method-return-label">Returns:</span> Retrieves template directory URI for the active (child) theme. (ex: `http://example.org/wp-content/themes/my-timber-theme`).</span></span> |
+| <span class="method-name">[path()](#path)</span> | <span class="method-type">`string`</span> | <span class="method-description"><br><br><span class="method-return"><span class="method-return-label">Returns:</span> The relative path to the theme (ex: `/wp-content/themes/my-timber-theme`).</span></span> |
 | <span class="method-name">[theme_mod()](#theme_mod)</span> | <span class="method-type">`string`</span> | <span class="method-description"></span> |
 | <span class="method-name">[theme_mods()](#theme_mods)</span> | <span class="method-type">`array`</span> | <span class="method-description"></span> |
 
@@ -86,7 +86,7 @@ call. You can access this in your twig template via `{{ site.theme }}`.
 
 ```php
 <?php
-    $theme = new Timber\Theme("my-theme");
+    $theme = new Timber\Theme("my-timber-theme");
     $context['theme_stuff'] = $theme;
     Timber::render('single.twig', $context);
 ```
@@ -105,13 +105,13 @@ We are currently using the My Theme theme.
 
 ### link()
 
-**Returns:** `string` the absolute path to the theme (ex: `http://example.org/wp-content/themes/my-timber-theme`)
+**Returns:** `string` Retrieves template directory URI for the active (child) theme. (ex: `http://example.org/wp-content/themes/my-timber-theme`).
 
 ---
 
 ### path()
 
-**Returns:** `string` the relative path to the theme (ex: `/wp-content/themes/my-timber-theme`)
+**Returns:** `string` The relative path to the theme (ex: `/wp-content/themes/my-timber-theme`).
 
 ---
 

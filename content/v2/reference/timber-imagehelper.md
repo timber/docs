@@ -104,7 +104,7 @@ Generate a new image with the specified dimensions.
 
 New dimensions are achieved by adding colored bands to maintain ratio.
 
-`letterbox( string $src, int $w, int $h, string $color = false, bool $force = false )`
+`letterbox( string $src, int $w, int $h, string|bool $color = false, bool $force = false )`
 
 **Returns:** `string` 
 
@@ -113,7 +113,7 @@ New dimensions are achieved by adding colored bands to maintain ratio.
 | $src | `string` |  |
 | $w | `int` |  |
 | $h | `int` |  |
-| $color | `string` |  |
+| $color | `string` or `bool` |  |
 | $force | `bool` |  |
 
 ---
