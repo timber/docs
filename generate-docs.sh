@@ -16,7 +16,7 @@ mv ./content/v1/reference ./content/
 mv ./content/v1/upgrade-guides ./content/
 
 # Move data file from base version to global data.
-mv ./content/v1.json ./_data/baseVersion.json
+mv ./content/v1/v1.json ./_data/baseVersion.json
 
 ################################################################################
 # Contributing guide.
