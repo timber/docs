@@ -16,7 +16,7 @@ module.exports = {
     {
       name: 'v2.0.0 RC.1',
       slug: 'v2',
-      link: '/v2',
+      link: '/v2/',
       glob: './content/v2/**',
     },
   ],
