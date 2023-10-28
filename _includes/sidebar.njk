@@ -21,8 +21,8 @@
     {% set collection_slug = ['v', version]|join %}
 
     {% if collections[collection_slug] %}
-    <nav id="nav-main" class="navMain">
-        <ul class="navMain-sections">
+        <nav id="nav-main" class="navMain">
+            <ul class="navMain-sections">
                 {% for section in collections[collection_slug] %}
                     {% set item = baseVersion.nav[section.slug]
                         if version == baseVersion.version and baseVersion.nav
@@ -40,7 +40,7 @@
                         {% endif %}
                     </li>
                 {% endfor %}
-        </ul>
-    </nav>
+            </ul>
+        </nav>
     {% endif %}
 </aside>

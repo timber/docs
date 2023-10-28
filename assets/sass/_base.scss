@@ -38,15 +38,21 @@ body {
 	}
 }
 
-main {
+.main-container {
 	flex: 1;
-	padding: $gutter-width $gutter-width/2;
 	position: relative;
 	z-index: 0;
 
 	@media (min-width: $mobile-breakpoint) {
 		width: calc(100% - #{$sidebar-width});
 		margin-top: $header-height;
+	}
+}
+
+main {
+	padding: $gutter-width $gutter-width/2;
+
+	@media (min-width: $mobile-breakpoint) {
 		padding-top: 3em;
 		padding-left: $gutter-width;
 		padding-right: $gutter-width;

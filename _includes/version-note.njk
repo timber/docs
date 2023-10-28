@@ -1,0 +1,3 @@
+<div class="version-note">
+    <p>You are reading the documentation for <strong>Timber {{ getCurrentVersion(version, site.versions).name }}</strong>. Switch to the documentation for Timber {% for v in getOtherVersions(version, site.versions) %}<a href="{{ v.link|url }}">{{ v.name }}</a>{% if not loop.last %}, {% endif %}{% endfor %}.</p>
+</div>

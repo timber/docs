@@ -11,19 +11,14 @@
     <div class="wrapper">
         {% include 'sidebar.njk' %}
 
-        <main>
-            {% if "v2" == version %}
-                <div class="globalCallout">
-                    <h2>Timber Version 2.0 Release Candidate 🌲</h2>
-	                <p>You’re looking at the documentation for version 2 of Timber, which is <strong>currently released as a Release Candidate</strong>.</p>
-	                <p>You may have a look at the <a href="https://timber.github.io/docs/v2/upgrade-guides/2.0/">upcoming changes</a>.</p>
-                    <p>Follow us on <a href="https://twitter.com/TimberWP">Twitter</a> or start <a href="https://help.github.com/en/enterprise/2.15/user/articles/watching-and-unwatching-repositories#watching-a-single-repository">watching new releases</a> of our <a href="https://github.com/timber/timber/">GitHub repository</a> to be notified about a version you can use.</p>
-                </div>
-            {% endif %}
+        <div class="main-container">
+            {% include 'version-note.njk' %}
 
-            {% block content %}
-            {% endblock %}
-        </main>
+            <main>
+                {% block content %}
+                {% endblock %}
+            </main>
+        </div>
     </div>
 
     {% include 'scripts-footer.njk' %}
