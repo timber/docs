@@ -12,15 +12,18 @@
     <nav class="navVersions">
         <ul>
         {% for v in site.versions %}
-            <li><a href="{{ v.link|url }}" {% if version === v.slug %}class="is-current"{% endif %}>{{ v.name }}</a></li>
+            <li><a href="{{ v.link|url }}" {% if version === v.value %}class="is-current"{% endif %}>{{ v.name }}</a></li>
         {% endfor %}
         </ul>
     </nav>
 
+    {# v1, v2, etc. #}
+    {% set collection_slug = ['v', version]|join %}
+
+    {% if collections[collection_slug] %}
     <nav id="nav-main" class="navMain">
         <ul class="navMain-sections">
-            {% if collections[version] %}
-                {% for section in collections[version] %}
+                {% for section in collections[collection_slug] %}
                     {% set item = baseVersion.nav[section.slug]
                         if version == baseVersion.version and baseVersion.nav
                         else nav[section.slug]
@@ -37,7 +40,7 @@
                         {% endif %}
                     </li>
                 {% endfor %}
-            {% endif %}
         </ul>
     </nav>
+    {% endif %}
 </aside>
