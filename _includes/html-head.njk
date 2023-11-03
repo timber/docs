@@ -26,7 +26,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <!-- Algolia Meta Tags (https://docsearch.algolia.com/docs/required-configuration/#introduce-global-information-as-meta-tags) -->
-    <meta name="docsearch:version" content="{{ version }}" />
+    <meta name="docsearch:version" content="{{ getCurrentVersion(version, site.versions).slug }}" />
 
 	<!-- Algolia Docsearch -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
