@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-# Clean out folder to remove deprecated files.
+# Clean out folders to remove deprecated files.
 rm -rf ./content/*
+rm -rf ./docs/*
 
 # Copy static content.
 cp -a ./content-static/. ./content/
