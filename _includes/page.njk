@@ -4,10 +4,12 @@
     <article>
         <h1>{{ title }}</h1>
 
-        {% if content|toc !== '<nav class="toc"></nav>' %}
+        {% set toc = content|toc %}
+
+        {% if toc and toc !== '<nav class="toc"></nav>' %}
             <aside>
                 <h2 class="heading-small">On this page</h2>
-                {{ content|toc|safe }}
+                {{ toc|safe }}
             </aside>
         {% endif %}
 
