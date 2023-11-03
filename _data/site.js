@@ -19,7 +19,7 @@ module.exports = {
       slug: 'v1',
       link: '/v1/',
       // Ignore folders of other versions.
-      glob: './content/!(v[1-9])/**',
+      glob: './content/v1/**',
     },
   ],
 };

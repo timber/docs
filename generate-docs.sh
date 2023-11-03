@@ -9,15 +9,6 @@ cp -a ./content-static/. ./content/
 # Copy current docs from timber repository to this repository.
 cp -a ../timber/docs/. ./content/
 
-# Move current version to current level, but keep files on the main level.
-mv ./content/v1/getting-started ./content/
-mv ./content/v1/guides ./content/
-mv ./content/v1/reference ./content/
-mv ./content/v1/upgrade-guides ./content/
-
-# Move data file from base version to global data.
-mv ./content/v1/v1.json ./_data/baseVersion.json
-
 ################################################################################
 # Contributing guide.
 ################################################################################

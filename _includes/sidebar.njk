@@ -24,10 +24,7 @@
         <nav id="nav-main" class="navMain">
             <ul class="navMain-sections">
                 {% for section in collections[collection_slug] %}
-                    {% set item = baseVersion.nav[section.slug]
-                        if version == baseVersion.version and baseVersion.nav
-                        else nav[section.slug]
-                    %}
+                    {% set item = nav[section.slug] %}
 
                     <li class="navMain-section">
                         <h3 class="navMain-title {% if item.name === sectionTitle %}{# Marking the current section for Algolia DocSearch. #}navMain-sectionTitle{% endif %}">{{ item.name }}</h3>
