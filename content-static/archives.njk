@@ -1,0 +1,27 @@
+---js
+{
+  layout: "page",
+  pagination: {
+    data: "collections",
+    size: 1,
+    alias: "archive",
+    resolve: "values",
+    before: function(paginationData) {
+      return this.filterArchives(paginationData);
+    }
+  },
+  permalink: "{{ archive.parent.slug }}/{{ archive.slug }}/index.html"
+}
+---
+
+<h1>{{ archive.pages[0].data.sectionTitle }}</h1>
+
+<p>Pages in this section:</p>
+
+<ul>
+{% for page in archive.pages %}
+  <li>
+    <a href="{{ page.url|url }}">{{ page.data.title }}</a>
+  </li>
+{% endfor %}
+</ul>

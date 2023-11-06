@@ -1,7 +1,10 @@
-{% set version = version
-    if version
-    else 1
-%}
+{% if archive.version %}
+    {% set version = archive.version %}
+{% endif %}
+
+{% if not version %}
+    {% set version = 1 %}
+{% endif %}
 
 {% include 'html-head.njk' %}
 

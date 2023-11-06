@@ -36,6 +36,27 @@ module.exports = function (config) {
     return versions.filter((v) => v.value !== version);
   });
 
+  config.addJavaScriptFunction('filterArchives', function (archives) {
+    archives = archives.filter((archive) => {
+      return archive[0] && archive[0]?.pages;
+    });
+
+    archives = archives.flat(1);
+
+    archives = archives.filter((archive) => {
+      return archive.pages.length > 1;
+    });
+
+    archives = archives.map((archive) => {
+      archive.title = archive?.pages[0]?.data?.sectionTitle || '';
+      archive.version = Number(archive.parent.slug.replace('v', ''));
+
+      return archive;
+    });
+
+    return archives;
+  });
+
   // Plugins
   config.addPlugin(require('eleventy-plugin-toc'));
   // Required for sitemap.
