@@ -27,7 +27,12 @@
                     {% set item = nav[section.slug] %}
 
                     <li class="navMain-section">
-                        <h3 class="navMain-title {% if item.name === sectionTitle %}{# Marking the current section for Algolia DocSearch. #}navMain-sectionTitle{% endif %}">{{ item.name }}</h3>
+                        {% if section.title.length %}
+                            <h3
+                                class="navMain-title {% if section.title === sectionTitle %}{# Marking the current section for Algolia DocSearch. #}navMain-sectionTitle{% endif %}"
+                            >{{ section.title }}</h3>
+                        {% endif %}
+
                         {% if section.pages %}
                             <ul class="navMain-items">
                                 {% set pages = section.pages %}
