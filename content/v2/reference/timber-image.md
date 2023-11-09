@@ -75,7 +75,7 @@ Timber::render('single.twig', $context);
 
 | Name | Return Type | Summary/Returns |
 | --- | --- | --- |
-| <span class="method-name">[alt()](#alt)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the alt text for an image.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Alt text stored in WordPress.</span></span> |
+| <span class="method-name">[alt()](#alt)</span> | <span class="method-type">`string` or `null`</span> | <span class="method-description">Gets the alt text for an image.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Alt text stored in WordPress.</span></span> |
 | <span class="method-name">[aspect()](#aspect)</span> | <span class="method-type">`float`</span> | <span class="method-description">Gets the aspect ratio of the image.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The aspect ratio of the image.</span></span> |
 | <span class="method-name">[height()](#height)</span> | <span class="method-type">`int`</span> | <span class="method-description">Gets the height of the image in pixels.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The height of the image in pixels.</span></span> |
 | <span class="method-name">[img_sizes()](#img_sizes)</span> | <span class="method-type">`string` or `null`</span> | <span class="method-description">Gets the sizes attribute for an image based on a WordPress image size.</span> |
@@ -183,7 +183,7 @@ Gets the alt text for an image.
 For better accessibility, you should always add an alt attribute to your images, even if it’s
 empty.
 
-**Returns:** `string` Alt text stored in WordPress.
+**Returns:** `string|null` Alt text stored in WordPress.
 
 **Twig**
 

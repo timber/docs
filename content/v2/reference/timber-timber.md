@@ -739,7 +739,7 @@ Compiles a Twig file.
 Passes data to a Twig file and returns the output. If the template file doesn't exist it will throw a warning
 when WP_DEBUG is enabled.
 
-`compile( array|string $filenames, array $data = [], bool|int $expires = false, string $cache_mode = Loader::CACHE_USE_DEFAULT, bool $via_render = false )`
+`compile( array|string $filenames, array $data = [], bool|int|array $expires = false, string $cache_mode = Loader::CACHE_USE_DEFAULT, bool $via_render = false )`
 
 **Returns:** `bool|string` The returned output.
 
@@ -747,7 +747,7 @@ when WP_DEBUG is enabled.
 | --- | --- | --- |
 | $filenames | `array` or `string` | Name or full path of the Twig file to compile. If this is an array of file names or paths, Timber will compile the first file that exists. |
 | $data | `array` | Optional. An array of data to use in Twig template. |
-| $expires | `bool` or `int` | Optional. In seconds. Use false to disable cache altogether. When passed an array, the first value is used for non-logged in visitors, the second for users. Default false. |
+| $expires | `bool` or `int` or `array` | Optional. In seconds. Use false to disable cache altogether. When passed an array, the first value is used for non-logged in visitors, the second for users. Default false. |
 | $cache_mode | `string` | Optional. Any of the cache mode constants defined in Timber\Loader. |
 | $via_render | `bool` | Optional. Whether to apply optional render or compile filters. Default false. |
 
@@ -815,13 +815,13 @@ Renders a Twig file.
 
 Passes data to a Twig file and echoes the output.
 
-`render( array|string $filenames, array $data = [], bool|int $expires = false, string $cache_mode = Loader::CACHE_USE_DEFAULT )`
+`render( array|string $filenames, array $data = [], bool|int|array $expires = false, string $cache_mode = Loader::CACHE_USE_DEFAULT )`
 
 | Name | Type | Description |
 | --- | --- | --- |
 | $filenames | `array` or `string` | Name or full path of the Twig file to render. If this is an array of file names or paths, Timber will render the first file that exists. |
 | $data | `array` | Optional. An array of data to use in Twig template. |
-| $expires | `bool` or `int` | Optional. In seconds. Use false to disable cache altogether. When passed an array, the first value is used for non-logged in visitors, the second for users. Default false. |
+| $expires | `bool` or `int` or `array` | Optional. In seconds. Use false to disable cache altogether. When passed an array, the first value is used for non-logged in visitors, the second for users. Default false. |
 | $cache_mode | `string` | Optional. Any of the cache mode constants defined in Timber\Loader. |
 
 **PHP**
@@ -907,7 +907,7 @@ Get pagination.
 
 **DEPRECATED** since 2.0.0
 
-**link** <https://timber.github.io/docs/guides/pagination/>
+**link** <https://timber.github.io/docs/v2/guides/pagination/>
 
 `get_pagination( array $prefs = [] )`
 

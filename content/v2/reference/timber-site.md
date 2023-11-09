@@ -67,6 +67,7 @@ My site is called Jared's blog, another site on my network is Upstatement.com
 
 | Name | Return Type | Summary/Returns |
 | --- | --- | --- |
+| <span class="method-name">[__call()](#__call)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Magic method dispatcher for site option fields, for convenience in Twig views.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The value of the option field named `$field` if truthy, `false` otherwise.</span></span> |
 | <span class="method-name">[__construct()](#__construct)</span> | <span class="method-type"></span> | <span class="method-description">Constructs a Timber\Site object</span> |
 | <span class="method-name">[__get()](#__get)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Get the value for a site option.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The option value.</span></span> |
 | <span class="method-name">[icon()](#icon)</span> | <span class="method-type">`null` or `\Timber\Image`</span> | <span class="method-description"></span> |
@@ -98,6 +99,36 @@ $site_two = new Timber\Site("My Cool Site");
 //non-multisite
 $site = new Timber\Site();
 ```
+
+---
+
+### \_\_call()
+
+Magic method dispatcher for site option fields, for convenience in Twig views.
+
+Called when explicitly invoking non-existent methods on the Site object. This method is not
+meant to be called directly.
+
+**link** <https://secure.php.net/manual/en/language.oop5.overloading.php#object.call>
+
+`__call( string $option, array $arguments )`
+
+**Returns:** `mixed` The value of the option field named `$field` if truthy, `false` otherwise.
+
+| Name | Type | Description |
+| --- | --- | --- |
+| $option | `string` | The name of the method being called. |
+| $arguments | `array` | Enumerated array containing the parameters passed to the function. Not used. |
+
+The following example will dynamically dispatch the magic __call() method with an argument
+of "users_can_register" #}
+
+**Twig**
+
+```twig
+{% if site.users_can_register %}
+  {# Show a notification and link to the register form #}
+{% endif %}
 
 ---
 

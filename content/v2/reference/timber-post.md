@@ -232,7 +232,7 @@ content, it will use that to mark where to pull through.
 
 This method returns a `Timber\PostExcerpt` object, which is a **chainable object**. This
 means that you can change the output of the excerpt by **adding more methods**. Refer to the
-[documentation of the `Timber\PostExcerpt` class](https://timber.github.io/docs/reference/timber-postexcerpt/)
+[documentation of the `Timber\PostExcerpt` class](https://timber.github.io/docs/v2/reference/timber-postexcerpt/)
 to get an overview of all the available methods.
 
 **see** [Timber\PostExcerpt](../timber-postexcerpt/)

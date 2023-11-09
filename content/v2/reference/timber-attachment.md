@@ -33,14 +33,14 @@ objects build upon.
 | Name | Return Type | Summary/Returns |
 | --- | --- | --- |
 | <span class="method-name">[__toString()](#__toString)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the src for an attachment.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The src of the attachment.</span></span> |
-| <span class="method-name">[caption()](#caption)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the caption of an attachment.</span> |
+| <span class="method-name">[caption()](#caption)</span> | <span class="method-type">`string` or `null`</span> | <span class="method-description">Gets the caption of an attachment.</span> |
 | <span class="method-name">[extension()](#extension)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the extension of the attached file.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> An uppercase extension string.</span></span> |
 | <span class="method-name">[file()](#file)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the relative path to the uploads folder of an attachment.</span> |
 | <span class="method-name">[file_loc()](#file_loc)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the absolute path to an attachment.</span> |
 | <span class="method-name">[link()](#link)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the link to an attachment.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The URL of the attachment.</span></span> |
 | <span class="method-name">[parent()](#parent)</span> | <span class="method-type">`null` or `\Timber\Post`</span> | <span class="method-description">Gets the parent object.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Parent object as a `Timber\Post`. Returns `false` if no parent object is defined.</span></span> |
 | <span class="method-name">[path()](#path)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the relative path to an attachment.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The relative path to an attachment.</span></span> |
-| <span class="method-name">[size()](#size)</span> | <span class="method-type">`int` or `null`</span> | <span class="method-description">Gets filesize in a human readable format.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The filesize string in a human-readable format or null if the filesize can’t be read.</span></span> |
+| <span class="method-name">[size()](#size)</span> | <span class="method-type">`int` or `null`</span> | <span class="method-description">Gets the raw filesize in bytes.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The raw filesize or null if it could not be read.</span></span> |
 | <span class="method-name">[src()](#src)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the source URL for an attachment.</span> |
 
 </div>
@@ -139,7 +139,7 @@ Gets the caption of an attachment.
 
 **since** 2.0
 
-**Returns:** `string` 
+**Returns:** `string|null` 
 
 **Twig**
 
@@ -157,26 +157,22 @@ Gets the caption of an attachment.
 
 ### size()
 
-Gets filesize in a human readable format.
+Gets the raw filesize in bytes.
 
-This can be useful if you want to display the human readable filesize for a file. It’s
-easier to read «16 KB» than «16555 bytes» or «1 MB» than «1048576 bytes».
+Use the `size_format` filter to format the raw size into a human readable size («1 MB» intead of «1048576»)
 
-**since** 2.0.0
-
-**Returns:** `int|null` The filesize string in a human-readable format or null if the
-filesize can’t be read.
-
-Use filesize information in a link that downloads a file:
-
-**Twig**
+**see** https://developer.wordpress.org/reference/functions/size_format/ Use filesize information in a link that downloads a file:
 
 ```twig
 <a class="download" href="{{ attachment.src }}" download="{{ attachment.title }}">
     <span class="download-title">{{ attachment.title }}</span>
-    <span class="download-info">(Download, {{ attachment.size }})</span>
+    <span class="download-info">(Download, {{ attachment.size|size_format }})</span>
 </a>
 ```
+
+**since** 2.0.0
+
+**Returns:** `int|null` The raw filesize or null if it could not be read.
 
 ---
 

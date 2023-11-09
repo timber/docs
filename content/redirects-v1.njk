@@ -1,0 +1,19 @@
+---
+pagination:
+  data: collections.v1redirects
+  size: 1
+  alias: redirect
+permalink: "/{{ redirect.from }}/index.html"
+---
+<!DOCTYPE html>
+<html lang="{{ site.languageCode }}">
+<head>
+	<meta http-equiv="refresh" content="0; url={{ redirect.to|url }}">
+	<title>Redirect</title>
+</head>
+
+<body>
+	{# Fallback when automatic redirect wouldn’t work. #}
+	{# <a href="/docs/">Go to {{ redirect.to|url }}</a> #}
+</body>
+</html>
