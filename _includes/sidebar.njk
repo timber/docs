@@ -12,22 +12,27 @@
     <nav class="navVersions">
         <ul>
         {% for v in site.versions %}
-            <li><a href="{{ v.link|url }}" {% if version === v.slug %}class="is-current"{% endif %}>{{ v.name }}</a></li>
+            <li><a href="{{ v.link|url }}" {% if version === v.value %}class="is-current"{% endif %}>{{ v.name }}</a></li>
         {% endfor %}
         </ul>
     </nav>
 
-    <nav id="nav-main" class="navMain">
-        <ul class="navMain-sections">
-            {% if collections[version] %}
-                {% for section in collections[version] %}
-                    {% set item = baseVersion.nav[section.slug]
-                        if version == baseVersion.version and baseVersion.nav
-                        else nav[section.slug]
-                    %}
+    {# v1, v2, etc. #}
+    {% set collection_slug = ['v', version]|join %}
+
+    {% if collections[collection_slug] %}
+        <nav id="nav-main" class="navMain">
+            <ul class="navMain-sections">
+                {% for section in collections[collection_slug] %}
+                    {% set item = nav[section.slug] %}
 
                     <li class="navMain-section">
-                        <h3 class="navMain-title {% if item.name === sectionTitle %}{# Marking the current section for Algolia DocSearch. #}navMain-sectionTitle{% endif %}">{{ item.name }}</h3>
+                        {% if section.title.length %}
+                            <h3
+                                class="navMain-title {% if section.title === sectionTitle %}{# Marking the current section for Algolia DocSearch. #}navMain-sectionTitle{% endif %}"
+                            >{{ section.title }}</h3>
+                        {% endif %}
+
                         {% if section.pages %}
                             <ul class="navMain-items">
                                 {% set pages = section.pages %}
@@ -37,7 +42,7 @@
                         {% endif %}
                     </li>
                 {% endfor %}
-            {% endif %}
-        </ul>
-    </nav>
+            </ul>
+        </nav>
+    {% endif %}
 </aside>

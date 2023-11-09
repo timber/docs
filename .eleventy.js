@@ -1,5 +1,5 @@
-const { DateTime } = require("luxon");
-const htmlmin = require("html-minifier");
+const { DateTime } = require('luxon');
+const htmlmin = require('html-minifier');
 
 const markdown = require('./lib/markdown');
 const manifestFilter = require('./lib/manifestFilter');
@@ -8,8 +8,9 @@ const selectChildren = require('./lib/selectChildren');
 const pluginRss = require('@11ty/eleventy-plugin-rss');
 const options = require('./_data/options');
 const site = require('./_data/site');
+const redirectCollection = require('./lib/redirectCollection');
 
-module.exports = function(config) {
+module.exports = function (config) {
   // Copy folders and files.
   config.addPassthroughCopy('build');
 
@@ -24,7 +25,36 @@ module.exports = function(config) {
    */
   config.addFilter('htmlDateString', (dateObj) => {
     // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
-    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');
+    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('yyyy-LL-dd');
+  });
+
+  config.addNunjucksGlobal('getCurrentVersion', function (version, versions) {
+    return versions.find((v) => v.value === version);
+  });
+
+  config.addNunjucksGlobal('getOtherVersions', function (version, versions) {
+    return versions.filter((v) => v.value !== version);
+  });
+
+  config.addJavaScriptFunction('filterArchives', function (archives) {
+    archives = archives.filter((archive) => {
+      return archive[0] && archive[0]?.pages;
+    });
+
+    archives = archives.flat(1);
+
+    archives = archives.filter((archive) => {
+      return archive.pages.length > 1;
+    });
+
+    archives = archives.map((archive) => {
+      archive.title = archive?.pages[0]?.data?.sectionTitle || '';
+      archive.version = Number(archive.parent.slug.replace('v', ''));
+
+      return archive;
+    });
+
+    return archives;
   });
 
   // Plugins
@@ -39,37 +69,27 @@ module.exports = function(config) {
    *
    * @link https://www.11ty.dev/docs/config/#transforms-example-minify-html-output
    */
-  config.addTransform("htmlmin", function(content, outputPath) {
-    if( outputPath.endsWith(".html") ) {
+  config.addTransform('htmlmin', function (content, outputPath) {
+    if (outputPath.endsWith('.html')) {
       return htmlmin.minify(content, {
         useShortDoctype: true,
         removeComments: true,
-        collapseWhitespace: true
+        collapseWhitespace: true,
       });
     }
 
     return content;
   });
 
-  site.versions.forEach(version => {
-    config.addCollection(version.slug, function(collection) {
+  site.versions.forEach((version) => {
+    config.addCollection(version.slug, function (collection) {
       return pageCollection(collection, version.glob);
     });
-  });
 
-  config.setBrowserSyncConfig({
-    /**
-     * Insert Browsersync snippet into head, to make it compatible with Turbolinks.
-     *
-     * @link https://github.com/BrowserSync/browser-sync/wiki/Browsersync-for-Turbolinks
-     */
-    snippetOptions: {
-      rule: {
-        match: /<\/head>/i,
-        fn: function(snippet, match) {
-          return snippet + match;
-        }
-      }
+    if (version.slug === 'v1') {
+      config.addCollection('v1redirects', function (collection) {
+        return redirectCollection(collection, version.glob, site);
+      });
     }
   });
 

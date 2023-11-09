@@ -17,7 +17,7 @@
      * @link https://www.algolia.com/doc/api-reference/api-parameters/facetFilters/
      */
     searchParameters: {
-      facetFilters: ['version:{{ version }}']
+      facetFilters: ['version:{{ getCurrentVersion(version, site.versions).slug }}']
     },
     // Set debug to true if you want to inspect the dropdown.
     // debug: true

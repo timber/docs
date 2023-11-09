@@ -7,17 +7,19 @@ module.exports = {
       : 'https://timber.github.io',
   versions: [
     {
-      name: 'v1.0',
-      slug: 'v1',
-      link: '/',
-      // Ignore folders of other versions.
-      glob: './content/!(v?)/**',
+      value: 2,
+      name: 'v2.x',
+      slug: 'v2',
+      link: '/v2/',
+      glob: './content/v2/**',
     },
     {
-      name: 'v2.0.0 RC.1',
-      slug: 'v2',
-      link: '/v2',
-      glob: './content/v2/**',
+      value: 1,
+      name: 'v1.x',
+      slug: 'v1',
+      link: '/v1/',
+      // Ignore folders of other versions.
+      glob: './content/v1/**',
     },
   ],
 };

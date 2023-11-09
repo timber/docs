@@ -1,20 +1,14 @@
 #!/usr/bin/env bash
 
-# Clean out folder to remove deprecated files.
+# Clean out folders to remove deprecated files.
 rm -rf ./content/*
+rm -rf ./docs/*
 
 # Copy static content.
 cp -a ./content-static/. ./content/
 
 # Copy current docs from timber repository to this repository.
 cp -a ../timber/docs/. ./content/
-
-# Move current version to current level.
-cp -r ./content/v1/* ./content/
-rm -rf ./content/v1
-
-# Move data file from base version to global data.
-mv ./content/v1.json ./_data/baseVersion.json
 
 ################################################################################
 # Contributing guide.

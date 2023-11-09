@@ -19,18 +19,14 @@
 	  gtag('config', 'UA-126807198-1');
 	</script>
 
-	<title>{{ title ~ ' – ' if title }}{{ site.title }}</title>
+	<title>{{ title ~ ' – ' if title }}{{ 'Timber v' ~ version ~ ' – ' if version }}{{ site.title }}</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    {% if "v2" == version %}
-        <meta name="robots" content="noindex">
-    {% endif %}
-
     <!-- Algolia Meta Tags (https://docsearch.algolia.com/docs/required-configuration/#introduce-global-information-as-meta-tags) -->
-    <meta name="docsearch:version" content="{{ version }}" />
+    <meta name="docsearch:version" content="{{ getCurrentVersion(version, site.versions).slug }}" />
 
 	<!-- Algolia Docsearch -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />

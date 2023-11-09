@@ -2,12 +2,16 @@
 
 {% block content %}
     <article>
-        <h1>{{ title }}</h1>
+        {% if title|length %}
+            <h1>{{ title }}</h1>
+        {% endif %}
 
-        {% if content|toc !== '<nav class="toc"></nav>' %}
+        {% set toc = content|toc %}
+
+        {% if toc and toc !== '<nav class="toc"></nav>' %}
             <aside>
                 <h2 class="heading-small">On this page</h2>
-                {{ content|toc|safe }}
+                {{ toc|safe }}
             </aside>
         {% endif %}
 
