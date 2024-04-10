@@ -40,7 +40,7 @@ is_reference: true
 | <span class="method-name">[is_external()](#is_external)</span> | <span class="method-type">`bool`</span> | <span class="method-description">Checks to see if the menu item is an external link.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Whether the link is external or not.</span></span> |
 | <span class="method-name">[link()](#link)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the full link to a menu item.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> A full URL, like `http://mysite.com/thing/`.</span></span> |
 | <span class="method-name">[master_object()](#master_object)</span> | <span class="method-type">`mixed` or `null`</span> | <span class="method-description">Allows dev to access the "master object" (ex: post, page, category, post type object) the menu item represents<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Whatever object (Timber\Post, Timber\Term, etc.) the menu item represents.</span></span> |
-| <span class="method-name">[menu()](#menu)</span> | <span class="method-type">`\Timber\Menu`</span> | <span class="method-description">Timber Menu.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The `Timber\Menu` object the menu item is associated with.</span></span> |
+| <span class="method-name">[menu()](#menu)</span> | <span class="method-type">`\Timber\Menu`</span> | <span class="method-description">Timber Menu.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The `Menu` object the menu item is associated with.</span></span> |
 | <span class="method-name">[name()](#name)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the label for the menu item.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The label for the menu item.</span></span> |
 | <span class="method-name">[path()](#path)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the relative path of the menu item’s link.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The path of a URL, like `/foo`.</span></span> |
 | <span class="method-name">[slug()](#slug)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the slug for the menu item.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The URL-safe slug of the menu item.</span></span> |
@@ -165,7 +165,7 @@ Timber Menu.
 
 **since** 1.12.0
 
-**Returns:** `\Timber\Menu` The `Timber\Menu` object the menu item is associated with.
+**Returns:** `\Timber\Menu` The `Menu` object the menu item is associated with.
 
 ---
 

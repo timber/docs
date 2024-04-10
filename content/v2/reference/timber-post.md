@@ -481,13 +481,13 @@ If multiple categories are set, it will return just the first one.
 Returns an array of children on the post as Timber\Posts
 (or other claass as you define).
 
-`children( string|array $post_type = 'any' )`
+`children( string|array $args = 'any' )`
 
 **Returns:** `\Timber\PostCollectionInterface` 
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $post_type | `string` or `array` | _optional_ use to find children of a particular post type (attachment vs. page for example). You might want to restrict to certain types of children in case other stuff gets all mucked in there. You can use 'parent' to use the parent's post type or you can pass an array of post types. |
+| $args | `string` or `array` | _optional_ An array of arguments for the `get_children` function or a string/non-indexed array to use as the post type(s). |
 
 **Twig**
 
@@ -878,11 +878,11 @@ Using simple links to the next an previous page.
 
 ```twig
 {% if post.pagination.next is not empty %}
-    <a href="{{ post.pagination.next.link|e('esc_url') }}">Go to next page</a>
+    <a href="{{ post.pagination.next.link|esc_url }}">Go to next page</a>
 {% endif %}
 
 {% if post.pagination.prev is not empty %}
-    <a href="{{ post.pagination.prev.link|e('esc_url') }}">Go to previous page</a>
+    <a href="{{ post.pagination.prev.link|esc_url }}">Go to previous page</a>
 {% endif %}
 ```
 Using a pagination for all pages.
@@ -897,7 +897,7 @@ Using a pagination for all pages.
                    {% if page.current %}
                        <span aria-current="page">Page {{ page.title }}</span>
                    {% else %}
-                       <a href="{{ page.link|e('esc_url') }}">Page {{ page.title }}</a>
+                       <a href="{{ page.link|esc_ur }}">Page {{ page.title }}</a>
                    {% endif %}
                </li>
            {% endfor %}

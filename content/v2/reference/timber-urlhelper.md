@@ -12,7 +12,7 @@ is_reference: true
 
 | Name | Return Type | Summary/Returns |
 | --- | --- | --- |
-| <span class="method-name">[file_system_to_url()](#file_system_to_url)</span> | <span class="method-type">`string`</span> | <span class="method-description"></span> |
+| <span class="method-name">[file_system_to_url()](#file_system_to_url)</span> | <span class="method-type">`string`</span> | <span class="method-description">Translates a filesystem path to a URL<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The URL derived from the filesystem path</span></span> |
 | <span class="method-name">[get_content_subdir()](#get_content_subdir)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the path to the content directory relative to the site.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> (ex: /wp-content or /content)</span></span> |
 | <span class="method-name">[get_current_url()](#get_current_url)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the current URL of the page</span> |
 | <span class="method-name">[get_full_path()](#get_full_path)</span> | <span class="method-type">`string`</span> | <span class="method-description"></span> |
@@ -31,10 +31,10 @@ is_reference: true
 | <span class="method-name">[remove_double_slashes()](#remove_double_slashes)</span> | <span class="method-type">`string`</span> | <span class="method-description">Look for accidental slashes in a URL and remove them<br><br><span class="method-return"><span class="method-return-label">Returns:</span> the result (ex: http://nytimes.com/news/article.html)</span></span> |
 | <span class="method-name">[remove_trailing_slash()](#remove_trailing_slash)</span> | <span class="method-type">`string`</span> | <span class="method-description">Pass links through untrailingslashit unless they are a single /</span> |
 | <span class="method-name">[remove_url_component()](#remove_url_component)</span> | <span class="method-type">`string`</span> | <span class="method-description">Removes the subcomponent of a URL regardless of protocol</span> |
-| <span class="method-name">[starts_with()](#starts_with)</span> | <span class="method-type">`bool`</span> | <span class="method-description">Check to see if the URL begins with the string in question Because it's a URL we don't care about protocol (HTTP vs HTTPS) Or case (so it's cAsE iNsEnSeTiVe)</span> |
+| <span class="method-name">[starts_with()](#starts_with)</span> | <span class="method-type">`bool`</span> | <span class="method-description">Check to see if the URL begins with the string in question Because it's a URL we don't care about protocol (HTTP vs HTTPS) Or case (so it's cAsE iNsEnSiTiVe)</span> |
 | <span class="method-name">[swap_protocol()](#swap_protocol)</span> | <span class="method-type">`string`</span> | <span class="method-description">Swaps whatever protocol of a URL is sent. http becomes https and vice versa<br><br><span class="method-return"><span class="method-return-label">Returns:</span> ex: https://example.org/wp-content/uploads/dog.jpg</span></span> |
 | <span class="method-name">[unpreslashit()](#unpreslashit)</span> | <span class="method-type">`string`</span> | <span class="method-description">Remove slashes (if found) from a path</span> |
-| <span class="method-name">[url_to_file_system()](#url_to_file_system)</span> | <span class="method-type">`string`</span> | <span class="method-description">Takes a url and figures out its place based in the file system based on path NOTE: Not fool-proof, makes a lot of assumptions about the file path matching the URL path</span> |
+| <span class="method-name">[url_to_file_system()](#url_to_file_system)</span> | <span class="method-type">`string`</span> | <span class="method-description">Translates a URL to a filesystem path<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The filesystem path derived from the URL</span></span> |
 | <span class="method-name">[user_trailingslashit()](#user_trailingslashit)</span> | <span class="method-type">`string`</span> | <span class="method-description">Pass links through user_trailingslashit handling query strings properly</span> |
 
 </div>
@@ -62,7 +62,7 @@ Get url scheme
 
 Check to see if the URL begins with the string in question
 Because it's a URL we don't care about protocol (HTTP vs HTTPS)
-Or case (so it's cAsE iNsEnSeTiVe)
+Or case (so it's cAsE iNsEnSiTiVe)
 
 `starts_with( mixed $haystack, mixed $starts_with )`
 
@@ -142,29 +142,36 @@ a relative URL or if it’s a subdomain.
 
 ### url\_to\_file\_system()
 
-Takes a url and figures out its place based in the file system based on path
+Translates a URL to a filesystem path
+
+Takes a url and figures out its filesystem location.
+
 NOTE: Not fool-proof, makes a lot of assumptions about the file path
 matching the URL path
 
 `url_to_file_system( string $url )`
 
-**Returns:** `string` 
+**Returns:** `string` The filesystem path derived from the URL
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $url | `string` |  |
+| $url | `string` | The URL to translate to a filesystem path |
 
 ---
 
 ### file\_system\_to\_url()
 
+Translates a filesystem path to a URL
+
+Takes a filesystem path and figures out its URL location.
+
 `file_system_to_url( string $fs )`
 
-**Returns:** `string` 
+**Returns:** `string` The URL derived from the filesystem path
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $fs | `string` |  |
+| $fs | `string` | The filesystem path to translate to a URL |
 
 ---
 
@@ -345,8 +352,7 @@ Pass links through user_trailingslashit handling query strings properly
 
 Returns the url path parameters, or a single parameter if given an index.
 
-Normalizes REQUEST_URI to lower-case. Returns false if given a
-non-existent index.
+Returns false if given a non-existent index.
 
 `get_params( bool|int $i = false )`
 
