@@ -72,8 +72,8 @@ This returns a link to an attachment’s page, but not the link to the image src
 **HTML**
 
 ```html
-<a href="http://example.org/my-cool-picture">
-    <img src="http://example.org/wp-content/uploads/2015/whatever.jpg"/>
+<a href="https://example.org/my-cool-picture">
+    <img src="https://example.org/wp-content/uploads/2015/whatever.jpg"/>
 </a>
 ```
 
@@ -128,7 +128,7 @@ Gets the source URL for an attachment.
 **HTML**
 
 ```html
-<a href="http://example.org/wp-content/uploads/2015/08/job-ad-5noe2304i.pdf" download>
+<a href="https://example.org/wp-content/uploads/2015/08/job-ad-5noe2304i.pdf" download>
 ```
 
 ---
@@ -159,7 +159,7 @@ Gets the caption of an attachment.
 
 Gets the raw filesize in bytes.
 
-Use the `size_format` filter to format the raw size into a human readable size («1 MB» intead of «1048576»)
+Use the `size_format` filter to format the raw size into a human readable size («1 MB» instead of «1048576»)
 
 **see** https://developer.wordpress.org/reference/functions/size_format/ Use filesize information in a link that downloads a file:
 

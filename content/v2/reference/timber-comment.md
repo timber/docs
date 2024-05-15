@@ -39,7 +39,7 @@ Timber::render('index.twig', $context);
 ## Overview
 
 *This class extends `Timber\CoreEntity`*  
-  
+*This class implements `Stringable`*  
 
 ### Properties
 
@@ -146,7 +146,7 @@ Fetches the Gravatar.
 **HTML**
 
 ```html
-<img src="http://gravatar.com/i/sfsfsdfasdfsfa.jpg" alt="Image of Katherine Rich" />
+<img src="https://gravatar.com/i/sfsfsdfasdfsfa.jpg" alt="Image of Katherine Rich" />
 ```
 
 ---

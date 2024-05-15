@@ -46,7 +46,7 @@ Timber::render('index.twig', $context);
 ## Overview
 
 *This class extends `Timber\CoreEntity`*  
-  
+*This class implements `Stringable`*  
 
 ### Properties
 
@@ -72,7 +72,7 @@ Timber::render('index.twig', $context);
 | <span class="method-name">[~~get_children~~()](#get_children)</span> | <span class="method-type">`array`</span> | <span class="method-description"></span> |
 | <span class="method-name">[~~get_field~~()](#get_field)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets a term meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value.</span></span> |
 | <span class="method-name">[~~get_posts~~()](#get_posts)</span> | <span class="method-type">`array` or `bool` or `null`</span> | <span class="method-description">Get Posts that have been "tagged" with the particular term</span> |
-| <span class="method-name">[link()](#link)</span> | <span class="method-type">`string`</span> | <span class="method-description">Returns a full link to the term archive page like `http://example.com/category/news`</span> |
+| <span class="method-name">[link()](#link)</span> | <span class="method-type">`string`</span> | <span class="method-description">Returns a full link to the term archive page like `https://example.com/category/news`</span> |
 | <span class="method-name">[path()](#path)</span> | <span class="method-type">`string`</span> | <span class="method-description">Returns a relative link (path) to the term archive page like `/category/news`</span> |
 | <span class="method-name">[posts()](#posts)</span> | <span class="method-type">`\Timber\PostQuery`</span> | <span class="method-description">Gets posts that have the current term assigned.</span> |
 | <span class="method-name">[title()](#title)</span> | <span class="method-type">`string`</span> | <span class="method-description"></span> |
@@ -133,7 +133,7 @@ term.
 
 ### link()
 
-Returns a full link to the term archive page like `http://example.com/category/news`
+Returns a full link to the term archive page like `https://example.com/category/news`
 
 **Returns:** `string` 
 

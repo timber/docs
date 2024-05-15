@@ -50,7 +50,7 @@ Timber::render( 'single.twig', $context );
 ## Overview
 
 *This class extends `Timber\CoreEntity`*  
-*This class implements `Timber\DatedInterface`, `Timber\Setupable`*  
+*This class implements `Timber\DatedInterface`, `Timber\Setupable`, `Stringable`*  
 
 ### Properties
 
@@ -90,7 +90,7 @@ Timber::render( 'single.twig', $context );
 | <span class="method-name">[comment_count()](#comment_count)</span> | <span class="method-type">`int`</span> | <span class="method-description">Gets the number of comments on a post.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The number of comments on a post</span></span> |
 | <span class="method-name">[comment_form()](#comment_form)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the comment form for use on a single article page<br><br><span class="method-return"><span class="method-return-label">Returns:</span> of HTML for the form</span></span> |
 | <span class="method-name">[comments()](#comments)</span> | <span class="method-type">`bool` or `\Timber\CommentThread`</span> | <span class="method-description">Gets the comments on a Timber\Post and returns them as an array of `Timber\Comment` objects (or whatever comment class you set).</span> |
-| <span class="method-name">[content()](#content)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the actual content of a WordPress post.</span> |
+| <span class="method-name">[content()](#content)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the actual content of a WordPress post.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The content of the post.</span></span> |
 | <span class="method-name">[convert()](#convert)</span> | <span class="method-type"></span> | <span class="method-description">Finds any WP_Post objects and converts them to Timber\Post objects.</span> |
 | <span class="method-name">[date()](#date)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the publishing date of the post.</span> |
 | <span class="method-name">[edit_link()](#edit_link)</span> | <span class="method-type">`string` or `null`</span> | <span class="method-description">Gets the edit link for a post if the current user has the correct rights.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The edit URL of a post in the WordPress admin or null if the current user can’t edit the post.</span></span> |
@@ -102,7 +102,7 @@ Timber::render( 'single.twig', $context );
 | <span class="method-name">[has_field()](#has_field)</span> | <span class="method-type">`bool`</span> | <span class="method-description"></span> |
 | <span class="method-name">[has_term()](#has_term)</span> | <span class="method-type">`bool`</span> | <span class="method-description"></span> |
 | <span class="method-name">[~~import_field~~()](#import_field)</span> | <span class="method-type"></span> | <span class="method-description">Import field data onto this object</span> |
-| <span class="method-name">[link()](#link)</span> | <span class="method-type">`string`</span> | <span class="method-description">get the permalink for a post object<br><br><span class="method-return"><span class="method-return-label">Returns:</span> ex: http://example.org/2015/07/my-awesome-post</span></span> |
+| <span class="method-name">[link()](#link)</span> | <span class="method-type">`string`</span> | <span class="method-description">get the permalink for a post object<br><br><span class="method-return"><span class="method-return-label">Returns:</span> ex: https://example.org/2015/07/my-awesome-post</span></span> |
 | <span class="method-name">[modified_author()](#modified_author)</span> | <span class="method-type">`\Timber\User` or `null`</span> | <span class="method-description">Get the author (WordPress user) who last modified the post<br><br><span class="method-return"><span class="method-return-label">Returns:</span> A User object if found, false if not</span></span> |
 | <span class="method-name">[modified_date()](#modified_date)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the date the post was last modified.</span> |
 | <span class="method-name">[modified_time()](#modified_time)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the time of the last modification of the post to use in your template.</span> |
@@ -112,7 +112,7 @@ Timber::render( 'single.twig', $context );
 | <span class="method-name">[pagination()](#pagination)</span> | <span class="method-type">`array`</span> | <span class="method-description">Gets a data array to display a pagination for your paginated post.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> An array with data to build your paginated content.</span></span> |
 | <span class="method-name">[parent()](#parent)</span> | <span class="method-type">`bool` or `\Timber\Post`</span> | <span class="method-description">Gets the parent (if one exists) from a post as a Timber\Post object.</span> |
 | <span class="method-name">[password_required()](#password_required)</span> | <span class="method-type">`bool`</span> | <span class="method-description">whether post requires password and correct password has been provided</span> |
-| <span class="method-name">[path()](#path)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the relative path of a WP Post, so while link() will return http://example.org/2015/07/my-cool-post this will return just /2015/07/my-cool-post</span> |
+| <span class="method-name">[path()](#path)</span> | <span class="method-type">`string`</span> | <span class="method-description">Gets the relative path of a WP Post, so while link() will return https://example.org/2015/07/my-cool-post this will return just /2015/07/my-cool-post</span> |
 | <span class="method-name">[prev()](#prev)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Get the previous post that is adjacent to the current post in a collection.</span> |
 | <span class="method-name">[~~preview~~()](#preview)</span> | <span class="method-type">`\Timber\PostExcerpt`</span> | <span class="method-description">Gets an excerpt of your post.</span> |
 | <span class="method-name">[setup()](#setup)</span> | <span class="method-type">`\Timber\Post`</span> | <span class="method-description">Sets up a post.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The post instance.</span></span> |
@@ -264,7 +264,7 @@ Gets the comment form for use on a single article page
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $args | `array` | see [WordPress docs on comment_form](http://codex.wordpress.org/Function_Reference/comment_form) for reference on acceptable parameters |
+| $args | `array` | see [WordPress docs on comment_form](https://codex.wordpress.org/Function_Reference/comment_form) for reference on acceptable parameters |
 
 ---
 
@@ -562,13 +562,15 @@ the `the_content` filter. It will return your post’s content with WordPress fi
 If you use page breaks in your content to split your post content into multiple pages,
 use `{{ post.paged_content }}` to display only the content for the current page.
 
-`content( int $page = '', mixed $len = -1 )`
+`content( int $page = '', int $len = -1, bool $remove_blocks = false )`
 
-**Returns:** `string` 
+**Returns:** `string` The content of the post.
 
 | Name | Type | Description |
 | --- | --- | --- |
 | $page | `int` | Optional. The page to show if the content of the post is split into multiple pages. Read more about this in the [Pagination Guide](https://timber.github.io/docs/v2/guides/pagination/#paged-content-within-a-post). Default `0`. |
+| $len | `int` | Optional. The number of words to show. Default `-1` (show all). |
+| $remove_blocks | `bool` | Optional. Whether to remove blocks. Defaults to false. True when called from the $post->excerpt() method. |
 
 **Twig**
 
@@ -824,7 +826,7 @@ whether post requires password and correct password has been provided
 
 get the permalink for a post object
 
-**Returns:** `string` ex: http://example.org/2015/07/my-awesome-post
+**Returns:** `string` ex: https://example.org/2015/07/my-awesome-post
 
 **Twig**
 
@@ -938,7 +940,7 @@ Parent page: <a href="{{ post.parent.link }}">{{ post.parent.title }}</a>
 
 ### path()
 
-Gets the relative path of a WP Post, so while link() will return http://example.org/2015/07/my-cool-post
+Gets the relative path of a WP Post, so while link() will return https://example.org/2015/07/my-cool-post
 this will return just /2015/07/my-cool-post
 
 **Returns:** `string` 

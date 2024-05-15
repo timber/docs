@@ -7,7 +7,7 @@ is_reference: true
 ## Overview
 
 *This class extends `Timber\CoreEntity`*  
-  
+*This class implements `Stringable`*  
 
 ### Properties
 

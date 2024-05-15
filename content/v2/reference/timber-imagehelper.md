@@ -63,7 +63,7 @@ New dimensions are achieved by cropping to maintain ratio.
 **HTML**
 
 ```html
-<img src="http://example.org/wp-content/uploads/pic-300x200-c-top.jpg" />
+<img src="https://example.org/wp-content/uploads/pic-300x200-c-top.jpg" />
 ```
 
 ---
@@ -128,7 +128,7 @@ Generates a new image by converting the source GIF or PNG into JPG.
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $src | `string` | A URL or path to the image (http://example.org/wp-content/uploads/2014/image.jpg) or (/wp-content/uploads/2014/image.jpg). |
+| $src | `string` | A URL or path to the image (https://example.org/wp-content/uploads/2014/image.jpg) or (/wp-content/uploads/2014/image.jpg). |
 | $bghex | `string` | The hex color to use for transparent zones. |
 
 ---

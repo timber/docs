@@ -7,7 +7,7 @@ is_reference: true
 ## Overview
 
 *This class extends `Timber\CoreEntity`*  
-  
+*This class implements `Stringable`*  
 
 ### Properties
 
@@ -38,7 +38,7 @@ is_reference: true
 | <span class="method-name">[~~external~~()](#external)</span> | <span class="method-type">`bool`</span> | <span class="method-description">Checks to see if the menu item is an external link.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Whether the link is external or not.</span></span> |
 | <span class="method-name">[~~get_field~~()](#get_field)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets a menu item meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value.</span></span> |
 | <span class="method-name">[is_external()](#is_external)</span> | <span class="method-type">`bool`</span> | <span class="method-description">Checks to see if the menu item is an external link.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Whether the link is external or not.</span></span> |
-| <span class="method-name">[link()](#link)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the full link to a menu item.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> A full URL, like `http://mysite.com/thing/`.</span></span> |
+| <span class="method-name">[link()](#link)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the full link to a menu item.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> A full URL, like `https://mysite.com/thing/`.</span></span> |
 | <span class="method-name">[master_object()](#master_object)</span> | <span class="method-type">`mixed` or `null`</span> | <span class="method-description">Allows dev to access the "master object" (ex: post, page, category, post type object) the menu item represents<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Whatever object (Timber\Post, Timber\Term, etc.) the menu item represents.</span></span> |
 | <span class="method-name">[menu()](#menu)</span> | <span class="method-type">`\Timber\Menu`</span> | <span class="method-description">Timber Menu.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The `Menu` object the menu item is associated with.</span></span> |
 | <span class="method-name">[name()](#name)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the label for the menu item.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The label for the menu item.</span></span> |
@@ -221,7 +221,7 @@ Checks to see if the menu item is an external link.
 
 Get the full link to a menu item.
 
-**Returns:** `string` A full URL, like `http://mysite.com/thing/`.
+**Returns:** `string` A full URL, like `https://mysite.com/thing/`.
 
 **Twig**
 

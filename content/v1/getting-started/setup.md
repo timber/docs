@@ -10,11 +10,11 @@ Underneath this text you will find an extensive list with guides and the reasons
 
 * Guide: [How do I switch over from the plugin version to the Composer based version of Timber?](https://timber.github.io/docs/v1/getting-started/switch-to-composer/)
 * Backstory: [Why we are dropping support for the plugin in the first place](https://github.com/timber/timber/pull/2005)
-* Github issue: [Road to Timber 2.0](https://github.com/timber/timber/issues/2741)
+* GitHub issue: [Road to Timber 2.0](https://github.com/timber/timber/issues/2741)
 
 ### ~~Via WordPress.org (easy)~~
 
-~~You can grab the all-things-included plugin at [WordPress.org](http://wordpress.org/plugins/timber-library/) either through the WordPress site or through the Plugins menu in the backend. Then skip ahead to [using the starter theme](#use-the-starter-theme).~~
+~~You can grab the all-things-included plugin at [WordPress.org](https://wordpress.org/plugins/timber-library/) either through the WordPress site or through the Plugins menu in the backend. Then skip ahead to [using the starter theme](#use-the-starter-theme).~~
 
 ### Via Composer (recommended)
 

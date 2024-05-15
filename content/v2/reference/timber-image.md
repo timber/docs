@@ -42,13 +42,13 @@ Timber::render('single.twig', $context);
 
 ```html
 <article>
-  <img src="http://example.org/wp-content/uploads/2015/06/nevermind.jpg" class="cover-image" />
+  <img src="https://example.org/wp-content/uploads/2015/06/nevermind.jpg" class="cover-image" />
   <h1 class="headline">Now you've done it!</h1>
   <div class="body">
     Whatever whatever
   </div>
   <img
-    src="http://example.org/wp-content/uploads/2015/06/kurt.jpg"
+    src="https://example.org/wp-content/uploads/2015/06/kurt.jpg"
     alt="Another way to initialize images as Timber\Image objects, but within Twig" />
 </article>
 ```
@@ -113,8 +113,8 @@ WordPress size has not been generated, it will return an empty string.
 **HTML**
 
 ```html
-<img src="http://example.org/wp-content/uploads/2015/08/pic.jpg" />
-<img src="http://example.org/wp-content/uploads/2015/08/pic-800-600.jpg">
+<img src="https://example.org/wp-content/uploads/2015/08/pic.jpg" />
+<img src="https://example.org/wp-content/uploads/2015/08/pic-800-600.jpg">
 ```
 
 ---
@@ -133,7 +133,7 @@ Gets the width of the image in pixels.
 **HTML**
 
 ```html
-<img src="http://example.org/wp-content/uploads/2015/08/pic.jpg" width="1600" />
+<img src="https://example.org/wp-content/uploads/2015/08/pic.jpg" width="1600" />
 ```
 
 ---
@@ -152,7 +152,7 @@ Gets the height of the image in pixels.
 **HTML**
 
 ```html
-<img src="http://example.org/wp-content/uploads/2015/08/pic.jpg" height="900" />
+<img src="https://example.org/wp-content/uploads/2015/08/pic.jpg" height="900" />
 ```
 
 ---
@@ -193,7 +193,7 @@ empty.
 **HTML**
 
 ```html
-<img src="http://example.org/wp-content/uploads/2015/08/pic.jpg"
+<img src="https://example.org/wp-content/uploads/2015/08/pic.jpg"
     alt="You should always add alt texts to your images for better accessibility" />
 ```
 
@@ -220,7 +220,7 @@ Gets the srcset attribute for an image based on a WordPress image size.
 **HTML**
 
 ```html
-<img src="http://example.org/wp-content/uploads/2018/10/pic.jpg" srcset="http://example.org/wp-content/uploads/2018/10/pic.jpg 1024w, http://example.org/wp-content/uploads/2018/10/pic-600x338.jpg 600w, http://example.org/wp-content/uploads/2018/10/pic-300x169.jpg 300w" />
+<img src="https://example.org/wp-content/uploads/2018/10/pic.jpg" srcset="https://example.org/wp-content/uploads/2018/10/pic.jpg 1024w, https://example.org/wp-content/uploads/2018/10/pic-600x338.jpg 600w, https://example.org/wp-content/uploads/2018/10/pic-300x169.jpg 300w" />
 ```
 
 ---
@@ -246,7 +246,7 @@ Gets the sizes attribute for an image based on a WordPress image size.
 **HTML**
 
 ```html
-<img src="http://example.org/wp-content/uploads/2018/10/pic.jpg" srcset="http://example.org/wp-content/uploads/2018/10/pic.jpg 1024w, http://example.org/wp-content/uploads/2018/10/pic-600x338.jpg 600w, http://example.org/wp-content/uploads/2018/10/pic-300x169.jpg 300w sizes="(max-width: 1024px) 100vw, 102" />
+<img src="https://example.org/wp-content/uploads/2018/10/pic.jpg" srcset="https://example.org/wp-content/uploads/2018/10/pic.jpg 1024w, https://example.org/wp-content/uploads/2018/10/pic-600x338.jpg 600w, https://example.org/wp-content/uploads/2018/10/pic-300x169.jpg 300w sizes="(max-width: 1024px) 100vw, 102" />
 ```
 
 ---

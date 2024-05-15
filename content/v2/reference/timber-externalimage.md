@@ -39,7 +39,7 @@ Timber::render('single.twig', $context);
 
 ```html
 <article>
-  <img src="http://example.org/wp-content/uploads/2015/06/nevermind.jpg" class="cover-image" />
+  <img src="https://example.org/wp-content/uploads/2015/06/nevermind.jpg" class="cover-image" />
   <h1 class="headline">Now you've done it!</h1>
   <div class="body">
     Whatever whatever
@@ -107,8 +107,8 @@ Gets the source URL for the image.
 **HTML**
 
 ```html
-<img src="http://example.org/wp-content/uploads/2015/08/pic.jpg" />
-<img src="http://example.org/wp-content/uploads/2015/08/pic-800-600.jpg">
+<img src="https://example.org/wp-content/uploads/2015/08/pic.jpg" />
+<img src="https://example.org/wp-content/uploads/2015/08/pic-800-600.jpg">
 ```
 
 ---
@@ -210,7 +210,7 @@ exist.
 **HTML**
 
 ```html
-<img src="http://example.org/wp-content/uploads/2015/08/pic.jpg" width="1600" />
+<img src="https://example.org/wp-content/uploads/2015/08/pic.jpg" width="1600" />
 ```
 
 ---
@@ -230,7 +230,7 @@ doesn’t exist.
 **HTML**
 
 ```html
-<img src="http://example.org/wp-content/uploads/2015/08/pic.jpg" height="900" />
+<img src="https://example.org/wp-content/uploads/2015/08/pic.jpg" height="900" />
 ```
 
 ---
@@ -272,7 +272,7 @@ empty.
 
 ```html
 <img
-    src="http://example.org/wp-content/uploads/2015/08/pic.jpg"
+    src="https://example.org/wp-content/uploads/2015/08/pic.jpg"
     alt="You should always add alt texts to your images for better accessibility"
 />
 ```

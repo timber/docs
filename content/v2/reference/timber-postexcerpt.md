@@ -48,6 +48,8 @@ filter.
 
 ## Overview
 
+*This class implements `Stringable`*  
+
 ### Methods
 
 <div class="table-methods">
@@ -179,13 +181,13 @@ Defines the text to be used for the "Read More" link.
 
 Set this to `false` to not add a "Read More" link.
 
-`read_more( string $text = 'Read More' )`
+`read_more( string|bool $text = 'Read More' )`
 
 **Returns:** `\Timber\PostExcerpt` 
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $text | `string` | Text for the link. Default 'Read More'. |
+| $text | `string` or `bool` | Text for the link. Default 'Read More'. |
 
 ---
 

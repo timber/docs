@@ -270,11 +270,6 @@ Query post.
 
 **Returns:** `\Timber\Post|array|bool|null` 
 
-| Name | Type | Description |
-| --- | --- | --- |
-| $query | `mixed` |  |
-| $options | `array` |  |
-
 ---
 
 ### ~~query\_posts~~()
@@ -286,11 +281,6 @@ Query posts.
 `query_posts( mixed $query = false, array $options = [] )`
 
 **Returns:** `\Timber\PostCollectionInterface` 
-
-| Name | Type | Description |
-| --- | --- | --- |
-| $query | `mixed` |  |
-| $options | `array` |  |
 
 ---
 

@@ -48,7 +48,7 @@ Timber::render( 'single.twig', $context );
 ## Overview
 
 *This class extends `Timber\CoreEntity`*  
-  
+*This class implements `Stringable`*  
 
 ### Properties
 
@@ -79,7 +79,7 @@ Timber::render( 'single.twig', $context );
 | <span class="method-name">[~~get_meta~~()](#get_meta)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets a user meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value.</span></span> |
 | <span class="method-name">[~~get_meta_field~~()](#get_meta_field)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Gets a user meta value.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The meta field value.</span></span> |
 | <span class="method-name">[is_current()](#is_current)</span> | <span class="method-type">`bool`</span> | <span class="method-description">Check if the user object is the current user<br><br><span class="method-return"><span class="method-return-label">Returns:</span> true if the user is the current user</span></span> |
-| <span class="method-name">[link()](#link)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the URL of the user's profile<br><br><span class="method-return"><span class="method-return-label">Returns:</span> http://example.org/author/lincoln</span></span> |
+| <span class="method-name">[link()](#link)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the URL of the user's profile<br><br><span class="method-return"><span class="method-return-label">Returns:</span> https://example.org/author/lincoln</span></span> |
 | <span class="method-name">[name()](#name)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the name of the User<br><br><span class="method-return"><span class="method-return-label">Returns:</span> the human-friendly name of the user (ex: "Buster Bluth")</span></span> |
 | <span class="method-name">[path()](#path)</span> | <span class="method-type">`string`</span> | <span class="method-description">Get the relative path to the user's profile<br><br><span class="method-return"><span class="method-return-label">Returns:</span> ex: /author/lincoln</span></span> |
 | <span class="method-name">[profile_link()](#profile_link)</span> | <span class="method-type">`string` or `null`</span> | <span class="method-description">Gets the profile link to the user’s profile in the WordPress admin if the ID in the user object is the same as the current user’s ID.<br><br><span class="method-return"><span class="method-return-label">Returns:</span> The profile link for the current user.</span></span> |
@@ -112,7 +112,7 @@ This post is by Jared Novack
 
 Get the URL of the user's profile
 
-**Returns:** `string` http://example.org/author/lincoln
+**Returns:** `string` https://example.org/author/lincoln
 
 ---
 

@@ -284,7 +284,6 @@ Sorts object arrays by properties.
 | --- | --- | --- |
 | $array | `array` |  |
 | $key | `string` |  |
-| $value | `mixed` |  |
 
 ---
 
@@ -298,7 +297,6 @@ Sorts object arrays by properties.
 | --- | --- | --- |
 | $array | `array` |  |
 | $key | `string` |  |
-| $value | `mixed` |  |
 
 ---
 
@@ -320,10 +318,6 @@ Sorts object arrays by properties.
 `is_true( mixed $value )`
 
 **Returns:** `bool` 
-
-| Name | Type | Description |
-| --- | --- | --- |
-| $value | `mixed` |  |
 
 ---
 

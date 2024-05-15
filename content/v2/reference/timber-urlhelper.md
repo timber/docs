@@ -28,7 +28,7 @@ is_reference: true
 | <span class="method-name">[is_url()](#is_url)</span> | <span class="method-type">`bool`</span> | <span class="method-description"></span> |
 | <span class="method-name">[prepend_to_url()](#prepend_to_url)</span> | <span class="method-type">`string`</span> | <span class="method-description">Add something to the start of the path in an URL<br><br><span class="method-return"><span class="method-return-label">Returns:</span> the result (ex 'https://nytimes.com/2017/news/article.html')</span></span> |
 | <span class="method-name">[preslashit()](#preslashit)</span> | <span class="method-type">`string`</span> | <span class="method-description">Add slash (if not already present) to a path</span> |
-| <span class="method-name">[remove_double_slashes()](#remove_double_slashes)</span> | <span class="method-type">`string`</span> | <span class="method-description">Look for accidental slashes in a URL and remove them<br><br><span class="method-return"><span class="method-return-label">Returns:</span> the result (ex: http://nytimes.com/news/article.html)</span></span> |
+| <span class="method-name">[remove_double_slashes()](#remove_double_slashes)</span> | <span class="method-type">`string`</span> | <span class="method-description">Look for accidental slashes in a URL and remove them<br><br><span class="method-return"><span class="method-return-label">Returns:</span> the result (ex: https://nytimes.com/news/article.html)</span></span> |
 | <span class="method-name">[remove_trailing_slash()](#remove_trailing_slash)</span> | <span class="method-type">`string`</span> | <span class="method-description">Pass links through untrailingslashit unless they are a single /</span> |
 | <span class="method-name">[remove_url_component()](#remove_url_component)</span> | <span class="method-type">`string`</span> | <span class="method-description">Removes the subcomponent of a URL regardless of protocol</span> |
 | <span class="method-name">[starts_with()](#starts_with)</span> | <span class="method-type">`bool`</span> | <span class="method-description">Check to see if the URL begins with the string in question Because it's a URL we don't care about protocol (HTTP vs HTTPS) Or case (so it's cAsE iNsEnSiTiVe)</span> |
@@ -105,7 +105,7 @@ Or case (so it's cAsE iNsEnSiTiVe)
 
 Some setups like HTTP_HOST, some like SERVER_NAME, it's complicated
 
-**link** <http://stackoverflow.com/questions/2297403/http-host-vs-server-name>
+**link** <https://stackoverflow.com/questions/2297403/http-host-vs-server-name>
 
 **Returns:** `string` the HTTP_HOST or SERVER_NAME
 
@@ -203,11 +203,11 @@ Look for accidental slashes in a URL and remove them
 
 `remove_double_slashes( string $url )`
 
-**Returns:** `string` the result (ex: http://nytimes.com/news/article.html)
+**Returns:** `string` the result (ex: https://nytimes.com/news/article.html)
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $url | `string` | to process (ex: http://nytimes.com//news/article.html) |
+| $url | `string` | to process (ex: https://nytimes.com//news/article.html) |
 
 ---
 
@@ -283,7 +283,7 @@ Otherwise, false.
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $url | `string` | URL to evalute. |
+| $url | `string` | URL to evaluate. |
 
 ---
 
@@ -313,8 +313,8 @@ Removes the subcomponent of a URL regardless of protocol
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $haystack | `string` | ex: http://example.org/wp-content/uploads/dog.jpg |
-| $needle | `string` | ex: http://example.org/wp-content |
+| $haystack | `string` | ex: https://example.org/wp-content/uploads/dog.jpg |
+| $needle | `string` | ex: https://example.org/wp-content |
 
 ---
 
@@ -330,7 +330,7 @@ Swaps whatever protocol of a URL is sent. http becomes https and vice versa
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $url | `string` | ex: http://example.org/wp-content/uploads/dog.jpg. |
+| $url | `string` | ex: https://example.org/wp-content/uploads/dog.jpg. |
 
 ---
 
@@ -366,7 +366,7 @@ Returns false if given a non-existent index.
 
 ```php
 // Given a $_SERVER["REQUEST_URI"] of:
-// http://example.org/blog/post/news/2014/whatever
+// https://example.org/blog/post/news/2014/whatever
 
 $params = URLHelper::get_params();
 // => ["blog", "post", "news", "2014", "whatever"]

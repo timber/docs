@@ -50,7 +50,7 @@ exist.
 **HTML**
 
 ```html
-<img src="http://example.org/wp-content/uploads/2015/08/pic.jpg" width="1600" />
+<img src="https://example.org/wp-content/uploads/2015/08/pic.jpg" width="1600" />
 ```
 
 ---
@@ -70,7 +70,7 @@ doesn’t exist.
 **HTML**
 
 ```html
-<img src="http://example.org/wp-content/uploads/2015/08/pic.jpg" height="900" />
+<img src="https://example.org/wp-content/uploads/2015/08/pic.jpg" height="900" />
 ```
 
 ---
