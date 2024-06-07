@@ -70,7 +70,7 @@ take the same amount of space in each post for example
 
 | Name | Type | Description |
 | --- | --- | --- |
-| $string |  |  |
+| $string | `mixed` |  |
 | $tags | `array` |  |
 
 ---
