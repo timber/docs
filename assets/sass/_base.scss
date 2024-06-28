@@ -17,18 +17,22 @@ html {
 body {
 	display: flex;
 	min-height: 100vh;
-  	flex-direction: column;
-
-    color: $text-color;
-    padding: 0;
-    margin: 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background-color: $main-bg;
-    height: 100%;
+	flex-direction: column;
+	color: $text-color;
+	padding: 0;
+	margin: 0;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-color: $main-bg;
+	height: 100%;
 	line-height: 1.6;
-    -webkit-text-size-adjust: none; /* Never autoresize text */
-    @include font-text;
+	-webkit-text-size-adjust: none; /* Never autoresize text */
+	@include font-text;
+
+	html[data-theme="light"] & {
+		background-color: $white;
+		color: $black;
+	}
 }
 
 .wrapper {

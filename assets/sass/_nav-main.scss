@@ -45,8 +45,13 @@
 	color: $white;
 	border-bottom: none;
 
+	html[data-theme="light"] & {
+		color: inherit;
+	}
+
 	&:hover, &:focus {
-		text-decoration: none;
+		// I believe for accessibilty consideration, we need to have underline.
+		text-decoration: underline;
 	}
 
 	&[aria-current] {

@@ -5,11 +5,14 @@
 
 	position: relative;
 	z-index: 1000;
-    width: 100%;
-    background-color: $black;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-
+	width: 100%;
+	background-color: $black;
+	box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
 	padding: 15px 1rem;
+
+	html[data-theme="light"] & {
+		background-color: inherit;
+	}
 
 	@media (max-width: 767px) {
 		& > * + * {
@@ -75,23 +78,31 @@
     }
 
     a {
-		display: block;
-        font-size: 0.9em;
-        text-decoration: none;
-        color: $white;
-        font-weight: $font-weight-bold;
-        letter-spacing: .25px;
-		padding: 4px;
-		
-
-		&:hover, &:focus {
-			color: $white;
-			text-decoration: underline;
-			
-		}
-
-		img {
 			display: block;
-		}
+			font-size: 0.9em;
+			text-decoration: none;
+			color: $white;
+			font-weight: $font-weight-bold;
+			letter-spacing: .25px;
+			padding: 4px;
+		
+			html[data-theme="light"] & {
+				color: inherit;
+			}
+
+			&:hover, &:focus {
+				color: $white;
+				text-decoration: underline;
+				
+			}
+
+			img {
+				display: block;
+			}
     }
+}
+
+.nav-link {
+	width: 2.5rem;
+	height: 2.5rem;
 }

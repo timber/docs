@@ -16,6 +16,10 @@ h1 {
     color: $white;
     font-weight: $font-weight-normal;
     line-height: 1.2em;
+
+		html[data-theme="light"] & {
+			color: $green;
+		}
 }
 
 h2 {

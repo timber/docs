@@ -3,6 +3,11 @@
 	background-color: $black;
 	border-right: solid 1px $grey-dark;
 
+	html[data-theme="light"] & {
+		background-color: inherit;
+		border-right-color: $border-color;
+	}
+
 	@media (min-width: $mobile-breakpoint) {
 		position: sticky;
 		top: $header-height;
@@ -46,9 +51,20 @@
 		font-weight: $font-weight-bold;
 		text-decoration: none;
 
+		html[data-theme="light"] & {
+			color: $black;
+			border-color: $black;
+		}
+
 		&.is-current, &:hover, &:focus {
 			background: $white;
 			color: $black;
+
+			html[data-theme="light"] & {
+				background-color: $green;
+				color: $white;
+				border-color: $green;
+			}
 		}
 	}
 }

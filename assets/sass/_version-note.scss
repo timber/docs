@@ -4,6 +4,11 @@
 	margin: 1em;
 	border-radius: 4px;
 
+	html[data-theme="light"] & {
+		background-color: $green;
+		color: $white;
+	}
+
 	p {
 		margin: 0;
 	}
