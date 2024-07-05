@@ -17,6 +17,15 @@ a {
 	text-decoration: none;
 	border-bottom: 1px solid $green-light;
 
+	[data-theme="light"] & {
+		color: $black;
+		border-color: $green;
+
+		&:hover, &:focus {
+			color: $black;
+		}
+	}	
+
 	&:hover,
 	&:focus {
 		color: $link-hover-color;
@@ -31,6 +40,10 @@ a {
 	&:hover, &:focus {
 		color: $green-light;
 		text-decoration: none;
+
+		[data-theme="light"] & {
+			color: $green;
+		}
 	}
 }
 

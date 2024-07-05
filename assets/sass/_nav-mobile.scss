@@ -30,6 +30,10 @@
 		top: 15px;
 		right: 1rem;
 	}
+
+	[data-theme="light"] & {
+		color: $black;
+	}
 }
 
 .navClose {

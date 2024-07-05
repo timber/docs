@@ -7,11 +7,16 @@ code {
 }
 
 p > code,
-li > code,
+li code,
 a > code {
 	padding: 3px 5px;
 	background: $grey-dark;
 	border-radius: 2px;
+
+	[data-theme="light"] & {
+		background: $grey-lighter;
+		color: $black;
+	}
 }
 
 p > code,
@@ -22,6 +27,9 @@ li > code {
 h1, h2, h3, h4, h5, h6 {
 	code {
 		font-size: inherit;
+		// Keep color same as heading, although make it italic to stand out a bit.
+		color: inherit;
+		font-style: italic;
 	}
 }
 
@@ -29,6 +37,10 @@ a > code {
 	color: $green-light;
 	@include font-code;
 	border-bottom: 1px solid $green-light;
+
+	[data-theme="light"] & {
+		border-color: $green;
+	}
 }
 
 a:has(> code){
@@ -52,6 +64,9 @@ a:has(> code){
 
 table code {
 	word-break: normal;
+	[data-theme="light"] & {
+		color: $green;
+	}
 }
 
 pre > code {

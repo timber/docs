@@ -43,6 +43,17 @@ aside, .toc {
 		margin-bottom: 0.3em;
 		border-bottom: none;
 
+		[data-theme="light"] & {
+			color: $black;
+
+			&:hover, &:focus {
+				color: $black;
+				// On darkmode, green hover color has contract issue,
+				// so making it underline should be the best scenario here?
+				text-decoration: underline;
+			}
+		}
+
 		&:before {
 			display: inline-block;
 			margin-right: 0.5em;

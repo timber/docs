@@ -1,61 +1,69 @@
 h1, h2, h3, h4, h5, h6 {
-    display: block;
-    padding: 0;
-    margin: 0;
-    width: 100%;
+	display: block;
+	padding: 0;
+	margin: 0;
+	width: 100%;
 	align-items: center;
 }
 
 h2, h3, h4, h5, h6 {
-    color: $headings-color;
-    line-height: 1.2;
+	color: $headings-color;
+	line-height: 1.2;
+
+	[data-theme="light"] & {
+		color: $black;
+	}
 }
 
 h1 {
-    font-size: 3.75em;
-    color: $white;
-    font-weight: $font-weight-normal;
-    line-height: 1.2em;
+	font-size: 3.75em;
+	color: $white;
+	font-weight: $font-weight-normal;
+	line-height: 1.2em;
 
-		html[data-theme="light"] & {
-			color: $green;
-		}
+	html[data-theme="light"] & {
+		color: $green;
+	}
 }
 
 h2 {
-    font-size: 2.25em;
-    font-weight: $font-weight-normal;
-    color: $headings-color;
+	font-size: 2.25em;
+	font-weight: $font-weight-normal;
+	color: $headings-color;
+
+	html[data-theme="light"] & {
+		color: $green;
+	}
 }
 
 .content h2 {
-    &:after {
-        content: "";
-        display: block;
-        width: 100%;
-        margin-top: 0.25em;
-        height: 2px;
-        border-bottom: 2px solid $green;
-    }
+	&:after {
+		content: "";
+		display: block;
+		width: 100%;
+		margin-top: 0.25em;
+		height: 2px;
+		border-bottom: 2px solid $green;
+	}
 }
 
 h3 {
-    font-size: 1.4rem;
-    font-weight: $font-weight-bold;
+	font-size: 1.4rem;
+	font-weight: $font-weight-bold;
 }
 
 h4, .heading-4,
 h6 {
-    font-size: 1.25rem;
-    font-weight: $font-weight-bold;
+	font-size: 1.25rem;
+	font-weight: $font-weight-bold;
 }
 
 h5 {
-    font-size: .875rem;
-    font-weight: $font-weight-bold;
+	font-size: .875rem;
+	font-weight: $font-weight-bold;
 }
 
 .heading-small {
-    font-size: 1.3em;
-    color: $white;
+	font-size: 1.3em;
+	color: $white;
 }

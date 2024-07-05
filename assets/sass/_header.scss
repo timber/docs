@@ -39,16 +39,30 @@
 	a {
 		border-bottom: none;
 	}
-
 }
 
 
 .logo {
-	height: $header-height;
+	width: 105px;
+  height: 30px;
 
-    img {
-        position: relative;
-    }
+	[data-theme="light"] & {
+		.text { // Timber text part of svg logo.
+			fill: $black;
+		}
+		.shape { // Timber shape part of svg logo.
+			fill: $black;
+		}
+	}
+
+	[data-theme="dark"] & {
+		.text {
+			fill: $white;
+		}
+		.shape {
+			fill: $green-light;
+		}
+	}
 }
 
 .navTop {

@@ -11,12 +11,4 @@ module.exports = [
     name: 'Sponsor us',
     url: 'https://opencollective.com/timber',
   },
-  {
-    image: {
-      alt: 'Star on Github',
-      src: '/build/img/github.png',
-      style: 'width: 29px; height: 29px; border: 0',
-    },
-    url: 'https://github.com/timber/timber',
-  },
 ];
