@@ -1,4 +1,4 @@
-const handleSwitchTheme = () => {
+window.switchTheme = () => {
 	const isDark = window.localStorage.getItem('theme') === 'dark';
 	document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
 
@@ -17,5 +17,4 @@ document.addEventListener('DOMContentLoaded', () => {
 	})();
 	document.documentElement.setAttribute('data-theme', theme);
 	window.localStorage.setItem('theme', theme);
-	document.querySelector('#theme-switcher').addEventListener('click', handleSwitchTheme);
 });
