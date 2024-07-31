@@ -1,3 +1,5 @@
+
+
 html {
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	box-sizing: border-box;
@@ -15,23 +17,35 @@ html {
 }
 
 body {
+	--text-color: #{$white};
+	--bg-color: #{$main-bg};
+	--version-note: #222;
+	--link-color: #{$white};
+	--link-border-color: #{$green-light};
+
+
 	display: flex;
 	min-height: 100vh;
 	flex-direction: column;
-	color: $text-color;
+	color: var(--text-color);
 	padding: 0;
 	margin: 0;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	background-color: $main-bg;
+	background-color: var(--bg-color);
 	height: 100%;
 	line-height: 1.6;
 	-webkit-text-size-adjust: none; /* Never autoresize text */
 	@include font-text;
 
 	html[data-theme="light"] & {
-		background-color: $white;
-		color: $black;
+		--text-color: #{$black};
+		--link-color: #{$black};
+		--link-border-color: #{$green};
+		--toc-text-decoration: underline;
+		--text-color-inverse: #{$white};
+		--bg-color: #{$white};
+		--version-note: #{$green};
 	}
 }
 

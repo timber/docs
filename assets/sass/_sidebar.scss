@@ -1,10 +1,9 @@
 .sidebar {
 	padding: $nav-padding $gutter-width/2 $gutter-width/2 $gutter-width/2;
-	background-color: $black;
+	background-color: var(--bg-color);
 	border-right: solid 1px $grey-dark;
 
 	html[data-theme="light"] & {
-		background-color: $white;
 		border-right-color: $border-color;
 	}
 

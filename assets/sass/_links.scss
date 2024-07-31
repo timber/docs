@@ -13,22 +13,13 @@ h1, h2, h3, h4, h5, h6,
 
 // General links styling
 a {
-	color: $white;
+	color: var(--link-color);
 	text-decoration: none;
-	border-bottom: 1px solid $green-light;
-
-	[data-theme="light"] & {
-		color: $black;
-		border-color: $green;
-
-		&:hover, &:focus {
-			color: $black;
-		}
-	}	
-
+	border-bottom: 1px solid var(--link-border-color);
+	
 	&:hover,
 	&:focus {
-		color: $link-hover-color;
+		color: inherit;
 		text-decoration: none;
 	}
 }
