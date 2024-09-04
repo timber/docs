@@ -9,13 +9,15 @@ code {
 p > code,
 li code,
 a > code {
+	--background-color: #{$grey-dark};
 	padding: 3px 5px;
-	background: $grey-dark;
+	background: var(--background-color);
+	color: var(--text-color);
 	border-radius: 2px;
 
 	[data-theme="light"] & {
-		background: $grey-lighter;
-		color: $black;
+		--background-color: #{$grey-lighter};
+		--text-color: #{$black};
 	}
 }
 
@@ -34,12 +36,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a > code {
-	color: $green-light;
+	--text-color: #{$green-light};
+	color: var(--text-color);
 	@include font-code;
-	border-bottom: 1px solid $green-light;
+	--border-color: #{$green-light};
+	border-bottom: 1px solid var(--border-color);
 
 	[data-theme="light"] & {
-		border-color: $green;
+		--border-color: #{$green};
 	}
 }
 
@@ -64,8 +68,9 @@ a:has(> code){
 
 table code {
 	word-break: normal;
+	color: var(--text-color);
 	[data-theme="light"] & {
-		color: $green;
+		--text-color: #{$green};
 	}
 }
 

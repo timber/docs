@@ -22,22 +22,41 @@ body {
 	--version-note: #222;
 	--link-color: #{$white};
 	--link-border-color: #{$green-light};
+	--header-bg-color: #{$black};
+	--header-logo-text-color: #{$white};
+	--header-logo-shape-color: #{$green-light};
+	--sidebar-link-active-color: #{$green-light};
+	--sidebar-border-color: #{$grey-dark};
+	--sidebar-version-link-color: #{$white};
+	--sidebar-version-link-hover-color: #{$black};
+	--sidebar-version-link-hover-background-color: #{$white};
+	--sidebar-version-link-border-color: #{$white};
+	--sidebar-version-link-border-hover-color: #{$black};
+	--theme-switcher-color: #{$white};
+	--theme-switcher-indicator--dark-display: none;
+	--theme-switcher-indicator--light-display: block;
+	--version-note-link-color: #{$white};
+	--version-note-link-border-color: #{$green-light};
+	--toc-link-hover-color: #{$green-light};
 
-
+	color: var(--text-color);
+	background-color: var(--bg-color);
 	display: flex;
 	min-height: 100vh;
 	flex-direction: column;
-	color: var(--text-color);
 	padding: 0;
 	margin: 0;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	background-color: var(--bg-color);
 	height: 100%;
 	line-height: 1.6;
 	-webkit-text-size-adjust: none; /* Never autoresize text */
 	@include font-text;
 
+	/*
+	All colors that are applied to ligth theme should be defined here,
+	and then use these custom properties in each components as needed.
+	*/
 	html[data-theme="light"] & {
 		--text-color: #{$black};
 		--link-color: #{$black};
@@ -46,6 +65,22 @@ body {
 		--text-color-inverse: #{$white};
 		--bg-color: #{$white};
 		--version-note: #{$green};
+		--header-bg-color: #{$white};
+		--header-logo-text-color: #{$black};
+		--header-logo-shape-color: #{$black};
+		--sidebar-link-active-color: #{$green};
+		--sidebar-border-color: #{$border-color};
+		--sidebar-version-link-color: #{$black};
+		--sidebar-version-link-hover-color: #{$white};
+		--sidebar-version-link-hover-background-color: #{$green};
+		--sidebar-version-link-border-color: #{$black};
+		--sidebar-version-link-hover-border-color: #{$green};
+		--theme-switcher-color: #{$black};
+		--theme-switcher-indicator--dark-display: block;
+		--theme-switcher-indicator--light-display: none;
+		--version-note-link-color: #{$white};
+		--version-note-link-border-color: #{$white};
+		--toc-link-hover-color: #{$green};
 	}
 }
 

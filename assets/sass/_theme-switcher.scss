@@ -1,9 +1,10 @@
 .themeSwitcher {
+  color: var(--theme-switcher-color);
 	background-color: transparent;
 	border: none;
 	margin-left: 1rem;
 	cursor: pointer;
-	
+
 	&__indicator {
 		width: 2.5em;
 		height: 2.5em;
@@ -15,6 +16,14 @@
 			width: 100%;
 			height: 100%;
 		}
+
+		&--light {
+		  display: var(--theme-switcher-indicator--light-display);
+		}
+
+		&--dark {
+			display: var(--theme-switcher-indicator--dark-display);
+		}
 	}
 
 	@media (max-width: 767px) {
@@ -22,25 +31,5 @@
 		top: 15px;
 		right: 4rem;
 		margin: 0;
-	}
-}
-
-html[data-theme="light"] {
-	.themeSwitcher {
-		color: $black;
-
-		&__indicator--light {
-			display: none;
-		}
-	}
-}
-
-html[data-theme="dark"] {
-	.themeSwitcher {
-		color: $white;
-
-		&__indicator--dark {
-			display: none;
-		}
 	}
 }

@@ -44,6 +44,7 @@ aside, .toc {
 		border-bottom: none;
 
 		&:hover, &:focus {
+		  color: var(--toc-link-hover-color);
 			text-decoration: var(--toc-text-decoration, none);
 		}
 
@@ -56,11 +57,6 @@ aside, .toc {
 		code {
 			color: inherit;
 			font-size: 0.9em;
-		}
-
-		&:hover, &:focus {
-			color: $green-light;
-			text-decoration: none;
 		}
 	}
 }

@@ -1,18 +1,13 @@
 .version-note {
 	background-color: var(--version-note);
+	color: var(--text-color-inverse, var(--text-color));
 	padding: 1em;
 	margin: 1em;
 	border-radius: 4px;
-	color: var(--text-color-inverse, var(--text-color));
 
 	a {
 		color: inherit;
-	}
-
-	html[data-theme="light"] & {
-		a {
-			border-color: $white;
-		}
+		border-color: var(--version-note-link-border-color);
 	}
 
 	p {
