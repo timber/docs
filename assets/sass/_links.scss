@@ -16,7 +16,7 @@ a {
 	color: var(--link-color);
 	text-decoration: none;
 	border-bottom: 1px solid var(--link-border-color);
-	
+
 	&:hover,
 	&:focus {
 		color: inherit;
@@ -29,12 +29,8 @@ a {
 	visibility: hidden;
 
 	&:hover, &:focus {
-		color: $green-light;
+		color: var(--direct-link-hover-color);
 		text-decoration: none;
-
-		[data-theme="light"] & {
-			color: $green;
-		}
 	}
 }
 

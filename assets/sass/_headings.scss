@@ -7,33 +7,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h2, h3, h4, h5, h6 {
-	color: $headings-color;
+	color: var(--text-color);
 	line-height: 1.2;
-
-	[data-theme="light"] & {
-		color: $black;
-	}
 }
 
 h1 {
 	font-size: 3.75em;
-	color: $white;
 	font-weight: $font-weight-normal;
 	line-height: 1.2em;
-
-	html[data-theme="light"] & {
-		color: $green;
-	}
 }
 
 h2 {
 	font-size: 2.25em;
 	font-weight: $font-weight-normal;
-	color: $headings-color;
-
-	html[data-theme="light"] & {
-		color: $green;
-	}
 }
 
 .content h2 {

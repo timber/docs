@@ -38,6 +38,12 @@ body {
 	--version-note-link-color: #{$white};
 	--version-note-link-border-color: #{$green-light};
 	--toc-link-hover-color: #{$green-light};
+	--code-background-color: #{$grey-dark};
+	--code-link-border-color: #{$green-light};
+	--table-code-text-color: var(--text-color);
+	--headings-code-color: #{$green-light};
+	--direct-link-hover-color: #{$green-light};
+	--nav-mobile-toggle-color: #{$green-light};
 
 	color: var(--text-color);
 	background-color: var(--bg-color);
@@ -81,6 +87,12 @@ body {
 		--version-note-link-color: #{$white};
 		--version-note-link-border-color: #{$white};
 		--toc-link-hover-color: #{$green};
+		--code-background-color: #{$grey-lighter};
+		--code-link-border-color: #{$green};
+		--table-code-text-color: #{$green};
+		--headings-code-color: #{$green};
+		--direct-link-hover-color: #{$green};
+		--nav-mobile-toggle-color: #{$black};
 	}
 }
 
