@@ -3,16 +3,25 @@
  * @author Lukas Gächter
  */
 
+/*
+ * Added few hardcoded colors that I picked
+ * from Firefox Dev Tool when checking color contract ratio,
+ * since these colors only apply to code block for both light & dark themes,
+ * I didn't extract these colors as global variables.
+ */
+
 $prism-code: $text-color;
 $prism-light: $grey-light;
-$prism-string: $green; // #690;
-$prism-symbol: $red;// #905;
 $prism-keyword: $text-color; // #07a;
 $prism-function: $green-light;// #DD4A68;
 $prism-property: $text-color;
-$prism-tag: $grey-light;
 $prism-attribute: $grey-light;
 $prism-attribute-value: $green;
+$prism-delimiter-important: #a2a7f2;
+$prism-string: #1dd288;
+$prism-symbol: #FF7E81;
+$prism-tag: #e6e6e6;
+$prism-token-punctuation: #cacaca;
 
 code[class*="language-"],
 pre[class*="language-"] {
@@ -76,7 +85,7 @@ pre[class*="language-"] {
 }
 
 code.language-html {
-	color: $grey;
+	color: $prism-tag;
 }
 
 .token.comment,
@@ -87,7 +96,7 @@ code.language-html {
 }
 
 .token.punctuation {
-	color: #999;
+	color: $prism-token-punctuation;
 }
 
 .tag .ld,
@@ -107,7 +116,7 @@ code.language-html {
 }
 
 .token .attr-name {
-	color: $prism-attribute;
+	color: $prism-tag;
 }
 
 .token.property {
@@ -165,7 +174,7 @@ code.language-html {
 
 // PHP opening tags
 .token.delimiter.important {
-	color: $prism-light;
+	color: $prism-delimiter-important;
 	font-weight: $font-weight-bold;
 }
 

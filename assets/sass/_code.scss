@@ -1,5 +1,5 @@
 code {
-	color: var(--text-color);
+	color: var(--code-color);
 	background-color: var(--code-background-color);
 	white-space: pre-wrap;
 	text-transform: none;
@@ -7,6 +7,10 @@ code {
 	padding: 3px 5px;
 	border-radius: 2px;
 	@include font-code;
+}
+
+pre:not([class*="language-"]) code {
+  color: var(--pre-code-color);
 }
 
 a > code {
@@ -39,7 +43,7 @@ a:has(> code){
 .method-name,
 .method-name a,
 .property-name {
-	color: $green-light;
+	color: var(--code-link-border-color);
 	@include font-code;
 }
 
@@ -65,11 +69,8 @@ pre {
 	background-color: $code-bg;
 	color: $text-color;
 	border-radius: 4px;
-
-	padding: 2em $gutter-width/2;
-	margin: 5px 0 20px $gutter-width/-2;
-	width: calc(100% + #{$gutter-width/2});
-
+	padding: 1em;
+	margin-block: 5px 20px;
 	clear: right;
 
 	& > p {
