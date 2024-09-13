@@ -19,6 +19,7 @@ As the name suggests these are helpers for Timber (and you!) when developing. Yo
 | --- | --- | --- |
 | <span class="method-name">[array_to_object()](#array_to_object)</span> | <span class="method-type">`\stdClass`</span> | <span class="method-description"></span> |
 | <span class="method-name">[array_truncate()](#array_truncate)</span> | <span class="method-type">`array`</span> | <span class="method-description"></span> |
+| <span class="method-name">[convert_wp_object()](#convert_wp_object)</span> | <span class="method-type">`mixed`</span> | <span class="method-description">Converts a WP object (WP_Post, WP_Term) into its equivalent Timber class (Timber\Post, Timber\Term).<br><br><span class="method-return"><span class="method-return-label">Returns:</span> Instance of equivalent Timber object, or the argument if no match is found</span></span> |
 | <span class="method-name">[deprecated()](#deprecated)</span> | <span class="method-type">`void`</span> | <span class="method-description">Triggers a deprecation warning.</span> |
 | <span class="method-name">[doing_it_wrong()](#doing_it_wrong)</span> | <span class="method-type"></span> | <span class="method-description">Marks something as being incorrectly called.</span> |
 | <span class="method-name">[error_log()](#error_log)</span> | <span class="method-type">`void`</span> | <span class="method-description">Output a value (string, array, object, etc.) to the error log</span> |
@@ -153,10 +154,6 @@ Output a value (string, array, object, etc.) to the error log
 `error_log( mixed $error )`
 
 **Returns:** `void` 
-
-| Name | Type | Description |
-| --- | --- | --- |
-| $error | `mixed` | The error that you want to error_log(). |
 
 ---
 
@@ -381,6 +378,23 @@ Uses WordPress WP_List_Util's filter.
 | $list | `array` | to filter. |
 | $args | `string` or `array` | to search for. |
 | $operator | `string` | to use (AND, NOT, OR). |
+
+---
+
+### convert\_wp\_object()
+
+Converts a WP object (WP_Post, WP_Term) into its
+equivalent Timber class (Timber\Post, Timber\Term).
+
+If no match is found the function will return the initial argument.
+
+`convert_wp_object( mixed $obj )`
+
+**Returns:** `mixed` Instance of equivalent Timber object, or the argument if no match is found
+
+| Name | Type | Description |
+| --- | --- | --- |
+| $obj | `mixed` | WP Object to convert |
 
 ---
 
