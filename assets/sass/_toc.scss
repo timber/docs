@@ -1,7 +1,6 @@
 aside {
 	padding: 1em 0 1.5em 0;
 	margin-top: 3em;
-	border-bottom: solid 1px $grey-dark;
 
 	.heading-small {
 		color: $grey-light;
@@ -39,10 +38,15 @@ aside, .toc {
 
 	a {
 		display: inline-block;
-		color: $white;
+		color: var(--link-color);
 		text-decoration: none;
 		margin-bottom: 0.3em;
 		border-bottom: none;
+
+		&:hover, &:focus {
+		  color: var(--toc-link-hover-color);
+			text-decoration: var(--toc-text-decoration, none);
+		}
 
 		&:before {
 			display: inline-block;
@@ -53,11 +57,6 @@ aside, .toc {
 		code {
 			color: inherit;
 			font-size: 0.9em;
-		}
-
-		&:hover, &:focus {
-			color: $green-light;
-			text-decoration: none;
 		}
 	}
 }

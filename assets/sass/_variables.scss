@@ -13,6 +13,9 @@ $purple: #8E4CF8;
 $grey: #858585;
 $grey-light: #999;
 $grey-dark: #161616;
+// This lighter grey works better for code background on light mode,
+// not code block, just inline code element.
+$grey-lighter: #efefef;
 
 $border-color: #dddddd;
 

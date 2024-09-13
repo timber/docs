@@ -1,14 +1,13 @@
 .header {
+  background-color: var(--header-bg-color);
+
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-
 	position: relative;
 	z-index: 1000;
-    width: 100%;
-    background-color: $black;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-
+	width: 100%;
+	box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
 	padding: 15px 1rem;
 
 	@media (max-width: 767px) {
@@ -25,27 +24,31 @@
 		}
 	}
 
-    @media (min-width: $header-breakpoint) {
+  @media (min-width: $header-breakpoint) {
 		padding-left: 4em;
 		padding-right: 4em;
 		position: fixed;
 		flex-wrap: nowrap;
 		justify-content: space-between;
 	}
-	
+
 	a {
 		border-bottom: none;
 	}
-
 }
 
 
 .logo {
-	height: $header-height;
+	width: 105px;
+  height: 30px;
 
-    img {
-        position: relative;
-    }
+  .text {
+    fill: var(--header-logo-text-color);
+  }
+
+  .shape {
+    fill: var(--header-logo-shape-color);
+  }
 }
 
 .navTop {
@@ -53,45 +56,47 @@
 	flex-grow: 1;
 
     ul {
-		width: 100%;
+  		width: 100%;
+  		display: flex;
+  		align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
 
-		display: flex;
-		align-items: center;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-
-		& > * + * {
-			margin-left: 1em;
-		}
+  		& > * + * {
+  			margin-left: 1em;
+  		}
     }
 
     li {
 		vertical-align: middle;
 
-		&:last-child {
-			margin-left: auto;
-		}
+  		&:last-child {
+  			margin-left: auto;
+  		}
     }
 
     a {
-		display: block;
-        font-size: 0.9em;
-        text-decoration: none;
-        color: $white;
-        font-weight: $font-weight-bold;
-        letter-spacing: .25px;
-		padding: 4px;
-		
-
-		&:hover, &:focus {
-			color: $white;
-			text-decoration: underline;
-			
-		}
-
-		img {
 			display: block;
-		}
+			font-size: 0.9em;
+			text-decoration: none;
+			color: var(--link-color);
+			font-weight: $font-weight-bold;
+			letter-spacing: .25px;
+			padding: 4px;
+
+			&:hover, &:focus {
+				color: inherit;
+				text-decoration: underline;
+			}
+
+			img {
+				display: block;
+			}
     }
+}
+
+.nav-link {
+	width: 2.5rem;
+	height: 2.5rem;
 }

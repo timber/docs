@@ -1,7 +1,7 @@
 .sidebar {
 	padding: $nav-padding $gutter-width/2 $gutter-width/2 $gutter-width/2;
-	background-color: $black;
-	border-right: solid 1px $grey-dark;
+	background-color: var(--bg-color);
+	border-right: solid 1px var(--sidebar-border-color);
 
 	@media (min-width: $mobile-breakpoint) {
 		position: sticky;
@@ -10,7 +10,7 @@
 		overflow-y: scroll;
 	}
 
-    @media (min-width: $header-breakpoint) {
+  @media (min-width: $header-breakpoint) {
 		flex: 0 0 $sidebar-width;
 		padding: 3em $nav-padding $nav-padding 4em;
 	}
@@ -38,17 +38,18 @@
 	}
 
 	a {
-		color: $white;
+		color: var(--sidebar-version-link-color);
 		display: block;
-		border: 1px solid $white;
+		border: 1px solid var(--sidebar-version-link-border-color);
 		border-radius: 100px;
 		padding: 8px 15px 9px;
 		font-weight: $font-weight-bold;
 		text-decoration: none;
 
 		&.is-current, &:hover, &:focus {
-			background: $white;
-			color: $black;
+			color: var(--sidebar-version-link-hover-color);
+			background: var(--sidebar-version-link-hover-background-color);
+			border-color: var(--sidebar-version-link-hover-border-color);
 		}
 	}
 }

@@ -1,34 +1,38 @@
 code {
-	color: $green-light;
+	color: var(--code-color);
+	background-color: var(--code-background-color);
 	white-space: pre-wrap;
 	text-transform: none;
 	font-weight: $font-weight-normal;
+	padding: 3px 5px;
+	border-radius: 2px;
 	@include font-code;
 }
 
-p > code,
-li > code,
-a > code {
-	padding: 3px 5px;
-	background: $grey-dark;
-	border-radius: 2px;
+pre:not([class*="language-"]) code {
+  color: var(--pre-code-color);
 }
 
-p > code,
-li > code {
-	margin: 0 2px;
+a > code {
+	border-bottom: 1px solid var(--code-link-border-color);
+
+	&:hover {
+	  // Increase border width so it has a clear hover style.
+	  border-width: 2px;
+	}
+}
+
+td code {
+  background-color: transparent;
 }
 
 h1, h2, h3, h4, h5, h6 {
 	code {
 		font-size: inherit;
+		// Keep color same as heading, although make it italic to stand out a bit.
+		color: var(--headings-code-color);
+		background-color: transparent;
 	}
-}
-
-a > code {
-	color: $green-light;
-	@include font-code;
-	border-bottom: 1px solid $green-light;
 }
 
 a:has(> code){
@@ -38,13 +42,13 @@ a:has(> code){
 .method-name,
 .method-name a,
 .property-name {
-	color: $green-light;
+	color: var(--code-link-border-color);
 	@include font-code;
 }
 
 .method-type,
 .method-type code,
-.property-type, 
+.property-type,
 .property-type code{
 	color: $purple;
 	@include font-code;
@@ -52,6 +56,7 @@ a:has(> code){
 
 table code {
 	word-break: normal;
+	color: var(--table-code-text-color);
 }
 
 pre > code {
@@ -63,11 +68,8 @@ pre {
 	background-color: $code-bg;
 	color: $text-color;
 	border-radius: 4px;
-
-	padding: 2em $gutter-width/2;
-	margin: 5px 0 20px $gutter-width/-2;
-	width: calc(100% + #{$gutter-width/2});
-
+	padding: 1em;
+	margin-block: 5px 20px;
 	clear: right;
 
 	& > p {
