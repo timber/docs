@@ -16,6 +16,9 @@
     "cleanup": "rm -rf ./content",
     "debug": "DEBUG=Eleventy* npx eleventy"
   },
+  "engines": {
+    "node": ">=18.2"
+  },
   "dependencies": {
     "lodash.debounce": "^4.0.8",
     "normalize.css": "^8.0.1",
@@ -23,23 +26,23 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
-    "@11ty/eleventy-plugin-rss": "^1.2.0",
+    "@11ty/eleventy-plugin-rss": "^1.0",
     "cheerio": "^1.0.0",
-    "concurrently": "^8.2.2",
+    "concurrently": "^9.0",
     "cross-env": "^7.0.3",
     "eleventy-plugin-toc": "^1.1.5",
-    "eslint": "^8.57.0",
+    "eslint": "^9.11",
     "eslint-plugin-prettier": "^5.2.1",
     "html-minifier": "^4.0.0",
     "laravel-mix": "^6.0.49",
     "luxon": "^3.5.0",
-    "markdown-it": "^13.0.2",
-    "markdown-it-anchor": "^8.6.7",
+    "markdown-it": "^14.1",
+    "markdown-it-anchor": "^9.2",
     "nunjucks": "^3.2.4",
-    "postcss": "^8.4.45",
+    "postcss": "^8.4.47",
     "prismjs": "^1.29.0",
-    "sass": "^1.78.0",
-    "sass-loader": "^12.6.0",
+    "sass": "^1.79.3",
+    "sass-loader": "^16.0",
     "slugify": "^1.6.6"
   }
 }
