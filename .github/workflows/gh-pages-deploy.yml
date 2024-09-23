@@ -35,7 +35,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          path: ./docs
+          path: ./timber-docs
           token: ${{ github.token }}
       - name: Checkout
         uses: actions/checkout@v4
@@ -53,17 +53,17 @@ jobs:
       - name: Install composer
         uses: ramsey/composer-install@v3
         with:
-          working-directory: 'docs'
+          working-directory: 'timber-docs'
       - name: Build files
         run: |
-          cd ./docs
+          cd ./timber-docs
           npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: '.'
+          path: './docs'
   # Deployment job
   # deploy:
   #   needs: build
