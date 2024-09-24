@@ -1,0 +1,36 @@
+.themeSwitcher {
+  color: var(--theme-switcher-color);
+	background-color: transparent;
+	border: none;
+	margin-left: 1rem;
+	cursor: pointer;
+
+	&__indicator {
+		width: 2.5em;
+		height: 2.5em;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		svg {
+			width: 100%;
+			height: 100%;
+		}
+
+		&--light {
+		  display: var(--theme-switcher-indicator--light-display);
+		}
+
+		&--dark {
+			display: var(--theme-switcher-indicator--dark-display);
+		}
+	}
+
+	@media (max-width: 767px) {
+		position: fixed;
+		top: 15px;
+		right: 4rem;
+		margin: 0;
+		color: var(--nav-mobile-toggle-color); // Match nav toggle color on mobile.
+	}
+}

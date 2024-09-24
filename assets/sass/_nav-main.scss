@@ -16,7 +16,7 @@
 }
 
 .navMain-title {
-	color: $white;
+	color: var(--text-color);
 	font-size: 0.85em;
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
@@ -42,18 +42,19 @@
 .navMain-link {
 	display: block;
 	text-decoration: none;
-	color: $white;
+	color: var(--link-color);
 	border-bottom: none;
 
 	&:hover, &:focus {
-		text-decoration: none;
+		// I believe for accessibilty consideration, we need to have underline.
+		text-decoration: underline;
 	}
 
 	&[aria-current] {
 		font-weight: $font-weight-bold;
 		padding-top: 0.2em;
 		padding-bottom: 0.3em;
-		color: $green-light;
+		color: var(--sidebar-link-active-color);
 	}
 }
 

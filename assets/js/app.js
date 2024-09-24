@@ -1,5 +1,6 @@
 import { slideup } from './navigation';
 import Turbolinks from 'turbolinks';
+import "./themeSwitcher";
 
 Turbolinks.start();
 

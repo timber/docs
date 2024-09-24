@@ -1,8 +1,14 @@
 .version-note {
-	background-color: #222;
+	background-color: var(--version-note);
+	color: var(--text-color-inverse, var(--text-color));
 	padding: 1em;
 	margin: 1em;
 	border-radius: 4px;
+
+	a {
+		color: inherit;
+		border-color: var(--version-note-link-border-color);
+	}
 
 	p {
 		margin: 0;
