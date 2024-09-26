@@ -1,4 +1,11 @@
-# Sample workflow for building and deploying a static site to GitHub Pages
+# Automatically deploy the Timber documentation to GitHub Pages
+
+# 1. Checks out the documentation repository in the /timber-docs directory
+# 2. Checks out the timber repository in the /timber directory
+# 3. Sets up Node.js
+# 4. Sets up PHP 8.2 and Composer
+# 5. Builds the static site & builds artifacts
+# 6. Deploys artifacts to GitHub Pages
 name: Deploy to GitHub Pages
 
 on:
@@ -22,13 +29,6 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Build job
-  # This job builds the static site
-  # 1. Checks out the repository in the docs directory
-  # 2. Checks out the timber repository in the timber directory
-  # 3. Sets up Node.js
-  # 4. Sets up PHP 8.2 and Composer
-  # 5. Installs npm dependencies
   build:
     runs-on: ubuntu-latest
     steps:
@@ -61,21 +61,21 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: './docs'
+          path: './timber-docs/docs'
     # Deployment job
   deploy:
-      needs: build
-      # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
-      permissions:
-        pages: write      # to deploy to Pages
-        id-token: write   # to verify the deployment originates from an appropriate source
-      environment:
-        name: github-pages
-        url: ${{ steps.deployment.outputs.page_url }}
-      runs-on: ubuntu-latest
-      steps:
-        - name: Deploy to GitHub Pages
-          id: deployment
-          uses: actions/deploy-pages@v4
+    needs: build
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write # to deploy to Pages
+      id-token: write # to verify the deployment originates from an appropriate source
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
