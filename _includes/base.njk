@@ -9,6 +9,8 @@
 {% include 'html-head.njk' %}
 
 <body>
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
     {% include 'header.njk' %}
 
     <div class="wrapper">
@@ -17,7 +19,7 @@
         <div class="main-container">
             {% include 'version-note.njk' %}
 
-            <main>
+            <main id="main-content">
                 {% block content %}
                 {% endblock %}
             </main>
