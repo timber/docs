@@ -1,0 +1,81 @@
+# Automatically deploy the Timber documentation to GitHub Pages
+
+# 1. Checks out the documentation repository in the /timber-docs directory
+# 2. Checks out the timber repository in the /timber directory
+# 3. Sets up Node.js
+# 4. Sets up PHP 8.2 and Composer
+# 5. Builds the static site & builds artifacts
+# 6. Deploys artifacts to GitHub Pages
+name: Deploy to GitHub Pages
+
+on:
+  # Runs on pushes targeting the default branch
+  #push:
+  #  branches: ["master"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: 'pages'
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          path: ./timber-docs
+          token: ${{ github.token }}
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          repository: timber/timber
+          path: ./timber
+          token: ${{ github.token }}
+      - name: Setup Nodejs
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - uses: 'shivammathur/setup-php@v2'
+        with:
+          php-version: '8.2'
+      - name: Install composer
+        uses: ramsey/composer-install@v3
+        with:
+          working-directory: 'timber-docs'
+      - name: Build files
+        run: |
+          cd ./timber-docs
+          npm run build
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './timber-docs/docs'
+    # Deployment job
+  deploy:
+    needs: build
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write # to deploy to Pages
+      id-token: write # to verify the deployment originates from an appropriate source
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

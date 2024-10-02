@@ -1,9 +1,7 @@
 .DS_Store
 npm-debug.log*
 node_modules/
-_data/mixManifest.json
 vendor/
 build/
-content/
 docs/
 .vscode/
