@@ -43,3 +43,24 @@ a {
 		}
 	}
 }
+
+/* Same style can be used on both light theme and dark theme. */
+.skip-to-content {
+	position: fixed;
+	top: 1rem;
+	left: 1rem;
+	z-index: -1;
+	padding-inline: 1.75ch;
+	padding-block: 0.75ch;
+	border-radius: 0.5ch;
+	background: #ffe633 !important;
+	font-weight: bold;
+	opacity: 0;
+	color: black !important;
+	border: 3px solid black;
+}
+
+.skip-to-content:focus-visible {
+	opacity: 1;
+	z-index: 1001;
+}
