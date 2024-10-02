@@ -2,6 +2,11 @@
 
 This repository is used to build the documentation pages for [Timber](http://github.com/timber/timber). The documentation is generated using the static site generator [Eleventy](https://www.11ty.io/).
 
+> [!IMPORTANT]
+> If you want to **contribute content** to the documentation, you should create a pull request in the [timber/timber repository](https://github.com/timber/timber/). The documentation content lives in the **/docs/** folder of the Timber repository.
+> 
+> This repository (timber/docs) is only used to build the documentation site. It pulls the documentation content from the Timber repository.
+
 <!-- TOC -->
 
 - [Overview](#overview)
@@ -26,8 +31,6 @@ The documentation consists of:
 
 - **Content pages** imported from the [`docs`](https://github.com/timber/timber/tree/master/docs/) folder of the Timber repository.
 - **Reference pages** for Timber’s PHP classes, which is generated directly from the inline DocBlock documentation of the PHP class files. This is handled by the **generate-docs.sh** file, which uses [Teak](https://github.com/timber/teak) to generate the reference.
-
-If you want to **contribute content** to the documentation, you can create a pull request in the [Timber repository](https://github.com/timber/timber/).
 
 ## Writing docs
 
