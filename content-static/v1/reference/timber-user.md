@@ -5,7 +5,7 @@ menu:
     parent: "reference"
 ---
 
-This is used in Timber to represent users retrived from WordPress. You can call `$my_user = new Timber\User(123);` directly, or access it through the `{{ post.author }}` method.
+This is used in Timber to represent users retrieved from WordPress. You can call `$my_user = new Timber\User(123);` directly, or access it through the `{{ post.author }}` method.
 
 <!--more-->
 

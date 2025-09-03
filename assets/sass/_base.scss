@@ -62,7 +62,7 @@ body {
 	@include font-text;
 
 	/*
-	All colors that are applied to ligth theme should be defined here,
+	All colors that are applied to light theme should be defined here,
 	and then use these custom properties in each components as needed.
 	*/
 	html[data-theme="light"] & {

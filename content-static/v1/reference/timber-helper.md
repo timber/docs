@@ -78,7 +78,7 @@ As the name suggests these are helpers for Timber (and you!) when developing. Yo
 Converts a WP object (WP_Post, WP_Term) into his
 equivalent Timber class (Timber\Post, Timber\Term).
 
-If no match is found the function will return the inital argument.
+If no match is found the function will return the initial argument.
 
 | Name | Type | Description |
 | --- | --- | --- |

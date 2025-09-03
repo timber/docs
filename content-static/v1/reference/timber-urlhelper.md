@@ -148,7 +148,7 @@ Get url scheme
 
 **returns:** `boolean` true if $path is an absolute url, false if relative.
 
-This will evaluate wheter a URL is at an aboslute location (like http://example.org/whatever)
+This will evaluate whether a URL is at an absolute location (like http://example.org/whatever)
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -183,7 +183,7 @@ Works with domains, subdomains and protocol relative domains.
 
 This function is slightly different from the one below in the case of:
 an image hosted on the same domain BUT on a different site than the
-Wordpress install will be reported as external content.
+WordPress install will be reported as external content.
 
 | Name | Type | Description |
 | --- | --- | --- |
