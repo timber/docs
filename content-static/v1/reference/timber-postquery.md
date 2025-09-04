@@ -59,7 +59,7 @@ Set pagination for the collection. Optionally could be used to get pagination wi
 ### get_query
 `get_query( )`
 
-**returns:** `mixed` the query the user orignally passed to the pagination object
+**returns:** `mixed` the query the user originally passed to the pagination object
 
 
 
