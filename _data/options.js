@@ -1,5 +1,5 @@
 module.exports = {
-  pathPrefix: '/docs/',
+  pathPrefix: process.env.ELEVENTY_ENV === 'production' ? '/docs/' : '/',
   dir: {
     input: 'content',
     output: 'docs',
