@@ -5,12 +5,13 @@ const markdown = require('./lib/markdown');
 const manifestFilter = require('./lib/manifestFilter');
 const pageCollection = require('./lib/pageCollection');
 const selectChildren = require('./lib/selectChildren');
-const pluginRss = require('@11ty/eleventy-plugin-rss');
+const tocFilter = require('./lib/tocFilter');
 const options = require('./_data/options');
 const site = require('./_data/site');
 const redirectCollection = require('./lib/redirectCollection');
 
-module.exports = function (config) {
+module.exports = async function (config) {
+  const { default: pluginRss } = await import('@11ty/eleventy-plugin-rss');
   // Copy folders and files.
   config.addPassthroughCopy('build');
   config.setUseGitIgnore(false);
@@ -18,6 +19,7 @@ module.exports = function (config) {
   // Filters.
   config.addFilter('manifest', manifestFilter);
   config.addFilter('selectChildren', selectChildren);
+  config.addFilter('toc', tocFilter);
 
   /**
    * Date string for Sitemap.
@@ -59,7 +61,6 @@ module.exports = function (config) {
   });
 
   // Plugins
-  config.addPlugin(require('eleventy-plugin-toc'));
   // Required for sitemap.
   config.addPlugin(pluginRss);
 
