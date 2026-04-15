@@ -33,25 +33,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           path: ./timber-docs
           token: ${{ github.token }}
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: timber/timber
           path: ./timber
           token: ${{ github.token }}
       - name: Setup Nodejs
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 18
       - uses: 'shivammathur/setup-php@v2'
         with:
           php-version: '8.2'
       - name: Install composer
-        uses: ramsey/composer-install@v3
+        uses: ramsey/composer-install@v4
         with:
           working-directory: 'timber-docs'
       - name: Build files
@@ -59,9 +59,9 @@ jobs:
           cd ./timber-docs
           npm run build
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v6
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: './timber-docs/docs'
     # Deployment job
@@ -78,4 +78,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
