@@ -10,6 +10,9 @@
     "production": "ELEVENTY_ENV=production npm run webpack:production && npx eleventy",
     "serve": "ELEVENTY_ENV=development npx eleventy --serve",
     "eleventy-develop": "ELEVENTY_ENV=development npx eleventy",
+    "webpack:dev": "webpack --mode development",
+    "webpack:production": "webpack --mode production",
+    "webpack:watch": "webpack --mode development --watch",
     "cleanup": "rm -rf ./content",
     "debug": "DEBUG=Eleventy* npx eleventy"
   },
