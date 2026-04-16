@@ -46,7 +46,7 @@ jobs:
       - name: Setup Nodejs
         uses: actions/setup-node@v6
         with:
-          node-version: 18
+          node-version: lts/*
       - uses: 'shivammathur/setup-php@v2'
         with:
           php-version: '8.2'
