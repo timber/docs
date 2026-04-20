@@ -1,0 +1,13 @@
+{
+  "folders": [
+    {
+      "name": "Timber documentation",
+      "path": ".",
+    },
+    {
+      "name": "Timber source code",
+      "path": "../timber",
+    },
+  ],
+  "settings": {},
+}
