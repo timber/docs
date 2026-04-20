@@ -90,17 +90,7 @@ module.exports = (env, argv) => {
 
          new WebpackManifestPlugin({
             fileName: 'mix-manifest.json',
-            publicPath: '/build/',
-            generate: (seed, files) => {
-               const manifest = files.reduce((manifest, file) => {
-                  // Create keys that match Laravel Mix format: /js/app.js, /css/styles.css
-                  const key = `/${file.name}`;
-                  const value = `/build/${file.name}`;
-                  return { ...manifest, [key]: value };
-               }, seed);
-
-               return manifest;
-            },
+            publicPath: process.env.ELEVENTY_ENV === 'production' ? '/docs/build/' : '/build/',
          }),
 
          // Custom plugin to copy manifest to _data folder
