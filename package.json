@@ -7,7 +7,7 @@
     "generate-docs": "bash generate-docs.sh",
     "watch": "npm run generate-docs && concurrently \"npm run serve\" \"npm run webpack:watch\"",
     "develop": "ELEVENTY_ENV=development concurrently \"npm run webpack:dev\" \"npx eleventy\"",
-    "production": "ELEVENTY_ENV=production npm run webpack:production && npx eleventy",
+    "production": "ELEVENTY_ENV=production npm run webpack:production && ELEVENTY_ENV=production npx eleventy",
     "serve": "ELEVENTY_ENV=development npx eleventy --serve",
     "eleventy-develop": "ELEVENTY_ENV=development npx eleventy",
     "webpack:dev": "webpack --mode development",

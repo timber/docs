@@ -12,7 +12,7 @@
     <nav class="navVersions">
         <ul>
         {% for v in site.versions %}
-            <li><a href="{{ v.link|url }}" {% if version === v.value %}class="is-current"{% endif %}>{{ v.name }}</a></li>
+            <li><a href="{{ v.link }}" {% if version === v.value %}class="is-current"{% endif %}>{{ v.name }}</a></li>
         {% endfor %}
         </ul>
     </nav>

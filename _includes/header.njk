@@ -1,6 +1,6 @@
 <header class="header">
     <div class="logoContainer">
-        <a href="{{ '/'|url }}">
+        <a href="/">
             <svg aria-hidden="true" focusable="false" class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 104.45 30">
 							<title>Logo Tiny White</title>
 							<path class="text" d="M32.41,13.27H28.73V10H39.88v3.26h-3.7v13H32.41Z"/>
@@ -28,7 +28,7 @@
                             {{ item.name }}
                         {% elseif item.image %}
                             <img
-                                    src="{{ item.image.src|url }}"
+                                    src="{{ item.image.src }}"
                                     alt="{{ item.image.alt }}"
                                     style="{{ item.image.style if item.image.style }}"
                             >

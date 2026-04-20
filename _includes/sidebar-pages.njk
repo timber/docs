@@ -6,7 +6,7 @@
             {% else %}
                 <a
                     class="navMain-link"
-                    href="{{ post.url|url }}"
+                    href="{{ post.url }}"
                     {% if page.url == post.url %}aria-current{% endif %}
                 >{{ post.data.linktitle if post.data.linktitle else post.data.title }}</a>
             {% endif %}

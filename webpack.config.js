@@ -90,7 +90,7 @@ module.exports = (env, argv) => {
 
          new WebpackManifestPlugin({
             fileName: 'mix-manifest.json',
-            publicPath: process.env.ELEVENTY_ENV === 'production' ? '/docs/build/' : '/build/',
+            publicPath: '/build/',
          }),
 
          // Custom plugin to copy manifest to _data folder
